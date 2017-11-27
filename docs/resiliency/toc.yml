@@ -1,0 +1,24 @@
+- name: Azure アーキテクチャ センター
+  href: /azure/architecture
+- name: 回復性の設計
+  items:
+    - name: 回復力のあるアプリケーションの設計
+      href: index.md
+    - name: 回復性のチェックリスト
+      href: ../checklist/resiliency.md?toc=/azure/architecture/resiliency/toc.json
+    - name: 障害モード分析
+      href: failure-mode-analysis.md
+    - name: その他のガイダンス
+      items:
+        - name: ディザスター リカバリー
+          href: disaster-recovery-azure-applications.md
+        - name: 高可用性
+          href: high-availability-azure-applications.md
+        - name: データの破損または偶発的な削除からの復旧
+          href: recovery-data-corruption.md
+        - name: ローカル障害からの復旧
+          href: recovery-local-failures.md
+        - name: 地域全体でのサービスの中断からの復旧
+          href: recovery-loss-azure-region.md
+        - name: オンプレミスから Azure への復旧
+          href: recovery-on-premises-azure.md

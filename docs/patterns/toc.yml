@@ -1,0 +1,86 @@
+- name: Azure アーキテクチャ センター
+  href: /azure/architecture
+- name: クラウドの設計パターン
+  href: index.md
+- name: カテゴリ
+  items:
+    - name: 可用性
+      href: category/availability.md
+    - name: データ管理
+      href: category/data-management.md
+    - name: 設計と実装
+      href: category/design-implementation.md
+    - name: メッセージング
+      href: category/messaging.md
+    - name: 管理と監視
+      href: category/management-monitoring.md
+    - name: パフォーマンスと拡張性
+      href: category/performance-scalability.md
+    - name: 回復性
+      href: category/resiliency.md
+    - name: セキュリティ
+      href: category/security.md
+- name: アンバサダー
+  href: ambassador.md
+- name: 破損対策レイヤー
+  href: anti-corruption-layer.md
+- name: フロントエンド用バックエンド
+  href: backends-for-frontends.md
+- name: バルクヘッド
+  href: bulkhead.md
+- name: キャッシュ アサイド
+  href: cache-aside.md
+- name: サーキット ブレーカー
+  href: circuit-breaker.md
+- name: コマンド クエリ責務分離 (CQRS)
+  href: cqrs.md
+- name: トランザクション補正
+  href: compensating-transaction.md
+- name: 競合コンシューマー
+  href: competing-consumers.md
+- name: コンピューティング リソース統合
+  href: compute-resource-consolidation.md
+- name: イベント ソーシング
+  href: event-sourcing.md
+- name: 外部構成ストア
+  href: external-configuration-store.md
+- name: フェデレーション ID
+  href: federated-identity.md
+- name: ゲートキーパー
+  href: gatekeeper.md
+- name: ゲートウェイ集約
+  href: gateway-aggregation.md
+- name: ゲートウェイ オフロード
+  href: gateway-offloading.md
+- name: ゲートウェイ ルーティング
+  href: gateway-routing.md
+- name: 正常性エンドポイント監視
+  href: health-endpoint-monitoring.md
+- name: テーブルのインデックス作成
+  href: index-table.md
+- name: リーダー選定
+  href: leader-election.md
+- name: 具体化されたビュー
+  href: materialized-view.md
+- name: パイプとフィルター
+  href: pipes-and-filters.md
+- name: Priority Queue
+  href: priority-queue.md
+- name: キュー ベースの負荷平準化
+  href: queue-based-load-leveling.md
+- name: Retry
+  href: retry.md
+- name: Scheduler エージェント スーパーバイザー
+  href: scheduler-agent-supervisor.md
+- name: シャーディング
+  href: sharding.md
+- name: サイドカー
+  href: sidecar.md
+- name: 静的コンテンツ ホスティング
+  href: static-content-hosting.md
+- name: ストラングラー
+  href: strangler.md
+- name: 調整
+  href: throttling.md
+- name: バレット キー
+  href: valet-key.md

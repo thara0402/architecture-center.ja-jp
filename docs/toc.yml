@@ -1,0 +1,145 @@
+- name: Azure アーキテクチャ センター
+  href: index.md
+- name: アプリケーション アーキテクチャ ガイド
+  href: guide/index.md
+  items:
+    - name: アーキテクチャ スタイル
+      href: guide/architecture-styles/index.md
+    - name: テクノロジの選択
+      href: guide/technology-choices/index.md
+      items: null
+    - name: 設計原則
+      href: guide/design-principles/index.md
+    - name: ソフトウェア品質の要点
+      href: guide/pillars.md
+    - name: 設計パターン
+      href: patterns/index.md?toc=/azure/architecture/guide/toc.json
+- name: 参照アーキテクチャ
+  href: reference-architectures/index.md
+  items:
+    - name: ID 管理
+      href: reference-architectures/identity/index.md
+    - name: ハイブリッド ネットワーク
+      href: reference-architectures/hybrid-networking/index.md
+    - name: App Service Web アプリケーション
+      href: reference-architectures/app-service-web-app/index.md
+    - name: ネットワーク DMZ
+      href: reference-architectures/dmz/index.md
+    - name: SAP NetWeaver および SAP HANA
+      href: reference-architectures/sap/index.md
+    - name: SharePoint Server 2016
+      href: reference-architectures/sharepoint/index.md
+    - name: VM ワークロード (Linux)
+      href: reference-architectures/virtual-machines-linux/index.md
+    - name: VM ワークロード (Windows)
+      href: reference-architectures/virtual-machines-windows/index.md
+- name: クラウドの設計パターン
+  href: patterns/index.md
+  items:
+    - name: 可用性のパターン
+      href: patterns/category/availability.md
+    - name: データ管理のパターン
+      href: patterns/category/data-management.md
+    - name: 設計と実装のパターン
+      href: patterns/category/design-implementation.md
+    - name: 管理と監視のパターン
+      href: patterns/category/management-monitoring.md
+    - name: メッセージングのパターン
+      href: patterns/category/messaging.md
+    - name: パフォーマンスとスケーラビリティのパターン
+      href: patterns/category/performance-scalability.md
+    - name: 回復性のパターン
+      href: patterns/category/resiliency.md
+    - name: セキュリティのパターン
+      href: patterns/category/security.md
+- name: ベスト プラクティス
+  items:
+    - name: API 設計
+      href: best-practices/api-design.md
+    - name: API 実装
+      href: best-practices/api-implementation.md
+    - name: 自動スケール
+      href: best-practices/auto-scaling.md
+    - name: バックグラウンド ジョブ
+      href: best-practices/background-jobs.md
+    - name: キャッシュ
+      href: best-practices/caching.md
+    - name: Content Delivery Network
+      href: best-practices/cdn.md
+    - name: データのパーティション分割
+      href: best-practices/data-partitioning.md
+    - name: 監視と診断
+      href: best-practices/monitoring.md
+    - name: 名前付け規則
+      href: best-practices/naming-conventions.md
+    - name: 一時的な障害の処理
+      href: best-practices/transient-faults.md
+    - name: 特定のサービスの再試行ガイダンス
+      href: best-practices/retry-service-specific.md
+- name: パフォーマンスのアンチパターン
+  href: antipatterns/index.md
+  items:
+    - name: ビジー状態のデータベース
+      href: antipatterns/busy-database/index.md
+    - name: ビジー状態のフロント エンド
+      href: antipatterns/busy-front-end/index.md
+    - name: 頻度の高い I/O
+      href: antipatterns/chatty-io/index.md
+    - name: 余分なフェッチ
+      href: antipatterns/extraneous-fetching/index.md
+    - name: 不適切なインスタンス化
+      href: antipatterns/improper-instantiation/index.md
+    - name: モノリシック永続化
+      href: antipatterns/monolithic-persistence/index.md
+    - name: キャッシュなし
+      href: antipatterns/no-caching/index.md
+    - name: 同期 I/O
+      href: antipatterns/synchronous-io/index.md
+- name: 設計レビューのチェックリスト
+  items:
+    - name: 可用性
+      href: checklist/availability.md
+    - name: DevOps
+      href: checklist/dev-ops.md
+    - name: 回復性
+      href: checklist/resiliency.md
+    - name: 拡張性
+      href: checklist/scalability.md
+- name: 回復性の設計
+  items:
+    - name: 回復力のあるアプリケーションの設計
+      href: resiliency/index.md
+    - name: 回復性のチェックリスト
+      href: checklist/resiliency.md?toc=/azure/architecture/resiliency/toc.json
+    - name: 障害モード分析
+      href: resiliency/failure-mode-analysis.md
+- name: シナリオのガイド
+  items:
+    - name: AWS プロフェッショナルのための Azure
+      href: aws-professional/index.md
+    - name: マルチテナント アプリケーションでの ID 管理
+      href: multitenant-identity/index.md
+    - name: Cloud Services から Service Fabric に移行する
+      href: service-fabric/migrate-from-cloud-services.md
+    - name: Azure での Elasticsearch の実行
+      href: elasticsearch/index.md
+    - name: Azure Resource Manager テンプレート機能の拡張
+      href: building-blocks/extending-templates/index.md
+- name: リソース
+  items:
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: 'Microsoft セキュリティ センター: Azure'
+      href: 'https://www.microsoft.com/en-us/trustcenter/cloudservices/azure'
+    - name: アイコンと図
+      href: resources/diagrams.md
+    - name: Azure 更新プログラムの予定
+      href: 'https://azure.microsoft.com/updates/'
+    - name: トレーニング
+      href: 'https://azure.microsoft.com/community/training/'
+    - name: SQLCAT ブログ
+      href: 'https://blogs.msdn.microsoft.com/sqlcat/'
+    - name: AzureCAT ブログ
+      href: 'https://blogs.msdn.microsoft.com/azurecat/'
+    - name: ホワイト ペーパー
+      href: 'https://azure.microsoft.com/resources/whitepapers/'
