@@ -1,0 +1,12 @@
+- name: Azure アーキテクチャ センター
+  href: /azure/architecture
+- name: 設計レビューのチェックリスト
+  items:
+    - name: 可用性
+      href: availability.md
+    - name: DevOps
+      href: dev-ops.md
+    - name: 回復性
+      href: resiliency.md
+    - name: 拡張性
+      href: scalability.md

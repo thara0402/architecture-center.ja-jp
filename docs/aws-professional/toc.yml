@@ -1,0 +1,8 @@
+- name: Azure アーキテクチャ センター
+  href: /azure/architecture
+- name: AWS プロフェッショナルのための Azure
+  items:
+    - name: 概要
+      href: index.md
+    - name: サービスの比較
+      href: services.md
