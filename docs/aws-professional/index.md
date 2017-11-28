@@ -5,11 +5,11 @@ keywords: "AWS エキスパート, Azure との比較, AWS との比較, Azure �
 author: lbrader
 ms.date: 03/24/2017
 pnp.series.title: Azure for AWS Professionals
-ms.openlocfilehash: 251489e7a6d78d82f3ed70ca2df6c88f8759f9a5
-ms.sourcegitcommit: fbcf9a1c25db13b2627a8a58bbc985cd01ea668d
+ms.openlocfilehash: 75fda82ee5ca7ca3665501fe428d1d01995e7422
+ms.sourcegitcommit: c53adf50d3a787956fc4ebc951b163a10eeb5d20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="azure-for-aws-professionals"></a>AWS プロフェッショナルのための Azure
 
@@ -21,7 +21,7 @@ ms.lasthandoff: 11/16/2017
 * 利用可能なソリューションが Azure でどのように構造化されているか。
 * 主要な Azure サービスが AWS サービスとどのように異なっているか。
 
- Azure と AWS のさまざまな機能は時間の経過と共に独立して構築されたため、各機能の実装と設計には重要な相違点があります。
+Azure と AWS のさまざまな機能は時間の経過と共に独立して構築されたため、各機能の実装と設計には重要な相違点があります。
 
 ## <a name="overview"></a>概要
 
@@ -62,7 +62,7 @@ AWS アカウントと同じように、サブスクリプションには既定�
 
 Azure では、"リソース" という用語を AWS と同じように使用しています。つまり、すべてのコンピューティング インスタンス、ストレージ オブジェクト、ネットワーク デバイス、プラットフォームで作成または構成できるその他のエンティティを意味します。
 
-Azure リソースは、2 つのモデル (Azure Resource Manager と従来の Azure [クラシック デプロイ モデル](/azure/azure-resource-manager/resource-manager-deployment-model)) のどちらかでデプロイして管理されます。
+Azure リソースは、2 つのモデル ([Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview) と従来の Azure [クラシック デプロイメント モデル](/azure/azure-resource-manager/resource-manager-deployment-model)) のどちらかでデプロイして管理されます。
 すべての新しいリソースは、Resource Manager モデルを使用して作成されます。
 
 ### <a name="resource-groups"></a>リソース グループ
@@ -166,7 +166,7 @@ AWS インスタンスのタイプと Azure 仮想マシンのサイズは、似
 
 AWS の秒単位の課金とは異なり、Azure のオンデマンド VM は分単位で課金されます。
 
-Azure には EC2 スポット インスタンス、予約済みインスタンス、または専用ホストに相当するものはありません。
+Azure には EC2 スポット インスタンスと専用ホストに相当するものはありません。
 
 #### <a name="ebs-and-azure-storage-for-vm-disks"></a>EBS と VM ディスク用の Azure Storage
 
@@ -232,16 +232,18 @@ AWS プラットフォームでは、クラウド ストレージは主に 3 つ
 Azure Storage では、サブスクリプションに関連付けられた[ストレージ アカウント](https://azure.microsoft.com/documentation/articles/storage-create-storage-account/)を使用して、次のストレージ サービスを作成して管理できます。
 
 -   [Blob Storage](https://azure.microsoft.com/documentation/articles/storage-create-storage-account/) - 任意の種類のテキスト データやバイナリ データを格納します (ドキュメント、メディア ファイル、アプリケーション インストーラーなど)。 BLOB ストレージをプライベート アクセス用に設定したり、インターネットに公開してコンテンツを共有したりできます。 BLOB ストレージの目的は、AWS の S3 と EBS の両方の目的と同じです。
-
 -   [Table Storage](https://azure.microsoft.com/documentation/articles/storage-nodejs-how-to-use-table-storage/) - 構造型データセットを格納します。 Table Storage は、NoSQL キー属性データ ストアであるため、開発が迅速化され、大量のデータにすばやくアクセスできます。 AWS の SimpleDB サービスと DynamoDB サービスに似ています。
 
 -   [Queue Storage](https://azure.microsoft.com/documentation/articles/storage-nodejs-how-to-use-queues/) - クラウド サービスのコンポーネント間のワークフロー処理と通信のためのメッセージング機能を提供します。
 
 -   [File Storage](https://azure.microsoft.com/documentation/articles/storage-java-how-to-use-file-storage/) - 標準的なサーバー メッセージ ブロック (SMB) プロトコルを使用するレガシー アプリケーション用の共有ストレージを提供します。 File Storageは、AWS プラットフォームの EFS と同じように使用されます。
 
-#### <a name="glacier-and-azure-storage"></a>Glacier と Azure Storage
 
-Azure Storage では、AWS の長期アーカイブである Glacier ストレージに直接相当するストレージはありません。 アクセス頻度が低く、保管期間が長いデータ用に、[Azure クール BLOB ストレージ層](https://azure.microsoft.com/documentation/articles/storage-blob-storage-tiers/)が用意されています。
+
+
+ 
+#### <a name="glacier-and-azure-storage"></a>Glacier と Azure Storage 
+[Azure Storage Standard Archive](/azure/storage/blobs/storage-blob-storage-tiers) には、AWS の長期アーカイブである Glacier ストレージに直接相当するストレージがあります。 アクセス頻度が低く、保管期間が長いデータ用に、[Azure クール BLOB ストレージ層](/azure/storage/blobs/storage-blob-storage-tiers)が用意されています。
 クール ストレージは、標準的な Blob Storage よりもコストとパフォーマンスが低いストレージを提供し、AWS の S3 (アクセス頻度が低いストレージ) に相当します。
 
 #### <a name="see-also"></a>関連項目
@@ -284,13 +286,17 @@ Azure では、[ExpressRoute](https://azure.microsoft.com/documentation/services
 
 ### <a name="database-services"></a>データベース サービス
 
-#### <a name="rds-and-azure-sql-database-service"></a>RDS と Azure SQL Database サービス
+#### <a name="rds-and-azure-relational-database-services"></a>RDS と Azure リレーショナル データベース サービス
 
-AWS と Azure のクラウドでのリレーショナル データベース ソリューション製品に対する取り組みには違いがあります。 AWS の Relational Database Service (RDS) は、Oracle や MySQL などの複数のデータベース エンジンを使用したインスタンスの作成をサポートしています。
+Azure には、AWS の Relational Database Service (RDS) に相当するリレーショナル データベース サービスが何種類かあります。
 
-Azure のクラウド データベース製品は [SQL Database](https://azure.microsoft.com/documentation/articles/sql-database-technical-overview/) です。 それは、管理されたサービスを介して、高い拡張性を持つリレーショナル データ ストレージを提供します。 SQL Database は独自のエンジンを使用し、その他のデータベースの種類の作成をサポートしていません。 [SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/)、[Oracle](https://azure.microsoft.com/campaigns/oracle/)、[MySQL](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-classic-mysql-2008r2/) などの他のデータベース エンジンは、Azure VM インスタンスを使用してデプロイできます。
+-   [SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview)
+-   [Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/overview)
+-   [Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/overview)
 
-AWS RDS のコストは、インスタンスが使用するハードウェア リソース (CPU、RAM、ストレージ、ネットワーク帯域幅など) の量によって決まります。 SQL Database サービスでは、コストは、データベースのサイズ、同時接続数、およびスループット レベルによって決まります。
+[SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/)、[Oracle](https://azure.microsoft.com/campaigns/oracle/)、[MySQL](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-classic-mysql-2008r2/) などの他のデータベース エンジンは、Azure VM インスタンスを使用してデプロイできます。
+
+AWS RDS のコストは、インスタンスが使用するハードウェア リソース (CPU、RAM、ストレージ、ネットワーク帯域幅など) の量によって決まります。 Azure データベース サービスでは、コストは、データベースのサイズ、同時接続数、およびスループット レベルによって決まります。
 
 #### <a name="see-also"></a>関連項目
 
