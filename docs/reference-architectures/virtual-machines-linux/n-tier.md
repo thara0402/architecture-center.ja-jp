@@ -2,15 +2,15 @@
 title: "Azure で n 層アプリケーションの Linux VM を実行する"
 description: "Microsoft Azure で N 層アーキテクチャの Linux VM を実行する方法について説明します。"
 author: MikeWasson
-ms.date: 11/22/2016
+ms.date: 11/22/2017
 pnp.series.title: Linux VM workloads
 pnp.series.next: multi-region-application
 pnp.series.prev: multi-vm
-ms.openlocfilehash: 673e090e306ffc421603371658c8273b10b980d4
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 98814685e0f33f2a1258bf8307a86f92d8a81968
+ms.sourcegitcommit: 583e54a1047daa708a9b812caafb646af4d7607b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="run-linux-vms-for-an-n-tier-application"></a>N 層アプリケーションの Linux VM を実行する
 
@@ -24,7 +24,7 @@ ms.lasthandoff: 11/14/2017
 
 N 層アーキテクチャを実装する方法は多数あります。 図は、典型的な 3 層 Web アプリケーションを示しています。 このアーキテクチャは「[スケーラビリティと可用性のために負荷分散された VM を実行する][multi-vm]」に基づいて作成されています。 Web 層とビジネス層では、負荷分散された VM が使用されます。
 
-* **可用性セット。** 階層ごとに[可用性セット][azure-availability-sets]を作成し、各階層に少なくとも 2 つの VM をプロビジョニングします。  こうすると VM がより高度な VM の[サービス レベル アグリーメント (SLA)][vm-sla] に対応できるようになります。
+* **可用性セット。** 階層ごとに[可用性セット][azure-availability-sets]を作成し、各階層に少なくとも 2 つの VM をプロビジョニングします。  こうすると VM がより高度な VM の[サービス レベル アグリーメント (SLA)][vm-sla] に対応できるようになります。 可用性セット内の単一の VM をデプロイできますが、単一の VM がすべての OS およびデータ ディスクに Azure Premium Storage を使用していない限り、その単一の VM は SLA 保証に対して適格ではありません。  
 * **サブネット。** 階層ごとに個別のサブネットを作成します。 [CIDR] 表記を使用してアドレス範囲とサブネット マスクを指定します。 
 * **ロード バランサー**。 [インターネットに接続するロード バランサー][load-balancer-external]を使用して着信インターネット トラフィックを Web 層に分散し、[内部ロード バランサー][load-balancer-internal]を使用して Web 層からのネットワーク トラフィックをビジネス層に分散します。
 * **ジャンプボックス。** [要塞ホスト]とも呼ばれます。 管理者が他の VM に接続するために使用するネットワーク上のセキュアな VM です。 ジャンプボックスの NSG は、セーフ リストにあるパブリック IP アドレスからのリモート トラフィックのみを許可します。 NSG は Secure Shell (SSH) トラフィックを許可する必要があります。
@@ -113,31 +113,59 @@ Cassandra クラスター用の VM を可用性セット内に配置して、Cas
 
 ## <a name="deploy-the-solution"></a>ソリューションのデプロイ方法
 
-このアーキテクチャのデプロイについては、[GitHub][github-folder] をご覧ください。 アーキテクチャは 3 段階でデプロイされます。 このアーキテクチャをデプロイするには、次の手順を実行します。 
+このリファレンス アーキテクチャのデプロイについては、[GitHub][github-folder] を参照してください。 
 
-1. 下のボタンをクリックします。<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmspnp%2Freference-architectures%2Fmaster%2Fvirtual-machines%2Fn-tier-linux%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
-2. Azure Portal でリンクが開かれたら、以下の値を入力します。 
-   * **リソース グループ**の名前はパラメーター ファイルで既に定義されているため、**[新規作成]** を選択し、テキスト ボックスに「`ra-ntier-cassandra-rg`」と入力します。
-   * **[場所]** ボックスの一覧でリージョンを選択します。
-   * **[Template Root Uri (テンプレート ルート URI)]** または **[Parameter Root Uri (パラメーター ルート URI)]** ボックスは編集しないでください。
-   * 使用条件を確認し、**[上記の使用条件に同意する]** チェック ボックスをオンにします。
-   * **[購入]** をクリックします。
-3. Azure Portal の通知で、デプロイが完了したことを示すメッセージを確認してください。
-4. パラメーター ファイルには、ハードコーディングされた管理者のユーザー名とパスワードが含まれているため、すべての VM 上でこの両方をすぐに変更することを強くお勧めします。 Azure Portal で各 VM をクリックし、**[サポート + トラブルシューティング]** ブレードで **[パスワードのリセット]** をクリックします。 **[モード]** ボックスの一覧の **[パスワードのリセット]** を選択し、新しい**ユーザー名**と**パスワード**を選択します。 **[更新]** をクリックして、新しいユーザー名とパスワードを保持します。
+### <a name="prerequisites"></a>前提条件
+
+参照アーキテクチャをご自身のサブスクリプションにデプロイする前に、次の手順を実行する必要があります。
+
+1. [AzureCAT 参照アーキテクチャ][ref-arch-repo] GitHub リポジトリに ZIP ファイルを複製、フォーク、またはダウンロードします。
+
+2. Azure CLI 2.0 がコンピューターにインストールされていることを確認してください。 CLI をインストールするには、「[Azure CLI 2.0 のインストール][azure-cli-2]」の手順に従ってください。
+
+3. [Azure の構成要素][azbb] npm パッケージをインストールします。
+
+  ```bash
+  npm install -g @mspnp/azure-building-blocks
+  ```
+
+4. コマンド プロンプト、bash プロンプト、または PowerShell プロンプトから、以下のコマンドの 1 つを使用して Azure アカウントにログインし、プロンプトに従います。
+
+  ```bash
+  az login
+  ```
+
+### <a name="deploy-the-solution-using-azbb"></a>azbb を使用したソリューションのデプロイ
+
+N 層アプリケーションの参照アーキテクチャで Linux VM をデプロイするには、次の手順に従います。
+
+1. 上の前提条件の手順 1 で複製したリポジトリの `virtual-machines\n-tier-linux` フォルダーに移動します。
+
+2. このパラメーター ファイルは、デプロイ内の各 VM の既定の管理者ユーザー名とパスワードを指定します。 参照アーキテクチャをデプロイする前に、これらを変更する必要があります。 `n-tier-linux.json` ファイルを開き、各 **adminUsername** および **adminPassword** フィールドを新しい設定に置き換えます。   ファイルを保存します。
+
+3. 次に示すように、**azbb** コマンド ライン ツールを使用して参照アーキテクチャをデプロイします。
+
+  ```bash
+  azbb -s <your subscription_id> -g <your resource_group_name> -l <azure region> -p n-tier-linux.json --deploy
+  ```
+
+Azure の構成要素を使用してこのサンプルの参照アーキテクチャをデプロイする方法の詳細については、「[GitHub リポジトリ][git]」を参照してください。
 
 <!-- links -->
 [multi-dc]: multi-region-application.md
 [dmz]: ../dmz/secure-vnet-dmz.md
 [multi-vm]: ./multi-vm.md
 [naming conventions]: /azure/guidance/guidance-naming-conventions
-
+[azbb]: https://github.com/mspnp/template-building-blocks/wiki/Install-Azure-Building-Blocks
 [azure-administration]: /azure/automation/automation-intro
 [azure-availability-sets]: /azure/virtual-machines/virtual-machines-linux-manage-availability
+[azure-cli-2]: https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest
 [要塞ホスト]: https://en.wikipedia.org/wiki/Bastion_host
 [cassandra-in-azure]: https://docs.datastax.com/en/datastax_enterprise/4.5/datastax_enterprise/install/installAzure.html
 [cidr]: https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing
 [chef]: https://www.chef.io/solutions/azure/
 [datastax]: http://www.datastax.com/products/datastax-enterprise
+[git]: https://github.com/mspnp/template-building-blocks
 [github-folder]: https://github.com/mspnp/reference-architectures/tree/master/virtual-machines/n-tier-linux
 [lb-external-create]: /azure/load-balancer/load-balancer-get-started-internet-portal
 [lb-internal-create]: /azure/load-balancer/load-balancer-get-started-ilb-arm-portal
@@ -150,6 +178,7 @@ Cassandra クラスター用の VM を可用性セット内に配置して、Cas
 [private-ip-space]: https://en.wikipedia.org/wiki/Private_network#Private_IPv4_address_spaces
 [パブリック IP アドレス]: /azure/virtual-network/virtual-network-ip-addresses-overview-arm
 [puppet]: https://puppetlabs.com/blog/managing-azure-virtual-machines-puppet
+[ref-arch-repo]: https://github.com/mspnp/reference-architectures
 [vm-sla]: https://azure.microsoft.com/support/legal/sla/virtual-machines
 [vnet faq]: /azure/virtual-network/virtual-networks-faq
 [visio-download]: https://archcenter.azureedge.net/cdn/vm-reference-architectures.vsdx

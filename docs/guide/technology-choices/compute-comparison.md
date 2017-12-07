@@ -3,11 +3,11 @@ title: "Azure コンピューティング オプションを選択するため�
 description: "複数の軸間で Azure コンピューティング サービスを比較します。"
 author: MikeWasson
 layout: LandingPage
-ms.openlocfilehash: 640793b56c1713f63456bab75ab4b9289d22a53c
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 36b57d1fb674b5a1452a0e8208de836963b2b01b
+ms.sourcegitcommit: c53adf50d3a787956fc4ebc951b163a10eeb5d20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="criteria-for-choosing-an-azure-compute-option"></a>Azure コンピューティング オプションを選択するための条件
 
@@ -17,12 +17,12 @@ ms.lasthandoff: 11/14/2017
 
 | 条件 | Virtual Machines | App Service | Service Fabric | Azure Functions | Azure Container Service | Cloud Services | Azure Batch |
 |----------|-----------------|-------------|----------------|-----------------|-------------------------|----------------|-------------|
-| アプリケーションの構成 | 非依存 | アプリケーション | サービス、ゲスト実行可能ファイル | Functions | コンテナー | ロール | スケジュールされたジョブ  |
+| アプリケーションの構成 | 非依存 | アプリケーション | サービス、ゲスト実行可能ファイル、コンテナー | Functions | コンテナー | ロール | スケジュールされたジョブ  |
 | 密度 | 非依存 | アプリの計画を介した、インスタンスごとの複数のアプリ | VM ごとに複数のサービス | 専用インスタンスなし <a href="#note1"><sup>1</sup></a> | VM ごとに複数のコンテナー | VM ごとに 1 つのロール インスタンス | VM ごとに複数のアプリ |
 | 最小ノード数 | 1 <a href="#note2"><sup>2</sup></a>  | 1 | 5 <a href="#note3"><sup>3</sup></a> | 専用ノードなし <a href="#note1"><sup>1</sup></a> | 3 | 2 | 1 <a href="#note4"><sup>4</sup></a> |
 | 状態管理 | ステートレスまたはステートフル | ステートレス | ステートレスまたはステートフル | ステートレス | ステートレスまたはステートフル | ステートレス | ステートレス |
-| Web ホスティング | 非依存 | 組み込み | セルフホスト、コンテナーの IIS | 適用不可 | 非依存 | 組み込み (IIS) | いいえ |
-| OS | Windows、Linux | Windows、Linux (プレビュー)  | Windows、Linux (プレビュー) | 適用不可 | Windows、Linux | Windows | Windows、Linux |
+| Web ホスティング | 非依存 | 組み込み | 非依存 | 適用不可 | 非依存 | 組み込み (IIS) | いいえ |
+| OS | Windows、Linux | Windows、Linux  | Windows、Linux | 適用不可 | Windows (プレビュー)、Linux | Windows | Windows、Linux |
 | 専用 VNet にデプロイできるかどうか | サポートされています | サポートされています <a href="#note5"><sup>5</sup></a> | サポートされています | サポートされていません | サポートされています | サポートされています <a href="#note6"><sup>6</sup></a> | サポートされています |
 | ハイブリッド接続 | サポートされています | サポートされています <a href="#note1"><sup>7</sup></a>  | サポートされています | サポートされていません | サポートされています | サポートされています <a href="#note8"><sup>8</sup></a> | サポートされています |
 

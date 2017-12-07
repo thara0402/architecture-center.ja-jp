@@ -6,15 +6,15 @@ ms.date: 11/22/2016
 pnp.series.title: Windows VM workloads
 pnp.series.next: multi-region-application
 pnp.series.prev: multi-vm
-ms.openlocfilehash: f3c375f8fccc633d9525a8afbd11c13037265f4a
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: e25d10d661ac4759f209bd27384303dee2ee454e
+ms.sourcegitcommit: 583e54a1047daa708a9b812caafb646af4d7607b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="run-windows-vms-for-an-n-tier-application"></a>n 層アプリケーションの Windows VM を実行する
 
-この参照アーキテクチャでは、N 層アプリケーションの Windows 仮想マシン (VM) を実行するための一連の実証済みのプラクティスが示されます。 [**このソリューションをデプロイします**。](#deploy-the-solution) 
+この参照アーキテクチャでは、N 層アプリケーションの Windows 仮想マシン (VM) を実行するための一連の実証済みのプラクティスが示されます。 [**以下のソリューションをデプロイします**。](#deploy-the-solution) 
 
 ![[0]][0]
 
@@ -24,9 +24,9 @@ ms.lasthandoff: 11/14/2017
 
 N 層アーキテクチャを実装する方法は多数あります。 図は、典型的な 3 層 Web アプリケーションを示しています。 このアーキテクチャは「[スケーラビリティと可用性のために負荷分散された VM を実行する][multi-vm]」に基づいて作成されています。 Web 層とビジネス層では、負荷分散された VM が使用されます。
 
-* **可用性セット。** 階層ごとに[可用性セット][azure-availability-sets]を作成し、各階層に少なくとも 2 つの VM をプロビジョニングします。 こうすると VM がより高度な VM の[サービス レベル アグリーメント (SLA)][vm-sla] に対応できるようになります。
+* **可用性セット。** 階層ごとに[可用性セット][azure-availability-sets]を作成し、各階層に少なくとも 2 つの VM をプロビジョニングします。 こうすると VM がより高度な VM の[サービス レベル アグリーメント (SLA)][vm-sla] に対応できるようになります。 可用性セット内の単一の VM をデプロイできますが、単一の VM がすべての OS およびデータ ディスクに Azure Premium Storage を使用していない限り、その単一の VM は SLA 保証に対して適格ではありません。  
 * **サブネット。** 階層ごとに個別のサブネットを作成します。 [CIDR] 表記を使用してアドレス範囲とサブネット マスクを指定します。 
-* **ロード バランサー。** [インターネットに接続するロード バランサー][load-balancer-external]を使用して着信インターネット トラフィックを Web 層に分散し、[内部ロード バランサー][load-balancer-internal]を使用して Web 層からのネットワーク トラフィックをビジネス層に分散します。
+* **ロード バランサー**。 [インターネットに接続するロード バランサー][load-balancer-external]を使用して着信インターネット トラフィックを Web 層に分散し、[内部ロード バランサー][load-balancer-internal]を使用して Web 層からのネットワーク トラフィックをビジネス層に分散します。
 * **ジャンプボックス。** [要塞ホスト]とも呼ばれます。 管理者が他の VM に接続するために使用するネットワーク上のセキュアな VM です。 ジャンプボックスの NSG は、セーフ リストにあるパブリック IP アドレスからのリモート トラフィックのみを許可します。 NSG は、リモート デスクトップ (RDP) トラフィックを許可する必要があります。
 * **監視。** [Nagios]、[Zabbix]、[Icinga] などの監視ソフトウェアを使用して、応答時間、VM の稼働時間、システムの全体的な正常性に関する洞察を得ることができます。 個別の管理サブネットに配置されている VM 上に監視ソフトウェアをインストールします。
 * **NSG。** [ネットワーク セキュリティ グループ][nsg] (NSG) を使用して、VNet 内のネットワーク トラフィックを制限します。 たとえば、ここに示されている 3 層アーキテクチャでは、データベース層は Web フロントエンドからのトラフィックを受信せず、ビジネス層と管理サブネットからのトラフィックのみ受信します。
@@ -128,33 +128,50 @@ SQL クライアントが接続を試みると、ロード バランサーがプ
 
 ## <a name="deploy-the-solution"></a>ソリューションのデプロイ方法
 
-このアーキテクチャのデプロイについては、[GitHub][github-folder] をご覧ください。 アーキテクチャは 3 段階でデプロイされます。 このアーキテクチャをデプロイするには、次の手順を実行します。 
+このリファレンス アーキテクチャのデプロイについては、[GitHub][github-folder] を参照してください。 
 
-1. 下のボタンをクリックしてデプロイの第 1 段階を始めます。<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmspnp%2Freference-architectures%2Fmaster%2Fvirtual-machines%2Fn-tier-windows%2FvirtualNetwork.azuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
-2. Azure Portal でリンクが開かれたら、以下の値を入力します。 
-   * **リソース グループ**の名前はパラメーター ファイルで既に定義されているため、**[新規作成]** を選択し、テキスト ボックスに「`ra-ntier-sql-network-rg`」と入力します。
-   * **[場所]** ボックスの一覧でリージョンを選択します。
-   * **[Template Root Uri (テンプレート ルート URI)]** または **[Parameter Root Uri (パラメーター ルート URI)]** ボックスは編集しないでください。
-   * 使用条件を確認し、**[上記の使用条件に同意する]** チェック ボックスをオンにします。
-   * **[購入]** をクリックします。
-3. Azure Portal の通知で、デプロイの第 1 段階が完了したことを示すメッセージを確認してください。
-4. 下のボタンをクリックしてデプロイの第 2 段階を始めます。<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmspnp%2Freference-architectures%2Fmaster%2Fvirtual-machines%2Fn-tier-windows%2Fworkload.azuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
-5. Azure Portal でリンクが開かれたら、以下の値を入力します。 
-   * **リソース グループ**の名前はパラメーター ファイルで既に定義されているため、**[新規作成]** を選択し、テキスト ボックスに「`ra-ntier-sql-workload-rg`」と入力します。
-   * **[場所]** ボックスの一覧でリージョンを選択します。
-   * **[Template Root Uri (テンプレート ルート URI)]** または **[Parameter Root Uri (パラメーター ルート URI)]** ボックスは編集しないでください。
-   * 使用条件を確認し、**[上記の使用条件に同意する]** チェック ボックスをオンにします。
-   * **[購入]** をクリックします。
-6. Azure Portal の通知で、デプロイの第 2 段階が完了したことを示すメッセージを確認してください。
-7. 下のボタンをクリックしてデプロイの第 3 段階を始めます。<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmspnp%2Freference-architectures%2Fmaster%2Fvirtual-machines%2Fn-tier-windows%2Fsecurity.azuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
-8. Azure Portal でリンクが開かれたら、以下の値を入力します。 
-   * **リソース グループ**の名前はパラメーター ファイルで既に定義されているため、**[既存のものを使用]** を選択し、テキスト ボックスに「`ra-ntier-sql-network-rg`」と入力します。
-   * **[場所]** ボックスの一覧でリージョンを選択します。
-   * **[Template Root Uri (テンプレート ルート URI)]** または **[Parameter Root Uri (パラメーター ルート URI)]** ボックスは編集しないでください。
-   * 使用条件を確認し、**[上記の使用条件に同意する]** チェック ボックスをオンにします。
-   * **[購入]** をクリックします。
-9. Azure Portal の通知で、デプロイの第 3 段階が完了したことを示すメッセージを確認してください。
-10. パラメーター ファイルには、ハードコーディングされた管理者のユーザー名とパスワードが含まれているため、すべての VM 上でこの両方をすぐに変更することを強くお勧めします。 Azure Portal で各 VM をクリックし、**[サポート + トラブルシューティング]** ブレードで **[パスワードのリセット]** をクリックします。 **[モード]** ボックスの一覧の **[パスワードのリセット]** を選択し、新しい**ユーザー名**と**パスワード**を選択します。 **[更新]** ボタンをクリックして、新しいユーザー名とパスワードを保存します。 
+### <a name="prerequisites"></a>前提条件
+
+参照アーキテクチャをご自身のサブスクリプションにデプロイする前に、次の手順を実行する必要があります。
+
+1. [AzureCAT 参照アーキテクチャ][ref-arch-repo] GitHub リポジトリに ZIP ファイルを複製、フォーク、またはダウンロードします。
+
+2. Azure CLI 2.0 がコンピューターにインストールされていることを確認してください。 CLI をインストールするには、「[Azure CLI 2.0 のインストール][azure-cli-2]」の手順に従ってください。
+
+3. [Azure の構成要素][azbb] npm パッケージをインストールします。
+
+  ```bash
+  npm install -g @mspnp/azure-building-blocks
+  ```
+
+4. コマンド プロンプト、bash プロンプト、または PowerShell プロンプトから、以下のコマンドの 1 つを使用して Azure アカウントにログインし、プロンプトに従います。
+
+  ```bash
+  az login
+  ```
+
+### <a name="deploy-the-solution-using-azbb"></a>azbb を使用したソリューションのデプロイ
+
+N 層アプリケーションの参照アーキテクチャで Windows VM をデプロイするには、次の手順に従います。
+
+1. 上の前提条件の手順 1 で複製したリポジトリの `virtual-machines\n-tier-windows` フォルダーに移動します。
+
+2. このパラメーター ファイルは、デプロイ内の各 VM の既定の管理者ユーザー名とパスワードを指定します。 参照アーキテクチャをデプロイする前に、これらを変更する必要があります。 `n-tier-windows.json` ファイルを開き、各 **adminUsername** および **adminPassword** フィールドを新しい設定に置き換えます。
+  
+  > [!NOTE]
+  > このデプロイ中に実行される複数のスクリプトが **VirtualMachineExtension** オブジェクトと、一部の **VirtualMachine** オブジェクトの **extensions** 設定の両方に存在します。 これらのスクリプトのいくつかには、今変更した管理者ユーザー名とパスワードが必要です。 これらのスクリプトをレビューして、正しい資格情報を指定したことを確認することをお勧めします。 正しい資格情報を指定していない場合は、デプロイが失敗する可能性があります。
+  > 
+  > 
+
+ファイルを保存します。
+
+3. 次に示すように、**azbb** コマンド ライン ツールを使用して参照アーキテクチャをデプロイします。
+
+  ```bash
+  azbb -s <your subscription_id> -g <your resource_group_name> -l <azure region> -p n-tier-windows.json --deploy
+  ```
+
+Azure の構成要素を使用してこのサンプルの参照アーキテクチャをデプロイする方法の詳細については、「[GitHub リポジトリ][git]」を参照してください。
 
 
 <!-- links -->
@@ -162,14 +179,16 @@ SQL クライアントが接続を試みると、ロード バランサーがプ
 [multi-dc]: multi-region-application.md
 [multi-vm]: multi-vm.md
 [n-tier]: n-tier.md
-
+[azbb]: https://github.com/mspnp/template-building-blocks/wiki/Install-Azure-Building-Blocks
 [azure-administration]: /azure/automation/automation-intro
 [azure-availability-sets]: /azure/virtual-machines/virtual-machines-windows-manage-availability#configure-each-application-tier-into-separate-availability-sets
 [azure-cli]: /azure/virtual-machines-command-line-tools
+[azure-cli-2]: https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest
 [azure-key-vault]: https://azure.microsoft.com/services/key-vault
 [要塞ホスト]: https://en.wikipedia.org/wiki/Bastion_host
 [cidr]: https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing
 [chef]: https://www.chef.io/solutions/azure/
+[git]: https://github.com/mspnp/template-building-blocks
 [github-folder]: https://github.com/mspnp/reference-architectures/tree/master/virtual-machines/n-tier-windows
 [lb-external-create]: /azure/load-balancer/load-balancer-get-started-internet-portal
 [lb-internal-create]: /azure/load-balancer/load-balancer-get-started-ilb-arm-portal
@@ -181,6 +200,7 @@ SQL クライアントが接続を試みると、ロード バランサーがプ
 [private-ip-space]: https://en.wikipedia.org/wiki/Private_network#Private_IPv4_address_spaces
 [パブリック IP アドレス]: /azure/virtual-network/virtual-network-ip-addresses-overview-arm
 [puppet]: https://puppetlabs.com/blog/managing-azure-virtual-machines-puppet
+[ref-arch-repo]: https://github.com/mspnp/reference-architectures
 [sql-alwayson]: https://msdn.microsoft.com/library/hh510230.aspx
 [sql-alwayson-force-failover]: https://msdn.microsoft.com/library/ff877957.aspx
 [sql-alwayson-getting-started]: https://msdn.microsoft.com/library/gg509118.aspx
