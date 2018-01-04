@@ -6,11 +6,11 @@ author: dragon119
 ms.date: 06/23/2017
 pnp.series.title: Cloud Design Patterns
 pnp.pattern.categories: resiliency
-ms.openlocfilehash: f8337717c4afd6b558f0da8e1ded3a8071340db7
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: a822de990d6ce933024207073b110e98f8da40bf
+ms.sourcegitcommit: 8ab30776e0c4cdc16ca0dcc881960e3108ad3e94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="compensating-transaction-pattern"></a>補正トランザクション パターン
 
@@ -38,7 +38,7 @@ ms.lasthandoff: 11/14/2017
 
 > この方法は、[Clemens Vasters のブログ](http://vasters.com/clemensv/2012/09/01/Sagas.aspx)で説明されている Sagas 戦略に似ています。
 
-補正トランザクションも最終的に整合性がある操作であるため、失敗する可能性があります。 システムは、失敗した時点で補正トランザクションを再開して続行できる必要があります。 場合によっては、失敗したステップを繰り返して、補正トランザクション内のステップをべき等コマンドとして定義する必要があります。 詳細については、[べき等パターン](http://blog.jonathanoliver.com/2010/04/idempotency-patterns/)に関する Jonathan Oliver のブログを参照してください。
+補正トランザクションも最終的に整合性がある操作であるため、失敗する可能性があります。 システムは、失敗した時点で補正トランザクションを再開して続行できる必要があります。 場合によっては、失敗したステップを繰り返して、補正トランザクション内のステップをべき等コマンドとして定義する必要があります。 詳細については、[べき等パターン](http://blog.jonathanoliver.com/idempotency-patterns/)に関する Jonathan Oliver のブログを参照してください。
 
 失敗したステップからの回復が、手動による介入以外では実行できないことがあります。 この場合、システムはアラートを発生させ、失敗の理由についてできるだけ多くの情報を提供する必要があります。
 
@@ -72,8 +72,8 @@ ms.lasthandoff: 11/14/2017
 
 旅行 Web サイトで、顧客は旅行プランを予約できます。 旅行プランは、一連の航空券とホテルの予約で構成される可能性があります。 シアトルからロンドンへ、ロンドンからパリに旅行する顧客は、旅行プランを作成するときに次のステップを実行する可能性があります。
 
-1. シアトルからロンドンへの F1 便の座席を予約する。
-2. ロンドンからパリへの F2 便の座席を予約する。
+1. シアトルからロンドンへのフライト F1 の座席を予約する。
+2. ロンドンからパリへのフライト F2 の座席を予約する。
 3. パリからシアトルへの F3 便の座席を予約する。
 4. ロンドンのホテル H1 の部屋を予約する。
 5. パリのホテル H2 の部屋を予約する。

@@ -3,15 +3,15 @@ title: "高可用性 SharePoint Server 2016 ファームの Azure での実行"
 description: "高可用性 SharePoint Server 2016 ファームを Azure で設定するための実証済みプラクティス。"
 author: njray
 ms.date: 08/01/2017
-ms.openlocfilehash: a3d47eea15f1e7e8cecf2bf1be55d8c3a9bb9bdc
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 0c0e9a7b2ae12a2d12919548f91304e6cbd2d8a6
+ms.sourcegitcommit: 8ab30776e0c4cdc16ca0dcc881960e3108ad3e94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="run-a-high-availability-sharepoint-server-2016-farm-in-azure"></a>高可用性 SharePoint Server 2016 ファームの Azure での実行
 
-この参照用アーキテクチャは、高可用性 SharePoint Server 2016 ファームを Azure で設定し、MinRole トポロジおよび SQL Server Always On 可用性グループを使用するための一連の実証済みプラクティスを示します。 SharePoint ファームは、インターネットに接続するエンドポイントまたはプレゼンスがない、セキュアな仮想ネットワークにデプロイされます。 [**このソリューションをデプロイします**。](#deploy-the-solution) 
+この参照用アーキテクチャは、高可用性 SharePoint Server 2016 ファームを Azure で設定し、MinRole トポロジおよび SQL Server Always On 可用性グループを使用するための一連の実証済みプラクティスを示します。 SharePoint ファームは、インターネットに接続するエンドポイントまたはプレゼンスがない、セキュアな仮想ネットワークにデプロイされます。 [**こちらのソリューションをデプロイしてください**。](#deploy-the-solution) 
 
 ![](./images/sharepoint-ha.png)
 
@@ -169,7 +169,7 @@ SharePoint Server 2016 の実行に使用されるドメインレベル サー�
 
 ## <a name="deploy-the-solution"></a>ソリューションのデプロイ方法
 
-この参照用アーキテクチャのデプロイ スクリプトについては、[GitHub][github] を参照してください。 
+この参照用アーキテクチャのデプロイ スクリプトについては、[GitHub][github] をご覧ください。 
 
 このアーキテクチャは段階的にデプロイすることも一度にデプロイすることもできます。 最初は、各デプロイの内容を確認できるように、段階的なデプロイをお勧めします。 次のいずれかの "*モード*" パラメーターを使用して段階を指定します。
 
@@ -178,7 +178,7 @@ SharePoint Server 2016 の実行に使用されるドメインレベル サー�
 | onprem         | (省略可能) テストまたは評価のために、シミュレーション オンプレミス ネットワーク環境をデプロイします。 この手順では実際のオンプレミス ネットワークには接続しません。 |
 | infrastructure | SharePoint 2016 ネットワーク インフラストラクチャと jumpbox を Azure にデプロイします。                                                |
 | createvpn      | SharePoint とオンプレミス ネットワークの両方に仮想ネットワーク ゲートウェイをデプロイし、接続します。 この手順は、`onprem` 手順を実行した場合のみ実行します。                |
-| workload       | SharePoint サーバーを SharePoint ネットワークにデプロイします。                                                               |
+| ワークロード       | SharePoint サーバーを SharePoint ネットワークにデプロイします。                                                               |
 | security       | ネットワーク セキュリティ グループを SharePoint ネットワークにデプロイします。                                                           |
 | すべて            | 上記のすべてをデプロイします。                            
 
@@ -186,15 +186,15 @@ SharePoint Server 2016 の実行に使用されるドメインレベル サー�
 シミュレーション オンプレミス ネットワーク環境に対してアーキテクチャを段階的にデプロイするには、次の手順を順番に実行します。
 
 1. onprem
-2. infrastructure
+2. インフラストラクチャ
 3. createvpn
-4. workload
+4. ワークロード
 5. security
 
 シミュレーション オンプレミス ネットワーク環境なしで、アーキテクチャを段階的にデプロイするには、次の手順を順番に実行します。
 
-1. infrastructure
-2. workload
+1. インフラストラクチャ
+2. ワークロード
 3. security
 
 すべてを 1 回の手順でデプロイするには `all` を使用します。 プロセス全体に数時間かかる場合があることに注意してください。
