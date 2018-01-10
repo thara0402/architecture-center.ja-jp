@@ -6,25 +6,25 @@ ms.date: 11/28/2016
 pnp.series.title: Identity management
 pnp.series.prev: azure-ad
 pnp.series.next: adds-forest
-ms.openlocfilehash: 7f771f77c7fa7f266dcce9f5b45e5be658213b8d
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 216c59a0a5912d0fe90011e49ad20eb017ada6be
+ms.sourcegitcommit: 8ab30776e0c4cdc16ca0dcc881960e3108ad3e94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="extend-active-directory-domain-services-ad-ds-to-azure"></a>Active Directory Domain Services (AD DS) を Azure に拡張する
 
-この参照アーキテクチャでは、Active Directory 環境を Azure に拡張し、[Active Directory Domain Services (AD DS)][active-directory-domain-services] を使用して分散認証サービスを提供する方法を示します。  [**このソリューションをデプロイします**。](#deploy-the-solution)
+この参照アーキテクチャでは、Active Directory 環境を Azure に拡張し、[Active Directory Domain Services (AD DS)][active-directory-domain-services] を使用して分散認証サービスを提供する方法を示します。  [**こちらのソリューションをデプロイしてください**。](#deploy-the-solution)
 
 [![0]][0] 
 
-*このアーキテクチャの [Visio ファイル][visio-download]をダウンロードします。*
+"*このアーキテクチャの [Visio ファイル][visio-download]をダウンロードします。*"
 
 AD DS は、ユーザー、コンピューター、アプリケーション、またはセキュリティ ドメインに含まれるその他の ID の認証に使用します。 オンプレミスでホストできますが、アプリケーションがオンプレミスと Azure で部分的にホストされる場合は、Azure でこの機能をレプリケートする方が効率的です。 これにより、クラウドからオンプレミスで実行されている AD DS に返される認証要求とローカルの承認要求の送信が原因の待機時間を削減できます。 
 
 このアーキテクチャは、オンプレミス ネットワークと Azure 仮想ネットワークが VPN または ExpressRoute によって接続されている場合によく使用されます。 また、このアーキテクチャは、双方向レプリケーションをサポートします。つまり、オンプレミスまたはクラウドで変更を行うことができ、両方のソースの一貫性が確保されます。 このアーキテクチャの一般的な用途には、オンプレミスと Azure 間で機能が配布されるハイブリッド アプリケーション、および Active Directory を使用して認証を実行するアプリケーションとサービスがあります。
 
-その他の考慮事項については、「[Choose a solution for integrating on-premises Active Directory with Azure][considerations]」(オンプレミスの Active Directory と Azure の統合のソリューションを選択する) をご覧ください。 
+その他の考慮事項については、「[オンプレミスの Active Directory を Azure と統合するためのソリューションの選択][considerations]」をご覧ください。 
 
 ## <a name="architecture"></a>アーキテクチャ 
 
@@ -100,9 +100,9 @@ BitLocker または Azure Disk Encryption を使用して、AD DS データベ�
 
 ## <a name="deploy-the-solution"></a>ソリューションのデプロイ方法
 
-この参照アーキテクチャをデプロイするソリューションについては、[Github][github] をご覧ください。 このソリューションをデプロイする Powershell スクリプトを実行するには、最新バージョンの [Azure CLI][azure-powershell] が必要です。 参照アーキテクチャをデプロイするには、次の手順を実行します。
+この参照用アーキテクチャをデプロイするためのソリューションは、[GitHub][github] で入手できます。 このソリューションをデプロイする Powershell スクリプトを実行するには、最新バージョンの [Azure CLI][azure-powershell] が必要です。 参照アーキテクチャをデプロイするには、次の手順を実行します。
 
-1. [Github][github] からローカル コンピューターにソリューション フォルダーをダウンロードまたは複製します。
+1. [GitHub][github] からローカル マシンにソリューション フォルダーをダウンロードまたは複製します。
 
 2. Azure CLI を開き、ローカルのソリューション フォルダーに移動します。
 
@@ -114,7 +114,7 @@ BitLocker または Azure Disk Encryption を使用して、AD DS データベ�
     `<location>` には、Azure リージョン (`eastus` や `westus` など) を指定します。
     `<mode>` パラメーターは、デプロイの細分性を制御します。このパラメーターの値は次のいずれかになります。
     * `Onpremise`: シミュレートされたオンプレミスの環境をデプロイします。
-    * `Infrastructure`: VNet インフラストラクチャとジャンプ ボックスを Azure にデプロイします。
+    * `Infrastructure`: Azure に VNet インフラストラクチャとジャンプ ボックスをデプロイします。
     * `CreateVpn`: Azure 仮想ネットワーク ゲートウェイをデプロイして、シミュレートされたオンプレミス ネットワークに接続します。
     * `AzureADDS`: Azure で AD DS サーバーとして機能する VM をデプロイし、Active Directory をそれらの VM にデプロイして、ドメインをデプロイします。
     * `Workload`: パブリック DMZ とプライベート DMZ およびワークロードの階層をデプロイします。
@@ -122,7 +122,7 @@ BitLocker または Azure Disk Encryption を使用して、AD DS データベ�
 
 4. デプロイが完了するまで待ちます。 `All` のデプロイを指定した場合は、数時間かかります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * Azure で [AD DS リソース フォレストを作成する][adds-resource-forest]ためのベスト プラクティスを学習します。
 * Azure で [Active Directory フェデレーション サービス (AD FS) インフラストラクチャを作成する][adfs]ためのベスト プラクティスを学習します。

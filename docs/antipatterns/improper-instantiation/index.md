@@ -3,11 +3,11 @@ title: "不適切なインスタンス化のアンチパターン"
 description: "作成後に共有する予定のオブジェクトの新しいインスタンスを頻繁に作成することは避けてください。"
 author: dragon119
 ms.date: 06/05/2017
-ms.openlocfilehash: 3387eca45119b105b68cd60ab842d033df84727c
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: d6ea27b0ea88ad7527353d263d900626c0aff720
+ms.sourcegitcommit: 8ab30776e0c4cdc16ca0dcc881960e3108ad3e94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="improper-instantiation-antipattern"></a>不適切なインスタンス化のアンチパターン
 
@@ -17,10 +17,10 @@ ms.lasthandoff: 11/14/2017
 
 多くのライブラリでは、外部リソースの抽象化が提供されます。 内部的には、これらのクラスは、通常、リソースへの独自の接続を管理して、クライアントがリソースへのアクセスに使用できるブローカーとして機能します。 Azure アプリケーションに関連するブローカー クラスのいくつかの例を次に示します。
 
-- `System.Net.Http.HttpClient`」を参照してください。 HTTP を使用して Web サービスと通信します。
-- `Microsoft.ServiceBus.Messaging.QueueClient`」を参照してください。 Service Bus キューとの間でメッセージを送受信します。 
-- `Microsoft.Azure.Documents.Client.DocumentClient`」を参照してください。 Cosmos DB インスタンスに接続します
-- `StackExchange.Redis.ConnectionMultiplexer`」を参照してください。 Azure Redis Cache を含む Redis に接続します。
+- `System.Net.Http.HttpClient` HTTP を使用して Web サービスと通信します。
+- `Microsoft.ServiceBus.Messaging.QueueClient` Service Bus キューとの間でメッセージを送受信します。 
+- `Microsoft.Azure.Documents.Client.DocumentClient` Cosmos DB インスタンスに接続します
+- `StackExchange.Redis.ConnectionMultiplexer` Azure Redis Cache を含む Redis に接続します。
 
 これらのクラスは、一度インスタンス化された後、アプリケーションの有効期間にわたって再利用されることが意図されています。 ただし、"これらのクラスは必要なときにのみ取得し、すぐに解放する必要がある" という考えはよくある誤解です  (ここに示されているのは .NET ライブラリですが、そのパターンは .NET に固有のものではありません)。
 

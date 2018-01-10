@@ -5,11 +5,11 @@ keywords: "AWS エキスパート, Azure との比較, AWS との比較, Azure �
 author: lbrader
 ms.date: 03/24/2017
 pnp.series.title: Azure for AWS Professionals
-ms.openlocfilehash: 75fda82ee5ca7ca3665501fe428d1d01995e7422
-ms.sourcegitcommit: c53adf50d3a787956fc4ebc951b163a10eeb5d20
+ms.openlocfilehash: b576b11bc152ef721f56e79609cb7a03f2d31dd3
+ms.sourcegitcommit: 1c0465cea4ceb9ba9bb5e8f1a8a04d3ba2fa5acd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="azure-for-aws-professionals"></a>AWS プロフェッショナルのための Azure
 
@@ -217,7 +217,7 @@ Azure には、AWS に直接相当するものがないいくつかのコンピ�
 
 -   [初めての Azure 関数の作成](https://azure.microsoft.com/documentation/articles/functions-create-first-azure-function/)
 
-### <a name="storage"></a>ストレージ
+### <a name="storage"></a>Storage
 
 #### <a name="s3ebsefs-and-azure-storage"></a>S3/EBS/EFS と Azure Storage
 
@@ -237,14 +237,12 @@ Azure Storage では、サブスクリプションに関連付けられた[ス�
 -   [Queue Storage](https://azure.microsoft.com/documentation/articles/storage-nodejs-how-to-use-queues/) - クラウド サービスのコンポーネント間のワークフロー処理と通信のためのメッセージング機能を提供します。
 
 -   [File Storage](https://azure.microsoft.com/documentation/articles/storage-java-how-to-use-file-storage/) - 標準的なサーバー メッセージ ブロック (SMB) プロトコルを使用するレガシー アプリケーション用の共有ストレージを提供します。 File Storageは、AWS プラットフォームの EFS と同じように使用されます。
-
-
-
-
  
 #### <a name="glacier-and-azure-storage"></a>Glacier と Azure Storage 
-[Azure Storage Standard Archive](/azure/storage/blobs/storage-blob-storage-tiers) には、AWS の長期アーカイブである Glacier ストレージに直接相当するストレージがあります。 アクセス頻度が低く、保管期間が長いデータ用に、[Azure クール BLOB ストレージ層](/azure/storage/blobs/storage-blob-storage-tiers)が用意されています。
-クール ストレージは、標準的な Blob Storage よりもコストとパフォーマンスが低いストレージを提供し、AWS の S3 (アクセス頻度が低いストレージ) に相当します。
+
+[Azure Archive Blob Storage](/azure/storage/blobs/storage-blob-storage-tiers#archive-access-tier) は、AWS Glacier ストレージ サービスに相当します。 これは、少なくとも 180 日格納され、数時間の取得待ち時間が許容される、アクセス頻度が非常に少ないデータを対象としています。 
+
+アクセス頻度が少ないが、アクセス時にすぐに使用できる必要があるデータについては、[Azure クール BLOB ストレージ層](/azure/storage/blobs/storage-blob-storage-tiers#cool-access-tier)のストレージを使用すると、標準の BLOB ストレージよりもコストを抑えることができます。 このストレージ層は、AWS S3 (Infrequent Access ストレージ サービス) に相当します。
 
 #### <a name="see-also"></a>関連項目
 
@@ -418,7 +416,7 @@ Notification Hubs は SMS または電子メール メッセージの送信を�
 -   [Azure Resource Manager のクイックスタート テンプレート](https://azure.microsoft.com/documentation/templates/)
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 -   [AWS と Azure のサービスの完全比較マトリックス](https://aka.ms/azure4aws-services)
 

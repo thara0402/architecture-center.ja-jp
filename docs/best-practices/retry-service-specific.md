@@ -4,11 +4,11 @@ description: "再試行メカニズムを設定するためのサービス固有
 author: dragon119
 ms.date: 07/13/2016
 pnp.series.title: Best Practices
-ms.openlocfilehash: 6aba60dc3a60e96e59e2034d4a1e380e0f1c996a
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 0a416bc6297c7406de92fbc695b62c39c637de8f
+ms.sourcegitcommit: 1c0465cea4ceb9ba9bb5e8f1a8a04d3ba2fa5acd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="retry-guidance-for-specific-services"></a>特定のサービスの再試行ガイダンス
 
@@ -59,7 +59,7 @@ TableRequestOptions interactiveRequestOption = new TableRequestOptions()
   // For Read-access geo-redundant storage, use PrimaryThenSecondary.
   // Otherwise set this to PrimaryOnly.
   LocationMode = LocationMode.PrimaryThenSecondary,
-  // Maximum execution time based on the business use case. Maximum value up to 10 seconds.
+  // Maximum execution time based on the business use case. 
   MaximumExecutionTime = TimeSpan.FromSeconds(2)
 };
 ```
@@ -96,11 +96,30 @@ var stats = await client.GetServiceStatsAsync(interactiveRequestOption, operatio
 
 次の表は、組み込み再試行ポリシーの既定の設定を示しています。
 
-| **コンテキスト** | **設定** | **既定値** | **意味** |
-| --- | --- | --- | --- |
-| テーブル/ BLOB /ファイル <br />QueueRequestOptions |MaximumExecutionTime<br /><br />ServerTimeout<br /><br /><br /><br /><br />LocationMode<br /><br /><br /><br /><br /><br /><br />RetryPolicy |120 秒<br /><br />なし<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />ExponentialPolicy |要求の最大実行時間 (考えられるすべての再試行が含まれます)。<br />要求のサーバー タイムアウト間隔 (値は秒単位に丸められます)。 指定しない場合、サーバーに対するすべての要求に既定値が使用されます。 通常、この設定を省略してサーバーの既定値が使用されるようにすることが最善のオプションになります。<br />ストレージ アカウントが読み取りアクセス geo 冗長ストレージ (RA-GRS) のレプリケーション オプションを指定して作成されている場合、場所モードを使用して、要求を受け取る場所を示すことができます。 たとえば、**PrimaryThenSecondary** を指定した場合、要求は必ず最初にプライマリの場所に送信されます。 失敗した場合、要求はセカンダリの場所に送信されます。<br />各オプションの詳細については、以下をご覧ください。 |
-| Exponential ポリシー |maxAttempt<br />deltaBackoff<br /><br /><br />MinBackoff<br /><br />MaxBackoff |3<br />4 秒<br /><br /><br />3 秒<br /><br />120 秒 |再試行回数。<br />再試行のバックオフ間隔。 この期間のランダムな倍数が、後続の再試行に使用されます。<br />deltaBackoff から計算されたすべての再試行間隔に追加されます。 この値は変更できません。<br />MaxBackoff は、計算された再試行間隔が MaxBackoff より大きい場合に使用されます。 この値は変更できません。 |
-| Linear ポリシー |maxAttempt<br />deltaBackoff |3<br />30 秒 |再試行回数。<br />再試行のバックオフ間隔。 |
+**要求のオプション**
+
+| **設定** | **既定値** | **意味** |
+| --- | --- | --- |
+| MaximumExecutionTime | 120 秒 | 要求の最大実行時間 (考えられるすべての再試行が含まれます)。 |
+| ServerTimeout | なし | 要求のサーバー タイムアウト間隔 (値は秒単位に丸められます)。 指定しない場合、サーバーに対するすべての要求に既定値が使用されます。 通常、この設定を省略してサーバーの既定値が使用されるようにすることが最善のオプションになります。 | 
+| LocationMode | なし | ストレージ アカウントが読み取りアクセス geo 冗長ストレージ (RA-GRS) のレプリケーション オプションを指定して作成されている場合、場所モードを使用して、要求を受け取る場所を示すことができます。 たとえば、**PrimaryThenSecondary** を指定した場合、要求は必ず最初にプライマリの場所に送信されます。 失敗した場合、要求はセカンダリの場所に送信されます。 |
+| RetryPolicy | ExponentialPolicy | 各オプションの詳細については、以下をご覧ください。 |
+
+**Exponential ポリシー** 
+
+| **設定** | **既定値** | **意味** |
+| --- | --- | --- |
+| maxAttempt | 3 | 再試行回数。 |
+| deltaBackoff | 4 秒 | 再試行のバックオフ間隔。 この期間のランダムな倍数が、後続の再試行に使用されます。 |
+| MinBackoff | 3 秒 | deltaBackoff から計算されたすべての再試行間隔に追加されます。 この値は変更できません。
+| MaxBackoff | 120 秒 | MaxBackoff は、計算された再試行間隔が MaxBackoff より大きい場合に使用されます。 この値は変更できません。 |
+
+**Linear ポリシー**
+
+| **設定** | **既定値** | **意味** |
+| --- | --- | --- |
+| maxAttempt | 3 | 再試行回数。 |
+| deltaBackoff | 30 秒 | 再試行のバックオフ間隔。 |
 
 ### <a name="retry-usage-guidance"></a>再試行使用のガイダンス
 ストレージ クライアント API を使用して Microsoft Azure Storage サービスにアクセスする場合は、次のガイドラインを検討します。
@@ -149,7 +168,7 @@ namespace RetryCodeSamples
                 // For Read-access geo-redundant storage, use PrimaryThenSecondary.
                 // Otherwise set this to PrimaryOnly.
                 LocationMode = LocationMode.PrimaryThenSecondary,
-                // Maximum execution time based on the business use case. Maximum value up to 10 seconds.
+                // Maximum execution time based on the business use case. 
                 MaximumExecutionTime = TimeSpan.FromSeconds(2)
             };
 
@@ -199,7 +218,7 @@ namespace RetryCodeSamples
 }
 ```
 
-### <a name="more-information"></a>詳細
+### <a name="more-information"></a>詳細情報
 * [Azure Storage Client Library Retry Policy Recommendations (Microsoft Azure Storage クライアント ライブラリの再試行ポリシーに対する推奨事項)](https://azure.microsoft.com/blog/2014/05/22/azure-storage-client-library-retry-policy-recommendations/)
 * [Storage Client Library 2.0 – Implementing Retry Policies (Storage Client Library 2.0 – 再試行ポリシーの実装)](http://gauravmantri.com/2012/12/30/storage-client-library-2-0-implementing-retry-policies/)
 
@@ -270,7 +289,14 @@ public class BloggingContextConfiguration : DbConfiguration
 
 次の表は、EF6 を使用している場合の、組み込み再試行ポリシーの既定の設定を示しています。
 
-![再試行ガイダンス テーブル](./images/retry-service-specific/RetryServiceSpecificGuidanceTable4.png)
+| 設定 | 既定値 | 意味 |
+|---------|---------------|---------|
+| ポリシー | Exponential | 指数バックオフ。 |
+| MaxRetryCount | 5 | 最大再試行回数。 |
+| MaxDelay | 30 秒 | 再試行間の最大遅延。 この値は一連の遅延の計算方法には影響しません。 上限値のみが定義されます。 |
+| DefaultCoefficient | 1 秒 | 指数バックオフ計算の係数。 この値は変更できません。 |
+| DefaultRandomFactor | 1.1 | 各エントリのランダム遅延を追加するために使用する乗数。 この値は変更できません。 |
+| DefaultExponentialBase | 2 | 次の遅延を計算するために使用する乗数。 この値は変更できません。 |
 
 ### <a name="retry-usage-guidance"></a>再試行使用のガイダンス
 EF6 を使用して SQL Database にアクセスする場合は、次のガイドラインを検討します。
@@ -340,7 +366,7 @@ namespace RetryCodeSamples
 
 Entity Framework の再試行メカニズムを使用する他の例については、「 [Connection Resiliency / Retry Logic (接続の回復/再試行ロジック)](http://msdn.microsoft.com/data/dn456835.aspx)」を参照してください。
 
-### <a name="more-information"></a>詳細
+### <a name="more-information"></a>詳細情報
 * [Microsoft Azure SQL Database Performance and Elasticity Guide (Microsoft Azure SQL Database のパフォーマンスと弾力性に関するガイド)](http://social.technet.microsoft.com/wiki/contents/articles/3507.windows-azure-sql-database-performance-and-elasticity-guide.aspx)
 
 ## <a name="sql-database-using-entity-framework-core-retry-guidelines"></a>Entity Framework Core を使用する SQL Database の再試行ガイドライン
@@ -389,7 +415,7 @@ using (var db = new BloggingContext())
 ```
 
 ### <a name="more-information"></a>詳細情報
-* [接続の弾力性](/ef/core/miscellaneous/connection-resiliency)
+* [接続の回復性](/ef/core/miscellaneous/connection-resiliency)
 * [データ ポイント - EF Core 1.1](https://msdn.microsoft.com/en-us/magazine/mt745093.aspx)
 
 ## <a name="sql-database-using-adonet-retry-guidelines"></a>ADO.NET の再試行ガイドラインを使用する SQL Database
@@ -510,7 +536,15 @@ client.RetryPolicy = new RetryExponential(minBackoff: TimeSpan.FromSeconds(0.1),
 再試行ポリシーは、個々の操作レベルで設定することはできません。 これはメッセージング クライアントのすべての操作に適用されます。
 次の表は、組み込み再試行ポリシーの既定の設定を示しています。
 
-![再試行ガイダンス テーブル](./images/retry-service-specific/RetryServiceSpecificGuidanceTable7.png)
+| 設定 | 既定値 | 意味 |
+|---------|---------------|---------|
+| ポリシー | Exponential | 指数バックオフ。 |
+| MinimalBackoff | 0 | 最小バックオフ間隔。 これはdeltaBackoff から計算された再試行間隔に追加されます。 |
+| MaximumBackoff | 30 秒 | 最大バックオフ間隔。 MaximumBackoff は、計算された再試行間隔が MaxBackoff より大きい場合に使用されます。 |
+| DeltaBackoff | 3 秒 | 再試行のバックオフ間隔。 この期間の倍数は、後続の再試行に使用されます。 |
+| TimeBuffer | 5 秒 | 再試行に関連付けられる終了時間バッファー。 残り時間が TimeBuffer 未満になると再試行は中止されます。 |
+| MaxRetryCount | 10 | 最大再試行回数。 |
+| ServerBusyBaseSleepTime | 10 秒 | 検出された最後の例外が **ServerBusyException** の場合、この値は、計算された再試行間隔に追加されます。 この値は変更できません。 |
 
 ### <a name="retry-usage-guidance"></a>再試行使用のガイダンス
 Service Bus を使用する場合は、次のガイドラインについて検討します。
@@ -520,7 +554,12 @@ Service Bus を使用する場合は、次のガイドラインについて検�
 
 再試行操作について次の設定から始めることを検討します。 これらは汎用の設定であり、操作を監視して、独自のシナリオに合うように値を微調整する必要があります。
 
-![再試行ガイダンス テーブル](./images/retry-service-specific/RetryServiceSpecificGuidanceTable8.png)
+| Context | 最大待機時間の例 | 再試行ポリシー | [設定] | 動作のしくみ |
+|---------|---------|---------|---------|---------|
+| 対話型、UI、またはフォアグラウンド | 2 秒*  | Exponential | MinimumBackoff = 0 <br/> MaximumBackoff = 30 秒 <br/> DeltaBackoff = 300 ミリ秒 <br/> TimeBuffer = 300 ミリ秒 <br/> MaxRetryCount = 2 | 試行 1: 0 秒の遅延 <br/> 試行 2: 最大 300 ミリ秒の遅延 <br/> 試行 3: 最大 900 ミリ秒の遅延 |
+| バックグラウンドまたはバッチ | 30 秒 | Exponential | MinimumBackoff = 1 <br/> MaximumBackoff = 30 秒 <br/> DeltaBackoff = 1.75 秒 <br/> TimeBuffer = 5 秒 <br/> MaxRetryCount = 3 | 試行 1: 最大 1 秒の遅延 <br/> 試行 2: 最大 3 秒の遅延 <br/> 試行 3: 最大 6 ミリ秒の遅延 <br/> 試行 4: 最大 13 ミリ秒の遅延 |
+
+\* サーバー ビジー応答を受信した場合に追加される遅延は含まれません。
 
 ### <a name="telemetry"></a>テレメトリ
 Service Bus は、再試行を ETW イベントとして **EventSource**を使ってログに記録します。 イベントをキャプチャしてパフォーマンス ビューアーに表示したり、イベントを適切な宛先ログに書き込んだりするには、 **EventListener** をイベント ソースにアタッチする必要があります。 これを行うには、 [セマンティック ログ記録アプリケーション ブロック](http://msdn.microsoft.com/library/dn775006.aspx) を使用することができます。 再試行イベントは、次の形式です。
@@ -631,7 +670,7 @@ namespace RetryCodeSamples
 }
 ```
 
-### <a name="more-information"></a>詳細
+### <a name="more-information"></a>詳細情報
 * [非同期メッセージング パターンと高可用性](http://msdn.microsoft.com/library/azure/dn292562.aspx)
 
 ## <a name="azure-redis-cache-retry-guidelines"></a>Azure Redis Cache の再試行ガイドライン
@@ -816,7 +855,7 @@ namespace RetryCodeSamples
 
 詳細な例については、プロジェクト Web サイトの「 [Configuration (構成)](http://github.com/StackExchange/StackExchange.Redis/blob/master/Docs/Configuration.md#configuration) 」を参照してください。
 
-### <a name="more-information"></a>詳細
+### <a name="more-information"></a>詳細情報
 * [Redis の Web サイト](http://redis.io/)
 
 ## <a name="documentdb-api-retry-guidelines"></a>DocumentDB API の再試行ガイドライン
@@ -831,7 +870,7 @@ Cosmos DB は、[DocumentDB API][documentdb-api] を使用してスキーマの�
 ### <a name="policy-configuration"></a>ポリシーの構成
 次の表は、`RetryOptions` クラスの既定の設定を示しています。
 
-| Setting | 既定値 | Description |
+| 設定 | 既定値 | [説明] |
 | --- | --- | --- |
 | MaxRetryAttemptsOnThrottledRequests |9 |Cosmos DB によってクライアントに対してレート制限が適用されたために要求が失敗した場合の最大再試行回数。 |
 | MaxRetryWaitTimeInSeconds |30 |再試行の最大待機時間 (秒)。 |
@@ -880,7 +919,7 @@ ETW を使用してトレースするか、カスタム トレース プロバ�
 Azure Active Directory (Azure AD) は、コア ディレクトリ サービス、拡張 ID 制御、セキュリティ、およびアプリケーション アクセス管理を結合した、包括的な ID 管理とアクセス管理のクラウド ソリューションです。 Azure AD は、一元化されたポリシーとルールに基づいてアプリケーションへのアクセス制御を実現するための、ID 管理プラットフォームを開発者に提供します。
 
 ### <a name="retry-mechanism"></a>再試行メカニズム
-Active Directory Authentication Library (ADAL) には、Azure Active Directory のための組み込み再試行メカニズムがあります。 予想外のロックアウトを避けるためには、サードパーティのライブラリとアプリケーション コードで失敗した接続の再試行を*実行せず*、ADAL で再試行を処理することをお勧めします。 
+Active Directory Authentication Library (ADAL) には、Azure Active Directory のための組み込み再試行メカニズムがあります。 予想外のロックアウトを避けるためには、サードパーティのライブラリとアプリケーション コードで失敗した接続の再試行を**実行せず**、ADAL で再試行を処理することをお勧めします。 
 
 ### <a name="retry-usage-guidance"></a>再試行使用のガイダンス
 Azure Active Directory を使用する場合は、次のガイドラインについて検討します。
@@ -967,7 +1006,7 @@ Azure またはサード パーティ提供のサービスにアクセスする�
 ### <a name="retry-strategies"></a>再試行戦略
 次に示すのは、標準的な種類の再試行戦略間隔です。
 
-* **Exponential**: 指定回数の再試行を実行し、ランダムな指数バックオフ アプローチを使用して再試行間の間隔を決定する再試行ポリシーです。 次に例を示します。
+* **Exponential**: 指定回数の再試行を実行し、ランダムな指数バックオフ アプローチを使用して再試行間の間隔を決定する再試行ポリシーです。 例: 
 
         var random = new Random();
 
@@ -977,15 +1016,15 @@ Azure またはサード パーティ提供のサービスにアクセスする�
         var interval = (int)Math.Min(checked(this.minBackoff.TotalMilliseconds + delta),
                        this.maxBackoff.TotalMilliseconds);
         retryInterval = TimeSpan.FromMilliseconds(interval);
-* **Incremental**: 指定回数の再試行を実行し、再試行ごとに時間間隔を長くする再試行戦略です。 次に例を示します。
+* **Incremental**: 指定回数の再試行を実行し、再試行ごとに時間間隔を長くする再試行戦略です。 例: 
 
         retryInterval = TimeSpan.FromMilliseconds(this.initialInterval.TotalMilliseconds +
                        (this.increment.TotalMilliseconds * currentRetryCount));
-* **LinearRetry**: 指定回数の再試行を実行し、再試行間には指定の固定時間間隔を使用する再試行ポリシーです。 次に例を示します。
+* **LinearRetry**: 指定回数の再試行を実行し、再試行間には指定の固定時間間隔を使用する再試行ポリシーです。 例: 
 
         retryInterval = this.deltaBackoff;
 
-### <a name="more-information"></a>詳細
+### <a name="more-information"></a>詳細情報
 * [Circuit Breaker Pattern (サーキット ブレーカーのパターン)](http://msdn.microsoft.com/library/dn589784.aspx)
 
 ## <a name="transient-fault-handling-with-polly"></a>Polly での一時的な障害処理

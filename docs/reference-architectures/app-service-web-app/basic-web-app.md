@@ -2,13 +2,13 @@
 title: "基本的な Web アプリケーション"
 description: "Microsoft Azure で実行する基本的な Web アプリケーションの推奨アーキテクチャ。"
 author: MikeWasson
-ms.date: 11/23/2016
+ms.date: 12/12/2017
 cardTitle: Basic web application
-ms.openlocfilehash: b7475c4087a184bb7608d0c45ffecee912c920d7
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 598eb547f0e96ae334af391183a792637caa8631
+ms.sourcegitcommit: 1c0465cea4ceb9ba9bb5e8f1a8a04d3ba2fa5acd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="basic-web-application"></a>基本的な Web アプリケーション
 [!INCLUDE [header](../../_includes/header.md)]
@@ -29,15 +29,23 @@ ms.lasthandoff: 11/14/2017
 アーキテクチャには次のコンポーネントがあります。
 
 * **リソース グループ**。 [リソース グループ](/azure/azure-resource-manager/resource-group-overview)は、Azure リソースの論理コンテナーです。
+
 * **App Service アプリ**。 [Azure App Service][app-service] は、クラウド アプリケーションを作成およびデプロイするための完全に管理されたプラットフォームです。     
+
 * **App Service プラン**。 [App Service プラン][app-service-plans]は、アプリをホストする管理された仮想マシン (VM) を提供します。 プランに関連付けられているすべてのアプリが同じ VM インスタンスで実行されます。
 
 * **デプロイ スロット**。  [デプロイ スロット][deployment-slots]を使用すると、デプロイをステージングし、運用環境のデプロイとスワップできます。 このようにして、運用環境に直接デプロイするのを回避します。 具体的な推奨事項については、[管理容易性](#manageability-considerations)に関するセクションをご覧ください。
 
-* **IP アドレス**。 App Service アプリには、パブリック IP アドレスとドメイン名があります。 ドメイン名は `azurewebsites.net` のサブドメインです (`contoso.azurewebsites.net` など)。 `contoso.com` などのカスタム ドメイン名を使用するには、カスタム ドメイン名を IP アドレスにマップするドメイン ネーム サービス (DNS) レコードを作成します。 詳細については、[Azure App Service でのカスタム ドメイン名の構成][custom-domain-name]に関するページをご覧ください。
+* **IP アドレス**。 App Service アプリには、パブリック IP アドレスとドメイン名があります。 ドメイン名は `azurewebsites.net` のサブドメインです (`contoso.azurewebsites.net` など)。  
+
+* **Azure DNS**。 [Azure DNS][azure-dns] は、DNS ドメインのホスティング サービスであり、Microsoft Azure インフラストラクチャを使用した名前解決を提供します。 Azure でドメインをホストすることで、その他の Azure サービスと同じ資格情報、API、ツール、課金情報を使用して DNS レコードを管理できます。 カスタム ドメイン名 (`contoso.com` など) を使用するには、カスタム ドメイン名を IP アドレスにマップする DNS レコードを作成します。 詳細については、[Azure App Service でのカスタム ドメイン名の構成][custom-domain-name]に関するページをご覧ください。  
+
 * **Azure SQL データベース**。 [SQL Database][sql-db] は、クラウドのサービスとしてのリレーショナル データベースです。
+
 * **論理サーバー**。 Azure SQL Database では、論理サーバーがデータベースをホストします。 論理サーバーごとに複数のデータベースを作成できます。
+
 * **Azure Storage**。 診断ログを格納する BLOB コンテナーを持つ Azure ストレージ アカウントを作成します。
+
 * **Azure Active Directory** (Azure AD)。 Azure AD または他の認証 ID プロバイダーを使用します。
 
 ## <a name="recommendations"></a>Recommendations
@@ -215,6 +223,7 @@ New-AzureRmResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <r
 [app-service-security]: /azure/app-service-web/web-sites-security
 [app-settings]: /azure/app-service-web/web-sites-configure
 [arm-template]: /azure/azure-resource-manager/resource-group-overview#resource-groups
+[azure-dns]: /azure/dns/dns-overview
 [custom-domain-name]: /azure/app-service-web/web-sites-custom-domain-name
 [deploy]: /azure/app-service-web/web-sites-deploy
 [deploy-arm-template]: /azure/resource-group-template-deploy
@@ -223,7 +232,7 @@ New-AzureRmResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <r
 [kudu]: https://azure.microsoft.com/blog/windows-azure-websites-online-tools-you-should-know-about/
 [monitoring-guidance]: ../../best-practices/monitoring.md
 [new-relic]: http://newrelic.com/
-[paas-basic-arm-template]: https://github.com/mspnp/reference-architectures/tree/master/app-service-web-app/basic-web-app/Paas-Basic/Templates
+[paas-basic-arm-template]: https://github.com/mspnp/reference-architectures/tree/master/managed-web-app/basic-web-app/Paas-Basic/Templates
 [perf-analysis]: https://github.com/mspnp/performance-optimization/blob/master/Performance-Analysis-Primer.md
 [rbac]: /azure/active-directory/role-based-access-control-what-is
 [resource-group]: /azure/azure-resource-manager/resource-group-overview

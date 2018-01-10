@@ -2,11 +2,11 @@
 title: "Azure アーキテクチャ センター"
 description: "Azure アーキテクチャ センターとは、Microsoft Azure を使用したソリューションを構築するためのガイダンス、計画、パターン、ベスト プラクティスが提供される公式のセンターです。 これらは Microsoft patterns & practices チームによってまとめられています。"
 layout: LandingPage
-ms.openlocfilehash: 3afe907b8ea1fe59d6c2eb9505ddb34775fdcd62
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: d48861a1001c9bef8cad152a3664077f2ad915c6
+ms.sourcegitcommit: a8453c4bc7c870fa1a12bb3c02e3b310db87530c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 12/29/2017
 ---
 # <a name="azure-architecture-center"></a>Azure アーキテクチャ センター
 
@@ -84,20 +84,20 @@ ms.lasthandoff: 11/14/2017
             </div>
         </a>
     </li>
-    <!-- Performance anti-practices -->
+    <!-- Microservices -->
     <li>
-        <a href="/azure/architecture/antipatterns">
+        <a href="/azure/architecture/microservices">
             <div class="cardSize">
                 <div class="cardPadding">
                     <div class="card">
                         <div class="cardImageOuter">
                             <div class="cardImage">
-                                <img src="_images/performance.svg" alt="Performance antipatterns" />
+                                <img src="_images/new-content.svg" alt="Designing, building, and operating microservices on Azure" />
                             </div>
                         </div>
                         <div class="cardText">
-                            <h3>パフォーマンスのアンチパターン</h3>
-                            <p>クラウド アプリケーションにおけるパフォーマンスやスケーラビリティの問題の一般的な原因を検出して解決する方法。</p>
+                            <h3>Azure でのマイクロサービスの構築</h3>
+                            <p>このマルチパート シリーズは、Azure でマイクロサービス アーキテクチャを設計するプロセスについて説明します。 リファレンス実装も含まれます。</p>
                         </div>
                     </div>
                 </div>
@@ -124,7 +124,27 @@ ms.lasthandoff: 11/14/2017
             </div>
         </a>
     </li>
-    <!-- Azure for AWS Professionals -->
+    <!-- Azure Virtual Datacenter -->
+    <li>
+        <a href="https://aka.ms/vdc">
+            <div class="cardSize">
+                <div class="cardPadding">
+                    <div class="card">
+                        <div class="cardImageOuter">
+                            <div class="cardImage">
+                                <img src="_images/virtual-datacenter.svg" alt="Azure Virtual Datacenter e-book" />
+                            </div>
+                        </div>
+                        <div class="cardText">
+                            <h3>Azure 仮想データセンターの電子書籍</h3>
+                            <p>この電子書籍では、既存のセキュリティとネットワーク ポリシーを考慮しながら、エンタープライズ ワークロードを Azure クラウド プラットフォームにデプロイする方法について説明します。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </li>
+        <!-- Azure for AWS Professionals -->
     <li>
         <a href="/azure/architecture/aws-professional">
             <div class="cardSize">
@@ -178,6 +198,26 @@ ms.lasthandoff: 11/14/2017
                         <div class="cardText">
                             <h3>Azure の構成要素</h3>
                             <p>Azure リソースのデプロイを簡略化します。 1 つの設定ファイルを使用して Azure に複雑なアーキテクチャをデプロイします。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </li>
+    <!-- Performance anti-practices -->
+    <li>
+        <a href="/azure/architecture/antipatterns">
+            <div class="cardSize">
+                <div class="cardPadding">
+                    <div class="card">
+                        <div class="cardImageOuter">
+                            <div class="cardImage">
+                                <img src="_images/performance.svg" alt="Performance antipatterns" />
+                            </div>
+                        </div>
+                        <div class="cardText">
+                            <h3>パフォーマンスのアンチパターン</h3>
+                            <p>クラウド アプリケーションにおけるパフォーマンスやスケーラビリティの問題の一般的な原因を検出して解決する方法。</p>
                         </div>
                     </div>
                 </div>
@@ -238,26 +278,6 @@ ms.lasthandoff: 11/14/2017
                         <div class="cardText">
                             <h3>マルチテナント アプリケーションの ID 管理</h3>
                             <p>ID の管理に Azure AD を使用する場合の、マルチテナント方式のベスト プラクティスについて説明します。</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </a>
-    </li>
-    <!-- ElasticSearch -->
-    <li>
-        <a href="/azure/architecture/elasticsearch">
-            <div class="cardSize">
-                <div class="cardPadding">
-                    <div class="card">
-                        <div class="cardImageOuter">
-                            <div class="cardImage">
-                                <img src="_images/elasticsearch.svg" alt="Run Elasticsearch on Azure" />
-                            </div>
-                        </div>
-                        <div class="cardText">
-                            <h3>Azure での Elasticsearch の実行</h3>
-                            <p>Azure での Elasticsearch クラスターのデプロイ、管理、チューニングの方法を説明します。</p>
                         </div>
                     </div>
                 </div>

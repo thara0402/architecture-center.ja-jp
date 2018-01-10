@@ -4,11 +4,11 @@ description: "Azure リソースの名前付け規則。 仮想マシン、ス�
 author: telmosampaio
 ms.date: 05/18/2017
 pnp.series.title: Best Practices
-ms.openlocfilehash: 5084fc2ba5a18707de1213276111c53203b6cdd7
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 20f090c4cc39f96887cd58ffd2a9c7736e77de57
+ms.sourcegitcommit: 1c0465cea4ceb9ba9bb5e8f1a8a04d3ba2fa5acd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="naming-conventions"></a>名前付け規則
 
@@ -37,7 +37,7 @@ Azure サブスクリプションに名前を付ける際、詳細な名前に�
 * "Product Line" は部署内で遂行される職務や製品の個別の名前です。 一般に、内部向けのサービスやアプリケーションでは省略してもかまいません。 ただし、簡単に区別および識別できる必要のある外部向けのサービスには使用することを強くお勧めします (課金レコードの明確な区別などのため)。
 * "Environment" は、"Dev"、"QA"、"Prod" など、アプリケーションまたはサービスのデプロイ ライフサイクルを示す名前です。
 
-| 会社 | 学科 | Product Line または Service | 環境 | フルネーム |
+| [会社] | 学科 | Product Line または Service | 環境 | フルネーム |
 | --- | --- | --- | --- | --- |
 | Contoso |SocialGaming |AwesomeService |Production |Contoso SocialGaming AwesomeService Production |
 | Contoso |SocialGaming |AwesomeService |Dev |Contoso SocialGaming AwesomeService Dev |
@@ -60,7 +60,7 @@ Azure のリソースに名前を付けるときは、リソースの種類と�
 | 特徴 | 例 | メモ |
 | --- | --- | --- |
 | 環境 |dev、prod、QA |リソースの環境を識別 |
-| Location (場所) |uw (米国西部)、ue (米国東部) |リソースの展開先のリージョンを識別 |
+| 場所 |uw (米国西部)、ue (米国東部) |リソースの展開先のリージョンを識別 |
 | インスタンス |01、02 |複数の名前付きインスタンスが存在するリソースの場合 (Web サーバーなど)。 |
 | 製品またはサービス |service |リソースがサポートする製品、アプリケーション、サービスを識別 |
 | 役割 |sql、web、messaging |関連付けられているリソースのロールを識別 |
@@ -73,38 +73,53 @@ Azure のリソースまたはサービスの種類ごとに、名前付けに�
 
 一般的に、特殊文字 (`-` または `_`) は、名前の先頭または末尾には使用しないでください。 こうした文字があると、ほとんどの検証規則でエラーが発生します。
 
-| カテゴリ | サービスまたはエンティティ | Scope | Length | 大文字小文字の区別 | 有効な文字 | 推奨パターン | 例 |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| リソース グループ |リソース グループ |グローバル |1 ～ 64 |大文字と小文字は区別されない |英数字、アンダースコア、かっこ、ハイフン、ピリオド (末尾を除く) |`<service short name>-<environment>-rg` |`profx-prod-rg` |
-| リソース グループ |可用性セット |リソース グループ |1 ～ 80 |大文字と小文字は区別されない |英数字、アンダースコア、ハイフン |`<service-short-name>-<context>-as` |`profx-sql-as` |
-| 全般 |タグ |関連付けられたエンティティ |512 (名前)、256 (値) |大文字と小文字は区別されない |英数字 |`"key" : "value"` |`"department" : "Central IT"` |
-| コンピューティング |仮想マシン |リソース グループ |1 ～ 15 (Windows)、1 ～ 64 (Linux) |大文字と小文字は区別されない |英数字、アンダースコア、ハイフン |`<name>-<role>-vm<number>` |`profx-sql-vm1` |
-| コンピューティング |Function App | グローバル |1 ～ 60 |大文字と小文字は区別されない |英数字とハイフン |`<name>-func` |`calcprofit-func` |
-| ストレージ |ストレージ アカウント名 (データ) |グローバル |3 ～ 24 |小文字 |英数字 |`<globally unique name><number>` (ストレージ アカウントの名前付けのために関数を使用して一意の GUID を計算) |`profxdata001` |
-| ストレージ |ストレージ アカウント名 (ディスク) |グローバル |3 ～ 24 |小文字 |英数字 |`<vm name without dashes>st<number>` |`profxsql001st0` |
-| Storage | コンテナー名 |ストレージ アカウント |3 ～ 63 |小文字 |英数字とダッシュ |`<context>` |`logs` |
-| Storage |BLOB 名 | コンテナー |1 ～ 1,024 |大文字小文字は区別される |任意の URL 文字 |`<variable based on blob usage>` |`<variable based on blob usage>` |
-| Storage |キュー名 |ストレージ アカウント |3 ～ 63 |小文字 |英数字とダッシュ |`<service short name>-<context>-<num>` |`awesomeservice-messages-001` |
-| Storage |テーブル名 | ストレージ アカウント |3 ～ 63 |大文字と小文字は区別されない |英数字 |`<service short name><context>` |`awesomeservicelogs` |
-| Storage |ファイル名 | ストレージ アカウント |3 ～ 63 |小文字 | 英数字 |`<variable based on blob usage>` |`<variable based on blob usage>` |
-| ストレージ |Data Lake Store | グローバル |3 ～ 24 |小文字 | 英数字 |`<name>-dtl` |`telemetry-dtl` |
-| ネットワーク |Virtual Network (VNet) |リソース グループ |2 ～ 64 |大文字と小文字は区別されない |英数字、ダッシュ、アンダースコア、ピリオド |`<service short name>-vnet` |`profx-vnet` |
-| ネットワーク |サブネット |親 VNet |2 ～ 80 |大文字と小文字は区別されない |英数字、アンダー スコア、ダッシュ、ピリオド |`<descriptive context>` |`web` |
-| ネットワーク |ネットワーク インターフェイス |リソース グループ |1 ～ 80 |大文字と小文字は区別されない |英数字、ダッシュ、アンダースコア、ピリオド |`<vmname>-nic<num>` |`profx-sql1-nic1` |
-| ネットワーク |ネットワーク セキュリティ グループ |リソース グループ |1 ～ 80 |大文字と小文字は区別されない |英数字、ダッシュ、アンダースコア、ピリオド |`<service short name>-<context>-nsg` |`profx-app-nsg` |
-| ネットワーク |ネットワーク セキュリティ グループの規則 |リソース グループ |1 ～ 80 |大文字と小文字は区別されない |英数字、ダッシュ、アンダースコア、ピリオド |`<descriptive context>` |`sql-allow` |
-| ネットワーク |パブリック IP アドレス |リソース グループ |1 ～ 80 |大文字と小文字は区別されない |英数字、ダッシュ、アンダースコア、ピリオド |`<vm or service name>-pip` |`profx-sql1-pip` |
-| ネットワーク |Load Balancer |リソース グループ |1 ～ 80 |大文字と小文字は区別されない |英数字、ダッシュ、アンダースコア、ピリオド |`<service or role>-lb` |`profx-lb` |
-| ネットワーク |負荷分散規則の構成 |Load Balancer |1 ～ 80 |大文字と小文字は区別されない |英数字、ダッシュ、アンダースコア、ピリオド |`<descriptive context>` |`http` |
-| ネットワーク |Azure Application Gateway |リソース グループ |1 ～ 80 |大文字と小文字は区別されない |英数字、ダッシュ、アンダースコア、ピリオド |`<service or role>-agw` |`profx-agw` |
-| ネットワーク |Traffic Manager プロファイル |リソース グループ |1 ～ 63 |大文字と小文字は区別されない |英数字、ダッシュ、ピリオド |`<descriptive context>` |`app1` |
+### <a name="general"></a>全般
+
+| エンティティ | Scope (スコープ) | Length | 大文字小文字の区別 | 有効な文字 | 推奨パターン | 例 |
+| --- | --- | --- | --- | --- | --- | --- |
+|リソース グループ |[サブスクリプション] |1-90 |大文字と小文字は区別されない |英数字、アンダースコア、かっこ、ハイフン、ピリオド (末尾を除く) |`<service short name>-<environment>-rg` |`profx-prod-rg` |
+|可用性セット |リソース グループ |1 ～ 80 |大文字と小文字は区別されない |英数字、アンダースコア、ハイフン |`<service-short-name>-<context>-as` |`profx-sql-as` |
+|タグ |関連付けられたエンティティ |512 (名前)、256 (値) |大文字と小文字は区別されない |英数字 |`"key" : "value"` |`"department" : "Central IT"` |
+
+### <a name="compute"></a>計算
+
+| エンティティ | Scope (スコープ) | Length | 大文字小文字の区別 | 有効な文字 | 推奨パターン | 例 |
+| --- | --- | --- | --- | --- | --- | --- |
+|仮想マシン |リソース グループ |1 ～ 15 (Windows)、1 ～ 64 (Linux) |大文字と小文字は区別されない |英数字、アンダースコア、ハイフン |`<name>-<role>-vm<number>` |`profx-sql-vm1` |
+|Function App | グローバル |1 ～ 60 |大文字と小文字は区別されない |英数字とハイフン |`<name>-func` |`calcprofit-func` |
 
 > [!NOTE]
 > Azure の仮想マシンには、仮想マシン名とホスト名の 2 つの個別の名前があります。 ポータルで VM を作成するときは、ホスト名と仮想マシン リソース名の両方に同じ名前が使用されます。 上記の制限はホスト名を対象としています。 実際のリソース名の最大文字数は 64 文字です。
 
-Microsoft では頻繁に新しいサービスを Azure に追加しています。 上記の表には、ネットワーク、コンピューティング、およびストレージで最もよく使用されるサービスが含まれています。 他のサービスについては、適切な 3 文字のサフィックスを検討してください。
+### <a name="storage"></a>Storage
 
-## <a name="organizing-resources-with-tags"></a>タグによるリソースの整理
+| エンティティ | Scope (スコープ) | Length | 大文字小文字の区別 | 有効な文字 | 推奨パターン | 例 |
+| --- | --- | --- | --- | --- | --- | --- |
+|ストレージ アカウント名 (データ) |グローバル |3 ～ 24 |小文字 |英数字 |`<globally unique name><number>` (ストレージ アカウントの名前付けのために関数を使用して一意の GUID を計算) |`profxdata001` |
+|ストレージ アカウント名 (ディスク) |グローバル |3 ～ 24 |小文字 |英数字 |`<vm name without dashes>st<number>` |`profxsql001st0` |
+| コンテナー名 |ストレージ アカウント |3 ～ 63 |小文字 |英数字とダッシュ |`<context>` |`logs` |
+|BLOB 名 | コンテナー |1 ～ 1,024 |大文字小文字は区別される |任意の URL 文字 |`<variable based on blob usage>` |`<variable based on blob usage>` |
+|キュー名 |ストレージ アカウント |3 ～ 63 |小文字 |英数字とダッシュ |`<service short name>-<context>-<num>` |`awesomeservice-messages-001` |
+|テーブル名 | ストレージ アカウント |3 ～ 63 |大文字と小文字は区別されない |英数字 |`<service short name><context>` |`awesomeservicelogs` |
+|ファイル名 | ストレージ アカウント |3 ～ 63 |小文字 | 英数字 |`<variable based on blob usage>` |`<variable based on blob usage>` |
+|Data Lake Store | グローバル |3 ～ 24 |小文字 | 英数字 |`<name>-dls` |`telemetry-dls` |
+
+### <a name="networking"></a>ネットワーク
+
+| エンティティ | Scope (スコープ) | Length | 大文字小文字の区別 | 有効な文字 | 推奨パターン | 例 |
+| --- | --- | --- | --- | --- | --- | --- |
+|Virtual Network (VNet) |リソース グループ |2 ～ 64 |大文字と小文字は区別されない |英数字、ダッシュ、アンダースコア、ピリオド |`<service short name>-vnet` |`profx-vnet` |
+|サブネット |親 VNet |2 ～ 80 |大文字と小文字は区別されない |英数字、アンダー スコア、ダッシュ、ピリオド |`<descriptive context>` |`web` |
+|ネットワーク インターフェイス |リソース グループ |1 ～ 80 |大文字と小文字は区別されない |英数字、ダッシュ、アンダースコア、ピリオド |`<vmname>-nic<num>` |`profx-sql1-nic1` |
+|ネットワーク セキュリティ グループ |リソース グループ |1 ～ 80 |大文字と小文字は区別されない |英数字、ダッシュ、アンダースコア、ピリオド |`<service short name>-<context>-nsg` |`profx-app-nsg` |
+|ネットワーク セキュリティ グループの規則 |リソース グループ |1 ～ 80 |大文字と小文字は区別されない |英数字、ダッシュ、アンダースコア、ピリオド |`<descriptive context>` |`sql-allow` |
+|パブリック IP アドレス |リソース グループ |1 ～ 80 |大文字と小文字は区別されない |英数字、ダッシュ、アンダースコア、ピリオド |`<vm or service name>-pip` |`profx-sql1-pip` |
+|Load Balancer |リソース グループ |1 ～ 80 |大文字と小文字は区別されない |英数字、ダッシュ、アンダースコア、ピリオド |`<service or role>-lb` |`profx-lb` |
+|負荷分散規則の構成 |Load Balancer |1 ～ 80 |大文字と小文字は区別されない |英数字、ダッシュ、アンダースコア、ピリオド |`<descriptive context>` |`http` |
+|Azure Application Gateway |リソース グループ |1 ～ 80 |大文字と小文字は区別されない |英数字、ダッシュ、アンダースコア、ピリオド |`<service or role>-agw` |`profx-agw` |
+|Traffic Manager プロファイル |リソース グループ |1 ～ 63 |大文字と小文字は区別されない |英数字、ダッシュ、ピリオド |`<descriptive context>` |`app1` |
+
+## <a name="organize-resources-with-tags"></a>タグによるリソースの整理
 
 Azure Resource Manager では、コンテキストを識別し、自動化を合理化するために、任意のテキスト文字列を使用したエンティティへのタグ付けがサポートされています。  たとえば、タグ `"sqlVersion: "sql2014ee"` では、自動化されたスクリプトを実行するために SQL Server 2014 Enterprise エディションが実行されている VM をデプロイ内で識別できます。  タグは、コンテキストを明確化するために、選択した名前付け規則と共に使用してください。
 
@@ -130,8 +145,8 @@ Azure Resource Manager では、コンテキストを識別し、自動化を合
 | --- | --- | --- | --- |
 | 請求先/内部チャージバック ID |billTo |`IT-Chargeback-1234` |内部 I/O または課金コード |
 | オペレーターまたは直接責任者 (DRI) |managedBy |`joe@contoso.com` |エイリアスまたは電子メール アドレス |
-| プロジェクト名 |project-name |`myproject` |プロジェクトまたは製品ラインの名前 |
-| プロジェクトのバージョン |project-version |`3.4` |プロジェクトまたは製品ラインのバージョン |
+| プロジェクト名 |projectName |`myproject` |プロジェクトまたは製品ラインの名前 |
+| プロジェクトのバージョン |projectVersion |`3.4` |プロジェクトまたは製品ラインのバージョン |
 | 環境 |環境 |`<Production, Staging, QA >` |環境の識別子 |
 | レベル |レベル |`Front End, Back End, Data` |レベルまたはロール/コンテキストの識別 |
 | データ プロファイル |dataProfile |`Public, Confidential, Restricted, Internal` |リソースに格納されているデータの機密性 |

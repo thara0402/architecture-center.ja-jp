@@ -7,29 +7,29 @@ pnp.series.title: Identity management
 pnp.series.prev: adds-extend-domain
 pnp.series.next: adfs
 cardTitle: Create an AD DS forest in Azure
-ms.openlocfilehash: bb7e57af2afacf1faa7679c854bf49217918eba8
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: b946afa91e8bd303c51f97e18be170c4105cc8c5
+ms.sourcegitcommit: 8ab30776e0c4cdc16ca0dcc881960e3108ad3e94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="create-an-active-directory-domain-services-ad-ds-resource-forest-in-azure"></a>Azure での Active Directory Domain Services (AD DS) リソース フォレストの作成
 
-この参照アーキテクチャは、オンプレミスの AD フォレストでドメインから信頼される別の Active Directory ドメインを Azure に作成する方法を示しています。 [**以下のソリューションをデプロイします**。](#deploy-the-solution)
+この参照アーキテクチャは、オンプレミスの AD フォレストでドメインから信頼される別の Active Directory ドメインを Azure に作成する方法を示しています。 [**こちらのソリューションをデプロイしてください**。](#deploy-the-solution)
 
 [![0]][0] 
 
-*このアーキテクチャの [Visio ファイル][visio-download]をダウンロードします。*
+"*このアーキテクチャの [Visio ファイル][visio-download]をダウンロードします。*"
 
 Active Directory Domain Services (AD DS) は、階層構造に ID 情報を格納します。 階層構造の最上位ノードはフォレストと呼ばれます。 1 つのフォレストには複数のドメインが含まれ、ドメインには他の種類のオブジェクトが含まれています。 この参照アーキテクチャは、オンプレミス ドメインとの間に一方向の送信の信頼関係がある AD DS を Azure に作成します。 Azure のフォレストには、オンプレミスに存在しないドメインが含まれています。 信頼関係があるため、オンプレミス ドメインに対して行われたログオンは、別の Azure ドメイン内のリソースにアクセスする場合にも信頼できます。 
 
 このアーキテクチャの一般的な使用例として、クラウドに保持するオブジェクトと ID のセキュリティの分離を維持する場合や、個々のドメインをオンプレミスからクラウドに移行する場合があります。 
 
-その他の考慮事項については、「[Choose a solution for integrating on-premises Active Directory with Azure][considerations]」(オンプレミスの Active Directory と Azure の統合のソリューションを選択する) を参照してください。 
+その他の考慮事項については、「[オンプレミスの Active Directory を Azure と統合するためのソリューションの選択][considerations]」をご覧ください。 
 
 ## <a name="architecture"></a>アーキテクチャ
 
-アーキテクチャには次のコンポーネントがあります。
+このアーキテクチャには次のコンポーネントがあります。
 
 * **オンプレミス ネットワーク**。 オンプレミス ネットワークには、独自の Active Directory フォレストとドメインが含まれています。
 * **Active Directory サーバー**。 クラウドで VM として実行されているドメイン サービスを実装するドメイン コントローラーです。 これらのサーバーは、1 つ以上のドメインを含むフォレストをオンプレミスとは別にホストします。
@@ -39,12 +39,12 @@ Active Directory Domain Services (AD DS) は、階層構造に ID 情報を格�
 
 ## <a name="recommendations"></a>Recommendations
 
-Azure に Active Directory を実装する場合の具体的な推奨事項については、以下の記事を参照してください。
+Azure に Active Directory を実装する場合の具体的な推奨事項については、以下の記事をご覧ください。
 
 - [Active Directory Domain Services (AD DS) を Azure に拡張する][adds-extend-domain]。 
 - [Azure Virtual Machines での Windows Server Active Directory の展開ガイドライン][ad-azure-guidelines]
 
-### <a name="trust"></a>信頼
+### <a name="trust"></a>[Trust (信頼)]
 
 オンプレミス ドメインは、クラウドのドメインとは別のフォレストに含まれています。 クラウドでオンプレミス ユーザーの認証を有効にするには、Azure のドメインがオンプレミス フォレストのログオン ドメインを信頼する必要があります。 同様に、クラウドが外部ユーザーに対してログオン ドメインを提供している場合は、必要に応じてオンプレミス フォレストがクラウド ドメインを信頼します。
 
@@ -87,9 +87,9 @@ Active Directory 固有のセキュリティの考慮事項については、[Ac
 
 ## <a name="deploy-the-solution"></a>ソリューションのデプロイ方法
 
-この参照アーキテクチャをデプロイするソリューションについては、[Github][github] を参照してください。 このソリューションをデプロイする Powershell スクリプトを実行するには、最新バージョンの Azure CLI が必要です。 参照アーキテクチャをデプロイするには、次の手順を実行します。
+この参照用アーキテクチャをデプロイするためのソリューションは、[GitHub][github] で入手できます。 このソリューションをデプロイする Powershell スクリプトを実行するには、最新バージョンの Azure CLI が必要です。 参照アーキテクチャをデプロイするには、次の手順を実行します。
 
-1. [Github][github] からローカル コンピューターにソリューション フォルダーをダウンロードまたは複製します。
+1. [GitHub][github] からローカル マシンにソリューション フォルダーをダウンロードまたは複製します。
 
 2. Azure CLI を開き、ローカルのソリューション フォルダーに移動します。
 
@@ -133,7 +133,7 @@ Active Directory 固有のセキュリティの考慮事項については、[Ac
 
 9. 前の手順が完了するまで数分待ってから、オンプレミスの VM に接続し、「[信頼を検証する][verify-a-trust]」の記事で説明されている手順を実行して *contoso.com* ドメインと *treyresearch.com* ドメイン間の信頼関係が正しく構成されているかどうかを判断します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [オンプレミスの AD DS ドメインを Azure に拡張する][adds-extend-domain]場合のベスト プラクティスを学習します。
 * Azure で [AD DS インフラストラクチャを作成する][adfs]場合のベスト プラクティスを学習します。

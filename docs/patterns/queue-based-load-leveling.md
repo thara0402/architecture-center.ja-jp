@@ -10,11 +10,11 @@ pnp.pattern.categories:
 - availability
 - performance-scalability
 - resiliency
-ms.openlocfilehash: d8b010648d4ec0edcfbb24f9b03243a79a34a40b
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 99b226511fe14bffdab3cdcf65d4e6cffe89bba6
+ms.sourcegitcommit: 8ab30776e0c4cdc16ca0dcc881960e3108ad3e94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="queue-based-load-leveling-pattern"></a>キュー ベースの負荷平準化パターン
 

@@ -4,11 +4,11 @@ description: "ユーザー インターフェイスとは無関係に実行さ�
 author: dragon119
 ms.date: 05/24/2017
 pnp.series.title: Best Practices
-ms.openlocfilehash: 62266b822a238ee53b62e74e91d753dc5da308b4
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: d8c1d4dfe12208b72fd6991def805f90a830b5f0
+ms.sourcegitcommit: a8453c4bc7c870fa1a12bb3c02e3b310db87530c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 12/29/2017
 ---
 # <a name="background-jobs"></a>バックグラウンド ジョブ
 [!INCLUDE [header](../_includes/header.md)]
@@ -100,7 +100,7 @@ Azure の Web ジョブの特徴を次に示します。
 * **ログ**: Console.Out は INFO として処理 (マーク) されます。 Console.Error は ERROR として処理 (マーク) されます。 監視情報と診断情報には、Azure ポータルからアクセスできます。 ログ ファイルは、サイトから直接ダウンロードすることができます。 これらの情報は次の場所に保存されます。
   * トリガーによって実行する場合: Vfs/data/jobs/triggered/jobName
   * 連続実行の場合: Vfs/data/jobs/continuous/jobName
-* **構成**: Web ジョブの構成には、ポータル、REST API、PowerShell を使用できます。 ジョブの構成情報は、ジョブ スクリプトと同じルート ディレクトリにある settings.job という名前の構成ファイルで指定できます。 次に例を示します。
+* **構成**: Web ジョブの構成には、ポータル、REST API、PowerShell を使用できます。 ジョブの構成情報は、ジョブ スクリプトと同じルート ディレクトリにある settings.job という名前の構成ファイルで指定できます。 例: 
   * { "stopping_wait_time": 60 }
   * { "is_singleton": true }
 
@@ -129,7 +129,7 @@ Azure の Web ジョブの特徴を次に示します。
 Azure 仮想マシンにバックグラウンド タスクをデプロイするかどうかは、次の点を考慮して判断してください。
 
 * 独立した Azure 仮想マシンでバックグラウンド タスクをホスティングすれば、運用の幅が広がり、開始と実行、スケジューリング、リソース割り当てを細かく制御することができます。 ただし、バックグラウンド タスクを実行するためだけに仮想マシンをデプロイしなければならない場合、ランタイム コストが大きくなります。
-* [Azure Resource Manager コマンドレット](https://msdn.microsoft.com/en-us/library/mt125356.aspx)を使って仮想マシンを管理したり、仮想マシンの基本的なステータスを監視したりすることはできますが、バックグラウンド タスクを監視する機構は Azure ポータルにはなく、また、障害の発生したタスクを自動的に再起動する機能もありません。 コンピューティング ノード内のプロセスやスレッドを制御する機構も存在しません。 通常、仮想マシンを使うためには、タスクのインストルメンテーションや仮想マシン内のオペレーティング システムからデータを収集するメカニズムを別途導入する必要があります。 1 つの方法として、 [Azure 用の System Center 管理パック](https://www.microsoft.com/en-us/download/details.aspx?id=50013)を使うことが解決策として考えられます。
+* [Azure Resource Manager コマンドレット](https://msdn.microsoft.com/library/mt125356.aspx)を使って仮想マシンを管理したり、仮想マシンの基本的なステータスを監視したりすることはできますが、バックグラウンド タスクを監視する機構は Azure ポータルにはなく、また、障害の発生したタスクを自動的に再起動する機能もありません。 コンピューティング ノード内のプロセスやスレッドを制御する機構も存在しません。 通常、仮想マシンを使うためには、タスクのインストルメンテーションや仮想マシン内のオペレーティング システムからデータを収集するメカニズムを別途導入する必要があります。 1 つの方法として、 [Azure 用の System Center 管理パック](https://www.microsoft.com/download/details.aspx?id=50013)を使うことが解決策として考えられます。
 * HTTP エンドポイントを介して公開される監視プローブの作成を検討してください。 正常性チェックの実行、運用情報や統計情報の収集、エラー情報の照合を監視プローブのコードから実行して管理アプリケーションに返すようにします。 詳細については、 [Health Endpoint Monitoring パターン](http://msdn.microsoft.com/library/dn589789.aspx)に関するページを参照してください。
 
 #### <a name="more-information"></a>詳細
@@ -180,7 +180,7 @@ Azure Container Service を使用すると、コンテナー化されたアプ�
 
 Cloud Services ロールには、さまざまな方法でバックグラウンド タスクを実装することができます。
 
-* Cloud Services ロールに **RoleEntryPoint** クラスの実装を作成し、そのメソッドを使ってバックグラウンド タスクを実行する。 この場合タスクは WaIISHost.exe のコンテキストで動作し、 **CloudConfigurationManager** クラスの **GetSetting** メソッドを使って構成設定を読み込むことができます。 詳細については、 [ライフサイクル (Cloud Services)](#lifecycle-cloud-services)。
+* Cloud Services ロールに **RoleEntryPoint** クラスの実装を作成し、そのメソッドを使ってバックグラウンド タスクを実行する。 この場合タスクは WaIISHost.exe のコンテキストで動作し、 **CloudConfigurationManager** クラスの **GetSetting** メソッドを使って構成設定を読み込むことができます。 詳細については、「[ライフサイクル](#lifecycle)」を参照してください。
 * アプリケーションの起動時にスタートアップ タスクを使ってバックグラウンド タスクを実行する。 バックグラウンドでタスクを強制的に実行し続けるには、**taskType** プロパティを **background** に設定します (この設定をしなかった場合、アプリケーションの起動プロセスが中断状態でタスクの完了を待機します)。 詳細については、 [Azure におけるスタートアップ タスクの実行](/azure/cloud-services/cloud-services-startup-tasks)に関するページを参照してください。
 * WebJobs SDK を使い、スタートアップ タスクとして開始される Web ジョブなどのバックグラウンド タスクを実装する。 詳細については、「[Azure App Service での .NET WebJob の作成](/azure/app-service-web/websites-dotnet-webjobs-sdk-get-started)」を参照してください。
 * バックグラウンド タスクを実行する Windows サービスを、スタートアップ タスクを使ってインストールする。 サービスをバックグラウンドで実行するには、**taskType** プロパティを **background** に設定する必要があります。 詳細については、 [Azure におけるスタートアップ タスクの実行](/azure/cloud-services/cloud-services-startup-tasks)に関するページを参照してください。
@@ -316,14 +316,13 @@ Web またはワーカー ロールでバックグラウンド タスクを実�
 * [Queue-Based Load Leveling パターン](http://msdn.microsoft.com/library/dn589783.aspx)
 * [Scheduler Agent Supervisor パターン](http://msdn.microsoft.com/library/dn589780.aspx)
 
-## <a name="more-information"></a>詳細
+## <a name="more-information"></a>詳細情報
 * [worker ロールを使用した Azure アプリケーションのスケーリング](http://msdn.microsoft.com/library/hh534484.aspx#sec8)
 * [バックグラウンド タスクの実行](http://msdn.microsoft.com/library/ff803365.aspx)
 * [Azure ロールのスタートアップ ライフサイクル](http://blog.syntaxc4.net/post/2011/04/13/windows-azure-role-startup-life-cycle.aspx) (ブログ記事)
 * [Azure Cloud Services ロールのライフサイクル](http://channel9.msdn.com/Series/Windows-Azure-Cloud-Services-Tutorials/Windows-Azure-Cloud-Services-Role-Lifecycle) (ビデオ)
-* [Azure Web ジョブ SDK とは](https://docs.microsoft.com/en-us/azure/app-service-web/websites-dotnet-webjobs-sdk)
-* [Azure App Service に .NET Web ジョブを作成する](https://docs.microsoft.com/en-us/azure/app-service-web/websites-dotnet-webjobs-sdk-get-started)
-* [Web ジョブでバックグラウンド タスクを実行する](https://docs.microsoft.com/en-us/azure/app-service-web/web-sites-create-web-jobs)
-* [Azure キューと Service Bus キューの比較](https://docs.microsoft.com/en-us/azure/service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted)
-* [クラウド サービスの診断を有効にする方法](https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-dotnet-diagnostics)
+* [Azure Web ジョブ SDK とは](https://docs.microsoft.com/azure/app-service-web/websites-dotnet-webjobs-sdk)
+* [Web ジョブでバックグラウンド タスクを実行する](https://docs.microsoft.com/azure/app-service-web/web-sites-create-web-jobs)
+* [Azure キューと Service Bus キューの比較](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted)
+* [クラウド サービスの診断を有効にする方法](https://docs.microsoft.com/azure/cloud-services/cloud-services-dotnet-diagnostics)
 

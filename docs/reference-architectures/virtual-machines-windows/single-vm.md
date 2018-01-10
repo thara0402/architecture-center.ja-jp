@@ -2,19 +2,19 @@
 title: "Azure での Windows VM の実行"
 description: "スケーラビリティ、回復性、管理容易性、およびセキュリティに注意しながら、Azure で Windows VM を実行する方法。"
 author: telmosampaio
-ms.date: 11/16/2017
+ms.date: 12/12/2017
 pnp.series.title: Windows VM workloads
 pnp.series.next: multi-vm
 pnp.series.prev: ./index
-ms.openlocfilehash: b519cb96c124a91d95fb5965f34b86026c95805c
-ms.sourcegitcommit: 115db7ee008a0b1f2b0be50a26471050742ddb04
+ms.openlocfilehash: 71eeebae1f557ecbb6f33c4a7e37a278204f3dcd
+ms.sourcegitcommit: 1c0465cea4ceb9ba9bb5e8f1a8a04d3ba2fa5acd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="run-a-windows-vm-on-azure"></a>Azure での Windows VM の実行
 
-この参照アーキテクチャは、Azure で Windows 仮想マシン (VM) を実行するための一連の実証済みの方法を示しています。 ネットワークおよびストレージ コンポーネントと共に VM をプロビジョニングするための推奨事項が含まれます。 このアーキテクチャは単一の VM インスタンスを実行するために使用でき、N 層アプリケーションなどのさらに複雑なアーキテクチャの基礎となります。 [**このソリューションをデプロイします。**](#deploy-the-solution)
+この参照アーキテクチャは、Azure で Windows 仮想マシン (VM) を実行するための一連の実証済みの方法を示しています。 ネットワークおよびストレージ コンポーネントと共に VM をプロビジョニングするための推奨事項が含まれます。 このアーキテクチャは単一の VM インスタンスを実行するために使用でき、N 層アプリケーションなどのさらに複雑なアーキテクチャの基礎となります。 [**以下のソリューションをデプロイします。**](#deploy-the-solution)
 
 ![[0]][0]
 
@@ -24,15 +24,16 @@ ms.lasthandoff: 11/17/2017
 
 Azure VM のプロビジョニングには、コンピューティング、ネットワーク、およびストレージ リソースなどの追加コンポーネントが必要です。
 
-* **リソース グループ。** [*リソース グループ*][resource-manager-overview]は、関連リソースを保持するコンテナーです。 一般には、リソースの有効期間や、そのリソースを誰が管理するかに基づいてソリューション内のリソースをグループ化する必要があります。 単一の VM ワークロードの場合は、すべてのリソースに対して単一のリソース グループを作成することもできます。
+* **リソース グループ。** [リソース グループ][resource-manager-overview]は、関連リソースを保持するコンテナーです。 一般には、リソースの有効期間や、そのリソースを誰が管理するかに基づいてソリューション内のリソースをグループ化する必要があります。 単一の VM ワークロードの場合は、すべてのリソースに対して単一のリソース グループを作成することもできます。
 * **VM**。 VM は、発行されたイメージの一覧や、Azure BLOB ストレージにアップロードされたカスタム管理されたイメージまたは仮想ハード ディスク (VHD) ファイルからプロビジョニングできます。
 * **OS ディスク。** OS ディスクは [Azure Storage][azure-storage] に格納された VHD であるため、ホスト マシンが停止している場合でも維持されます。
-* **一時ディスク。** VM は一時ディスク (Windows の `D:` ドライブ) を使用して作成されます。 このディスクは、ホスト コンピューターの物理ドライブ上に格納されます。 Azure Storage には保存され*ない*ため、再起動やその他の VM ライフサイクル イベント中に削除される可能性があります。 ページ ファイルやスワップ ファイルなどの一時的なデータにのみ、このディスクを使用してください。
+* **一時ディスク。** VM は一時ディスク (Windows の `D:` ドライブ) を使用して作成されます。 このディスクは、ホスト コンピューターの物理ドライブ上に格納されます。 Azure Storage には保存され**ない**ため、再起動やその他の VM ライフサイクル イベント中に削除される可能性があります。 ページ ファイルやスワップ ファイルなどの一時的なデータにのみ、このディスクを使用してください。
 * **データ ディスク。** [データ ディスク][data-disk]は、アプリケーション データ用の永続的な VHD です。 データ ディスクは、OS ディスクと同様に、Azure Storage に格納されます。
 * **仮想ネットワーク (VNet) とサブネット。** どの Azure VM も、複数のサブネットにセグメント化できる VNet にデプロイされます。
-* **パブリック IP アドレス。** パブリック IP アドレスは、リモート デスクトップ (RDP) 経由などで VM &mdash; と通信するために必要です。
-* **ネットワーク インターフェイス (NIC)**。 割り当てられた NIC により、VM は仮想ネットワークと通信できます。
-* **ネットワーク セキュリティ グループ (NSG)**。 [NSG][nsg] は、ネットワーク リソースへのネットワーク トラフィックを許可または拒否するために使用されます。 NSG は、個々 の NIC またはサブネットに関連付けることができます。 NSG をサブネットに関連付けると、そのサブネット内のすべての VM に NSG ルールが適用されます。
+* **パブリック IP アドレス。** パブリック IP アドレスは、リモート デスクトップ (RDP) 経由などで VM &mdash; と通信するために必要です。  
+* **Azure DNS**。 [Azure DNS][azure-dns] は、DNS ドメインのホスティング サービスであり、Microsoft Azure インフラストラクチャを使用した名前解決を提供します。 Azure でドメインをホストすることで、その他の Azure サービスと同じ資格情報、API、ツール、課金情報を使用して DNS レコードを管理できます。  
+* **ネットワーク インターフェイス (NIC)**。 割り当てられた NIC により、VM は仮想ネットワークと通信できます。  
+* **ネットワーク セキュリティ グループ (NSG)**。 [ネットワーク セキュリティ グループ][nsg]は、ネットワーク リソースへのネットワーク トラフィックを許可または拒否するために使用されます。 NSG は、個々 の NIC またはサブネットに関連付けることができます。 NSG をサブネットに関連付けると、そのサブネット内のすべての VM に NSG ルールが適用されます。
 * **[診断]。** 診断ログは、VM の管理とトラブルシューティングにとって非常に重要です。
 
 ## <a name="recommendations"></a>Recommendations
@@ -100,7 +101,7 @@ VHD は [Azure Storage][azure-storage] に格納されます。 Azure Storage �
 
 **VM の停止。** Azure では、"停止" 状態と "割り当て解除済み" 状態が区別されます。 VM が割り当て解除されたときではなく、VM が停止状態のときに課金されます。
 
-Azure Portal の **[停止]** ボタンを使用すると、VM の割り当てが解除されます。 ログイン中に OS からシャットダウンした場合、VM は停止しますが割り当ては "*解除されない*" ため、引き続き課金されます。
+Azure Portal の **[停止]** ボタンを使用すると、VM の割り当てが解除されます。 ログイン中に OS からシャットダウンした場合、VM は停止しますが割り当ては "**解除されない**" ため、引き続き課金されます。
 
 **VM の削除。** VM を削除しても VHD は削除されません。 つまり、データを失うことなく安全に VM を削除できます。 ただし、Storage に対して引き続き課金されます。 VHD を削除するには、[Blob Storage][blob-storage] からファイルを削除します。
 
@@ -108,7 +109,7 @@ Azure Portal の **[停止]** ボタンを使用すると、VM の割り当て�
 
 ## <a name="security-considerations"></a>セキュリティに関する考慮事項
 
-[Azure Security Center][security-center] を使用すると、Azure リソースのセキュリティの状態を一元的に表示して把握できます。 Security Center は、潜在的なセキュリティ上の問題を監視し、デプロイのセキュリティの正常性を包括的に示します。 セキュリティ センターは、Azure サブスクリプションごとに構成されます。 『[Azure Security Center クイック スタート ガイド][security-center-get-started]』の説明に従って、セキュリティ データの収集を有効にします。 データ収集を有効にすると、セキュリティ センターは、そのサブスクリプションに作成されているすべての VM を自動的にスキャンします。
+[Azure Security Center][security-center] を使用すると、Azure リソースのセキュリティの状態を一元的に表示して把握できます。 Security Center は、潜在的なセキュリティ上の問題を監視し、デプロイのセキュリティの正常性を包括的に示します。 セキュリティ センターは、Azure サブスクリプションごとに構成されます。 「[Azure Security Center クイック スタート ガイド][security-center-get-started]」の説明に従って、セキュリティ データの収集を有効にします。 データ収集を有効にすると、セキュリティ センターは、そのサブスクリプションに作成されているすべての VM を自動的にスキャンします。
 
 **更新プログラムの管理。** 有効になっている場合、Security Center はセキュリティ更新プログラムや緊急更新プログラムが不足しているかどうかをチェックします。 VM で[グループ ポリシー設定][group-policy]を使用して、システムの自動更新を有効にします。
 
@@ -125,7 +126,7 @@ Azure Portal の **[停止]** ボタンを使用すると、VM の割り当て�
 
 ## <a name="deploy-the-solution"></a>ソリューションのデプロイ方法
 
-このアーキテクチャのデプロイについては、[GitHub][github-folder] をご覧ください。 以下がデプロイされます。
+このアーキテクチャのデプロイについては、[GitHub][github-folder] を参照してください。 以下がデプロイされます。
 
   * VM をホストするために使用される、**web** という名前の 1 つのサブネットを含む仮想ネットワーク。
   * VM に対する RDP と HTTP トラフィックを許可する 2 つの受信ルールを持つ NSG。
@@ -169,7 +170,7 @@ Azure Portal の **[停止]** ボタンを使用すると、VM の割り当て�
 
 この参照アーキテクチャのサンプルのデプロイについて詳しくは、[GitHub リポジトリ][git]を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [Azure の構成要素][azbbv2]について確認します。
 - Azure で[複数の VM][multi-vm] をデプロイします。
@@ -180,6 +181,7 @@ Azure Portal の **[停止]** ボタンを使用すると、VM の割り当て�
 [azbb]: https://github.com/mspnp/template-building-blocks/wiki/Install-Azure-Building-Blocks
 [azbbv2]: https://github.com/mspnp/template-building-blocks
 [azure-cli-2]: /cli/azure/install-azure-cli?view=azure-cli-latest
+[azure-dns]: /azure/dns/dns-overview
 [azure-storage]: /azure/storage/storage-introduction
 [blob-snapshot]: /azure/storage/storage-blob-snapshots
 [blob-storage]: /azure/storage/storage-introduction

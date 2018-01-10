@@ -6,11 +6,11 @@ ms.date: 11/28/2016
 pnp.series.title: Identity management
 pnp.series.prev: adds-forest
 cardTitle: Extend AD FS to Azure
-ms.openlocfilehash: b24f4e72b13331437d92f20a228e3ba8121db90a
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: b8c9ae0621c087c68d449dd13e60046104c01513
+ms.sourcegitcommit: 8ab30776e0c4cdc16ca0dcc881960e3108ad3e94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="extend-active-directory-federation-services-ad-fs-to-azure"></a>Active Directory フェデレーション サービス (AD FS) を Azure に拡張する
 
@@ -37,7 +37,7 @@ AD FS はオンプレミスでホストできますが、アプリケーショ�
 
 この参照アーキテクチャでは、"*パッシブ フェデレーション*" に焦点を当てています。この場合、フェデレーション サーバーがユーザーの認証方法とタイミングを決定します。 ユーザーは、アプリケーションの起動時にサインイン情報を指定します。 このメカニズムは、Web ブラウザーで最もよく使用され、ユーザーが認証するサイトにブラウザーをリダイレクトするプロトコルが含まれています。 AD FS は、"*アクティブ フェデレーション*" もサポートしています。この場合、アプリケーションはユーザーによる操作なしで資格情報を提供する責任を負いますが、そのシナリオはこのアーキテクチャの範囲外です。
 
-その他の考慮事項については、「[オンプレミスの Active Directory を Azure と統合するためのソリューションの選択][considerations]」を参照してください。 
+その他の考慮事項については、「[オンプレミスの Active Directory を Azure と統合するためのソリューションの選択][considerations]」をご覧ください。 
 
 ## <a name="architecture"></a>アーキテクチャ
 
@@ -280,7 +280,7 @@ AD FS は HTTPS プロトコルを使用するため、Web 層 VM が含まれ�
 
 13. スクリプトによって表示される指示に従って、完全なプロキシ構成をテストします。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [Azure Active Directory][aad] について学習します。
 * [Azure Active Directory B2C][aadb2c] について学習します。
