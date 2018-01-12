@@ -5,11 +5,11 @@ keywords: "AWS エキスパート, Azure との比較, AWS との比較, Azure �
 author: lbrader
 ms.date: 03/24/2017
 pnp.series.title: Azure for AWS Professionals
-ms.openlocfilehash: b576b11bc152ef721f56e79609cb7a03f2d31dd3
-ms.sourcegitcommit: 1c0465cea4ceb9ba9bb5e8f1a8a04d3ba2fa5acd
+ms.openlocfilehash: ac96110e3fe69b4bb69714e18fd0f193208bc244
+ms.sourcegitcommit: 744ad1381e01bbda6a1a7eff4b25e1a337385553
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="azure-for-aws-professionals"></a>AWS プロフェッショナルのための Azure
 
@@ -103,36 +103,45 @@ Azure では、さまざまな方法でリソースを管理できます。
 
 ## <a name="regions-and-zones-high-availability"></a>リージョンとゾーン (高可用性)
 
-AWS では、可用性は可用性ゾーンの概念を軸として展開されています。 Azure では、高可用性ソリューションの構築には障害ドメインと可用性セットが関与しています。 ペアになっているリージョンによって、ディザスター リカバリー機能が追加提供されます。
+障害が及ぼす影響の範囲はさまざまです。 たとえば、ディスク障害などの一部のハードウェア障害が、1 台のホスト コンピューターに影響を及ぼすことがあります。 障害が発生したネットワーク スイッチが、サーバー ラック全体に影響する場合もあります。 データ センターの停電など、データ センター全体を中断させる障害はまれです。 ほとんど発生しませんが、リージョン全体が利用できなくなることもあります。
 
-### <a name="availability-zones-azure-fault-domains-and-availability-sets"></a>可用性ゾーン、Azure 障害ドメイン、および可用性セット
+アプリケーションの回復性を実現するための 1 つの手段として、冗長性があります。 ただし、この冗長性は、アプリケーションの設計時に計画しなければなりません。 また、必要な冗長性のレベルはビジネス要件によって異なります。リージョン障害に備えるために、すべてのアプリケーションにリージョン間での冗長性が必要だとは限りません。 一般的に、冗長性と信頼性を高めると、コストと複雑さが増すというトレードオフがあります。  
 
-AWS では、リージョンは、2 つ以上の可用性ゾーンに分割されます。 可用性ゾーンは、地理的地域内に物理的に分離されたデータ センターに対応します。
-複数の可用性ゾーンにアプリケーション サーバーをデプロイすれば、1 つのゾーンに影響を与えるハードウェアまたは接続の停止が、他のゾーンでホストされているサーバーに影響を与えることはありません。
+AWS では、リージョンは、2 つ以上の可用性ゾーンに分割されます。 可用性ゾーンは、地理的地域内に物理的に分離されたデータ センターに対応します。 Azure には、**可用性セット**、**可用性ゾーン**、**ペアのリージョン**など、あらゆる障害レベルでアプリケーションの冗長性を確保するための機能が複数用意されています。 
 
-Azure では、[障害ドメイン](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-manage-availability/)によって、物理的な電源とネットワーク スイッチを共有する VM グループが定義されます。
-[可用性セット](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-manage-availability/)を使用して、複数の障害ドメインに VM を分散します。 インスタンスが同じ可用性セットに割り当てられた場合、Azure はそれらを複数の障害ドメインに均等に分散します。 ある障害ドメインで電源障害やネットワークの停止が発生した場合でも、少なくともいくつかの VM が別の障害ドメイン内にあるため、停止によって影響を受けることはありません。
+![](../resiliency/images/redundancy.svg)
 
-![AWS の可用性ゾーンと Azure の障害ドメインと可用性セットの比較](./images/zone-fault-domains.png "AWS の可用性ゾーンと Azure の障害ドメインと可用性セットの比較")
-<br/>*AWS の可用性ゾーンと Azure の障害ドメインと可用性セットの比較*
-<br/><br/>
+各オプションを以下の表に示します。
 
-アプリケーション内のインスタンスのロール別に可用性セットを編成して、各ロールで 1 つのインスタンスが操作可能であることを保証する必要があります。 たとえば、標準的な 3 層構造の Web アプリケーションでは、フロント エンド、アプリケーション、およびデータのインスタンスに個別の可用性セットを作成します。
+| &nbsp; | 可用性セット | 可用性ゾーン | ペアのリージョン |
+|--------|------------------|-------------------|---------------|
+| 障害の範囲 | ラック | データセンター | リージョン |
+| 要求のルーティング | Load Balancer | クロスゾーン ロード バランサー | Traffic Manager |
+| ネットワーク待ち時間 | 非常に低い | 低 | 中～高 |
+| 仮想ネットワーク  | VNet | VNet | リージョン間 VNet ピアリング (プレビュー) |
+
+### <a name="availability-sets"></a>可用性セット 
+
+ディスクやネットワーク スイッチの障害など、ローカライズされたハードウェアの障害から保護するには、可用性セットに 2 つ以上の VM をデプロイします。 可用性セットは、電源とネットワーク スイッチを共有する 2 つ以上の "*障害ドメイン*" で構成されます。 可用性セットの VM は複数の障害ドメインに分散されるため、ある障害ドメインがハードウェア障害の影響を受けた場合は、ネットワーク トラフィックを他の障害ドメインの VM にルーティングできます。 可用性セットの詳細については、「[Azure での Windows 仮想マシンの可用性の管理](/azure/virtual-machines/windows/manage-availability)」を参照してください。
+
+VM インスタンスが可用性セットに追加されると、それらには[更新ドメイン](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-manage-availability/)も割り当てられます。 更新ドメインは、計画済みメンテナンス イベントが同時に設定される VM グループです。 複数の更新ドメインに VM を分散させることで、予定された更新と修正イベントが特定の時点でこれらの VM のサブセットのみに作用することが保証されます。
+
+アプリケーション内のインスタンスのロール別に可用性セットを編成して、各ロールで 1 つのインスタンスが操作可能であることを保証する必要があります。 たとえば、3 層構造の Web アプリケーションでは、フロント エンド層、アプリケーション層、およびデータ層に個別の可用性セットを作成します。
 
 ![各アプリケーション ロール用の Azure 可用性セット](./images/three-tier-example.png "各アプリケーション ロール用の Azure 可用性セット")
-<br/>*各アプリケーション ロール用の Azure 可用性セット*
-<br/><br/>
 
-VM インスタンスが可用性セットに追加されると、それらには[更新ドメイン](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-manage-availability/)も割り当てられます。
-更新ドメインは、計画済みメンテナンス イベントが同時に設定される VM グループです。 複数の更新ドメインに VM を分散させることで、予定された更新と修正イベントが特定の時点でこれらの VM のサブセットのみに作用することが保証されます。
+### <a name="availability-zones-preview"></a>可用性ゾーン (プレビュー)
+
+[可用性ゾーン](/azure/availability-zones/az-overview)とは、Azure リージョン内の物理的に独立したゾーンのことです。 可用性ゾーンはそれぞれ異なる電源、ネットワーク、および冷却装置を持ちます。 可用性ゾーンに VM をデプロイすると、データセンター全体の障害からアプリケーションを保護するのに役立ちます。 
 
 ### <a name="paired-regions"></a>ペアになっているリージョン
 
-Azure では、[ペアになっているリージョン](https://azure.microsoft.com/documentation/articles/best-practices-availability-paired-regions/)を使用して、2 つの定義済みの地理的地域間の冗長性をサポートします。これにより、停止が 1 つの Azure リージョン全体に影響を与える場合でも、ソリューションを引き続き使用できることが保証されます。
+リージョンの障害からアプリケーションを保護するために、複数のリージョンにアプリケーションをデプロイし、[Azure Traffic Manager][traffic-manager] を使用してインターネット トラフィックを異なるリージョンに分散できます。 各 Azure リージョンは別のリージョンとペアになります。 これが[リージョン ペア][paired-regions]になります。 ブラジル南部を除き、リージョン ペアは、税および法の執行を目的としたデータ常駐要件を満たすために同じ地理的場所に配置されます。
 
-AWS の可用性ゾーン (物理的に独立しているが、比較的近接する地理的地域に配置されている場合があるデータセンター) とは異なり、ペアになっているリージョンは、通常は少なくとも 300 マイル離れています。 その目的は、大規模災害がペアになっているリージョンの片方のみに影響を与えることを保証することです。 近接するペアにデータベースとステージ サービスのデータを同期するように設定して、プラットフォームの更新プログラムが、ペアになっているリージョンの片方にのみ同時にロールアウトされるように構成できます。
+可用性ゾーン (物理的に独立しているが、比較的近接する地理的地域に配置されている場合があるデータセンター) とは異なり、ペアになっているリージョンは、通常は少なくとも 300 マイル離れています。 その目的は、大規模災害がペアになっているリージョンの片方のみに影響を与えることを保証することです。 近接するペアにデータベースとステージ サービスのデータを同期するように設定して、プラットフォームの更新プログラムが、ペアになっているリージョンの片方にのみ同時にロールアウトされるように構成できます。
 
 Azure の [geo 冗長ストレージ](https://azure.microsoft.com/documentation/articles/storage-redundancy/#geo-redundant-storage)は、適切なペアになっているリージョンに自動的にバックアップされます。 他のすべてのリソースでは、ペアになっているリージョンを使用した完全に冗長なソリューションの作成は、両方のリージョンにソリューションの完全なコピーを作成することを意味します。
+
 
 ### <a name="see-also"></a>関連項目
 
@@ -266,9 +275,9 @@ Azure には、Elastic Load Balancing に相当する 2 つのサービスがあ
 
 AWS の Route 53 では、DNS 名管理と DNS レベルのトラフィック ルーティング サービスと、フェールオーバー サービスの両方を提供します。 Azure では、これは 2 つのサービスで処理されます。
 
--   [Azure DNS](https://azure.microsoft.com/documentation/services/dns/) - ドメインと DNS の管理を提供します。
+-   [Azure DNS](https://azure.microsoft.com/documentation/services/dns/) は、ドメインと DNS の管理を提供します。
 
--   [Traffic Manager](https://azure.microsoft.com/documentation/articles/traffic-manager-overview/) - DNS レベルのトラフィック ルーティング、負荷分散、およびフェールオーバー機能を提供します。
+-   [Traffic Manager][traffic-manager] は、DNS レベルのトラフィック ルーティング、負荷分散、およびフェールオーバー機能を提供します。
 
 #### <a name="direct-connect-and-azure-expressroute"></a>Direct Connect と Azure ExpressRoute
 
@@ -431,3 +440,9 @@ Notification Hubs は SMS または電子メール メッセージの送信を�
 -   [パターンとプラクティス: Azure のガイダンス](https://azure.microsoft.com/documentation/articles/guidance/)
 
 -   [無料オンライン コース: AWS エキスパート向け Microsoft Azure](http://aka.ms/azureforaws)
+
+
+<!-- links -->
+
+[paired-regions]: https://azure.microsoft.com/documentation/articles/best-practices-availability-paired-regions/
+[traffic-manager]: /azure/traffic-manager/
