@@ -4,11 +4,11 @@ description: "Azure リソースの名前付け規則。 仮想マシン、ス�
 author: telmosampaio
 ms.date: 05/18/2017
 pnp.series.title: Best Practices
-ms.openlocfilehash: 20f090c4cc39f96887cd58ffd2a9c7736e77de57
-ms.sourcegitcommit: 1c0465cea4ceb9ba9bb5e8f1a8a04d3ba2fa5acd
+ms.openlocfilehash: 364735dec9658b4d2a9d21330f38c57f6fa694bd
+ms.sourcegitcommit: c9e6d8edb069b8c513de748ce8114c879bad5f49
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="naming-conventions"></a>名前付け規則
 
@@ -109,7 +109,7 @@ Azure のリソースまたはサービスの種類ごとに、名前付けに�
 | エンティティ | Scope (スコープ) | Length | 大文字小文字の区別 | 有効な文字 | 推奨パターン | 例 |
 | --- | --- | --- | --- | --- | --- | --- |
 |Virtual Network (VNet) |リソース グループ |2 ～ 64 |大文字と小文字は区別されない |英数字、ダッシュ、アンダースコア、ピリオド |`<service short name>-vnet` |`profx-vnet` |
-|サブネット |親 VNet |2 ～ 80 |大文字と小文字は区別されない |英数字、アンダー スコア、ダッシュ、ピリオド |`<descriptive context>` |`web` |
+|サブネット |親 VNet |2 ～ 80 |大文字と小文字は区別されない |英数字、ダッシュ、アンダースコア、ピリオド |`<descriptive context>` |`web` |
 |ネットワーク インターフェイス |リソース グループ |1 ～ 80 |大文字と小文字は区別されない |英数字、ダッシュ、アンダースコア、ピリオド |`<vmname>-nic<num>` |`profx-sql1-nic1` |
 |ネットワーク セキュリティ グループ |リソース グループ |1 ～ 80 |大文字と小文字は区別されない |英数字、ダッシュ、アンダースコア、ピリオド |`<service short name>-<context>-nsg` |`profx-app-nsg` |
 |ネットワーク セキュリティ グループの規則 |リソース グループ |1 ～ 80 |大文字と小文字は区別されない |英数字、ダッシュ、アンダースコア、ピリオド |`<descriptive context>` |`sql-allow` |

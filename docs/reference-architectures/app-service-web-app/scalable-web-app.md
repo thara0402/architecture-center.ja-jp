@@ -7,11 +7,11 @@ pnp.series.prev: basic-web-app
 pnp.series.next: multi-region-web-app
 ms.date: 11/23/2016
 cardTitle: Improve scalability
-ms.openlocfilehash: b875b89b87edd5636d90da8b7f8211f965b39937
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 1fdaf6e3695cb814fa4c275a4a273f9fa9a7b71b
+ms.sourcegitcommit: c9e6d8edb069b8c513de748ce8114c879bad5f49
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="improve-scalability-in-a-web-application"></a>Web アプリケーションのスケーラビリティの向上
 
@@ -19,7 +19,7 @@ ms.lasthandoff: 11/14/2017
 
 ![[0]][0]
 
-*このアーキテクチャの [Visio ファイル][visio-download]をダウンロードします。*
+"*このアーキテクチャの [Visio ファイル][visio-download]をダウンロードします。*"
 
 ## <a name="architecture"></a>アーキテクチャ  
 
@@ -34,6 +34,7 @@ ms.lasthandoff: 11/14/2017
 * **データ ストレージ**。 リレーショナル データには [Azure SQL Database][sql-db] を使用します。 リレーショナル データ以外については、[Cosmos DB][documentdb] などの NoSQL ストアを検討してください。
 * **Azure Search**。 [Azure Search][azure-search] を使用して、検索候補、あいまい検索、言語固有の検索などの検索機能を追加します。 通常、Azure Search は別のデータ ストアと組み合わせて使用されます。プライマリ データ ストアに厳密な一貫性が必要な場合は特にそうです。 この方法では、信頼できるデータを他のデータ ストアに格納し、検索インデックスは Azure Search に格納します。 また、Azure Search は、複数のデータ ストアから単一の検索インデックスに統合する場合にも使用できます。  
 * **電子メール/SMS**。 電子メール SMS メッセージを送信する場合は、この機能をアプリケーションに直接組み込むのではなく、SendGrid、Twilio などのサード パーティのサービスを使用します。
+* **Azure DNS**。 [Azure DNS][azure-dns] は、DNS ドメインのホスティング サービスであり、Microsoft Azure インフラストラクチャを使用した名前解決を提供します。 Azure でドメインをホストすることで、その他の Azure サービスと同じ資格情報、API、ツール、課金情報を使用して DNS レコードを管理できます。
 
 ## <a name="recommendations"></a>Recommendations
 
@@ -73,7 +74,7 @@ App Service Mobile Apps の *Easy Tables* または *Easy API* 機能を使用�
 
 詳細については、[Content Delivery Network (CDN) のガイダンス][cdn-guidance]を参照してください。
 
-### <a name="storage"></a>ストレージ
+### <a name="storage"></a>Storage
 多くの場合、最新のアプリケーションは大量のデータを処理しています。 クラウドに合わせてスケーリングするには、適切なストレージの種類を選択することが重要です。 以下に、基本的な推奨事項をいくつか示します。 
 
 | 格納するもの | 例 | 推奨されるストレージ |
@@ -82,7 +83,7 @@ App Service Mobile Apps の *Easy Tables* または *Easy API* 機能を使用�
 | キー/値のペア |ユーザー ID で検索されるユーザー プロファイル データ |Azure テーブル ストレージ |
 | 以降の処理をトリガーするための短いメッセージ |注文要求 |Azure Queue Storage、Service Bus キュー、または Service Bus トピック |
 | 基本的なクエリ実行を必要とする柔軟なスキーマの非リレーショナル データ |製品カタログ |Azure Cosmos DB、MongoDB、Apache CouchDB などのドキュメント データベース |
-| より高度なクエリのサポート、厳格なスキーマ、強力な一貫性を必要とするリレーショナル データ |製品のインベントリ |Azure SQL Database |
+| より高度なクエリのサポート、厳格なスキーマ、強力な一貫性を必要とするリレーショナル データ |製品のインベントリ |の接続文字列 |
 
 ## <a name="scalability-considerations"></a>拡張性に関する考慮事項
 
@@ -103,7 +104,7 @@ Azure App Service の主な利点は、負荷に応じてアプリケーショ�
 Azure Search は、プライマリ データ ストアから複雑なデータ検索を実行するオーバーヘッドを取り除き、負荷を処理できるようにスケーリングできます。 「[Azure Search でクエリとインデックス作成のワークロードに応じてリソース レベルをスケールする][azure-search-scaling]」を参照してください。
 
 ## <a name="security-considerations"></a>セキュリティに関する考慮事項
-このセクションでは、この記事で説明している Azure サービスに固有のセキュリティの考慮事項について説明します。 これはセキュリティ上のベスト プラクティスを網羅した一覧ではありません。 その他のセキュリティの考慮事項については、[Azure App Service でのアプリのセキュリティ保護][app-service-security]に関するページを参照してください。
+このセクションでは、この記事で説明している Azure サービスに固有のセキュリティの考慮事項について説明します。 これはセキュリティ上のベスト プラクティスを網羅した一覧ではありません。 その他のセキュリティの考慮事項については、[Azure App Service でのアプリのセキュリティ保護][app-service-security]に関するページをご覧ください。
 
 ### <a name="cross-origin-resource-sharing-cors"></a>クロスオリジン リソース共有 (CORS)
 Web サイトと Web API を別のアプリとして作成する場合、CORS を有効にしない限り、Web サイトで API に対するクライアント側 AJAX の呼び出しを行うことはできません。
@@ -127,6 +128,7 @@ App Services は CORS のサポートが組み込まれているため、アプ�
 [app-service-api-app]: /azure/app-service-api/app-service-api-apps-why-best-platform
 [app-service-pricing]: https://azure.microsoft.com/pricing/details/app-service/
 [azure-cdn]: https://azure.microsoft.com/services/cdn/
+[azure-dns]: /azure/dns/dns-overview
 [azure-redis]: https://azure.microsoft.com/services/cache/
 [azure-search]: https://azure.microsoft.com/documentation/services/search/
 [azure-search-scaling]: /azure/search/search-capacity-planning

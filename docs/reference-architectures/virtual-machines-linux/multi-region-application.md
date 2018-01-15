@@ -5,11 +5,11 @@ author: MikeWasson
 ms.date: 11/22/2016
 pnp.series.title: Linux VM workloads
 pnp.series.prev: n-tier
-ms.openlocfilehash: 3b68f6fc79ba4b29e41ba2b04537b834bb8859b0
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 7d720a004d21edbffc0ddeba54e291aa817550e0
+ms.sourcegitcommit: c9e6d8edb069b8c513de748ce8114c879bad5f49
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="run-linux-vms-in-multiple-regions-for-high-availability"></a>高可用性を得るために複数のリージョンで Linux VM を実行する
 
@@ -17,19 +17,20 @@ ms.lasthandoff: 11/14/2017
 
 ![[0]][0]
 
-*このアーキテクチャの [Visio ファイル][visio-download]をダウンロードします。*
+"*このアーキテクチャの [Visio ファイル][visio-download]をダウンロードします。*"
 
 ## <a name="architecture"></a>アーキテクチャ 
 
 このアーキテクチャは、「[Run Windows VMs for an N-tier application](n-tier.md)」(N 層アプリケーションでの Windows VM の実行) に示されているアーキテクチャの上に構築されています。 
 
 * **プライマリ リージョンとセカンダリ リージョン**。 2 つのリージョンを使用して高可用性を実現します。 1 つはプライマリ リージョンであり、他方のリージョンはフェールオーバー用です。
+* **Azure DNS**。 [Azure DNS][azure-dns] は、DNS ドメインのホスティング サービスであり、Microsoft Azure インフラストラクチャを使用した名前解決を提供します。 Azure でドメインをホストすることで、その他の Azure サービスと同じ資格情報、API、ツール、課金情報を使用して DNS レコードを管理できます。
 * **Azure Traffic Manager**。 [Traffic Manager][traffic-manager] は、着信要求をいずれかのリージョンにルーティングします。 通常の運用中は、プライマリ リージョンに要求をルーティングします。 そのリージョンが使用できなくなった場合、Traffic Manager はセカンダリ リージョンへのフェールオーバーを実行します。 詳細については、「[Traffic Manager の構成](#traffic-manager-configuration)」を参照してください。
 * **リソース グループ**。 プライマリ リージョン、セカンダリ リージョン、および Traffic Manager 用の個別の[リソース グループ][resource groups]を作成します。 これにより、各リージョンをリソースの 1 つのコレクションとして柔軟に管理できます。 たとえば、片方のリージョンの再デプロイを、他方のリージョンをダウンさせずに実行できます。 [リソース グループをリンク][resource-group-links]して、アプリケーション用のすべてのリソースを一覧表示するクエリを実行できるようにします。
 * **VNets**。 リージョンごとに個別の VNet を作成します。 アドレス空間が重複していないことを確認してください。
 * **Apache Cassandra**。 高可用性を得るために、Azure リージョンのデータセンターに Cassandra をデプロイします。 各リージョンのノードは、リージョン内の回復性を高めるために、障害ドメインとアップグレード ドメインを持つラック認識モードで構成されます。
 
-## <a name="recommendations"></a>推奨事項
+## <a name="recommendations"></a>Recommendations
 
 マルチリージョン アーキテクチャは、単一のリージョンにデプロイするよりも高い可用性を提供できます。 地域的な停止がプライマリ リージョンに影響する場合は、[Traffic Manager][traffic-manager] を使用して、セカンダリ リージョンにフェールオーバーできます。 このアーキテクチャは、アプリケーションの個々のサブシステムが失敗した場合にも役立ちます。
 
@@ -128,7 +129,7 @@ Cassandra クラスターのために検討するフェールオーバー シナ
 
 <!-- Links -->
 [hybrid-vpn]: ../hybrid-networking/vpn.md
-
+[azure-dns]: /azure/dns/dns-overview
 [cassandra-in-azure]: https://academy.datastax.com/resources/deployment-guide-azure
 [cassandra-consistency]: http://docs.datastax.com/en/cassandra/2.0/cassandra/dml/dml_config_consistency_c.html
 [cassandra-replication]: http://www.planetcassandra.org/data-replication-in-nosql-databases-explained/

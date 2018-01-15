@@ -6,19 +6,19 @@ ms.date: 11/22/2016
 pnp.series.title: Windows VM workloads
 pnp.series.next: multi-region-application
 pnp.series.prev: multi-vm
-ms.openlocfilehash: e25d10d661ac4759f209bd27384303dee2ee454e
-ms.sourcegitcommit: 583e54a1047daa708a9b812caafb646af4d7607b
+ms.openlocfilehash: 0654239a5bbd966a2aa776415b7f15ae723ffd63
+ms.sourcegitcommit: c9e6d8edb069b8c513de748ce8114c879bad5f49
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="run-windows-vms-for-an-n-tier-application"></a>n 層アプリケーションの Windows VM を実行する
 
-この参照アーキテクチャでは、N 層アプリケーションの Windows 仮想マシン (VM) を実行するための一連の実証済みのプラクティスが示されます。 [**以下のソリューションをデプロイします**。](#deploy-the-solution) 
+この参照アーキテクチャでは、N 層アプリケーションの Windows 仮想マシン (VM) を実行するための一連の実証済みのプラクティスが示されます。 [**こちらのソリューションをデプロイしてください**。](#deploy-the-solution) 
 
 ![[0]][0]
 
-*このアーキテクチャの [Visio ファイル][visio-download]をダウンロードします。*
+"*このアーキテクチャの [Visio ファイル][visio-download]をダウンロードします。*"
 
 ## <a name="architecture"></a>アーキテクチャ 
 
@@ -32,6 +32,7 @@ N 層アーキテクチャを実装する方法は多数あります。 図は�
 * **NSG。** [ネットワーク セキュリティ グループ][nsg] (NSG) を使用して、VNet 内のネットワーク トラフィックを制限します。 たとえば、ここに示されている 3 層アーキテクチャでは、データベース層は Web フロントエンドからのトラフィックを受信せず、ビジネス層と管理サブネットからのトラフィックのみ受信します。
 * **SQL Server Always On 可用性グループ。** レプリケーションとフェールオーバーを有効にすることで、データ層で高い可用性を提供します。
 * **Active Directory Domain Services (AD DS) サーバー。** Windows Server 2016 に先立って、SQL Server Always On 可用性グループがドメインに参加する必要があります。 これは、可用性グループが Windows Server フェールオーバー クラスター (WSFC) テクノロジに依存するためです。 Windows Server 2016 では Active Directory なしでフェールオーバー クラスターを作成する機能が導入されました。この場合は AD DS サーバーはこのアーキテクチャには不要です。 詳細については、「[What's new in Failover Clustering in Windows Server 2016][wsfc-whats-new]」(Windows Server 2016 でのフェールオーバー クラスタリングの新機能) を参照してください。
+* **Azure DNS**。 [Azure DNS][azure-dns] は、DNS ドメインのホスティング サービスであり、Microsoft Azure インフラストラクチャを使用した名前解決を提供します。 Azure でドメインをホストすることで、その他の Azure サービスと同じ資格情報、API、ツール、課金情報を使用して DNS レコードを管理できます。
 
 ## <a name="recommendations"></a>Recommendations
 
@@ -184,6 +185,7 @@ Azure の構成要素を使用してこのサンプルの参照アーキテク�
 [azure-availability-sets]: /azure/virtual-machines/virtual-machines-windows-manage-availability#configure-each-application-tier-into-separate-availability-sets
 [azure-cli]: /azure/virtual-machines-command-line-tools
 [azure-cli-2]: https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest
+[azure-dns]: /azure/dns/dns-overview
 [azure-key-vault]: https://azure.microsoft.com/services/key-vault
 [要塞ホスト]: https://en.wikipedia.org/wiki/Bastion_host
 [cidr]: https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing

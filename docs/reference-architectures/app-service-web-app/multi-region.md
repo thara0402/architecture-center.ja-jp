@@ -4,11 +4,11 @@ description: "Microsoft Azure で実行される高可用性を備えた Web ア
 author: MikeWasson
 ms.date: 11/23/2016
 cardTitle: Run in multiple regions
-ms.openlocfilehash: 2d7d0c38bef3efc73a7ba2dd61e4190d07deb1b5
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 60caa121d0ce2f1aa2638650229bed8048804c22
+ms.sourcegitcommit: c9e6d8edb069b8c513de748ce8114c879bad5f49
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="run-a-web-application-in-multiple-regions"></a>Web アプリケーションを複数のリージョンで実行する
 [!INCLUDE [header](../../_includes/header.md)]
@@ -17,13 +17,14 @@ ms.lasthandoff: 11/14/2017
 
 ![リファレンス アーキテクチャ: 高可用性を備えた Web アプリケーション](./images/multi-region-web-app-diagram.png) 
 
-*このアーキテクチャの [Visio ファイル][visio-download]をダウンロードします。*
+"*このアーキテクチャの [Visio ファイル][visio-download]をダウンロードします。*"
 
 ## <a name="architecture"></a>アーキテクチャ 
 
 このアーキテクチャは、「[Web アプリケーションのスケーラビリティの向上][guidance-web-apps-scalability]」で説明されているアーキテクチャの上に構築されています。 主な違いは次のとおりです。
 
 * **プライマリ リージョンとセカンダリ リージョン**。 このアーキテクチャでは、2 つのリージョンを使用して、高可用性を実現します。 アプリケーションは、各リージョンにデプロイされます。 通常の運用中は、ネットワーク トラフィックはプライマリ リージョンにルーティングされます。 プライマリ リージョンが使用できなくなった場合、トラフィックはセカンダリ リージョンにルーティングされます。 
+* **Azure DNS**。 [Azure DNS][azure-dns] は、DNS ドメインのホスティング サービスであり、Microsoft Azure インフラストラクチャを使用した名前解決を提供します。 Azure でドメインをホストすることで、その他の Azure サービスと同じ資格情報、API、ツール、課金情報を使用して DNS レコードを管理できます。
 * **Azure Traffic Manager**。 [Traffic Manager][traffic-manager] は、着信要求をプライマリ リージョンにルーティングします。 そのリージョンで実行されているアプリケーションが使用できなくなった場合、Traffic Manager はセカンダリ リージョンへのフェールオーバーを実行します。
 * SQL Database と Cosmos DB の **Geo レプリケーション**。 
 
@@ -38,9 +39,9 @@ ms.lasthandoff: 11/14/2017
 このリファレンス アーキテクチャでは、Traffic Manager を使用してフェールオーバーを行うアクティブ/パッシブ (ホット スタンバイ) に焦点を当てています。 
 
 
-## <a name="recommendations"></a>推奨事項
+## <a name="recommendations"></a>Recommendations
 
-実際の要件は、ここで説明するアーキテクチャとは異なる場合があります。 このセクションに記載されている推奨事項は出発点として利用してください。
+実際の要件は、ここで説明するアーキテクチャとは異なる場合があります。 このセクションに記載されている推奨事項は原案として使用してください。
 
 ### <a name="regional-pairing"></a>リージョンのペアリング
 各 Azure リージョンは、同じ地区内の別のリージョンとペアリングされます。 通常は、同じリージョン ペアからリージョンを選択します (たとえば、米国東部 2 と米国中部)。 これには、次のような利点があります。
@@ -77,7 +78,7 @@ Cosmos DB は、リージョン間の geo レプリケーションをサポー�
 >
 >
 
-### <a name="storage"></a>ストレージ
+### <a name="storage"></a>Storage
 Azure Storage では、[読み取りアクセス geo 冗長ストレージ][ra-grs] (RA-GRS) を使用します。 データは、RA-GRS を使用して、セカンダリ リージョンにレプリケートされます。 セカンダリ リージョンのデータには、別のエンドポイントを介して読み取り専用でアクセスできます。 地域的な停止や災害が発生した場合、Azure Storage チームがセカンダリ リージョンに geo フェールオーバーを実行することを決定する可能性があります。 このフェールオーバーでは、ユーザーのアクションは必要ありません。
 
 Queue Storage では、セカンダリ リージョンにバックアップ キューを作成します。 フェールオーバー中、アプリは、プライマリ リージョンが再び使用可能になるまで、バックアップ キューを使用できます。 したがって、アプリケーションは、引き続き新しい要求を処理できます。
@@ -99,7 +100,7 @@ Traffic Manager は、システムの障害ポイントになる可能性があ�
 ### <a name="sql-database"></a>SQL Database
 「[Azure SQL データベースによるビジネス継続性の概要][sql-rpo]」に、SQL Database の目標復旧時点 (RPO) と推定復旧時間 (ERT) の説明があります。 
 
-### <a name="storage"></a>ストレージ
+### <a name="storage"></a>Storage
 RA-GRS ストレージは永続的なストレージを提供しますが、停止中に何が起こるかを理解しておくことが重要です。
 
 * ストレージが停止した場合、一定時間データに書き込みアクセスできない時間が発生します。 停止中も、セカンダリ エンドポイントから読み取ることができます。
@@ -147,6 +148,7 @@ azure network traffic-manager endpoint set --name <endpoint> --profile-name <pro
 <!-- links -->
 
 [azure-sql-db]: https://azure.microsoft.com/documentation/services/sql-database/
+[azure-dns]: /azure/dns/dns-overview
 [docdb-geo]: /azure/documentdb/documentdb-distribute-data-globally
 [guidance-web-apps-scalability]: ./scalable-web-app.md
 [health-endpoint-monitoring-pattern]: https://msdn.microsoft.com/library/dn589789.aspx

@@ -6,19 +6,19 @@ ms.date: 11/16/2017
 pnp.series.title: Windows VM workloads
 pnp.series.next: n-tier
 pnp.series.prev: single-vm
-ms.openlocfilehash: c9b1e52044d38348ecf1bd29cb24b3c20d1d6a45
-ms.sourcegitcommit: 115db7ee008a0b1f2b0be50a26471050742ddb04
+ms.openlocfilehash: 14e7e023afd7cb7cbe0e8db8e224ba777f6fe863
+ms.sourcegitcommit: c9e6d8edb069b8c513de748ce8114c879bad5f49
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="run-load-balanced-vms-for-scalability-and-availability"></a>スケーラビリティと可用性のために負荷分散された VM を実行する
 
-この参照アーキテクチャは、可用性とスケーラビリティを向上させるために、ロード バランサーの背後にあるスケール セット内で複数の Windows 仮想マシン (VM) を実行するための一連の実証済みの手法を示します。 このアーキテクチャは任意のステートレス ワークロード (Web サーバーなど) に使用でき、N 層アプリケーションをデプロイするための基礎となります。 [**以下のソリューションをデプロイします**。](#deploy-the-solution)
+この参照アーキテクチャは、可用性とスケーラビリティを向上させるために、ロード バランサーの背後にあるスケール セット内で複数の Windows 仮想マシン (VM) を実行するための一連の実証済みの手法を示します。 このアーキテクチャは任意のステートレス ワークロード (Web サーバーなど) に使用でき、N 層アプリケーションをデプロイするための基礎となります。 [**こちらのソリューションをデプロイしてください**。](#deploy-the-solution)
 
 ![[0]][0]
 
-*このアーキテクチャの [Visio ファイル][visio-download]をダウンロードします。*
+"*このアーキテクチャの [Visio ファイル][visio-download]をダウンロードします。*"
 
 ## <a name="architecture"></a>アーキテクチャ
 
@@ -32,6 +32,7 @@ ms.lasthandoff: 11/17/2017
 * **仮想ネットワーク (VNet) とサブネット。** どの Azure VM も、複数のサブネットにセグメント化できる VNet にデプロイされます。
 * **Azure Load Balancer**。 [ロード バランサー][load-balancer]は、受信インターネット要求を各 VM インスタンスに分散します。 
 * **パブリック IP アドレス**。 パブリック IP アドレスは、ロード バランサーがインターネット トラフィックを受信するために必要です。
+* **Azure DNS**。 [Azure DNS][azure-dns] は、DNS ドメインのホスティング サービスであり、Microsoft Azure インフラストラクチャを使用した名前解決を提供します。 Azure でドメインをホストすることで、その他の Azure サービスと同じ資格情報、API、ツール、課金情報を使用して DNS レコードを管理できます。
 * **VM スケール セット**。 [VM スケール セット][vm-scaleset]は、ワークロードをホストするために使用される同一の VM のセットです。 スケール セットにより、VM の数を手動でスケールインまたはスケールアウトしたり、定義済みの規則に基づいて自動的に設定したりできるようになります。
 * **可用性セット**。 [可用性セット][availability-set]には VM が含まれ、VM がより高度な[サービス レベル アグリーメント (SLA)][vm-sla] に対応できるようになります。 より高度な SLA を適用するためには、可用性セットには少なくとも 2 つの VM が含まれる必要があります。 可用性セットはスケール セットの中で暗黙的です。 スケール セットの外で VM を作成する場合は、可用性セットを個別に作成する必要があります。
 * **Managed Disks**。 Azure Managed Disks では、VM ディスクの仮想ハード ディスク (VHD) ファイルが管理されます。 
@@ -45,7 +46,7 @@ ms.lasthandoff: 11/17/2017
 
 可用性とスケーラビリティのための 1 つのオプションは、[仮想マシン スケール セット][vmss]を使用することです。 VM スケール セットを使用して、同一の VM のセットをデプロイして管理できます。 スケール セットでは、パフォーマンス メトリックに基づく自動スケールがサポートされます。 VM の負荷が増えると、追加の VM が自動的にロード バランサーに追加されます。 VM をすばやくスケール アウトしたり、自動スケールしたりする必要がある場合は、スケール セットを検討してください。
 
-既定では、スケール セットでは "オーバープロビジョニング" が使用されます。これは、スケール セットが要求するよりも多くの VM を最初にプロビジョニングし、次に余分な VM を削除するという意味です。 これにより、VM をプロビジョニングするときの全体的な成功率が向上します。 [管理ディスク](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-managed-disks)を使用していない場合は、ストレージ アカウントあたりの過剰プロビジョニングが有効な VM が 20 を超えず、また過剰プロビジョニングが無効な VM が 40 を超えないようにすることをお勧めします。
+既定では、スケール セットでは "オーバープロビジョニング" が使用されます。これは、スケール セットが要求するよりも多くの VM を最初にプロビジョニングし、次に余分な VM を削除するという意味です。 これにより、VM をプロビジョニングするときの全体的な成功率が向上します。 [管理ディスク](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-managed-disks)を使用していない場合は、ストレージ アカウントあたりのオーバープロビジョニングが有効な VM が 20 を超えず、またオーバープロビジョニングが無効な VM が 40 を超えないようにすることをお勧めします。
 
 スケール セットにデプロイされる VM を構成するには、2 つの基本的な方法があります。
 
@@ -91,7 +92,7 @@ VM を同じサブネット内にデプロイします。 VM を直接インタ�
 * *計画済みメンテナンス*は、Microsoft が基本のプラットフォームを更新したときに行われ、VM の再起動を伴う場合もあります。 Azure は、可用性セット内の VM がすべて同時に再起動されないことを保証します。 他の VM が再起動されている間、少なくとも 1 つの VM は継続的に実行されます。
 * *計画外のメンテナンス*は、ハードウェア障害が発生したときに行われます。 Azure では、可用性セット内の VM が複数のサーバー ラックにプロビジョニングされることを保証します。 これにより、ハードウェア障害、ネットワーク停止、電源の瞬停などの影響が小さくなります。
 
-詳細については、「 [Virtual Machines の可用性管理][availability-set]」を参照してください。 また、「[How Do I Configure an Availability Set to Scale VMs (VM をスケール調整するために可用性セットを構成する方法)][availability-set-ch9]」のビデオにも可用性セットの適切な概要が示されています。
+詳細については、「 [Virtual Machines の可用性管理][availability-set]」を参照してください。 また、[VM のスケール調整のために可用性セットを構成する方法][availability-set-ch9]のビデオにも可用性セットの適切な概要が示されています。
 
 > [!WARNING]
 > VM をプロビジョニングするときに、必ず可用性セットを構成してください。 現時点では、VM がプロビジョニングされた後に、Resource Manager VM を可用性セットに追加する方法はありません。
@@ -117,7 +118,7 @@ VM を同じサブネット内にデプロイします。 VM を直接インタ�
 
 ## <a name="deploy-the-solution"></a>ソリューションのデプロイ方法
 
-このアーキテクチャのデプロイについては、[GitHub][github-folder] をご覧ください。 以下がデプロイされます。
+このアーキテクチャのデプロイについては、[GitHub][github-folder] を参照してください。 以下がデプロイされます。
 
   * VM を含む、**Web** という名前の 1 つのサブネットを持つ仮想ネットワーク。
   * Windows Server 2016 Datacenter Edition の最新バージョンを実行する VM を含んだ VM スケール セット。 自動スケールが有効になっています。
@@ -169,6 +170,7 @@ VM を同じサブネット内にデプロイします。 VM を直接インタ�
 [azure-automation]: /azure/automation/automation-intro
 [azure-cli]: /azure/virtual-machines-command-line-tools
 [azure-cli-2]: /azure/install-azure-cli?view=azure-cli-latest
+[azure-dns]: /azure/dns/dns-overview
 [git]: https://github.com/mspnp/reference-architectures/tree/master/virtual-machines/multi-vm
 [github-folder]: https://github.com/mspnp/reference-architectures/tree/master/virtual-machines/multi-vm
 [health-probe-log]: /azure/load-balancer/load-balancer-monitor-log

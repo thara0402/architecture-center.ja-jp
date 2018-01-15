@@ -6,19 +6,19 @@ ms.date: 11/16/2017
 pnp.series.title: Linux VM workloads
 pnp.series.next: n-tier
 pnp.series.prev: single-vm
-ms.openlocfilehash: b1b3c94524d50d05c90b46d26cab54fea8c8061a
-ms.sourcegitcommit: 115db7ee008a0b1f2b0be50a26471050742ddb04
+ms.openlocfilehash: 8f081baa40355b4f02b83c308466df8333d7ad87
+ms.sourcegitcommit: c9e6d8edb069b8c513de748ce8114c879bad5f49
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="run-load-balanced-vms-for-scalability-and-availability"></a>スケーラビリティと可用性のために負荷分散された VM を実行する
 
-この参照アーキテクチャは、可用性とスケーラビリティを向上させるために、ロード バランサーの背後にあるスケール セット内で複数の Linux 仮想マシン (VM) を実行するための一連の実証済みの手法を示します。 このアーキテクチャは任意のステートレス ワークロード (Web サーバーなど) に使用でき、N 層アプリケーションをデプロイするための基礎となります。 [**以下のソリューションをデプロイします**。](#deploy-the-solution)
+この参照アーキテクチャは、可用性とスケーラビリティを向上させるために、ロード バランサーの背後にあるスケール セット内で複数の Linux 仮想マシン (VM) を実行するための一連の実証済みの手法を示します。 このアーキテクチャは任意のステートレス ワークロード (Web サーバーなど) に使用でき、N 層アプリケーションをデプロイするための基礎となります。 [**こちらのソリューションをデプロイしてください**。](#deploy-the-solution)
 
 ![[0]][0]
 
-*このアーキテクチャの [Visio ファイル][visio-download]をダウンロードします。*
+"*このアーキテクチャの [Visio ファイル][visio-download]をダウンロードします。*"
 
 ## <a name="architecture"></a>アーキテクチャ
 
@@ -32,6 +32,7 @@ ms.lasthandoff: 11/17/2017
 * **仮想ネットワーク (VNet) とサブネット。** どの Azure VM も、複数のサブネットにセグメント化できる VNet にデプロイされます。
 * **Azure Load Balancer**。 [ロード バランサー][load-balancer]は、受信インターネット要求を各 VM インスタンスに分散します。 
 * **パブリック IP アドレス**。 パブリック IP アドレスは、ロード バランサーがインターネット トラフィックを受信するために必要です。
+* **Azure DNS**。 [Azure DNS][azure-dns] は、DNS ドメインのホスティング サービスであり、Microsoft Azure インフラストラクチャを使用した名前解決を提供します。 Azure でドメインをホストすることで、その他の Azure サービスと同じ資格情報、API、ツール、課金情報を使用して DNS レコードを管理できます。
 * **VM スケール セット**。 [VM スケール セット][vm-scaleset]は、ワークロードをホストするために使用される同一の VM のセットです。 スケール セットにより、VM の数を手動でスケールインまたはスケールアウトしたり、定義済みの規則に基づいて自動的に設定したりできるようになります。
 * **可用性セット**。 [可用性セット][availability-set]には VM が含まれ、VM がより高度な[サービス レベル アグリーメント (SLA)][vm-sla] に対応できるようになります。 より高度な SLA を適用するためには、可用性セットには少なくとも 2 つの VM が含まれる必要があります。 可用性セットはスケール セットの中で暗黙的です。 スケール セットの外で VM を作成する場合は、可用性セットを個別に作成する必要があります。
 * **Managed Disks**。 Azure Managed Disks では、VM ディスクの仮想ハード ディスク (VHD) ファイルが管理されます。 
@@ -117,7 +118,7 @@ VM を同じサブネット内にデプロイします。 VM を直接インタ�
 
 ## <a name="deploy-the-solution"></a>ソリューションのデプロイ方法
 
-このアーキテクチャのデプロイについては、[GitHub][github-folder] をご覧ください。 以下がデプロイされます。
+このアーキテクチャのデプロイについては、[GitHub][github-folder] を参照してください。 以下がデプロイされます。
 
   * VM を含む、**Web** という名前の 1 つのサブネットを持つ仮想ネットワーク。
   * 最新バージョンの Ubuntu 16.04.3 LTS を実行している VM を含む VM スケール セット。 自動スケールが有効になっています。
@@ -130,7 +131,7 @@ VM を同じサブネット内にデプロイします。 VM を直接インタ�
 
 1. [AzureCAT 参照アーキテクチャ][ref-arch-repo] GitHub リポジトリに ZIP ファイルを複製、フォーク、またはダウンロードします。
 
-2. Azure CLI 2.0 がコンピューターにインストールされていることを確認してください。 CLI のインストール手順については、「[Azure CLI 2.0 のインストール][azure-cli-2]」を参照してください。
+2. Azure CLI 2.0 がコンピューターにインストールされていることを確認してください。 CLI のインストール手順については、「[Azure CLI 2.0 のインストール][azure-cli-2]」をご覧ください。
 
 3. [Azure の構成要素][azbb] npm パッケージをインストールします。
 
@@ -169,6 +170,7 @@ VM を同じサブネット内にデプロイします。 VM を直接インタ�
 [azure-automation]: /azure/automation/automation-intro
 [azure-cli]: /azure/virtual-machines-command-line-tools
 [azure-cli-2]: /azure/install-azure-cli?view=azure-cli-latest
+[azure-dns]: /azure/dns/dns-overview
 [git]: https://github.com/mspnp/reference-architectures/tree/master/virtual-machines/multi-vm
 [github-folder]: https://github.com/mspnp/reference-architectures/tree/master/virtual-machines/multi-vm
 [health-probe-log]: /azure/load-balancer/load-balancer-monitor-log
