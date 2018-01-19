@@ -3,15 +3,15 @@ title: "破損対策レイヤー パターン"
 description: "最新アプリケーションとレガシ システムの間にファサード、すなわちアダプター レイヤーを実装します。"
 author: dragon119
 ms.date: 06/23/2017
-ms.openlocfilehash: 590d5f3676c92f5f18661360106e2b2fdd4efbe1
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: e41f080abbef772596ee7f8b10ad72bb03a3b829
+ms.sourcegitcommit: c93f1b210b3deff17cc969fb66133bc6399cfd10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="anti-corruption-layer-pattern"></a>破損対策レイヤー パターン
 
-最新アプリケーションと、そのアプリケーションが依存するレガシ システムの間にファサード、すなわちアダプター レイヤーを実装します。 このレイヤーにより、最新アプリケーションとレガシ システムの間の要求が変換されます。 このパターンを使用して、アプリケーションの設計が、レガシ システムへの依存関係で制限されないようにします。
+最新アプリケーションと、そのアプリケーションが依存するレガシ システムの間にファサード、すなわちアダプター レイヤーを実装します。 このレイヤーにより、最新アプリケーションとレガシ システムの間の要求が変換されます。 このパターンを使用して、アプリケーションの設計が、レガシ システムへの依存関係で制限されないようにします。 このパターンは、Eric Evans が『*Domain-Driven Design*』で初めて説明しました。
 
 ## <a name="context-and-problem"></a>コンテキストと問題
 

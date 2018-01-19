@@ -2,15 +2,15 @@
 title: "マイクロサービス アーキテクチャ スタイル"
 description: "Azure のマイクロサービス アーキテクチャのメリット、課題、ベスト プラクティスを説明します"
 author: MikeWasson
-ms.openlocfilehash: 6426b3342a319832baf5eec35e9c783ba9348bdd
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 08fd39b6cf0b3c88af654b27e21b2d7dd9fb19b1
+ms.sourcegitcommit: 7764a804f000180c37a4f8dbab946b525f784f58
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="microservices-architecture-style"></a>マイクロサービス アーキテクチャ スタイル
 
-マイクロサービス アーキテクチャは、小さな自律サービスのコレクションで構成されています。 各サービスは自己完結型であり、1 つのビジネス機能を実装している必要があります。 
+マイクロサービス アーキテクチャは、小さな自律サービスのコレクションで構成されています。 各サービスは自己完結型であり、1 つのビジネス機能を実装している必要があります。 Azure でのマイクロサービス アーキテクチャの構築に関する詳細なガイダンスいついては、「[Azure でのマイクロサービスの設計、構築、および操作](../../microservices/index.md)」をご覧ください。
 
 ![](./images/microservices-logical.svg)
  
@@ -111,7 +111,7 @@ API ゲートウェイを使用することには次のようなメリットが�
 
 ## <a name="microservices-using-azure-container-service"></a>Azure Container Service を使用したマイクロサービス 
 
-Azure Container Service を使用して、Docker クラスターを構成およびプロビジョニングできます。 Azure Container Service では、Kubernetes、DC/OS、Docker Swarm などのよく利用されているコンテナー オーケストレーターがサポートされています。
+[Azure Container Service](/azure/container-service/) を使用して、Docker クラスターを構成およびプロビジョニングできます。 Azure Container Service では、Kubernetes、DC/OS、Docker Swarm などのよく利用されているコンテナー オーケストレーターがサポートされています。
 
 ![](./images/microservices-acs.png)
  
@@ -133,7 +133,7 @@ Azure Container Service を使用して、Docker クラスターを構成およ�
 
 ## <a name="microservices-using-azure-service-fabric"></a>Azure Service Fabric を使用したマイクロサービス
 
-次の図は、Azure Service Fabric を使用したマイクロサービス アーキテクチャを示しています。
+次の図は、[Azure Service Fabric](/azure/service-fabric/) を使用したマイクロサービス アーキテクチャを示しています。
 
 ![](./images/service-fabric.png)
 

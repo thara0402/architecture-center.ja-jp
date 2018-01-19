@@ -3,11 +3,11 @@ title: "マイクロサービス境界の識別"
 description: "マイクロサービス境界の識別"
 author: MikeWasson
 ms.date: 12/08/2017
-ms.openlocfilehash: 046749191bd565813218b3834cb4674c4c5100e2
-ms.sourcegitcommit: a8453c4bc7c870fa1a12bb3c02e3b310db87530c
+ms.openlocfilehash: e4f11da9f970724c55ad99824f808a10c4558971
+ms.sourcegitcommit: 744ad1381e01bbda6a1a7eff4b25e1a337385553
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/29/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="designing-microservices-identifying-microservice-boundaries"></a>マイクロサービスの設計: マイクロサービス境界の識別
 
@@ -116,7 +116,7 @@ ms.lasthandoff: 12/29/2017
 
 **移植性**。 ここで示したすべてのオーケストレーター (Kubernetes、DC/OS、Docker Swarm、Service Fabric) は、オンプレミスで、または複数のパブリック クラウドで実行できます。 
 
-**アプリケーションの統合**。 サーバーレス アーキテクチャを使って複雑なアプリケーションを構築するのは、困難な場合があります。 Azure での 1 つのオプションは、[Azure Logic Apps](/azure/logic-apps/) を使って Azure Functions のセットを調整することです。 このアプローチの例については、「[Azure Logic Apps と統合される関数を作成する](/azure/azure-functions/functions-twitter-email.)」をご覧ください。
+**アプリケーションの統合**。 サーバーレス アーキテクチャを使って複雑なアプリケーションを構築するのは、困難な場合があります。 Azure での 1 つのオプションは、[Azure Logic Apps](/azure/logic-apps/) を使って Azure Functions のセットを調整することです。 このアプローチの例については、「[Azure Logic Apps と統合される関数を作成する](/azure/azure-functions/functions-twitter-email)」をご覧ください。
 
 **コスト**。 オーケストレーターでは、クラスターで実行している VM の料金がかかります。 サーバーレス アプリケーションでは、実際に消費したコンピューティング リソースについてだけ課金されます。 どちらの場合も、記憶域、データベース、メッセージング サービスなど、追加サービスのコストを考慮する必要があります。
 

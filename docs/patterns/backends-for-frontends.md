@@ -3,15 +3,15 @@ title: "フロント エンド用バックエンドのパターン"
 description: "特定のフロント エンド アプリケーションやインターフェイスによって使用される個別のバックエンド サービスを作成します。"
 author: dragon119
 ms.date: 06/23/2017
-ms.openlocfilehash: dd71b65e99ae21dff1443f5728ae5f0f54f8122c
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 87acd39d021c5e44594a2e7c9574e4dd363ce83b
+ms.sourcegitcommit: c93f1b210b3deff17cc969fb66133bc6399cfd10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="backends-for-frontends-pattern"></a>フロント エンド用バックエンドのパターン
 
-特定のフロント エンド アプリケーションやインターフェイスによって使用される個別のバックエンド サービスを作成します。 このパターンは、複数のインターフェイスのために 1 つのバックエンドをカスタマイズすることが非効率な場合に役立ちます。
+特定のフロント エンド アプリケーションやインターフェイスによって使用される個別のバックエンド サービスを作成します。 このパターンは、複数のインターフェイスのために 1 つのバックエンドをカスタマイズすることが非効率な場合に役立ちます。 このパターンは、Sam Newman が初めて説明しました。
 
 ## <a name="context-and-problem"></a>コンテキストと問題
 
@@ -32,6 +32,8 @@ ms.lasthandoff: 11/14/2017
 ![](./_images/backend-for-frontend-example.png) 
 
 各バックエンドが 1 つのインターフェイスに対応するので、バックエンドをそのインターフェイス用に最適化できます。 その結果、すべてのインターフェイスの要件を満たそうとする汎用バックエンドよりも、サイズが小さくなり、複雑さが軽減され、多くの場合は処理速度も速くなります。 各インターフェイス チームは、専用のバックエンドを自律的に制御できるようになり、中央のバックエンド開発チームに依存しなくて済むようになります。 その結果インターフェイス チームは、言語の選択、リリース間隔、ワークロードの優先度、およびバックエンドでの機能統合を、柔軟に決められるようになります。
+
+詳細については、「[Pattern: Backends For Frontends (パターン: フロントエンド用バックエンド)](http://samnewman.io/patterns/architectural/bff/)」をご覧ください。
 
 ## <a name="issues-and-considerations"></a>問題と注意事項
 

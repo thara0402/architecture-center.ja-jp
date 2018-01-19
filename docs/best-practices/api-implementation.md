@@ -4,18 +4,17 @@ description: "API の実装方法に関するガイダンス。"
 author: dragon119
 ms.date: 07/13/2016
 pnp.series.title: Best Practices
-ms.openlocfilehash: b4d197719380bf55033942b3ebcad384170d950d
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: cc28864de36afdeed2f8a7155a307e312c3a398e
+ms.sourcegitcommit: c93f1b210b3deff17cc969fb66133bc6399cfd10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="api-implementation"></a>API 実装
-[!INCLUDE [header](../_includes/header.md)]
 
 入念に設計された REST ベースの Web API では、リソース、関係、およびクライアント アプリケーションにアクセスできるナビゲーション スキームを定義します。 Web API を実装し、デプロイするときは、データの論理構造ではなく、Web API をホストする環境の物理的な要件と、Web API を構成する方法を検討する必要があります。 このガイダンスでは、Web API を実装し、Web API を公開してクライアント アプリケーションで使用できるようにするためのベスト プラクティスに重点を置いて説明します。 Web API の設計の詳細については、[API 設計](/azure/architecture/best-practices/api-design)をご覧ください。
 
-## <a name="considerations-for-processing-requests"></a>要求の処理に関する考慮事項
+## <a name="processing-requests"></a>要求の処理
 
 要求を処理するコードを実装する場合は、以下の点を考慮してください。
 
@@ -126,7 +125,7 @@ HTTP 応答の例に示す HATEOAS リンクは、クライアント アプリ�
 * 顧客のすべての注文を検索するために URI `http://adventure-works.com/customers/2/orders` に HTTP GET 要求を送信します。 データは、XML または JSON として返すことができます。
 * この顧客の新規の注文を作成するために URI `http://adventure-works.com/customers/2/orders` に HTTP PUT 要求を送信します。 データは、要求メッセージで x-www-form-urlencoded 形式で提供する必要があります。
 
-## <a name="considerations-for-handling-exceptions"></a>例外の処理に関する考慮事項
+## <a name="handling-exceptions"></a>例外の処理
 
 操作によりキャッチされない例外がスローされた場合は、次の点を検討してください。
 
@@ -190,7 +189,7 @@ public IHttpActionResult DeleteCustomer(int id)
 
 HTTP プロトコルでは、クライアント アプリケーションが原因で発生したエラー (HTTP 4xx 状態コード) と、サーバーでの障害が原因で発生したエラー (HTTP 5xx 状態コード) を区別します。 すべてのエラー応答メッセージでこの規約を遵守していることを確認します。
 
-## <a name="considerations-for-optimizing-client-side-data-access"></a>クライアント側のデータ アクセスの最適化に関する考慮事項
+## <a name="optimizing-client-side-data-access"></a>クライアント側のデータ アクセスの最適化
 Web サーバーとクライアント アプリケーションが関与する環境など、分散環境で懸念の主な原因の 1 つとなっているのがネットワークです。 特に、クライアント アプリケーションが要求の送信やデータの受信を頻繁に行う場合、これがかなりのボトルネックになる可能性があります。 そのため、ネットワーク上を流れるトラフィックの量を最小限に抑えることを目標にします。 データを取得して保持するコードを実装するときには、以下の点を考慮してください。
 
 ### <a name="support-client-side-caching"></a>クライアント側のキャッシュをサポートする
@@ -541,7 +540,7 @@ public class OrdersController : ApiController
 >
 >
 
-## <a name="considerations-for-handling-large-requests-and-responses"></a>大規模な要求と応答の処理に関する考慮事項
+## <a name="handling-large-requests-and-responses"></a>サイズの大きい要求と応答の処理
 クライアント アプリケーションは、サイズが数メガバイト (以上) になる可能性のあるデータを送受信する要求を発行することが必要な場合があります。 この量のデータが送信されるまで待機すると、クライアント アプリケーションが応答しなくなる可能性があります。 大量のデータを含む要求を処理する必要がある場合は、以下の点を考慮してください。
 
 ### <a name="optimize-requests-and-responses-that-involve-large-objects"></a>ラージ オブジェクトを伴う要求と応答を最適化する
@@ -608,7 +607,7 @@ public class OrdersController : ApiController
 >
 >
 
-## <a name="considerations-for-maintaining-responsiveness-scalability-and-availability"></a>応答性、スケーラビリティ、可用性の維持に関する考慮事項
+## <a name="maintaining-responsiveness-scalability-and-availability"></a>応答性、スケーラビリティ、可用性の維持
 世界のあらゆる場所で実行される多数のクライアント アプリケーションが同じ Web API を利用する場合があります。 負荷が大きい状況で応答性を維持し、大きく変化するワークロードをサポートするスケーラビリティを備え、業務に不可欠な操作を実行するクライアントの可用性を保証するように Web API が実装されていることが重要です。 これらの要件を満たす方法を決めるときには、以下の点を考慮してください。
 
 ### <a name="provide-asynchronous-support-for-long-running-requests"></a>実行時間の長い要求の非同期サポートを提供する
@@ -652,7 +651,7 @@ HTTP プロトコルは、永続的な HTTP 接続をサポートしています
 >
 >
 
-## <a name="considerations-for-publishing-and-managing-a-web-api"></a>Web API の公開と管理に関する考慮事項
+## <a name="publishing-and-managing-a-web-api"></a>Web API の公開と管理
 Web API をクライアント アプリケーションで使用できるようにするには、Web API をホスト環境にデプロイする必要があります。 通常、この環境は Web サーバーですが、他の種類のホスト プロセスの場合もあります。 Web API を公開するときには、以下の点を考慮してください。
 
 * すべての要求を認証および承認する必要があり、適切なレベルのアクセス制御を適用する必要があります。
@@ -668,7 +667,7 @@ Web API をクライアント アプリケーションで使用できるよう�
 * さまざまなテクノロジを使用して構築されたクライアントに対応するために、メッセージと通信プロトコルを変換する。
 * Web API をホストするサーバーの負荷を軽減するために、要求と応答をキャッシュする。
 
-## <a name="considerations-for-testing-a-web-api"></a>Web API のテストに関する考慮事項
+## <a name="testing-a-web-api"></a>Web API のテスト
 ソフトウェアの他の部分と同様に、Web API を徹底的にテストする必要があります。 追加の要件がある Web API の本質的な機能が正しく機能することを検証する単体テストを作成することを検討してください。 次の側面には特に注意が必要です。
 
 * すべてのルートをテストして、正しい操作が呼び出されていることを確認します。 HTTP 状態コード 405 (Method Not Allowed) は、ルートとそのルートにディスパッチできる HTTP メソッド (GET、POST、PUT、DELETE) の不一致を示している場合があるため、この状態コードが予期せず返されたときは特に注意してください。
@@ -684,7 +683,7 @@ Web API をクライアント アプリケーションで使用できるよう�
 * 要求メッセージと応答メッセージが適切な形式であることを確認します。 たとえば、HTTP POST 要求に x-www-form-urlencoded 形式で新しいリソースのデータが含まれている場合は、対応する操作でデータが正しく解析されていること、リソースが作成されていること、正しい Location ヘッダーなど、新しいリソースの詳細を含む応答が返されていることを確認します。
 * 応答メッセージのすべてのリンクと URI を確認します。 たとえば、HTTP POST メッセージでは、新しく作成されたリソースの URI を返す必要があります。 すべての HATEOAS リンクが有効である必要があります。
 
-* 各操作が入力のさまざまな組み合わせに対して正しい状態コードを返していることを確認します。 For example:
+* 各操作が入力のさまざまな組み合わせに対して正しい状態コードを返していることを確認します。 例: 
 
   * クエリが成功した場合は、状態コード 200 (OK) を返します。
   * リソースが見つからない場合は、HTTP 状態コード 404 (Not Found) を返します。
@@ -699,8 +698,9 @@ Web API をクライアント アプリケーションで使用できるよう�
 
 パフォーマンス テストを作成して実行し、Web API が強制下で十分に機能していることを確認します。 Visual Studio Ultimate を使用して、Web パフォーマンスおよびロード テスト プロジェクトを作成できます。 詳細については、[リリース前のアプリケーションでのパフォーマンス テストの実行](https://msdn.microsoft.com/library/dn250793.aspx)に関するページをご覧ください。
 
-## <a name="publish-and-manage-a-web-api-using-the-azure-api-management-service"></a>Microsoft Azure API Management サービスを使用した Web API の公開と管理
-Azure には、Web API の公開と管理に使用できる [API Management サービス](https://azure.microsoft.com/documentation/services/api-management/) が用意されています。 この機能を使用して、1 つ以上の Web API のファサードとして機能するサービスを生成できます。 このサービスは、Microsoft Azure 管理ポータルを使用して作成および構成できるスケーラブルな Web サービスです。 次のように、このサービスを使用して Web API を公開および管理できます。
+## <a name="using-azure-api-management"></a>Azure API Management の使用 
+
+Azure で、Web API の公開と管理に [Azue API Management](https://azure.microsoft.com/documentation/services/api-management/) を使用することを検討します。 この機能を使用して、1 つ以上の Web API のファサードとして機能するサービスを生成できます。 このサービスは、Microsoft Azure 管理ポータルを使用して作成および構成できるスケーラブルな Web サービスです。 次のように、このサービスを使用して Web API を公開および管理できます。
 
 1. Web サイト、Azure クラウド サービス、または Azure 仮想マシンに Web API をデプロイします。
 2. API Management サービスを Web API に接続します。 管理 API の URL に送信された要求は、Web API の URI にマップされます。 1 つの API Management サービスで、複数の Web API に要求をルーティングできます。 これにより、複数の Web API を 1 つの管理サービスに集約できます。 同様に、さまざまなアプリケーションが使用できる機能を制限したり、パーティションに分割したりする必要がある場合は、複数の API Management サービスから 1 つの Web API を参照できます。
@@ -729,7 +729,7 @@ Azure には、Web API の公開と管理に使用できる [API Management サ�
 > この構造では、Web サイトにカスタム DNS 名を使用している場合に、各 Web サイトの適切な CNAME レコードを、Azure Traffic Manager の Web サイトの DNS 名を指すように構成する必要があります。
 >
 
-## <a name="support-developers-building-client-applications"></a>クライアント アプリケーションを構築する開発者の支援
+## <a name="supporting-client-side-developers"></a>クライアント側の開発者のサポート
 一般に、クライアント アプリケーションを構築する開発者は、Web API へのアクセス方法に関する情報と、パラメーター、データ型、戻り値の型、Web サービスとクライアント アプリケーション間のさまざまな要求と応答を示すリターン コードに関するドキュメントを必要としています。
 
 ### <a name="document-the-rest-operations-for-a-web-api"></a>Web API の REST 操作に関するドキュメント
