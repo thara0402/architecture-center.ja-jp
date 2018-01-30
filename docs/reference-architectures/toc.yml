@@ -12,6 +12,19 @@
           href: app-service-web-app/scalable-web-app.md
         - name: 複数リージョンのデプロイ
           href: app-service-web-app/multi-region.md
+    - name: ハイブリッド ネットワーク
+      href: hybrid-networking/index.md
+      items:
+        - name: どれを選択すべきか
+          href: hybrid-networking/considerations.md
+        - name: VPN
+          href: hybrid-networking/vpn.md
+        - name: ExpressRoute
+          href: hybrid-networking/expressroute.md
+        - name: VPN のフェールオーバーを伴う ExpressRoute
+          href: hybrid-networking/expressroute-vpn-failover.md
+        - name: ハブスポーク トポロジ
+          href: hybrid-networking/hub-spoke.md
     - name: ID 管理
       href: identity/index.md
       items:
@@ -23,21 +36,8 @@
           href: identity/adds-extend-domain.md
         - name: Azure での AD DS フォレストの作成
           href: identity/adds-forest.md
-        - name: AD FS の Azure への拡張
+        - name: AD FS を Azure に拡張する
           href: identity/adfs.md
-    - name: ハイブリッド ネットワーク
-      href: hybrid-networking/index.md
-      items:
-        - name: どれを選択すべきか
-          href: hybrid-networking/considerations.md
-        - name: VPN
-          href: hybrid-networking/vpn.md
-        - name: ExpressRoute
-          href: hybrid-networking/expressroute.md
-        - name: VPN フェールオーバーを含む ExpressRoute
-          href: hybrid-networking/expressroute-vpn-failover.md
-        - name: ハブスポーク トポロジ
-          href: hybrid-networking/hub-spoke.md
     - name: ネットワーク DMZ
       href: dmz/index.md
       items:
@@ -69,6 +69,8 @@
           href: virtual-machines-windows/n-tier.md
         - name: 複数地域のアプリケーション
           href: virtual-machines-windows/multi-region-application.md
+    - name: Jenkins サーバー
+      href: jenkins/index.md
     - name: SAP NetWeaver および SAP HANA
       href: sap/index.md
     - name: SharePoint Server 2016
