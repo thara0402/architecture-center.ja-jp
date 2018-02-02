@@ -3,11 +3,11 @@ title: "すべてを冗長化"
 description: "冗長性をアプリケーションに組み込むことで、単一障害点をなくします。"
 author: MikeWasson
 layout: LandingPage
-ms.openlocfilehash: 89a1e6d2d3b1217ab07c9a99a4c4fb3e8cd2cd29
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 05ccf78c2cfbcd4e2d26200e70463d388d54f671
+ms.sourcegitcommit: a7aae13569e165d4e768ce0aaaac154ba612934f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="make-all-things-redundant"></a>すべてを冗長化
 
@@ -15,7 +15,7 @@ ms.lasthandoff: 11/14/2017
 
 耐障害性のあるアプリケーションでは障害が回避されます。 アプリケーションのクリティカル パスを特定してください。 パスの各ポイントに冗長性が確保されていますか。 サブシステムで障害が発生した場合に、アプリケーションは他にフェールオーバーしますか。
 
-## <a name="recommendations"></a>Recommendations 
+## <a name="recommendations"></a>推奨事項 
 
 **ビジネス要件を考慮する**。 システムにどのくらいの冗長性を組み込むかは、コストと複雑さの両方に影響します。 アーキテクチャには、目標復旧時間 (RTO) などのビジネス要件の情報が必要です。 たとえば、複数リージョンのデプロイは、単一リージョンのデプロイよりもコストがかかり、管理も複雑です。 フェールオーバーとフェールバックを処理するための操作手順が必要になります。 追加コストと複雑さが理にかなっているかどうかは、ビジネス シナリオによって異なります。
 
@@ -25,7 +25,7 @@ ms.lasthandoff: 11/14/2017
 
 **データベースをレプリケートする**。 Azure SQL Database と Cosmos DB を使用すると、リージョン内でデータが自動的にレプリケートされ、リージョン間では geo レプリケーションを有効にできます。 IaaS データベース ソリューションを使用している場合は、[SQL Server Always On 可用性グループ][sql-always-on]など、レプリケーションとフェールオーバーをサポートするものを選択します。 
 
-**geo レプリケーションを有効にする**。 [Azure SQL Database][sql-geo-replication] と [Cosmos DB][docdb-geo-replication] の geo レプリケーションにより、1 つ以上のセカンダリ リージョンにデータの読み取り可能セカンダリ レプリカが作成されます。 障害発生時、データベースは書き込みのためにセカンダリ リージョンにフェールオーバーできます。
+**geo レプリケーションを有効にする**。 [Azure SQL Database][sql-geo-replication] と [Cosmos DB][cosmosdb-geo-replication] の geo レプリケーションにより、1 つ以上のセカンダリ リージョンにデータの読み取り可能セカンダリ レプリカが作成されます。 障害発生時、データベースは書き込みのためにセカンダリ リージョンにフェールオーバーできます。
 
 **可用性のためにパーティション分割する**。 データベース パーティション分割は、通常、スケーラビリティ向上のために使用されますが、可用性を向上させることもできます。 あるシャードがダウンしても、それ以外のシャードには引き続きアクセスできます。 あるシャードで発生した障害によって中断されるのは、トランザクション全体のサブセットのみです。 
 
@@ -46,6 +46,6 @@ ms.lasthandoff: 11/14/2017
 [multi-vm-blueprint]: ../../reference-architectures/virtual-machines-windows/multi-vm.md
 
 [cassandra]: http://cassandra.apache.org/
-[docdb-geo-replication]: /azure/documentdb/documentdb-distribute-data-globally
+[cosmosdb-geo-replication]: /azure/cosmos-db/distribute-data-globally
 [sql-always-on]: https://msdn.microsoft.com/library/hh510230.aspx
 [sql-geo-replication]: /azure/sql-database/sql-database-geo-replication-overview

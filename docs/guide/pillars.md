@@ -2,25 +2,25 @@
 title: "ソフトウェア品質の重要な要素"
 description: "ソフトウェア品質の 5 つの重要な要素である拡張性、可用性、回復性、管理性、セキュリティについて説明します。"
 author: MikeWasson
-ms.openlocfilehash: 78e613368a07718f5923d619ace335d399b0cc80
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 1d5e30602cafa0d39f92de3101974e77ae258595
+ms.sourcegitcommit: a7aae13569e165d4e768ce0aaaac154ba612934f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="pillars-of-software-quality"></a>ソフトウェア品質の重要な要素 
 
 成功するクラウド アプリケーションでは、ソフトウェア品質の 5 つの重要な要素、すなわち拡張性、可用性、回復性、管理性、セキュリティに重点が置かれています。
 
-| 重要な要素 | Description |
+| 重要な要素 | 説明 |
 |--------|-------------|
-| 拡張性 | 増加した負荷を処理するシステムの能力です。 |
+| スケーラビリティ | 増加した負荷を処理するシステムの能力です。 |
 | 可用性 | システムが動作し実際に使用可能である時間の割合です。 |
 | 回復性 | 障害から回復して動作を続行するシステムの能力です。 |
 | 管理 | 運用環境でシステムを継続的に動作させる運用プロセスです。 |
 | セキュリティ | 脅威からアプリケーションとデータを保護することです。 |
 
-## <a name="scalability"></a>拡張性
+## <a name="scalability"></a>スケーラビリティ
 
 拡張性は、増加した負荷を処理する、システムの能力です。 アプリケーションをスケーリングする方法は、主に 2 つあります。 垂直スケーリング (スケール*アップ*) は、VM のサイズを大きくするなど、リソースの容量を増やすことです。 水平スケーリング (スケール*アウト*) とは、VM やデータベース レプリカなど、リソースの新しいインスタンスを追加することです。 
 
@@ -55,7 +55,7 @@ ms.lasthandoff: 11/14/2017
 
 可用性は、よく "9s" (9 の数) の観点で説明されます。たとえば、"four 9s" (4 つの 9) はアップタイムが 99.99% であることを意味します。 次の表は、さまざまな可用性レベルで考えられる累積的なダウンタイムを示しています。
 
-| アップタイムの % | 週当たりのダウンタイム | 月当たりのダウンタイム | 年当たりのダウンタイム |
+| アップタイムの % | 週当たりのダウンタイム | 月あたりのダウンタイム | 年あたりのダウンタイム |
 |----------|-------------------|--------------------|-------------------|
 | 99% | 1.68 時間 | 7.2 時間 | 3.65 日 |
 | 99.9% | 10 分 | 43.2 分 | 8.76 時間 |
@@ -153,7 +153,7 @@ Azure では、サービス レベル アグリーメント (SLA) で、アッ�
 
 Azure の高可用性を使用するときは、ご自分のデータが適切な地理的ゾーンに残っていることを確認してください。 Azure の geo レプリケートされている ストレージでは、同じ地理的リージョン内の[ペアのリージョン][paired-region]の概念が使用されます。 
 
-暗号化キーおよびシークレットを保護するには、Key Vault を使用します。 Key Vault を使用すると、ハードウェア セキュリティ モジュール (HSM) によって保護されているキーを使用して、キーとシークレットを暗号化できます。 多くの Azure Storage サービスおよび DB サービスでは、[Azure Storage][storage-encryption]、[Azure SQL Database][sql-db-encryption]、[Azure SQL Data Warehouse][data-warehouse-encryption]、[Cosmos DB][documentdb-encryption] など、保存データの暗号化がサポートされています。
+暗号化キーおよびシークレットを保護するには、Key Vault を使用します。 Key Vault を使用すると、ハードウェア セキュリティ モジュール (HSM) によって保護されているキーを使用して、キーとシークレットを暗号化できます。 多くの Azure Storage サービスおよび DB サービスでは、[Azure Storage][storage-encryption]、[Azure SQL Database][sql-db-encryption]、[Azure SQL Data Warehouse][data-warehouse-encryption]、[Cosmos DB][cosmosdb-encryption] など、保存データの暗号化がサポートされています。
 
 ### <a name="security-resources"></a>セキュリティ リソース
 
@@ -171,7 +171,7 @@ Azure の高可用性を使用するときは、ご自分のデータが適切�
 
 [ad-subscriptions]: /azure/active-directory/active-directory-how-subscriptions-associated-directory
 [data-warehouse-encryption]: /azure/data-lake-store/data-lake-store-security-overview#data-protection
-[documentdb-encryption]: /azure/documentdb/documentdb-nosql-database-security
+[cosmosdb-encryption]: /azure/cosmos-db/database-security
 [rbac]: /azure/active-directory/role-based-access-control-what-is
 [paired-region]: /azure/best-practices-availability-paired-regions
 [resource-manager-auditing]: /azure/azure-resource-manager/resource-group-audit
