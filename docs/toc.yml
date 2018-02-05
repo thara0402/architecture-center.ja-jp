@@ -105,7 +105,7 @@
       href: checklist/dev-ops.md
     - name: 回復性
       href: checklist/resiliency.md
-    - name: 拡張性
+    - name: スケーラビリティ
       href: checklist/scalability.md
 - name: 回復性の設計
   items:
@@ -123,6 +123,8 @@
       href: multitenant-identity/index.md
     - name: Cloud Services から Service Fabric に移行する
       href: service-fabric/migrate-from-cloud-services.md
+    - name: Azure Cloud Services から移行した Azure Service Fabric アプリケーションをリファクタリングする
+      href: service-fabric/refactor-migrated-app.md
     - name: Azure での Elasticsearch の実行
       href: elasticsearch/index.md
     - name: Azure Resource Manager テンプレート機能の拡張
