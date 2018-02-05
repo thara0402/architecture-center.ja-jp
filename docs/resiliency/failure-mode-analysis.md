@@ -5,11 +5,11 @@ author: MikeWasson
 ms.date: 03/24/2017
 ms.custom: resiliency
 pnp.series.title: Design for Resiliency
-ms.openlocfilehash: 09d09468eebe5c6fe1c9cdab14e142ff46cf0b25
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: aca2088cb007728c5717a968969000c0a19bcd07
+ms.sourcegitcommit: a7aae13569e165d4e768ce0aaaac154ba612934f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="failure-mode-analysis"></a>障害モード分析
 [!INCLUDE [header](../_includes/header.md)]
@@ -133,7 +133,7 @@ Application_End ログは、アプリ ドメインのシャットダウン (ソ�
 * SDK によって、失敗した試行が自動的にもう一度実行されます。 再試行回数と最大待機時間を設定するには、`ConnectionPolicy.RetryOptions` を構成します。 クライアントがスローする例外は、再試行ポリシーを超えているか、一時的なエラーでないかのいずれかです。
 * クライアントが Cosmos DB によって調整されると、HTTP 429 エラーが返されます。 `DocumentClientException` で状態コードを確認します。 エラー 429 が繰り返し発生する場合は、コレクションのスループットの値を増やすことを検討してください。
     * MongoDB API を使用している場合は、調整のときに、サービスはエラー コード 16500 を返します。
-* 複数のリージョンの間で Cosmos DB データベースをレプリケートします。 すべてのレプリカは読み取り可能です。 クライアント SDK を使用して、`PreferredLocations` パラメーターを指定します。 これは、Azure リージョンの順序付きリストです。 すべての読み取りは、リストで最初に利用可能なリージョンに送信されます。 要求が失敗すると、クライアントはリストのリージョンを順番に試します。 詳細については、「[DocumentDB API を使用して Azure Cosmos DB グローバル分散をセットアップする方法][docdb-multi-region]」を参照してください。
+* 複数のリージョンの間で Cosmos DB データベースをレプリケートします。 すべてのレプリカは読み取り可能です。 クライアント SDK を使用して、`PreferredLocations` パラメーターを指定します。 これは、Azure リージョンの順序付きリストです。 すべての読み取りは、リストで最初に利用可能なリージョンに送信されます。 要求が失敗すると、クライアントはリストのリージョンを順番に試します。 詳細については、「[SQL API を使用して Azure Cosmos DB グローバル分散をセットアップする方法][cosmosdb-multi-region]」を参照してください。
 
 **診断** クライアント側ですべてのエラーをログに記録します。
 
@@ -143,9 +143,9 @@ Application_End ログは、アプリ ドメインのシャットダウン (ソ�
 **復旧**
 
 * SDK によって、失敗した試行が自動的にもう一度実行されます。 再試行回数と最大待機時間を設定するには、`ConnectionPolicy.RetryOptions` を構成します。 クライアントがスローする例外は、再試行ポリシーを超えているか、一時的なエラーでないかのいずれかです。
-* クライアントが Cosmos DB によって調整されると、HTTP 429 エラーが返されます。 `DocumentClientException` で状態コードを確認します。 エラー 429 が繰り返し発生する場合は、コレクションのスループットの値を増やすことを検討してください。
+* クライアントが Cosmos DB によってスロットルされると、HTTP 429 エラーが返されます。 `DocumentClientException` で状態コードを確認します。 エラー 429 が繰り返し発生する場合は、コレクションのスループットの値を増やすことを検討してください。
 * 複数のリージョンの間で Cosmos DB データベースをレプリケートします。 プライマリ リージョンが失敗した場合、別のリージョンが書き込みにレベル上げされます。 手動でフェールオーバーをトリガーすることもできます。 SDK が自動的に検出とルーティングを行うので、アプリケーション コードはフェールオーバー後も引き続き動作します。 フェールオーバー期間中は (通常は分単位)、SDK が新しい書き込みリージョンを探しているので、書き込み操作の待機時間が長くなります。
-  詳細については、「[DocumentDB API を使用して Azure Cosmos DB グローバル分散をセットアップする方法][docdb-multi-region]」を参照してください。
+  詳細については、「[SQL API を使用して Azure Cosmos DB グローバル分散をセットアップする方法][cosmosdb-multi-region]」を参照してください。
 * フォールバックとしては、ドキュメントをバックアップ キューに保存し、後でキューを処理します。
 
 **診断** クライアント側ですべてのエラーをログに記録します。
@@ -339,7 +339,7 @@ Azure Service Bus メッセージング キューの使用を検討します。�
 
 1. 操作を再試行し、一時的な障害から復旧します。 クライアント SDK の[再試行ポリシー][Storage.RetryPolicies]がこれを自動的に処理します。
 2. ストレージに対する過剰な負荷を回避するため、サーキット ブレーカー パターンを実装します。
-3. N 回再試行が失敗した場合は、正常なフォールバックを実行します。 For example:
+3. N 回再試行が失敗した場合は、正常なフォールバックを実行します。 例:
 
    * ローカル キャッシュにデータを格納しておき、後でサービスが利用可能になったら、ストレージに書き込みを転送します。
    * 書き込みアクションがトランザクション スコープであった場合は、トランザクションを補正します。
@@ -453,7 +453,7 @@ FMA プロセスについては、「[Resilience by design for cloud services][r
 [BrokeredMessage.TimeToLive]: https://msdn.microsoft.com/library/microsoft.servicebus.messaging.brokeredmessage.timetolive.aspx
 [cassandra-error-handling]: http://www.datastax.com/dev/blog/cassandra-error-handling-done-right
 [circuit-breaker]: https://msdn.microsoft.com/library/dn589784.aspx
-[docdb-multi-region]: /azure/documentdb/documentdb-developing-with-multiple-regions/
+[cosmosdb-multi-region]: /azure/cosmos-db/tutorial-global-distribution-sql-api
 [elasticsearch-azure]: ../elasticsearch/index.md
 [elasticsearch-client]: https://www.elastic.co/guide/en/elasticsearch/client/index.html
 [health-endpoint-monitoring-pattern]: https://msdn.microsoft.com/library/dn589789.aspx

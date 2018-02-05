@@ -4,11 +4,11 @@ description: "ユーザー インターフェイスとは無関係に実行さ�
 author: dragon119
 ms.date: 05/24/2017
 pnp.series.title: Best Practices
-ms.openlocfilehash: d8c1d4dfe12208b72fd6991def805f90a830b5f0
-ms.sourcegitcommit: a8453c4bc7c870fa1a12bb3c02e3b310db87530c
+ms.openlocfilehash: 10c24afee4b880cfbf8ee534f4d7f945d2b046a9
+ms.sourcegitcommit: 3426a9c5ed937f097725c487cf3d073ae5e2a347
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/29/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="background-jobs"></a>バックグラウンド ジョブ
 [!INCLUDE [header](../_includes/header.md)]
@@ -100,7 +100,7 @@ Azure の Web ジョブの特徴を次に示します。
 * **ログ**: Console.Out は INFO として処理 (マーク) されます。 Console.Error は ERROR として処理 (マーク) されます。 監視情報と診断情報には、Azure ポータルからアクセスできます。 ログ ファイルは、サイトから直接ダウンロードすることができます。 これらの情報は次の場所に保存されます。
   * トリガーによって実行する場合: Vfs/data/jobs/triggered/jobName
   * 連続実行の場合: Vfs/data/jobs/continuous/jobName
-* **構成**: Web ジョブの構成には、ポータル、REST API、PowerShell を使用できます。 ジョブの構成情報は、ジョブ スクリプトと同じルート ディレクトリにある settings.job という名前の構成ファイルで指定できます。 例: 
+* **構成**: Web ジョブの構成には、ポータル、REST API、PowerShell を使用できます。 ジョブの構成情報は、ジョブ スクリプトと同じルート ディレクトリにある settings.job という名前の構成ファイルで指定できます。 例:
   * { "stopping_wait_time": 60 }
   * { "is_singleton": true }
 
@@ -132,7 +132,7 @@ Azure 仮想マシンにバックグラウンド タスクをデプロイする�
 * [Azure Resource Manager コマンドレット](https://msdn.microsoft.com/library/mt125356.aspx)を使って仮想マシンを管理したり、仮想マシンの基本的なステータスを監視したりすることはできますが、バックグラウンド タスクを監視する機構は Azure ポータルにはなく、また、障害の発生したタスクを自動的に再起動する機能もありません。 コンピューティング ノード内のプロセスやスレッドを制御する機構も存在しません。 通常、仮想マシンを使うためには、タスクのインストルメンテーションや仮想マシン内のオペレーティング システムからデータを収集するメカニズムを別途導入する必要があります。 1 つの方法として、 [Azure 用の System Center 管理パック](https://www.microsoft.com/download/details.aspx?id=50013)を使うことが解決策として考えられます。
 * HTTP エンドポイントを介して公開される監視プローブの作成を検討してください。 正常性チェックの実行、運用情報や統計情報の収集、エラー情報の照合を監視プローブのコードから実行して管理アプリケーションに返すようにします。 詳細については、 [Health Endpoint Monitoring パターン](http://msdn.microsoft.com/library/dn589789.aspx)に関するページを参照してください。
 
-#### <a name="more-information"></a>詳細
+#### <a name="more-information"></a>詳細情報
 * [Virtual Machines](https://azure.microsoft.com/services/virtual-machines/) 
 * [Azure Virtual Machines に関する FAQ](/azure/virtual-machines/virtual-machines-linux-classic-faq?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 
@@ -244,7 +244,7 @@ Web またはワーカー ロールでバックグラウンド タスクを実�
     }
     ```
     
-    * ロールの ServiceDefinition.csdef ファイルと ServiceConfiguration.cscfg ファイルに **Freeze** 設定の定義を Boolean 値として追加し、**false** に設定します。 ロールが再起動を繰り返す状態になった場合は、この設定を **true** に変更してロールの実行を凍結 (Freeze) させれば、それまでの環境とスワップできる状態になります。
+  * ロールの ServiceDefinition.csdef ファイルと ServiceConfiguration.\*.cscfg ファイルに **Freeze** 設定の定義を Boolean 値として追加し、**false** に設定します。 ロールが再起動を繰り返す状態になった場合は、この設定を **true** に変更してロールの実行を凍結 (Freeze) させれば、それまでの環境とスワップできる状態になります。
 
 #### <a name="more-information"></a>詳細情報
 * [Compute Resource Consolidation パターン](http://msdn.microsoft.com/library/dn589778.aspx)

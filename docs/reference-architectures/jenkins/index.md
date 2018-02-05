@@ -3,11 +3,11 @@ title: "Azure で Jenkins サーバーを実行する"
 description: "このリファレンス アーキテクチャでは、シングル サインオン (SSO) で保護されたスケーラブルなエンタープライズ レベルの Jenkins サーバーを Azure にデプロイして運用する方法を示します。"
 author: njray
 ms.date: 01/21/18
-ms.openlocfilehash: d06b16c212951c629612d69b13fa2b32b1030475
-ms.sourcegitcommit: 9998334bebccb86be0f715ac7dffc0c3175aea68
+ms.openlocfilehash: 9cab4990b259695f310da339bfef3060b0905640
+ms.sourcegitcommit: 3426a9c5ed937f097725c487cf3d073ae5e2a347
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="run-a-jenkins-server-on-azure"></a>Azure で Jenkins サーバーを実行する
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 01/26/2018
 
 -   **リソース グループ。** [リソース グループ][rg]を使用して Azure 資産をグループ化し、有効期間、所有者などの条件に基づいて管理できるようにします。 リソース グループを使用して、Azure 資産をグループとしてデプロイおよび監視したり、リソース グループ別に請求コストを追跡したりできます。 セットとしてリソースを削除することもできます。これはテスト デプロイの場合に便利です。
 
--   **Jenkins サーバー**。 [Jenkins][azure-market] をオートメーション サーバーとして実行し、Jenkins マスターとして機能させるために、仮想マシンをデプロイします。 このリファレンス アーキテクチャでは、Azure の Linux (Ubuntu 14.04 LTS) 仮想マシンにインストールされた、[Azure 上の Jenkins 用ソリューション テンプレート][solution]を使用します。 他の Jenkins 製品は、Azure Marketplace で入手できます。
+-   **Jenkins サーバー**。 [Jenkins][azure-market] をオートメーション サーバーとして実行し、Jenkins マスターとして機能させるために、仮想マシンをデプロイします。 このリファレンス アーキテクチャでは、Azure の Linux (Ubuntu 16.04 LTS) 仮想マシンにインストールされた、[Azure 上の Jenkins 用ソリューション テンプレート][solution]を使用します。 他の Jenkins 製品は、Azure Marketplace で入手できます。
 
     > [!NOTE]
     > Nginx を VM にインストールして、Jenkins のリバース プロキシとして動作させます。 Jenkins サーバーの SSL を有効にするように Nginx を構成できます。
@@ -50,7 +50,7 @@ ms.lasthandoff: 01/26/2018
 
 -   **Azure Monitoring サービス**。 このサービスは、Jenkins をホストする Azure 仮想マシンを[監視][monitor]します。 このデプロイでは、仮想マシンの状態と CPU 使用率を監視し、アラートを送信します。
 
-## <a name="recommendations"></a>Recommendations
+## <a name="recommendations"></a>推奨事項
 
 ほとんどのシナリオには、次の推奨事項が適用されます。 これらの推奨事項には、優先される特定の要件がない限り、従ってください。
 
@@ -64,7 +64,7 @@ Jenkins ジョブが Azure リソースにアクセスできるようにする�
 
 [RBAC][rbac] により、割り当てられたロールを通じてユーザーまたはサービス プリンシパルの Azure リソースへのアクセスがさらに明確に定義され、制御されます。 組み込みロールとカスタム ロールの両方がサポートされています。 また、ロールは、パイプラインをセキュリティで保護したり、ユーザーやエージェントの責任が適切に割り当てられ、承認されていることを保証したりするうえでも役立ちます。 さらに、Azure 資産へのアクセスを制限するように RBAC を設定することもできます。 たとえば、ユーザーが特定のリソース グループ内の資産だけを使用するように制限できます。
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>ストレージ
 
 Azure Marketplace からインストールされた Jenkins の [Windows Azure Storage プラグイン][storage-plugin]を使用して、他のビルドやテストと共有できるビルド成果物を保存します。 このプラグインを Jenkins ジョブで使用するには、Azure ストレージ アカウントを構成しておく必要があります。
 
@@ -203,7 +203,7 @@ Jenkins サーバーで Jenkins Update Center の [Azure AD プラグイン][con
 
 この手順は Jenkins 管理者が実行します。管理者は、既にインストールされている Azure Credentials プラグインを設定します。
 
-[こちらの手順に従って、プラグインを構成します][configure-credential]。
+[こちら][configure-credential]の手順に従って、プラグインを構成します。
 
 ### <a name="step-6-provision-jenkins-server-for-monitoring-by-the-azure-monitor-service"></a>手順 6: Azure Monitor サービスで監視するために Jenkins サーバーをプロビジョニングする
 

@@ -4,11 +4,11 @@ description: "Microsoft Azure で実行される高可用性を備えた Web ア
 author: MikeWasson
 ms.date: 11/23/2016
 cardTitle: Run in multiple regions
-ms.openlocfilehash: 60caa121d0ce2f1aa2638650229bed8048804c22
-ms.sourcegitcommit: c9e6d8edb069b8c513de748ce8114c879bad5f49
+ms.openlocfilehash: 50ac9636e1e3c25bd0403c89281a3a06915d065f
+ms.sourcegitcommit: a7aae13569e165d4e768ce0aaaac154ba612934f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="run-a-web-application-in-multiple-regions"></a>Web アプリケーションを複数のリージョンで実行する
 [!INCLUDE [header](../../_includes/header.md)]
@@ -39,7 +39,7 @@ ms.lasthandoff: 01/08/2018
 このリファレンス アーキテクチャでは、Traffic Manager を使用してフェールオーバーを行うアクティブ/パッシブ (ホット スタンバイ) に焦点を当てています。 
 
 
-## <a name="recommendations"></a>Recommendations
+## <a name="recommendations"></a>推奨事項
 
 実際の要件は、ここで説明するアーキテクチャとは異なる場合があります。 このセクションに記載されている推奨事項は原案として使用してください。
 
@@ -71,7 +71,7 @@ ms.lasthandoff: 01/08/2018
 ### <a name="cosmos-db"></a>Cosmos DB
 Cosmos DB は、リージョン間の geo レプリケーションをサポートします。 あるリージョンが書き込み可能として指定され、その他のリージョンが読み取り専用レプリカとして指定されます。
 
-地域的な停止が発生した場合は、書き込みリージョンにする別のリージョンを選択することで、フェールオーバーできます。 クライアント SDK が書き込み要求を現在の書き込みリージョンに自動的に送信するため、フェールオーバー後にクライアントの構成を更新する必要はありません。 詳細については、「[Azure Cosmos DB を使用してデータをグローバルに分散させる方法][docdb-geo]」を参照してください。
+地域的な停止が発生した場合は、書き込みリージョンにする別のリージョンを選択することで、フェールオーバーできます。 クライアント SDK が書き込み要求を現在の書き込みリージョンに自動的に送信するため、フェールオーバー後にクライアントの構成を更新する必要はありません。 詳細については、「[Azure Cosmos DB を使用してデータをグローバルに分散させる方法][cosmosdb-geo]」をご覧ください。
 
 > [!NOTE]
 > すべてのレプリカは、同じリソース グループに属します。
@@ -149,7 +149,7 @@ azure network traffic-manager endpoint set --name <endpoint> --profile-name <pro
 
 [azure-sql-db]: https://azure.microsoft.com/documentation/services/sql-database/
 [azure-dns]: /azure/dns/dns-overview
-[docdb-geo]: /azure/documentdb/documentdb-distribute-data-globally
+[cosmosdb-geo]: /azure/cosmos-db/distribute-data-globally
 [guidance-web-apps-scalability]: ./scalable-web-app.md
 [health-endpoint-monitoring-pattern]: https://msdn.microsoft.com/library/dn589789.aspx
 [ra-grs]: /azure/storage/storage-redundancy#read-access-geo-redundant-storage
