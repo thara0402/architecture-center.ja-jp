@@ -3,11 +3,11 @@ title: "Azure Cloud Services アプリケーションを Azure Service Fabric �
 description: "Azure Cloud Services アプリケーションを Azure Service Fabric に移行する方法。"
 author: MikeWasson
 ms.date: 04/27/2017
-ms.openlocfilehash: 22b6cca0d4714dd4cde0fd7449340d6e1f45e65b
-ms.sourcegitcommit: fbcf9a1c25db13b2627a8a58bbc985cd01ea668d
+ms.openlocfilehash: 73e34c53ffd2f2eeb466d12a5f6c65dcfdaae389
+ms.sourcegitcommit: 2c9a8edf3e44360d7c02e626ea8ac3b03fdfadba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="migrate-an-azure-cloud-services-application-to-azure-service-fabric"></a>Azure Cloud Services アプリケーションを Azure Service Fabric に移行する 
 
@@ -176,7 +176,7 @@ Cloud Services では、[サービス定義ファイル][cloud-service-endpoints
 
  1 つのクラウド サービスには、次の構成とパッケージ ファイルが含まれます。
 
-| ファイル | Description |
+| ファイル | [説明] |
 |------|-------------|
 | サービス定義 (.csdef) | クラウド サービスを構成するために Azure によって使用される設定。 ロール、エンドポイント、スタートアップ タスク、および構成設定の名前を定義します。 |
 | サービス構成 (.cscfg) | ロール インスタンスの数、エンドポイントのポート番号、構成設定の値を含むデプロイごとの設定。 
@@ -198,7 +198,7 @@ Application package
 
 Service Fabric アプリケーションには以下の構成ファイルが含まれています。
 
-| ファイル | 場所 | Description |
+| ファイル | 場所 | [説明] |
 |------|----------|-------------|
 | ApplicationManifest.xml | アプリケーション パッケージ | アプリケーションを構成するサービスを定義します。 |
 | ServiceManifest.xml | サービス パッケージ| 1 つまたは複数のサービスについて記述します。 |
@@ -289,9 +289,9 @@ Surveys アプリケーションの Service Fabric への移植は、かなり�
 
 さらに、デプロイを Cloud Services から VM スケール セットで実行される Service Fabric クラスターに変更しました。
 
-ただしこの時点で、アプリケーションは、独立したサービスのデプロイやバージョン管理など、マイクロサービスのすべてのメリットを得られていません。 Service Fabric をフル活用するには、Tailspin はもう少し最適化を進める必要があります。
+## <a name="next-steps"></a>次の手順
 
-
+Survey アプリケーションは適切に移植されました。Tailspin が次に求めているのは、独立したサービスのデプロイ、バージョン管理など、Service Fabric 機能を利用することです。 「[Refactor an Azure Service Fabric Application migrated from Azure Cloud Services (Azure Cloud Services から移行した Azure Service Fabric アプリケーションをリファクタリングする)][refactor-surveys]」では、Tailspin が、このような Service Fabric 機能を利用するために、こうしたサービスをどのように詳細なアーキテクチャに分解したかを説明しています
 
 <!-- links -->
 
@@ -308,6 +308,7 @@ Surveys アプリケーションの Service Fabric への移植は、かなり�
 [kestrel]: https://docs.microsoft.com/aspnet/core/fundamentals/servers/kestrel
 [lb-probes]: /azure/load-balancer/load-balancer-custom-probe-overview
 [owin]: https://www.asp.net/aspnet/overview/owin-and-katana
+[refactor-surveys]: refactor-migrated-app.md
 [sample-code]: https://github.com/mspnp/cloud-services-to-service-fabric
 [sf-application-model]: /azure/service-fabric/service-fabric-application-model
 [sf-aspnet-core]: /azure/service-fabric/service-fabric-add-a-web-frontend
