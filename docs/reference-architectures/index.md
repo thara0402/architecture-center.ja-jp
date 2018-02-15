@@ -2,11 +2,12 @@
 title: "Azure の参照用アーキテクチャ"
 description: "Azure での一般的なワークロードに対応する、参照用アーキテクチャ、計画、および規範的実装ガイダンス。"
 layout: LandingPage
-ms.openlocfilehash: 0cc03f87dae39517e1a72a65d4767dcc21879d8f
-ms.sourcegitcommit: 9998334bebccb86be0f715ac7dffc0c3175aea68
+NOTE: edit the template in ./build/reference-architectures !!!
+ms.openlocfilehash: e513e2545fb95b486b11a067479e879f4abd4a8f
+ms.sourcegitcommit: 90cf2de795e50571d597cfcb9b302e48933e7f18
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="azure-reference-architectures"></a>Azure の参照用アーキテクチャ
 
@@ -14,190 +15,188 @@ ms.lasthandoff: 01/26/2018
 
 <section class="series">
     <ul class="panelContent">
-    <!--Windows VM -->
-    <li>
-        <a href="./virtual-machines-windows/index.md">
-            <div class="cardSize">
-                <div class="cardPadding">
-                    <div class="card">
-                        <div class="cardImageOuter">
-                            <div class="cardImage">
-                                <img src="./virtual-machines-windows/images/n-tier.svg" height="140px" />
-                            </div>
+    <!-- Windows VM workloads -->
+<li style="display: flex; flex-direction: column;">
+    <a href="./virtual-machines-windows/index.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="./virtual-machines-windows/images/n-tier.svg" height="140px" />
                         </div>
-                        <div class="cardText">
-                            <h3>Windows VM ワークロード</h3>
-                            <p>このシリーズでは、1 つの Windows VM を実行するためのベスト プラクティスから始まり、負荷分散された複数の VM、最後には複数地域の n 層アプリケーションへと続きます。</p>
-                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Windows VM ワークロード</h3>
+                        <p>このシリーズでは、1 つの Windows VM を実行するためのベスト プラクティスから始まり、負荷分散された複数の VM、最後には複数地域の n 層アプリケーションへと続きます。</p>
                     </div>
                 </div>
             </div>
-        </a>
-    </li>
-    <!-- Linux VM -->
-    <li>
-        <a href="./virtual-machines-linux/index.md">
-            <div class="cardSize">
-                <div class="cardPadding">
-                    <div class="card">
-                        <div class="cardImageOuter">
-                            <div class="cardImage">
-                                <img src="./virtual-machines-linux/images/n-tier.svg" height="140px" />
-                            </div>
+        </div>
+    </a>
+</li>
+    <!-- Linux VM workloads -->
+<li style="display: flex; flex-direction: column;">
+    <a href="./virtual-machines-linux/index.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="./virtual-machines-linux/images/n-tier.svg" height="140px" />
                         </div>
-                        <div class="cardText">
-                            <h3>Linux VM ワークロード</h3>
-                            <p>このシリーズでは、1 つの Linux VM を実行するためのベスト プラクティスから始まり、負荷分散された複数の VM、最後には複数地域の n 層アプリケーションへと続きます。</p>
-                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Linux VM ワークロード</h3>
+                        <p>このシリーズでは、1 つの Linux VM を実行するためのベスト プラクティスから始まり、負荷分散された複数の VM、最後には複数地域の n 層アプリケーションへと続きます。</p>
                     </div>
                 </div>
             </div>
-        </a>
-    </li>
+        </div>
+    </a>
+</li>
     <!-- Hybrid network -->
-    <li>
-        <a href="./hybrid-networking/index.md">
-            <div class="cardSize">
-                <div class="cardPadding">
-                    <div class="card">
-                        <div class="cardImageOuter">
-                            <div class="cardImage">
-                                <img src="./hybrid-networking/images/vpn.svg" height="140px" />
-                            </div>
+<li style="display: flex; flex-direction: column;">
+    <a href="./hybrid-networking/index.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="./hybrid-networking/images/vpn.svg" height="140px" />
                         </div>
-                        <div class="cardText">
-                            <h3>ハイブリッド ネットワーク</h3>
-                            <p>このシリーズでは、オンプレミス ネットワークと Azure の間にネットワーク接続を作成するためのオプションを説明します。</p>
-                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>ハイブリッド ネットワーク</h3>
+                        <p>このシリーズでは、オンプレミス ネットワークと Azure の間にネットワーク接続を作成するためのオプションを説明します。</p>
                     </div>
                 </div>
             </div>
-        </a>
-    </li>
-    <!-- DMZ -->
-    <li>
-        <a href="./dmz/index.md">
-            <div class="cardSize">
-                <div class="cardPadding">
-                    <div class="card">
-                        <div class="cardImageOuter">
-                            <div class="cardImage">
-                                <img src="./dmz/images/secure-vnet-dmz.svg" height="140px" />
-                            </div>
+        </div>
+    </a>
+</li>
+    <!-- Network DMZ -->
+<li style="display: flex; flex-direction: column;">
+    <a href="./dmz/index.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="./dmz/images/secure-vnet-dmz.svg" height="140px" />
                         </div>
-                        <div class="cardText">
-                            <h3>ネットワーク DMZ</h3>
-                            <p>このシリーズでは、ネットワーク DMZ を作成して、Azure 仮想ネットワークとオンプレミス ネットワークまたはインターネットの境界を保護する方法を説明します。</p>
-                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>ネットワーク DMZ</h3>
+                        <p>このシリーズでは、ネットワーク DMZ を作成して、Azure 仮想ネットワークとオンプレミス ネットワークまたはインターネットの境界を保護する方法を説明します。</p>
                     </div>
                 </div>
             </div>
-        </a>
-    </li>
-    <!-- Identity -->
-    <li>
-        <a href="./identity/index.md">
-            <div class="cardSize">
-                <div class="cardPadding">
-                    <div class="card">
-                        <div class="cardImageOuter">
-                            <div class="cardImage">
-                                <img src="./identity/images/adds-extend-domain.svg" height="140px" >
-                            </div>
+        </div>
+    </a>
+</li>
+    <!-- Identity management -->
+<li style="display: flex; flex-direction: column;">
+    <a href="./identity/index.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="./identity/images/adds-extend-domain.svg" height="140px" />
                         </div>
-                        <div class="cardText">
-                            <h3>ID 管理</h3>
-                            <p>このシリーズでは、オンプレミスの Active Directory (AD) 環境と Azure ネットワークを統合するためのオプションを示します。</p>
-                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>ID 管理</h3>
+                        <p>このシリーズでは、オンプレミスの Active Directory (AD) 環境と Azure ネットワークを統合するためのオプションを示します。</p>
                     </div>
                 </div>
             </div>
-        </a>
-    </li>
-    <!-- Managed web app -->
-    <li>
-        <a href="./app-service-web-app/index.md">
-            <div class="cardSize">
-                <div class="cardPadding">
-                    <div class="card">
-                        <div class="cardImageOuter">
-                            <div class="cardImage">
-                                <img src="./app-service-web-app/images/scalable-web-app.svg" height="140px" />
-                            </div>
+        </div>
+    </a>
+</li>
+    <!-- App Service web application -->
+<li style="display: flex; flex-direction: column;">
+    <a href="./app-service-web-app/index.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="./app-service-web-app/images/scalable-web-app.svg" height="140px" />
                         </div>
-                        <div class="cardText">
-                            <h3>App Service Web アプリケーション</h3>
-                            <p>このシリーズでは、Azure App Service を使用する Web アプリケーションのベスト プラクティスを説明します。</p>
-                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>App Service Web アプリケーション</h3>
+                        <p>このシリーズでは、Azure App Service を使用する Web アプリケーションのベスト プラクティスを説明します。</p>
                     </div>
                 </div>
             </div>
-        </a>
-    </li>
+        </div>
+    </a>
+</li>
     </ul>
+</section>
 
 <ul class="panelContent cardsI">
-<li>
-    <a href="./jenkins/index.md">
-    <div class="cardSize">
-        <div class="cardPadding">
-            <div class="card">
-                <div class="cardImageOuter">
-                    <div class="cardImage">
-                        <img src="./jenkins/images/logo.svg" alt="Jenkins" height="100%" />
+    <!-- Jenkins build server -->
+<li style="display: flex; flex-direction: column;">
+    <a href="./jenkins/index.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="./jenkins/images/logo.svg" height="140px" />
+                        </div>
                     </div>
-                </div>
-                <div class="cardText">
-                    <h3>Jenkins ビルド サーバー</h3>
-                    <p>スケーラブルなエンタープライズ レベルの Jenkins サーバーを Azure にデプロイして運用します。</p>
+                    <div class="cardText">
+                        <h3>Jenkins ビルド サーバー</h3>
+                        <p>スケーラブルなエンタープライズ レベルの Jenkins サーバーを Azure にデプロイして運用します。</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     </a>
 </li>
-
-<li>
-    <a href="./sharepoint/index.md">
-    <div class="cardSize">
-        <div class="cardPadding">
-            <div class="card">
-                <div class="cardImageOuter">
-                    <div class="cardImage">
-                        <img src="./sharepoint/images/sharepoint.svg" alt="SharePoint Server 2016" height="100%" />
+    <!-- SharePoint Server 2016 farm -->
+<li style="display: flex; flex-direction: column;">
+    <a href="./sharepoint/index.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="./sharepoint/images/sharepoint.svg" height="140px" />
+                        </div>
                     </div>
-                </div>
-                <div class="cardText">
-                    <h3>SharePoint Server 2016 ファーム</h3>
-                    <p>SQL Server Always On 可用性グループを使用して、高可用性 SharePoint Server 2016 ファームを Azure にデプロイして実行します。</p>
+                    <div class="cardText">
+                        <h3>SharePoint Server 2016 ファーム</h3>
+                        <p>SQL Server Always On 可用性グループを使用して、高可用性 SharePoint Server 2016 ファームを Azure にデプロイして実行します。</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     </a>
 </li>
-
-<li>
-    <a href="./sap/index.md">
-    <div class="cardSize">
-        <div class="cardPadding">
-            <div class="card">
-                <div class="cardImageOuter">
-                    <div class="cardImage">
-                        <img src="./sap/images/sap.svg" alt="SAP NetWeaver and SAP HANA" width="100%" />
+    <!-- SAP NetWeaver and SAP HANA -->
+<li style="display: flex; flex-direction: column;">
+    <a href="./sap/index.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="./sap/images/sap.svg" height="140px" />
+                        </div>
                     </div>
-                </div>
-                <div class="cardText">
-                    <h3>SAP NetWeaver および SAP HANA</h3>
-                    <p>SAP NetWeaver および SAP HANA を Azure の高可用性環境にデプロイして実行します。</p>
+                    <div class="cardText">
+                        <h3>SAP NetWeaver および SAP HANA</h3>
+                        <p>SAP NetWeaver および SAP HANA を Azure の高可用性環境にデプロイして実行します。</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     </a>
 </li>
 </ul>
-
-
-</section>
-
