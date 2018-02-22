@@ -4,11 +4,11 @@ description: "Azure リソースの名前付け規則。 仮想マシン、ス�
 author: telmosampaio
 ms.date: 05/18/2017
 pnp.series.title: Best Practices
-ms.openlocfilehash: 364735dec9658b4d2a9d21330f38c57f6fa694bd
-ms.sourcegitcommit: c9e6d8edb069b8c513de748ce8114c879bad5f49
+ms.openlocfilehash: f814201901af69b816d7f1588e58057b252b22db
+ms.sourcegitcommit: 2e8b06e9c07875d65b91d5431bfd4bc465a7a242
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="naming-conventions"></a>名前付け規則
 
@@ -96,10 +96,10 @@ Azure のリソースまたはサービスの種類ごとに、名前付けに�
 | エンティティ | Scope (スコープ) | Length | 大文字小文字の区別 | 有効な文字 | 推奨パターン | 例 |
 | --- | --- | --- | --- | --- | --- | --- |
 |ストレージ アカウント名 (データ) |グローバル |3 ～ 24 |小文字 |英数字 |`<globally unique name><number>` (ストレージ アカウントの名前付けのために関数を使用して一意の GUID を計算) |`profxdata001` |
-|ストレージ アカウント名 (ディスク) |グローバル |3 ～ 24 |小文字 |英数字 |`<vm name without dashes>st<number>` |`profxsql001st0` |
-| コンテナー名 |ストレージ アカウント |3 ～ 63 |小文字 |英数字とダッシュ |`<context>` |`logs` |
+|ストレージ アカウント名 (ディスク) |グローバル |3 ～ 24 |小文字 |英数字 |`<vm name without hyphens>st<number>` |`profxsql001st0` |
+| コンテナー名 |ストレージ アカウント |3 ～ 63 |小文字 |英数字とハイフン |`<context>` |`logs` |
 |BLOB 名 | コンテナー |1 ～ 1,024 |大文字小文字は区別される |任意の URL 文字 |`<variable based on blob usage>` |`<variable based on blob usage>` |
-|キュー名 |ストレージ アカウント |3 ～ 63 |小文字 |英数字とダッシュ |`<service short name>-<context>-<num>` |`awesomeservice-messages-001` |
+|キュー名 |ストレージ アカウント |3 ～ 63 |小文字 |英数字とハイフン |`<service short name>-<context>-<num>` |`awesomeservice-messages-001` |
 |テーブル名 | ストレージ アカウント |3 ～ 63 |大文字と小文字は区別されない |英数字 |`<service short name><context>` |`awesomeservicelogs` |
 |ファイル名 | ストレージ アカウント |3 ～ 63 |小文字 | 英数字 |`<variable based on blob usage>` |`<variable based on blob usage>` |
 |Data Lake Store | グローバル |3 ～ 24 |小文字 | 英数字 |`<name>-dls` |`telemetry-dls` |
@@ -108,16 +108,16 @@ Azure のリソースまたはサービスの種類ごとに、名前付けに�
 
 | エンティティ | Scope (スコープ) | Length | 大文字小文字の区別 | 有効な文字 | 推奨パターン | 例 |
 | --- | --- | --- | --- | --- | --- | --- |
-|Virtual Network (VNet) |リソース グループ |2 ～ 64 |大文字と小文字は区別されない |英数字、ダッシュ、アンダースコア、ピリオド |`<service short name>-vnet` |`profx-vnet` |
-|サブネット |親 VNet |2 ～ 80 |大文字と小文字は区別されない |英数字、ダッシュ、アンダースコア、ピリオド |`<descriptive context>` |`web` |
-|ネットワーク インターフェイス |リソース グループ |1 ～ 80 |大文字と小文字は区別されない |英数字、ダッシュ、アンダースコア、ピリオド |`<vmname>-nic<num>` |`profx-sql1-nic1` |
-|ネットワーク セキュリティ グループ |リソース グループ |1 ～ 80 |大文字と小文字は区別されない |英数字、ダッシュ、アンダースコア、ピリオド |`<service short name>-<context>-nsg` |`profx-app-nsg` |
-|ネットワーク セキュリティ グループの規則 |リソース グループ |1 ～ 80 |大文字と小文字は区別されない |英数字、ダッシュ、アンダースコア、ピリオド |`<descriptive context>` |`sql-allow` |
-|パブリック IP アドレス |リソース グループ |1 ～ 80 |大文字と小文字は区別されない |英数字、ダッシュ、アンダースコア、ピリオド |`<vm or service name>-pip` |`profx-sql1-pip` |
-|Load Balancer |リソース グループ |1 ～ 80 |大文字と小文字は区別されない |英数字、ダッシュ、アンダースコア、ピリオド |`<service or role>-lb` |`profx-lb` |
-|負荷分散規則の構成 |Load Balancer |1 ～ 80 |大文字と小文字は区別されない |英数字、ダッシュ、アンダースコア、ピリオド |`<descriptive context>` |`http` |
-|Azure Application Gateway |リソース グループ |1 ～ 80 |大文字と小文字は区別されない |英数字、ダッシュ、アンダースコア、ピリオド |`<service or role>-agw` |`profx-agw` |
-|Traffic Manager プロファイル |リソース グループ |1 ～ 63 |大文字と小文字は区別されない |英数字、ダッシュ、ピリオド |`<descriptive context>` |`app1` |
+|Virtual Network (VNet) |リソース グループ |2 ～ 64 |大文字と小文字は区別されない |英数字、ハイフン、アンダースコア、ピリオド |`<service short name>-vnet` |`profx-vnet` |
+|サブネット |親 VNet |2 ～ 80 |大文字と小文字は区別されない |英数字、ハイフン、アンダースコア、ピリオド |`<descriptive context>` |`web` |
+|ネットワーク インターフェイス |リソース グループ |1 ～ 80 |大文字と小文字は区別されない |英数字、ハイフン、アンダースコア、ピリオド |`<vmname>-nic<num>` |`profx-sql1-nic1` |
+|ネットワーク セキュリティ グループ |リソース グループ |1 ～ 80 |大文字と小文字は区別されない |英数字、ハイフン、アンダースコア、ピリオド |`<service short name>-<context>-nsg` |`profx-app-nsg` |
+|ネットワーク セキュリティ グループの規則 |リソース グループ |1 ～ 80 |大文字と小文字は区別されない |英数字、ハイフン、アンダースコア、ピリオド |`<descriptive context>` |`sql-allow` |
+|パブリック IP アドレス |リソース グループ |1 ～ 80 |大文字と小文字は区別されない |英数字、ハイフン、アンダースコア、ピリオド |`<vm or service name>-pip` |`profx-sql1-pip` |
+|Load Balancer |リソース グループ |1 ～ 80 |大文字と小文字は区別されない |英数字、ハイフン、アンダースコア、ピリオド |`<service or role>-lb` |`profx-lb` |
+|負荷分散規則の構成 |Load Balancer |1 ～ 80 |大文字と小文字は区別されない |英数字、ハイフン、アンダースコア、ピリオド |`<descriptive context>` |`http` |
+|Azure Application Gateway |リソース グループ |1 ～ 80 |大文字と小文字は区別されない |英数字、ハイフン、アンダースコア、ピリオド |`<service or role>-agw` |`profx-agw` |
+|Traffic Manager プロファイル |リソース グループ |1 ～ 63 |大文字と小文字は区別されない |英数字、ハイフン、ピリオド |`<descriptive context>` |`app1` |
 
 ## <a name="organize-resources-with-tags"></a>タグによるリソースの整理
 

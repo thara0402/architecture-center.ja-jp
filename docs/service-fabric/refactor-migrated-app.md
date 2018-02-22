@@ -3,11 +3,11 @@ title: "Azure Cloud Services から移行した Azure Service Fabric アプリ�
 description: "Azure Cloud Services から移行した既存の Azure Service Fabric アプリケーションをリファクタリングする方法"
 author: petertay
 ms.date: 01/30/2018
-ms.openlocfilehash: 4889fae8f157b0f1205e7d8223f125974be59ba9
-ms.sourcegitcommit: 2c9a8edf3e44360d7c02e626ea8ac3b03fdfadba
+ms.openlocfilehash: 18af7c7fe0c0933b1a2a132ee2ee0d8479d41b2a
+ms.sourcegitcommit: 2e8b06e9c07875d65b91d5431bfd4bc465a7a242
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="refactor-an-azure-service-fabric-application-migrated-from-azure-cloud-services"></a>Azure Cloud Services から移行した Azure Service Fabric アプリケーションをリファクタリングする
 
@@ -64,15 +64,15 @@ Tailspin は、Surveys アプリケーションをきめ細かなアーキテク
 
 **Tailspin.Web** は、Tailspin の顧客がアンケートを作成し、アンケート結果を確認するためにアクセスする ASP.NET MVC アプリケーションをセルフホストするステートレス サービスです。 このサービスは、そのコードのほとんどを、移植された Service Fabric アプリケーションの *Tailspin.Web* サービスと共有します。 前に説明したように、このサービスでは ASP.NET Core を使用し、Web フロントエンドとしての Kestrel の使用から、WebListener の実装へと切り替えます。
 
-**Tailspin.Web.Surveys.Public** はステートレス サービスで、これも ASP.NET MVC サイトをセルフホストします。 ユーザーはこのサイトにアクセスして、一覧からアンケートを選択し、回答を入力します。このサービスは、そのコードのほとんどを、移植された Service Fabric アプリケーションの *Tailspin.Web.Survey.Public* サービスと共有します。 また、このサービスも ASP.NET Core を使用し、さらに Web フロントエンドとしての Kestrel の使用から、WebListener の実装への切り替えも行います。
+**Tailspin.Web.Survey.Public** はステートレス サービスで、これも ASP.NET MVC サイトをセルフホストします。 ユーザーはこのサイトにアクセスして、一覧からアンケートを選択し、回答を入力します。このサービスは、そのコードのほとんどを、移植された Service Fabric アプリケーションの *Tailspin.Web.Survey.Public* サービスと共有します。 また、このサービスも ASP.NET Core を使用し、さらに Web フロントエンドとしての Kestrel の使用から、WebListener の実装への切り替えも行います。
 
-**Tailspin.SurveyResponseService** は、アンケートの回答を Azure Blob Storage に格納するステートフル サービスです。 また、回答をアンケート分析データにマージします。 このサービスは、[ReliableConcurrentQueue][reliable-concurrent-queue] を使用してアンケートの回答の一括処理するため、ステートフル サービスとして実装されます。 この機能は、当初は移植された Service Fabric アプリケーションの *Tailspin.Web.Survey.Public* サービスで実装されていました。 Tailspin は、元の機能をこのサービスにリファクタリングして、個別に拡大縮小できるようにしました。
+**Tailspin.SurveyResponseService** は、アンケートの回答を Azure Blob Storage に格納するステートフル サービスです。 また、回答をアンケート分析データにマージします。 このサービスは、[ReliableConcurrentQueue][reliable-concurrent-queue] を使用してアンケートの回答の一括処理するため、ステートフル サービスとして実装されます。 この機能は、当初は移植された Service Fabric アプリケーションの *Tailspin.AnswerAnalysisService* サービスで実装されていました。
 
-**Tailspin.SurveyManagementService** は、アンケートとアンケートの質問を格納および取得するステートレス サービスです。 このサービスでは Azure Blob Storage が使用されます。 この機能も、当初は移植された Service Fabric アプリケーションの *Tailspin.AnswerAnalysisService* サービスで実装されていました。 Tailspin は、元の機能をこのサービスにリファクタリングして、個別に拡大縮小できるようにもしました。
+**Tailspin.SurveyManagementService** は、アンケートとアンケートの質問を格納および取得するステートレス サービスです。 このサービスでは Azure Blob Storage が使用されます。 この機能も、当初は移植された Service Fabric アプリケーションの *Tailspin.Web* および *Tailspin.Web.Survey.Public* サービスのデータ アクセス コンポーネントで実装されていました。 Tailspin は、元の機能をこのサービスにリファクタリングして、個別に拡大縮小できるようにしました。
 
-**Tailspin.SurveyAnswerService** は、アンケートの回答と分析を取得するステートレス サービスです。 このサービスでも Azure Blob Storage が使用されます。 この機能も、当初は移植された Service Fabric アプリケーションの *Tailspin.AnswerAnalysisService* サービスで実装されていました。 Tailspin は、元の機能をこのサービスにリファクタリングしました。負荷が小さいことが予測されたため、使用するインスタンスを少なくして、リソースを節約したいと考えたためです。
+**Tailspin.SurveyAnswerService** は、アンケートの回答と分析を取得するステートレス サービスです。 このサービスでも Azure Blob Storage が使用されます。 この機能も、当初は移植された Service Fabric アプリケーションの *Tailspin.Web* サービスのデータ アクセス コンポーネントで実装されていました。 Tailspin は、元の機能をこのサービスにリファクタリングしました。負荷が小さいことが予測されたため、使用するインスタンスを少なくして、リソースを節約したいと考えたためです。
 
-**Tailspin.SurveyAnalysisService** は、アンケートの回答の概要データを迅速に取得できるように Redis Cache に保持するステートレス サービスです。 このサービスは、アンケートに回答が入力され、新しいアンケート回答データが概要データにマージされるたびに *Tailspin.SurveyResponseService* によって呼び出されます。 このサービスには、移植された Service Fabric アプリケーションの *Tailspin.SurveyAnalysisService* サービスに残っている機能が含まれています。
+**Tailspin.SurveyAnalysisService** は、アンケートの回答の概要データを迅速に取得できるように Redis Cache に保持するステートレス サービスです。 このサービスは、アンケートに回答が入力され、新しいアンケート回答データが概要データにマージされるたびに *Tailspin.SurveyResponseService* によって呼び出されます。 このサービスは、移植された Service Fabric アプリケーションからの *Tailspin.AnswerAnalysisService* サービスで当初は実装されていた機能を含みます。
 
 ## <a name="stateless-versus-stateful-services"></a>ステートレス サービスとステートフル サービス
 
