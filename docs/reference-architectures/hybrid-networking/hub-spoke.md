@@ -2,14 +2,14 @@
 title: "Azure にハブスポーク ネットワーク トポロジを実装する"
 description: "Azure にハブスポーク ネットワーク トポロジを実装する方法。"
 author: telmosampaio
-ms.date: 05/05/2017
+ms.date: 02/14/2018
 pnp.series.title: Implement a hub-spoke network topology in Azure
 pnp.series.prev: expressroute
-ms.openlocfilehash: e6f07a7962dd5728226b023700268340590d97a3
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: c03ecd4ba5ddbe50cfb17e56d75c18102b751cfb
+ms.sourcegitcommit: 475064f0a3c2fac23e1286ba159aaded287eec86
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 02/19/2018
 ---
 # <a name="implement-a-hub-spoke-network-topology-in-azure"></a>Azure にハブスポーク ネットワーク トポロジを実装する
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 11/14/2017
 
 ## <a name="architecture"></a>アーキテクチャ
 
-アーキテクチャは、次のコンポーネントで構成されています。
+アーキテクチャは、次のコンポーネントで構成されます。
 
 * **オンプレミス ネットワーク**。 組織内で実行されているプライベートなローカル エリア ネットワークです。
 
@@ -59,7 +59,7 @@ ms.lasthandoff: 11/14/2017
 > この記事で説明するのは [Resource Manager](/azure/azure-resource-manager/resource-group-overview) のデプロイのみですが、クラシック VNet を同じサブスクリプションの Resource Manager VNet に接続することもできます。 これにより、クラシック デプロイ をスポークでホストして、ハブで共有するサービスのメリットを引き続き得ることができます。
 
 
-## <a name="recommendations"></a>Recommendations
+## <a name="recommendations"></a>推奨事項
 
 ほとんどのシナリオには、次の推奨事項が適用されます。 これらの推奨事項には、優先される特定の要件がない限り、従ってください。
 
@@ -112,7 +112,7 @@ Azure の [VNet ごとの VNet ピアリング数の制限][vnet-peering-limit]�
 
 ## <a name="deploy-the-solution"></a>ソリューションのデプロイ方法
 
-このアーキテクチャのデプロイについては、[GitHub][ref-arch-repo] をご覧ください。 このデプロイでは、各 VNet の Ubuntu VM を使用して接続をテストします。 実際のサービスは、**ハブ VNet** の **shared-services** サブネットでホストされません。
+このアーキテクチャのデプロイについては、[GitHub][ref-arch-repo] を参照してください。 このデプロイでは、各 VNet の Ubuntu VM を使用して接続をテストします。 実際のサービスは、**ハブ VNet** の **shared-services** サブネットでホストされません。
 
 ### <a name="prerequisites"></a>前提条件
 
@@ -339,68 +339,6 @@ Azure の [VNet ごとの VNet ピアリング数の制限][vnet-peering-limit]�
 
   ```bash
   ping 10.1.1.37
-  ```
-
-### <a name="add-connectivity-between-spokes"></a>スポーク間に接続を追加する
-
-スポークを相互に接続できるようにする場合は、他のスポーク宛てのトラフィックをハブ VNet のゲートウェイに転送する UDR を各スポークにデプロイする必要があります。 次の手順を実行して、現在はスポークから別のスポークに接続できないことを確認します。続いて、UDR をデプロイし、接続をもう一度テストします。
-
-1. ジャンプボックス VM に接続されていない場合は、前のセクションの手順 1 ～ 4 を繰り返します。
-
-2. スポーク 1 でいずれかの Web サーバーに接続します。
-
-  ```bash
-  ssh 10.1.1.37
-  ```
-
-3. スポーク 1 とスポーク 2 の間の接続をテストします。 この接続は失敗します。
-
-  ```bash
-  ping 10.1.2.37
-  ```
-
-4. コンピューターのコマンド プロンプトに戻ります。
-
-5. 上記の前提条件でダウンロードしたリポジトリの `hybrid-networking\hub-spoke\spokes` フォルダーに切り替えます。
-
-6. 次の bash または PowerShell コマンドを実行して、最初のスポークに UDR をデプロイします。 値をそれぞれサブスクリプション、リソース グループ名、および Azure リージョンで置き換えてください。
-
-  ```bash
-  sh ./spoke.udr.deploy.sh --subscription xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx \
-    --resourcegroup ra-spoke1-rg \
-    --location westus \
-    --spoke 1
-  ```
-
-  ```powershell
-  ./spoke.udr.deploy.ps1 -Subscription xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx `
-    -ResourceGroup ra-spoke1-rg `
-    -Location westus `
-    -Spoke 1
-  ```
-
-7. 次の bash または PowerShell コマンドを実行して、2 番目のスポークに UDR をデプロイします。 値をそれぞれサブスクリプション、リソース グループ名、および Azure リージョンで置き換えてください。
-
-  ```bash
-  sh ./spoke.udr.deploy.sh --subscription xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx \
-    --resourcegroup ra-spoke2-rg \
-    --location westus \
-    --spoke 2
-  ```
-
-  ```powershell
-  ./spoke.udr.deploy.ps1 -Subscription xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx `
-    -ResourceGroup ra-spoke2-rg `
-    -Location westus `
-    -Spoke 2
-  ```
-
-8. SSH ターミナルに戻ります。
-
-9. スポーク 1 とスポーク 2 の間の接続をテストします。 この接続は成功します。
-
-  ```bash
-  ping 10.1.2.37
   ```
 
 <!-- links -->
