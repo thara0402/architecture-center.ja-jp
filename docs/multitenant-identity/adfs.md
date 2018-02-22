@@ -6,11 +6,11 @@ ms:date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications
 pnp.series.prev: token-cache
 pnp.series.next: client-assertion
-ms.openlocfilehash: bf385ccc988a709a61d9bee5fb1ee084a133138d
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: a5dc25a4b61ffd13d86f1abb2b839054e5fb4c7f
+ms.sourcegitcommit: 475064f0a3c2fac23e1286ba159aaded287eec86
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 02/19/2018
 ---
 # <a name="federate-with-a-customers-ad-fs"></a>顧客の AD FS とのフェデレーション
 
@@ -55,9 +55,9 @@ ASP.NET 4 による WS-Federation の使用例については、[active-director
 ## <a name="limitations"></a>制限事項
 証明書利用者アプリケーションは、次の表に示すように、既定では id_token で利用可能な要求の固定セットだけを受け取ります。 AD FS 2016 では、OpenID Connect のシナリオで id_token をカスタマイズできます。 詳細については、「[Custom ID Tokens in AD FS (AD FS でのカスタム ID トークン)](/windows-server/identity/ad-fs/development/customize-id-token-ad-fs-2016)」をご覧ください。
 
-| 要求 | 説明 |
+| 要求 | [説明] |
 | --- | --- |
-| aud |対象。 要求の発行先となるアプリケーション。 |
+| aud |対象。 要求の発行先のアプリケーション。 |
 | authenticationinstant |[認証インスタント]。 認証が発生した時刻。 |
 | c_hash |コード ハッシュ値。 これは、トークンの内容のハッシュです。 |
 | exp |[期限切れ日時]。 この時刻の後、トークンは受け入れられなくなります。 |
