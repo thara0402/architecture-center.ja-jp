@@ -1,0 +1,93 @@
+- name: Azure アーキテクチャ センター
+  href: /azure/architecture
+- name: データ アーキテクチャ ガイド
+  href: index.md
+  items:
+    - name: 従来の RDBMS
+      items:
+        - name: 概念
+          items:
+            - name: リレーショナル データ
+              href: concepts/relational-data.md
+            - name: トランザクション データ
+              href: concepts/transactional-data.md
+            - name: セマンティック モデリング
+              href: concepts/semantic-modeling.md
+        - name: シナリオ
+          items:
+            - name: オンライン トランザクション処理 (OLTP)
+              href: scenarios/online-transaction-processing.md
+            - name: オンライン分析処理 (OLAP)
+              href: scenarios/online-analytical-processing.md
+            - name: データ ウェアハウス
+              href: scenarios/data-warehousing.md
+            - name: 抽出、変換、読み込み (ETL)
+              href: scenarios/etl.md
+        - name: テクノロジの選択
+          items:
+            - name: データ ウェアハウス
+              href: technology-choices/data-warehouses.md
+            - name: オンライン分析処理 (OLAP)
+              href: technology-choices/olap-data-stores.md
+            - name: オンライン トランザクション処理 (OLTP)
+              href: technology-choices/oltp-data-stores.md
+    - name: ビッグ データと NoSQL
+      items:
+        - name: 概念
+          items:
+            - name: 非リレーショナル データ ストア
+              href: concepts/non-relational-data.md
+            - name: CSV ファイルと JSON ファイルの操作
+              href: concepts/csv-and-json.md
+            - name: ビッグ データ アーキテクチャ
+              href: concepts/big-data.md
+            - name: 高度な分析
+              href: concepts/advanced-analytics.md
+            - name: 大規模な機械学習
+              href: concepts/machine-learning-at-scale.md
+        - name: シナリオ
+          items:
+            - name: バッチ処理
+              href: scenarios/batch-processing.md
+            - name: リアルタイム処理
+              href: scenarios/real-time-processing.md
+            - name: 自由形式のテキスト検索
+              href: scenarios/search.md
+            - name: 対話型データ探索
+              href: scenarios/interactive-data-exploration.md
+            - name: 自然言語処理
+              href: scenarios/natural-language-processing.md
+            - name: 時系列ソリューション
+              href: scenarios/time-series.md
+        - name: テクノロジの選択
+          items:
+            - name: 分析データ ストア
+              href: technology-choices/analytical-data-stores.md
+            - name: 分析とレポート
+              href: technology-choices/analysis-visualizations-reporting.md
+            - name: バッチ処理
+              href: technology-choices/batch-processing.md
+            - name: Cognitive Services
+              href: technology-choices/cognitive-services.md
+            - name: データ ストレージ
+              href: technology-choices/data-storage.md
+            - name: 機械学習
+              href: technology-choices/data-science-and-machine-learning.md
+            - name: 自然言語処理
+              href: technology-choices/natural-language-processing.md
+            - name: パイプライン オーケストレーション
+              href: technology-choices/pipeline-orchestration-data-movement.md
+            - name: リアルタイム メッセージ取り込み
+              href: technology-choices/real-time-ingestion.md
+            - name: データ ストアの検索
+              href: technology-choices/search-options.md
+            - name: ストリーム処理
+              href: technology-choices/stream-processing.md
+    - name: 横断的関心事
+      items:
+        - name: データ転送
+          href: scenarios/data-transfer.md
+        - name: オンプレミス データ ソリューションのクラウドへの拡張
+          href: scenarios/hybrid-on-premises-and-cloud.md
+        - name: データ保護ソリューション
+          href: scenarios/securing-data-solutions.md
