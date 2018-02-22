@@ -2,11 +2,11 @@
 title: "Azure アーキテクチャ センター"
 description: "Azure アーキテクチャ センターとは、Microsoft Azure を使用したソリューションを構築するためのガイダンス、計画、パターン、ベスト プラクティスが提供される公式のセンターです。 これらは Microsoft patterns & practices チームによってまとめられています。"
 layout: LandingPage
-ms.openlocfilehash: 204d32c8de934665fff7b1a321bfdf893ac69983
-ms.sourcegitcommit: 441185360db49cfb3cf39527b68f318d17d4cb3d
+ms.openlocfilehash: eb069ae80ce70eb66ef57b1e0e21f7181d17d21f
+ms.sourcegitcommit: 475064f0a3c2fac23e1286ba159aaded287eec86
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/19/2018
 ---
 # <a name="azure-architecture-center"></a>Azure アーキテクチャ センター
 
@@ -64,26 +64,6 @@ ms.lasthandoff: 01/19/2018
 
 <!-- Second panel -->
 <ul class="panelContent cardsI">
-    <!-- Best practices -->
-    <li>
-        <a href="/azure/architecture/best-practices/">
-            <div class="cardSize">
-                <div class="cardPadding">
-                    <div class="card">
-                        <div class="cardImageOuter">
-                            <div class="cardImage">
-                                <img src="_images/best-practices.svg" alt="Best Practices" height="100%" />
-                            </div>
-                        </div>
-                        <div class="cardText">
-                            <h3>クラウド アプリケーションのベスト プラクティス</h3>
-                            <p>自動スケール、キャッシュ、データのパーティション分割、API 設計などの側面について説明する、クラウド アプリケーションのベスト プラクティス。</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </a>
-    </li>
     <!-- Microservices -->
     <li>
         <a href="/azure/architecture/microservices">
@@ -98,6 +78,86 @@ ms.lasthandoff: 01/19/2018
                         <div class="cardText">
                             <h3>Azure でのマイクロサービスの構築</h3>
                             <p>このマルチパート シリーズは、Azure でマイクロサービス アーキテクチャを設計するプロセスについて説明します。 リファレンス実装も含まれます。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </li>
+    <!-- data guide -->
+    <li>
+        <a href="/azure/architecture/data-guide/">
+            <div class="cardSize">
+                <div class="cardPadding">
+                    <div class="card">
+                        <div class="cardImageOuter">
+                            <div class="cardImage">
+                                <img src="_images/data-guide.svg" alt="Data Architecture Guide"  />
+                            </div>
+                        </div>
+                        <div class="cardText">
+                            <h3>Azure データ アーキテクチャ ガイド</h3>
+                            <p>Microsoft Azure でデータ中心のソリューションを設計するための体系的なアプローチ。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </li>
+    <!-- Best practices -->
+    <li>
+        <a href="/azure/architecture/best-practices/">
+            <div class="cardSize">
+                <div class="cardPadding">
+                    <div class="card">
+                        <div class="cardImageOuter">
+                            <div class="cardImage">
+                                <img src="_images/best-practices.svg" alt="Best Practices" />
+                            </div>
+                        </div>
+                        <div class="cardText">
+                            <h3>クラウド アプリケーションのベスト プラクティス</h3>
+                            <p>自動スケール、キャッシュ、データのパーティション分割、API 設計などの側面について説明する、クラウド アプリケーションのベスト プラクティス。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </li>
+    <!-- Resiliency -->
+    <li>
+        <a href="/azure/architecture/resiliency">
+            <div class="cardSize">
+                <div class="cardPadding">
+                    <div class="card">
+                        <div class="cardImageOuter">
+                            <div class="cardImage">
+                                <img src="_images/resiliency.svg" alt="Designing for Resiliency" />
+                            </div>
+                        </div>
+                        <div class="cardText">
+                            <h3>回復性の設計</h3>
+                            <p>回復性に優れた Azure 用アプリケーションの設計方法を説明します。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </li>
+    <!-- Building blocks -->
+    <li>
+        <a href="https://github.com/mspnp/template-building-blocks/wiki">
+            <div class="cardSize">
+                <div class="cardPadding">
+                    <div class="card">
+                        <div class="cardImageOuter">
+                            <div class="cardImage">
+                                <img src="_images/azbb.svg" alt="Azure Building Blocks" />
+                            </div>
+                        </div>
+                        <div class="cardText">
+                            <h3>Azure の構成要素</h3>
+                            <p>Azure リソースのデプロイを簡略化します。 1 つの設定ファイルを使用して Azure に複雑なアーキテクチャをデプロイします。</p>
                         </div>
                     </div>
                 </div>
@@ -158,46 +218,6 @@ ms.lasthandoff: 01/19/2018
                         <div class="cardText">
                             <h3>AWS プロフェッショナルのための Azure</h3>
                             <p>Microsoft Azure では AWS の経験を活用します。</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </a>
-    </li>
-    <!-- Resiliency -->
-    <li>
-        <a href="/azure/architecture/resiliency">
-            <div class="cardSize">
-                <div class="cardPadding">
-                    <div class="card">
-                        <div class="cardImageOuter">
-                            <div class="cardImage">
-                                <img src="_images/resiliency.svg" alt="Designing for Resiliency" />
-                            </div>
-                        </div>
-                        <div class="cardText">
-                            <h3>回復性の設計</h3>
-                            <p>回復性に優れた Azure 用アプリケーションの設計方法を説明します。</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </a>
-    </li>
-    <!-- Building blocks -->
-    <li>
-        <a href="https://github.com/mspnp/template-building-blocks/wiki">
-            <div class="cardSize">
-                <div class="cardPadding">
-                    <div class="card">
-                        <div class="cardImageOuter">
-                            <div class="cardImage">
-                                <img src="_images/azbb.svg" alt="Azure Building Blocks" />
-                            </div>
-                        </div>
-                        <div class="cardText">
-                            <h3>Azure の構成要素</h3>
-                            <p>Azure リソースのデプロイを簡略化します。 1 つの設定ファイルを使用して Azure に複雑なアーキテクチャをデプロイします。</p>
                         </div>
                     </div>
                 </div>
