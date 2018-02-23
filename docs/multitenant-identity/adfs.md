@@ -6,11 +6,11 @@ ms:date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications
 pnp.series.prev: token-cache
 pnp.series.next: client-assertion
-ms.openlocfilehash: a5dc25a4b61ffd13d86f1abb2b839054e5fb4c7f
-ms.sourcegitcommit: 475064f0a3c2fac23e1286ba159aaded287eec86
+ms.openlocfilehash: 08bf567085a940287de310f61b9f447d0ce5d5ec
+ms.sourcegitcommit: 3d9ee03e2dda23753661a80c7106d1789f5223bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="federate-with-a-customers-ad-fs"></a>顧客の AD FS とのフェデレーション
 
@@ -63,10 +63,10 @@ ASP.NET 4 による WS-Federation の使用例については、[active-director
 | exp |[期限切れ日時]。 この時刻の後、トークンは受け入れられなくなります。 |
 | iat |発行時刻。 トークンが発行された日時。 |
 | iss |発行者。 この要求の値は、常にリソース パートナーの AD FS です。 |
-| name |ユーザー名。 例: `john@corp.fabrikam.com`. |
+| name |ユーザー名。 例: `john@corp.fabrikam.com` |
 | nameidentifier |[名前の識別子]。 トークンが発行されたエンティティの名前の識別子。 |
 | nonce |セッション nonce。 再生攻撃を防ぐために AD FS によって生成される一意の値。 |
-| upn |ユーザー プリンシパル名 (UPN)。 例: john@corp.fabrikam.com |
+| upn |ユーザー プリンシパル名 (UPN)。 例: `john@corp.fabrikam.com` |
 | pwd_exp |パスワードの有効期限。 ユーザーのパスワード、または PIN などのような認証のシークレットが期限切れに なるまでの秒数。 |
 
 > [!NOTE]

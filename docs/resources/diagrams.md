@@ -1,11 +1,11 @@
 ---
 title: "アーキテクチャ ダイアグラムのアイコンとその他の資産"
 description: "独自のアーキテクチャ ダイアグラムを作成するのに役立つアイコン、Visio テンプレート、PNG ファイル、および SVG ファイル"
-ms.openlocfilehash: 863c5cd479e6c4b6d57299176b80d02661e5466b
-ms.sourcegitcommit: 662f27f37d45f778ad1b6355fb6fb66e3c65558c
+ms.openlocfilehash: 58a2046c0d463c1f331ea3f950f0c11c273ffc36
+ms.sourcegitcommit: 3d9ee03e2dda23753661a80c7106d1789f5223bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="icons-and-diagrams"></a>アイコンとダイアグラム
 
@@ -18,7 +18,7 @@ ms.lasthandoff: 12/11/2017
 
 ![クラウドおよびエンタープライズ用シンボル/アイコン セット](./_images/CnESymbols.png)
 
-[Microsoft Office Visio ステンシル](http://www.microsoft.com/en-us/download/details.aspx?id=35772)で、Microsoft Office と関連テクノロジの追加のシンボルを入手できます。 それらはアーキテクチャ ダイアグラム用に最適化されてはいません。   
+[Microsoft Office Visio ステンシル](http://www.microsoft.com/download/details.aspx?id=35772)で、Microsoft Office と関連テクノロジの追加のシンボルを入手できます。 それらはアーキテクチャ ダイアグラム用に最適化されてはいません。   
 
 > [!NOTE]
 > これらの資産はユーザー インターフェイスでの使用を目的としていません。 サード パーティのシンボルは Microsoft が所有しているわけではありません。

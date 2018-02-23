@@ -4,11 +4,11 @@ description: "コンテンツ配信ネットワーク (CDN) で Azure でホス�
 author: dragon119
 ms.date: 02/02/2018
 pnp.series.title: Best Practices
-ms.openlocfilehash: 73da41edec246b672564dd4a52b317eacf8ad649
-ms.sourcegitcommit: 2e8b06e9c07875d65b91d5431bfd4bc465a7a242
+ms.openlocfilehash: 9ee9099c85818af9486408f6ece41d3f6fcd9b44
+ms.sourcegitcommit: 3d9ee03e2dda23753661a80c7106d1789f5223bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="best-practices-for-using-content-delivery-networks-cdns"></a>コンテンツ配信ネットワーク (CDN) を使用するためのベスト プラクティス
 
@@ -95,5 +95,3 @@ CDN を使用してフロント ファイルなどの静的アセットを配信
 
 ### <a name="cdn-fallback"></a>CDN フォールバック
 CDN のエラーや一時的な使用不能状態に対するアプリケーションの対応方法を考慮する必要があります。 クライアント アプリケーションは、前回の要求中に (クライアントの) ローカルにキャッシュされたリソースのコピーを使用できる場合があります。CDN を使用できない場合は、エラーを検出すると、そこで配信元 (リソースが保存されているアプリケーション フォルダーまたは Azure BLOB コンテナー) にリソースを要求するコードを含めることもできます。
-
-次の例は、フォールバックのしくみを示しています。

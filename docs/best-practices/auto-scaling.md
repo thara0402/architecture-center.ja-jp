@@ -4,11 +4,11 @@ description: "自動スケールによってアプリケーションに必要な
 author: dragon119
 ms.date: 05/17/2017
 pnp.series.title: Best Practices
-ms.openlocfilehash: f2d42e9d6f4baa2da111c61fe12b48fdec785b92
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: a8489aaabab2b8523fbc9f026f4f435bb6d1ad29
+ms.sourcegitcommit: 3d9ee03e2dda23753661a80c7106d1789f5223bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="autoscaling"></a>自動スケール
 [!INCLUDE [header](../_includes/header.md)]
@@ -78,7 +78,7 @@ Azure 自動スケールを使用する場合は、次の点を考慮してく�
 * 自動スケール ルールを構成し、一定期間、アプリケーションのパフォーマンスを監視します。 この監視結果を使用して、必要に応じてシステムをスケールする方法を調整します。 ただし、自動スケールは即時に結果を得られるプロセスではありません。 指定したしきい値を超過する (または下回る) 平均 CPU 使用率など、何らかのメトリックに反応するには一定の時間を要します。
 * 測定されたトリガー属性 (CPU 使用率やキューの長さなど) に基づく検出メカニズムを使用する自動スケール ルールでは、瞬間的な値ではなく、長期にわたって集計された値を使用して自動スケール アクションがトリガーされます。 既定では、集計は値の平均になります。 これにより、システムの反応が早すぎたり、急激な変動が生じたりすることが回避されます。 また、自動的に開始された新しいインスタンスが実行モードになるまでの時間を確保し、新しいインスタンスの開始中に追加の自動スケール アクションが実行されないようにすることもできます。 Azure Cloud Services や Azure Virtual Machines については、既定の集計期間は 45 分であるため、需要の急増に反応して自動スケールをトリガーするメトリックに、この長さまでの時間を設定できます。 SDK を使用してこの集計期間を変更できますが、25 分未満に設定すると予期しない結果を招く可能性があります (詳細については、「 [Auto Scaling Cloud Services on CPU Percentage with the Azure Monitoring Services Management Library (Azure Monitoring Services 管理ライブラリを使用した CPU 使用率に基づく Cloud Services の自動スケール)](http://rickrainey.com/2013/12/15/auto-scaling-cloud-services-on-cpu-percentage-with-the-windows-azure-monitoring-services-management-library/)」を参照してください)。 Web Apps では、平均の期間はかなり短く、平均のトリガー測定への変更後、約 5 分間で新しいインスタンスを使用できるようになります。
 * ポータルではなく SDK を使用して自動スケールを構成する場合は、ルールが有効な期間の、より詳細なスケジュールを指定できます。 独自のメトリックを作成し、自動スケール ルールで既存のメトリックと共に使用したり、単独で使用したりすることもできます。 たとえば、1 秒あたりの要求数や使用可能なメモリ平均量などの代替カウンターを使用することも、特定のビジネス プロセスを測定するカスタム カウンターを使用することもできます。
-* Service Fabric を自動スケールする場合、クラスター内のノードの種類は、バックエンドでは VM Scale Sets で構成されるため、ノードの種類ごとに自動スケール ルールを設定する必要があります。 自動スケールを設定する前に、必要なノードの数を考慮します。 ノードの種類がプライマリである場合に必要なノードの最小数は、選択した信頼性のレベルによって決まります。 詳細については、「[自動スケール ルールを使用した Service Fabric クラスターのスケールインとスケールアウト](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-cluster-scale-up-down)」を参照してください。
+* Service Fabric を自動スケールする場合、クラスター内のノードの種類は、バックエンドでは VM Scale Sets で構成されるため、ノードの種類ごとに自動スケール ルールを設定する必要があります。 自動スケールを設定する前に、必要なノードの数を考慮します。 ノードの種類がプライマリである場合に必要なノードの最小数は、選択した信頼性のレベルによって決まります。 詳細については、「[自動スケール ルールを使用した Service Fabric クラスターのスケールインとスケールアウト](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-scale-up-down)」を参照してください。
 * ポータルを使用して、SQL Database のインスタンスやキューなどのリンク リソースを Cloud Service インスタンスにリンクできます。 これにより、リンクされたリソースごとに、より簡単に別個の手動および自動スケーリング構成オプションにアクセスできます。 詳細については、「[方法: クラウド サービスに対するリソースのリンク](/azure/cloud-services/cloud-services-how-to-manage)」を参照してください。
 * 複数のポリシーとルールを構成するときは、それらが互いに競合する可能性があります。 自動スケールでは次の競合の解決ルールに従って、常に十分な数のインスタンスが実行されます。
   * スケールアウト操作は、スケールイン操作よりも常に優先されます。

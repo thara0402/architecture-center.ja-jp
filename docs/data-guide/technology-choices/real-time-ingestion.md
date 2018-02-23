@@ -3,11 +3,11 @@ title: "リアルタイム メッセージ取り込みテクノロジの選択"
 description: 
 author: zoinerTejada
 ms:date: 02/12/2018
-ms.openlocfilehash: 4f76e63a50c1d689ea3a37219a44aa94477a2e2e
-ms.sourcegitcommit: 90cf2de795e50571d597cfcb9b302e48933e7f18
+ms.openlocfilehash: 2e6578b779950b5ef11bda7b8ba1fb2e45e09f4e
+ms.sourcegitcommit: 3d9ee03e2dda23753661a80c7106d1789f5223bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="choosing-a-real-time-message-ingestion-technology-in-azure"></a>Azure でのリアルタイム メッセージ取り込みテクノロジの選択
 
@@ -70,4 +70,4 @@ Kafka の一般的なユース ケースは次のとおりです。
 
 [1] [Azure IoT プロトコル ゲートウェイ](/azure/iot-hub/iot-hub-protocol-gateway)をカスタム ゲートウェイとして使用して、IoT Hub に対してプロトコルを適用することもできます。
 
-詳しくは、「[Azure IoT Hub と Azure Event Hubs の比較](/azure/iot-hub/iot-hub-compare-event-hubss)」をご覧ください。
+詳しくは、「[Azure IoT Hub と Azure Event Hubs の比較](/azure/iot-hub/iot-hub-compare-event-hubs)」をご覧ください。

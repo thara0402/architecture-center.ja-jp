@@ -2,11 +2,11 @@
 title: "イベント ドリブン アーキテクチャのスタイル"
 description: "Azure でのイベント ドリブン アーキテクチャと IoT アーキテクチャのメリット、課題、ベスト プラクティスを説明します"
 author: MikeWasson
-ms.openlocfilehash: ff7f936ceabefe7079a1ebbfa717ff4095bf133b
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 3289bf784b02d62e3d0c1a29b4839c9be3501134
+ms.sourcegitcommit: 3d9ee03e2dda23753661a80c7106d1789f5223bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="event-driven-architecture-style"></a>イベント ドリブン アーキテクチャのスタイル
 
@@ -78,9 +78,9 @@ ms.lasthandoff: 11/14/2017
 
 網掛けのグレーのボックスに、IoT システムのコンポーネントが表示されています。これらのコンポーネントはイベント ストリーミングに直接関連はありませんが、ここでは完全を期すために盛り込んでいます。
 
-- **デバイス レジストリ**はプロビジョニングされたデバイスのデータベースで、デバイス ID が含まれ、また、たいていは位置情報などのデバイスのメタデータも含まれています。
+- **デバイス レジストリ**はプロビジョニングされたデバイスのデータベースで、デバイス ID と、通常は位置情報などのデバイスのメタデータを含みます。
 
-- **プロビジョニング API** は新しいデバイスのプロビジョニングや登録でよく使用される外部インターフェイスです。
+- **プロビジョニング API** は新しいデバイスをプロビジョニングし登録するための一般的な外部インターフェイスです。
 
 - 一部の IoT ソリューションでは、**コマンドやコントロール メッセージ**をデバイスに送信できます。
 
@@ -89,7 +89,7 @@ ms.lasthandoff: 11/14/2017
  <!-- links -->
 
 [competing-consumers]: ../../patterns/competing-consumers.md
-[iot-ref-arch]: https://azure.microsoft.com/en-us/updates/microsoft-azure-iot-reference-architecture-available/
+[iot-ref-arch]: https://azure.microsoft.com/updates/microsoft-azure-iot-reference-architecture-available/
 [minimize-coordination]: ../design-principles/minimize-coordination.md
 
 
