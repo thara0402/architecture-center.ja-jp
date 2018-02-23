@@ -5,11 +5,11 @@ keywords: "AWS エキスパート, Azure との比較, AWS との比較, Azure �
 author: lbrader
 ms.date: 03/24/2017
 pnp.series.title: Azure for AWS Professionals
-ms.openlocfilehash: e5f7cb5062b0b4a8526f3b29a9fa4ddaff399fc0
-ms.sourcegitcommit: a7aae13569e165d4e768ce0aaaac154ba612934f
+ms.openlocfilehash: b8698675efa42bb3fae73cefe7b078942549b412
+ms.sourcegitcommit: 3d9ee03e2dda23753661a80c7106d1789f5223bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="azure-for-aws-professionals"></a>AWS プロフェッショナルのための Azure
 
@@ -226,7 +226,7 @@ Azure には、AWS に直接相当するものがないいくつかのコンピ�
 
 -   [初めての Azure 関数の作成](https://azure.microsoft.com/documentation/articles/functions-create-first-azure-function/)
 
-### <a name="storage"></a>ストレージ
+### <a name="storage"></a>Storage
 
 #### <a name="s3ebsefs-and-azure-storage"></a>S3/EBS/EFS と Azure Storage
 
@@ -351,7 +351,7 @@ AWS Simple Queueing Service (SQS) は、AWS プラットフォーム内のアプ
 
 -   [Queue Storage](https://azure.microsoft.com/documentation/articles/storage-nodejs-how-to-use-queues/) - Azure プラットフォーム内のアプリケーション コンポーネント間で通信できるようにするクラウド メッセージング サービスです。
 
--   [Service Bus](https://azure.microsoft.com/en-us/services/service-bus/) - アプリケーション、サービス、およびデバイスを接続するためのより堅牢なメッセージング システムです。 Service Bus は、関連する [Service Bus Relay](https://docs.microsoft.com/en-us/azure/service-bus-relay/relay-what-is-it) を使用して、リモートでホストされているアプリケーションとサービスにも接続できます。
+-   [Service Bus](https://azure.microsoft.com/services/service-bus/) - アプリケーション、サービス、およびデバイスを接続するためのより堅牢なメッセージング システムです。 Service Bus は、関連する [Service Bus Relay](https://docs.microsoft.com/azure/service-bus-relay/relay-what-is-it) を使用して、リモートでホストされているアプリケーションとサービスにも接続できます。
 
 #### <a name="device-farm"></a>Device Farm
 

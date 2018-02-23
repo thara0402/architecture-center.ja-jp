@@ -2,11 +2,11 @@
 title: "頻度の高い I/O のアンチパターン"
 description: "大量の I/O 要求によってパフォーマンスと応答性が損なわれる場合があります。"
 author: dragon119
-ms.openlocfilehash: 50001316939b56c9b57a119f6ae20f0878f54c0f
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 4f0e0e455ceb58317d3029d8ab4631d476802499
+ms.sourcegitcommit: 3d9ee03e2dda23753661a80c7106d1789f5223bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="chatty-io-antipattern"></a>頻度の高い I/O のアンチパターン
 
@@ -215,7 +215,7 @@ await SaveCustomerListToFileAsync(customers);
 
 - データを書き込むとき、リソースを必要以上に長い時間ロックすることを避け、時間のかかる操作の実行中に生じる競合のリスクを抑えるようにしてください。 書き込み操作が、複数のデータ ストアや複数のファイル、または複数のサービスにまたがる場合は、結果整合性のアプローチを採用します。 [データ整合性のガイダンス][data-consistency-guidance]に関するページを参照してください。
 
-- データをメモリにバッファー処理した後で書き込む場合、そのデータはプロセスのクラッシュに対して脆弱になります。 通常のデータ転送に連続性がある場合やさほど混雑しない場合は、持続性のある外部キュー ([Event Hubs](http://azure.microsoft.com/en-us/services/event-hubs/) など) にデータをバッファー処理した方が安全です。
+- データをメモリにバッファー処理した後で書き込む場合、そのデータはプロセスのクラッシュに対して脆弱になります。 通常のデータ転送に連続性がある場合やさほど混雑しない場合は、持続性のある外部キュー ([Event Hubs](http://azure.microsoft.com/services/event-hubs/) など) にデータをバッファー処理した方が安全です。
 
 - サービスまたはデータベースから取得したデータをキャッシュすることを検討してください。 同じデータの要求を繰り返す必要がないので、I/O の量を減らすことにつながります。 詳細については、[キャッシュのベスト プラクティス][caching-guidance]に関するページを参照してください。
 

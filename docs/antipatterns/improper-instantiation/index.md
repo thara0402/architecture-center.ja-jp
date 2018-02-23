@@ -3,11 +3,11 @@ title: "不適切なインスタンス化のアンチパターン"
 description: "作成後に共有する予定のオブジェクトの新しいインスタンスを頻繁に作成することは避けてください。"
 author: dragon119
 ms.date: 06/05/2017
-ms.openlocfilehash: 8955f37e76c8b5e66c1ed7737d200d11ed321612
-ms.sourcegitcommit: 9ba82cf84cee06ccba398ec04c51dab0e1ca8974
+ms.openlocfilehash: 4d5ef9ad9e675b46df94b51e81d7a4bd4c1b25e9
+ms.sourcegitcommit: 3d9ee03e2dda23753661a80c7106d1789f5223bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="improper-instantiation-antipattern"></a>不適切なインスタンス化のアンチパターン
 
@@ -22,9 +22,7 @@ ms.lasthandoff: 02/13/2018
 - `Microsoft.Azure.Documents.Client.DocumentClient` Cosmos DB インスタンスに接続します
 - `StackExchange.Redis.ConnectionMultiplexer` Azure Redis Cache を含む Redis に接続します。
 
-これらのクラスは、一度インスタンス化された後、アプリケーションの有効期間にわたって再利用されることが意図されています。 ただし、"これらのクラスは必要なときにのみ取得し、すぐに解放する必要がある" という考えはよくある誤解です  (ここに示されているのは .NET ライブラリですが、そのパターンは .NET に固有のものではありません)。
-
-次の ASP.NET の例では、リモート サービスと通信するために `HttpClient` のインスタンスを作成しています。 完全なサンプルは、[こちら][sample-app]でご覧いただけます。
+これらのクラスは、一度インスタンス化された後、アプリケーションの有効期間にわたって再利用されることが意図されています。 ただし、"これらのクラスは必要なときにのみ取得し、すぐに解放する必要がある" という考えはよくある誤解です  (ここに示されているのは .NET ライブラリですが、そのパターンは .NET に固有のものではありません)。次の ASP.NET の例では、リモート サービスと通信するために `HttpClient` のインスタンスを作成しています。 完全なサンプルは、[こちら][sample-app]でご覧いただけます。
 
 ```csharp
 public class NewHttpClientInstancePerRequestController : ApiController
@@ -76,18 +74,18 @@ public class ExpensiveToCreateService
 ```csharp
 public class SingleHttpClientInstanceController : ApiController
 {
-    private static readonly HttpClient HttpClient;
+    private static readonly HttpClient httpClient;
 
     static SingleHttpClientInstanceController()
     {
-        HttpClient = new HttpClient();
+        httpClient = new HttpClient();
     }
 
     // This method uses the shared instance of HttpClient for every call to GetProductAsync.
     public async Task<Product> GetProductAsync(string id)
     {
         var hostName = HttpContext.Current.Request.Url.Host;
-        var result = await HttpClient.GetStringAsync(string.Format("http://{0}:8080/api/...", hostName));
+        var result = await httpClient.GetStringAsync(string.Format("http://{0}:8080/api/...", hostName));
         return new Product { Name = result };
     }
 }
