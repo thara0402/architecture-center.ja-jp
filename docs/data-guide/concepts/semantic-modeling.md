@@ -3,11 +3,11 @@ title: "セマンティック モデリング"
 description: 
 author: zoinerTejada
 ms:date: 02/12/2018
-ms.openlocfilehash: e989a7a5a58e7d05e261931005069bb12bd79186
-ms.sourcegitcommit: 90cf2de795e50571d597cfcb9b302e48933e7f18
+ms.openlocfilehash: 343d17af0d933d515c724a062237c8d5df3a9e31
+ms.sourcegitcommit: 29fbcb1eec44802d2c01b6d3bcf7d7bd0bae65fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="semantic-modeling"></a>セマンティック モデリング
 
@@ -44,9 +44,8 @@ ms.lasthandoff: 02/14/2018
 
 セマンティック モデリングと分析処理は、次の特徴があります。
 
-| 要件 | 説明 |
+| 要件 | [説明] |
 | --- | --- |
-| 正規化 | 高度に正規化 |
 | スキーマ | 書き込み時のスキーマ。厳密に適用|
 | トランザクションの使用 | いいえ  |
 | ロック戦略 | なし |

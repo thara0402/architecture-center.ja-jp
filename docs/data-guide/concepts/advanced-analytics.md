@@ -3,11 +3,11 @@ title: "高度な分析"
 description: 
 author: zoinerTejada
 ms:date: 02/12/2018
-ms.openlocfilehash: 8fd3a4d8eea9e507b3e75ab825c4bd88c0eb5149
-ms.sourcegitcommit: 90cf2de795e50571d597cfcb9b302e48933e7f18
+ms.openlocfilehash: 31ba357fe37b1de35a6eea324d2d1d6766e172e5
+ms.sourcegitcommit: 29fbcb1eec44802d2c01b6d3bcf7d7bd0bae65fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="advanced-analytics"></a>高度な分析
 
@@ -80,5 +80,5 @@ AI アプリケーションをサポートする予測サービスでは、カ�
 
 ## <a name="see-also"></a>関連項目
 
-- [認識サービス テクノロジの選択](../technology-choices/cognitive-services.md)
+- [認識サービス技術の選択](../technology-choices/cognitive-services.md)
 - [機械学習テクノロジの選択](../technology-choices/data-science-and-machine-learning.md)
