@@ -39,6 +39,8 @@
               href: concepts/non-relational-data.md
             - name: CSV ファイルと JSON ファイルの操作
               href: concepts/csv-and-json.md
+            - name: データ レイク
+              href: concepts/data-lake.md
             - name: ビッグ データ アーキテクチャ
               href: concepts/big-data.md
             - name: 高度な分析
