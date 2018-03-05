@@ -2,11 +2,11 @@
 title: "ガイダンス: Azure AD テナント設計"
 description: "基本のクラウド導入戦略の一環である Azure テナント設計のガイダンス"
 author: telmosampaio
-ms.openlocfilehash: 5bf710f74bde04e041f2896b4a638c3513e4aa44
-ms.sourcegitcommit: 2e8b06e9c07875d65b91d5431bfd4bc465a7a242
+ms.openlocfilehash: 9ac52e9fd44bd8b9c777625002d5960f4f269be2
+ms.sourcegitcommit: 29fbcb1eec44802d2c01b6d3bcf7d7bd0bae65fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="guidance-azure-ad-tenant-design"></a>ガイダンス: Azure AD テナント設計
 
@@ -15,7 +15,7 @@ Azure AD テナントでは、1 つ以上の [Azure サブスクリプション]
 ## <a name="design-considerations"></a>設計上の考慮事項
 
 - 基本導入ステージでは、単一の Azure AD テナントから開始できます。 所属する組織に既存の Office 365 サブスクリプションまたは Azure サブスクリプションがある場合は、使用できる Azure AD テナントを既にお持ちです。 これらのサブスクリプションのいずれもない場合は、[Azure AD テナントの取得方法][how-to-get-aad-tenant]で詳細を確認できます。 
-- 中間および高度の導入ステージでは、オンプレミス ディレクトリを Azure AD と同期または連動させる方法について学習します。 これにより、オンプレミスのデジタル ID を Azure AD で使用できるようになります。 ただし、基本ステージでは、単一の Azure AD テナントの ID のみを持つ新規ユーザーを追加することになります。 また、それらの ID 管理を担います。 たとえば、新規 Azure AD ユーザーの登録、Azure リソースにもうアクセスするつもりがない Azure AD ユーザーの登録解除、およびその他のユーザー アクセス許可への変更があります。
+- 中間および高度の導入ステージでは、オンプレミス ディレクトリを Azure AD と同期または連動させる方法について学習します。 これにより、オンプレミスのデジタル ID を Azure AD で使用できるようになります。 ただし、基本ステージでは、単一の Azure AD テナントの ID のみを持つ新規ユーザーを追加することになります。 これらの ID を管理する必要があります。 たとえば、新規 Azure AD ユーザーの登録、Azure リソースにもうアクセスするつもりがない Azure AD ユーザーの登録解除、およびその他のユーザー アクセス許可への変更があります。
 
 ## <a name="next-steps"></a>次の手順
 

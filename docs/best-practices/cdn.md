@@ -4,11 +4,11 @@ description: "コンテンツ配信ネットワーク (CDN) で Azure でホス�
 author: dragon119
 ms.date: 02/02/2018
 pnp.series.title: Best Practices
-ms.openlocfilehash: 9ee9099c85818af9486408f6ece41d3f6fcd9b44
-ms.sourcegitcommit: 3d9ee03e2dda23753661a80c7106d1789f5223bb
+ms.openlocfilehash: 42b73db08ecef858f5279ea292cf8c0df77b847c
+ms.sourcegitcommit: 29fbcb1eec44802d2c01b6d3bcf7d7bd0bae65fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="best-practices-for-using-content-delivery-networks-cdns"></a>コンテンツ配信ネットワーク (CDN) を使用するためのベスト プラクティス
 
@@ -91,7 +91,7 @@ CDN を使用してフロント ファイルなどの静的アセットを配信
 
 * CDN を構成して、CORS ヘッダーを応答に追加します。 詳細については、[CORS を使用する Azure CDN](/azure/cdn/cdn-cors) に関するページを参照してください。 
 * 配信元が Azure Blob ストレージの場合は、ストレージ エンドポイントに CORS 規則を追加します。 詳細については、「 [Azure ストレージ サービスでのクロス オリジン リソース共有 (CORS) のサポート](http://msdn.microsoft.com/library/azure/dn535601.aspx)」を参照してください。
-* アプリケーションを構成して、CORS ヘッダーを設定します。 たとえば、ASp.NET Core ドキュメントの「[クロス オリジン要求 (CORS) を有効にします](/aspnet/core/security/cors)」をご覧ください。
+* アプリケーションを構成して、CORS ヘッダーを設定します。 たとえば、ASP.NET Core ドキュメントの「[クロス オリジン要求 (CORS) を有効にします](/aspnet/core/security/cors)」をご覧ください。
 
 ### <a name="cdn-fallback"></a>CDN フォールバック
 CDN のエラーや一時的な使用不能状態に対するアプリケーションの対応方法を考慮する必要があります。 クライアント アプリケーションは、前回の要求中に (クライアントの) ローカルにキャッシュされたリソースのコピーを使用できる場合があります。CDN を使用できない場合は、エラーを検出すると、そこで配信元 (リソースが保存されているアプリケーション フォルダーまたは Azure BLOB コンテナー) にリソースを要求するコードを含めることもできます。

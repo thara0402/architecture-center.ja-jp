@@ -3,11 +3,11 @@ title: "Azure で Jenkins サーバーを実行する"
 description: "このリファレンス アーキテクチャでは、シングル サインオン (SSO) で保護されたスケーラブルなエンタープライズ レベルの Jenkins サーバーを Azure にデプロイして運用する方法を示します。"
 author: njray
 ms.date: 01/21/18
-ms.openlocfilehash: 9cab4990b259695f310da339bfef3060b0905640
-ms.sourcegitcommit: 3426a9c5ed937f097725c487cf3d073ae5e2a347
+ms.openlocfilehash: 724185e43ed743013f52ded04b779552dd8e48c1
+ms.sourcegitcommit: 29fbcb1eec44802d2c01b6d3bcf7d7bd0bae65fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="run-a-jenkins-server-on-azure"></a>Azure で Jenkins サーバーを実行する
 
@@ -50,7 +50,7 @@ ms.lasthandoff: 02/01/2018
 
 -   **Azure Monitoring サービス**。 このサービスは、Jenkins をホストする Azure 仮想マシンを[監視][monitor]します。 このデプロイでは、仮想マシンの状態と CPU 使用率を監視し、アラートを送信します。
 
-## <a name="recommendations"></a>推奨事項
+## <a name="recommendations"></a>Recommendations
 
 ほとんどのシナリオには、次の推奨事項が適用されます。 これらの推奨事項には、優先される特定の要件がない限り、従ってください。
 
@@ -64,7 +64,7 @@ Jenkins ジョブが Azure リソースにアクセスできるようにする�
 
 [RBAC][rbac] により、割り当てられたロールを通じてユーザーまたはサービス プリンシパルの Azure リソースへのアクセスがさらに明確に定義され、制御されます。 組み込みロールとカスタム ロールの両方がサポートされています。 また、ロールは、パイプラインをセキュリティで保護したり、ユーザーやエージェントの責任が適切に割り当てられ、承認されていることを保証したりするうえでも役立ちます。 さらに、Azure 資産へのアクセスを制限するように RBAC を設定することもできます。 たとえば、ユーザーが特定のリソース グループ内の資産だけを使用するように制限できます。
 
-### <a name="storage"></a>ストレージ
+### <a name="storage"></a>Storage
 
 Azure Marketplace からインストールされた Jenkins の [Windows Azure Storage プラグイン][storage-plugin]を使用して、他のビルドやテストと共有できるビルド成果物を保存します。 このプラグインを Jenkins ジョブで使用するには、Azure ストレージ アカウントを構成しておく必要があります。
 
@@ -139,7 +139,7 @@ Jenkins サーバー VM をスケールアップまたはスケールダウン�
 
 -   [Azure Credentials][configure-credential] プラグインをインストールし、Key Vault を使用して、Azure 資産、パイプライン内のエージェント、およびサード パーティ コンポーネントのシークレットを処理します。
 
--   ユーザー、サービス、パイプライン エージェントがジョブを実行するために必要なリソースを定義するセキュリティ プロファイルを作成します。 この手順は、セキュリティ設定を検討するときに重要になります。
+-   RBAC を使用して、ジョブの実行に必要なサービス プリンシパルのアクセス権を最小限に抑えます。 これは、承認されていないジョブによる被害の範囲を制限するうえで役立ちます。
 
 多くの場合、Jenkins ジョブは、承認が必要な Azure サービス (Azure Container Service など) にアクセスするためにシークレットを必要とします。 [Azure Credentials プラグイン][configure-credential]と共に [Key Vault][key-vault] を使用して、これらのシークレットを安全に管理します。 Key Vault を使用して、サービス プリンシパルの資格情報、パスワード、トークン、その他のシークレットを保存します。
 
@@ -203,7 +203,7 @@ Jenkins サーバーで Jenkins Update Center の [Azure AD プラグイン][con
 
 この手順は Jenkins 管理者が実行します。管理者は、既にインストールされている Azure Credentials プラグインを設定します。
 
-[こちら][configure-credential]の手順に従って、プラグインを構成します。
+[こちらの手順に従って、プラグインを構成します][configure-credential]。
 
 ### <a name="step-6-provision-jenkins-server-for-monitoring-by-the-azure-monitor-service"></a>手順 6: Azure Monitor サービスで監視するために Jenkins サーバーをプロビジョニングする
 
