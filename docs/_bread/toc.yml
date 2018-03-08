@@ -18,9 +18,6 @@
         - name: 設計レビューのチェックリスト
           tocHref: /azure/architecture/checklist
           topicHref: /azure/architecture/checklist
-        - name: Elasticsearch
-          tocHref: /azure/architecture/elasticsearch
-          topicHref: /azure/architecture/elasticsearch
         - name: マルチテナント アプリケーションでの ID 管理
           tocHref: /azure/architecture/multitenant-identity
         - name: 参照アーキテクチャ
