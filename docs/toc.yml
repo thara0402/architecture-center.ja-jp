@@ -110,8 +110,10 @@
       href: checklist/availability.md
     - name: DevOps
       href: checklist/dev-ops.md
-    - name: 回復性
+    - name: 回復性 (一般)
       href: checklist/resiliency.md
+    - name: 回復性 (Azure サービス)
+      href: checklist/resiliency-per-service.md
     - name: スケーラビリティ
       href: checklist/scalability.md
 - name: 回復性の設計
@@ -132,8 +134,6 @@
       href: service-fabric/migrate-from-cloud-services.md
     - name: Azure Cloud Services から移行した Azure Service Fabric アプリケーションをリファクタリングする
       href: service-fabric/refactor-migrated-app.md
-    - name: Azure での Elasticsearch の実行
-      href: elasticsearch/index.md
     - name: Azure Resource Manager テンプレート機能の拡張
       href: building-blocks/extending-templates/index.md
 - name: リソース

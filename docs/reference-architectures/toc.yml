@@ -25,6 +25,8 @@
           href: hybrid-networking/expressroute-vpn-failover.md
         - name: ハブスポーク トポロジ
           href: hybrid-networking/hub-spoke.md
+        - name: 共有サービスを含むハブスポーク トポロジ
+          href: hybrid-networking/shared-services.md
     - name: ID 管理
       href: identity/index.md
       items:

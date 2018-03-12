@@ -2,11 +2,11 @@
 title: "オンプレミス ネットワークの Azure への接続"
 description: "オンプレミス ネットワークと Azure の間のセキュアかつ堅牢なネットワーク接続のための推奨アーキテクチャ。"
 layout: LandingPage
-ms.openlocfilehash: b96601144099571768254af92788f75cca0b928c
-ms.sourcegitcommit: 3d9ee03e2dda23753661a80c7106d1789f5223bb
+ms.openlocfilehash: 372efb8ecf69245a5895c51e3da156a348bd665e
+ms.sourcegitcommit: 2123c25b1a0b5501ff1887f98030787191cf6994
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/08/2018
 ---
 <!-- This file is generated! -->
 <!-- See the templates in ./build/reference-architectures  -->
@@ -14,7 +14,7 @@ ms.lasthandoff: 02/23/2018
 
 # <a name="connect-an-on-premises-network-to-azure"></a>オンプレミス ネットワークの Azure への接続
 
-これらの参照用アーキテクチャは、オンプレミス ネットワークと Azure の間に堅牢なネットワーク接続を作成するための実証済みプラクティスを示します。 <br/>[どれを選択すればよいでしょうか。](./considerations.md)
+これらの参照用アーキテクチャは、オンプレミス ネットワークと Azure の間に堅牢なネットワーク接続を作成するための実証済みプラクティスを示します。 [どれを選択すればよいでしょうか。](./considerations.md)
 
 <section class="series">
     <ul class="panelContent">
@@ -92,6 +92,26 @@ ms.lasthandoff: 02/23/2018
                     <div class="cardText">
                         <h3>ハブスポーク トポロジ</h3>
                         <p>ハブは、オンプレミス ネットワークの接続の中心です。 スポークは、ハブに対して配置される VNet であり、ワークロードを分離するために使用されます。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</li>
+    <!-- Hub-spoke topology with shared services -->
+<li style="display: flex; flex-direction: column;">
+    <a href="./shared-services.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="./images/shared-services.svg" height="140px" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>共有サービスを含むハブスポーク トポロジ</h3>
+                        <p>Active Directory サービスやネットワーク仮想アプライアンス (NVA) などの共有サービスを含むハブスポーク トポロジをデプロイします。 共有サービスはすべてのスポークで使用できます。</p>
                     </div>
                 </div>
             </div>

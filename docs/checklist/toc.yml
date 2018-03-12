@@ -6,7 +6,9 @@
       href: availability.md
     - name: DevOps
       href: dev-ops.md
-    - name: 回復性
+    - name: 回復性 (一般)
       href: resiliency.md
-    - name: 拡張性
+    - name: 回復性 (Azure サービス)
+      href: resiliency-per-service.md
+    - name: スケーラビリティ
       href: scalability.md
