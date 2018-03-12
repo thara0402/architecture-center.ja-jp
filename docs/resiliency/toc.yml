@@ -4,8 +4,10 @@
   items:
     - name: 回復力のあるアプリケーションの設計
       href: index.md
-    - name: 回復性のチェックリスト
+    - name: 回復性のチェックリスト (一般)
       href: ../checklist/resiliency.md?toc=/azure/architecture/resiliency/toc.json
+    - name: 回復性のチェックリスト (Azure サービス)
+      href: ../checklist/resiliency-per-service.md?toc=/azure/architecture/resiliency/toc.json
     - name: 障害モード分析
       href: failure-mode-analysis.md
     - name: その他のガイダンス

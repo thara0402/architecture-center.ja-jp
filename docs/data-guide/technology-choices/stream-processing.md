@@ -3,11 +3,11 @@ title: "ストリーム処理テクノロジの選択"
 description: 
 author: zoinerTejada
 ms:date: 02/12/2018
-ms.openlocfilehash: e06f46e2951159219bd8cc430102e2ec0c5d6d4d
-ms.sourcegitcommit: 90cf2de795e50571d597cfcb9b302e48933e7f18
+ms.openlocfilehash: 23d9849c14964b0905300f191a41084b589fd127
+ms.sourcegitcommit: 943e671a8d522cef5ddc8c6e04848134b03c2de4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="choosing-a-stream-processing-technology-in-azure"></a>Azure でのストリーム処理テクノロジの選択
 
@@ -19,6 +19,7 @@ ms.lasthandoff: 02/14/2018
 Azure では、以下のすべてのデータ ストアがリアルタイム処理のコア要件を満たしています。
 - [Azure Stream Analytics](/azure/stream-analytics/)
 - [Spark Streaming を使用する HDInsight](/azure/hdinsight/spark/apache-spark-streaming-overview)
+- [Azure Databricks における Apache Spark](/azure/azure-databricks/)
 - [Storm を使用する HDInsight](/azure/hdinsight/storm/apache-storm-overview)
 - [Azure Functions](/azure/azure-functions/functions-overview)
 - [Azure App Service WebJobs](/azure/app-service/web-sites-create-web-jobs)
@@ -40,25 +41,25 @@ Azure では、以下のすべてのデータ ストアがリアルタイム処�
 次の表は、機能の主な相違点をまとめたものです。 
 
 ### <a name="general-capabilities"></a>一般的な機能
-| | Azure Stream Analytics | Spark Streaming を使用する HDInsight | Storm を使用する HDInsight | Azure Functions | Azure App Service WebJobs |
-| --- | --- | --- | --- | --- | --- | 
-| プログラミング | ストリーム分析クエリ言語、JavaScript | Scala、Python、Java | Java、C# | C#、F#、Node.js | C#、Node.js、PHP、Java、Python |
-| プログラミング パラダイム | 宣言型 | 宣言型と命令型の混合 | 命令型 | 命令型 | 命令型 |    
-| 価格モデル | ストリーミング ユニット単位 | クラスター時間単位 | クラスター時間単位 | 関数の実行とリソースの消費量あたり | App Service プランの時間単位 |  
+| | Azure Stream Analytics | Spark Streaming を使用する HDInsight | Azure Databricks における Apache Spark | Storm を使用する HDInsight | Azure Functions | Azure App Service WebJobs |
+| --- | --- | --- | --- | --- | --- | --- | 
+| プログラミング | ストリーム分析クエリ言語、JavaScript | Scala、Python、Java | Scala、Python、Java、R | Java、C# | C#、F#、Node.js | C#、Node.js、PHP、Java、Python |
+| プログラミング パラダイム | 宣言型 | 宣言型と命令型の混合 | 宣言型と命令型の混合 | 命令型 | 命令型 | 命令型 |    
+| 価格モデル | [ストリーミング ユニット](https://azure.microsoft.com/pricing/details/stream-analytics/) | クラスター時間単位 | [Databricks の単位](https://azure.microsoft.com/pricing/details/databricks/) | クラスター時間単位 | 関数の実行とリソースの消費量あたり | App Service プランの時間単位 |  
 
 ### <a name="integration-capabilities"></a>統合機能
-| | Azure Stream Analytics | Spark Streaming を使用する HDInsight | Storm を使用する HDInsight | Azure Functions | Azure App Service WebJobs |
-| --- | --- | --- | --- | --- | --- | 
-| 入力 | [Stream Analytics の入力](/azure/stream-analytics/stream-analytics-define-inputs)  | Event Hubs、IoT Hub、Kafka、HDFS  | Event Hubs、IoT Hub、Storage Blobs、Azure Data Lake Store  | [サポートされるバインディング](/azure/azure-functions/functions-triggers-bindings#supported-bindings) | Service Bus、Storage Queues、Storage Blobs、Event Hubs、WebHooks、Cosmos DB、Files |
-| シンク |  [Stream Analytics の出力](/azure/stream-analytics/stream-analytics-define-outputs) | HDFS | Event Hubs、Service Bus、Kafka | [サポートされるバインディング](/azure/azure-functions/functions-triggers-bindings#supported-bindings) | Service Bus、Storage Queues、Storage Blobs、Event Hubs、WebHooks、Cosmos DB、Files | 
+| | Azure Stream Analytics | Spark Streaming を使用する HDInsight | Azure Databricks における Apache Spark | Storm を使用する HDInsight | Azure Functions | Azure App Service WebJobs |
+| --- | --- | --- | --- | --- | --- | --- | 
+| 入力 | [Stream Analytics の入力](/azure/stream-analytics/stream-analytics-define-inputs)  | Event Hubs、IoT Hub、Kafka、HDFS、Storage Blobs、Azure Data Lake Store  | Event Hubs、IoT Hub、Kafka、HDFS、Storage Blobs、Azure Data Lake Store  | Event Hubs、IoT Hub、Storage Blobs、Azure Data Lake Store  | [サポートされるバインディング](/azure/azure-functions/functions-triggers-bindings#supported-bindings) | Service Bus、Storage Queues、Storage Blobs、Event Hubs、WebHooks、Cosmos DB、Files |
+| シンク |  [Stream Analytics の出力](/azure/stream-analytics/stream-analytics-define-outputs) | HDFS、Kafka、Storage Blobs、Azure Data Lake Store、Cosmos DB | HDFS、Kafka、Storage Blobs、Azure Data Lake Store、Cosmos DB | Event Hubs、Service Bus、Kafka | [サポートされるバインディング](/azure/azure-functions/functions-triggers-bindings#supported-bindings) | Service Bus、Storage Queues、Storage Blobs、Event Hubs、WebHooks、Cosmos DB、Files | 
 
 ### <a name="processing-capabilities"></a>処理機能
-| | Azure Stream Analytics | Spark Streaming を使用する HDInsight | Storm を使用する HDInsight | Azure Functions | Azure App Service WebJobs |
-| --- | --- | --- | --- | --- | --- | 
-| 組み込みのテンポラル/ウィンドウの サポート | はい | はい | はい | いいえ  | いいえ  |
-| 入力データ形式 | Avro、JSON または CSV、UTF-8 エンコード | カスタム コードを使用する任意の形式 | カスタム コードを使用する任意の形式 | カスタム コードを使用する任意の形式 | カスタム コードを使用する任意の形式 |
-| スケーラビリティ | [クエリ パーティション](/azure/stream-analytics/stream-analytics-parallelization) | クラスターのサイズによる制限 | クラスターのサイズによる制限 | 並列処理される最大 200 の関数アプリ インスタンス | アプリ サービス プランの容量による制限 | 
-| 遅延着信と順不同のイベントの処理 | はい | はい | はい | いいえ  | いいえ  |
+| | Azure Stream Analytics | Spark Streaming を使用する HDInsight | Azure Databricks における Apache Spark | Storm を使用する HDInsight | Azure Functions | Azure App Service WebJobs |
+| --- | --- | --- | --- | --- | --- | --- | 
+| 組み込みのテンポラル/ウィンドウの サポート | [はい] | [はい] | [はい] | [はい] | いいえ  | いいえ  |
+| 入力データ形式 | Avro、JSON または CSV、UTF-8 エンコード | カスタム コードを使用する任意の形式 | カスタム コードを使用する任意の形式 | カスタム コードを使用する任意の形式 | カスタム コードを使用する任意の形式 | カスタム コードを使用する任意の形式 |
+| スケーラビリティ | [クエリ パーティション](/azure/stream-analytics/stream-analytics-parallelization) | クラスターのサイズによる制限 | Databricks クラスターのスケール構成による制限 | クラスターのサイズによる制限 | 並列処理される最大 200 の関数アプリ インスタンス | アプリ サービス プランの容量による制限 | 
+| 遅延着信と順不同のイベントの処理 | [はい] | [はい] | [はい] | [はい] | いいえ  | いいえ  |
 
 関連項目:
 

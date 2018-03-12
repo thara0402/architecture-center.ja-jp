@@ -4,11 +4,11 @@ description: "Microsoft Azure で実行する基本的な Web アプリケーシ
 author: MikeWasson
 ms.date: 12/12/2017
 cardTitle: Basic web application
-ms.openlocfilehash: 598eb547f0e96ae334af391183a792637caa8631
-ms.sourcegitcommit: 1c0465cea4ceb9ba9bb5e8f1a8a04d3ba2fa5acd
+ms.openlocfilehash: 38b0739cc61d679742b610b99e92aaad8d3b394d
+ms.sourcegitcommit: 2123c25b1a0b5501ff1887f98030787191cf6994
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="basic-web-application"></a>基本的な Web アプリケーション
 [!INCLUDE [header](../../_includes/header.md)]
@@ -40,7 +40,7 @@ ms.lasthandoff: 01/02/2018
 
 * **Azure DNS**。 [Azure DNS][azure-dns] は、DNS ドメインのホスティング サービスであり、Microsoft Azure インフラストラクチャを使用した名前解決を提供します。 Azure でドメインをホストすることで、その他の Azure サービスと同じ資格情報、API、ツール、課金情報を使用して DNS レコードを管理できます。 カスタム ドメイン名 (`contoso.com` など) を使用するには、カスタム ドメイン名を IP アドレスにマップする DNS レコードを作成します。 詳細については、[Azure App Service でのカスタム ドメイン名の構成][custom-domain-name]に関するページをご覧ください。  
 
-* **Azure SQL データベース**。 [SQL Database][sql-db] は、クラウドのサービスとしてのリレーショナル データベースです。
+* **Azure SQL データベース**。 [SQL Database][sql-db] は、クラウドのサービスとしてのリレーショナル データベースです。 SQL Database は、そのコード ベースを Microsoft SQL Server データベース エンジンと共有しています。 アプリケーションの要件に応じて、[Azure Database for MySQL](/azure/mysql) または [Azure Database for PostgreSQL](/azure/postgresql) を使用することもできます。 これらは、それぞれオープン ソースの MySQL Server および Postgres データベース エンジンに基づく、完全に管理されたデータベース サービスです。
 
 * **論理サーバー**。 Azure SQL Database では、論理サーバーがデータベースをホストします。 論理サーバーごとに複数のデータベースを作成できます。
 
