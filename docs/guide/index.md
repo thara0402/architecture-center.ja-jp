@@ -1,10 +1,10 @@
 ---
 layout: LandingPage
-ms.openlocfilehash: 00abbfdeac89a9006517195bd4bbc514d587fe74
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 9bd86f1b3527f1116d4f5169baf76f8a5b9a385b
+ms.sourcegitcommit: ea7108f71dab09175ff69322874d1bcba800a37a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="azure-application-architecture-guide"></a>Azure アプリケーション アーキテクチャ ガイド
 
@@ -46,7 +46,7 @@ ms.lasthandoff: 11/14/2017
 </tbody>
 </table>
 
-このガイドは、アプリケーションの設計者、開発者、および運用チームを対象としています。 個々 の Azure サービスを使用するためのハウツー ガイドではありません。 このガイドを読むことで、Azure クラウド プラットフォームでの構築に適用できるアーキテクチャのパターンやベスト プラクティスを理解できます。
+このガイドは、アプリケーションの設計者、開発者、および運用チームを対象としています。 個々 の Azure サービスを使用するためのハウツー ガイドではありません。 このガイドを読むことで、Azure クラウド プラットフォームでの構築に適用できるアーキテクチャのパターンやベスト プラクティスを理解できます。 また、[このガイドの電子ブック バージョン][ebook]をダウンロードすることもできます。
 
 ## <a name="how-this-guide-is-structured"></a>本書の構成
 
@@ -78,6 +78,7 @@ Azure アプリケーション アーキテクチャ ガイドは、アーキテ
 [checklists]: ../checklist/index.md
 [compute-options]: ./technology-choices/compute-comparison.md
 [design-principles]: ./design-principles/index.md
+[ebook]: https://azure.microsoft.com/campaigns/cloud-application-architecture-guide/
 [patterns]: ../patterns/index.md?toc=/azure/architecture/guide/toc.json
 [pillars]: ./pillars.md
 [ref-archs]: ../reference-architectures/index.md
