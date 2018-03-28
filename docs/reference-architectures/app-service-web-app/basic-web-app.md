@@ -30,7 +30,7 @@ ms.lasthandoff: 03/08/2018
 
 * **リソース グループ**。 [リソース グループ](/azure/azure-resource-manager/resource-group-overview)は、Azure リソースの論理コンテナーです。
 
-* **App Service アプリ**。 [Azure App Service][app-service] は、クラウド アプリケーションを作成およびデプロイするための完全に管理されたプラットフォームです。     
+* **App Service アプリ**。 [Azure App Service][app-service] は、クラウド アプリケーションを作成およびデプロイするためのフル マネージドのプラットフォームです。 
 
 * **App Service プラン**。 [App Service プラン][app-service-plans]は、アプリをホストする管理された仮想マシン (VM) を提供します。 プランに関連付けられているすべてのアプリが同じ VM インスタンスで実行されます。
 
@@ -40,11 +40,11 @@ ms.lasthandoff: 03/08/2018
 
 * **Azure DNS**。 [Azure DNS][azure-dns] は、DNS ドメインのホスティング サービスであり、Microsoft Azure インフラストラクチャを使用した名前解決を提供します。 Azure でドメインをホストすることで、その他の Azure サービスと同じ資格情報、API、ツール、課金情報を使用して DNS レコードを管理できます。 カスタム ドメイン名 (`contoso.com` など) を使用するには、カスタム ドメイン名を IP アドレスにマップする DNS レコードを作成します。 詳細については、[Azure App Service でのカスタム ドメイン名の構成][custom-domain-name]に関するページをご覧ください。  
 
-* **Azure SQL データベース**。 [SQL Database][sql-db] は、クラウドのサービスとしてのリレーショナル データベースです。 SQL Database は、そのコード ベースを Microsoft SQL Server データベース エンジンと共有しています。 アプリケーションの要件に応じて、[Azure Database for MySQL](/azure/mysql) または [Azure Database for PostgreSQL](/azure/postgresql) を使用することもできます。 これらは、それぞれオープン ソースの MySQL Server および Postgres データベース エンジンに基づく、完全に管理されたデータベース サービスです。
+* **Azure SQL データベース**。 [SQL Database][sql-db] は、クラウドのサービスとしてのリレーショナル データベースです。 SQL Database は、そのコード ベースを Microsoft SQL Server データベース エンジンと共有しています。 アプリケーションの要件に応じて、[Azure Database for MySQL](/azure/mysql) または [Azure Database for PostgreSQL](/azure/postgresql) を使用することもできます。 これらは、それぞれオープン ソースの MySQL Server および Postgres データベース エンジンに基づく、フル マネージドのデータベース サービスです。
 
 * **論理サーバー**。 Azure SQL Database では、論理サーバーがデータベースをホストします。 論理サーバーごとに複数のデータベースを作成できます。
 
-* **Azure Storage**。 診断ログを格納する BLOB コンテナーを持つ Azure ストレージ アカウントを作成します。
+* **Azure Storage**。 診断ログを格納する BLOB コンテナーを持つ Azure Storage アカウントを作成します。
 
 * **Azure Active Directory** (Azure AD)。 Azure AD または他の認証 ID プロバイダーを使用します。
 
@@ -65,7 +65,7 @@ Standard レベルまたは Premium レベルを使用してください。ど�
 
 リソース グループにもリージョンがあり、これによりデプロイ メタデータの格納場所が指定されます。 リソース グループとそのリソースは同じリージョンに配置してください。 これにより、デプロイ時の可用性が向上する可能性があります。 
 
-## <a name="scalability-considerations"></a>拡張性に関する考慮事項
+## <a name="scalability-considerations"></a>スケーラビリティに関する考慮事項
 
 Azure App Service の主な利点は、負荷に応じてアプリケーションをスケーリングできることです。 アプリケーションのスケーリングを計画する場合の考慮事項を次に示します。
 
@@ -164,7 +164,7 @@ App Service アプリには、`production` という名前のデプロイ スロ
 このセクションでは、この記事で説明している Azure サービスに固有のセキュリティの考慮事項について説明します。 これはセキュリティ上のベスト プラクティスを網羅した一覧ではありません。 その他のセキュリティの考慮事項については、[Azure App Service でのアプリのセキュリティ保護][app-service-security]に関するページをご覧ください。
 
 ### <a name="sql-database-auditing"></a>SQL Database 監査
-監査により、規定遵守を維持したり、ビジネス上の懸念やセキュリティ違反の疑いを示す差異や異常に対する洞察を得たりすることが容易になります。 「[SQL Database 監査の使用][sql-audit]」を参照してください。
+監査により、法令遵守を維持したり、ビジネス上の懸念やセキュリティ違反の疑いを示す差異や異常に対する洞察を得たりすることが容易になります。 「[SQL Database 監査の使用][sql-audit]」を参照してください。
 
 ### <a name="deployment-slots"></a>デプロイ スロット
 デプロイ スロットごとにパブリック IP アドレスがあります。 開発チームと DevOps チームのメンバーのみがこうしたエンドポイントにアクセスできるように、[Azure Active Directory ログイン][aad-auth]を使用して、非運用スロットをセキュリティで保護します。
