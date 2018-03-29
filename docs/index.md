@@ -1,6 +1,6 @@
 ---
-title: "Azure アーキテクチャ センター"
-description: "Azure アーキテクチャ センターとは、Microsoft Azure を使用したソリューションを構築するためのガイダンス、計画、パターン、ベスト プラクティスが提供される公式のセンターです。 これらは Microsoft patterns & practices チームによってまとめられています。"
+title: Azure アーキテクチャ センター
+description: Azure アーキテクチャ センターとは、Microsoft Azure を使用したソリューションを構築するためのガイダンス、計画、パターン、ベスト プラクティスが提供される公式のセンターです。 これらは Microsoft patterns & practices チームによってまとめられています。
 layout: LandingPage
 ms.topic: landing-page
 ms.openlocfilehash: 31177903bea137b40a457fe9360596e8096d6ab2
@@ -53,7 +53,7 @@ ms.lasthandoff: 03/17/2018
                     <div class="card">
                         <img src="_images/cloud-design-patterns.svg" alt="Cloud Design Patterns" />
                         <div class="cardText">
-                            <h3>クラウドの設計パターン</h3>
+                            <h3>クラウド設計パターン</h3>
                             <p>開発者およびソリューション アーキテクトのための設計パターン。 各パターンでは、問題、その問題を解決するパターン、Azure に基づく例を説明します。</p>
                         </div>
                     </div>
