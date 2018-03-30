@@ -1,6 +1,6 @@
 - name: Azure アーキテクチャ センター
   href: /azure/architecture
-- name: クラウドの設計パターン
+- name: クラウド設計パターン
   href: index.md
 - name: カテゴリ
   items:
