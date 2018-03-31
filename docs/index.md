@@ -1,4 +1,4 @@
----
+﻿---
 title: Azure アーキテクチャ センター
 description: Azure アーキテクチャ センターとは、Microsoft Azure を使用したソリューションを構築するためのガイダンス、計画、パターン、ベスト プラクティスが提供される公式のセンターです。 これらは Microsoft patterns & practices チームによってまとめられています。
 layout: LandingPage
