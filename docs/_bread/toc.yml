@@ -23,7 +23,7 @@
         - name: 参照アーキテクチャ
           tocHref: /azure/architecture/reference-architectures
           topicHref: /azure/architecture/reference-architectures
-        - name: クラウドの設計パターン
+        - name: クラウド設計パターン
           tocHref: /azure/architecture/patterns
           topicHref: /azure/architecture/patterns
         - name: リソース
