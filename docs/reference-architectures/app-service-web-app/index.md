@@ -14,7 +14,7 @@ ms.lasthandoff: 02/23/2018
 
 # <a name="app-service-web-application"></a>App Service Web アプリケーション
 
-これらの参照アーキテクチャは、Azure App Service や Azure 内の他の管理対象サービスを使用する Web アプリケーションのための実証済みプラクティスを示します。
+これらの参照アーキテクチャは、Azure App Service や Azure 内の他のマネージド サービスを使用する Web アプリケーションのための実証済みプラクティスを示します。
 
 <section class="series">
     <ul class="panelContent">
@@ -70,8 +70,8 @@ ms.lasthandoff: 02/23/2018
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>複数の地域での実行</h3>
-                        <p>Web アプリケーションを複数の地域で実行して高可用性を実現します。</p>
+                        <h3>複数のリージョンでの実行</h3>
+                        <p>Web アプリケーションを複数のリージョンで実行して高可用性を実現します。</p>
                     </div>
                 </div>
             </div>
