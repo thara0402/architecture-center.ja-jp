@@ -30,7 +30,7 @@ ms.lasthandoff: 03/08/2018
 
 * **リソース グループ**。 [リソース グループ](/azure/azure-resource-manager/resource-group-overview)は、Azure リソースの論理コンテナーです。
 
-* **App Service アプリ**。 [Azure App Service][app-service] は、クラウド アプリケーションを作成およびデプロイするための完全に管理されたプラットフォームです。     
+* **App Service アプリ**。 [Azure App Service][app-service] は、クラウド アプリケーションを作成およびデプロイするための完全に管理されたプラットフォームです。  
 
 * **App Service プラン**。 [App Service プラン][app-service-plans]は、アプリをホストする管理された仮想マシン (VM) を提供します。 プランに関連付けられているすべてのアプリが同じ VM インスタンスで実行されます。
 
@@ -65,7 +65,7 @@ Standard レベルまたは Premium レベルを使用してください。ど�
 
 リソース グループにもリージョンがあり、これによりデプロイ メタデータの格納場所が指定されます。 リソース グループとそのリソースは同じリージョンに配置してください。 これにより、デプロイ時の可用性が向上する可能性があります。 
 
-## <a name="scalability-considerations"></a>拡張性に関する考慮事項
+## <a name="scalability-considerations"></a>スケーラビリティに関する考慮事項
 
 Azure App Service の主な利点は、負荷に応じてアプリケーションをスケーリングできることです。 アプリケーションのスケーリングを計画する場合の考慮事項を次に示します。
 
@@ -164,7 +164,7 @@ App Service アプリには、`production` という名前のデプロイ スロ
 このセクションでは、この記事で説明している Azure サービスに固有のセキュリティの考慮事項について説明します。 これはセキュリティ上のベスト プラクティスを網羅した一覧ではありません。 その他のセキュリティの考慮事項については、[Azure App Service でのアプリのセキュリティ保護][app-service-security]に関するページをご覧ください。
 
 ### <a name="sql-database-auditing"></a>SQL Database 監査
-監査により、規定遵守を維持したり、ビジネス上の懸念やセキュリティ違反の疑いを示す差異や異常に対する洞察を得たりすることが容易になります。 「[SQL Database 監査の使用][sql-audit]」を参照してください。
+監査により、規定遵守を維持したり、ビジネス上の懸念やセキュリティ違反の疑いを示す差異や異常に対する分析情報を得たりすることが容易になります。 「[SQL Database 監査の使用][sql-audit]」を参照してください。
 
 ### <a name="deployment-slots"></a>デプロイ スロット
 デプロイ スロットごとにパブリック IP アドレスがあります。 開発チームと DevOps チームのメンバーのみがこうしたエンドポイントにアクセスできるように、[Azure Active Directory ログイン][aad-auth]を使用して、非運用スロットをセキュリティで保護します。
