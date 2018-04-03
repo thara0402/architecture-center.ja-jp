@@ -1,6 +1,6 @@
 ---
-title: "App Service Web アプリケーション"
-description: "Microsoft Azure で実行する Web アプリケーションの推奨アーキテクチャ。"
+title: App Service Web アプリケーション
+description: Microsoft Azure で実行する Web アプリケーションの推奨アーキテクチャ。
 layout: LandingPage
 ms.openlocfilehash: ea5ca6f0a1e2995ab35333095260d8f2c3db2600
 ms.sourcegitcommit: 3d9ee03e2dda23753661a80c7106d1789f5223bb
@@ -70,8 +70,8 @@ ms.lasthandoff: 02/23/2018
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>複数の地域での実行</h3>
-                        <p>Web アプリケーションを複数の地域で実行して高可用性を実現します。</p>
+                        <h3>複数のリージョンでの実行</h3>
+                        <p>Web アプリケーションを複数のリージョンで実行して高可用性を実現します。</p>
                     </div>
                 </div>
             </div>
