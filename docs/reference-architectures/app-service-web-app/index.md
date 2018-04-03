@@ -1,6 +1,6 @@
 ---
-title: "App Service Web アプリケーション"
-description: "Microsoft Azure で実行する Web アプリケーションの推奨アーキテクチャ。"
+title: App Service Web アプリケーション
+description: Microsoft Azure で実行する Web アプリケーションの推奨アーキテクチャ。
 layout: LandingPage
 ms.openlocfilehash: ea5ca6f0a1e2995ab35333095260d8f2c3db2600
 ms.sourcegitcommit: 3d9ee03e2dda23753661a80c7106d1789f5223bb
@@ -14,7 +14,7 @@ ms.lasthandoff: 02/23/2018
 
 # <a name="app-service-web-application"></a>App Service Web アプリケーション
 
-これらの参照アーキテクチャは、Azure App Service や Azure 内の他のマネージド サービスを使用する Web アプリケーションのための実証済みプラクティスを示します。
+これらの参照アーキテクチャは、Azure App Service や Azure 内の他の管理対象サービスを使用する Web アプリケーションのための実証済みプラクティスを示します。
 
 <section class="series">
     <ul class="panelContent">
@@ -70,7 +70,7 @@ ms.lasthandoff: 02/23/2018
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>複数のリージョンでの実行</h3>
+                        <h3>複数のリージョンでの実行</h3>
                         <p>Web アプリケーションを複数のリージョンで実行して高可用性を実現します。</p>
                     </div>
                 </div>

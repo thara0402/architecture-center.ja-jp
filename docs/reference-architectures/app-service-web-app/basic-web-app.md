@@ -1,6 +1,6 @@
 ---
-title: "基本的な Web アプリケーション"
-description: "Microsoft Azure で実行する基本的な Web アプリケーションの推奨アーキテクチャ。"
+title: 基本的な Web アプリケーション
+description: Microsoft Azure で実行する基本的な Web アプリケーションの推奨アーキテクチャ。
 author: MikeWasson
 ms.date: 12/12/2017
 cardTitle: Basic web application
@@ -30,7 +30,7 @@ ms.lasthandoff: 03/08/2018
 
 * **リソース グループ**。 [リソース グループ](/azure/azure-resource-manager/resource-group-overview)は、Azure リソースの論理コンテナーです。
 
-* **App Service アプリ**。 [Azure App Service][app-service] は、クラウド アプリケーションを作成およびデプロイするための完全に管理されたプラットフォームです。  
+* **App Service アプリ**。 [Azure App Service][app-service] は、クラウド アプリケーションを作成およびデプロイするための完全に管理されたプラットフォームです。     
 
 * **App Service プラン**。 [App Service プラン][app-service-plans]は、アプリをホストする管理された仮想マシン (VM) を提供します。 プランに関連付けられているすべてのアプリが同じ VM インスタンスで実行されます。
 
