@@ -42,7 +42,7 @@
       href: reference-architectures/virtual-machines-linux/index.md
     - name: VM ワークロード (Windows)
       href: reference-architectures/virtual-machines-windows/index.md
-- name: クラウドの設計パターン
+- name: クラウド設計パターン
   href: patterns/index.md
   items:
     - name: 可用性のパターン
