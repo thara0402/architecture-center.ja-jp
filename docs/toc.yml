@@ -141,7 +141,7 @@
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 'Microsoft セキュリティ センター: Azure'
-      href: 'https://www.microsoft.com/ja-jp/trustcenter/cloudservices/azure'
+      href: 'https://www.microsoft.com/en-us/trustcenter/cloudservices/azure'
     - name: アイコンと図
       href: resources/diagrams.md
     - name: Azure 更新プログラムの予定
