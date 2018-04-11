@@ -1,6 +1,6 @@
 ---
-title: "イベント ドリブン アーキテクチャのスタイル"
-description: "Azure でのイベント ドリブン アーキテクチャと IoT アーキテクチャのメリット、課題、ベスト プラクティスを説明します"
+title: イベント ドリブン アーキテクチャのスタイル
+description: Azure でのイベント ドリブン アーキテクチャと IoT アーキテクチャのメリット、課題、ベスト プラクティスを説明します
 author: MikeWasson
 ms.openlocfilehash: 3289bf784b02d62e3d0c1a29b4839c9be3501134
 ms.sourcegitcommit: 3d9ee03e2dda23753661a80c7106d1789f5223bb

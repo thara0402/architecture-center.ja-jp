@@ -1,6 +1,6 @@
 ---
-title: "Azure Resource Manager テンプレートでプロパティのトランスフォーマーとコレクターを実装する"
-description: "Azure Resource Manager テンプレートでプロパティのトランスフォーマーとコレクターを実装する方法について説明します"
+title: Azure Resource Manager テンプレートでプロパティのトランスフォーマーとコレクターを実装する
+description: Azure Resource Manager テンプレートでプロパティのトランスフォーマーとコレクターを実装する方法について説明します
 author: petertay
 ms.date: 06/09/2017
 ms.openlocfilehash: 893779e652b845b3d936d11936dc767ef632fa43

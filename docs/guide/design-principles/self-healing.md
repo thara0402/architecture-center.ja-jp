@@ -1,6 +1,6 @@
 ---
-title: "自己復旧の設計"
-description: "回復性の高いアプリケーションは、手動介入なしで障害から回復することができます。"
+title: 自己復旧の設計
+description: 回復性の高いアプリケーションは、手動介入なしで障害から回復することができます。
 author: MikeWasson
 layout: LandingPage
 ms.openlocfilehash: 0782b65b77615f7c006724264ab0ca2d2c7c04e2

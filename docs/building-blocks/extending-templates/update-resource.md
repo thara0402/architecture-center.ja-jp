@@ -1,6 +1,6 @@
 ---
-title: "Azure Resource Manager テンプレートのリソースを更新する"
-description: "Azure Resource Manager テンプレートの機能を拡張して、リソースを更新する方法について説明します"
+title: Azure Resource Manager テンプレートのリソースを更新する
+description: Azure Resource Manager テンプレートの機能を拡張して、リソースを更新する方法について説明します
 author: petertay
 ms.date: 06/09/2017
 ms.openlocfilehash: fc2565819c66ee7695224ef5793e7276e6e552e0

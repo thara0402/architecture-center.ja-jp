@@ -1,6 +1,6 @@
 ---
-title: "すべてを冗長化"
-description: "冗長性をアプリケーションに組み込むことで、単一障害点をなくします。"
+title: すべてを冗長化
+description: 冗長性をアプリケーションに組み込むことで、単一障害点をなくします。
 author: MikeWasson
 layout: LandingPage
 ms.openlocfilehash: 05ccf78c2cfbcd4e2d26200e70463d388d54f671

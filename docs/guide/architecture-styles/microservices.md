@@ -1,6 +1,6 @@
 ---
-title: "マイクロサービス アーキテクチャ スタイル"
-description: "Azure のマイクロサービス アーキテクチャのメリット、課題、ベスト プラクティスを説明します"
+title: マイクロサービス アーキテクチャ スタイル
+description: Azure のマイクロサービス アーキテクチャのメリット、課題、ベスト プラクティスを説明します
 author: MikeWasson
 ms.openlocfilehash: 08fd39b6cf0b3c88af654b27e21b2d7dd9fb19b1
 ms.sourcegitcommit: 7764a804f000180c37a4f8dbab946b525f784f58

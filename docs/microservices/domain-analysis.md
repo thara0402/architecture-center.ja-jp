@@ -1,6 +1,6 @@
 ---
-title: "マイクロサービスのドメイン分析"
-description: "マイクロサービスのドメイン分析"
+title: マイクロサービスのドメイン分析
+description: マイクロサービスのドメイン分析
 author: MikeWasson
 ms.date: 12/08/2017
 ms.openlocfilehash: c3c353a6b30507369357af4b520a51f8afc2fb8d

@@ -1,6 +1,6 @@
 ---
-title: "頻度の高い I/O のアンチパターン"
-description: "大量の I/O 要求によってパフォーマンスと応答性が損なわれる場合があります。"
+title: 頻度の高い I/O のアンチパターン
+description: 大量の I/O 要求によってパフォーマンスと応答性が損なわれる場合があります。
 author: dragon119
 ms.openlocfilehash: 4f0e0e455ceb58317d3029d8ab4631d476802499
 ms.sourcegitcommit: 3d9ee03e2dda23753661a80c7106d1789f5223bb

@@ -1,6 +1,6 @@
 ---
-title: "再試行の一般的なガイダンス"
-description: "一過性の障害に対処する再試行のガイダンスについて取り上げます。"
+title: 再試行の一般的なガイダンス
+description: 一過性の障害に対処する再試行のガイダンスについて取り上げます。
 author: dragon119
 ms.date: 07/13/2016
 pnp.series.title: Best Practices

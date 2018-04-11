@@ -1,7 +1,7 @@
 ---
-title: "調整"
-description: "アプリケーションのインスタンス、個々のテナント、またはサービス全体によって使用されるリソースの使用量を制御します。"
-keywords: "設計パターン"
+title: 調整
+description: アプリケーションのインスタンス、個々のテナント、またはサービス全体によって使用されるリソースの使用量を制御します。
+keywords: 設計パターン
 author: dragon119
 ms.date: 06/23/2017
 pnp.series.title: Cloud Design Patterns
@@ -103,3 +103,4 @@ ms.lasthandoff: 11/14/2017
 - <span data-ttu-id="18920-197">[優先順位キュー パターン][]。</span><span class="sxs-lookup"><span data-stu-id="18920-197">[Priority Queue pattern][].</span></span> <span data-ttu-id="18920-198">システムは、調整戦略の一部として優先順位キューを使用して、比較的重要ではないアプリケーションのパフォーマンスを低下させつつ、非常に重要な、または比較的高価値のアプリケーションのパフォーマンスを維持することができます。</span><span class="sxs-lookup"><span data-stu-id="18920-198">A system can use priority queuing as part of its throttling strategy to maintain performance for critical or higher value applications, while reducing the performance of less important applications.</span></span>
 
 [優先順位キュー パターン]: priority-queue.md
+[Priority Queue pattern]: priority-queue.md

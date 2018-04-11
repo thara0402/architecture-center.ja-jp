@@ -1,6 +1,6 @@
 ---
-title: "ビッグ コンピューティング アーキテクチャ スタイル"
-description: "Azure のビッグ コンピューティング アーキテクチャのメリット、課題、ベスト プラクティスを説明します。　"
+title: ビッグ コンピューティング アーキテクチャ スタイル
+description: Azure のビッグ コンピューティング アーキテクチャのメリット、課題、ベスト プラクティスを説明します。　
 author: MikeWasson
 ms.openlocfilehash: b16be4133143d7d73062eeb280b44779c390f387
 ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60

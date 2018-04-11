@@ -1,6 +1,6 @@
 ---
-title: "Azure での Kubernetes によるマイクロサービスの設計、構築、および操作"
-description: "Azure でのマイクロサービスの設計、構築、および操作"
+title: Azure での Kubernetes によるマイクロサービスの設計、構築、および操作
+description: Azure でのマイクロサービスの設計、構築、および操作
 author: MikeWasson
 ms.date: 12/08/2017
 ms.openlocfilehash: 857e91a8eeefec18b459f2e66fde9a4f8bbe7b21

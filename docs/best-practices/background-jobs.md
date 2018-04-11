@@ -1,6 +1,6 @@
 ---
-title: "バックグラウンド ジョブのガイダンス"
-description: "ユーザー インターフェイスとは無関係に実行されるバックグラウンド タスクに関するガイダンスです。"
+title: バックグラウンド ジョブのガイダンス
+description: ユーザー インターフェイスとは無関係に実行されるバックグラウンド タスクに関するガイダンスです。
 author: dragon119
 ms.date: 05/24/2017
 pnp.series.title: Best Practices

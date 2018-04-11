@@ -1,6 +1,6 @@
 ---
-title: "Azure Cloud Services アプリケーションを Azure Service Fabric に移行する"
-description: "Azure Cloud Services アプリケーションを Azure Service Fabric に移行する方法。"
+title: Azure Cloud Services アプリケーションを Azure Service Fabric に移行する
+description: Azure Cloud Services アプリケーションを Azure Service Fabric に移行する方法。
 author: MikeWasson
 ms.date: 04/27/2017
 ms.openlocfilehash: ce9c138a6b093fb7f0329c619c75bd4f4aacc2e7

@@ -1,6 +1,6 @@
 ---
-title: "Azure コンピューティング オプションを選択するための条件"
-description: "複数の軸間で Azure コンピューティング サービスを比較します。"
+title: Azure コンピューティング オプションを選択するための条件
+description: 複数の軸間で Azure コンピューティング サービスを比較します。
 author: MikeWasson
 layout: LandingPage
 ms.openlocfilehash: 36b57d1fb674b5a1452a0e8208de836963b2b01b

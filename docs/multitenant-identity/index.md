@@ -1,6 +1,6 @@
 ---
-title: "マルチテナント アプリケーションの ID 管理"
-description: "マルチテナント アプリケーションでの認証、承認、および ID 管理のベスト プラクティス。"
+title: マルチテナント アプリケーションの ID 管理
+description: マルチテナント アプリケーションでの認証、承認、および ID 管理のベスト プラクティス。
 author: MikeWasson
 ms:date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications
@@ -96,6 +96,7 @@ ms.lasthandoff: 11/14/2017
 [AzureAD]: /azure/active-directory
 
 [顧客の AD FS とのフェデレーション]: adfs.md
+[Federating with a customer's AD FS]: adfs.md
 [tailpin]: tailspin.md
 
 [running-the-app]: ./run-the-app.md

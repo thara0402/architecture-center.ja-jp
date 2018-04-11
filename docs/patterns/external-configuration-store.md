@@ -1,7 +1,7 @@
 ---
-title: "外部構成ストア"
-description: "アプリケーション展開パッケージの構成情報を一元管理される場所に移動します。"
-keywords: "設計パターン"
+title: 外部構成ストア
+description: アプリケーション展開パッケージの構成情報を一元管理される場所に移動します。
+keywords: 設計パターン
 author: dragon119
 ms.date: 06/23/2017
 pnp.series.title: Cloud Design Patterns

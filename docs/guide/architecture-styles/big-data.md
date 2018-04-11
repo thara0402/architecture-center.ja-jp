@@ -1,6 +1,6 @@
 ---
-title: "ビッグ データ アーキテクチャのスタイル"
-description: "Azure でのビッグ データ アーキテクチャのメリット、課題、ベスト プラクティスを説明します"
+title: ビッグ データ アーキテクチャのスタイル
+description: Azure でのビッグ データ アーキテクチャのメリット、課題、ベスト プラクティスを説明します
 author: MikeWasson
 ms.openlocfilehash: 4e8b58d5fa0f6a441d70e05ec7d6a0e668712563
 ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60

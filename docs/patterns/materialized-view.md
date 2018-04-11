@@ -1,7 +1,7 @@
 ---
-title: "具体化されたビュー"
-description: "データの形式が必要なクエリ操作に適していない場合に、1 つ以上のデータ ストアのデータの事前設定されたビューを生成します。"
-keywords: "設計パターン"
+title: 具体化されたビュー
+description: データの形式が必要なクエリ操作に適していない場合に、1 つ以上のデータ ストアのデータの事前設定されたビューを生成します。
+keywords: 設計パターン
 author: dragon119
 ms.date: 06/23/2017
 pnp.series.title: Cloud Design Patterns

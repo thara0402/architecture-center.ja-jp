@@ -1,7 +1,7 @@
 ---
-title: "キュー ベースの負荷平準化"
-description: "タスクとそのタスクが呼び出すサービスとの間でバッファーとして機能するキューを使用して、断続的な大きい負荷を平準化します。"
-keywords: "設計パターン"
+title: キュー ベースの負荷平準化
+description: タスクとそのタスクが呼び出すサービスとの間でバッファーとして機能するキューを使用して、断続的な大きい負荷を平準化します。
+keywords: 設計パターン
 author: dragon119
 ms.date: 06/23/2017
 pnp.series.title: Cloud Design Patterns

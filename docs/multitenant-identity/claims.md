@@ -1,6 +1,6 @@
 ---
-title: "マルチテナント アプリケーションで要求ベースの ID を操作する"
-description: "発行者の検証と承認に要求を使用する方法"
+title: マルチテナント アプリケーションで要求ベースの ID を操作する
+description: 発行者の検証と承認に要求を使用する方法
 author: MikeWasson
 ms:date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications
@@ -117,9 +117,13 @@ ms.lasthandoff: 11/14/2017
 <!-- Links -->
 
 [スコープ パラメーター]: http://nat.sakimura.org/2012/01/26/scopes-and-claims-in-openid-connect/
+[scope parameter]: http://nat.sakimura.org/2012/01/26/scopes-and-claims-in-openid-connect/
 [サポートされているトークンとクレームの種類]: /azure/active-directory/active-directory-token-and-claims/
+[Supported Token and Claim Types]: /azure/active-directory/active-directory-token-and-claims/
 [発行者]: http://openid.net/specs/openid-connect-core-1_0.html#IDToken
+[issuer]: http://openid.net/specs/openid-connect-core-1_0.html#IDToken
 [認証イベント]: authenticate.md#authentication-events
+[Authentication events]: authenticate.md#authentication-events
 [signup]: signup.md
 [Claims-Based Authorization]: /aspnet/core/security/authorization/claims
 [sample application]: https://github.com/mspnp/multitenant-saas-guidance

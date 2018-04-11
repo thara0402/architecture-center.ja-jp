@@ -1,6 +1,6 @@
 ---
-title: "不適切なインスタンス化のアンチパターン"
-description: "作成後に共有する予定のオブジェクトの新しいインスタンスを頻繁に作成することは避けてください。"
+title: 不適切なインスタンス化のアンチパターン
+description: 作成後に共有する予定のオブジェクトの新しいインスタンスを頻繁に作成することは避けてください。
 author: dragon119
 ms.date: 06/05/2017
 ms.openlocfilehash: 4d5ef9ad9e675b46df94b51e81d7a4bd4c1b25e9

@@ -1,7 +1,7 @@
 ---
-title: "インデックス テーブル"
-description: "クエリによって頻繁に参照されるデータ ストア内のフィールドにインデックスを作成します。"
-keywords: "設計パターン"
+title: インデックス テーブル
+description: クエリによって頻繁に参照されるデータ ストア内のフィールドにインデックスを作成します。
+keywords: 設計パターン
 author: dragon119
 ms.date: 06/23/2017
 pnp.series.title: Cloud Design Patterns

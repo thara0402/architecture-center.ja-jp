@@ -1,6 +1,6 @@
 ---
-title: "マルチテナント アプリケーションでアクセス トークンをキャッシュする"
-description: "バックエンド Web API を呼び出すために使用されるアクセス トークンのキャッシュ"
+title: マルチテナント アプリケーションでアクセス トークンをキャッシュする
+description: バックエンド Web API を呼び出すために使用されるアクセス トークンのキャッシュ
 author: MikeWasson
 ms:date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications

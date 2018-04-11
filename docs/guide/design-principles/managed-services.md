@@ -1,6 +1,6 @@
 ---
-title: "管理対象サービスの使用"
-description: "なるべく、サービスとしてのインフラストラクチャ (IaaS) ではなくサービスとしてのプラットフォーム (PaaS) を使用する"
+title: 管理対象サービスの使用
+description: なるべく、サービスとしてのインフラストラクチャ (IaaS) ではなくサービスとしてのプラットフォーム (PaaS) を使用する
 author: MikeWasson
 layout: LandingPage
 ms.openlocfilehash: 7156c073db3e047fb38e031309ddb637a9e44c02

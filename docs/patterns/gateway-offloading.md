@@ -1,6 +1,6 @@
 ---
-title: "ゲートウェイ オフロード パターン"
-description: "共有または専用のサービス機能の負荷をゲートウェイ プロキシにオフロードします。"
+title: ゲートウェイ オフロード パターン
+description: 共有または専用のサービス機能の負荷をゲートウェイ プロキシにオフロードします。
 author: dragon119
 ms.date: 06/23/2017
 ms.openlocfilehash: 6b3e4541aae77349ca91c18c788ddb508912361d

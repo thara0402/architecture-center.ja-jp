@@ -1,6 +1,6 @@
 ---
-title: "マルチテナント アプリケーションのサインアップとテナントのオンボード"
-description: "マルチ テナント アプリケーションでテナントをオンボードする方法"
+title: マルチテナント アプリケーションのサインアップとテナントのオンボード
+description: マルチ テナント アプリケーションでテナントをオンボードする方法
 author: MikeWasson
 ms:date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications
@@ -259,5 +259,7 @@ private async Task<Tenant> SignUpTenantAsync(BaseControlContext context, TenantM
 [Tailspin]: tailspin.md
 
 [状態]: http://openid.net/specs/openid-connect-core-1_0.html#AuthRequest
+[state]: http://openid.net/specs/openid-connect-core-1_0.html#AuthRequest
 [認証]: authenticate.md
+[Authentication]: authenticate.md
 [sample application]: https://github.com/mspnp/multitenant-saas-guidance

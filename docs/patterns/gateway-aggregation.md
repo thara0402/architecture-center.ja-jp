@@ -1,6 +1,6 @@
 ---
-title: "ゲートウェイ集約パターン"
-description: "ゲートウェイを使用して、複数の個々の要求を 1 つの要求に集約します。"
+title: ゲートウェイ集約パターン
+description: ゲートウェイを使用して、複数の個々の要求を 1 つの要求に集約します。
 author: dragon119
 ms.date: 06/23/2017
 ms.openlocfilehash: f59c8b8b02c6db28024d13621b782997e63a4e9e

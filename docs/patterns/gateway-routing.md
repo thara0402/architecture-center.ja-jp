@@ -1,6 +1,6 @@
 ---
-title: "ゲートウェイ ルーティング パターン"
-description: "単一のエンドポイントを使用して複数のサービスに要求をルーティングします。"
+title: ゲートウェイ ルーティング パターン
+description: 単一のエンドポイントを使用して複数のサービスに要求をルーティングします。
 author: dragon119
 ms.date: 06/23/2017
 ms.openlocfilehash: 53239b23cfd98fad1edc38ca37c2274d5a9d7a0f

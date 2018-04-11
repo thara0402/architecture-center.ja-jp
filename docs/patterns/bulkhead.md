@@ -1,6 +1,6 @@
 ---
-title: "バルクヘッド パターン"
-description: "アプリケーションの要素をプールに分離し、1 つの要素が失敗しても、他の要素が引き続き機能できるようにします"
+title: バルクヘッド パターン
+description: アプリケーションの要素をプールに分離し、1 つの要素が失敗しても、他の要素が引き続き機能できるようにします
 author: dragon119
 ms.date: 06/23/2017
 ms.openlocfilehash: a2c499d77fafc4bee6b74ee0e0d84e6c23b47851

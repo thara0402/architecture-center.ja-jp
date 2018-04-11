@@ -1,7 +1,7 @@
 ---
-title: "キャッシュ アサイド"
-description: "オンデマンドでデータをデータ ストアからキャッシュに読み込みます。"
-keywords: "設計パターン"
+title: キャッシュ アサイド
+description: オンデマンドでデータをデータ ストアからキャッシュに読み込みます。
+keywords: 設計パターン
 author: dragon119
 ms.date: 06/23/2017
 pnp.series.title: Cloud Design Patterns

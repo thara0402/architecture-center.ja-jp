@@ -1,6 +1,6 @@
 ---
-title: "オンプレミス ネットワークを Azure に接続するためのソリューションを選択する"
-description: "オンプレミス ネットワークを Azure に接続するための参照アーキテクチャを比較します。"
+title: オンプレミス ネットワークを Azure に接続するためのソリューションを選択する
+description: オンプレミス ネットワークを Azure に接続するための参照アーキテクチャを比較します。
 author: telmosampaio
 ms.date: 04/06/2017
 ms.openlocfilehash: 274b9df1817632a7f3eaafa8bf02e965fdc3feea

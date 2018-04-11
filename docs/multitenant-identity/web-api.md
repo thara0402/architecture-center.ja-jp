@@ -1,6 +1,6 @@
 ---
-title: "マルチテナント アプリケーションにおけるバックエンド Web API のセキュリティ保護"
-description: "バックエンド web API をセキュリティで保護する方法"
+title: マルチテナント アプリケーションにおけるバックエンド Web API のセキュリティ保護
+description: バックエンド web API をセキュリティで保護する方法
 author: MikeWasson
 ms:date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications
@@ -272,8 +272,11 @@ public void ConfigureServices(IServiceCollection services)
 [Tailspin Surveys]: tailspin.md
 [IdentityServer3]: https://github.com/IdentityServer/IdentityServer3
 [アプリケーション マニフェストの更新]: ./run-the-app.md#update-the-application-manifests
+[Update the application manifests]: ./run-the-app.md#update-the-application-manifests
 [トークンのキャッシュ]: token-cache.md
+[Token caching]: token-cache.md
 [テナントのサインアップ]: signup.md
+[tenant sign-up]: signup.md
 [claims-transformation]: claims.md#claims-transformations
 [Authorization]: authorize.md
 [sample application]: https://github.com/mspnp/multitenant-saas-guidance

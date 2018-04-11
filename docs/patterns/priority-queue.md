@@ -1,7 +1,7 @@
 ---
 title: Priority Queue
-description: "サービスに送信される要求に優先順位を設定し、優先順位の高い要求から順番に受信および処理されるようにします。"
-keywords: "設計パターン"
+description: サービスに送信される要求に優先順位を設定し、優先順位の高い要求から順番に受信および処理されるようにします。
+keywords: 設計パターン
 author: dragon119
 ms.date: 06/23/2017
 pnp.series.title: Cloud Design Patterns

@@ -1,6 +1,6 @@
 ---
-title: "変更を見込んだ設計"
-description: "改良を見込んだ設計は、継続的なイノベーションのための鍵です。"
+title: 変更を見込んだ設計
+description: 改良を見込んだ設計は、継続的なイノベーションのための鍵です。
 author: MikeWasson
 layout: LandingPage
 ms.openlocfilehash: 35e91228f3fb0a303594ec06f05b6865008e3a4f

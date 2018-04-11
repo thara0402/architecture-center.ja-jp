@@ -1,6 +1,6 @@
 ---
-title: "ID 管理"
-description: "Azure でオンプレミスとクラウドの境界にまたがるハイブリッド システムの ID を管理するために使用できるさまざまな方法を説明し、比較します。"
+title: ID 管理
+description: Azure でオンプレミスとクラウドの境界にまたがるハイブリッド システムの ID を管理するために使用できるさまざまな方法を説明し、比較します。
 layout: LandingPage
 ms.openlocfilehash: de98ee30306f5e712759ab7140bd430cb6d4cd75
 ms.sourcegitcommit: 3d9ee03e2dda23753661a80c7106d1789f5223bb

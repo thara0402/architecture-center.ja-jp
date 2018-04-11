@@ -1,7 +1,7 @@
 ---
-title: "バレット キー"
-description: "特定のリソースまたはサービスへの限定的な直接アクセスをクライアントに提供する、トークンまたはキーを使用します。"
-keywords: "設計パターン"
+title: バレット キー
+description: 特定のリソースまたはサービスへの限定的な直接アクセスをクライアントに提供する、トークンまたはキーを使用します。
+keywords: 設計パターン
 author: dragon119
 ms.date: 06/23/2017
 pnp.series.title: Cloud Design Patterns
