@@ -1,6 +1,6 @@
 ---
-title: "Azure サービスの回復性のチェックリスト"
-description: "さまざまな Azure サービスの回復性のガイダンスを提供するチェックリストです。"
+title: Azure サービスの回復性のチェックリスト
+description: さまざまな Azure サービスの回復性のガイダンスを提供するチェックリストです。
 author: petertaylor9999
 ms.date: 03/02/2018
 ms.custom: resiliency, checklist

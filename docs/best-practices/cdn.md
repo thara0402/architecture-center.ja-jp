@@ -1,6 +1,6 @@
 ---
-title: "Content Delivery Network のガイダンス"
-description: "コンテンツ配信ネットワーク (CDN) で Azure でホストされている広帯域幅コンテンツを配信するためのガイダンス"
+title: Content Delivery Network のガイダンス
+description: コンテンツ配信ネットワーク (CDN) で Azure でホストされている広帯域幅コンテンツを配信するためのガイダンス
 author: dragon119
 ms.date: 02/02/2018
 pnp.series.title: Best Practices

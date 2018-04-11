@@ -1,6 +1,6 @@
 ---
-title: "Azure Resource Manager テンプレート機能の拡張"
-description: "Azure Resource Manager テンプレート機能を拡張する方法のヒントとテクニックについて説明します。"
+title: Azure Resource Manager テンプレート機能の拡張
+description: Azure Resource Manager テンプレート機能を拡張する方法のヒントとテクニックについて説明します。
 author: petertay
 ms.date: 06/09/2017
 ms.openlocfilehash: 33ae6850ffa5b28108f30475804be5347859f0c3
