@@ -1,6 +1,6 @@
 ---
-title: "Azure Cloud Services から移行した Azure Service Fabric アプリケーションをリファクタリングする"
-description: "Azure Cloud Services から移行した既存の Azure Service Fabric アプリケーションをリファクタリングする方法"
+title: Azure Cloud Services から移行した Azure Service Fabric アプリケーションをリファクタリングする
+description: Azure Cloud Services から移行した既存の Azure Service Fabric アプリケーションをリファクタリングする方法
 author: petertay
 ms.date: 01/30/2018
 ms.openlocfilehash: 08ef3af68b8eaba36a5b871449f0aba764fe5a04

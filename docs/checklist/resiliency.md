@@ -1,6 +1,6 @@
 ---
-title: "回復性のチェックリスト"
-description: "設計時の回復性に関する問題のガイダンスを提供するチェックリスト。"
+title: 回復性のチェックリスト
+description: 設計時の回復性に関する問題のガイダンスを提供するチェックリスト。
 author: petertaylor9999
 ms.date: 01/10/2018
 ms.custom: resiliency, checklist
