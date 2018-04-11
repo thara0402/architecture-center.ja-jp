@@ -1,6 +1,6 @@
 ---
-title: "可用性のチェックリスト"
-description: "設計時の可用性に関する問題のガイダンスを提供するチェックリスト。"
+title: 可用性のチェックリスト
+description: 設計時の可用性に関する問題のガイダンスを提供するチェックリスト。
 author: dragon119
 ms.date: 01/10/2018
 ms.custom: checklist

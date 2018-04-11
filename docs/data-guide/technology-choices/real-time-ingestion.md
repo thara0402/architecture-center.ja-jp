@@ -1,6 +1,6 @@
 ---
-title: "リアルタイム メッセージ取り込みテクノロジの選択"
-description: 
+title: リアルタイム メッセージ取り込みテクノロジの選択
+description: ''
 author: zoinerTejada
 ms:date: 02/12/2018
 ms.openlocfilehash: 2e6578b779950b5ef11bda7b8ba1fb2e45e09f4e

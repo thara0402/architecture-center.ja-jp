@@ -1,6 +1,6 @@
 ---
-title: "顧客の AD FS とのフェデレーション"
-description: "マルチテナント アプリケーションで顧客の AD FS とのフェデレーションを行う方法"
+title: 顧客の AD FS とのフェデレーション
+description: マルチテナント アプリケーションで顧客の AD FS とのフェデレーションを行う方法
 author: MikeWasson
 ms:date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications

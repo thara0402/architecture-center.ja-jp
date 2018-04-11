@@ -1,6 +1,6 @@
 ---
-title: "マルチテナント アプリケーションにおけるバックエンド Web API のセキュリティ保護"
-description: "バックエンド web API をセキュリティで保護する方法"
+title: マルチテナント アプリケーションにおけるバックエンド Web API のセキュリティ保護
+description: バックエンド web API をセキュリティで保護する方法
 author: MikeWasson
 ms:date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications

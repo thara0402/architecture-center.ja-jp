@@ -1,6 +1,6 @@
 ---
-title: "操作に合わせた設計"
-description: "運用チームが必要なツールを得られるようにアプリケーションを設計します"
+title: 操作に合わせた設計
+description: 運用チームが必要なツールを得られるようにアプリケーションを設計します
 author: MikeWasson
 layout: LandingPage
 ms.openlocfilehash: 76338cc27daf82ccb99df4e4c51c7a5ac6f26065

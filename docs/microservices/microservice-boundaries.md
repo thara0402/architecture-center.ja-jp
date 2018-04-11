@@ -1,6 +1,6 @@
 ---
-title: "マイクロサービス境界の識別"
-description: "マイクロサービス境界の識別"
+title: マイクロサービス境界の識別
+description: マイクロサービス境界の識別
 author: MikeWasson
 ms.date: 12/08/2017
 ms.openlocfilehash: e4f11da9f970724c55ad99824f808a10c4558971

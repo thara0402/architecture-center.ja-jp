@@ -1,6 +1,6 @@
 ---
-title: "自動スケール ガイダンス"
-description: "自動スケールによってアプリケーションに必要なリソースを動的に割り当てる方法に関するガイダンス。"
+title: 自動スケール ガイダンス
+description: 自動スケールによってアプリケーションに必要なリソースを動的に割り当てる方法に関するガイダンス。
 author: dragon119
 ms.date: 05/17/2017
 pnp.series.title: Best Practices

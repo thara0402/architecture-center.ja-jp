@@ -1,6 +1,6 @@
 ---
-title: "Azure リソースの名前付け規則"
-description: "Azure リソースの名前付け規則。 仮想マシン、ストレージ アカウント、ネットワーク、仮想ネットワーク、サブネット、その他の Azure エンティティに名前を付ける方法"
+title: Azure リソースの名前付け規則
+description: Azure リソースの名前付け規則。 仮想マシン、ストレージ アカウント、ネットワーク、仮想ネットワーク、サブネット、その他の Azure エンティティに名前を付ける方法
 author: telmosampaio
 ms.date: 05/18/2017
 pnp.series.title: Best Practices

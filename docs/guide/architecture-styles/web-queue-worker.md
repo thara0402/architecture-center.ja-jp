@@ -1,6 +1,6 @@
 ---
-title: "Web キュー ワーカーのアーキテクチャ スタイル"
-description: "Azure の Web ワーカー キュー ワーカーのアーキテクチャのメリット、課題、ベスト プラクティスについて説明します。"
+title: Web キュー ワーカーのアーキテクチャ スタイル
+description: Azure の Web ワーカー キュー ワーカーのアーキテクチャのメリット、課題、ベスト プラクティスについて説明します。
 author: MikeWasson
 ms.openlocfilehash: 545472e71ffcd43717ad24af0dc9218a221ca910
 ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60

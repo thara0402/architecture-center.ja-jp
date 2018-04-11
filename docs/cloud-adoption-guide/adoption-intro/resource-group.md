@@ -1,6 +1,6 @@
 ---
-title: "ガイダンス: Azure リソース グループ設計"
-description: "基本のクラウド導入戦略の一環である Azure リソース グループ設計のガイダンス"
+title: 'ガイダンス: Azure リソース グループ設計'
+description: 基本のクラウド導入戦略の一環である Azure リソース グループ設計のガイダンス
 author: petertay
 ms.openlocfilehash: ac6cbb03be8cdba020641d3b9034ad9d20101acf
 ms.sourcegitcommit: 2e8b06e9c07875d65b91d5431bfd4bc465a7a242

@@ -1,6 +1,6 @@
 ---
-title: "マルチテナント アプリケーションで要求ベースの ID を操作する"
-description: "発行者の検証と承認に要求を使用する方法"
+title: マルチテナント アプリケーションで要求ベースの ID を操作する
+description: 発行者の検証と承認に要求を使用する方法
 author: MikeWasson
 ms:date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications

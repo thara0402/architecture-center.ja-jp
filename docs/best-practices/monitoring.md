@@ -1,6 +1,6 @@
 ---
-title: "監視と診断のガイダンス"
-description: "クラウド内の分散アプリケーションを監視するためのベスト プラクティスです。"
+title: 監視と診断のガイダンス
+description: クラウド内の分散アプリケーションを監視するためのベスト プラクティスです。
 author: dragon119
 ms.date: 07/13/2016
 pnp.series.title: Best Practices

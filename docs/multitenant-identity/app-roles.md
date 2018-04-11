@@ -1,6 +1,6 @@
 ---
-title: "アプリケーション ロール"
-description: "アプリケーション ロールを使用して承認を実行する方法について説明します。"
+title: アプリケーション ロール
+description: アプリケーション ロールを使用して承認を実行する方法について説明します。
 author: MikeWasson
 ms:date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications

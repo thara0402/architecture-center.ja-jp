@@ -1,6 +1,6 @@
 ---
-title: "ジョブに最適なデータ ストアの使用"
-description: "データに最適なストレージ技術とその使用方法を選択する"
+title: ジョブに最適なデータ ストアの使用
+description: データに最適なストレージ技術とその使用方法を選択する
 author: MikeWasson
 layout: LandingPage
 ms.openlocfilehash: ef9439f7a3766d13b498eac915e0f5afd23de4e2

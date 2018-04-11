@@ -1,6 +1,6 @@
 ---
-title: "スケーラビリティのチェックリスト"
-description: "Azure 自動スケールの設計に関するスケーラビリティのチェックリスト ガイダンス。"
+title: スケーラビリティのチェックリスト
+description: Azure 自動スケールの設計に関するスケーラビリティのチェックリスト ガイダンス。
 author: dragon119
 ms.date: 01/10/2018
 ms.custom: checklist

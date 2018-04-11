@@ -1,6 +1,6 @@
 ---
-title: "ビジネス ニーズに合わせた構築"
-description: "設計の決定はすべてビジネス要件によって正当化される必要があります"
+title: ビジネス ニーズに合わせた構築
+description: 設計の決定はすべてビジネス要件によって正当化される必要があります
 author: MikeWasson
 layout: LandingPage
 ms.openlocfilehash: 110a441ae74334d212a717da2cb038d60b24bb1f

@@ -1,6 +1,6 @@
 ---
-title: "Azure の導入: 基本"
-description: "企業が Azure を導入するのに必要な基本レベルの知識について説明します。"
+title: 'Azure の導入: 基本'
+description: 企業が Azure を導入するのに必要な基本レベルの知識について説明します。
 author: petertay
 ms.openlocfilehash: e9421b610e4eb07a3ed37bca56e513b0689484ef
 ms.sourcegitcommit: 9ba82cf84cee06ccba398ec04c51dab0e1ca8974

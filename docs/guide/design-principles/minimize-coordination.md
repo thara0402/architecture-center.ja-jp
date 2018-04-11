@@ -1,6 +1,6 @@
 ---
-title: "調整を最小限に抑える"
-description: "アプリケーション サービス間の調整を最小限に抑えてスケーラビリティを実現する"
+title: 調整を最小限に抑える
+description: アプリケーション サービス間の調整を最小限に抑えてスケーラビリティを実現する
 author: MikeWasson
 layout: LandingPage
 ms.openlocfilehash: 3cab05b539612234fd8e66517b140ac5257c3e70

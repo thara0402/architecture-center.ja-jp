@@ -1,6 +1,6 @@
 ---
-title: "Linux VM ワークロード"
-description: "エンタープライズ規模のアプリケーションを Azure でホストする VM をデプロイするための一般的なアーキテクチャについて説明します。"
+title: Linux VM ワークロード
+description: エンタープライズ規模のアプリケーションを Azure でホストする VM をデプロイするための一般的なアーキテクチャについて説明します。
 layout: LandingPage
 ms.openlocfilehash: ef06fb93355f4676f44954930bcfeb2c2d012d43
 ms.sourcegitcommit: 3d9ee03e2dda23753661a80c7106d1789f5223bb

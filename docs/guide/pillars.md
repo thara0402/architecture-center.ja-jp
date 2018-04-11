@@ -1,6 +1,6 @@
 ---
-title: "ソフトウェア品質の重要な要素"
-description: "ソフトウェア品質の 5 つの重要な要素である拡張性、可用性、回復性、管理性、セキュリティについて説明します。"
+title: ソフトウェア品質の重要な要素
+description: ソフトウェア品質の 5 つの重要な要素である拡張性、可用性、回復性、管理性、セキュリティについて説明します。
 author: MikeWasson
 ms.openlocfilehash: 1d5e30602cafa0d39f92de3101974e77ae258595
 ms.sourcegitcommit: a7aae13569e165d4e768ce0aaaac154ba612934f

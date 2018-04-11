@@ -1,6 +1,6 @@
 ---
-title: "回復性に優れた Azure 用アプリケーションの設計"
-description: "高可用性とディザスター リカバリーのために Azure で回復性に優れたアプリケーションを構築する方法。"
+title: 回復性に優れた Azure 用アプリケーションの設計
+description: 高可用性とディザスター リカバリーのために Azure で回復性に優れたアプリケーションを構築する方法。
 author: MikeWasson
 ms.date: 05/26/2017
 ms.custom: resiliency

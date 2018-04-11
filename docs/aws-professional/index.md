@@ -1,7 +1,7 @@
 ---
-title: "AWS プロフェッショナルのための Azure"
-description: "Microsoft Azure アカウント、プラットフォーム、およびサービスの基本を理解します。 AWS プラットフォームと Azure プラットフォームの主要な類似点と相違点についても説明します。 AWS の経験を Azure でご活用ください。"
-keywords: "AWS エキスパート, Azure との比較, AWS との比較, Azure と AWS の違い, Azure と Aws"
+title: AWS プロフェッショナルのための Azure
+description: Microsoft Azure アカウント、プラットフォーム、およびサービスの基本を理解します。 AWS プラットフォームと Azure プラットフォームの主要な類似点と相違点についても説明します。 AWS の経験を Azure でご活用ください。
+keywords: AWS エキスパート, Azure との比較, AWS との比較, Azure と AWS の違い, Azure と Aws
 author: lbrader
 ms.date: 03/24/2017
 pnp.series.title: Azure for AWS Professionals

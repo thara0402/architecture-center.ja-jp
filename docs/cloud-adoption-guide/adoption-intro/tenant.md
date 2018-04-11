@@ -1,6 +1,6 @@
 ---
-title: "ガイダンス: Azure AD テナント設計"
-description: "基本のクラウド導入戦略の一環である Azure テナント設計のガイダンス"
+title: 'ガイダンス: Azure AD テナント設計'
+description: 基本のクラウド導入戦略の一環である Azure テナント設計のガイダンス
 author: telmosampaio
 ms.openlocfilehash: 9ac52e9fd44bd8b9c777625002d5960f4f269be2
 ms.sourcegitcommit: 29fbcb1eec44802d2c01b6d3bcf7d7bd0bae65fc

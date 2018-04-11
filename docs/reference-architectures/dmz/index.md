@@ -1,6 +1,6 @@
 ---
-title: "ネットワーク DMZ"
-description: "ハイブリッド システムの一部として Azure で実行しているアプリケーションとコンポーネントを不正アクセスから保護するために使用できるさまざまなメソッドを説明して比較します。"
+title: ネットワーク DMZ
+description: ハイブリッド システムの一部として Azure で実行しているアプリケーションとコンポーネントを不正アクセスから保護するために使用できるさまざまなメソッドを説明して比較します。
 layout: LandingPage
 ms.openlocfilehash: 98df0a25767c7a7282e67381c6465fe3263ce1fa
 ms.sourcegitcommit: 3d9ee03e2dda23753661a80c7106d1789f5223bb

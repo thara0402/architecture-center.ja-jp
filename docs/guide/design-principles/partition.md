@@ -1,6 +1,6 @@
 ---
-title: "パーティション分割による制限の回避"
-description: "パーティション分割を使用して、データベース、ネットワーク、コンピューティングの制限に対処します。"
+title: パーティション分割による制限の回避
+description: パーティション分割を使用して、データベース、ネットワーク、コンピューティングの制限に対処します。
 author: MikeWasson
 layout: LandingPage
 ms.openlocfilehash: 4371490385b24230551bf17db0075052f320b574

@@ -1,6 +1,6 @@
 ---
-title: "キャッシュ不使用のアンチパターン"
-description: "同じデータを繰り返しフェッチすると、パフォーマンスとスケーラビリティが低下する可能性があります。"
+title: キャッシュ不使用のアンチパターン
+description: 同じデータを繰り返しフェッチすると、パフォーマンスとスケーラビリティが低下する可能性があります。
 author: dragon119
 ms.date: 06/05/2017
 ms.openlocfilehash: 8a2bc3b473a30536cc1bef9e1dcad87acb46c4a9

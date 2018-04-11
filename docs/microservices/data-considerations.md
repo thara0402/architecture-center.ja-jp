@@ -1,6 +1,6 @@
 ---
-title: "マイクロサービスのデータに関する考慮事項"
-description: "マイクロサービスのデータに関する考慮事項"
+title: マイクロサービスのデータに関する考慮事項
+description: マイクロサービスのデータに関する考慮事項
 author: MikeWasson
 ms.date: 12/08/2017
 ms.openlocfilehash: 9bd7a8424309b5753b42cfb70559836288a3ce9d

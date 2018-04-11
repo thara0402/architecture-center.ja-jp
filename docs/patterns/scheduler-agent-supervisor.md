@@ -1,7 +1,7 @@
 ---
 title: Scheduler Agent Supervisor
-description: "分散された一連のサービスやその他のリモート リソースにわたる一連のアクションを調整します。"
-keywords: "設計パターン"
+description: 分散された一連のサービスやその他のリモート リソースにわたる一連のアクションを調整します。
+keywords: 設計パターン
 author: dragon119
 ms.date: 06/23/2017
 pnp.series.title: Cloud Design Patterns

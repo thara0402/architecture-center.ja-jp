@@ -1,6 +1,6 @@
 ---
-title: "Azure Resource Manager テンプレートのリソースを条件付きでデプロイする"
-description: "Azure Resource Manager テンプレートの機能を拡張し、パラメーターの値に応じて、条件付きでリソースをデプロイする方法について説明します"
+title: Azure Resource Manager テンプレートのリソースを条件付きでデプロイする
+description: Azure Resource Manager テンプレートの機能を拡張し、パラメーターの値に応じて、条件付きでリソースをデプロイする方法について説明します
 author: petertay
 ms.date: 06/09/2017
 ms.openlocfilehash: e911e7dc41b4f71ebfaf13a00f8cdbb5b4e2578b

@@ -1,6 +1,6 @@
 ---
-title: "データのパーティション分割のガイダンス"
-description: "パーティションを個別に管理およびアクセスする方法についてのガイダンス"
+title: データのパーティション分割のガイダンス
+description: パーティションを個別に管理およびアクセスする方法についてのガイダンス
 author: dragon119
 ms.date: 07/13/2016
 pnp.series.title: Best Practices
