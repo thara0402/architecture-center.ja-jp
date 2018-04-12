@@ -1,17 +1,20 @@
 ---
-title: "Azure での AD DS リソース フォレストの作成"
-description: "Azure で信頼された Active Directory ドメインを作成する方法。\nガイダンス,vpn gateway,expressroute,ロード バランサー,仮想ネットワーク,active directory"
+title: Azure での AD DS リソース フォレストの作成
+description: >-
+  Azure で信頼された Active Directory ドメインを作成する方法。
+
+  ガイダンス,vpn gateway,expressroute,ロード バランサー,仮想ネットワーク,active directory
 author: telmosampaio
 ms.date: 11/28/2016
 pnp.series.title: Identity management
 pnp.series.prev: adds-extend-domain
 pnp.series.next: adfs
 cardTitle: Create an AD DS forest in Azure
-ms.openlocfilehash: b946afa91e8bd303c51f97e18be170c4105cc8c5
-ms.sourcegitcommit: 8ab30776e0c4cdc16ca0dcc881960e3108ad3e94
+ms.openlocfilehash: e32a6420821e70c84e77d2c39614f0c45efbb7e2
+ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="create-an-active-directory-domain-services-ad-ds-resource-forest-in-azure"></a>Azure での Active Directory Domain Services (AD DS) リソース フォレストの作成
 
@@ -63,7 +66,7 @@ Azure に Active Directory を実装する場合の具体的な推奨事項に�
 | クラウドのユーザーは、オンプレミスにあるリソースにアクセスする必要がありますが、反対方向のアクセスは不要です。 |一方向、送信 |一方向、着信 |
 | クラウドとオンプレミスの両方のユーザーが、クラウドとオンプレミスに保持されているリソースにアクセスする必要があります。 |双方向、着信と送信 |双方向、着信と送信 |
 
-## <a name="scalability-considerations"></a>拡張性に関する考慮事項
+## <a name="scalability-considerations"></a>スケーラビリティに関する考慮事項
 
 同じドメインに属するドメイン コントローラーの場合、Active Directory は自動的にスケーリングします。 要求は、ドメイン内のすべてのコントローラーに分散されます。 別のドメイン コントローラーを追加することもできます。追加したドメイン コントローラーはドメインと自動的に同期されます。 トラフィックをドメイン内のコントローラーに送信するために別のロード バランサーは構成しないでください。 すべてのドメイン コントローラーに、ドメイン データベースを処理できる十分なメモリとストレージ リソースを確保します。 すべてのドメイン コントローラーの VM を同じサイズにします。
 
@@ -117,8 +120,8 @@ Active Directory 固有のセキュリティの考慮事項については、[Ac
      
 5. シミュレートしたオンプレミスの構成を使用している場合は、着信の信頼関係を構成します。
    
-   1. ジャンプ ボックス (*ra-adtrust-security-rg* リソース グループの *ra-adtrust-mgmt-vm1*) に接続します。 パスワード *AweS0me@PW* を使用して *testuser* としてログインします。
-   2. ジャンプ ボックスで、*contoso.com* ドメイン (オンプレミス ドメイン) の最初の VM で RDP セッションを開きます。 この VM の IP アドレスは 192.168.0.4 です。 ユーザー名は *contoso\testuser*、パスワードは *AweS0me@PW* です。
+   1. ジャンプ ボックス (<em>ra-adtrust-security-rg</em> リソース グループの <em>ra-adtrust-mgmt-vm1</em>) に接続します。 パスワード <em>AweS0me@PW</em> を使用して <em>testuser</em> としてログインします。
+   2. ジャンプ ボックスで、<em>contoso.com</em> ドメイン (オンプレミス ドメイン) の最初の VM で RDP セッションを開きます。 この VM の IP アドレスは 192.168.0.4 です。 ユーザー名は <em>contoso\testuser</em>、パスワードは <em>AweS0me@PW</em> です。
    3. [incoming-trust.ps1][incoming-trust] スクリプトをダウンロードし、実行して *treyresearch.com* ドメインからの着信信頼を作成します。
 
 6. 独自のオンプレミス インフラストラクチャを使用している場合:
@@ -127,7 +130,7 @@ Active Directory 固有のセキュリティの考慮事項については、[Ac
    2. スクリプトを編集し、`$TrustedDomainName` 変数の値を独自のドメイン名で置き換えます。
    3. スクリプトを実行します。
 
-7. ジャンプ ボックスから、*treyresearch.com* ドメイン (クラウドのドメイン) の最初の VM に接続します。 この VM の IP アドレスは 10.0.4.4 です。 ユーザー名は *treyresearch\testuser*、パスワードは *AweS0me@PW* です。
+7. ジャンプ ボックスから、<em>treyresearch.com</em> ドメイン (クラウドのドメイン) の最初の VM に接続します。 この VM の IP アドレスは 10.0.4.4 です。 ユーザー名は <em>treyresearch\testuser</em>、パスワードは <em>AweS0me@PW</em> です。
 
 8. [outgoing-trust.ps1][outgoing-trust] スクリプトをダウンロードし、実行して *treyresearch.com* ドメインからの着信信頼を作成します。 独自のオンプレミス コンピューターを使用している場合は、まずスクリプトを編集します。 `$TrustedDomainName` 変数を使用するオンプレミス ドメイン名に設定し、`$TrustedDomainDnsIpAddresses` 変数にこのドメインの Active Directory DS サーバーの IP アドレスを指定します。
 
@@ -162,5 +165,5 @@ Active Directory 固有のセキュリティの考慮事項については、[Ac
 [standby-operations-masters]: https://technet.microsoft.com/library/cc794737(v=ws.10).aspx
 [outgoing-trust]: https://raw.githubusercontent.com/mspnp/reference-architectures/master/identity/adds-forest/extensions/outgoing-trust.ps1
 [verify-a-trust]: https://technet.microsoft.com/library/cc753821.aspx
-[visio-download]: https://archcenter.azureedge.net/cdn/identity-architectures.vsdx
+[visio-download]: https://archcenter.blob.core.windows.net/cdn/identity-architectures.vsdx
 [0]: ./images/adds-forest.png "別の Active Directory ドメインを使用するセキュリティ保護されたハイブリッド ネットワーク アーキテクチャ"

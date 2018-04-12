@@ -3,11 +3,11 @@ title: CSV ファイルと JSON ファイルの処理
 description: ''
 author: zoinerTejada
 ms:date: 02/12/2018
-ms.openlocfilehash: 6b888ff230afefbd74249aa913e5bab66d47d7e2
-ms.sourcegitcommit: c441fd165e6bebbbbbc19854ec6f3676be9c3b25
+ms.openlocfilehash: 02e684d562cfe555f9e3596ad0a2f1a00d05c7a7
+ms.sourcegitcommit: 51f49026ec46af0860de55f6c082490e46792794
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="working-with-csv-and-json-files-for-data-solutions"></a>データ ソリューションでの CSV ファイルと JSON ファイルの操作
 
@@ -44,7 +44,7 @@ CSV ファイル形式と JSON ファイル形式は、どちらも、異種シ�
 
 Azure では、ニーズに応じて、CSV ファイルと JSON ファイルを操作するためのさまざまなソリューションを用意しています。 これらのファイルの主な配置場所は、Azure Storage または Azure Data Lake Store です。 これらのファイルと他のテキスト ベースのファイルを操作する Azure サービスの大半は、いずれかのオブジェクト ストレージ サービスと統合します。 ただし、状況によっては、Azure SQL またはその他のデータ ストアに直接データをインポートすることを選択できます。 SQL Server は、JSON ドキュメントの格納と操作をネイティブにサポートします。これにより、[これらの種類のファイルのインポートと処理](/sql/relational-databases/json/import-json-documents-into-sql-server)を簡単に実行できます。 SQL Bulk Import などのユーティリティを使用して、[CSV ファイルのインポート](/sql/relational-databases/json/import-json-documents-into-sql-server)を簡単に実行できます。
 
-シナリオに応じて、データの[バッチ処理](../scenarios/batch-processing.md)または[リアルタイム処理](../scenarios/real-time-processing.md)を実行できます。
+シナリオに応じて、データの[バッチ処理](../big-data/batch-processing.md)または[リアルタイム処理](../big-data/real-time-processing.md)を実行できます。
 
 ## <a name="challenges"></a>課題
 

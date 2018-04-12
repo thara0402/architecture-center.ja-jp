@@ -1,28 +1,28 @@
 ---
-title: "技術ガイダンス: オンプレミスから Azure への復旧"
-description: "オンプレミス インフラストラクチャから Azure への復旧システムの内容と設計に関する記事"
+title: '技術ガイダンス: オンプレミスから Azure への復旧'
+description: オンプレミス インフラストラクチャから Azure への復旧システムの内容と設計に関する記事
 author: adamglick
 ms.date: 08/18/2016
-ms.openlocfilehash: f5ce86dbd605fa7dc74e6a7cc97f0d6c6acd79e5
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 6992e27d148074b3d60c282318741f45974d1afd
+ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 04/06/2018
 ---
 [!INCLUDE [header](../_includes/header.md)]
+
 # <a name="azure-resiliency-technical-guidance-recovery-from-on-premises-to-azure"></a>Azure の回復性に関する技術ガイダンス - オンプレミスから Azure への復旧
 Azure は、高可用性とディザスター リカバリーの目的で、オンプレミスのデータセンターから Azure への拡張を可能にする包括的なサービスのセットを提供します。
 
 * **Network**: 仮想プライベート ネットワークによって、オンプレミスのネットワークをクラウドに安全に拡張できます。
 * **Compute**: Hyper-V をオンプレミスで使用しているお客様は、"リフトとシフト" によって既存の仮想マシン (VM) を Azure に移行できます。
 * **Storage**: StorSimple でファイル システムを Azure Storage に拡張します。 Azure Backup サービスでは、ファイルや SQL データベースを Azure Storage にバックアップできます。
-* 
-            **データベースのレプリケーション**: SQL Server 2014 (またはそれ以降) の可用性グループでは、オンプレミスのデータに対して高可用性とディザスター リカバリーを実装できます。
+* **データベースのレプリケーション**: SQL Server 2014 (またはそれ以降) の可用性グループでは、オンプレミスのデータに対して高可用性とディザスター リカバリーを実装できます。
 
 ## <a name="networking"></a>Network
 Azure Virtual Network を使用すると、論理的に切り離されたセクションを Azure 内に作成し、IPsec 接続を使用してオンプレミス データセンターまたは単一のクライアント コンピューターに安全に接続できます。 Virtual Network を使用すると、Windows Server、メインフレーム、UNIX で実行中のシステムを含むオンプレミス システムにあるデータおよびアプリケーションへの接続性を保ちながら、Azure のスケーラブルなオンデマンドのインフラストラクチャを活用できます。 詳細については、 [Azure Network のドキュメント](/azure/virtual-network/virtual-networks-overview/) を参照してください。
 
-## <a name="compute"></a>計算
+## <a name="compute"></a>コンピューティング
 Hyper-V をオンプレミスで使用している場合は、"リフトとシフト" によって既存の仮想マシンを Azure、および Windows Server 2012 (またはそれ以降) を実行するサービス プロバイダーに移行できます。VM に変更を加えたり、VM 形式を変換したりする必要はありません。 詳細については、「[Azure 仮想マシン用のディスクと VHD について](/azure/virtual-machines/virtual-machines-linux-about-disks-vhds/?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。
 
 ## <a name="azure-site-recovery"></a>Azure Site Recovery
@@ -63,7 +63,7 @@ AlwaysOn 可用性グループは、オンプレミスとクラウドの両方�
 詳細については、「[Azure 仮想マシンにおける SQL Server の高可用性とディザスター リカバリー](/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-high-availability-dr/)」と「[Azure Virtual Machines における SQL Server のバックアップと復元](/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-backup-recovery/)」を参照してください。
 
 ## <a name="checklists-for-on-premises-recovery-in-microsoft-azure"></a>Microsoft Azure でのオンプレミスの回復のためのチェックリスト
-### <a name="networking"></a>Network
+### <a name="networking"></a>ネットワーク
 1. このドキュメントの「ネットワーク」セクションを確認する。
 2. Virtual Network を使用してオンプレミスをクラウドに安全に接続する。
 

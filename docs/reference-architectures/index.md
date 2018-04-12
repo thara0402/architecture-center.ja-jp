@@ -2,11 +2,12 @@
 title: Azure の参照アーキテクチャ
 description: Azure での一般的なワークロードに対応する、参照アーキテクチャ、計画、および規範的実装ガイダンス。
 layout: LandingPage
-ms.openlocfilehash: cd7f4b066ba7a4af16767db013c607bc0697dd98
-ms.sourcegitcommit: 3d9ee03e2dda23753661a80c7106d1789f5223bb
+ms.topic: landing-page
+ms.openlocfilehash: 9708c975e543a04cafe22f38194e833be44d7b81
+ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 <!-- This file is generated! -->
 <!-- See the templates in ./build/reference-architectures  -->
@@ -31,7 +32,7 @@ ms.lasthandoff: 02/23/2018
                     </div>
                     <div class="cardText">
                         <h3>Windows VM ワークロード</h3>
-                        <p>このシリーズでは、1 つの Windows VM を実行するためのベスト プラクティスから始まり、負荷分散された複数の VM、最後には複数リージョンの n 層アプリケーションへと続きます。</p>
+                        <p>このシリーズでは、1 つの Windows VM を実行するためのベスト プラクティスから始まり、負荷分散された複数の VM、最後には複数地域の n 層アプリケーションへと続きます。</p>
                     </div>
                 </div>
             </div>
@@ -51,7 +52,7 @@ ms.lasthandoff: 02/23/2018
                     </div>
                     <div class="cardText">
                         <h3>Linux VM ワークロード</h3>
-                        <p>このシリーズでは、1 つの Linux VM を実行するためのベスト プラクティスから始まり、負荷分散された複数の VM、最後には複数リージョンの n 層アプリケーションへと続きます。</p>
+                        <p>このシリーズでは、1 つの Linux VM を実行するためのベスト プラクティスから始まり、負荷分散された複数の VM、最後には複数地域の n 層アプリケーションへと続きます。</p>
                     </div>
                 </div>
             </div>

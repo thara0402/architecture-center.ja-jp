@@ -1,13 +1,13 @@
 ---
-title: "検索データ ストアの選択"
-description: 
+title: 検索データ ストアの選択
+description: ''
 author: zoinerTejada
 ms:date: 02/12/2018
-ms.openlocfilehash: 7fe5952c880921984beb30c71458fd1ef72ef239
-ms.sourcegitcommit: 90cf2de795e50571d597cfcb9b302e48933e7f18
+ms.openlocfilehash: ead07e307e96696faa5ddf48505eee378027523c
+ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="choosing-a-search-data-store-in-azure"></a>Azure での検索データ ストアの選択
 
@@ -42,34 +42,38 @@ Azure では、次のデータ ストアのすべてが、検索インデック�
 次の表は、機能の主な相違点をまとめたものです。
 
 ### <a name="general-capabilities"></a>一般的な機能
+
 | | Azure Search | Elasticsearch | Solr を使用する HDInsight | SQL Database | 
 | --- | --- | --- | --- | --- | 
-| マネージド サービス | はい | いいえ | はい | はい |  
-| REST API | はい | はい | はい | いいえ  |
+| マネージド サービスか | [はい] | いいえ  | 可能  | [はい] |  
+| REST API | [はい] | はい | [はい] | いいえ  |
 | プログラミング | .NET | Java | Java | T-SQL | 
-| 一般的なファイルの種類 (PDF、DOCX、TXT、およびなど) 向けのドキュメント インデクサー | はい | いいえ  | はい | いいえ  |
+| 一般的なファイルの種類 (PDF、DOCX、TXT、およびなど) 向けのドキュメント インデクサー | [はい] | いいえ  | [はい] | いいえ  |
 
 ### <a name="manageability-capabilities"></a>管理容易性機能
+
 | | Azure Search | Elasticsearch | Solr を使用する HDInsight | SQL Database | 
 | --- | --- | --- | --- | --- |
-| 更新可能なスキーマ | いいえ  | 可能  | はい | はい |
-| スケール アウトのサポート  | はい | はい | はい | いいえ  |
+| 更新可能なスキーマ | いいえ  | 可能  | はい | [はい] |
+| スケール アウトのサポート  | [はい] | はい | [はい] | いいえ  |
 
 ### <a name="analytic-workload-capabilities"></a>分析ワークロード機能
+
 | | Azure Search | Elasticsearch | Solr を使用する HDInsight | SQL Databash | 
 | --- | --- | --- | --- | --- | 
-| フルテキスト検索を上回る分析のサポート | いいえ  | はい | はい | はい |
+| フルテキスト検索を上回る分析のサポート | いいえ  | 可能  | はい | [はい] |
 | ログ分析スタックの一部 | いいえ  | はい (ELK) |  いいえ  | いいえ  |
-| セマンティック検索のサポート | はい (類似のドキュメントのみ検索) | はい | はい | はい | 
+| セマンティック検索のサポート | はい (類似のドキュメントのみ検索) | [はい] | はい | [はい] | 
 
 ### <a name="security-capabilities"></a>セキュリティ機能
+
 | | Azure Search | Elasticsearch | Solr を使用する HDInsight | SQL Databash | 
 | --- | --- | --- | --- | --- | 
-| 行レベルのセキュリティ | 一部 (グループ ID でフィルター処理するアプリケーション クエリが必要) | 一部 (グループ ID でフィルター処理するアプリケーション クエリが必要) | はい | はい | 
-| 透過的なデータ暗号化 | いいえ  | いいえ  | いいえ  | はい |  
-| 特定の IP アドレスへのアクセスを制限 | いいえ  | はい | はい | はい |   
-| 仮想ネットワーク アクセスのみを許可するようにアクセスを制限 | いいえ  | はい | はい | はい |  
-| Active Directory 認証 (統合認証) | いいえ  | いいえ  | いいえ  | はい | 
+| 行レベルのセキュリティ | 一部 (グループ ID でフィルター処理するアプリケーション クエリが必要) | 一部 (グループ ID でフィルター処理するアプリケーション クエリが必要) | [はい] | [はい] | 
+| 透過的なデータ暗号化 | いいえ  | いいえ  | いいえ  | [はい] |  
+| 特定の IP アドレスへのアクセスを制限 | いいえ  | 可能  | はい | [はい] |   
+| 仮想ネットワーク アクセスのみを許可するようにアクセスを制限 | いいえ  | 可能  | はい | [はい] |  
+| Active Directory 認証 (統合認証) | いいえ  | いいえ  | いいえ  | [はい] | 
 
 ## <a name="see-also"></a>関連項目
 

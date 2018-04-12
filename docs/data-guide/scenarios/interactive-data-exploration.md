@@ -1,13 +1,13 @@
 ---
-title: "対話型データ探索"
-description: 
+title: 対話型データ探索
+description: ''
 author: zoinerTejada
 ms:date: 02/12/2018
-ms.openlocfilehash: a9e72f4cf88c9082fe79f854dd79e98bfaa918f5
-ms.sourcegitcommit: 90cf2de795e50571d597cfcb9b302e48933e7f18
+ms.openlocfilehash: 20740a8fe912a63526c847416b832941f4ac33ec
+ms.sourcegitcommit: 51f49026ec46af0860de55f6c082490e46792794
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="interactive-data-exploration"></a>対話型データ探索
 
@@ -52,7 +52,7 @@ ms.lasthandoff: 02/14/2018
 
 ## <a name="architecture"></a>アーキテクチャ
 
-このシナリオの目的は対話型データ分析をサポートすることですが、多くの場合、データ サイエンスに関連するデータ クレンジング、サンプリング、構造化のタスクには実行時間の長いプロセスが含まれます。 このため、[バッチ処理](./batch-processing.md)アーキテクチャが適切になります。
+このシナリオの目的は対話型データ分析をサポートすることですが、多くの場合、データ サイエンスに関連するデータ クレンジング、サンプリング、構造化のタスクには実行時間の長いプロセスが含まれます。 このため、[バッチ処理](../big-data/batch-processing.md)アーキテクチャが適切になります。
 
 ## <a name="technology-choices"></a>テクノロジの選択
 

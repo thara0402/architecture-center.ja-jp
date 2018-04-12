@@ -1,7 +1,7 @@
 ---
 title: CQRS
-description: "個別のインターフェイスを使用して、データを更新する操作とデータを読み取る操作を分離します。"
-keywords: "設計パターン"
+description: 個別のインターフェイスを使用して、データを更新する操作とデータを読み取る操作を分離します。
+keywords: 設計パターン
 author: dragon119
 ms.date: 06/23/2017
 pnp.series.title: Cloud Design Patterns
@@ -9,11 +9,11 @@ pnp.pattern.categories:
 - data-management
 - design-implementation
 - performance-scalability
-ms.openlocfilehash: 80f4a8880cf2212acf82dadb67b0181e1cbae099
-ms.sourcegitcommit: a7aae13569e165d4e768ce0aaaac154ba612934f
+ms.openlocfilehash: ce8d20ae82ae7d5ba00b4bc264a5c4d90fc383bd
+ms.sourcegitcommit: ea7108f71dab09175ff69322874d1bcba800a37a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="command-and-query-responsibility-segregation-cqrs-pattern"></a>コマンド クエリ責務分離 (CQRS) パターン
 
@@ -69,7 +69,7 @@ CQRS ベースのシステムでデータのクエリと更新の分離モデル
 
 - システムの最も重要な、限られたセクションに CQRS を適用することを検討してください。
 
-- 最終的な整合性をデプロイする一般的な方法は、イベント ソーシングと CQRS を併用することです。これにより、書き込みモデルは、コマンドの実行によって発生するイベントの追加専用ストリームになります。 これらのイベントは、読み取りモデルとして機能する具体化されたビューの更新に使用されます。 詳細については、「[Event Sourcing and CQRS (イベント ソーシングと CQRS)](https://msdn.microsoft.com/library/dn568103.aspx#EventSourcingandCQRS)」を参照してください。
+- 最終的な整合性をデプロイする一般的な方法は、イベント ソーシングと CQRS を併用することです。これにより、書き込みモデルは、コマンドの実行によって発生するイベントの追加専用ストリームになります。 これらのイベントは、読み取りモデルとして機能する具体化されたビューの更新に使用されます。 詳細については、「[Event Sourcing and CQRS (イベント ソーシングと CQRS)](/azure/architecture/patterns/cqrs#event-sourcing-and-cqrs)」を参照してください。
 
 ## <a name="when-to-use-this-pattern"></a>このパターンを使用する状況
 

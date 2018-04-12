@@ -1,21 +1,21 @@
 ---
-title: "VPN を使用した Azure へのオンプレミス ネットワークの接続"
-description: "VPN を使用して接続された Azure 仮想ネットワークとオンプレミス ネットワークにまたがる、セキュリティで保護されたサイト間ネットワーク アーキテクチャの実装方法。"
+title: VPN を使用した Azure へのオンプレミス ネットワークの接続
+description: VPN を使用して接続された Azure 仮想ネットワークとオンプレミス ネットワークにまたがる、セキュリティで保護されたサイト間ネットワーク アーキテクチャの実装方法。
 author: RohitSharma-pnp
 ms.date: 11/28/2016
 pnp.series.title: Connect an on-premises network to Azure
 pnp.series.next: expressroute
 pnp.series.prev: ./index
 cardTitle: VPN
-ms.openlocfilehash: 66b2605c551148fadcdee6808c4e85940089f1e5
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: dafcee6607d9cc7c56c332f9ed5d9568ff70f0e7
+ms.sourcegitcommit: c441fd165e6bebbbbbc19854ec6f3676be9c3b25
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="connect-an-on-premises-network-to-azure-using-a-vpn-gateway"></a>VPN ゲートウェイを使用した Azure へのオンプレミス ネットワークの接続
 
-この参照アーキテクチャでは、サイト間の仮想プライベート ネットワーク (VPN) を使用して、オンプレミス ネットワークを Azure に拡張する方法を示します。 オンプレミス ネットワークと Azure 仮想ネットワーク (VNet) 間のトラフィックは、IPSec VPN トンネルを介して行き来します。 [**以下のソリューションをデプロイします**。](#deploy-the-solution)
+この参照アーキテクチャでは、サイト間の仮想プライベート ネットワーク (VPN) を使用して、オンプレミス ネットワークを Azure に拡張する方法を示します。 オンプレミス ネットワークと Azure 仮想ネットワーク (VNet) 間のトラフィックは、IPSec VPN トンネルを介して行き来します。 [**こちらのソリューションをデプロイしてください**。](#deploy-the-solution)
 
 ![[0]][0]
 
@@ -83,7 +83,7 @@ ms.lasthandoff: 11/14/2017
 
 | SKU | VPN スループット | IPSec トンネルの最大数 |
 | --- | --- | --- |
-| 基本 |100 Mbps |10 |
+| Basic |100 Mbps |10 |
 | 標準 |100 Mbps |10 |
 | 高性能 |200 Mbps |30 |
 
@@ -112,7 +112,7 @@ Azure VNet のアドレスに向けた要求が VPN デバイスに転送され�
 * トラフィックがオンプレミス ネットワークに戻るように、VNet によって正しくルーティングされている。
 * 両方向の禁止されたトラフィックが、正しくブロックされている。
 
-## <a name="scalability-considerations"></a>拡張性に関する考慮事項
+## <a name="scalability-considerations"></a>スケーラビリティに関する考慮事項
 
 垂直スケーラビリティを制限するには、Basic または Standard の VPN Gateway SKU から High Performance VPN SKU に移行します。
 
@@ -488,7 +488,7 @@ VNet のアプリケーションがインターネットにデータを送信す
 [application-insights]: /azure/application-insights/app-insights-overview-usage
 [forced-tunneling]: https://azure.microsoft.com/documentation/articles/vpn-gateway-about-forced-tunneling/
 [vpn-appliances]: /azure/vpn-gateway/vpn-gateway-about-vpn-devices
-[visio-download]: https://archcenter.azureedge.net/cdn/hybrid-network-architectures.vsdx
+[visio-download]: https://archcenter.blob.core.windows.net/cdn/hybrid-network-architectures.vsdx
 [vpn-appliance-ipsec]: /azure/vpn-gateway/vpn-gateway-about-vpn-devices#ipsec-parameters
 <!--[solution-script]: https://github.com/mspnp/reference-architectures/tree/master/guidance-hybrid-network-vpn/Deploy-ReferenceArchitecture.ps1-->
 <!--[solution-script-bash]: https://github.com/mspnp/reference-architectures/tree/master/guidance-hybrid-network-vpn/deploy-reference-architecture.sh-->

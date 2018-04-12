@@ -1,16 +1,16 @@
 ---
-title: "マルチテナント アプリケーションでの承認"
-description: "マルチテナント アプリケーションで承認を実行する方法"
+title: マルチテナント アプリケーションでの承認
+description: マルチテナント アプリケーションで承認を実行する方法
 author: MikeWasson
 ms:date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications
 pnp.series.prev: app-roles
 pnp.series.next: web-api
-ms.openlocfilehash: 86c308d21f19bb3ac2a4a2240a9a03a504de5cf4
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 03c4d5fa10c75437a7b066534619ba9a123c350c
+ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="role-based-and-resource-based-authorization"></a>ロールベースおよびリソースベースの承認
 
@@ -102,7 +102,6 @@ public IActionResult Create()
 ```csharp
 // old way
 [Authorize(Roles = "SurveyCreator")]
-
 ```
 
 このプロパティは ASP.NET Core でもサポートされていますが、承認ポリシーと比較すると短所があります。
@@ -154,19 +153,19 @@ if (await _authorizationService.AuthorizeAsync(User, survey, Operations.Read) ==
 承認コードでは、ユーザーのすべてのロールベースのアクセス許可とリソースベースのアクセス許可を集計し、目的の操作に対して集計セットを確認することをお勧めします。
 Surveys アプリの例を次に示します。 このアプリケーションには、いくつかのアクセス許可が定義されています。
 
-* 管理者
-* 共同作成者
+* [Admin]
+* Contributor
 * 作成者
-* 所有者
-* 閲覧者
+* Owner
+* Reader
 
 また、アンケートに対して実行できる操作のセットも定義されています。
 
-* 作成
+* [作成]
 * 読み取り
 * 更新
 * 削除
-* 発行
+* [発行]
 * 発行の取り消し
 
 次のコードは、特定のユーザーとアンケートのアクセス許可の一覧を作成します。 このコードは、ユーザーのアプリ ロールと、アンケートの所有者/共同作成者フィールドの両方を確認します。

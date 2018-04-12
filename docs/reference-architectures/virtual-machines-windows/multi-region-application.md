@@ -1,15 +1,15 @@
 ---
-title: "高可用性を得るために複数のリージョンで Windows VM を実行する"
-description: "高可用性と回復性を得るために Azure の複数のリージョンに VM をデプロイする方法。"
+title: 高可用性を得るために複数のリージョンで Windows VM を実行する
+description: 高可用性と回復性を得るために Azure の複数のリージョンに VM をデプロイする方法。
 author: MikeWasson
 ms.date: 11/22/2016
 pnp.series.title: Windows VM workloads
 pnp.series.prev: n-tier
-ms.openlocfilehash: 9c54959da96115e55ba8a5c9e0f3c358d29ce5dd
-ms.sourcegitcommit: c9e6d8edb069b8c513de748ce8114c879bad5f49
+ms.openlocfilehash: 9772d57e6a11711d77032b049168565d52d919b8
+ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="run-windows-vms-in-multiple-regions-for-high-availability"></a>高可用性を得るために複数のリージョンで Windows VM を実行する
 
@@ -46,7 +46,7 @@ ms.lasthandoff: 01/08/2018
 * アクティブ/パッシブ (コールド スタンバイ)。 トラフィックが片方のリージョンにルーティングされている間、他方のリージョンは、コールド スタンバイ状態で待機します。 コールド スタンバイとは、セカンダリ リージョン内の VM がフェールオーバーが必要になるまで割り当てられないことを意味します。 この方法のほうが実行コストは低くなりますが、ほとんどの場合、障害発生時にオンラインになるまでの時間が長くなります。
 * アクティブ/アクティブ。 両方のリージョンがアクティブであり、要求はそれらの間で負荷分散されます。 片方のリージョンが使用できなくなった場合は、ローテーションから外されます。 
 
-このリファレンス アーキテクチャでは、Traffic Manager を使用してフェールオーバーを行うアクティブ/パッシブ (ホット スタンバイ) に焦点を当てています。 ホット スタンバイ用の少数の VM をデプロイした後、必要に応じてスケール アウトできることに注意してください。
+この参照アーキテクチャでは、Traffic Manager を使用してフェールオーバーを行うアクティブ/パッシブ (ホット スタンバイ) に焦点を当てています。 ホット スタンバイ用の少数の VM をデプロイした後、必要に応じてスケール アウトできることに注意してください。
 
 ### <a name="regional-pairing"></a>リージョンのペアリング
 
@@ -114,9 +114,9 @@ Windows Server 2016 より前に、SQL Server Always On 可用性グループで
 * 両方のリージョンの SQL Server インスタンスを含む [Windows Server フェールオーバー クラスタリング][wsfc] (WSFC) クラスターを作成します。 
 * プライマリ リージョンとセカンダリ リージョンの SQL Server インスタンスを含む SQL Server Always On 可用性グループを作成します。 手順については、[Always On 可用性グループのリモート Azure データセンターへの拡張 (PowerShell)](https://blogs.msdn.microsoft.com/sqlcat/2014/09/22/extending-alwayson-availability-group-to-remote-azure-datacenter-powershell/)に関する記事を参照してください。
 
-    * プライマリ レプリカをプライマリ リージョンに配置します。
-    * 1 つ以上のセカンダリ レプリカをプライマリ リージョンに配置します。 それらを自動フェールオーバーを伴う同期コミット モードを使用するように構成します。
-    * 1 つ以上のセカンダリ レプリカをセカンダリ リージョンに配置します。 パフォーマンス上の理由で、それらは*非同期*コミットを使用するように構成します  (これを行わなかった場合、すべての T-SQL トランザクションがセカンダリ リージョンへのネットワーク上にラウンド トリップで待機する必要があります)。
+  * プライマリ レプリカをプライマリ リージョンに配置します。
+  * 1 つ以上のセカンダリ レプリカをプライマリ リージョンに配置します。 それらを自動フェールオーバーを伴う同期コミット モードを使用するように構成します。
+  * 1 つ以上のセカンダリ レプリカをセカンダリ リージョンに配置します。 パフォーマンス上の理由で、それらは*非同期*コミットを使用するように構成します  (これを行わなかった場合、すべての T-SQL トランザクションがセカンダリ リージョンへのネットワーク上にラウンド トリップで待機する必要があります)。
 
     > [!NOTE]
     > 非同期コミット レプリカは、自動フェールオーバーをサポートしません。
@@ -182,7 +182,7 @@ SQL Server クラスターでは、2 つのフェールオーバー シナリオ
 [tm-routing]: /azure/traffic-manager/traffic-manager-routing-methods
 [tm-sla]: https://azure.microsoft.com/support/legal/sla/traffic-manager/v1_0/
 [traffic-manager]: https://azure.microsoft.com/services/traffic-manager/
-[visio-download]: https://archcenter.azureedge.net/cdn/vm-reference-architectures.vsdx
+[visio-download]: https://archcenter.blob.core.windows.net/cdn/vm-reference-architectures.vsdx
 [vnet-dns]: /azure/virtual-network/virtual-networks-manage-dns-in-vnet
 [vnet-to-vnet]: /azure/vpn-gateway/vpn-gateway-vnet-vnet-rm-ps
 [vpn-gateway]: /azure/vpn-gateway/vpn-gateway-about-vpngateways

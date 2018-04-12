@@ -1,13 +1,13 @@
 ---
-title: "高可用性 SharePoint Server 2016 ファームの Azure での実行"
-description: "高可用性 SharePoint Server 2016 ファームを Azure で設定するための実証済みプラクティス。"
+title: 高可用性 SharePoint Server 2016 ファームの Azure での実行
+description: 高可用性 SharePoint Server 2016 ファームを Azure で設定するための実証済みプラクティス。
 author: njray
 ms.date: 08/01/2017
-ms.openlocfilehash: d16f8721c6edc8e5049766f13e2d3bc59524453f
-ms.sourcegitcommit: 3d9ee03e2dda23753661a80c7106d1789f5223bb
+ms.openlocfilehash: d1e3f0b73c94844ac649bf2abb6917809202fdb7
+ms.sourcegitcommit: c441fd165e6bebbbbbc19854ec6f3676be9c3b25
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="run-a-high-availability-sharepoint-server-2016-farm-in-azure"></a>高可用性 SharePoint Server 2016 ファームの Azure での実行
 
@@ -47,7 +47,7 @@ ms.lasthandoff: 02/23/2018
 
 - **Jumpbox**。 [要塞ホスト][bastion-host]とも呼ばれます。 これは、管理者が他の VM に接続するために使用するネットワーク上のセキュアな VM です。 jumpbox の NSG は、セーフ リストにあるパブリック IP アドレスからのリモート トラフィックのみを許可します。 NSG は、リモート デスクトップ (RDP) トラフィックを許可する必要があります。
 
-## <a name="recommendations"></a>推奨事項
+## <a name="recommendations"></a>Recommendations
 
 実際の要件は、ここで説明するアーキテクチャとは異なる場合があります。 これらの推奨事項を開始点として使用してください。
 
@@ -135,7 +135,7 @@ Azure で実行する SQL Server の推奨 VM サイズやその他のパフォ�
 
 マジョリティ ノード サーバーはレプリケーション パートナーとは別のコンピューターに配置することを推奨します。 このサーバーによって、高度セーフティ モード セッションでセカンダリ パートナー サーバーが、自動フェールオーバーを開始するかどうかを認識できるようになります。 2 つのパートナーとは異なり、マジョリティ ノード サーバーはデータベースでは使用されず、自動フェールオーバーをサポートします。 
 
-## <a name="scalability-considerations"></a>拡張性に関する考慮事項
+## <a name="scalability-considerations"></a>スケーラビリティに関する考慮事項
 
 既存のサーバーを拡張するには、VM サイズを変更するだけですみます。 
 
@@ -320,7 +320,7 @@ SharePoint Server 2016 の実行に使用されるドメインレベル サー�
 [sql-sharepoint-best-practices]: https://technet.microsoft.com/library/hh292622(v=office.16).aspx
 [tempdb]: /sql/relational-databases/databases/tempdb-database
 [virtual-networks-nsg]: /azure/virtual-network/virtual-networks-nsg
-[visio-download]: https://archcenter.azureedge.net/cdn/Sharepoint-2016.vsdx
+[visio-download]: https://archcenter.blob.core.windows.net/cdn/Sharepoint-2016.vsdx
 [vm-sizes-general]: /azure/virtual-machines/windows/sizes-general
 [vm-sizes-memory]: /azure/virtual-machines/windows/sizes-memory
 [windows-n-tier]: ../virtual-machines-windows/n-tier.md

@@ -1,21 +1,21 @@
 ---
-title: "ExpressRoute を使用した Azure へのオンプレミス ネットワークの接続"
-description: "Azure ExpressRoute を使用して接続された Azure 仮想ネットワークとオンプレミス ネットワークにまたがる、セキュリティで保護されたサイト間ネットワーク アーキテクチャの実装方法。"
+title: ExpressRoute を使用した Azure へのオンプレミス ネットワークの接続
+description: Azure ExpressRoute を使用して接続された Azure 仮想ネットワークとオンプレミス ネットワークにまたがる、セキュリティで保護されたサイト間ネットワーク アーキテクチャの実装方法。
 author: telmosampaio
 ms.date: 11/28/2016
 pnp.series.title: Connect an on-premises network to Azure
 pnp.series.next: expressroute-vpn-failover
 pnp.series.prev: vpn
 cardTitle: ExpressRoute
-ms.openlocfilehash: 671be5118faaefab5ba5348de81642d8a8124b59
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: ada07f399925da6da28b24260f5c73f1e106fd7d
+ms.sourcegitcommit: c441fd165e6bebbbbbc19854ec6f3676be9c3b25
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="connect-an-on-premises-network-to-azure-using-expressroute"></a>ExpressRoute を使用した Azure へのオンプレミス ネットワークの接続
 
-この参照アーキテクチャでは、[Azure ExpressRoute][expressroute-introduction] 使用して、オンプレミス ネットワークを Azure の仮想ネットワークに接続する方法を示します。 ExpressRoute 接続は、サード パーティ製接続プロバイダーを経由する、プライベートの専用接続を使用します。 プライベート接続は、ご利用のオンプレミス ネットワークを Azure に拡張します。 [**以下のソリューションをデプロイします**。](#deploy-the-solution)
+この参照アーキテクチャでは、[Azure ExpressRoute][expressroute-introduction] を使用して、オンプレミス ネットワークを Azure の仮想ネットワークに接続する方法を示します。 ExpressRoute 接続は、サード パーティ製接続プロバイダーを経由する、プライベートの専用接続を使用します。 プライベート接続は、ご利用のオンプレミス ネットワークを Azure に拡張します。 [**以下のソリューションをデプロイします**。](#deploy-the-solution)
 
 ![[0]][0]
 
@@ -54,7 +54,7 @@ Get-AzureRmExpressRouteServiceProvider
 
 ExpressRoute 接続プロバイダーは、ご利用のデータセンターを次の方法で Microsoft に接続します。
 
-* **クラウド エクスチェンジに併置**。 クラウド エクスチェンジがある施設に併置されている場合、併置プロバイダーのイーサネット エクスチェンジ経由で Azure に仮想交差接続を要請できます。 併置プロバイダーは、共有施設のインフラストラクチャと Azure の間に、レイヤー 2 交差接続と管理レイヤー 3 交差接続のいずれかを提供します。
+* **クラウド エクスチェンジにコロケーションされている**。 クラウド エクスチェンジがある施設に併置されている場合、併置プロバイダーのイーサネット エクスチェンジ経由で Azure に仮想交差接続を要請できます。 併置プロバイダーは、共有施設のインフラストラクチャと Azure の間に、レイヤー 2 交差接続と管理レイヤー 3 交差接続のいずれかを提供します。
 * **ポイント ツー ポイントのイーサネット接続**。 オンプレミス データセンター/オフィスと Azure をポイント ツー ポイントのイーサネット リンクで接続できます。 ポイント ツー ポイントのイーサネットのプロバイダーは、サイトと Azure の間にレイヤー 2 接続と管理レイヤー 3 接続のいずれかを提供できます。
 * **任意の環境間 (IPVPN) ネットワーク**。 ワイド エリア ネットワーク (WAN) を Azure と統合できます。 インターネット プロトコル仮想プライベート ネットワーク (IPVPN) プロバイダー (通常、マルチプロトコル ラベル スイッチング VPN) は、ブランチ オフィスとデータセンターの間に任意の環境間の接続を提供します。 Azure をご使用の WAN に相互接続し、ブランチ オフィスのように見せることができます。 通常、WAN プロバイダーは管理レイヤー 3 接続を提供します。
 
@@ -100,7 +100,7 @@ Azure に接続するための [ExpressRoute 前提条件][expressroute-prereqs]
         Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit <<circuit-name>>
         ```
 
-    3. パブリックおよび Microsoft ピアリングのネットワーク アドレス変換 (NAT) で使用するために、有効なパブリック IP アドレスのプールをもう 1 つ予約します。 ピアリングごとに異なるプールを指定することをお勧めします。 接続プロバイダーに対してプールを指定します。これにより、プロバイダーはこれらの範囲の境界ゲートウェイ プロトコル (BGP) アドバタイズを構成できます。
+    3. パブリックおよび Microsoft ピアリングのネットワーク アドレス変換 (NAT) で使用するために、有効なパブリック IP アドレスのプールをもう 1 つ予約します。 ピアリングごとに異なるプールを指定することをお勧めします。 接続プロバイダーに対してそのプールを指定します。これにより、プロバイダーはこれらの範囲の境界ゲートウェイ プロトコル (BGP) アドバタイズを構成できます。
 
 5. 次の PowerShell コマンドを実行して、プライベート VNet を ExpressRoute 回線にリンクします。 詳細については、[ExpressRoute 回線への仮想ネットワークのリンク][link-vnet-to-expressroute]に関するページをご覧ください。
 
@@ -110,7 +110,7 @@ Azure に接続するための [ExpressRoute 前提条件][expressroute-prereqs]
     New-AzureRmVirtualNetworkGatewayConnection -Name <<connection-name>> -ResourceGroupName <<resource-group>> -Location <<location> -VirtualNetworkGateway1 $gw -PeerId $circuit.Id -ConnectionType ExpressRoute
     ```
 
-すべての VNet と ExpressRoute 回線が、同じ地理的リージョンに配置されている場合は、さまざまなリージョンにある複数の VNet を同じ ExpressRoute 回線に接続できます。
+すべての VNet と ExpressRoute 回線が、同じ地政学的リージョンに配置されている場合は、さまざまなリージョンにある複数の VNet を同じ ExpressRoute 回線に接続できます。
 
 ### <a name="troubleshooting"></a>トラブルシューティング 
 
@@ -278,7 +278,7 @@ VM の管理エンドポイントを外部ネットワークに公開する必�
 [expressroute-pricing]: https://azure.microsoft.com/pricing/details/expressroute/
 [expressroute-limits]: /azure/azure-subscription-service-limits#networking-limits
 [azurect]: https://github.com/Azure/NetworkMonitoring/tree/master/AzureCT
-[visio-download]: https://archcenter.azureedge.net/cdn/hybrid-network-architectures.vsdx
+[visio-download]: https://archcenter.blob.core.windows.net/cdn/hybrid-network-architectures.vsdx
 [er-circuit-parameters]: https://github.com/mspnp/reference-architectures/tree/master/hybrid-networking/expressroute/parameters/expressRouteCircuit.parameters.json
 [azure-powershell-download]: https://azure.microsoft.com/documentation/articles/powershell-install-configure/
 [azure-cli]: https://azure.microsoft.com/documentation/articles/xplat-cli-install/

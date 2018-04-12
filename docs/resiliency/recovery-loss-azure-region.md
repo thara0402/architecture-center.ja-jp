@@ -1,15 +1,16 @@
 ---
-title: "Azure リージョンの損失からの復旧"
-description: "回復力のあるアプリケーション、高可用性のアプリケーション、およびフォールト トレラント アプリケーションの内容および設計方法、ならびに障害復旧の計画策定に関する記事。"
+title: Azure リージョンの損失からの復旧
+description: 回復力のあるアプリケーション、高可用性のアプリケーション、およびフォールト トレラント アプリケーションの内容および設計方法、ならびに障害復旧の計画策定に関する記事。
 author: adamglick
 ms.date: 08/18/2016
-ms.openlocfilehash: 42a7d865e101b43279f3198f3dd75df1b15a8565
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: f551e8af8aece8aa30abfba2438c41c3944209bd
+ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 04/06/2018
 ---
 [!INCLUDE [header](../_includes/header.md)]
+
 # <a name="azure-resiliency-technical-guidance-recovery-from-a-region-wide-service-disruption"></a>Azure の回復性に関する技術ガイダンス: リージョン全体のサービス中断からの復旧
 Azure はリージョンと呼ばれる物理的および論理的な単位に分割されます。 リージョンは、ごく近くにある 1 つ以上のデータセンターで構成されます。 
 

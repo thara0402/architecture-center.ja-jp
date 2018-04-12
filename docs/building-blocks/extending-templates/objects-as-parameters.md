@@ -1,13 +1,13 @@
 ---
-title: "Azure Resource Manager テンプレートのパラメーターとしてオブジェクトを使用する"
-description: "Azure Resource Manager テンプレートの機能を拡張して、オブジェクトをパラメーターとして使用する方法について説明します"
+title: Azure Resource Manager テンプレートのパラメーターとしてオブジェクトを使用する
+description: Azure Resource Manager テンプレートの機能を拡張して、オブジェクトをパラメーターとして使用する方法について説明します
 author: petertay
 ms.date: 06/09/2017
-ms.openlocfilehash: 08ee1cf2924f78ce366c58e20e84a512785f85cc
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 76f8b9d459f4ab3147b52762b7c26552ec92c7a3
+ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="use-an-object-as-a-parameter-in-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートのパラメーターとしてオブジェクトを使用する
 
@@ -294,7 +294,6 @@ ms.lasthandoff: 11/14/2017
   ],          
   "outputs": {}
 }
-
 ```
 
 `securityRules` 子リソースでのプロパティ値の指定方法を詳しく見てみましょう。 すべてのプロパティは `parameter()` 関数を使用して参照されているので、ドット演算子を使用して、イテレーションの現在値によってインデックス付けされた `securityRules` 配列を参照します。 最後に、別のドット演算子を使用して、オブジェクトの名前を参照します。 
@@ -316,7 +315,7 @@ ms.lasthandoff: 11/14/2017
 11. **[カスタム デプロイ]** ブレードで、サブスクリプションを選択し、新しいリソース グループを作成するか、既存のリソース グループを使用して、場所を選択します。 使用条件を確認し、**[同意する]** チェックボックスをオンにします。
 12. **[購入]** を選択します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * これらの手法を拡張して、[プロパティ オブジェクトのトランスフォーマーとコレクター ](./collector.md)を実装することができます。 トランスフォーマーとコレクターの手法はより一般的なもので、テンプレートからリンクすることができます。
 * この手法は、[テンプレート構成ブロックのプロジェクト](https://github.com/mspnp/template-building-blocks)と [Azure 参照アーキテクチャ](/azure/architecture/reference-architectures/)で実装することもできます。 ここでのテンプレートを確認して、この手法をどのように実装したか確認することができます。

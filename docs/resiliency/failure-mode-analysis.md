@@ -1,15 +1,15 @@
 ---
-title: "障害モード分析"
-description: "Azure に基づくクラウド ソリューションの障害モード分析を実行するためのガイドラインです。"
+title: 障害モード分析
+description: Azure に基づくクラウド ソリューションの障害モード分析を実行するためのガイドラインです。
 author: MikeWasson
 ms.date: 03/24/2017
 ms.custom: resiliency
 pnp.series.title: Design for Resiliency
-ms.openlocfilehash: aca2088cb007728c5717a968969000c0a19bcd07
-ms.sourcegitcommit: a7aae13569e165d4e768ce0aaaac154ba612934f
+ms.openlocfilehash: 8786c411249267e502003a90d5f2ff5e4c786803
+ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="failure-mode-analysis"></a>障害モード分析
 [!INCLUDE [header](../_includes/header.md)]
@@ -122,7 +122,7 @@ Application_End ログは、アプリ ドメインのシャットダウン (ソ�
 ### <a name="web-or-worker-roles-are-unexpectedlybeing-shut-down"></a>Web ロールまたは worker ロールが予期せずシャットダウンされる。
 **検出**。 [RoleEnvironment.Stopping][RoleEnvironment.Stopping] イベントが発生します。
 
-**復旧**。 [RoleEntryPoint.OnStop][RoleEntryPoint.OnStop] メソッドをオーバーライドして、正常にクリーンアップします。 詳細については、「[The Right Way to Handle Azure OnStop Events][onstop-events]」(Azure OnStop イベントを処理する正しい方法) (ブログ) を参照してください。
+<strong>復旧</strong>。 [RoleEntryPoint.OnStop][RoleEntryPoint.OnStop] メソッドをオーバーライドして、正常にクリーンアップします。 詳細については、「[The Right Way to Handle Azure OnStop Events][onstop-events]」(Azure OnStop イベントを処理する正しい方法) (ブログ) を参照してください。
 
 ## <a name="cosmos-db"></a>Cosmos DB 
 ### <a name="reading-data-fails"></a>データの読み取りが失敗する。
@@ -131,7 +131,7 @@ Application_End ログは、アプリ ドメインのシャットダウン (ソ�
 **復旧**
 
 * SDK によって、失敗した試行が自動的にもう一度実行されます。 再試行回数と最大待機時間を設定するには、`ConnectionPolicy.RetryOptions` を構成します。 クライアントがスローする例外は、再試行ポリシーを超えているか、一時的なエラーでないかのいずれかです。
-* クライアントが Cosmos DB によって調整されると、HTTP 429 エラーが返されます。 `DocumentClientException` で状態コードを確認します。 エラー 429 が繰り返し発生する場合は、コレクションのスループットの値を増やすことを検討してください。
+* クライアントが Cosmos DB によってスロットルされると、HTTP 429 エラーが返されます。 `DocumentClientException` で状態コードを確認します。 エラー 429 が繰り返し発生する場合は、コレクションのスループットの値を増やすことを検討してください。
     * MongoDB API を使用している場合は、調整のときに、サービスはエラー コード 16500 を返します。
 * 複数のリージョンの間で Cosmos DB データベースをレプリケートします。 すべてのレプリカは読み取り可能です。 クライアント SDK を使用して、`PreferredLocations` パラメーターを指定します。 これは、Azure リージョンの順序付きリストです。 すべての読み取りは、リストで最初に利用可能なリージョンに送信されます。 要求が失敗すると、クライアントはリストのリージョンを順番に試します。 詳細については、「[SQL API を使用して Azure Cosmos DB グローバル分散をセットアップする方法][cosmosdb-multi-region]」を参照してください。
 
@@ -331,7 +331,7 @@ Azure Service Bus メッセージング キューの使用を検討します。�
 
 **診断** アプリケーション ログ
 
-## <a name="storage"></a>ストレージ
+## <a name="storage"></a>Storage
 ### <a name="writing-data-to-azure-storage-fails"></a>Azure Storage へのデータの書き込みが失敗する
 **検出**。 クライアントは、書き込み時にエラーを受け取ります。
 
@@ -339,7 +339,7 @@ Azure Service Bus メッセージング キューの使用を検討します。�
 
 1. 操作を再試行し、一時的な障害から復旧します。 クライアント SDK の[再試行ポリシー][Storage.RetryPolicies]がこれを自動的に処理します。
 2. ストレージに対する過剰な負荷を回避するため、サーキット ブレーカー パターンを実装します。
-3. N 回再試行が失敗した場合は、正常なフォールバックを実行します。 例:
+3. N 回再試行が失敗した場合は、正常なフォールバックを実行します。 例: 
 
    * ローカル キャッシュにデータを格納しておき、後でサービスが利用可能になったら、ストレージに書き込みを転送します。
    * 書き込みアクションがトランザクション スコープであった場合は、トランザクションを補正します。
@@ -387,7 +387,7 @@ Azure Service Bus メッセージング キューの使用を検討します。�
 
 **診断** [Azure Activity Logs][azure-activity-logs] を使用します。
 
-## <a name="webjobs"></a>WebJobs
+## <a name="webjobs"></a>Web ジョブ
 ### <a name="continuous-job-stops-running-when-the-scm-host-is-idle"></a>SCM ホストがアイドル状態のとき、継続的なジョブが実行を停止する。
 **検出**。 WebJob 関数にキャンセル トークンを渡します。 詳細については、[グレースフル シャットダウン][web-jobs-shutdown]に関するページを参照してください。
 
@@ -434,7 +434,7 @@ Azure Service Bus メッセージング キューの使用を検討します。�
 
 **診断** リモート呼び出しのすべてのエラーをログに記録します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 FMA プロセスについては、「[Resilience by design for cloud services][resilience-by-design-pdf]」(クラウド サービス向けの設計による回復力) を参照してください (PDF のダウンロード)。
 
 <!-- links -->

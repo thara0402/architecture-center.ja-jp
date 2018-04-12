@@ -1,28 +1,28 @@
 ---
-title: "Azure での SAP NetWeaver および SAP HANA のデプロイ"
-description: "Azure の高可用性環境で SAP HANA を実行するための実証済みのプラクティス"
+title: Azure での SAP NetWeaver および SAP HANA のデプロイ
+description: Azure の高可用性環境で SAP HANA を実行するための実証済みのプラクティス
 author: njray
 ms.date: 06/29/2017
-ms.openlocfilehash: 27a97103c0c6f305cb8e830d670c8d0ba7e22aa5
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 33171164c59a520a87ef3209c5bb1b208377221c
+ms.sourcegitcommit: c441fd165e6bebbbbbc19854ec6f3676be9c3b25
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="deploy-sap-netweaver-and-sap-hana-on-azure"></a>Azure での SAP NetWeaver および SAP HANA のデプロイ
 
-この参照用アーキテクチャは、Azure の高可用性環境で SAP HANA を実行するための実証済みのプラクティスのセットを示しています。 [**以下のソリューションをデプロイします**。](#deploy-the-solution)
+この参照用アーキテクチャは、Azure の高可用性環境で SAP HANA を実行するための実証済みのプラクティスのセットを示しています。 [**こちらのソリューションをデプロイしてください**。](#deploy-the-solution)
 
 ![0][0]
 
-*"このアーキテクチャの [Visio ファイル][visio-download]をダウンロードあします。"*
+"*このアーキテクチャの [Visio ファイル][visio-download]をダウンロードします。*"
 
 > [!NOTE]
 > この参照用アーキテクチャをデプロイするには、SAP 製品と他の Microsoft 以外のテクノロジの適切なライセンスが必要です。 Microsoft と SAP のパートナーシップに関する情報については、「[SAP HANA on Azure][sap-hana-on-azure]」をご覧ください。
 
 ## <a name="architecture"></a>アーキテクチャ
 
-アーキテクチャは、次のコンポーネントで構成されています。
+アーキテクチャは、次のコンポーネントで構成されます。
 
 - **仮想ネットワーク (VNet)**。 VNet は、Azure の論理的に分離されたネットワークの表現です。 この参照用アーキテクチャ内のすべての VM は、同じ VNet にデプロイされます。 VNet はさらにサブネットに分割されます。 アプリケーション (SAP NetWeaver)、データベース (SAP HANA)、管理 (Jumpbox)、および Active Directory など、階層ごとに別個のサブネットを作成します。
 
@@ -64,7 +64,7 @@ SAP ランドスケープ管理機能では、さまざまな NIC 上のサー�
 
 管理 NIC を管理サブネットに割り当て、データ通信 NIC を別のサブネットに割り当てます。 構成の詳細については、「[複数の NIC を持つ Windows 仮想マシンの作成と管理][multiple-vm-nics]」をご覧ください。
 
-### <a name="azure-storage"></a>Azure Storage (Azure Storage)
+### <a name="azure-storage"></a>Azure Storage
 
 すべてデータベース サーバーの VM では、読み取り/書き込みの待機時間に一貫性を得るために Azure Premium Storage を使用することをお勧めします。 (A)SCS 仮想マシンなどの SAP アプリケーション サーバーでは、アプリケーション実行はメモリ内で行われ、ログ記録だけにディスクを使用するため、Azure Standard Storage を使用できます。
 
@@ -77,7 +77,7 @@ SAP ランドスケープ管理機能では、さまざまな NIC 上のサー�
 
 バックアップ データ ストアでは、Azure BLOB ストレージの[クール ストレージ層][ cool-blob-storage]を使用することをお勧めします。 クール ストレージ層は、アクセスの頻度が低く長期保管されるデータを保存するには、コスト効率が高い方法です。
 
-## <a name="scalability-considerations"></a>拡張性に関する考慮事項
+## <a name="scalability-considerations"></a>スケーラビリティに関する考慮事項
 
 SAP アプリケーション レイヤーでは、Azure はスケールアップのための幅広い仮想マシン サイズを提供しています。 詳細な一覧については、「[SAP note 1928533 - SAP Applications on Azure: Supported Products and Azure VM types (SAP Note 1928533 - Azure 上の SAP アプリケーション: サポートされる製品と Azure VM の種類)」][sap-1928533]」をご覧ください。 スケールアウトするには、より多くの VM を可用性セットに追加します。
 
@@ -235,7 +235,7 @@ SAP インフラストラクチャのデプロイ後、SAP アプリケーショ
 [sap-hana-on-azure]: https://azure.microsoft.com/services/virtual-machines/sap-hana/
 [sap-netweaver-dr]: http://download.microsoft.com/download/9/5/6/956FEDC3-702D-4EFB-A7D3-2DB7505566B6/SAP%20NetWeaver%20-%20Building%20an%20Azure%20based%20Disaster%20Recovery%20Solution%20V1_5%20.docx
 [sap-security]: https://archive.sap.com/documents/docs/DOC-62943
-[visio-download]: https://archcenter.azureedge.net/cdn/SAP-HANA-architecture.vsdx
+[visio-download]: https://archcenter.blob.core.windows.net/cdn/SAP-HANA-architecture.vsdx
 [vm-sizes-mem]: /azure/virtual-machines/windows/sizes-memory
 [swd]: https://help.sap.com/doc/saphelp_nw70ehp2/7.02.16/en-us/48/8fe37933114e6fe10000000a421937/frameset.htm
 [0]: ./images/sap-hana.png "Microsoft Azure を使用した SAP HANA アーキテクチャ"

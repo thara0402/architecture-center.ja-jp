@@ -1,13 +1,13 @@
 ---
-title: "データ ストレージ テクノロジの選択"
-description: 
+title: データ ストレージ テクノロジの選択
+description: ''
 author: zoinerTejada
 ms:date: 02/12/2018
-ms.openlocfilehash: d8f831e758ddc8604758392644a68b56dc51cf57
-ms.sourcegitcommit: 475064f0a3c2fac23e1286ba159aaded287eec86
+ms.openlocfilehash: b14611a2dc34bcb145cf420441795d4124e7baeb
+ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="choosing-a-big-data-storage-technology-in-azure"></a>Azure でのビッグ データ ストレージ テクノロジの選択
 
@@ -109,12 +109,13 @@ Azure Cosmos DB の機能:
 
 ### <a name="nosql-database-capabilities"></a>NoSQL データベースの機能
 
-| | Azure Cosmos DB | HDInsight での HBase |
-| --- | --- | --- |
-| プライマリ データベース モデル | ドキュメント ストア、グラフ、キー値ストア、ワイド カラム ストア | ワイド カラム ストア |
-| セカンダリ インデックス | [はい] | いいえ  |
-| SQL 言語のサポート | [はい] | はい ([Phoenix](http://phoenix.apache.org/) JDBC ドライバーを使用) |
-| 整合性 | 強固、有界整合性制約、セッション、一貫性のあるプレフィックス、最終的 | Strong |
-| Azure Functions のネイティブ統合 | [はい](/azure/cosmos-db/serverless-computing-database) | いいえ  |
-| 自動的なグローバル分散 | [はい](/azure/cosmos-db/distribute-data-globally) | いいえ。最終的な整合性を指定して、リージョン間で[HBase クラスターのレプリケーションを構成可能](/azure/hdinsight/hbase/apache-hbase-replication) |
-| 価格モデル | 必要に応じて秒単位で課金され、弾力的にスケーラブルな要求ユニット (RU)。弾力的にスケーラブルなストレージ | HDInsight クラスターの分単位の料金 (ノードの水平スケーリング)、ストレージ |
+|                                    |                                           Azure Cosmos DB                                           |                                                             HDInsight での HBase                                                             |
+|------------------------------------|-----------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
+|       プライマリ データベース モデル       |                      ドキュメント ストア、グラフ、キー値ストア、ワイド カラム ストア                      |                                                             ワイド カラム ストア                                                              |
+|         セカンダリ インデックス          |                                                 [はい]                                                 |                                                                     いいえ                                                                      |
+|        SQL 言語のサポート        |                                                 [はい]                                                 |                                     はい ([Phoenix](http://phoenix.apache.org/) JDBC ドライバーを使用)                                      |
+|            整合性             |                   強固、有界整合性制約、セッション、一貫性のあるプレフィックス、最終的                   |                                                                   Strong                                                                   |
+| Azure Functions のネイティブ統合 |                        [はい](/azure/cosmos-db/serverless-computing-database)                        |                                                                     いいえ                                                                      |
+|   自動的なグローバル分散    |                          [はい](/azure/cosmos-db/distribute-data-globally)                           | いいえ。最終的な整合性を指定して、リージョン間で[HBase クラスターのレプリケーションを構成可能](/azure/hdinsight/hbase/apache-hbase-replication) |
+|           価格モデル            | 必要に応じて秒単位で課金され、弾力的にスケーラブルな要求ユニット (RU)。弾力的にスケーラブルなストレージ |                              HDInsight クラスターの分単位の料金 (ノードの水平スケーリング)、ストレージ                               |
+

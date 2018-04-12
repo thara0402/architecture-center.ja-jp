@@ -1,16 +1,19 @@
 ---
-title: "Azure に Active Directory フェデレーション サービス (AD FS) を実装する"
-description: "Active Directory フェデレーション サービスの承認を使用するセキュリティ保護されたハイブリッド ネットワーク アーキテクチャを Azure に実装する方法。\nガイダンス,vpn gateway,expressroute,ロード バランサー,仮想ネットワーク,active directory"
+title: Azure に Active Directory フェデレーション サービス (AD FS) を実装する
+description: >-
+  Active Directory フェデレーション サービスの承認を使用するセキュリティ保護されたハイブリッド ネットワーク アーキテクチャを Azure に実装する方法。
+
+  ガイダンス,vpn gateway,expressroute,ロード バランサー,仮想ネットワーク,active directory
 author: telmosampaio
 ms.date: 11/28/2016
 pnp.series.title: Identity management
 pnp.series.prev: adds-forest
 cardTitle: Extend AD FS to Azure
-ms.openlocfilehash: b8c9ae0621c087c68d449dd13e60046104c01513
-ms.sourcegitcommit: 8ab30776e0c4cdc16ca0dcc881960e3108ad3e94
+ms.openlocfilehash: 87489b7b81cf323c221466c539ee14ea90e23c14
+ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="extend-active-directory-federation-services-ad-fs-to-azure"></a>Active Directory フェデレーション サービス (AD FS) を Azure に拡張する
 
@@ -181,7 +184,7 @@ AD FS は、トークンの変換と拡張をサポートしています。 Azur
 * AD FS パフォーマンス カウンターで収集されるパフォーマンス データ。 
 * AD FS システムおよび Web アプリケーション (証明書利用者) の全体的な正常性。重大な問題や警告のアラートも提供されます。 
 
-## <a name="scalability-considerations"></a>拡張性に関する考慮事項
+## <a name="scalability-considerations"></a>スケーラビリティに関する考慮事項
 
 「[AD FS の配置を計画する][plan-your-adfs-deployment]」の記事から要約された以下の考慮事項は、AD FS ファームのサイズ設定の出発点となります。
 
@@ -247,7 +250,7 @@ AD FS は HTTPS プロトコルを使用するため、Web 層 VM が含まれ�
 
 5. ジャンプ ボックス (*ra-adfs-security-rg* グループの *ra-adfs-mgmt-vm1*) を再起動すると、その DNS 設定を有効にすることができます。
 
-6. [AD FS の SSL 証明書を入手][adfs_certificates]し、この証明書を AD FS VM にインストールします。 ジャンプ ボックスを使用してそれらに接続できることに注意してください。 IP アドレスは、*10.0.5.4* と *10.0.5.5* です。 既定のユーザー名は *contoso\testuser*、パスワードは *AweSome@PW* です。
+6. [AD FS の SSL 証明書を入手][adfs_certificates]し、この証明書を AD FS VM にインストールします。 ジャンプ ボックスを使用してそれらに接続できることに注意してください。 IP アドレスは、<em>10.0.5.4</em> と <em>10.0.5.5</em> です。 既定のユーザー名は <em>contoso\testuser</em>、パスワードは <em>AweSome@PW</em> です。
    
    > [!NOTE]
    > Deploy-ReferenceArchitecture.ps1 スクリプトのこの部分のコメントは、`makecert` コマンドを使用して自己署名テスト証明書と機関を作成するための詳細な手順を示しています。 ただし、この手順は**テスト**として実行するだけにし、makecert によって生成された証明書を運用環境では使用しないでください。
@@ -260,7 +263,7 @@ AD FS は HTTPS プロトコルを使用するため、Web 層 VM が含まれ�
     .\Deploy-ReferenceArchitecture.ps1 <subscription id> <location> Adfs
     ``` 
 
-8. ジャンプ ボックスで `https://adfs.contoso.com/adfs/ls/idpinitiatedsignon.htm` に移動し、AD FS のインストールをテストします (証明書の警告が表示されることがありますが、このテストでは無視できます)。 Contoso Corporation サインイン ページが表示されることを確認します。 パスワード *AweS0me@PW* を使用して *contoso\testuser* としてサインインします。
+8. ジャンプ ボックスで `https://adfs.contoso.com/adfs/ls/idpinitiatedsignon.htm` に移動し、AD FS のインストールをテストします (証明書の警告が表示されることがありますが、このテストでは無視できます)。 Contoso Corporation サインイン ページが表示されることを確認します。 パスワード <em>AweS0me@PW</em> を使用して <em>contoso\testuser</em> としてサインインします。
 
 9. SSL 証明書を AD FS プロキシ VM にインストールします。 IP アドレスは *10.0.6.4* と *10.0.6.5* です。
 
@@ -319,5 +322,5 @@ AD FS は HTTPS プロトコルを使用するため、Web 層 VM が含まれ�
 [github]: https://github.com/mspnp/reference-architectures/tree/master/identity/adfs
 [adfs_certificates]: https://technet.microsoft.com/library/dn781428(v=ws.11).aspx
 [considerations]: ./considerations.md
-[visio-download]: https://archcenter.azureedge.net/cdn/identity-architectures.vsdx
+[visio-download]: https://archcenter.blob.core.windows.net/cdn/identity-architectures.vsdx
 [0]: ./images/adfs.png "Active Directory を使用するセキュリティ保護されたハイブリッド ネットワーク アーキテクチャ"

@@ -4,11 +4,11 @@ description: Microsoft Azure で実行する基本的な Web アプリケーシ�
 author: MikeWasson
 ms.date: 12/12/2017
 cardTitle: Basic web application
-ms.openlocfilehash: 38b0739cc61d679742b610b99e92aaad8d3b394d
-ms.sourcegitcommit: 2123c25b1a0b5501ff1887f98030787191cf6994
+ms.openlocfilehash: efd831b1f54fa0662bdfa9874318e7b314172215
+ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="basic-web-application"></a>基本的な Web アプリケーション
 [!INCLUDE [header](../../_includes/header.md)]
@@ -157,7 +157,7 @@ App Service アプリには、`production` という名前のデプロイ スロ
 
 * Azure Portal の[トラブルシューティング ブレード][troubleshoot-blade]を使用して、一般的な問題の解決策を見つけます。
 * [ログ ストリーミング][web-app-log-stream]を有効にして、ほぼリアルタイムでログ情報を監視します。
-* [Kudu ダッシュボード][kudu]には、アプリケーションを監視およびデバッグするためのツールがいくつか用意されています。 詳細については、[知っておくべき Azure Websites のオンライン ツール][kudu]に関するページ (ブログ記事) を参照してください。 Kudu ダッシュボードには Azure Portal からアクセスできます。 アプリのブレードを開き、**[ツール]**、**[Kudu]** の順にクリックします。
+* [Kudu ダッシュボード][kudu]には、アプリケーションを監視およびデバッグするためのツールがいくつか用意されています。 詳細については、[知っておくべき Azure Websites のオンライン ツール][kudu]に関するページ (ブログ記事) を参照してください。 Kudu ダッシュボードには Azure Portal からアクセスできます。 アプリのブレードを開き、<strong>[ツール]</strong>、<strong>[Kudu]</strong> の順にクリックします。
 * Visual Studio を使用する場合、デバッグとトラブルシューティングのヒントについては、「[Visual Studio を使用した Azure App Service のトラブルシューティング][troubleshoot-web-app]」を参照してください。
 
 ## <a name="security-considerations"></a>セキュリティに関する考慮事項
@@ -252,7 +252,7 @@ New-AzureRmResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <r
 [ssl-cert]: /azure/app-service-web/web-sites-purchase-ssl-web-site
 [troubleshoot-blade]: https://azure.microsoft.com/updates/self-service-troubleshooting-for-app-service-web-apps-customers/
 [troubleshoot-web-app]: /azure/app-service-web/web-sites-dotnet-troubleshoot-visual-studio
-[visio-download]: https://archcenter.azureedge.net/cdn/app-service-reference-architectures.vsdx
+[visio-download]: https://archcenter.blob.core.windows.net/cdn/app-service-reference-architectures.vsdx
 [vsts]: https://www.visualstudio.com/features/vso-cloud-load-testing-vs.aspx
 [web-app-autoscale]: /azure/app-service-web/web-sites-scale
 [web-app-backup]: /azure/app-service-web/web-sites-backup

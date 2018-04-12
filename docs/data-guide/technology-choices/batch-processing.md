@@ -1,13 +1,13 @@
 ---
-title: "バッチ処理テクノロジの選択"
-description: 
+title: バッチ処理テクノロジの選択
+description: ''
 author: zoinerTejada
 ms:date: 02/12/2018
-ms.openlocfilehash: bfb850ee8e9d8fd41927b4ca3b612e15b5ae6b11
-ms.sourcegitcommit: 90cf2de795e50571d597cfcb9b302e48933e7f18
+ms.openlocfilehash: 0117798af82f2caa6704dc86e88be57f09c381ea
+ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="choosing-a-batch-processing-technology-in-azure"></a>Azure で使用するバッチ処理テクノロジの選択
 
@@ -53,15 +53,17 @@ Azure では、以下のすべてのデータ ストアがバッチ処理のコ�
 | 価格モデル | バッチ ジョブごと | クラスター時間単位 | クラスター時間単位 | クラスター時間単位 | クラスター時間単位 |  
 
 [1] 手動構成とスケーリングを使用。
- 
+
 ### <a name="integration-capabilities"></a>統合機能
+
 | | Azure Data Lake Analytics | SQL Data Warehouse | Spark を使用する HDInsight | Hive を使用する HDInsight | Hive LLAP を使用する HDInsight |
 | --- | --- | --- | --- | --- | --- |
-| Azure Data Lake Store からのアクセス | [はい] | [はい] | [はい] | [はい] | [はい] |
-| Azure Storage からのクエリ | [はい] | [はい] | [はい] | [はい] | [はい] |
+| Azure Data Lake Store からのアクセス | [はい] | はい | はい | はい | [はい] |
+| Azure Storage からのクエリ | [はい] | はい | はい | はい | [はい] |
 | 外部リレーショナル ストアからのクエリ | [はい] | いいえ  | [はい] | いいえ  | いいえ  |
 
 ### <a name="scalability-capabilities"></a>スケーラビリティ機能
+
 | | Azure Data Lake Analytics | SQL Data Warehouse | Spark を使用する HDInsight | Hive を使用する HDInsight | Hive LLAP を使用する HDInsight |
 | --- | --- | --- | --- | --- | --- |
 | スケールアウトの細分性  | ジョブごと | クラスターごと | クラスターごと | クラスターごと | クラスターごと |
@@ -69,14 +71,15 @@ Azure では、以下のすべてのデータ ストアがバッチ処理のコ�
 | データのメモリ内キャッシュ | いいえ  | 可能  | [はい] | いいえ  | [はい] | 
 
 ### <a name="security-capabilities"></a>セキュリティ機能
+
 | | Azure Data Lake Analytics | SQL Data Warehouse | Spark を使用する HDInsight | HDInsight 上の Apache Hive | HDInsight 上の Hive LLAP |
 | --- | --- | --- | --- | --- | --- |
 | 認証  | Azure Active Directory (Azure AD) | SQL / Azure AD | いいえ  | ローカル / Azure AD <sup>1</sup> | ローカル / Azure AD <sup>1</sup> |
 | 承認  | [はい] | [はい]| いいえ  | はい <sup>1</sup> | はい <sup>1</sup> |
 | 監査  | [はい] | [はい] | いいえ  | はい <sup>1</sup> | はい <sup>1</sup> |
-| 保存データの暗号化 | [はい]| はい <sup>2</sup> | [はい] | [はい] | [はい] |
+| 保存データの暗号化 | [はい]| はい <sup>2</sup> | [はい] | はい | [はい] |
 | 行レベルのセキュリティ | いいえ  | [はい] | いいえ  | はい <sup>1</sup> | はい <sup>1</sup> |
-| ファイアウォールをサポート | [はい] | [はい] | [はい] | はい <sup>3</sup> | はい <sup>3</sup> |
+| ファイアウォールをサポート | [はい] | はい | [はい] | はい <sup>3</sup> | はい <sup>3</sup> |
 | 動的データ マスク | いいえ  | いいえ  | いいえ  | はい <sup>1</sup> | はい <sup>1</sup> |
 
 [1] [ドメイン参加済み HDInsight クラスター](/azure/hdinsight/domain-joined/apache-domain-joined-introduction)を使用する必要があります。

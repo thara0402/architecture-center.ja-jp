@@ -1,13 +1,13 @@
 ---
-title: "時系列データ"
-description: 
+title: 時系列データ
+description: ''
 author: zoinerTejada
 ms:date: 02/12/2018
-ms.openlocfilehash: ceb8f34d4fd950e5270edfea05945a824c4492f0
-ms.sourcegitcommit: 90cf2de795e50571d597cfcb9b302e48933e7f18
+ms.openlocfilehash: 80ff6c45988062afcb0eb92cc79e640d39dbb21f
+ms.sourcegitcommit: 51f49026ec46af0860de55f6c082490e46792794
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="time-series-solutions"></a>時系列ソリューション
 
@@ -42,7 +42,7 @@ ms.lasthandoff: 02/14/2018
 
 IoT デバイスによって収集されるデータは、時系列での保存と分析に最適です。 受信データは挿入され、更新されることはめったにありません。 データにはタイム スタンプが付けられ、受信した順序で挿入されます。このデータは通常は時系列で表示され、ユーザーが傾向の検出、異常の見分け、予測分析での情報の使用を実行できるようにします。
 
-詳細については、「[モノのインターネット](../concepts/big-data.md#internet-of-things-iot)」をご覧ください。
+詳細については、「[モノのインターネット](../big-data/index.md#internet-of-things-iot)」をご覧ください。
 
 ### <a name="real-time-analytics"></a>リアルタイム分析
 
@@ -57,7 +57,7 @@ IoT デバイスによって収集されるデータは、時系列での保存�
 
 ## <a name="architecture"></a>アーキテクチャ
 
-IoT などの時系列データが関連する多くのシナリオでは、データはリアルタイムでキャプチャされます。 そのため、[リアルタイム処理](./real-time-processing.md)アーキテクチャが適しています。 
+IoT などの時系列データが関連する多くのシナリオでは、データはリアルタイムでキャプチャされます。 そのため、[リアルタイム処理](../big-data/real-time-processing.md)アーキテクチャが適しています。 
 
 1 つ以上のデータ ソースからのデータは、[IoT Hub](/azure/iot-hub/)、[Event Hubs](/azure/event-hubs/)、または [HDInsight 上の Kafka](/azure/hdinsight/kafka/apache-kafka-introduction) によって、ストリーム バッファリング レイヤーに取り込まれます。 次に、データは、ストリーム処理レイヤーで処理されます。処理されたデータは、必要に応じて、予測分析を行うために機械学習サービスに渡すことができます。 処理されたデータは、[HBase](/azure/hdinsight/hbase/apache-hbase-overview)、[Azure Cosmos DB](/azure/cosmos-db/)、Azure Data Lake、Blob ストレージなどの分析データ ストアに格納されます。 Power BI や OpenTSDB (HBase に格納される場合) などの分析とレポート作成を行うアプリケーションまたはサービスを使用して、時系列データを表示して分析できます。
 

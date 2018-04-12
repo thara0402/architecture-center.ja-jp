@@ -1,25 +1,25 @@
 ---
-title: "オンプレミスの AD ドメインと Azure Active Directory を統合する"
-description: "Azure Active Directory を使用するセキュリティ保護されたハイブリッド ネットワーク アーキテクチャを実装する方法について説明します。"
+title: オンプレミスの AD ドメインと Azure Active Directory を統合する
+description: Azure Active Directory を使用するセキュリティ保護されたハイブリッド ネットワーク アーキテクチャを実装する方法について説明します。
 author: telmosampaio
 pnp.series.title: Identity management
 ms.date: 11/28/2016
 pnp.series.next: adds-extend-domain
 pnp.series.prev: ./index
 cardTitle: Integrate on-premises AD with Azure AD
-ms.openlocfilehash: dd4cf0369974ea68d240ed294b1c50972d361d74
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 431de4b2e08c79f70cc9830fda8315e07bf22c64
+ms.sourcegitcommit: c441fd165e6bebbbbbc19854ec6f3676be9c3b25
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="integrate-on-premises-active-directory-domains-with-azure-active-directory"></a>オンプレミスの Active Directory ドメインと Azure Active Directory を統合する
 
-Azure Active Directory (Azure AD) は、クラウド ベースでマルチテナントのディレクトリおよび ID サービスです。 この参照アーキテクチャでは、オンプレミスの Active Directory ドメインと Azure AD を統合してクラウド ベースの ID 認証を提供する場合のベスト プラクティスを示します。 [**このソリューションをデプロイします**。](#deploy-the-solution)
+Azure Active Directory (Azure AD) は、クラウド ベースでマルチテナントのディレクトリおよび ID サービスです。 この参照アーキテクチャでは、オンプレミスの Active Directory ドメインと Azure AD を統合してクラウド ベースの ID 認証を提供する場合のベスト プラクティスを示します。 [**こちらのソリューションをデプロイしてください**。](#deploy-the-solution)
 
 [![0]][0] 
 
-*このアーキテクチャの [Visio ファイル][visio-download]をダウンロードします。*
+"*このアーキテクチャの [Visio ファイル][visio-download]をダウンロードします。*"
 
 > [!NOTE]
 > わかりやすくするため、この図では Azure AD に直接関係する接続のみを示してあり、認証および ID フェデレーションの一部として発生する可能性があるプロトコル関連のトラフィックは示されていません。 たとえば、Web アプリケーションは Azure AD を介して要求を認証するため Web ブラウザーをリダイレクトする可能性があります。 認証が済むと、適切な ID 情報と共に要求を Web アプリケーションに戻すことができます。
@@ -119,7 +119,7 @@ Azure Portal で Azure AD のレポート機能を使って、システムで発
 
 ### <a name="user-authentication"></a>ユーザー認証
 
-既定では、Azure AD Connect 同期サーバーはオンプレミスのドメインと Azure AD の間にパスワード同期を構成し、Azure AD サービスは、ユーザーがオンプレミスで使っているものと同じパスワードで認証を行うものと想定されています。 多くの組織にはこの方法が適していますが、組織の既存のポリシーとインフラストラクチャを考慮する必要があります。 For example:
+既定では、Azure AD Connect 同期サーバーはオンプレミスのドメインと Azure AD の間にパスワード同期を構成し、Azure AD サービスは、ユーザーがオンプレミスで使っているものと同じパスワードで認証を行うものと想定されています。 多くの組織にはこの方法が適していますが、組織の既存のポリシーとインフラストラクチャを考慮する必要があります。 例: 
 
 * 組織のセキュリティ ポリシーで、クラウドへのパスワード ハッシュの同期が禁止されている可能性があります。
 * ユーザーが、企業ネットワーク上のドメイン参加マシンからクラウドのリソースに、シームレスなシングル サインオン (SSO) でアクセスできるようにすることが必要な場合があります。
@@ -156,7 +156,7 @@ Azure AD Connect は、User、Contact、Group、ForeignSecurityPrincipal、Compu
 
 AD Connect Health エージェントのインストールとその要件について詳しくは、「[Azure AD Connect Health エージェントのインストール][aad-agent-installation]」をご覧ください。
 
-## <a name="scalability-considerations"></a>拡張性に関する考慮事項
+## <a name="scalability-considerations"></a>スケーラビリティに関する考慮事項
 
 Azure AD サービスはレプリカに基づく拡張性をサポートし、書き込み操作を処理する 1 つのプライマリ レプリカと、複数の読み取り専用セカンダリ レプリカを使います。 Azure AD は、セカンダリ レプリカに対して試みられた書き込みをプライマリ レプリカに透過的にリダイレクトして、最終的な整合性を提供します。 プライマリ レプリカに加えられたすべての変更は、セカンダリ レプリカに伝達されます。 Azure AD に対するほとんどの操作は書き込みではなく読み取りなので、このアーキテクチャは優れた拡張性を備えています。 詳しくは、「[Azure AD: Under the hood of our geo-redundant, highly available, distributed cloud directory][aad-scalability]」(Azure AD: 地理冗長で高可用性の分散クラウド ディレクトリの内部) をご覧ください。
 
@@ -260,7 +260,7 @@ Azure AD Connect の管理に関する詳細とヒントについては、「[Az
 [considerations]: ./considerations.md
 [resource-manager-overview]: /azure/azure-resource-manager/resource-group-overview
 [sla-aad]: https://azure.microsoft.com/support/legal/sla/active-directory/v1_0/
-[visio-download]: https://archcenter.azureedge.net/cdn/identity-architectures.vsdx
+[visio-download]: https://archcenter.blob.core.windows.net/cdn/identity-architectures.vsdx
 
 
 [0]: ./images/azure-ad.png "Azure Active Directory を使用するクラウド ID アーキテクチャ"

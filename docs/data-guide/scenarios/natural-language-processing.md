@@ -1,13 +1,13 @@
 ---
-title: "自然言語処理"
-description: 
+title: 自然言語処理
+description: ''
 author: zoinerTejada
 ms:date: 02/12/2018
-ms.openlocfilehash: c03e2d017f9b4eb955a0e3494b5bc6c2603d1058
-ms.sourcegitcommit: 90cf2de795e50571d597cfcb9b302e48933e7f18
+ms.openlocfilehash: 0afd8ac9a8a2e56f79ade0b2e10328630866c03c
+ms.sourcegitcommit: 51f49026ec46af0860de55f6c082490e46792794
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="natural-language-processing"></a>自然言語処理
 
@@ -34,7 +34,7 @@ NLP を使用して自由形式のテキストから情報および洞察を抽�
 
 ## <a name="architecture"></a>アーキテクチャ
 
-NLP ソリューションでは、自由形式のテキスト処理は、段落のテキストを含むドキュメントに対して実行されます。 全体のアーキテクチャは、[バッチ処理](./batch-processing.md)または[リアルタイムでのストリーム処理](./real-time-processing.md)のアーキテクチャになる場合があります。
+NLP ソリューションでは、自由形式のテキスト処理は、段落のテキストを含むドキュメントに対して実行されます。 全体のアーキテクチャは、[バッチ処理](../big-data/batch-processing.md)または[リアルタイムでのストリーム処理](../big-data/real-time-processing.md)のアーキテクチャになる場合があります。
 
 実際の処理は、目的とする成果物によって異なりますが、パイプラインの観点では、バッチやリアルタイム方式で NLP を適用できます。 たとえば、感情分析は、テキスト ブロックに対して使用して、感情スコアを生成できます。 この分析は、ストレージのデータに対してバッチ処理を実行したり、リアルタムでメッセージング サービス経由で送信されたより小さなデータチャンクを使用して、行うことができます。
 

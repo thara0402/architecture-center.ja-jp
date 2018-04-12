@@ -1,14 +1,14 @@
 ---
-title: "クラウドの設計パターン"
-description: "Microsoft Azure のクラウド設計パターン"
+title: クラウド設計パターン
+description: Microsoft Azure のクラウド設計パターン
 keywords: Azure
-ms.openlocfilehash: 264b8296a428f9c1b87314b782efcabc89cf010f
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 4747c896fc6fc5866be782d76c5290d6b49ad451
+ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="cloud-design-patterns"></a>クラウドの設計パターン
+# <a name="cloud-design-patterns"></a>クラウド設計パターン
 
 [!INCLUDE [header](../../_includes/header.md)]
 
@@ -28,6 +28,8 @@ ms.lasthandoff: 11/14/2017
 
 ## <a name="catalog-of-patterns"></a>パターンのカタログ
 
-| パターン | 概要 |
-| ------- | ------- |
+| パターン | まとめ |
+|---------|---------|
+|         |         |
+
 {%- for pattern in patterns %} | [{{ pattern.title }}](./{{ pattern.file }}) | {{ pattern.description }} | {%- endfor %}

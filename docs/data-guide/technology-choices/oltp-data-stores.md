@@ -1,13 +1,13 @@
 ---
-title: "OLTP データ ストアの選択"
-description: 
+title: OLTP データ ストアの選択
+description: ''
 author: zoinerTejada
 ms:date: 02/12/2018
 ms.openlocfilehash: 1c27d7d5f3b78f40822de6b77664dbf49b1367f6
-ms.sourcegitcommit: 90cf2de795e50571d597cfcb9b302e48933e7f18
+ms.sourcegitcommit: c441fd165e6bebbbbbc19854ec6f3676be9c3b25
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/31/2018
 ---
 # <a name="choosing-an-oltp-data-store-in-azure"></a>Azure での OLTP データ ストアの選択
 
@@ -27,7 +27,7 @@ Azure では、次のすべてのデータ ストアが OLTP とトランザク�
 
 ## <a name="key-selection-criteria"></a>主要な選択条件
 
-選択を絞り込むには、以下の質問に答えることから開始します。
+選択肢を絞り込むために、まず次の質問に答えてください。
 
 - 独自のサーバーを管理するのではなく、管理されたサービスが必要ですか。
 
@@ -48,7 +48,7 @@ Azure では、次のすべてのデータ ストアが OLTP とトランザク�
 次の表は、機能の主な相違点をまとめたものです。
 
 ### <a name="general-capabilities"></a>一般的な機能 
-| | の接続文字列 | Azure の仮想マシン内の SQL Server | Azure Database for MySQL | Azure Database for PostgreSQL |
+| | Azure SQL Database | Azure の仮想マシン内の SQL Server | Azure Database for MySQL | Azure Database for PostgreSQL |
 | --- | --- | --- | --- | --- | --- |
 | マネージド サービス | [はい] | いいえ  | 可能  | [はい] |
 | 実行するプラットフォーム | 該当なし | Windows、Linux、Docker | 該当なし | 該当なし |
@@ -57,7 +57,7 @@ Azure では、次のすべてのデータ ストアが OLTP とトランザク�
 [1] 多くのプログラミング言語が OLTP データ ストアに接続して使用できるクライアント ドライバー サポートは含まれません。
 
 ### <a name="scalability-capabilities"></a>スケーラビリティ機能
-| | の接続文字列 | Azure の仮想マシン内の SQL Server| Azure Database for MySQL | Azure Database for PostgreSQL|
+| | Azure SQL Database | Azure の仮想マシン内の SQL Server| Azure Database for MySQL | Azure Database for PostgreSQL|
 | --- | --- | --- | --- | --- | --- |
 | データベース インスタンスの最大サイズ | [4 TB](/azure/sql-database/sql-database-resource-limits) | 256 TB | [1 TB](/azure/mysql/concepts-limits) | [1 TB](/azure/postgresql/concepts-limits) |
 | 容量プールをサポート  | [はい] | [はい] | いいえ  | いいえ  |
@@ -65,7 +65,7 @@ Azure では、次のすべてのデータ ストアが OLTP とトランザク�
 | 動的スケーラビリティ (スケールアップ)  | [はい] | いいえ  | 可能  | [はい] |
 
 ### <a name="analytic-workload-capabilities"></a>分析ワークロード機能
-| | の接続文字列 | Azure の仮想マシン内の SQL Server| Azure Database for MySQL | Azure Database for PostgreSQL|
+| | Azure SQL Database | Azure の仮想マシン内の SQL Server| Azure Database for MySQL | Azure Database for PostgreSQL|
 | --- | --- | --- | --- | --- | --- | 
 | テンポラル テーブル | [はい] | [はい] | いいえ  | いいえ  |
 | インメモリ (メモリ最適化) テーブル | [はい] | [はい] | いいえ  | いいえ  |
@@ -73,24 +73,24 @@ Azure では、次のすべてのデータ ストアが OLTP とトランザク�
 | クエリの適応処理 | [はい] | [はい] | いいえ  | いいえ  |
 
 ### <a name="availability-capabilities"></a>可用性に関する機能
-| | の接続文字列 | Azure の仮想マシン内の SQL Server| Azure Database for MySQL | Azure Database for PostgreSQL|
+| | Azure SQL Database | Azure の仮想マシン内の SQL Server| Azure Database for MySQL | Azure Database for PostgreSQL|
 | --- | --- | --- | --- | --- | --- | 
 | 読み取り可能なセカンダリ | [はい] | [はい] | いいえ  | いいえ  | 
 | geography 型のレプリケーション | [はい] | [はい] | いいえ  | いいえ  | 
 | セカンダリへの自動フェールオーバー | [はい] | いいえ  | いいえ  | いいえ |
-| ポイントインタイム リストア | [はい] | [はい] | [はい] | [はい] |
+| ポイントインタイム リストア | [はい] | はい | はい | [はい] |
 
 ### <a name="security-capabilities"></a>セキュリティ機能
-| | の接続文字列 | Azure の仮想マシン内の SQL Server| Azure Database for MySQL | Azure Database for PostgreSQL|
+| | Azure SQL Database | Azure の仮想マシン内の SQL Server| Azure Database for MySQL | Azure Database for PostgreSQL|
 | --- | --- | --- | --- | --- | --- | 
-| 行レベルのセキュリティ | [はい] | [はい] | [はい] | [はい] |
+| 行レベルのセキュリティ | [はい] | はい | はい | [はい] |
 | データ マスク | [はい] | [はい] | いいえ  | いいえ  |
-| 透過的なデータ暗号化 | [はい] | [はい] | [はい] | [はい] |
-| 特定の IP アドレスへのアクセスを制限 | [はい] | [はい] | [はい] | [はい] |
+| 透過的なデータ暗号化 | [はい] | はい | はい | [はい] |
+| 特定の IP アドレスへのアクセスを制限 | [はい] | はい | はい | [はい] |
 | VNET アクセスのみを許可するようにアクセスを制限 | [はい] | [はい] | いいえ  | いいえ  |
 | Azure Active Directory 認証 | [はい] | [はい] | いいえ  | いいえ  |
 | Active Directory 認証 | いいえ  | [はい] | いいえ  | いいえ  |
 | 多要素認証 | [はい] | [はい] | いいえ  | いいえ  |
-| [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) をサポート | [はい] | [はい] | [はい] | いいえ  | いいえ  |
+| [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) をサポート | [はい] | はい | [はい] | いいえ  | いいえ  |
 | プライベート IP | いいえ  | 可能  | [はい] | いいえ  | いいえ  |
 

@@ -7,11 +7,11 @@ pnp.series.prev: basic-web-app
 pnp.series.next: multi-region-web-app
 ms.date: 11/23/2016
 cardTitle: Improve scalability
-ms.openlocfilehash: 4ad12fb041a79fcb706530c9968fd0f96211d7f9
-ms.sourcegitcommit: a7aae13569e165d4e768ce0aaaac154ba612934f
+ms.openlocfilehash: 6459acebfa25491332e2118b9e8fe51d5fc79ff3
+ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="improve-scalability-in-a-web-application"></a>Web アプリケーションのスケーラビリティの向上
 
@@ -30,13 +30,13 @@ ms.lasthandoff: 01/30/2018
 * **Web ジョブ**。 実行時間が長いタスクをバックグラウンドで実行するには、[Azure WebJobs][webjobs] を使用します。 Web ジョブは、スケジュールを指定して、継続して、またはメッセージがキューに格納されるなどのトリガーに応答して実行できます。 Web ジョブは、App Service アプリのコンテキストでバックグラウンド プロセスとして実行されます。
 * **キュー**。 ここで示すアーキテクチャの場合、アプリケーションはメッセージを [Azure Queue Storage][queue-storage] キューに格納することで、バックグラウンド タスクをキューに格納します。 このメッセージによって、Web ジョブの機能がトリガーされます。 または、Service Bus キューを使用できます。 比較については、[Storage キューと Service Bus キューの比較][queues-compared]に関するページを参照してください。
 * **キャッシュ**。 [Azure Redis Cache][azure-redis] に半静的データを格納します。  
-* **CDN**。 [Azure Content Delivery Network][azure-cdn] (CDN) を使用して、コンテンツの待機時間を短縮して高速に配信できるように、パブリックに使用できるコンテンツをキャッシュします。
+* <strong>CDN</strong>。 [Azure Content Delivery Network][azure-cdn] (CDN) を使用して、コンテンツの待機時間を短縮して高速に配信できるように、パブリックに使用できるコンテンツをキャッシュします。
 * **データ ストレージ**。 リレーショナル データには [Azure SQL Database][sql-db] を使用します。 リレーショナル データ以外については、[Cosmos DB][cosmosdb] などの NoSQL ストアを検討してください。
 * **Azure Search**。 [Azure Search][azure-search] を使用して、検索候補、あいまい検索、言語固有の検索などの検索機能を追加します。 通常、Azure Search は別のデータ ストアと組み合わせて使用されます。プライマリ データ ストアに厳密な一貫性が必要な場合は特にそうです。 この方法では、信頼できるデータを他のデータ ストアに格納し、検索インデックスは Azure Search に格納します。 また、Azure Search は、複数のデータ ストアから単一の検索インデックスに統合する場合にも使用できます。  
 * **電子メール/SMS**。 電子メール SMS メッセージを送信する場合は、この機能をアプリケーションに直接組み込むのではなく、SendGrid、Twilio などのサード パーティのサービスを使用します。
 * **Azure DNS**。 [Azure DNS][azure-dns] は、DNS ドメインのホスティング サービスであり、Microsoft Azure インフラストラクチャを使用した名前解決を提供します。 Azure でドメインをホストすることで、その他の Azure サービスと同じ資格情報、API、ツール、課金情報を使用して DNS レコードを管理できます。
 
-## <a name="recommendations"></a>推奨事項
+## <a name="recommendations"></a>Recommendations
 
 実際の要件は、ここで説明するアーキテクチャとは異なる場合があります。 このセクションに記載されている推奨事項は出発点として利用してください。
 
@@ -74,7 +74,7 @@ App Service Mobile Apps の *Easy Tables* または *Easy API* 機能を使用�
 
 詳細については、[Content Delivery Network (CDN) のガイダンス][cdn-guidance]を参照してください。
 
-### <a name="storage"></a>ストレージ
+### <a name="storage"></a>Storage
 多くの場合、最新のアプリケーションは大量のデータを処理しています。 クラウドに合わせてスケーリングするには、適切なストレージの種類を選択することが重要です。 以下に、基本的な推奨事項をいくつか示します。 
 
 | 格納するもの | 例 | 推奨されるストレージ |
@@ -83,9 +83,9 @@ App Service Mobile Apps の *Easy Tables* または *Easy API* 機能を使用�
 | キー/値のペア |ユーザー ID で検索されるユーザー プロファイル データ |Azure Table Storage |
 | 以降の処理をトリガーするための短いメッセージ |注文要求 |Azure Queue Storage、Service Bus キュー、または Service Bus トピック |
 | 基本的なクエリ実行を必要とする柔軟なスキーマの非リレーショナル データ |製品カタログ |Azure Cosmos DB、MongoDB、Apache CouchDB などのドキュメント データベース |
-| より高度なクエリのサポート、厳格なスキーマ、強い整合性を必要とするリレーショナル データ |製品のインベントリ |Azure SQL Database |
+| より高度なクエリのサポート、厳格なスキーマ、強力な一貫性を必要とするリレーショナル データ |製品のインベントリ |Azure SQL Database |
 
-## <a name="scalability-considerations"></a>拡張性に関する考慮事項
+## <a name="scalability-considerations"></a>スケーラビリティに関する考慮事項
 
 Azure App Service の主な利点は、負荷に応じてアプリケーションをスケーリングできることです。 アプリケーションのスケーリングを計画する場合の考慮事項を次に示します。
 
@@ -114,7 +114,7 @@ Web サイトと Web API を別のアプリとして作成する場合、CORS �
 > 
 > 
 
-App Service には CORS のサポートが組み込まれているため、アプリケーション コードを作成する必要はありません。 [CORS を使用して JavaScript から API アプリを使用する][cors]方法に関するページを参照してください。 API の許可されているオリジンの一覧に Web サイトを追加します。
+App Services は CORS のサポートが組み込まれているため、アプリケーション コードを作成する必要はありません。 [CORS を使用して JavaScript から API アプリを使用する][cors]方法に関するページを参照してください。 API の許可されているオリジンの一覧に Web サイトを追加します。
 
 ### <a name="sql-database-encryption"></a>SQL Database の暗号化
 データベースに保存されているデータを暗号化する必要がある場合は、[Transparent Data Encryption][sql-encryption] を使用します。 この機能で、(バックアップとトランザクション ログ ファイルを含む) データベース全体のリアルタイムの暗号化と復号が実行されるので、アプリケーションを変更する必要はありません。 暗号化で、ある程度の待機時間が増えるので、セキュリティで保護する必要があるデータを独自のデータベースに分離し、そのデータベースについてのみ暗号化を有効にすることをお勧めします。  
@@ -148,7 +148,7 @@ App Service には CORS のサポートが組み込まれているため、ア�
 [sql-elastic]: /azure/sql-database/sql-database-elastic-scale-introduction
 [sql-encryption]: https://msdn.microsoft.com/library/dn948096.aspx
 [tm]: https://azure.microsoft.com/services/traffic-manager/
-[visio-download]: https://archcenter.azureedge.net/cdn/app-service-reference-architectures.vsdx
+[visio-download]: https://archcenter.blob.core.windows.net/cdn/app-service-reference-architectures.vsdx
 [web-app-multi-region]: ./multi-region.md
 [webjobs-guidance]: ../../best-practices/background-jobs.md
 [webjobs]: /azure/app-service/app-service-webjobs-readme

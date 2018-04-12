@@ -1,15 +1,16 @@
 ---
-title: "技術ガイダンス: Azure でのローカル障害からの復旧"
-description: "回復力のあるアプリケーション、高可用性のアプリケーション、およびフォールト トレラント アプリケーションの内容および設計方法、ならびに Azure 内でのローカル障害を対象にしたディザスター リカバリーの計画策定に関する記事。"
+title: '技術ガイダンス: Azure でのローカル障害からの復旧'
+description: 回復力のあるアプリケーション、高可用性のアプリケーション、およびフォールト トレラント アプリケーションの内容および設計方法、ならびに Azure 内でのローカル障害を対象にしたディザスター リカバリーの計画策定に関する記事。
 author: adamglick
 ms.date: 08/18/2016
-ms.openlocfilehash: 180eb465e5f82406bb03924a29d5b06d43bbaa24
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 5fc929bd1affe3dd6616f908bae0e7d2fefb89d5
+ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 04/06/2018
 ---
 [!INCLUDE [header](../_includes/header.md)]
+
 # <a name="azure-resiliency-technical-guidance-recovery-from-local-failures-in-azure"></a>Azure の回復性に関する技術ガイダンス - Azure でのローカル障害からの復旧
 
 アプリケーションの可用性にとって脅威となるのは、主に次の 2 つです。

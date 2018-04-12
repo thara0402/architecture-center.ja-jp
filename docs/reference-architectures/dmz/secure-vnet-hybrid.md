@@ -1,17 +1,17 @@
 ---
-title: "Azure における安全なハイブリッド ネットワーク アーキテクチャの実装"
-description: "安全なハイブリッド ネットワーク アーキテクチャを Azure に実装する方法。"
+title: Azure における安全なハイブリッド ネットワーク アーキテクチャの実装
+description: 安全なハイブリッド ネットワーク アーキテクチャを Azure に実装する方法。
 author: telmosampaio
 ms.date: 11/23/2016
 pnp.series.title: Network DMZ
 pnp.series.prev: ./index
 pnp.series.next: secure-vnet-dmz
 cardTitle: DMZ between Azure and on-premises
-ms.openlocfilehash: 778d5ef6967a09b03bb6b5aca67e3e0c170ad016
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 81dea2e4439d5a01ebb88ab86dc0a59609bb7bc3
+ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="dmz-between-azure-and-your-on-premises-datacenter"></a>Azure とオンプレミス データセンター間の DMZ
 
@@ -19,7 +19,7 @@ ms.lasthandoff: 11/14/2017
 
 [![0]][0] 
 
-*このアーキテクチャの [Visio ファイル][visio-download]をダウンロードします。*
+"*このアーキテクチャの [Visio ファイル][visio-download]をダウンロードします。*"
 
 このアーキテクチャでは、[VPN ゲートウェイ][ra-vpn]または [ExpressRoute][ra-expressroute] 接続のいずれかを使用して、オンプレミスのデータセンターに接続する必要があります。 このアーキテクチャの一般的な用途は次のとおりです。
 
@@ -115,7 +115,7 @@ VPN ゲートウェイでは、オンプレミス ネットワークへの接続
  
 jumpbox 用のパブリック IP アドレスは作成しないでください。 代わりに、受信ゲートウェイ経由で jumpbox にアクセスするルートを 1 つ作成します。 管理サブネットが、許可されているルートからの要求にのみ応答するように NSG ルールを作成してください。
 
-## <a name="scalability-considerations"></a>拡張性に関する考慮事項
+## <a name="scalability-considerations"></a>スケーラビリティに関する考慮事項
 
 参照アーキテクチャでは、ロード バランサーを使用してオンプレミスのネットワーク トラフィックを NVA デバイスのプールにルーティングし、それらのデバイスがトラフィックをルーティングしています。 NVA は[可用性セット][availability-set]内に配置されています。 この設計により、一定期間にわたる NVA のスループットを監視し、負荷の増加に応じて NVA デバイスを追加できます。
 
@@ -162,7 +162,7 @@ NVA の前のロード バランサーも、負荷分散規則で開いていな
 
 これらの推奨事項を実装する参照アーキテクチャのデプロイは、[GitHub][github-folder] で入手できます。 参照アーキテクチャは、次の手順に従ってデプロイできます。
 
-1. 下のボタンをクリックします。<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmspnp%2Freference-architectures%2Fmaster%2Fdmz%2Fsecure-vnet-hybrid%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
+1. 下のボタンをクリックしてください。<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmspnp%2Freference-architectures%2Fmaster%2Fdmz%2Fsecure-vnet-hybrid%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
 2. Azure Portal でリンクが開いたら、いくつかの設定に値を入力する必要があります。   
    * **リソース グループ**の名前はパラメーター ファイルで既に定義されているため、**[新規作成]** を選択し、テキスト ボックスに「`ra-private-dmz-rg`」と入力します。
    * **[場所]** ボックスの一覧でリージョンを選択します。
@@ -172,14 +172,14 @@ NVA の前のロード バランサーも、負荷分散規則で開いていな
 3. デプロイが完了するまで待ちます。
 4. パラメーター ファイルには、すべての VM のハードコーディングされた管理者のユーザー名とパスワードが含まれているため、この両方をすぐに変更することを強くお勧めします。 デプロイ内の VM ごとに、Azure ポータルで VM を選択し、**[サポート + トラブルシューティング]** ブレードで **[パスワードのリセット]** をクリックします。 **[モード]** ボックスの一覧の **[パスワードのリセット]** を選択し、新しい**ユーザー名**と**パスワード**を選択します。 **[更新]** ボタンをクリックして保存します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [Azure とインターネットの間の DMZ](secure-vnet-dmz.md) を実装する方法について説明します。
 * [高可用性ハイブリッド ネットワーク アーキテクチャ][ra-vpn-failover]を実装する方法について説明します。
 * Azure でのネットワーク セキュリティの管理の詳細については、「[Microsoft クラウド サービスとネットワーク セキュリティ][cloud-services-network-security]」をご覧ください。
 * Azure のリソース保護の詳細については、「[Microsoft Azure セキュリティの概要][getting-started-with-azure-security]」をご覧ください。 
 * Azure ゲートウェイ接続の全体にわたるセキュリティ上の問題に対処することの詳細については、「[Azure とオンプレミスの VPN を使ってハイブリッド ネットワーク アーキテクチャを実装する][guidance-vpn-gateway-security]」と「[Azure ExpressRoute を使ってハイブリッド ネットワーク アーキテクチャを実装する][guidance-expressroute-security]」をご覧ください。
-> 
+  > 
 
 <!-- links -->
 
@@ -210,6 +210,6 @@ NVA の前のロード バランサーも、負荷分散規則で開いていな
 [routing-and-remote-access-service]: https://technet.microsoft.com/library/dd469790(v=ws.11).aspx
 [security-principle-of-least-privilege]: https://msdn.microsoft.com/library/hdb58b2f(v=vs.110).aspx#Anchor_1
 [udr-overview]: /azure/virtual-network/virtual-networks-udr-overview
-[visio-download]: https://archcenter.azureedge.net/cdn/dmz-reference-architectures.vsdx
+[visio-download]: https://archcenter.blob.core.windows.net/cdn/dmz-reference-architectures.vsdx
 [wireshark]: https://www.wireshark.org/
 [0]: ./images/dmz-private.png "セキュリティ保護されたハイブリッド ネットワーク アーキテクチャ"

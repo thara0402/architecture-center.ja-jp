@@ -1,18 +1,18 @@
 ---
-title: "パイプとフィルター"
-description: "複雑な処理を実行するタスクを、再利用できる一連の独立した要素に分解します。"
-keywords: "設計パターン"
+title: パイプとフィルター
+description: 複雑な処理を実行するタスクを、再利用できる一連の独立した要素に分解します。
+keywords: 設計パターン
 author: dragon119
 ms.date: 06/23/2017
 pnp.series.title: Cloud Design Patterns
 pnp.pattern.categories:
 - design-implementation
 - messaging
-ms.openlocfilehash: b41f3e46ad5982a3a4ec6635918481cb440c5e02
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 2c17504f594843c10fcfe221f0087f1087a73fb8
+ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="pipes-and-filters-pattern"></a>パイプとフィルターのパターン
 
@@ -274,7 +274,7 @@ public class FinalReceiverRoleEntry : RoleEntryPoint
 }
 ```
 
-##<a name="related-patterns-and-guidance"></a>関連のあるパターンとガイダンス
+## <a name="related-patterns-and-guidance"></a>関連のあるパターンとガイダンス
 
 このパターンを実装する場合は、次のパターンとガイダンスも関連している可能性があります。
 - このパターンを示すサンプルは [GitHub](https://github.com/mspnp/cloud-design-patterns/tree/master/pipes-and-filters) から入手できます。

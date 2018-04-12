@@ -1,13 +1,13 @@
 ---
-title: "データ ウェアハウスとデータ マート"
-description: 
+title: データ ウェアハウスとデータ マート
+description: ''
 author: zoinerTejada
 ms:date: 02/12/2018
 ms.openlocfilehash: eec883c68cf94637c3061814d0841c73b58d7e52
-ms.sourcegitcommit: 90cf2de795e50571d597cfcb9b302e48933e7f18
+ms.sourcegitcommit: c441fd165e6bebbbbbc19854ec6f3676be9c3b25
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/31/2018
 ---
 # <a name="data-warehousing-and-data-marts"></a>データ ウェアハウスとデータ マート
 
@@ -54,8 +54,8 @@ Azure では、1 つまたは複数のデータ ソースを使用できます�
 * [Azure SQL Database](/azure/sql-database/)
 * [VM 内の SQL Server ](/sql/sql-server/sql-server-technical-documentation)
 * [Azure Data Warehouse](/azure/sql-data-warehouse/sql-data-warehouse-overview-what-is)
-* [HDInsight の Apache Hive](/azure/hdinsight/hadoop/hdinsight-use-hive)
-* [HDInsight の対話型クエリ (Hive LLAP)](/azure/hdinsight/interactive-query/apache-interactive-query-get-started)
+* [HDInsight 上の Apache Hive](/azure/hdinsight/hadoop/hdinsight-use-hive)
+* [HDInsight 上の対話型クエリ (Hive LLAP)](/azure/hdinsight/interactive-query/apache-interactive-query-get-started)
 
 
 ## <a name="technology-choices"></a>テクノロジの選択

@@ -1,22 +1,22 @@
 ---
-title: "高可用性のネットワーク仮想アプライアンスをデプロイする"
-description: "高可用性のネットワーク仮想アプライアンスをデプロイする方法。"
+title: 高可用性のネットワーク仮想アプライアンスをデプロイする
+description: 高可用性のネットワーク仮想アプライアンスをデプロイする方法。
 author: telmosampaio
 ms.date: 12/06/2016
 pnp.series.title: Network DMZ
 pnp.series.prev: secure-vnet-dmz
 cardTitle: Deploy highly available network virtual appliances
-ms.openlocfilehash: 844c87f535d2a8cb415489cb2c8e840f8c585d7d
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: fe279eea3f9cb024d6c6c14943013b9b9a87bc9c
+ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="deploy-highly-available-network-virtual-appliances"></a>高可用性のネットワーク仮想アプライアンスをデプロイする
 
 この記事では、高可用性のネットワーク仮想アプライアンス (NVA) セットを Azure にデプロイする方法を示します。 NVA は、通常は、境界ネットワーク (DMZ とも呼ばれます) から他のネットワークまたはサブネットへのネットワーク トラフィックのフローを制御するために使用されます。 Azure での DMZ の実装については、「[Microsoft クラウド サービスとネットワーク セキュリティ][cloud-security]」を参照してください。 この記事には、イングレスのみ、エグレスのみ、イングレスとエグレスの両方を行うアーキテクチャの例が含まれています。 
 
-**前提条件:** この記事は、Azure のネットワーク、[Azure ロード バランサー][lb-overview]、および[ユーザー定義ルート][udr-overview] (UDR) の基本的な知識があることを前提としています。 
+<strong>前提条件:</strong> この記事は、Azure のネットワーク、[Azure ロード バランサー][lb-overview]、および[ユーザー定義ルート][udr-overview] (UDR) の基本的な知識があることを前提としています。 
 
 
 ## <a name="architecture-diagrams"></a>アーキテクチャ図
@@ -88,7 +88,7 @@ NVA に高可用性を持たせるには、複数の NVA を可用性セット�
 
 <!-- instructions for deploying this solution here --> 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * 第 7 層の NVA を使用して [Azure とオンプレミスのデータセンターの間に DMZ を実装する][dmz-on-prem]方法を確認します。
 * 第 7 層の NVA を使用して [Azure とインターネットの間に DMZ を実装する][dmz-internet]方法を確認します。
 

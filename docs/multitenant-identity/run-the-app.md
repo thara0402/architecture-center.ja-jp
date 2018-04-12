@@ -1,13 +1,13 @@
 ---
-title: "Surveys アプリケーションの実行"
-description: "Surveys サンプル アプリケーションをローカルで実行する方法"
+title: Surveys アプリケーションの実行
+description: Surveys サンプル アプリケーションをローカルで実行する方法
 author: MikeWasson
 ms:date: 07/21/2017
-ms.openlocfilehash: d17cd939c1172edd0947b30ea13657806060b5f1
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 28d976374e5d6dbad434873eef149704f26a1f3f
+ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="run-the-surveys-application"></a>Surveys アプリケーションの実行
 
@@ -16,7 +16,7 @@ ms.lasthandoff: 11/14/2017
 手順の概要は次のとおりです。
 
 1. 架空の Tailspin 社の Azure AD ディレクトリ (テナント) を作成する。
-2. Azure AD で Surveys アプリケーションとバックエンドの Web API を登録する。
+2. Azure AD に Surveys アプリケーションとバックエンドの Web API を登録する。
 3. Azure Redis Cache インスタンスを作成する。
 4. アプリケーション設定を構成し、ローカル データベースを作成する。
 5. アプリケーションを実行し、新しいテナントをサインアップする。
@@ -52,15 +52,15 @@ Tailspin は、Surveys アプリケーションをホストする架空の会社
 
 3. **[アプリの登録]** > **[新しいアプリケーションの登録]** の順にクリックします。
 
-4.  **[作成]** ブレードで、次の情報を入力します。
+4. **[作成]** ブレードで、次の情報を入力します。
 
-  - **名前**: `Surveys.WebAPI`
+   - **名前**: `Surveys.WebAPI`
 
-  - **アプリケーションの種類**: `Web app / API`
+   - **アプリケーションの種類**: `Web app / API`
 
-  - **サインオン URL**: `https://localhost:44301/`
+   - **サインオン URL**: `https://localhost:44301/`
    
-  ![](./images/running-the-app/register-web-api.png) 
+   ![](./images/running-the-app/register-web-api.png) 
 
 5. **Create** をクリックしてください。
 
@@ -68,7 +68,7 @@ Tailspin は、Surveys アプリケーションをホストする架空の会社
  
 7. **[プロパティ]**をクリックします。
 
-8. **[アプリ ID URI]** 編集ボックスに `https://<domain>/surveys.webapi` を入力します。`<domain>` はディレクトリのドメイン名です。 次に例を示します。`https://tailspin.onmicrosoft.com/surveys.webapi`
+8. **[アプリケーション ID/URI]** 編集ボックスに `https://<domain>/surveys.webapi` を入力します。`<domain>` はディレクトリのドメイン名です。 次に例を示します。`https://tailspin.onmicrosoft.com/surveys.webapi`
 
     ![設定](./images/running-the-app/settings.png)
 
@@ -78,15 +78,15 @@ Tailspin は、Surveys アプリケーションをホストする架空の会社
 
 ## <a name="register-the-surveys-web-app"></a>Surveys Web アプリの登録 
 
-1.  **[アプリの登録]** ブレードに戻り、**[新しいアプリケーションの登録]** をクリックします。
+1. **[アプリの登録]** ブレードに戻り、**[新しいアプリケーションの登録]** をクリックします。
 
-2.  **[作成]** ブレードで、次の情報を入力します。
+2. **[作成]** ブレードで、次の情報を入力します。
 
-  - **名前**: `Surveys`
-  - **アプリケーションの種類**: `Web app / API`
-  - **サインオン URL**: `https://localhost:44300/`
+   - **名前**: `Surveys`
+   - **アプリケーションの種類**: `Web app / API`
+   - **サインオン URL**: `https://localhost:44300/`
    
-    サインオン URL のポート番号は、前の手順の `Surveys.WebAPI`アプリとは異なることに注意してください。
+   サインオン URL のポート番号は、前の手順の `Surveys.WebAPI`アプリとは異なることに注意してください。
 
 3. **Create** をクリックしてください。
  
@@ -98,7 +98,7 @@ Tailspin は、Surveys アプリケーションをホストする架空の会社
 
 6. **[プロパティ]**をクリックします。
 
-7. **[アプリ ID URI]** 編集ボックスに `https://<domain>/surveys` を入力します。`<domain>` はディレクトリのドメイン名です。 
+7. **[アプリケーション ID/URI]** 編集ボックスに `https://<domain>/surveys` を入力します。`<domain>` はディレクトリのドメイン名です。 
 
     ![[設定]](./images/running-the-app/settings.png)
 
@@ -116,7 +116,7 @@ Tailspin は、Surveys アプリケーションをホストする架空の会社
 
 14. `client secret` などの説明を入力します。
 
-15. **[期間の選択]** ドロップダウンで、**[1 年間]** を選択します。 
+15. **[時間の選択]** ドロップダウンで、**[1 年間]** を選択します。 
 
 16. **[Save]** をクリックします。 保存すると、キーが生成されます。
 
@@ -127,7 +127,7 @@ Tailspin は、Surveys アプリケーションをホストする架空の会社
 
 18. **[API アクセス]** の下の、**[必要なアクセス許可]** をクリックします。
 
-19. **[追加]** > **[API の選択]** の順にクリックします。
+19. **[追加]** > **[API を選択します]** の順にクリックします。
 
 20. 検索ボックスで、`Surveys.WebAPI` を検索します。
 
@@ -150,36 +150,36 @@ Tailspin は、Surveys アプリケーションをホストする架空の会社
 
     ![](./images/running-the-app/manifest.png)
  
-3.  次の JSON を `appRoles` 要素に追加します。 `id` プロパティの新しい GUID を生成します。
+3. 次の JSON を `appRoles` 要素に追加します。 `id` プロパティの新しい GUID を生成します。
 
-    ```json
-    {
-      "allowedMemberTypes": ["User"],
-      "description": "Creators can create surveys",
-      "displayName": "SurveyCreator",
-      "id": "<Generate a new GUID. Example: 1b4f816e-5eaf-48b9-8613-7923830595ad>",
-      "isEnabled": true,
-      "value": "SurveyCreator"
-    },
-    {
-      "allowedMemberTypes": ["User"],
-      "description": "Administrators can manage the surveys in their tenant",
-      "displayName": "SurveyAdmin",
-      "id": "<Generate a new GUID>",  
-      "isEnabled": true,
-      "value": "SurveyAdmin"
-    }
-    ```
+   ```json
+   {
+     "allowedMemberTypes": ["User"],
+     "description": "Creators can create surveys",
+     "displayName": "SurveyCreator",
+     "id": "<Generate a new GUID. Example: 1b4f816e-5eaf-48b9-8613-7923830595ad>",
+     "isEnabled": true,
+     "value": "SurveyCreator"
+   },
+   {
+     "allowedMemberTypes": ["User"],
+     "description": "Administrators can manage the surveys in their tenant",
+     "displayName": "SurveyAdmin",
+     "id": "<Generate a new GUID>",  
+     "isEnabled": true,
+     "value": "SurveyAdmin"
+   }
+   ```
 
-5.  `knownClientApplications` プロパティに、以前の Surveys アプリケーション登録時に取得した、Surveys Web アプリケーションのアプリケーション ID を追加します。 For example:
+4. `knownClientApplications` プロパティに、以前の Surveys アプリケーション登録時に取得した、Surveys Web アプリケーションのアプリケーション ID を追加します。 For example:
 
-  ```json
-  "knownClientApplications": ["be2cea23-aa0e-4e98-8b21-2963d494912e"],
-  ```
+   ```json
+   "knownClientApplications": ["be2cea23-aa0e-4e98-8b21-2963d494912e"],
+   ```
 
-  この設定により、Web API の呼び出しが承認されたクライアントの一覧に Surveys アプリが追加されます。
+   この設定により、Web API の呼び出しが承認されたクライアントの一覧に Surveys アプリが追加されます。
 
-6.  **[Save]** をクリックします。
+5. **[Save]** をクリックします。
 
 ここで Surveys アプリ向けに同じ手順を繰り返しますが、`knownClientApplications` のエントリは追加しません。 同じロールの定義を使用しますが、ID の GUID は新しく生成します。
 

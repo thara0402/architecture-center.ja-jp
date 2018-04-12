@@ -1,14 +1,14 @@
 ---
-title: 複数リージョン Web アプリケーション
+title: マルチリージョン Web アプリケーション
 description: Microsoft Azure で実行される高可用性を備えた Web アプリケーションの推奨アーキテクチャ。
 author: MikeWasson
 ms.date: 11/23/2016
 cardTitle: Run in multiple regions
-ms.openlocfilehash: 50ac9636e1e3c25bd0403c89281a3a06915d065f
-ms.sourcegitcommit: a7aae13569e165d4e768ce0aaaac154ba612934f
+ms.openlocfilehash: 00309e58c163a64f6d9796bedc19d936afcd09ab
+ms.sourcegitcommit: c441fd165e6bebbbbbc19854ec6f3676be9c3b25
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="run-a-web-application-in-multiple-regions"></a>Web アプリケーションを複数のリージョンで実行する
 [!INCLUDE [header](../../_includes/header.md)]
@@ -39,7 +39,7 @@ ms.lasthandoff: 01/30/2018
 この参照アーキテクチャでは、Traffic Manager を使用してフェールオーバーを行うアクティブ/パッシブ (ホット スタンバイ) に焦点を当てています。 
 
 
-## <a name="recommendations"></a>推奨事項
+## <a name="recommendations"></a>Recommendations
 
 実際の要件は、ここで説明するアーキテクチャとは異なる場合があります。 このセクションに記載されている推奨事項は原案として使用してください。
 
@@ -109,7 +109,7 @@ RA-GRS ストレージは永続的なストレージを提供しますが、停�
 * ネットワークの停止などの一時的なエラーでは、ストレージのフェールオーバーはトリガーされません。 一時的な障害に対する回復力を持つようにアプリケーションを設計してください。 可能な緩和策:
   
   * セカンダリ リージョンから読み取ります。
-  * 新しい書き込み操作のために別のストレージ アカウントに (たとえばキュー メッセージに) 一時的に切り替えます。
+  * 新しい書き込み操作のために別のストレージ アカウントに一時的に切り替えます (たとえばキュー メッセージに)。
   * データをセカンダリ リージョンから別のストレージ アカウントにコピーします。
   * システムが元の状態に戻るまで、機能を制限します。
 
@@ -166,4 +166,4 @@ azure network traffic-manager endpoint set --name <endpoint> --profile-name <pro
 [tm-routing]: /azure/traffic-manager/traffic-manager-routing-methods
 [tm-sla]: https://azure.microsoft.com/support/legal/sla/traffic-manager/v1_0/
 [traffic-manager]: https://azure.microsoft.com/services/traffic-manager/
-[visio-download]: https://archcenter.azureedge.net/cdn/app-service-reference-architectures.vsdx
+[visio-download]: https://archcenter.blob.core.windows.net/cdn/app-service-reference-architectures.vsdx

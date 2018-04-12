@@ -1,16 +1,19 @@
 ---
-title: "Active Directory Domain Services (AD DS) を Azure に拡張する"
-description: "Active Directory の承認を使用するセキュリティ保護されたハイブリッド ネットワーク アーキテクチャを Azure に実装する方法。\nガイダンス,vpn gateway,expressroute,ロード バランサー,仮想ネットワーク,active directory"
+title: Active Directory Domain Services (AD DS) を Azure に拡張する
+description: >-
+  Active Directory の承認を使用するセキュリティ保護されたハイブリッド ネットワーク アーキテクチャを Azure に実装する方法。
+
+  ガイダンス,vpn gateway,expressroute,ロード バランサー,仮想ネットワーク,active directory
 author: telmosampaio
 ms.date: 11/28/2016
 pnp.series.title: Identity management
 pnp.series.prev: azure-ad
 pnp.series.next: adds-forest
-ms.openlocfilehash: 216c59a0a5912d0fe90011e49ad20eb017ada6be
-ms.sourcegitcommit: 8ab30776e0c4cdc16ca0dcc881960e3108ad3e94
+ms.openlocfilehash: 007d244f29bf11c6e2bd703c7f4f245d22c02f0f
+ms.sourcegitcommit: c441fd165e6bebbbbbc19854ec6f3676be9c3b25
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="extend-active-directory-domain-services-ad-ds-to-azure"></a>Active Directory Domain Services (AD DS) を Azure に拡張する
 
@@ -76,7 +79,7 @@ Azure にデプロイされたドメイン コントローラーには操作マ�
 
 ドメイン コントローラー VM のリソースおよび AD DS を監視し、問題を迅速に修正するためのプランを作成します。 詳しくは、「[Monitoring Active Directory][monitoring_ad]」(Active Directory の監視) をご覧ください。 [Microsoft Systems Center][microsoft_systems_center] などのツールを監視サーバーにインストールして (アーキテクチャの図を参照)、これらのタスクを実行することもできます。  
 
-## <a name="scalability-considerations"></a>拡張性に関する考慮事項
+## <a name="scalability-considerations"></a>スケーラビリティに関する考慮事項
 
 AD DS は、拡張性を確保するために設計されています。 要求を AD DS ドメイン コントローラーに送信するようにロード バランサーやトラフィック コントローラーを構成する必要はありません。 拡張性に関する唯一の考慮事項は、AD DS を実行する、ネットワーク負荷の要件に対応したサイズの VM を構成し、VM 上の負荷を監視し、必要に応じてスケールアップまたはスケールダウンすることです。
 
@@ -150,7 +153,7 @@ BitLocker または Azure Disk Encryption を使用して、AD DS データベ�
 [security-considerations]: #security-considerations
 [set-a-static-ip-address]: https://azure.microsoft.com/documentation/articles/virtual-networks-static-private-ip-arm-pportal/
 [standby-operations-masters]: https://technet.microsoft.com/library/cc794737(v=ws.10).aspx
-[visio-download]: https://archcenter.azureedge.net/cdn/identity-architectures.vsdx
+[visio-download]: https://archcenter.blob.core.windows.net/cdn/identity-architectures.vsdx
 [vm-windows-sizes]: /azure/virtual-machines/virtual-machines-windows-sizes
 
 [0]: ./images/adds-extend-domain.png "Active Directory を使用するセキュリティ保護されたハイブリッド ネットワーク アーキテクチャ"

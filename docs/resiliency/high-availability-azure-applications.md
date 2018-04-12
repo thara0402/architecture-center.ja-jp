@@ -1,15 +1,16 @@
 ---
-title: "Azure アプリケーションの高可用性"
-description: "Microsoft Azure で可用性の高いアプリケーションを設計し、構築するための方法に関する技術的概要と詳細。"
+title: Azure アプリケーションの高可用性
+description: Microsoft Azure で可用性の高いアプリケーションを設計し、構築するための方法に関する技術的概要と詳細。
 author: adamglick
 ms.date: 05/31/2017
-ms.openlocfilehash: 46b7b802326a8de03546528aaeb1a1c6419d41db
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: f116b9e64f1722b5141ae90239d5c8a8b4a89487
+ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 04/06/2018
 ---
 [!INCLUDE [header](../_includes/header.md)]
+
 # <a name="high-availability-for-applications-built-on-microsoft-azure"></a>Microsoft Azure 上に構築されたアプリケーションの高可用性
 高可用性アプリケーションは、依存型のサービスとハードウェアの可用性の変動、負荷、一時的な障害を緩和します。 アプリケーションは、ビジネス要件またはアプリケーションのサービス レベル アグリーメント (SLA) に定義されている許容レベルで実行を続けます。
 
@@ -110,6 +111,6 @@ web ロールはインフラストラクチャの残りの部分から自立し�
 ### <a name="scalability-patterns"></a>拡張性パターン
 クラウド サービスの拡張性が可用性に直接影響を与えることにご留意ください。 負荷の増加が原因でサービスが応答を停止した場合、ユーザーはアプリケーションが停止したことを認識します。 アプリケーションに予想される負荷と将来の予想値に基づき、拡張性の実証済みのプラクティスを実行します。 規模が最大になると、さまざまな事項を考慮する必要があります。1 つまたは複数のストレージ アカウント、複数のデータベースによる共有、キャッシュ方針などです。 これらのパターンについて詳しくは、「[Best practices for designing large-scale services on Microsoft Azure](https://azure.microsoft.com/blog/best-practices-for-designing-large-scale-services-on-windows-azure/)」(Microsoft Azure で大規模なサービスを設計するためのベスト プラクティス) をご覧ください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 このシリーズのドキュメントの内容には、Microsoft Azure 上に構築されたアプリケーションのディザスター リカバリーと高可用性が含まれます。 このシリーズの次の記事は、「[Disaster recovery for applications built on Microsoft Azure](disaster-recovery-azure-applications.md)」(Microsoft Azure 上で構築されたアプリケーションのディザスター リカバリー)です。
 
