@@ -23,7 +23,7 @@
         - name: 参照アーキテクチャ
           tocHref: /azure/architecture/reference-architectures
           topicHref: /azure/architecture/reference-architectures
-        - name: クラウドの設計パターン
+        - name: クラウド設計パターン
           tocHref: /azure/architecture/patterns
           topicHref: /azure/architecture/patterns
         - name: リソース
@@ -38,13 +38,9 @@
         - name: データ アーキテクチャ ガイド
           tocHref: /azure/architecture/data-guide
           topicHref: /azure/architecture/data-guide
+        - name: マイクロサービスの設計
+          tocHref: /azure/architecture/microservices
+          topicHref: /azure/architecture/microservices
         - name: パフォーマンスのアンチパターン
           tocHref: /azure/architecture/antipatterns
           topicHref: /azure/architecture/
-        - name: コンプライアンス
-          tocHref: /azure/architecture/compliance
-          topicHref: /azure/architecture/compliance
-          items:
-            - name: PCI-DSS
-              tocHref: /azure/architecture/compliance/pci-dss
-              topicHref: /azure/architecture/compliance/pci-dss

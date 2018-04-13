@@ -1,14 +1,15 @@
 ---
-title: "Azure データ アーキテクチャ ガイド"
-description: 
+title: Azure データ アーキテクチャ ガイド
+description: ''
 author: zoinerTejada
 ms:date: 02/12/2018
 layout: LandingPage
-ms.openlocfilehash: 848601f27faf56ea069852d8983e4d10fbad9d77
-ms.sourcegitcommit: 90cf2de795e50571d597cfcb9b302e48933e7f18
+ms.topic: landing-page
+ms.openlocfilehash: 9ffbe74bc55f4731369e938848cc5bbf9f7775f4
+ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-data-architecture-guide"></a>Azure データ アーキテクチャ ガイド
 
@@ -20,58 +21,16 @@ ms.lasthandoff: 02/14/2018
 
 ## <a name="how-this-guide-is-structured"></a>本書の構成
 
-このガイドは、*リレーショナル* データと*非リレーショナル* データの区別という基本的な点を中心に構成されています。 
+このガイドは、データ ソリューションの 2 つの一般的カテゴリである "*従来の RDMBS ワークロード*" と "*ビッグ データ ソリューション*" を中心に構成されています。 
 
-![](./images/guide-steps.svg)
+**[従来の RDBMS ワークロード](./relational-data/index.md)**。 このワークロードには、オンライン トランザクション処理 (OLTP) とオンライン分析処理 (OLAP) があります。 OLTP システムのデータは、通常、参照整合性を維持するための事前定義スキーマと一連の制約を持つリレーショナル データです。 多くの場合、組織内の複数のソースに属するデータは、ETL プロセスを使用して移動および変換され、データ ウェアハウスに統合されている可能性があります。
 
-通常、リレーショナル データは従来の RDBMS またはデータ ウェアハウスに格納されています。 参照整合性を維持するための一連の制約を持つ事前定義スキーマ ("書き込み時のスキーマ") があります。 ほとんどのリレーショナル データベースは、クエリに構造化照会言語 (SQL) を使用しています。 リレーショナル データベースを使用するソリューションには、オンライン トランザクション処理 (OLTP) とオンライン分析処理 (OLAP) があります。
+![](./images/guide-rdbms.svg)
 
-非リレーショナル データは、従来の RDBMS システムで使用されている[リレーショナル モデル](https://en.wikipedia.org/wiki/Relational_model)を使用しないデータです。 これには、キー/値データ、JSON データ、グラフ データ、時系列データなどのデータ型が含まれます。 *NoSQL* という用語は、さまざまな種類の非リレーショナル データを格納するように設計されたデータベースを指します。 ただし、多くの非リレーショナル データ ストアは SQL 互換のクエリをサポートしているため、この用語は完全に正確とは言えません。 非リレーショナル データと NoSQL データベースは、*ビッグ データ* ソリューションのディスカッションでよく出てくる用語です。 ビッグ データ アーキテクチャは、従来のデータベース システムには多すぎる、または複雑すぎるデータのインジェスト、処理、分析を扱うために設計されています。 
+**[ビッグ データ ソリューション](./big-data/index.md)**。 ビッグ データ アーキテクチャは、従来のデータベース システムには多すぎる、または複雑すぎるデータのインジェスト、処理、分析を扱うために設計されています。 データは一括またはリアルタイムで処理されます。 通常、ビッグ データ ソリューションには、キー/値データ、JSON ドキュメント、時系列データなどの大量の非リレーショナル データが関係します。 多くの場合、従来の RDBMS システムは、この種のデータの格納には適していません。 *NoSQL* という用語は、非リレーショナル データを格納するように設計されたデータベースのグループを指します  (多くの非リレーショナル データ ストアは SQL 互換のクエリをサポートしているため、この用語はあまり正確とは言えません)。
 
-データ アーキテクチャ ガイドには、これら 2 つの主なカテゴリを説明する以下のセクションがあります。
+![](./images/guide-big-data.svg)
 
-- **概念。** この種類のデータを操作する場合に理解する必要がある主な概念を紹介する概要の記事。
-- **シナリオ。** 関連する Azure サービスの説明とシナリオに適したアーキテクチャを含む、代表的な一連のデータ シナリオ。
-- **テクノロジの選択**。 オープン ソースのオプションを含む、Azure で利用できるさまざまなデータ テクノロジの詳細な比較。 各カテゴリ内で、シナリオに適したテクノロジの選択に役立つ主な選択基準と機能のマトリックスについて説明します。
+この 2 つのカテゴリは互いに排他的ではありませんし、重複する部分もありますが、説明の組み立て方としては便利であると思われます。 このガイドでは、カテゴリごとに、関連する Azure サービスと、シナリオに適したアーキテクチャを含む**一般的なシナリオ**について説明します。 さらに、このガイドでは、オープン ソースのオプションを含め、Azure のデータ ソリューション向けの**テクノロジの選択肢**を比較します。 各カテゴリ内で、シナリオに適したテクノロジの選択に役立つ主な選択基準と機能のマトリックスについて説明します。 
 
 このガイドの目的は、データ サイエンスやデータベース理論を教えることではありません。このようなテーマについては関連する書籍を参照してください。 このガイドの目標は、シナリオに適したデータ アーキテクチャまたはデータ パイプラインを選択し、要件に最適な Azure サービスとテクノロジを選択できるようにすることです。 既に念頭に置いているアーキテクチャがある場合は、そのままテクノロジのオプションに進んでください。
-
-## <a name="traditional-rdbms"></a>従来の RDBMS
-
-### <a name="concepts"></a>概念
-
-- [リレーショナル データ](./concepts/relational-data.md) 
-- [トランザクション データ](./concepts/transactional-data.md) 
-- [セマンティック モデリング](./concepts/semantic-modeling.md) 
-
-### <a name="scenarios"></a>シナリオ
-
-- [オンライン分析処理 (OLAP)](./scenarios/online-analytical-processing.md)
-- [オンライン トランザクション処理 (OLTP)](./scenarios/online-transaction-processing.md) 
-- [データ ウェアハウスとデータ マート](./scenarios/data-warehousing.md)
-- [ETL](./scenarios/etl.md) 
-
-## <a name="big-data-and-nosql"></a>ビッグ データと NoSQL
-
-### <a name="concepts"></a>概念
-
-- [非リレーショナル データ ストア](./concepts/non-relational-data.md)
-- [CSV ファイルと JSON ファイルの操作](./concepts/csv-and-json.md)
-- [ビッグ データ アーキテクチャ](./concepts/big-data.md)
-- [高度な分析](./concepts/advanced-analytics.md) 
-- [大規模な機械学習](./concepts/machine-learning-at-scale.md)
-
-### <a name="scenarios"></a>シナリオ
-
-- [バッチ処理](./scenarios/batch-processing.md)
-- [リアルタイム処理](./scenarios/real-time-processing.md)
-- [自由形式のテキスト検索](./scenarios/search.md)
-- [対話型データ探索](./scenarios/interactive-data-exploration.md)
-- [自然言語処理](./scenarios/natural-language-processing.md)
-- [時系列ソリューション](./scenarios/time-series.md)
-
-## <a name="cross-cutting-concerns"></a>横断的関心事
-
-- [データ転送](./scenarios/data-transfer.md) 
-- [オンプレミス データ ソリューションのクラウドへの拡張](./scenarios/hybrid-on-premises-and-cloud.md) 
-- [データ保護ソリューション](./scenarios/securing-data-solutions.md) 
