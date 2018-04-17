@@ -5,11 +5,11 @@ keywords: AWS エキスパート, Azure との比較, AWS との比較, Azure �
 author: lbrader
 ms.date: 03/24/2017
 pnp.series.title: Azure for AWS Professionals
-ms.openlocfilehash: b8698675efa42bb3fae73cefe7b078942549b412
-ms.sourcegitcommit: 3d9ee03e2dda23753661a80c7106d1789f5223bb
+ms.openlocfilehash: 0af0890d383d22db0ed9d3b445cdd5b561b498ae
+ms.sourcegitcommit: f665226cec96ec818ca06ac6c2d83edb23c9f29c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-for-aws-professionals"></a>AWS プロフェッショナルのための Azure
 
@@ -118,7 +118,7 @@ AWS では、リージョンは、2 つ以上の可用性ゾーンに分割さ�
 | 障害の範囲 | ラック | データセンター | リージョン |
 | 要求のルーティング | Load Balancer | クロスゾーン ロード バランサー | Traffic Manager |
 | ネットワーク待ち時間 | 非常に低い | 低 | 中～高 |
-| 仮想ネットワーク  | VNet | VNet | リージョン間 VNet ピアリング (プレビュー) |
+| 仮想ネットワーク  | VNet | VNet | リージョン間 VNet ピアリング |
 
 ### <a name="availability-sets"></a>可用性セット 
 
@@ -130,7 +130,7 @@ VM インスタンスが可用性セットに追加されると、それらに�
 
 ![各アプリケーション ロール用の Azure 可用性セット](./images/three-tier-example.png "各アプリケーション ロール用の Azure 可用性セット")
 
-### <a name="availability-zones-preview"></a>可用性ゾーン (プレビュー)
+### <a name="availability-zones"></a>可用性ゾーン
 
 [可用性ゾーン](/azure/availability-zones/az-overview)とは、Azure リージョン内の物理的に独立したゾーンのことです。 可用性ゾーンはそれぞれ異なる電源、ネットワーク、および冷却装置を持ちます。 可用性ゾーンに VM をデプロイすると、データセンター全体の障害からアプリケーションを保護するのに役立ちます。 
 

@@ -5,11 +5,11 @@ author: MikeWasson
 ms.date: 05/26/2017
 ms.custom: resiliency
 pnp.series.title: Design for Resiliency
-ms.openlocfilehash: 0cbcf0a8af1a8e20f2a1c024f5146a37176c5d1e
-ms.sourcegitcommit: 8ab30776e0c4cdc16ca0dcc881960e3108ad3e94
+ms.openlocfilehash: 9a6bd1332ea59923b32379018060403024b15e10
+ms.sourcegitcommit: f665226cec96ec818ca06ac6c2d83edb23c9f29c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="designing-resilient-applications-for-azure"></a>回復性に優れた Azure 用アプリケーションの設計
 
@@ -164,7 +164,7 @@ Azure には、個別の VM からリージョン全体まで、あらゆる障�
 | 障害の範囲 | ラック | データセンター | リージョン |
 | 要求のルーティング | Load Balancer | クロスゾーン ロード バランサー | Traffic Manager |
 | ネットワーク待ち時間 | 非常に低い | 低 | 中～高 |
-| Virtual Network  | VNet | VNet | リージョン間 VNet ピアリング (プレビュー) |
+| Virtual Network  | VNet | VNet | リージョン間 VNet ピアリング |
 
 ## <a name="designing-for-resiliency"></a>回復性の設計
 設計フェーズで、障害モードの分析 (FMA) を実行することをお勧めします。 FMA の目標は、潜在的な障害点を特定し、アプリケーションがその障害に対して対応する方法を定義することです。

@@ -1,16 +1,16 @@
 ---
-title: "N 層アーキテクチャの Windows VM を実行する"
-description: "可用性、セキュリティ、スケーラビリティ、および管理容易性のセキュリティに特に注意して Azure で多層アーキテクチャを実装する方法について説明します。"
+title: N 層アーキテクチャの Windows VM を実行する
+description: 可用性、セキュリティ、スケーラビリティ、および管理容易性のセキュリティに特に注意して Azure で多層アーキテクチャを実装する方法について説明します。
 author: MikeWasson
 ms.date: 11/22/2016
 pnp.series.title: Windows VM workloads
 pnp.series.next: multi-region-application
 pnp.series.prev: multi-vm
-ms.openlocfilehash: 0654239a5bbd966a2aa776415b7f15ae723ffd63
-ms.sourcegitcommit: c9e6d8edb069b8c513de748ce8114c879bad5f49
+ms.openlocfilehash: 5ed94eb9ab8203d35d9597336e367d54e03944d7
+ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="run-windows-vms-for-an-n-tier-application"></a>n 層アプリケーションの Windows VM を実行する
 
@@ -29,7 +29,7 @@ N 層アーキテクチャを実装する方法は多数あります。 図は�
 * **ロード バランサー**。 [インターネットに接続するロード バランサー][load-balancer-external]を使用して着信インターネット トラフィックを Web 層に分散し、[内部ロード バランサー][load-balancer-internal]を使用して Web 層からのネットワーク トラフィックをビジネス層に分散します。
 * **ジャンプボックス。** [要塞ホスト]とも呼ばれます。 管理者が他の VM に接続するために使用するネットワーク上のセキュアな VM です。 ジャンプボックスの NSG は、セーフ リストにあるパブリック IP アドレスからのリモート トラフィックのみを許可します。 NSG は、リモート デスクトップ (RDP) トラフィックを許可する必要があります。
 * **監視。** [Nagios]、[Zabbix]、[Icinga] などの監視ソフトウェアを使用して、応答時間、VM の稼働時間、システムの全体的な正常性に関する洞察を得ることができます。 個別の管理サブネットに配置されている VM 上に監視ソフトウェアをインストールします。
-* **NSG。** [ネットワーク セキュリティ グループ][nsg] (NSG) を使用して、VNet 内のネットワーク トラフィックを制限します。 たとえば、ここに示されている 3 層アーキテクチャでは、データベース層は Web フロントエンドからのトラフィックを受信せず、ビジネス層と管理サブネットからのトラフィックのみ受信します。
+* <strong>NSG。</strong> [ネットワーク セキュリティ グループ][nsg] (NSG) を使用して、VNet 内のネットワーク トラフィックを制限します。 たとえば、ここに示されている 3 層アーキテクチャでは、データベース層は Web フロントエンドからのトラフィックを受信せず、ビジネス層と管理サブネットからのトラフィックのみ受信します。
 * **SQL Server Always On 可用性グループ。** レプリケーションとフェールオーバーを有効にすることで、データ層で高い可用性を提供します。
 * **Active Directory Domain Services (AD DS) サーバー。** Windows Server 2016 に先立って、SQL Server Always On 可用性グループがドメインに参加する必要があります。 これは、可用性グループが Windows Server フェールオーバー クラスター (WSFC) テクノロジに依存するためです。 Windows Server 2016 では Active Directory なしでフェールオーバー クラスターを作成する機能が導入されました。この場合は AD DS サーバーはこのアーキテクチャには不要です。 詳細については、「[What's new in Failover Clustering in Windows Server 2016][wsfc-whats-new]」(Windows Server 2016 でのフェールオーバー クラスタリングの新機能) を参照してください。
 * **Azure DNS**。 [Azure DNS][azure-dns] は、DNS ドメインのホスティング サービスであり、Microsoft Azure インフラストラクチャを使用した名前解決を提供します。 Azure でドメインをホストすることで、その他の Azure サービスと同じ資格情報、API、ツール、課金情報を使用して DNS レコードを管理できます。
@@ -82,10 +82,10 @@ SQL Server Always On 可用性グループを構成する手順は、次のと�
 3. 可用性グループ リスナーを作成し、リスナーの DNS 名を内部ロード バランサーの IP アドレスにマッピングします。 
 4. SQL Server リスニング ポート (既定ではTCP ポート 1433) に対するロード バランサーのルールを作成します。 ロード バランサーのルールでは *Floating IP* (Direct Server Return とも呼ばれます) を有効にする必要があります。 これにより VM が直接クライアントに応答でき、プライマリ レプリカへの直接接続が可能になります。
   
-  > [!NOTE]
-  > Floating IP が有効になっている場合は、フロントエンド ポート番号を、ロード バランサーのルール内のバックエンド ポート番号と同じにする必要があります。
-  > 
-  > 
+   > [!NOTE]
+   > Floating IP が有効になっている場合は、フロントエンド ポート番号を、ロード バランサーのルール内のバックエンド ポート番号と同じにする必要があります。
+   > 
+   > 
 
 SQL クライアントが接続を試みると、ロード バランサーがプライマリ レプリカに接続要求をルーティングします。 別のレプリカへのフェールオーバーが発生した場合は、ロード バランサーはその後の要求を自動的に新しいプライマリ レプリカにルーティングします。 詳細については、[SQL Server Always On 可用性グループの ILB リスナーの構成][sql-alwayson-ilb]に関する記事を参照してください。
 
@@ -119,7 +119,7 @@ SQL クライアントが接続を試みると、ロード バランサーがプ
 
 ネットワーク仮想アプライアンス (NVA) を追加してインターネットと Azure Virtual Network の間の DMZ を作成することを検討してください。 NVA とは、ネットワーク関連のタスク (ファイアウォール、パケット インスペクション、監査、カスタム ルーティングなど) を実行できる仮想アプライアンスの総称です。 詳細については、[Azure とインターネットの間の DMZ の実装][dmz]に関する記事を参照してください。
 
-## <a name="scalability-considerations"></a>拡張性に関する考慮事項
+## <a name="scalability-considerations"></a>スケーラビリティに関する考慮事項
 
 ロード バランサーは、ネットワーク トラフィックを Web 層とビジネス層に分散します。 新しい VM インスタンスを追加することで水平方向にスケーリングします。 負荷に基づいて、Web 層とビジネス層を個別にスケーリングできることに注意してください。 クライアント アフィニティを維持するために発生する可能性がある複雑さを減らすには、Web 層の VM はステートレスである必要があります。 ビジネス ロジックをホストする VM もステートレスである必要があります。
 
@@ -135,21 +135,21 @@ SQL クライアントが接続を試みると、ロード バランサーがプ
 
 参照アーキテクチャをご自身のサブスクリプションにデプロイする前に、次の手順を実行する必要があります。
 
-1. [AzureCAT 参照アーキテクチャ][ref-arch-repo] GitHub リポジトリに ZIP ファイルを複製、フォーク、またはダウンロードします。
+1. [参照アーキテクチャ][ref-arch-repo] GitHub リポジトリに ZIP ファイルを複製、フォーク、またはダウンロードします。
 
 2. Azure CLI 2.0 がコンピューターにインストールされていることを確認してください。 CLI をインストールするには、「[Azure CLI 2.0 のインストール][azure-cli-2]」の手順に従ってください。
 
 3. [Azure の構成要素][azbb] npm パッケージをインストールします。
 
-  ```bash
-  npm install -g @mspnp/azure-building-blocks
-  ```
+   ```bash
+   npm install -g @mspnp/azure-building-blocks
+   ```
 
 4. コマンド プロンプト、bash プロンプト、または PowerShell プロンプトから、以下のコマンドの 1 つを使用して Azure アカウントにログインし、プロンプトに従います。
 
-  ```bash
-  az login
-  ```
+   ```bash
+   az login
+   ```
 
 ### <a name="deploy-the-solution-using-azbb"></a>azbb を使用したソリューションのデプロイ
 
@@ -159,18 +159,18 @@ N 層アプリケーションの参照アーキテクチャで Windows VM をデ
 
 2. このパラメーター ファイルは、デプロイ内の各 VM の既定の管理者ユーザー名とパスワードを指定します。 参照アーキテクチャをデプロイする前に、これらを変更する必要があります。 `n-tier-windows.json` ファイルを開き、各 **adminUsername** および **adminPassword** フィールドを新しい設定に置き換えます。
   
-  > [!NOTE]
-  > このデプロイ中に実行される複数のスクリプトが **VirtualMachineExtension** オブジェクトと、一部の **VirtualMachine** オブジェクトの **extensions** 設定の両方に存在します。 これらのスクリプトのいくつかには、今変更した管理者ユーザー名とパスワードが必要です。 これらのスクリプトをレビューして、正しい資格情報を指定したことを確認することをお勧めします。 正しい資格情報を指定していない場合は、デプロイが失敗する可能性があります。
-  > 
-  > 
+   > [!NOTE]
+   > このデプロイ中に実行される複数のスクリプトが **VirtualMachineExtension** オブジェクトと、一部の **VirtualMachine** オブジェクトの **extensions** 設定の両方に存在します。 これらのスクリプトのいくつかには、今変更した管理者ユーザー名とパスワードが必要です。 これらのスクリプトをレビューして、正しい資格情報を指定したことを確認することをお勧めします。 正しい資格情報を指定していない場合は、デプロイが失敗する可能性があります。
+   > 
+   > 
 
 ファイルを保存します。
 
 3. 次に示すように、**azbb** コマンド ライン ツールを使用して参照アーキテクチャをデプロイします。
 
-  ```bash
-  azbb -s <your subscription_id> -g <your resource_group_name> -l <azure region> -p n-tier-windows.json --deploy
-  ```
+   ```bash
+   azbb -s <your subscription_id> -g <your resource_group_name> -l <azure region> -p n-tier-windows.json --deploy
+   ```
 
 Azure の構成要素を使用してこのサンプルの参照アーキテクチャをデプロイする方法の詳細については、「[GitHub リポジトリ][git]」を参照してください。
 
@@ -216,5 +216,5 @@ Azure の構成要素を使用してこのサンプルの参照アーキテク�
 [Nagios]: https://www.nagios.org/
 [Zabbix]: http://www.zabbix.com/
 [Icinga]: http://www.icinga.org/
-[visio-download]: https://archcenter.azureedge.net/cdn/vm-reference-architectures.vsdx
+[visio-download]: https://archcenter.blob.core.windows.net/cdn/vm-reference-architectures.vsdx
 [0]: ./images/n-tier-diagram.png "Microsoft Azure を使用した N 層アーキテクチャ"

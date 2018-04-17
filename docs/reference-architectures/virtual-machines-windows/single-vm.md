@@ -1,16 +1,16 @@
 ---
-title: "Azure での Windows VM の実行"
-description: "スケーラビリティ、回復性、管理容易性、およびセキュリティに注意しながら、Azure で Windows VM を実行する方法。"
+title: Azure での Windows VM の実行
+description: スケーラビリティ、回復性、管理容易性、およびセキュリティに注意しながら、Azure で Windows VM を実行する方法。
 author: telmosampaio
-ms.date: 12/12/2017
+ms.date: 04/03/2018
 pnp.series.title: Windows VM workloads
 pnp.series.next: multi-vm
 pnp.series.prev: ./index
-ms.openlocfilehash: ffc8ddcbdd5422f1e38922fc6735ab1579289c7b
-ms.sourcegitcommit: 3d9ee03e2dda23753661a80c7106d1789f5223bb
+ms.openlocfilehash: 9bc0b4af56b9194fd1bec8a189c86963ad2b0c98
+ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="run-a-windows-vm-on-azure"></a>Azure での Windows VM の実行
 
@@ -22,31 +22,37 @@ ms.lasthandoff: 02/23/2018
 
 ## <a name="architecture"></a>アーキテクチャ
 
-Azure VM のプロビジョニングには、コンピューティング、ネットワーク、およびストレージ リソースなどの追加コンポーネントが必要です。
+Azure VM のプロビジョニングには、VM 自体の他に、ネットワーク リソース、ストレージ リソースなどの追加コンポーネントがいくつか必要です。
 
-* **リソース グループ。** [リソース グループ][resource-manager-overview]は、関連リソースを保持するコンテナーです。 一般には、リソースの有効期間や、そのリソースを誰が管理するかに基づいてソリューション内のリソースをグループ化する必要があります。 単一の VM ワークロードの場合は、すべてのリソースに対して単一のリソース グループを作成することもできます。
+* **リソース グループ。** [リソース グループ][resource-manager-overview]は、関連する Azure リソースを保持する論理コンテナーです。 一般には、リソースの有効期間や管理者に基づいて、リソースをグループ化します。 
+
 * **VM**。 VM は、発行されたイメージの一覧や、Azure BLOB ストレージにアップロードされたカスタム管理されたイメージまたは仮想ハード ディスク (VHD) ファイルからプロビジョニングできます。
-* **OS ディスク。** OS ディスクは [Azure Storage][azure-storage] に格納された VHD であるため、ホスト マシンが停止している場合でも維持されます。
-* **一時ディスク。** VM は一時ディスク (Windows の `D:` ドライブ) を使用して作成されます。 このディスクは、ホスト コンピューターの物理ドライブ上に格納されます。 Azure Storage には保存され**ない**ため、再起動やその他の VM ライフサイクル イベント中に削除される可能性があります。 ページ ファイルやスワップ ファイルなどの一時的なデータにのみ、このディスクを使用してください。
-* **データ ディスク。** [データ ディスク][data-disk]は、アプリケーション データ用の永続的な VHD です。 データ ディスクは、OS ディスクと同様に、Azure Storage に格納されます。
-* **仮想ネットワーク (VNet) とサブネット。** どの Azure VM も、複数のサブネットにセグメント化できる VNet にデプロイされます。
+
+* **Managed Disks**。 [Azure Managed Disks][managed-disks] は、ユーザーに代わってストレージを処理することでディスク管理を簡素化します。 OS ディスクは [Azure Storage][azure-storage] に格納された VHD であるため、ホスト マシンが停止している場合でも維持されます。 また、[データ ディスク][data-disk]を 1 つ以上作成することもお勧めします。データ ディスクは、アプリケーション データ用に使用される永続的な VHD です。
+
+* **一時ディスク。** VM は一時ディスク (Windows の `D:` ドライブ) を使用して作成されます。 このディスクは、ホスト コンピューターの物理ドライブ上に格納されます。 Azure Storage には保存され*ない*ため、再起動やその他の VM ライフサイクル イベント中に削除される可能性があります。 ページ ファイルやスワップ ファイルなどの一時的なデータにのみ、このディスクを使用してください。
+
+* **仮想ネットワーク (VNet)。** どの Azure VM も、複数のサブネットにセグメント化できる VNet にデプロイされます。
+
+* **ネットワーク インターフェイス (NIC)**。 NIC を使用すると、VM は仮想ネットワークと通信できます。  
+
 * **パブリック IP アドレス。** パブリック IP アドレスは、リモート デスクトップ (RDP) 経由などで VM &mdash; と通信するために必要です。  
-* **Azure DNS**。 [Azure DNS][azure-dns] は、DNS ドメインのホスティング サービスであり、Microsoft Azure インフラストラクチャを使用した名前解決を提供します。 Azure でドメインをホストすることで、その他の Azure サービスと同じ資格情報、API、ツール、課金情報を使用して DNS レコードを管理できます。  
-* **ネットワーク インターフェイス (NIC)**。 割り当てられた NIC により、VM は仮想ネットワークと通信できます。  
-* **ネットワーク セキュリティ グループ (NSG)**。 [ネットワーク セキュリティ グループ][nsg]は、ネットワーク リソースへのネットワーク トラフィックを許可または拒否するために使用されます。 NSG は、個々 の NIC またはサブネットに関連付けることができます。 NSG をサブネットに関連付けると、そのサブネット内のすべての VM に NSG ルールが適用されます。
+
+* **Azure DNS**。 [Azure DNS][azure-dns] は、DNS ドメインのホスティング サービスであり、Microsoft Azure インフラストラクチャを使用した名前解決を提供します。 Azure でドメインをホストすることで、その他の Azure サービスと同じ資格情報、API、ツール、課金情報を使用して DNS レコードを管理できます。
+
+* **ネットワーク セキュリティ グループ (NSG)**。 [ネットワーク セキュリティ グループ][nsg]は、VM へのネットワーク トラフィックを許可または拒否するために使用されます。 NSG は、サブネットまたは個々の VM インスタンスと関連付けることができます。 
+
 * **[診断]。** 診断ログは、VM の管理とトラブルシューティングにとって非常に重要です。
 
-## <a name="recommendations"></a>推奨事項
+## <a name="recommendations"></a>Recommendations
 
-このアーキテクチャでは、Azure で Windows VM を実行するためのベースラインの推奨事項が示されます。 ただし、単一障害点ができてしまうため、ミッション クリティカルなワークロードに単一の VM を使用することは推奨されません。 可用性を高めるには、複数の VM を[可用性セット][availability-set]にデプロイします。 詳細については、[Azure での複数の VM の実行][multi-vm]に関するページをご覧ください。 
+このアーキテクチャでは、Azure で Windows VM を実行するためのベースラインの推奨事項が示されます。 ただし、単一障害点ができてしまうため、ミッション クリティカルなワークロードに単一の VM を使用することは推奨されません。 高可用性を実現するために、2 つ以上の負荷分散された VM をデプロイします。 詳細については、[Azure での複数の VM の実行][multi-vm]に関するページをご覧ください。
 
 ### <a name="vm-recommendations"></a>VM の推奨事項
 
-Azure は、さまざまな仮想マシン サイズを提供します。 [Premium Storage][premium-storage] は高パフォーマンスと短い待機時間のために推奨され、[特定の VM サイズでサポートされます][premium-storage-supported]。 ハイ パフォーマンス コンピューティングなどの特殊なワークロードがない限り、これらのサイズのいずれかを選択してください。 詳細については、「[仮想マシン サイズ][virtual-machine-sizes]」をご覧ください。
+Azure は、さまざまな仮想マシン サイズを提供します。 詳細については、[Azure の仮想マシンのサイズ][virtual-machine-sizes]に関するページをご覧ください。 既存のワークロードを Azure に移動する場合は、オンプレミスのサーバーに最も適合性が高い VM サイズから開始します。 次に、CPU、メモリ、およびディスクの 1 秒あたりの入出力操作 (IOPS) について、実際のワークロードのパフォーマンスを測定し、必要に応じてサイズを調整します。 VM 用に複数の NIC が必要な場合は、[VM サイズ][vm-size-tables]ごとに NIC の最大数が定義されていることに注意してください。
 
-既存のワークロードを Azure に移動する場合は、オンプレミスのサーバーに最も適合性が高い VM サイズから開始します。 次に、CPU、メモリ、およびディスクの 1 秒あたりの入出力操作 (IOPS) について、実際のワークロードのパフォーマンスを測定し、必要に応じてサイズを調整します。 VM 用に複数の NIC が必要な場合は、[VM サイズ][vm-size-tables]ごとに NIC の最大数が定義されていることに注意してください。
-
-Azure リソースをプロビジョニングする場合は、リージョンを指定する必要があります。 一般的に、内部ユーザーや顧客に最も近いリージョンを選択します。 ただし、すべてのリージョンですべての VM サイズを使用できるわけではありません。 詳細については、「[リージョン別のサービス][services-by-region]」をご覧ください。 特定のリージョンで使用できる VM サイズの一覧を表示するには、Azure コマンド ライン インターフェイス (CLI) から次のコマンドを実行します。
+一般的に、内部ユーザーや顧客に最も近い Azure リージョンを選択します。 ただし、すべてのリージョンですべての VM サイズを使用できるわけではありません。 詳細については、「[リージョン別のサービス][services-by-region]」をご覧ください。 特定のリージョンで使用できる VM サイズの一覧を表示するには、Azure コマンド ライン インターフェイス (CLI) から次のコマンドを実行します。
 
 ```
 az vm list-sizes --location <location>
@@ -60,15 +66,15 @@ az vm list-sizes --location <location>
 
 最適なディスク I/O パフォーマンスを得るには、データがソリッド ステート ドライブ (SSD) に格納される [Premium Storage][premium-storage] をお勧めします。 コストは、プロビジョニングされたディスクの容量に基づきます。 また、IOPS とスループット (つまり、データ転送速度) もディスク サイズによって異なるため、ディスクをプロビジョニングする場合は、3 つの要素 (容量、IOPS、スループット) すべてを考慮してください。 
 
-[管理ディスク](/azure/storage/storage-managed-disks-overview)を使用することもお勧めします。 管理ディスクでは、ストレージ アカウントは必要ありません。 単にディスクのサイズと種類を指定するだけで、可用性の高いリソースとしてデプロイされます。
+[Managed Disks][managed-disks] を使用することもお勧めします。 管理ディスクでは、ストレージ アカウントは必要ありません。 単にディスクのサイズと種類を指定するだけで、可用性の高いリソースとしてデプロイされます。
 
-非管理対象ディスクを使用している場合は、ストレージ アカウントの [ (IOPS) の制限][vm-disk-limits]に達しないようにするために、仮想ハード ディスク (VHD) を保持するための個別の Azure ストレージ アカウントを VM ごとに作成します。
+1 つ以上のデータ ディスクを追加します。 作成した VHD は、フォーマットされていません。 その VM にログインしてディスクをフォーマットしてください。 可能であれば、OS ディスクではなく、データ ディスクにアプリケーションをインストールします。 一部のレガシー アプリケーションでは、C: ドライブへのコンポーネントのインストールが必要になることがあります。その場合は、PowerShell を使用して [OS ディスクのサイズを変更][resize-os-disk]できます。
 
-1 つ以上のデータ ディスクを追加します。 作成した VHD は、フォーマットされていません。 その VM にログインしてディスクをフォーマットしてください。 管理ディスクを使用せず、データ ディスクの数が多い場合は、ストレージ アカウントの合計 I/O 制限に注意してください。 詳細については、「[仮想マシン ディスクの制限][vm-disk-limits]」を参照してください。
+診断ログを保持するストレージ アカウントを作成します。 診断ログには、標準的なローカル冗長ストレージ (LRS) アカウントがあれば十分です。
 
-可能であれば、OS ディスクではなく、データ ディスクにアプリケーションをインストールします。 一部のレガシー アプリケーションでは、C: ドライブへのコンポーネントのインストールが必要になることがあります。その場合は、PowerShell を使用して [OS ディスクのサイズを変更][resize-os-disk]できます。
+> [!NOTE]
+> Managed Disks を使用しない場合は、ストレージ アカウントの [(IOPS) 制限][vm-disk-limits]に達するのを回避するために、仮想ハード ディスク (VHD) を保持する Azure ストレージ アカウントを VM ごとに個別に作成します。 ストレージ アカウントの合計 I/O 制限に注意してください。 詳細については、「[仮想マシン ディスクの制限][vm-disk-limits]」を参照してください。
 
-パフォーマンスを最大化するには、診断ログを保持するための個別のストレージ アカウントを作成します。 診断ログには、標準的なローカル冗長ストレージ (LRS) アカウントがあれば十分です。
 
 ### <a name="network-recommendations"></a>ネットワークの推奨事項
 
@@ -81,9 +87,9 @@ az vm list-sizes --location <location>
 
 RDP を有効にするには、TCP ポート 3389 への着信トラフィックを許可する NSG ルールを追加します。
 
-## <a name="scalability-considerations"></a>拡張性に関する考慮事項
+## <a name="scalability-considerations"></a>スケーラビリティに関する考慮事項
 
-VM の規模は、[VM サイズを変更する][vm-resize]ことでスケールアップまたはスケールダウンできます。 水平方向にスケール アウトするには、ロード バランサーの背後に 2 つ以上の VM を配置します。 詳細については、「[Running multiple VM on Azure for scalability and availability (スケーラビリティと可用性のための Azure での複数の VM の実行)][multi-vm]」をご覧ください。
+VM の規模は、[VM サイズを変更する][vm-resize]ことでスケールアップまたはスケールダウンできます。 水平方向にスケール アウトするには、ロード バランサーの背後に 2 つ以上の VM を配置します。 詳細については、「[スケーラビリティと可用性のために負荷分散された VM を実行する][multi-vm]」を参照してください。
 
 ## <a name="availability-considerations"></a>可用性に関する考慮事項
 
@@ -91,21 +97,15 @@ VM の規模は、[VM サイズを変更する][vm-resize]ことでスケール�
 
 VM は、[計画的メンテナンス][planned-maintenance]または[計画外メンテナンス][manage-vm-availability]の影響を受ける可能性があります。 [VM の再起動ログ][reboot-logs]を参照すると、VM の再起動が計画的なメンテナンスによるものかどうかを確認できます。
 
-VHD は [Azure Storage][azure-storage] に格納されます。 Azure Storage は、持続性と可用性を確保するためにレプリケートされます。
-
 通常の操作中に (ユーザー エラーなどによる) 偶発的なデータの損失から保護するために、[BLOB スナップショット][blob-snapshot]や他のツールを使用してポイントインタイム バックアップを実装することも必要です。
 
 ## <a name="manageability-considerations"></a>管理容易性に関する考慮事項
 
 **リソース グループ** 同じライフサイクルを共有する密接に関連付けられたリソースを同じ[リソース グループ][resource-manager-overview]に配置します。 リソース グループを使用すると、リソースをグループとしてデプロイおよび監視したり、リソース グループ別に課金コストを追跡したりできます。 セットとしてリソースを削除することもできます。これはテスト デプロイの場合に便利です。 特定のリソースの検索やその役割の理解を簡略化するために、意味のあるリソース名を割り当ててください。 詳細については、「[Azure リソースの推奨される名前付け規則][naming-conventions]」をご覧ください。
 
-**VM の停止。** Azure では、"停止" 状態と "割り当て解除済み" 状態が区別されます。 VM が割り当て解除されたときではなく、VM が停止状態のときに課金されます。
+**VM の停止。** Azure では、"停止" 状態と "割り当て解除済み" 状態が区別されます。 VM が割り当て解除されたときではなく、VM が停止状態のときに課金されます。 Azure Portal の **[停止]** ボタンを使用すると、VM の割り当てが解除されます。 ログイン中に OS からシャットダウンした場合、VM は停止しますが割り当ては "**解除されない**" ため、引き続き課金されます。
 
-Azure Portal の **[停止]** ボタンを使用すると、VM の割り当てが解除されます。 ログイン中に OS からシャットダウンした場合、VM は停止しますが割り当ては "**解除されない**" ため、引き続き課金されます。
-
-**VM の削除。** VM を削除しても VHD は削除されません。 つまり、データを失うことなく安全に VM を削除できます。 ただし、Storage に対して引き続き課金されます。 VHD を削除するには、[Blob Storage][blob-storage] からファイルを削除します。
-
-誤って削除されないようにするために、[リソース ロック][resource-lock]を使用してリソース グループ全体をロックするか、または個別のリソース (VM など) をロックします。
+**VM の削除。** VM を削除しても VHD は削除されません。 つまり、データを失うことなく安全に VM を削除できます。 ただし、Storage に対して引き続き課金されます。 VHD を削除するには、[Blob Storage][blob-storage] からファイルを削除します。 誤って削除されないようにするために、[リソース ロック][resource-lock]を使用してリソース グループ全体をロックするか、または個別のリソース (VM など) をロックします。
 
 ## <a name="security-considerations"></a>セキュリティに関する考慮事項
 
@@ -131,44 +131,50 @@ Azure Portal の **[停止]** ボタンを使用すると、VM の割り当て�
   * VM をホストするために使用される、**web** という名前の 1 つのサブネットを含む仮想ネットワーク。
   * VM に対する RDP と HTTP トラフィックを許可する 2 つの受信ルールを持つ NSG。
   * Windows Server 2016 Datacenter Edition の最新バージョンを実行する VM。
-  * 2 つのデータ ディスクをフォーマットするサンプル カスタム スクリプト拡張機能と、IIS をデプロイする PowerShell DSC スクリプト。
+  * 2 つのデータ ディスクをフォーマットするサンプル カスタム スクリプト拡張機能と、インターネット インフォメーション サービス (IIS) をデプロイする PowerShell DSC スクリプト。
 
 ### <a name="prerequisites"></a>前提条件
 
-参照アーキテクチャをご自身のサブスクリプションにデプロイする前に、次の手順を実行する必要があります。
-
-1. [AzureCAT 参照アーキテクチャ][ref-arch-repo] GitHub リポジトリに ZIP ファイルを複製、フォーク、またはダウンロードします。
+1. [参照アーキテクチャ][ref-arch-repo] GitHub リポジトリに ZIP ファイルを複製、フォーク、またはダウンロードします。
 
 2. Azure CLI 2.0 がコンピューターにインストールされていることを確認してください。 CLI のインストール手順については、「[Azure CLI 2.0 のインストール][azure-cli-2]」をご覧ください。
 
 3. [Azure の構成要素][azbb] npm パッケージをインストールします。
 
-4. コマンド プロンプト、bash プロンプト、または PowerShell プロンプトから、以下のコマンドの 1 つを使用して Azure アカウントにログインし、プロンプトに従います。
+4. コマンド プロンプト、bash プロンプト、または PowerShell プロンプトから、次のコマンドを入力して Azure アカウントにログインします。
 
-  ```bash
-  az login
-  ```
+   ```bash
+   az login
+   ```
 
 ### <a name="deploy-the-solution-using-azbb"></a>azbb を使用したソリューションのデプロイ
 
-単一の VM ワークロードのサンプルをデプロイするには、次の手順に従います。
+この参照アーキテクチャをデプロイするには、次の手順を実行します。
 
 1. 上の前提条件の手順でダウンロードしたリポジトリの `virtual-machines\single-vm\parameters\windows` フォルダーに移動します。
 
-2. `single-vm-v2.json` ファイルを開き、次に示すような引用符の間にユーザー名と SSH キーを入力した後、ファイルを保存します。
+2. `single-vm-v2.json` ファイルを開き、引用符の間にユーザー名とパスワードを入力した後、ファイルを保存します。
 
-  ```bash
-  "adminUsername": "",
-  "adminPassword": "",
-  ```
+   ```bash
+   "adminUsername": "",
+   "adminPassword": "",
+   ```
 
 3. 次に示すように、`azbb` を実行して VM のサンプルをデプロイします。
 
-  ```bash
-  azbb -s <subscription_id> -g <resource_group_name> -l <location> -p single-vm-v2.json --deploy
-  ```
+   ```bash
+   azbb -s <subscription_id> -g <resource_group_name> -l <location> -p single-vm-v2.json --deploy
+   ```
 
-この参照アーキテクチャのサンプルのデプロイについて詳しくは、[GitHub リポジトリ][git]を参照してください。
+デプロイを確認するには、次の Azure CLI コマンドを実行して、VM のパブリック IP アドレスを見つけます。
+
+```bash
+az vm show -n ra-single-windows-vm1 -g <resource-group-name> -d -o table
+```
+
+Web ブラウザーでこのアドレスに移動すると、既定の IIS ホーム ページが表示されます。
+
+このデプロイのカスタマイズについては、[GitHub リポジトリ][git]を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
@@ -196,8 +202,9 @@ Azure Portal の **[停止]** ボタンを使用すると、VM の割り当て�
 [group-policy]: https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn595129(v=ws.11)
 [log-collector]: https://azure.microsoft.com/blog/simplifying-virtual-machine-troubleshooting-using-azure-log-collector/
 [manage-vm-availability]: /azure/virtual-machines/virtual-machines-windows-manage-availability
+[managed-disks]: /azure/storage/storage-managed-disks-overview
 [multi-vm]: multi-vm.md
-[naming-conventions]: /azure/architecture/best-practices/naming-conventions.md
+[naming-conventions]: ../../best-practices/naming-conventions.md
 [nsg]: /azure/virtual-network/virtual-networks-nsg
 [nsg-default-rules]: /azure/virtual-network/virtual-networks-nsg#default-rules
 [planned-maintenance]: /azure/virtual-machines/virtual-machines-windows-planned-maintenance
@@ -218,7 +225,7 @@ Azure Portal の **[停止]** ボタンを使用すると、VM の割り当て�
 [services-by-region]: https://azure.microsoft.com/regions/#services
 [static-ip]: /azure/virtual-network/virtual-networks-reserved-public-ip
 [virtual-machine-sizes]: /azure/virtual-machines/virtual-machines-windows-sizes
-[visio-download]: https://archcenter.azureedge.net/cdn/vm-reference-architectures.vsdx
+[visio-download]: https://archcenter.blob.core.windows.net/cdn/vm-reference-architectures.vsdx
 [vm-disk-limits]: /azure/azure-subscription-service-limits#virtual-machine-disk-limits
 [vm-resize]: /azure/virtual-machines/virtual-machines-linux-change-vm-size
 [vm-size-tables]: /azure/virtual-machines/virtual-machines-windows-sizes

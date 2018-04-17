@@ -1,11 +1,11 @@
 ---
-title: "アーキテクチャ ダイアグラムのアイコンとその他の資産"
-description: "独自のアーキテクチャ ダイアグラムを作成するのに役立つアイコン、Visio テンプレート、PNG ファイル、および SVG ファイル"
-ms.openlocfilehash: 58a2046c0d463c1f331ea3f950f0c11c273ffc36
-ms.sourcegitcommit: 3d9ee03e2dda23753661a80c7106d1789f5223bb
+title: アーキテクチャ ダイアグラムのアイコンとその他の資産
+description: 独自のアーキテクチャ ダイアグラムを作成するのに役立つアイコン、Visio テンプレート、PNG ファイル、および SVG ファイル
+ms.openlocfilehash: f65a09450ba1b7154e6d43bbc7bdb65212b21828
+ms.sourcegitcommit: c441fd165e6bebbbbbc19854ec6f3676be9c3b25
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="icons-and-diagrams"></a>アイコンとダイアグラム
 
@@ -27,6 +27,10 @@ ms.lasthandoff: 02/23/2018
 ## <a name="reference-architectures-visio-template"></a>参照アーキテクチャ Visio テンプレート 
 
 [参照アーキテクチャ](../reference-architectures/index.md)で使用されるダイアグラムのバージョンは、[Visio 形式でダウンロード](https://aka.ms/arch-diagrams)からダウンロードできます。
+
+## <a name="solution-architecture-diagrams"></a>ソリューションのアーキテクチャ図
+
+Microsoft は、[ソリューションのアーキテクチャと付属の図](https://azure.microsoft.com/solutions/architecture/)を公開しています。 図は、SVG 形式でダウンロードできます。 SVG は、Visio、PowerPoint など、多くのツールで開いて、変更することができます。 図のグループ化を解除すると、アイコンを個別に選択できます。   
 
 ## <a name="3d-blueprint-visio-template"></a>3D ブループリントの Visio テンプレート
 

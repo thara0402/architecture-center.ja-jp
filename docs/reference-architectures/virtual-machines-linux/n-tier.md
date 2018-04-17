@@ -1,16 +1,16 @@
 ---
-title: "Azure で n 層アプリケーションの Linux VM を実行する"
-description: "Microsoft Azure で N 層アーキテクチャの Linux VM を実行する方法について説明します。"
+title: Azure で n 層アプリケーションの Linux VM を実行する
+description: Microsoft Azure で N 層アーキテクチャの Linux VM を実行する方法について説明します。
 author: MikeWasson
 ms.date: 11/22/2017
 pnp.series.title: Linux VM workloads
 pnp.series.next: multi-region-application
 pnp.series.prev: multi-vm
-ms.openlocfilehash: e875a58aa83339560fd1de5b03a960f071883927
-ms.sourcegitcommit: c9e6d8edb069b8c513de748ce8114c879bad5f49
+ms.openlocfilehash: 8d3e6e5124a0abb27a3c72e1ecbd52a1a1da2a33
+ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="run-linux-vms-for-an-n-tier-application"></a>N 層アプリケーションの Linux VM を実行する
 
@@ -30,7 +30,7 @@ N 層アーキテクチャを実装する方法は多数あります。 図は�
 * **Azure DNS**。 [Azure DNS][azure-dns] は、DNS ドメインのホスティング サービスであり、Microsoft Azure インフラストラクチャを使用した名前解決を提供します。 Azure でドメインをホストすることで、その他の Azure サービスと同じ資格情報、API、ツール、課金情報を使用して DNS レコードを管理できます。
 * **ジャンプボックス。** [要塞ホスト]とも呼ばれます。 管理者が他の VM に接続するために使用するネットワーク上のセキュアな VM です。 ジャンプボックスの NSG は、セーフ リストにあるパブリック IP アドレスからのリモート トラフィックのみを許可します。 NSG は Secure Shell (SSH) トラフィックを許可する必要があります。
 * **監視。** [Nagios]、[Zabbix]、[Icinga] などの監視ソフトウェアを使用して、応答時間、VM の稼働時間、システムの全体的な正常性に関する洞察を得ることができます。 個別の管理サブネットに配置されている VM 上に監視ソフトウェアをインストールします。
-* **NSG。** [ネットワーク セキュリティ グループ][nsg] (NSG) を使用して、VNet 内のネットワーク トラフィックを制限します。 たとえば、ここに示されている 3 層アーキテクチャでは、データベース層は Web フロントエンドからのトラフィックを受信せず、ビジネス層と管理サブネットからのトラフィックのみ受信します。
+* <strong>NSG。</strong> [ネットワーク セキュリティ グループ][nsg] (NSG) を使用して、VNet 内のネットワーク トラフィックを制限します。 たとえば、ここに示されている 3 層アーキテクチャでは、データベース層は Web フロントエンドからのトラフィックを受信せず、ビジネス層と管理サブネットからのトラフィックのみ受信します。
 * **Apache Cassandra データベース**。 レプリケーションとフェールオーバーを有効にすることで、データ層で高い可用性を提供します。
 
 ## <a name="recommendations"></a>Recommendations
@@ -104,7 +104,7 @@ Cassandra クラスター用の VM を可用性セット内に配置して、Cas
 
 ネットワーク仮想アプライアンス (NVA) を追加してパブリック インターネットと Azure Virtual Network の間の DMZ を作成することを検討してください。 NVA とは、ネットワーク関連のタスク (ファイアウォール、パケット インスペクション、監査、カスタム ルーティングなど) を実行できる仮想アプライアンスの総称です。 詳細については、[Azure とインターネットの間の DMZ の実装][dmz]に関する記事を参照してください。
 
-## <a name="scalability-considerations"></a>拡張性に関する考慮事項
+## <a name="scalability-considerations"></a>スケーラビリティに関する考慮事項
 
 ロード バランサーは、ネットワーク トラフィックを Web 層とビジネス層に分散します。 新しい VM インスタンスを追加することで水平方向にスケーリングします。 負荷に基づいて、Web 層とビジネス層を個別にスケーリングできることに注意してください。 クライアント アフィニティを維持するために発生する可能性がある複雑さを減らすには、Web 層の VM はステートレスである必要があります。 ビジネス ロジックをホストする VM もステートレスである必要があります。
 
@@ -120,21 +120,21 @@ Cassandra クラスター用の VM を可用性セット内に配置して、Cas
 
 参照アーキテクチャをご自身のサブスクリプションにデプロイする前に、次の手順を実行する必要があります。
 
-1. [AzureCAT 参照アーキテクチャ][ref-arch-repo] GitHub リポジトリに ZIP ファイルを複製、フォーク、またはダウンロードします。
+1. [参照アーキテクチャ][ref-arch-repo] GitHub リポジトリに ZIP ファイルを複製、フォーク、またはダウンロードします。
 
 2. Azure CLI 2.0 がコンピューターにインストールされていることを確認してください。 CLI をインストールするには、「[Azure CLI 2.0 のインストール][azure-cli-2]」の手順に従ってください。
 
 3. [Azure の構成要素][azbb] npm パッケージをインストールします。
 
-  ```bash
-  npm install -g @mspnp/azure-building-blocks
-  ```
+   ```bash
+   npm install -g @mspnp/azure-building-blocks
+   ```
 
 4. コマンド プロンプト、bash プロンプト、または PowerShell プロンプトから、以下のコマンドの 1 つを使用して Azure アカウントにログインし、プロンプトに従います。
 
-  ```bash
-  az login
-  ```
+   ```bash
+   az login
+   ```
 
 ### <a name="deploy-the-solution-using-azbb"></a>azbb を使用したソリューションのデプロイ
 
@@ -146,9 +146,9 @@ N 層アプリケーションの参照アーキテクチャで Linux VM をデ�
 
 3. 次に示すように、**azbb** コマンド ライン ツールを使用して参照アーキテクチャをデプロイします。
 
-  ```bash
-  azbb -s <your subscription_id> -g <your resource_group_name> -l <azure region> -p n-tier-linux.json --deploy
-  ```
+   ```bash
+   azbb -s <your subscription_id> -g <your resource_group_name> -l <azure region> -p n-tier-linux.json --deploy
+   ```
 
 Azure の構成要素を使用してこのサンプルの参照アーキテクチャをデプロイする方法の詳細については、「[GitHub リポジトリ][git]」を参照してください。
 
@@ -183,7 +183,7 @@ Azure の構成要素を使用してこのサンプルの参照アーキテク�
 [ref-arch-repo]: https://github.com/mspnp/reference-architectures
 [vm-sla]: https://azure.microsoft.com/support/legal/sla/virtual-machines
 [vnet faq]: /azure/virtual-network/virtual-networks-faq
-[visio-download]: https://archcenter.azureedge.net/cdn/vm-reference-architectures.vsdx
+[visio-download]: https://archcenter.blob.core.windows.net/cdn/vm-reference-architectures.vsdx
 [Nagios]: https://www.nagios.org/
 [Zabbix]: http://www.zabbix.com/
 [Icinga]: http://www.icinga.org/

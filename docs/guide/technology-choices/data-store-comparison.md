@@ -1,12 +1,12 @@
 ---
-title: "データ ストアの選択条件"
-description: "Azure コンピューティング オプションの概要"
+title: データ ストアの選択条件
+description: Azure コンピューティング オプションの概要
 author: MikeWasson
-ms.openlocfilehash: 7fb75cd334438c5b985fa04ad8afe3236f2391f8
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 9cb2f77b854a38450490bc96bf0b6a2998ceb1c7
+ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="criteria-for-choosing-a-data-store"></a>データ ストアの選択条件
 
@@ -61,10 +61,10 @@ Azure では、多数のデータ ストレージ ソリューションをサポ
 ## <a name="relational-database-management-systems-rdbms"></a>リレーショナル データベース管理システム (RDBMS)
 
 <table>
-<tr><td>**ワークロード**</td>
+<tr><td><strong>ワークロード</strong></td>
     <td>
         <ul>
-            <li>新しいレコードの作成と既存データの更新の両方が、定期的に発生する。</li>
+            <li>新しいレコードの作成と既存データの更新の両方が、定期的に発生します。</li>
             <li>1 つのトランザクションで複数の操作を完了する必要がある。</li>
             <li>参照タブを実行する集計関数が必要になる。</li>
             <li>レポート作成ツールによる強固な統合が必要になる。</li>
@@ -74,7 +74,7 @@ Azure では、多数のデータ ストレージ ソリューションをサポ
         </ul>
     </td>
 </tr>
-<tr><td>**データの種類**</td>
+<tr><td><strong>データの種類</strong></td>
     <td>
         <ul>
             <li>データは高度に正規化される。</li>
@@ -87,7 +87,7 @@ Azure では、多数のデータ ストレージ ソリューションをサポ
         </ul>
     </td>
 </tr>
-<tr><td>**例**</td>
+<tr><td><strong>例</strong></td>
     <td>
         <ul>
             <li>基幹業務 (人材管理、顧客関係管理、エンタープライズ リソース プランニング)</li>
@@ -105,7 +105,7 @@ Azure では、多数のデータ ストレージ ソリューションをサポ
 ## <a name="document-databases"></a>ドキュメント データベース
 
 <table>
-<tr><td>**ワークロード**</td>
+<tr><td><strong>ワークロード</strong></td>
     <td>
         <ul>
             <li>汎用的な用途。</li>
@@ -117,7 +117,7 @@ Azure では、多数のデータ ストレージ ソリューションをサポ
             <li>個々のドキュメントが取得され、単一のブロックとして書き込まれる。</li>
     </td>
 </tr>
-<tr><td>**データの種類**</td>
+<tr><td><strong>データの種類</strong></td>
     <td>
         <ul>
             <li>非正規化された方法で、データを管理できる。</li>
@@ -129,7 +129,7 @@ Azure では、多数のデータ ストレージ ソリューションをサポ
         </ul>
     </td>
 </tr>
-<tr><td>**例**</td>
+<tr><td><strong>例</strong></td>
     <td>
         <ul>
             <li>製品カタログ</li>
@@ -146,10 +146,10 @@ Azure では、多数のデータ ストレージ ソリューションをサポ
 </tr>
 </table>
 
-## <a name="keyvalue-stores"></a>キーと値のペア
+## <a name="keyvalue-stores"></a>キー/値のストア
 
 <table>
-<tr><td>**ワークロード**</td>
+<tr><td><strong>ワークロード</strong></td>
     <td>
         <ul>
             <li>データは識別され、単一の ID キーを使用して、ディクショナリのようにアクセスされる。</li>
@@ -160,7 +160,7 @@ Azure では、多数のデータ ストレージ ソリューションをサポ
         </ul>
     </td>
 </tr>
-<tr><td>**データの種類**</td>
+<tr><td><strong>データの種類</strong></td>
     <td>
         <ul>
             <li>データ サイズが大きくなる傾向がある。</li>
@@ -170,7 +170,7 @@ Azure では、多数のデータ ストレージ ソリューションをサポ
         </ul>
     </td>
 </tr>
-<tr><td>**例**</td>
+<tr><td><strong>例</strong></td>
     <td>
         <ul>
             <li>データ キャッシュ</li>
@@ -186,7 +186,7 @@ Azure では、多数のデータ ストレージ ソリューションをサポ
 ## <a name="graph-databases"></a>グラフ データベース
 
 <table>
-<tr><td>**ワークロード**</td>
+<tr><td><strong>ワークロード</strong></td>
     <td>
         <ul>
             <li>データ項目間のリレーションシップは非常に複雑であり、データ項目間に多数のホップが関連している。</li>
@@ -195,7 +195,7 @@ Azure では、多数のデータ ストレージ ソリューションをサポ
         </ul>
     </td>
 </tr>
-<tr><td>**データの種類**</td>
+<tr><td><strong>データの種類</strong></td>
     <td>
         <ul>
             <li>データは、ノードとリレーションシップで構成される。</li>
@@ -205,7 +205,7 @@ Azure では、多数のデータ ストレージ ソリューションをサポ
         </ul>
     </td>
 </tr>
-<tr><td>**例**</td>
+<tr><td><strong>例</strong></td>
     <td>
         <ul>
             <li>組織図</li>
@@ -221,7 +221,7 @@ Azure では、多数のデータ ストレージ ソリューションをサポ
 ## <a name="column-family-databases"></a>列ファミリのデータベース
 
 <table>
-<tr><td>**ワークロード**</td>
+<tr><td><strong>ワークロード</strong></td>
     <td>
         <ul>
             <li>ほとんどの列ファミリ データベースでは、極めて高速で書き込み操作を実行する。</li>
@@ -232,7 +232,7 @@ Azure では、多数のデータ ストレージ ソリューションをサポ
         </ul>
     </td>
 </tr>
-<tr><td>**データの種類**</td>
+<tr><td><strong>データの種類</strong></td>
     <td>
         <ul>
             <li>データは、キー列と 1 つまたは複数の列ファミリで構成されたテーブルに格納される。</li>
@@ -242,7 +242,7 @@ Azure では、多数のデータ ストレージ ソリューションをサポ
         </ul>
     </td>
 </tr>
-<tr><td>**例**</td>
+<tr><td><strong>例</strong></td>
     <td>
         <ul>
             <li>Recommendations</li>
@@ -262,7 +262,7 @@ Azure では、多数のデータ ストレージ ソリューションをサポ
 ## <a name="search-engine-databases"></a>検索エンジンのデータベース
 
 <table>
-<tr><td>**ワークロード**</td>
+<tr><td><strong>ワークロード</strong></td>
     <td>
         <ul>
             <li>複数のソースおよびサービスからのデータにインデックスを作成する。</li>
@@ -274,7 +274,7 @@ Azure では、多数のデータ ストレージ ソリューションをサポ
         </ul>
     </td>
 </tr>
-<tr><td>**データの種類**</td>
+<tr><td><strong>データの種類</strong></td>
     <td>
         <ul>
             <li>半構造化または非構造化</li>
@@ -283,7 +283,7 @@ Azure では、多数のデータ ストレージ ソリューションをサポ
         </ul>
     </td>
 </tr>
-<tr><td>**例**</td>
+<tr><td><strong>例</strong></td>
     <td>
         <ul>
             <li>製品カタログ</li>
@@ -299,7 +299,7 @@ Azure では、多数のデータ ストレージ ソリューションをサポ
 ## <a name="data-warehouse"></a>データ ウェアハウス
 
 <table>
-<tr><td>**ワークロード**</td>
+<tr><td><strong>ワークロード</strong></td>
     <td>
         <ul>
             <li>データ分析</li>
@@ -307,17 +307,17 @@ Azure では、多数のデータ ストレージ ソリューションをサポ
         </ul>
     </td>
 </tr>
-<tr><td>**データの種類**</td>
+<tr><td><strong>データの種類</strong></td>
     <td>
         <ul>
             <li>複数のソースからの履歴データ。</li>
-            <li>通常は、"star" または "snowflake" スキーマで非正規化され、ファクト テーブルおよびディメンション テーブルで構成されている。</li>
+            <li>通常は、&quot;star&quot; または &quot;snowflake&quot; スキーマで非正規化され、ファクト テーブルおよびディメンション テーブルで構成されている。</li>
             <li>通常は、スケジュールに基づいて新しいデータと共に読み込まれる。</li>
-            <li>多くの場合、ディメンション テーブルにはエンティティの複数の履歴バージョンが含まれ、*"緩やかに変化するディメンション"* として参照される。</li>
+            <li>多くの場合、ディメンション テーブルにはエンティティの複数の履歴バージョンが含まれ、<em>"緩やかに変化するディメンション"</em> として参照される。</li>
         </ul>
     </td>
 </tr>
-<tr><td>**例**</td>
+<tr><td><strong>例</strong></td>
     <td>分析モデル、レポート、およびダッシュボードのデータを提供するエンタープライズ データ ウェアハウス。
     </td>
 </tr>
@@ -327,7 +327,7 @@ Azure では、多数のデータ ストレージ ソリューションをサポ
 ## <a name="time-series-databases"></a>タイム シリーズ データベース
 
 <table>
-<tr><td>**ワークロード**</td>
+<tr><td><strong>ワークロード</strong></td>
     <td>
         <ul>
             <li>操作の大部分 (95 99%) は書き込みである。</li>
@@ -340,7 +340,7 @@ Azure では、多数のデータ ストレージ ソリューションをサポ
         </ul>
     </td>
 </tr>
-<tr><td>**データの種類**</td>
+<tr><td><strong>データの種類</strong></td>
     <td>
         <ul>
             <li>主キーおよび並べ替えのメカニズムとして使用されるタイムスタンプ。</li>
@@ -349,7 +349,7 @@ Azure では、多数のデータ ストレージ ソリューションをサポ
         </ul>
     </td>
 </tr>
-<tr><td>**例**</td>
+<tr><td><strong>例</strong></td>
     <td>
         <ul>
             <li>監視およびイベント テレメトリ。</li>
@@ -359,10 +359,10 @@ Azure では、多数のデータ ストレージ ソリューションをサポ
 </tr>
 </table>
 
-## <a name="object-storage"></a>オブジェクトのストレージ
+## <a name="object-storage"></a>オブジェクト ストレージ
 
 <table>
-<tr><td>**ワークロード**</td>
+<tr><td><strong>ワークロード</strong></td>
     <td>
         <ul>
             <li>キーによって識別される。</li>
@@ -372,7 +372,7 @@ Azure では、多数のデータ ストレージ ソリューションをサポ
         </ul>
     </td>
 </tr>
-<tr><td>**データの種類**</td>
+<tr><td><strong>データの種類</strong></td>
     <td>
         <ul>
             <li>データ サイズが大きい。</li>
@@ -381,7 +381,7 @@ Azure では、多数のデータ ストレージ ソリューションをサポ
         </ul>
     </td>
 </tr>
-<tr><td>**例**</td>
+<tr><td><strong>例</strong></td>
     <td>
         <ul>
             <li>イメージ、ビデオ、office ドキュメント、PDF</li>
@@ -397,7 +397,7 @@ Azure では、多数のデータ ストレージ ソリューションをサポ
 ## <a name="shared-files"></a>共有ファイル
 
 <table>
-<tr><td>**ワークロード**</td>
+<tr><td><strong>ワークロード</strong></td>
     <td>
         <ul>
             <li>ファイル システムと対話する既存アプリからの移行。</li>
@@ -405,7 +405,7 @@ Azure では、多数のデータ ストレージ ソリューションをサポ
         </ul>
     </td>
 </tr>
-<tr><td>**データの種類**</td>
+<tr><td><strong>データの種類</strong></td>
     <td>
         <ul>
             <li>フォルダーの階層セット内のファイル。</li>
@@ -413,7 +413,7 @@ Azure では、多数のデータ ストレージ ソリューションをサポ
         </ul>
     </td>
 </tr>
-<tr><td>**例**</td>
+<tr><td><strong>例</strong></td>
     <td>
         <ul>
             <li>レガシ ファイル</li>

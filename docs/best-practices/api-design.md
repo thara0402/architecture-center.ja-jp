@@ -1,14 +1,14 @@
 ---
-title: "API 設計ガイダンス"
-description: "適切に設計された Web API を作成する方法に関するガイダンス。"
+title: API 設計ガイダンス
+description: 適切に設計された Web API を作成する方法に関するガイダンス。
 author: dragon119
 ms.date: 01/12/2018
 pnp.series.title: Best Practices
-ms.openlocfilehash: f0813c18da03b9deeabbf529a560c60e8ce579d8
-ms.sourcegitcommit: c93f1b210b3deff17cc969fb66133bc6399cfd10
+ms.openlocfilehash: a8c4a81835ebd3ebdba2fd2cec624a9a9d5646f5
+ms.sourcegitcommit: ea7108f71dab09175ff69322874d1bcba800a37a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="api-design"></a>API 設計
 
@@ -42,7 +42,7 @@ HTTP を使用した RESTful API の主な設計原則を次に示します。
     {"orderId":1,"orderValue":99.90,"productId":1,"quantity":1}
     ```
 
-- REST API では、クライアントとサービスの実装の分離に役立つ統一インターフェイスを使用します。 HTTP を基盤とする REST API の場合、統一インターフェイスで標準の HTTP 動詞を使用してリソースに対する操作を実行します。 最も一般的な操作は、GET、POST、PUT、PATCH、DELETE です。 
+- REST API では、クライアントとサービスの実装の分離に役立つ統一インターフェイスを使用します。 HTTP を基盤とする REST API の場合、統一インターフェイスで標準の HTTP 動詞を使用して、リソースに対する操作を実行します。 最も一般的な操作は、GET、POST、PUT、PATCH、DELETE です。 
 
 - REST API では、ステートレスな要求モデルを使用します。 HTTP 要求は独立しており、任意の順序で発生する可能性があるため、要求間の遷移状態の情報を保持することはできません。 情報の格納場所はリソース自体のみであり、それぞれの要求はアトミックな操作である必要があります。 この制約により、非常にスケーラブルな Web サービスが実現します。クライアントと特定のサーバー間のアフィニティを保持する必要がないためです。 どのサーバーも、任意のクライアントからの要求を処理できます。 ただし、他の要因によってスケーラビリティが制限される可能性があります。 たとえば、多くの Web サービスは、スケールアウトが難しい可能性のあるバックエンド データ ストアに書き込みを行います (データ ストアのスケールアウト戦略については、「[データのパーティション分割](./data-partitioning.md)」をご覧ください)。
 
@@ -422,7 +422,7 @@ Content-Type: application/json; charset=utf-8
 ### <a name="uri-versioning"></a>URI のバージョン管理
 Web API を変更するか、リソースのスキーマを変更するたびに、バージョン番号を各リソースの URI に追加します。 既存の URI はこれまでと同様に動作を続け、元のスキーマに準拠するリソースを返します。
 
-前の例を拡張し、`address` フィールドをアドレスの各構成部分 (`streetAddress`、`city`、`state`、`zipCode` など) を含むサブフィールドに再構築する場合、このバージョンのリソースは http://adventure-works.com/v2/customers/3 などのバージョン番号を含む URI より公開できます: 
+前の例を拡張し、`address` フィールドをアドレスの各構成部分 (`streetAddress`、`city`、`state`、`zipCode` など) を含むサブフィールドに再構築する場合、このバージョンのリソースはバージョン番号を含む http://adventure-works.com/v2/customers/3: などの URI より公開できます
 
 ```HTTP
 HTTP/1.1 200 OK

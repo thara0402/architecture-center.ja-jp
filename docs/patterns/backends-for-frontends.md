@@ -1,13 +1,13 @@
 ---
-title: "フロント エンド用バックエンドのパターン"
-description: "特定のフロント エンド アプリケーションやインターフェイスによって使用される個別のバックエンド サービスを作成します。"
+title: フロント エンド用バックエンドのパターン
+description: 特定のフロント エンド アプリケーションやインターフェイスによって使用される個別のバックエンド サービスを作成します。
 author: dragon119
 ms.date: 06/23/2017
-ms.openlocfilehash: 87acd39d021c5e44594a2e7c9574e4dd363ce83b
-ms.sourcegitcommit: c93f1b210b3deff17cc969fb66133bc6399cfd10
+ms.openlocfilehash: 2991d7a3e05b3ce6cd5148a552bae6d4ba8f7c4c
+ms.sourcegitcommit: c441fd165e6bebbbbbc19854ec6f3676be9c3b25
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="backends-for-frontends-pattern"></a>フロント エンド用バックエンドのパターン
 

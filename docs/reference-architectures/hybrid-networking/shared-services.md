@@ -1,15 +1,15 @@
 ---
-title: "Azure に共有サービスを含むハブスポーク ネットワーク トポロジを実装する"
-description: "Azure に共有サービスを含むハブスポーク ネットワーク トポロジを実装する方法。"
+title: Azure に共有サービスを含むハブスポーク ネットワーク トポロジを実装する
+description: Azure に共有サービスを含むハブスポーク ネットワーク トポロジを実装する方法。
 author: telmosampaio
 ms.date: 02/25/2018
 pnp.series.title: Implement a hub-spoke network topology with shared services in Azure
 pnp.series.prev: hub-spoke
-ms.openlocfilehash: c0fb1d1ddd7c70ed914d58e7c73b10475b91aedf
-ms.sourcegitcommit: 2123c25b1a0b5501ff1887f98030787191cf6994
+ms.openlocfilehash: b492427f12e026be97629ccdc2b8d19c8c66f47d
+ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="implement-a-hub-spoke-network-topology-with-shared-services-in-azure"></a>Azure に共有サービスを含むハブスポーク ネットワーク トポロジを実装する
 
@@ -98,7 +98,7 @@ Azure の [VNet ごとの VNet ピアリング数の制限][vnet-peering-limit]�
 
 参照アーキテクチャをご自身のサブスクリプションにデプロイする前に、次の手順を実行する必要があります。
 
-1. [AzureCAT 参照アーキテクチャ][ref-arch-repo] GitHub リポジトリに ZIP ファイルを複製、フォーク、またはダウンロードします。
+1. [参照アーキテクチャ][ref-arch-repo] GitHub リポジトリに ZIP ファイルを複製、フォーク、またはダウンロードします。
 
 2. Azure CLI 2.0 がコンピューターにインストールされていることを確認してください。 CLI のインストール手順については、「[Azure CLI 2.0 のインストール][azure-cli-2]」をご覧ください。
 
@@ -106,9 +106,9 @@ Azure の [VNet ごとの VNet ピアリング数の制限][vnet-peering-limit]�
 
 4. コマンド プロンプト、bash プロンプト、または PowerShell プロンプトから、以下のコマンドを使用して Azure アカウントにログインし、プロンプトに従います。
 
-  ```bash
-  az login
-  ```
+   ```bash
+   az login
+   ```
 
 ### <a name="deploy-the-simulated-on-premises-datacenter-using-azbb"></a>シミュレートされたオンプレミスのデータセンターを azbb を使用してデプロイする
 
@@ -118,18 +118,18 @@ Azure の [VNet ごとの VNet ピアリング数の制限][vnet-peering-limit]�
 
 2. `onprem.json` ファイルを開き、次に示す 45 行目と 46 行目の引用符の間にユーザー名とパスワードを入力した後、ファイルを保存します。
 
-  ```bash
-  "adminUsername": "XXX",
-  "adminPassword": "YYY",
-  ```
+   ```bash
+   "adminUsername": "XXX",
+   "adminPassword": "YYY",
+   ```
 
 3. 次に示すように、`azbb` を実行して、シミュレートされたオンプレミスの環境をデプロイします。
 
-  ```bash
-  azbb -s <subscription_id> -g onprem-vnet-rg - l <location> -p onoprem.json --deploy
-  ```
-  > [!NOTE]
-  > 別のリソース グループ名 (`onprem-vnet-rg` 以外) を使用する場合は、その名前を使用するすべてのパラメーター ファイルを検索し、独自のリソース グループ名を使用するように編集してください。
+   ```bash
+   azbb -s <subscription_id> -g onprem-vnet-rg - l <location> -p onoprem.json --deploy
+   ```
+   > [!NOTE]
+   > 別のリソース グループ名 (`onprem-vnet-rg` 以外) を使用する場合は、その名前を使用するすべてのパラメーター ファイルを検索し、独自のリソース グループ名を使用するように編集してください。
 
 4. デプロイが完了するのを待機します。 このデプロイでは、仮想ネットワーク、Windows を実行する仮想マシン、および VPN ゲートウェイを作成します。 VPN ゲートウェイの作成の完了には 40 分以上かかる場合があります。
 
@@ -139,26 +139,26 @@ Azure の [VNet ごとの VNet ピアリング数の制限][vnet-peering-limit]�
 
 1. `hub-vnet.json` ファイルを開き、次に示す 50 行目と 51 行目の引用符の間にユーザー名とパスワードを入力します。
 
-  ```bash
-  "adminUsername": "XXX",
-  "adminPassword": "YYY",
-  ```
+   ```bash
+   "adminUsername": "XXX",
+   "adminPassword": "YYY",
+   ```
 
 2. 52 行目の `osType` に `Windows` または `Linux` と入力し、ジャンプボックス用のオペレーティング システムとして Windows Server 2016 Datacenter または Ubuntu 16.04 のいずれかをインストールします。
 
 3. 次に示す 83 行目の引用符の間に共有キーを入力した後、ファイルを保存します。
 
-  ```bash
-  "sharedKey": "",
-  ```
+   ```bash
+   "sharedKey": "",
+   ```
 
 4. 次に示すように、`azbb` を実行して、シミュレートされたオンプレミスの環境をデプロイします。
 
-  ```bash
-  azbb -s <subscription_id> -g hub-vnet-rg - l <location> -p hub-vnet.json --deploy
-  ```
-  > [!NOTE]
-  > 別のリソース グループ名 (`hub-vnet-rg` 以外) を使用する場合は、その名前を使用するすべてのパラメーター ファイルを検索し、独自のリソース グループ名を使用するように編集してください。
+   ```bash
+   azbb -s <subscription_id> -g hub-vnet-rg - l <location> -p hub-vnet.json --deploy
+   ```
+   > [!NOTE]
+   > 別のリソース グループ名 (`hub-vnet-rg` 以外) を使用する場合は、その名前を使用するすべてのパラメーター ファイルを検索し、独自のリソース グループ名を使用するように編集してください。
 
 5. デプロイが完了するのを待機します。 このデプロイでは、仮想ネットワーク、仮想マシン、VPN ゲートウェイ、および前のセクションで作成したゲートウェイへの接続を作成します。 VPN ゲートウェイの作成の完了には 40 分以上かかる場合があります。
 
@@ -168,22 +168,22 @@ Azure に ADDS ドメイン コントローラーをデプロイするには、�
 
 1. `hub-adds.json` ファイルを開き、次に示す 14 行目と 15 行目の引用符の間にユーザー名とパスワードを入力した後、ファイルを保存します。
 
-  ```bash
-  "adminUsername": "XXX",
-  "adminPassword": "YYY",
-  ```
+   ```bash
+   "adminUsername": "XXX",
+   "adminPassword": "YYY",
+   ```
 
 2. 次に示すように、`azbb` を実行して ADDS ドメイン コントローラーをデプロイします。
 
-  ```bash
-  azbb -s <subscription_id> -g hub-adds-rg - l <location> -p hub-adds.json --deploy
-  ```
+   ```bash
+   azbb -s <subscription_id> -g hub-adds-rg - l <location> -p hub-adds.json --deploy
+   ```
   
-  > [!NOTE]
-  > 別のリソース グループ名 (`hub-adds-rg` 以外) を使用する場合は、その名前を使用するすべてのパラメーター ファイルを検索し、独自のリソース グループ名を使用するように編集してください。
+   > [!NOTE]
+   > 別のリソース グループ名 (`hub-adds-rg` 以外) を使用する場合は、その名前を使用するすべてのパラメーター ファイルを検索し、独自のリソース グループ名を使用するように編集してください。
 
-  > [!NOTE]
-  > シミュレートされたオンプレミスのデータセンターでホストされているドメインに 2 つの VM を参加させ、その VM に AD DS をインストールする必要があるため、デプロイのこの部分は数分かかる可能性があります。
+   > [!NOTE]
+   > シミュレートされたオンプレミスのデータセンターでホストされているドメインに 2 つの VM を参加させ、その VM に AD DS をインストールする必要があるため、デプロイのこの部分は数分かかる可能性があります。
 
 ### <a name="nva"></a>NVA
 
@@ -191,17 +191,17 @@ Azure に ADDS ドメイン コントローラーをデプロイするには、�
 
 1. `hub-nva.json` ファイルを開き、次に示す 13 行目と 14 行目の引用符の間にユーザー名とパスワードを入力した後、ファイルを保存します。
 
-  ```bash
-  "adminUsername": "XXX",
-  "adminPassword": "YYY",
-  ```
+   ```bash
+   "adminUsername": "XXX",
+   "adminPassword": "YYY",
+   ```
 2. `azbb` を実行して NVA VM とユーザー定義のルートをデプロイします。
 
-  ```bash
-  azbb -s <subscription_id> -g hub-nva-rg - l <location> -p hub-nva.json --deploy
-  ```
-  > [!NOTE]
-  > 別のリソース グループ名 (`hub-nva-rg` 以外) を使用する場合は、その名前を使用するすべてのパラメーター ファイルを検索し、独自のリソース グループ名を使用するように編集してください。
+   ```bash
+   azbb -s <subscription_id> -g hub-nva-rg - l <location> -p hub-nva.json --deploy
+   ```
+   > [!NOTE]
+   > 別のリソース グループ名 (`hub-nva-rg` 以外) を使用する場合は、その名前を使用するすべてのパラメーター ファイルを検索し、独自のリソース グループ名を使用するように編集してください。
 
 ### <a name="azure-spoke-vnets"></a>Azure のスポーク VNet
 
@@ -209,31 +209,31 @@ Azure に ADDS ドメイン コントローラーをデプロイするには、�
 
 1. `spoke1.json` ファイルを開き、次に示す 52 行目と 53 行目の引用符の間にユーザー名とパスワードを入力した後、ファイルを保存します。
 
-  ```bash
-  "adminUsername": "XXX",
-  "adminPassword": "YYY",
-  ```
+   ```bash
+   "adminUsername": "XXX",
+   "adminPassword": "YYY",
+   ```
 
 2. 54 行目の `osType` に `Windows` または `Linux` と入力し、ジャンプボックス用のオペレーティング システムとして Windows Server 2016 Datacenter または Ubuntu 16.04 のいずれかをインストールします。
 
 3. 次に示すように、`azbb` を実行して、最初のスポーク VNet 環境をデプロイします。
 
-  ```bash
-  azbb -s <subscription_id> -g spoke1-vnet-rg - l <location> -p spoke1.json --deploy
-  ```
+   ```bash
+   azbb -s <subscription_id> -g spoke1-vnet-rg - l <location> -p spoke1.json --deploy
+   ```
   
-  > [!NOTE]
-  > 別のリソース グループ名 (`spoke1-vnet-rg` 以外) を使用する場合は、その名前を使用するすべてのパラメーター ファイルを検索し、独自のリソース グループ名を使用するように編集してください。
+   > [!NOTE]
+   > 別のリソース グループ名 (`spoke1-vnet-rg` 以外) を使用する場合は、その名前を使用するすべてのパラメーター ファイルを検索し、独自のリソース グループ名を使用するように編集してください。
 
-3. ファイル `spoke2.json` に対して上記の手順 1. を繰り返します。
+4. ファイル `spoke2.json` に対して上記の手順 1. を繰り返します。
 
-4. 次に示すように、`azbb` を実行して、2 番目のスポーク VNet 環境をデプロイします。
+5. 次に示すように、`azbb` を実行して、2 番目のスポーク VNet 環境をデプロイします。
 
-  ```bash
-  azbb -s <subscription_id> -g spoke2-vnet-rg - l <location> -p spoke2.json --deploy
-  ```
-  > [!NOTE]
-  > 別のリソース グループ名 (`spoke2-vnet-rg` 以外) を使用する場合は、その名前を使用するすべてのパラメーター ファイルを検索し、独自のリソース グループ名を使用するように編集してください。
+   ```bash
+   azbb -s <subscription_id> -g spoke2-vnet-rg - l <location> -p spoke2.json --deploy
+   ```
+   > [!NOTE]
+   > 別のリソース グループ名 (`spoke2-vnet-rg` 以外) を使用する場合は、その名前を使用するすべてのパラメーター ファイルを検索し、独自のリソース グループ名を使用するように編集してください。
 
 ### <a name="azure-hub-vnet-peering-to-spoke-vnets"></a>Azure のスポーク VNet へのハブ VNet のピアリング
 
@@ -243,12 +243,12 @@ Azure に ADDS ドメイン コントローラーをデプロイするには、�
 
 2. 次に示すように、`azbb` を実行して、最初のスポーク VNet 環境をデプロイします。
 
-  ```bash
-  azbb -s <subscription_id> -g hub-vnet-rg - l <location> -p hub-vnet-peering.json --deploy
-  ```
+   ```bash
+   azbb -s <subscription_id> -g hub-vnet-rg - l <location> -p hub-vnet-peering.json --deploy
+   ```
 
-  > [!NOTE]
-  > 別のリソース グループ名 (`hub-vnet-rg` 以外) を使用する場合は、その名前を使用するすべてのパラメーター ファイルを検索し、独自のリソース グループ名を使用するように編集してください。
+   > [!NOTE]
+   > 別のリソース グループ名 (`hub-vnet-rg` 以外) を使用する場合は、その名前を使用するすべてのパラメーター ファイルを検索し、独自のリソース グループ名を使用するように編集してください。
 
 <!-- links -->
 
@@ -270,7 +270,7 @@ Azure に ADDS ドメイン コントローラーをデプロイするには、�
 [vpn-appliance]: /azure/vpn-gateway/vpn-gateway-about-vpn-devices
 [windows-vm-ra]: ../virtual-machines-windows/index.md
 
-[visio-download]: https://archcenter.azureedge.net/cdn/hybrid-network-hub-spoke.vsdx
+[visio-download]: https://archcenter.blob.core.windows.net/cdn/hybrid-network-hub-spoke.vsdx
 [ref-arch-repo]: https://github.com/mspnp/reference-architectures
 [0]: ./images/shared-services.png "Azure での共有サービス トポロジ"
 [3]: ./images/hub-spokehub-spoke.svg "Hub-spoke-hub-spoke topology in Azure" (Azure のハブスポークハブスポーク トポロジ)
