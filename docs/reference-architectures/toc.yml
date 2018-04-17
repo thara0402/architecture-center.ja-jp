@@ -12,6 +12,10 @@
           href: app-service-web-app/scalable-web-app.md
         - name: 複数リージョンのデプロイ
           href: app-service-web-app/multi-region.md
+    - name: データ アーキテクチャ
+      items:
+        - name: SQL Data Warehouse を使用したエンタープライズ向け BI
+          href: data/enterprise-bi-sqldw.md
     - name: ハイブリッド ネットワーク
       href: hybrid-networking/index.md
       items:
