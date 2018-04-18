@@ -66,7 +66,7 @@ Tailspin は、Surveys アプリケーションをホストする架空の会社
 
 6. **[アプリの登録]** ブレードで、新しい **Surveys Web API** アプリケーションを選択します。
  
-7. **[プロパティ]**をクリックします。
+7. **[プロパティ]** をクリックします。
 
 8. **[アプリケーション ID/URI]** 編集ボックスに `https://<domain>/surveys.webapi` を入力します。`<domain>` はディレクトリのドメイン名です。 次に例を示します。`https://tailspin.onmicrosoft.com/surveys.webapi`
 
@@ -96,7 +96,7 @@ Tailspin は、Surveys アプリケーションをホストする架空の会社
 
     ![](./images/running-the-app/application-id.png)
 
-6. **[プロパティ]**をクリックします。
+6. **[プロパティ]** をクリックします。
 
 7. **[アプリケーション ID/URI]** 編集ボックスに `https://<domain>/surveys` を入力します。`<domain>` はディレクトリのドメイン名です。 
 
@@ -203,7 +203,7 @@ Redis Cache の作成の詳細については、「[Azure Redis Cache の使用�
 
 1.  Visual Studio で Tailspin Surveys ソリューションを開きます。
 
-2.  ソリューション エクスプローラーで Tailspin.Surveys.Web プロジェクトを右クリックし、 **[ユーザー シークレットの管理]**を選択します。
+2.  ソリューション エクスプローラーで Tailspin.Surveys.Web プロジェクトを右クリックし、 **[ユーザー シークレットの管理]** を選択します。
 
 3.  secrets.json ファイルに、次を貼り付けます。
     
@@ -275,7 +275,7 @@ Redis Cache の作成の詳細については、「[Azure Redis Cache の使用�
 
 組織にサインアップするには、以下を実行します。
 
-1. **[Enroll your company in Tailspin]\(Tailspin に自社を登録する\)**をクリックします。
+1. **[Enroll your company in Tailspin]\(Tailspin に自社を登録する\)** をクリックします。
 2. Surveys アプリを使用して、組織の名前の付いた Azure AD ディレクトリにサインインします。 管理者ユーザーとしてサインインする必要があります。
 3. 同意プロンプトを受け入れます。
 
@@ -298,7 +298,7 @@ Surveys アプリケーションがテナントを登録し、お客様はサイ
 
 5.  **[ユーザーとグループ]** をクリックします。
 
-4.  **[ユーザーの追加]**をクリックします。
+4.  **[ユーザーの追加]** をクリックします。
 
 5.  Azure AD Premium を使用する場合は、**[ユーザーとグループ]** をクリックします。 それ以外の場合は、**[ユーザー]**.をクリックします。 (グループにロールを割り当てるには Azure AD Premium が必要です。)
 
