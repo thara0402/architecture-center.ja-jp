@@ -4,11 +4,11 @@ description: Azure リソースの名前付け規則。 仮想マシン、スト
 author: telmosampaio
 ms.date: 05/18/2017
 pnp.series.title: Best Practices
-ms.openlocfilehash: f814201901af69b816d7f1588e58057b252b22db
-ms.sourcegitcommit: 2e8b06e9c07875d65b91d5431bfd4bc465a7a242
+ms.openlocfilehash: f3f010ceb3c810caafa53523de63aa787d392aa1
+ms.sourcegitcommit: f665226cec96ec818ca06ac6c2d83edb23c9f29c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="naming-conventions"></a>名前付け規則
 
@@ -81,7 +81,7 @@ Azure のリソースまたはサービスの種類ごとに、名前付けに�
 |可用性セット |リソース グループ |1 ～ 80 |大文字と小文字は区別されない |英数字、アンダースコア、ハイフン |`<service-short-name>-<context>-as` |`profx-sql-as` |
 |タグ |関連付けられたエンティティ |512 (名前)、256 (値) |大文字と小文字は区別されない |英数字 |`"key" : "value"` |`"department" : "Central IT"` |
 
-### <a name="compute"></a>計算
+### <a name="compute"></a>コンピューティング
 
 | エンティティ | Scope (スコープ) | Length | 大文字小文字の区別 | 有効な文字 | 推奨パターン | 例 |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -102,7 +102,7 @@ Azure のリソースまたはサービスの種類ごとに、名前付けに�
 |キュー名 |ストレージ アカウント |3 ～ 63 |小文字 |英数字とハイフン |`<service short name>-<context>-<num>` |`awesomeservice-messages-001` |
 |テーブル名 | ストレージ アカウント |3 ～ 63 |大文字と小文字は区別されない |英数字 |`<service short name><context>` |`awesomeservicelogs` |
 |ファイル名 | ストレージ アカウント |3 ～ 63 |小文字 | 英数字 |`<variable based on blob usage>` |`<variable based on blob usage>` |
-|Data Lake Store | グローバル |3 ～ 24 |小文字 | 英数字 |`<name>-dls` |`telemetry-dls` |
+|Data Lake Store | グローバル |3 ～ 24 |小文字 | 英数字 |`<name>dls` |`telemetrydls` |
 
 ### <a name="networking"></a>ネットワーク
 
