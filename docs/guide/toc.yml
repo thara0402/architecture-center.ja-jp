@@ -20,14 +20,17 @@
           href: architecture-styles/big-data.md
         - name: ビッグ コンピューティング
           href: architecture-styles/big-compute.md
-    - name: テクノロジの選択
-      href: technology-choices/index.md
+    - name: 計算サービスの選択
       items:
-        - name: コンピューティング オプションの概要
+        - name: 概要
           href: technology-choices/compute-overview.md
+        - name: デシジョン ツリー
+          href: technology-choices/compute-decision-tree.md
         - name: コンピューティングの比較
           href: technology-choices/compute-comparison.md
-        - name: データ ストアの概要
+    - name: データ ストアの選択
+      items:
+        - name: 概要
           href: technology-choices/data-store-overview.md
         - name: データ ストアの比較
           href: technology-choices/data-store-comparison.md
@@ -54,7 +57,7 @@
           href: design-principles/design-for-evolution.md
         - name: ビジネス ニーズに合わせた構築
           href: design-principles/build-for-business.md
-    - name: ソフトウェア品質の要点
+    - name: ソフトウェア品質の重要な要素
       href: pillars.md
     - name: 設計パターン
       href: ../patterns/index.md?toc=/azure/architecture/guide/toc.json
