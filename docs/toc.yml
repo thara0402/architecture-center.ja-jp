@@ -10,9 +10,10 @@
   items:
     - name: アーキテクチャ スタイル
       href: guide/architecture-styles/index.md
-    - name: テクノロジの選択
-      href: guide/technology-choices/index.md
-      items: null
+    - name: 計算サービスの選択
+      href: guide/technology-choices/compute-overview.md
+    - name: データ ストアの選択
+      href: guide/technology-choices/data-store-overview.md
     - name: 設計原則
       href: guide/design-principles/index.md
     - name: ソフトウェア品質の重要な要素
