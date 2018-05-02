@@ -1,23 +1,20 @@
 ---
 title: Active Directory Domain Services (AD DS) を Azure に拡張する
-description: >-
-  Active Directory の承認を使用するセキュリティ保護されたハイブリッド ネットワーク アーキテクチャを Azure に実装する方法。
-
-  ガイダンス,vpn gateway,expressroute,ロード バランサー,仮想ネットワーク,active directory
+description: オンプレミスにある Active Directory ドメインを Azure に拡張する
 author: telmosampaio
-ms.date: 11/28/2016
+ms.date: 04/13/2018
 pnp.series.title: Identity management
 pnp.series.prev: azure-ad
 pnp.series.next: adds-forest
-ms.openlocfilehash: 007d244f29bf11c6e2bd703c7f4f245d22c02f0f
-ms.sourcegitcommit: c441fd165e6bebbbbbc19854ec6f3676be9c3b25
+ms.openlocfilehash: bcd1e2b1b925a5d64665c5651c24589a77e39ec9
+ms.sourcegitcommit: f665226cec96ec818ca06ac6c2d83edb23c9f29c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="extend-active-directory-domain-services-ad-ds-to-azure"></a>Active Directory Domain Services (AD DS) を Azure に拡張する
 
-この参照アーキテクチャでは、Active Directory 環境を Azure に拡張し、[Active Directory Domain Services (AD DS)][active-directory-domain-services] を使用して分散認証サービスを提供する方法を示します。  [**こちらのソリューションをデプロイしてください**。](#deploy-the-solution)
+この参照アーキテクチャでは、Active Directory 環境を Azure に拡張し、Active Directory Domain Services (AD DS) を使用して分散認証サービスを提供する方法を示します。 [**こちらのソリューションをデプロイしてください**。](#deploy-the-solution)
 
 [![0]][0] 
 
@@ -103,27 +100,113 @@ BitLocker または Azure Disk Encryption を使用して、AD DS データベ�
 
 ## <a name="deploy-the-solution"></a>ソリューションのデプロイ方法
 
-この参照用アーキテクチャをデプロイするためのソリューションは、[GitHub][github] で入手できます。 このソリューションをデプロイする Powershell スクリプトを実行するには、最新バージョンの [Azure CLI][azure-powershell] が必要です。 参照アーキテクチャをデプロイするには、次の手順を実行します。
+このアーキテクチャのデプロイについては、[GitHub][github] を参照してください。 デプロイ全体を完了するには最大 2 時間かかる場合があることに注意してください。これには、VPN ゲートウェイの作成、AD DS を構成するスクリプトの実行などの処理が含まれます。
 
-1. [GitHub][github] からローカル マシンにソリューション フォルダーをダウンロードまたは複製します。
+### <a name="prerequisites"></a>前提条件
 
-2. Azure CLI を開き、ローカルのソリューション フォルダーに移動します。
+1. [参照アーキテクチャ] [ref-arch-repo] GitHub リポジトリに zip ファイルを複製、フォーク、またはダウンロードします。
 
-3. 次のコマンドを実行します。
-    ```Powershell
-    .\Deploy-ReferenceArchitecture.ps1 <subscription id> <location> <mode>
+2. [Azure CLI 2.0][azure-cli-2] をインストールします。
+
+3. [Azure の構成要素][azbb] npm パッケージをインストールします。
+
+4. コマンド プロンプト、bash プロンプト、または PowerShell プロンプトから、以下のコマンドを使用して Azure アカウントにログインします。
+
+   ```bash
+   az login
+   ```
+
+### <a name="deploy-the-simulated-on-premises-datacenter"></a>シミュレートされたオンプレミスのデータセンターをデプロイする
+
+1. 参照アーキテクチャ リポジトリの `identity/adds-extend-domain` フォルダーに移動します。
+
+2. `onprem.json` ファイルを開きます。 `adminPassword` を検索し、パスワードの値を追加します。 ファイル内には 3 つのインスタンスがあります。
+
+    ```bash
+    "adminUsername": "testuser",
+    "adminPassword": "<password>",
     ```
-    `<subscription id>` は、Azure サブスクリプション ID に置き換えてください。
-    `<location>` には、Azure リージョン (`eastus` や `westus` など) を指定します。
-    `<mode>` パラメーターは、デプロイの細分性を制御します。このパラメーターの値は次のいずれかになります。
-    * `Onpremise`: シミュレートされたオンプレミスの環境をデプロイします。
-    * `Infrastructure`: Azure に VNet インフラストラクチャとジャンプ ボックスをデプロイします。
-    * `CreateVpn`: Azure 仮想ネットワーク ゲートウェイをデプロイして、シミュレートされたオンプレミス ネットワークに接続します。
-    * `AzureADDS`: Azure で AD DS サーバーとして機能する VM をデプロイし、Active Directory をそれらの VM にデプロイして、ドメインをデプロイします。
-    * `Workload`: パブリック DMZ とプライベート DMZ およびワークロードの階層をデプロイします。
-    * `All`: 上記のすべてをデプロイします。 **これは、既存のオンプレミス ネットワークがない状況で、テストまたは評価用に前述の完全な参照アーキテクチャをデプロイする場合に推奨されるオプションです。**
 
-4. デプロイが完了するまで待ちます。 `All` のデプロイを指定した場合は、数時間かかります。
+3. 同じファイルで、`protectedSettings` を検索し、パスワードの値を追加します。 `protectedSettings` インスタンスは 2 つあります (各 AD サーバーに 1 つずつ)。
+
+    ```bash
+    "protectedSettings": {
+      "configurationArguments": {
+        ...
+        "AdminCreds": {
+          "UserName": "testadminuser",
+          "Password": "<password>"
+        },
+        "SafeModeAdminCreds": {
+          "UserName": "testsafeadminuser",
+          "Password": "<password>"
+        }
+      }
+    }
+    ```
+
+4. 次のコマンドを実行し、デプロイが完了するまで待ちます。
+
+    ```bash
+    azbb -s <subscription_id> -g <resource group> -l <location> -p onprem.json --deploy
+    ```
+
+### <a name="deploy-the-azure-vnet"></a>Azure VNet をデプロイする
+
+1. `azure.json` ファイルを開きます。  `adminPassword` を検索し、パスワードの値を追加します。 ファイル内には 3 つのインスタンスがあります。
+
+    ```bash
+    "adminUsername": "testuser",
+    "adminPassword": "<password>",
+    ```
+
+2. 同じファイルで、`protectedSettings` を検索し、パスワードの値を追加します。 `protectedSettings` インスタンスは 2 つあります (各 AD サーバーに 1 つずつ)。
+
+    ```bash
+    "protectedSettings": {
+      "configurationArguments": {
+        ...
+        "AdminCreds": {
+          "UserName": "testadminuser",
+          "Password": "<password>"
+        },
+        "SafeModeAdminCreds": {
+          "UserName": "testsafeadminuser",
+          "Password": "<password>"
+        }
+      }
+    }
+    ```
+
+3. `sharedKey` については、VPN 接続の共有キーを入力します。 パラメーター ファイル内には、`sharedKey` のインスタンスが 2 つあります。
+
+    ```bash
+    "sharedKey": "",
+    ```
+
+4. 次のコマンドを実行し、デプロイが完了するまで待ちます。
+
+    ```bash
+    azbb -s <subscription_id> -g <resource group> -l <location> -p onoprem.json --deploy
+    ```
+
+   オンプレミスの VNet と同じリソース グループにデプロイします。
+
+### <a name="test-connectivity-with-the-azure-vnet"></a>Azure VNet との接続をテストする
+
+デプロイが完了したら、シミュレートされたオンプレミスの環境から Azure VNet への接続をテストできます。
+
+1. Azure Portal を使用して、`ra-onpremise-mgmt-vm1` という名前の VM を見つけます。
+
+2. `Connect` をクリックして、VM に対するリモート デスクトップ セッションを開きます。 ユーザー名は `contoso\testuser` で、パスワードは、`onprem.json` パラメーター ファイルで指定したものを使用します。
+
+3. リモート デスクトップ セッション内から、10.0.4.4 への別のリモート デスクトップ セッションを開きます。これは、`adds-vm1` という名前の VM の IP アドレスです。 ユーザー名は `contoso\testuser` で、パスワードは、`azure.json` パラメーター ファイルで指定したものを使用します。
+
+4. `adds-vm1` のリモート デスクトップ セッション内から、**サーバー マネージャー**に移動し、**[Add other servers to manage]\(管理する他のサーバーを追加する\)** に移動します。 
+
+5. **[Active Directory]** タブで、**[今すぐ検索]** をクリックします。 AD、AD DS、および Web VM の一覧が表示されます。
+
+   ![](./images/add-servers-dialog.png)
 
 ## <a name="next-steps"></a>次の手順
 
@@ -131,27 +214,27 @@ BitLocker または Azure Disk Encryption を使用して、AD DS データベ�
 * Azure で [Active Directory フェデレーション サービス (AD FS) インフラストラクチャを作成する][adfs]ためのベスト プラクティスを学習します。
 
 <!-- links -->
+
 [adds-resource-forest]: adds-forest.md
 [adfs]: adfs.md
-
+[azure-cli-2]: /azure/install-azure-cli
+[azbb]: https://github.com/mspnp/template-building-blocks/wiki/Install-Azure-Building-Blocks
 [implementing-a-secure-hybrid-network-architecture]: ../dmz/secure-vnet-hybrid.md
 [implementing-a-secure-hybrid-network-architecture-with-internet-access]: ../dmz/secure-vnet-dmz.md
 
-[active-directory-domain-services]: https://technet.microsoft.com/library/dd448614.aspx
 [adds-data-disks]: https://msdn.microsoft.com/library/azure/jj156090.aspx#BKMK_PlaceDB
 [ad-ds-operations-masters]: https://technet.microsoft.com/library/cc779716(v=ws.10).aspx
 [ad-ds-ports]: https://technet.microsoft.com/library/dd772723(v=ws.11).aspx
 [availability-set]: /azure/virtual-machines/virtual-machines-windows-create-availability-set
-[azure-expressroute]: https://azure.microsoft.com/documentation/articles/expressroute-introduction/
-[azure-powershell]: /powershell/azureps-cmdlets-docs
-[azure-vpn-gateway]: https://azure.microsoft.com/documentation/articles/vpn-gateway-about-vpngateways/
+[azure-expressroute]: /azure/expressroute/expressroute-introduction
+[azure-vpn-gateway]: /azure/vpn-gateway/vpn-gateway-about-vpngateways
 [capacity-planning-for-adds]: http://social.technet.microsoft.com/wiki/contents/articles/14355.capacity-planning-for-active-directory-domain-services.aspx
 [considerations]: ./considerations.md
 [GitHub]: https://github.com/mspnp/reference-architectures/tree/master/identity/adds-extend-domain
 [microsoft_systems_center]: https://www.microsoft.com/server-cloud/products/system-center-2016/
 [monitoring_ad]: https://msdn.microsoft.com/library/bb727046.aspx
 [security-considerations]: #security-considerations
-[set-a-static-ip-address]: https://azure.microsoft.com/documentation/articles/virtual-networks-static-private-ip-arm-pportal/
+[set-a-static-ip-address]: /azure/virtual-network/virtual-networks-static-private-ip-arm-pportal
 [standby-operations-masters]: https://technet.microsoft.com/library/cc794737(v=ws.10).aspx
 [visio-download]: https://archcenter.blob.core.windows.net/cdn/identity-architectures.vsdx
 [vm-windows-sizes]: /azure/virtual-machines/virtual-machines-windows-sizes

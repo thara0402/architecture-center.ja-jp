@@ -3,11 +3,11 @@ title: Azure Cloud Services アプリケーションを Azure Service Fabric に
 description: Azure Cloud Services アプリケーションを Azure Service Fabric に移行する方法。
 author: MikeWasson
 ms.date: 04/27/2017
-ms.openlocfilehash: ce9c138a6b093fb7f0329c619c75bd4f4aacc2e7
-ms.sourcegitcommit: 3d9ee03e2dda23753661a80c7106d1789f5223bb
+ms.openlocfilehash: b9ecbc88ae74da99a0ff3bb8814a9cb3422f79d5
+ms.sourcegitcommit: f665226cec96ec818ca06ac6c2d83edb23c9f29c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="migrate-an-azure-cloud-services-application-to-azure-service-fabric"></a>Azure Cloud Services アプリケーションを Azure Service Fabric に移行する 
 
@@ -141,9 +141,9 @@ Service Fabric 内では、サービスは Service Fabric ランタイムによ�
 
 - Web ロールを、自己ホストが可能な ASP.NET Core に移植する。
 - Web サイトを、ASP.NET Web API を使用して実装された Web API を呼び出す単一ページ アプリケーション (SPA) に変換する。 このためには、Web フロント エンドの完全な再設計が必要でした。
-- ASP.NET MVC の既存のコードを保持し、Windows Server コンテナー内の IIS を Service Fabric にデプロイする。 このアプローチでは、コード変更の必要がほとんどないかまったくありません。 ただし、Service Fabric での[コンテナー サポート][sf-containers]は、現在まだプレビュー中です。
+- ASP.NET MVC の既存のコードを保持し、Windows Server コンテナー内の IIS を Service Fabric にデプロイする。 このアプローチでは、コード変更の必要がほとんどないかまったくありません。 
 
-これらの考慮事項に基づいて、ASP.NET Core に移植するという最初のオプションを選択しました。 これを行うために、「[Migrating From ASP.NET MVC to ASP.NET Core MVC (ASP.NET MVC から ASP.NET Core MVC への移行)][aspnet-migration]」に記載されているステップに従いました。 
+ASP.NET Core に移植するという最初のオプションを使用すると、ASP.NET Core の最新機能を利用できます。 この変換を行うために、[ASP.NET MVC から ASP.NET Core MVC への移行][aspnet-migration]に関するページに記載されている手順に従いました。 
 
 > [!NOTE]
 > Kestrel と共に ASP.NET Core を使用する場合は、セキュリティ上の理由から、Kestrel の前にリバース プロキシを配置し、インターネットからのトラフィックを処理する必要があります。 詳細については、「[Kestrel web server implementation in ASP.NET Core (ASP.NET Core での Kestrel Web サーバーの実装)][kestrel]」を参照してください。 「[アプリケーションのデプロイ](#deploying-the-application)」のセクションでは、推奨される Azure のデプロイについて説明します。

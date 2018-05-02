@@ -2,11 +2,12 @@
 title: Azure コンピューティング オプションの概要
 description: Azure コンピューティング オプションの概要
 author: MikeWasson
-ms.openlocfilehash: a23dd49f24bc52db6f357540e3ebccb19e0497ee
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.date: 04/21/2018
+ms.openlocfilehash: 6781e1f1f6e239e3853920cb544092538cccfc62
+ms.sourcegitcommit: d702b4d27e96e7a5a248dc4f2f0e25cf6e82c134
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="overview-of-azure-compute-options"></a>Azure コンピューティング オプションの概要
 
@@ -42,4 +43,6 @@ Azure で現在使用できる主なコンピューティング オプション�
 - 各サービスの全体的な制限事項。 
 - このサービスに適したアプリケーション アーキテクチャの種類。 
 
-Azure のコンピューティング オプション比較の詳細については、「[Criteria for choosing an Azure compute option (Azure コンピューティング オプションを選択するための条件)](./compute-comparison.md)」を参照してください。
+[Azure コンピューティング サービスのデシジョン ツリー](./compute-decision-tree.md)は、お使いのアプリケーションのコンピューティング サービスを選択するうえで役に立ちます
+
+Azure のコンピューティング オプション比較の詳細については、[Azure コンピューティング サービスを選択するための条件](./compute-comparison.md)に関するページをご覧ください。

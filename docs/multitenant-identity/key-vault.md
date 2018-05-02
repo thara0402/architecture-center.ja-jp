@@ -5,11 +5,11 @@ author: MikeWasson
 ms:date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications
 pnp.series.prev: client-assertion
-ms.openlocfilehash: 45d1564c255f2450f68c5e92ebe0d7de0c40ae31
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: d49129a38d0413f6006095f03b817885e1ce6c92
+ms.sourcegitcommit: f665226cec96ec818ca06ac6c2d83edb23c9f29c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-azure-key-vault-to-protect-application-secrets"></a>Azure Key Vault を使用したアプリケーション シークレットの保護
 
@@ -81,13 +81,13 @@ Surveys アプリケーションが登録されている Azure AD テナント�
 
 このユーザーを、サブスクリプションの所有者として割り当てます。
 
-1. ハブ メニューで、**[サブスクリプション]**を選択します。
+1. ハブ メニューで、**[サブスクリプション]** を選択します。
 
     ![](./images/running-the-app/subscriptions.png)
 
 2. この管理者がアクセスするサブスクリプションを選択します。
 3. サブスクリプション ブレードで、**[アクセス制御 (IAM)]** を選択します。
-4. **[追加]**をクリックします。
+4. **[追加]** をクリックします。
 4. **[ロール]** で、**[所有者]** を選択します。
 5. 所有者として追加するユーザーの電子メール アドレスを入力します。
 6. ユーザーを選択して **[保存]** をクリックします。
@@ -167,7 +167,7 @@ Surveys アプリケーションが登録されている Azure AD テナント�
     ```
     .\Setup-KeyVault.ps1 -KeyVaultName <<key vault name> -KeyName Redis--Configuration -KeyValue "<<Redis DNS name>>.redis.cache.windows.net,password=<<Redis access key>>,ssl=true" 
     ```
-    ここで、
+    各値の説明:
    
    * key vault name = 前の手順で Key Vault に指定した名前。
    * Redis DNS name = Redis Cache インスタンスの DNS 名。
@@ -218,7 +218,7 @@ Surveys アプリケーションが登録されている Azure AD テナント�
     この変更により、[クライアント アサーション][client-assertion]を使用する Web アプリが OAuth アクセス トークンを取得できるようになります。 クライアント アサーションを使用すると、OAuth クライアント シークレットは不要になります。 代わりに、Key Vault にクライアント シークレットを格納することができます。 ただし、Key Vault とクライアント アサーションの両方がクライアント証明書を使用するため、Key Vault を有効にする場合は、クライアント アサーションも有効にすることをお勧めします。
 
 ### <a name="update-the-user-secrets"></a>ユーザー シークレットを更新する
-ソリューション エクスプローラーで Tailspin.Surveys.Web プロジェクトを右クリックし、 **[ユーザー シークレットの管理]**を選択します。 secrets.json ファイルで、既存の JSON を削除し、次のコードを貼り付けます。
+ソリューション エクスプローラーで Tailspin.Surveys.Web プロジェクトを右クリックし、 **[ユーザー シークレットの管理]** を選択します。 secrets.json ファイルで、既存の JSON を削除し、次のコードを貼り付けます。
 
     ```
     {
@@ -255,7 +255,7 @@ Surveys アプリケーションが登録されている Azure AD テナント�
 
 更新した secrets.json ファイルを保存します。
 
-次に、ソリューション エクスプローラーで、Tailspin.Surveys.WebApi プロジェクトを右クリックし、 **[ユーザー シークレットの管理]**を選択します。 既存の JSON を削除し、次のコードを貼り付けます。
+次に、ソリューション エクスプローラーで、Tailspin.Surveys.WebApi プロジェクトを右クリックし、 **[ユーザー シークレットの管理]** を選択します。 既存の JSON を削除し、次のコードを貼り付けます。
 
 ```
 {

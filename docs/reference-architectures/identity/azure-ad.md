@@ -7,11 +7,11 @@ ms.date: 11/28/2016
 pnp.series.next: adds-extend-domain
 pnp.series.prev: ./index
 cardTitle: Integrate on-premises AD with Azure AD
-ms.openlocfilehash: 431de4b2e08c79f70cc9830fda8315e07bf22c64
-ms.sourcegitcommit: c441fd165e6bebbbbbc19854ec6f3676be9c3b25
+ms.openlocfilehash: 9475d669b2cb8888a7ceabed7e36317fe63681fd
+ms.sourcegitcommit: d702b4d27e96e7a5a248dc4f2f0e25cf6e82c134
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="integrate-on-premises-active-directory-domains-with-azure-active-directory"></a>オンプレミスの Active Directory ドメインと Azure Active Directory を統合する
 
@@ -119,9 +119,9 @@ Azure Portal で Azure AD のレポート機能を使って、システムで発
 
 ### <a name="user-authentication"></a>ユーザー認証
 
-既定では、Azure AD Connect 同期サーバーはオンプレミスのドメインと Azure AD の間にパスワード同期を構成し、Azure AD サービスは、ユーザーがオンプレミスで使っているものと同じパスワードで認証を行うものと想定されています。 多くの組織にはこの方法が適していますが、組織の既存のポリシーとインフラストラクチャを考慮する必要があります。 例: 
+既定では、Azure AD Connect 同期サーバーはオンプレミスのドメインと Azure AD の間にパスワード ハッシュ同期を構成し、Azure AD サービスは、ユーザーがオンプレミスで使っているものと同じパスワードで認証を行うものと想定されています。 多くの組織にはこの方法が適していますが、組織の既存のポリシーとインフラストラクチャを考慮する必要があります。 例: 
 
-* 組織のセキュリティ ポリシーで、クラウドへのパスワード ハッシュの同期が禁止されている可能性があります。
+* 組織のセキュリティ ポリシーで、クラウドへのパスワード ハッシュの同期が禁止されている可能性があります。 この場合は、お客様の組織が[パススルー認証](/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication)を検討する必要があります。
 * ユーザーが、企業ネットワーク上のドメイン参加マシンからクラウドのリソースに、シームレスなシングル サインオン (SSO) でアクセスできるようにすることが必要な場合があります。
 * 組織によっては、Active Directory フェデレーション サービス (AD FS) またはサード パーティのフェデレーション プロバイダーが既にデプロイされている場合があります。 クラウドに保持されているパスワード情報ではなく、このインフラストラクチャを使って認証と SSO を実装するように、Azure AD を構成できます。
 
