@@ -3,11 +3,11 @@ title: Azure で Jenkins サーバーを実行する
 description: このリファレンス アーキテクチャでは、シングル サインオン (SSO) で保護されたスケーラブルなエンタープライズ レベルの Jenkins サーバーを Azure にデプロイして運用する方法を示します。
 author: njray
 ms.date: 01/21/18
-ms.openlocfilehash: c07a341bbe4d0304087e4535408967c45d36199e
-ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
+ms.openlocfilehash: 5f9c54e71a8750e88de1ae633ccc1316f8375d3a
+ms.sourcegitcommit: 0de300b6570e9990e5c25efc060946cb9d079954
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="run-a-jenkins-server-on-azure"></a>Azure で Jenkins サーバーを実行する
 
@@ -58,7 +58,7 @@ ms.lasthandoff: 04/06/2018
 
 Azure サブスクリプションの [Azure AD][azure-ad] テナントを使用して、Jenkins ユーザーの SSO を有効にし、Jenkins ジョブが Azure リソースにアクセスできるようにするための[サービス プリンシパル][service-principal]を設定します。
 
-SSO の認証と承認は、Jenkins サーバーにインストールされた Azure AD プラグインによって実装されます。 SSO では、Jenkins サーバーにログオンするときに、Azure AD の組織の資格情報を使用して認証できます。 Azure AD プラグインを構成するときに、Jenkin サーバーへのユーザーの承認済みアクセスのレベルを指定できます。
+SSO の認証と承認は、Jenkins サーバーにインストールされた Azure AD プラグインによって実装されます。 SSO では、Jenkins サーバーにログオンするときに、Azure AD の組織の資格情報を使用して認証できます。 Azure AD プラグインを構成するときに、Jenkins サーバーへのユーザーの承認済みアクセスのレベルを指定できます。
 
 Jenkins ジョブが Azure リソースにアクセスできるようにするには、Azure AD 管理者がサービス プリンシパルを作成します。 これらにより、Azure リソースへの[認証、承認されたアクセス][ad-sp]がアプリケーション (ここでは Jenkins ジョブ) に付与されます。
 
@@ -74,7 +74,7 @@ Azure 上の Jenkins 用ソリューション テンプレートでは、複数�
 
 -   [Azure AD プラグイン][configure-azure-ad]: Jenkins サーバーが Azure AD に基づいてユーザーの SSO をサポートできるようにします。
 
--   [Azure VM Agents プラグイン][configure-agent]: Azure Resource Manager (ARM) テンプレートを使用して、Azure 仮想マシンに Jenkins エージェントを作成します。
+-   [Azure VM Agents プラグイン][configure-agent]: Azure Resource Manager テンプレートを使用して、Azure 仮想マシンに Jenkins エージェントを作成します。
 
 -   [Azure Credentials プラグイン][configure-credential]: Azure サービス プリンシパルの資格情報を Jenkins に保存できるようにします。
 
@@ -113,13 +113,13 @@ Jenkins サーバー VM をスケールアップまたはスケールダウン�
 
 ## <a name="availability-considerations"></a>可用性に関する考慮事項
 
-ワークフローの可用性の要件と、Jenkins サーバーがダウンした場合に Jenkins の状態を回復する方法を評価します。 可用性の要件を評価するには、次の 2 つの一般的なメトリックを検討します。
+Jenkins サーバーのコンテキストにおける可用性とは、ワークフローに関連付けられているすべての状態情報 (テスト結果など)、作成したライブラリ、または他の成果物を復旧できることを意味します。 Jenkins サーバーがダウンしたときにワークフローを復旧できるように、重要なワークフローの状態または成果物を保持しておく必要があります。 可用性の要件を評価するには、次の 2 つの一般的なメトリックを検討します。
 
 -   目標復旧時間 (RTO) は、Jenkins なしで継続できる時間を示します。
 
 -   目標復旧時点 (RPO) は、サービスの中断が Jenkins に影響を及ぼす場合に、失われても差し支えないデータの量を示します。
 
-実際には、RTO と RPO は冗長性とバックアップを意味します。 可用性は、Azure の一部であるハードウェアの復旧の問題ではなく、Jenkins サーバーの状態を確実に維持することを表します。 このリファレンス アーキテクチャでは、1 つの仮想マシンについて 99.9% のアップタイムを保証する、[Azure サービス レベル アグリーメント][sla] (SLA) を使用します。 この SLA がアップタイムの要件を満たしていない場合は、ディザスター リカバリーを計画するか、[マルチマスター Jenkins サーバー][multi-master] デプロイ (このドキュメントでは取り上げていません) の使用を検討してください。
+実際には、RTO と RPO は冗長性とバックアップを意味します。 可用性は、Azure の一部であるハードウェアの復旧の問題ではなく、Jenkins サーバーの状態を確実に維持することを表します。 Microsoft は 1 つの VM インスタンスに対して[サービス レベル アグリーメント][sla] (SLA) を提供します。 この SLA がアップタイムの要件を満たしていない場合は、ディザスター リカバリーを計画するか、[マルチマスター Jenkins サーバー][multi-master] デプロイ (このドキュメントでは取り上げていません) の使用を検討してください。
 
 デプロイの手順 7 のディザスター リカバリー [スクリプト][disaster]を使用して、Jenkins サーバーの状態を保存する管理ディスクを使用する Azure ストレージ アカウントを作成することを検討します。 Jenkins がダウンした場合、この別のストレージ アカウントに保存されている状態に復元できます。
 
@@ -127,7 +127,7 @@ Jenkins サーバー VM をスケールアップまたはスケールダウン�
 
 基本的な Jenkins サーバーは基本的な状態では安全でないため、次の方法を使用してサーバーのセキュリティを強化します。
 
--   Jenkins サーバーへのログオンをセキュリティで保護する方法を設定します。 HTTP は安全ではありませんが、既定では、このアーキテクチャは HTTP とパブリック IP を使用します。 セキュリティで保護されたログオンに使用する [Nginx サーバーで HTTPS][nginx] を設定することを検討してください。
+-   Jenkins サーバーにログインするための安全な方法を設定します。 このアーキテクチャは HTTP とパブリック IP を使用しますが、HTTP は、既定では安全ではありません。 セキュリティで保護されたログオンに使用する [Nginx サーバーで HTTPS][nginx] を設定することを検討してください。
 
     > [!NOTE]
     > サーバーに SSL を追加するときは、Jenkins サブネットの NSG ルールを作成してポート 443 を開きます。 詳細については、「[Azure Portal を使用して仮想マシンへのポートを開く方法][port443]」をご覧ください。
