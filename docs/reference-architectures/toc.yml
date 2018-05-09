@@ -44,6 +44,19 @@
           href: identity/adds-forest.md
         - name: AD FS を Azure に拡張する
           href: identity/adfs.md
+    - name: n 層アプリケーション
+      href: n-tier/index.md
+      items:
+        - name: SQL Server を使用した n 層アプリケーション
+          href: n-tier/n-tier-sql-server.md
+        - name: マルチリージョン n 層アプリケーション
+          href: n-tier/multi-region-sql-server.md
+        - name: Cassandra を使用した n 層アプリケーション
+          href: n-tier/n-tier-cassandra.md
+        - name: Linux VM のデプロイ
+          href: n-tier/linux-vm.md
+        - name: Windows VM のデプロイ
+          href: n-tier/windows-vm.md
     - name: ネットワーク DMZ
       href: dmz/index.md
       items:
@@ -53,28 +66,6 @@
           href: dmz/secure-vnet-dmz.md
         - name: 高可用性ネットワーク仮想アプライアンス
           href: dmz/nva-ha.md
-    - name: VM ワークロード (Linux)
-      href: virtual-machines-linux/index.md
-      items:
-        - name: 単一の VM
-          href: virtual-machines-linux/single-vm.md
-        - name: 負荷分散された VM
-          href: virtual-machines-linux/multi-vm.md
-        - name: n 層アプリケーション
-          href: virtual-machines-linux/n-tier.md
-        - name: 複数地域のアプリケーション
-          href: virtual-machines-linux/multi-region-application.md
-    - name: VM ワークロード (Windows)
-      href: virtual-machines-windows/index.md
-      items:
-        - name: 単一の VM
-          href: virtual-machines-windows/single-vm.md
-        - name: 負荷分散された VM
-          href: virtual-machines-windows/multi-vm.md
-        - name: n 層アプリケーション
-          href: virtual-machines-windows/n-tier.md
-        - name: 複数地域のアプリケーション
-          href: virtual-machines-windows/multi-region-application.md
     - name: Jenkins サーバー
       href: jenkins/index.md
     - name: SAP NetWeaver および SAP HANA
