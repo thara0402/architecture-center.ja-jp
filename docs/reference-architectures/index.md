@@ -3,11 +3,11 @@ title: Azure の参照アーキテクチャ
 description: Azure での一般的なワークロードに対応する、参照アーキテクチャ、計画、および規範的実装ガイダンス。
 layout: LandingPage
 ms.topic: landing-page
-ms.openlocfilehash: 9708c975e543a04cafe22f38194e833be44d7b81
-ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
+ms.openlocfilehash: 4c0006404ed0c0f603e9599cd9c04e6d02fdbfeb
+ms.sourcegitcommit: a5e549c15a948f6fb5cec786dbddc8578af3be66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/06/2018
 ---
 <!-- This file is generated! -->
 <!-- See the templates in ./build/reference-architectures  -->
@@ -19,47 +19,30 @@ ms.lasthandoff: 04/06/2018
 
 <section class="series">
     <ul class="panelContent">
-    <!-- Windows VM workloads -->
+
+<!-- N-tier -->
 <li style="display: flex; flex-direction: column;">
-    <a href="./virtual-machines-windows/index.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+    <a href="./n-tier/index.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
         <div class="cardSize" style="flex: 1 0 auto; display: flex;">
             <div class="cardPadding" style="display: flex;">
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="./virtual-machines-windows/images/n-tier.svg" height="140px" />
+                            <img src="./n-tier/images/n-tier-sql-server.svg" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Windows VM ワークロード</h3>
-                        <p>このシリーズでは、1 つの Windows VM を実行するためのベスト プラクティスから始まり、負荷分散された複数の VM、最後には複数地域の n 層アプリケーションへと続きます。</p>
+                        <h3>n 層アプリケーション</h3>
+                        <p>Windows または Linux 用の n 層アプリケーションを Azure にデプロイします。</p>
+                        <p>SQL Server と Apache Cassandra で構成が説明されています。 高可用性を実現するために、アクティブ/パッシブ構成を 2 つのリージョンにデプロイします。</p>
                     </div>
                 </div>
             </div>
         </div>
     </a>
 </li>
-    <!-- Linux VM workloads -->
-<li style="display: flex; flex-direction: column;">
-    <a href="./virtual-machines-linux/index.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
-        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
-            <div class="cardPadding" style="display: flex;">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="./virtual-machines-linux/images/n-tier.svg" height="140px" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>Linux VM ワークロード</h3>
-                        <p>このシリーズでは、1 つの Linux VM を実行するためのベスト プラクティスから始まり、負荷分散された複数の VM、最後には複数地域の n 層アプリケーションへと続きます。</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </a>
-</li>
-    <!-- Hybrid network -->
+
+<!-- Hybrid network -->
 <li style="display: flex; flex-direction: column;">
     <a href="./hybrid-networking/index.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
         <div class="cardSize" style="flex: 1 0 auto; display: flex;">
@@ -73,6 +56,7 @@ ms.lasthandoff: 04/06/2018
                     <div class="cardText">
                         <h3>ハイブリッド ネットワーク</h3>
                         <p>このシリーズでは、オンプレミス ネットワークと Azure の間にネットワーク接続を作成するためのオプションを説明します。</p>
+                        <p>構成には、プライベートの専用接続を実現するサイト間 VPN または Azure ExpressRoute が含まれます。</p>
                     </div>
                 </div>
             </div>
