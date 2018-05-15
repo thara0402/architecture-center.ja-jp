@@ -1,18 +1,18 @@
 ---
-title: ネットワーク DMZ
+title: ネットワーク DMZ の参照用アーキテクチャ
 description: ハイブリッド システムの一部として Azure で実行しているアプリケーションとコンポーネントを不正アクセスから保護するために使用できるさまざまなメソッドを説明して比較します。
 layout: LandingPage
-ms.openlocfilehash: 98df0a25767c7a7282e67381c6465fe3263ce1fa
-ms.sourcegitcommit: 3d9ee03e2dda23753661a80c7106d1789f5223bb
+ms.openlocfilehash: 759418af013aac1f284d582bacc432325361d815
+ms.sourcegitcommit: 7ced70ebc11aa0df0dc0104092d3cc6ad5c28bd6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 05/11/2018
 ---
 <!-- This file is generated! -->
 <!-- See the templates in ./build/reference-architectures  -->
 <!-- See data in index.json -->
 
-# <a name="network-dmz"></a>ネットワーク DMZ
+# <a name="network-dmz-reference-architectures"></a>ネットワーク DMZ の参照用アーキテクチャ
 
 これらの参照用アーキテクチャは、Azure 仮想ネットワークとオンプレミス ネットワークまたはインターネットの間の境界を保護するネットワーク DMZ を作成するための実証済みプラクティスを示します。
 
