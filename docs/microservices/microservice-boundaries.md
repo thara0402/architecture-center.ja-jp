@@ -3,11 +3,11 @@ title: マイクロサービス境界の識別
 description: マイクロサービス境界の識別
 author: MikeWasson
 ms.date: 12/08/2017
-ms.openlocfilehash: e4f11da9f970724c55ad99824f808a10c4558971
-ms.sourcegitcommit: 744ad1381e01bbda6a1a7eff4b25e1a337385553
+ms.openlocfilehash: d35b92ffd97c4fda5d6599340925ce3dfea7f15b
+ms.sourcegitcommit: a5e549c15a948f6fb5cec786dbddc8578af3be66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 05/06/2018
 ---
 # <a name="designing-microservices-identifying-microservice-boundaries"></a>マイクロサービスの設計: マイクロサービス境界の識別
 
@@ -90,7 +90,7 @@ ms.lasthandoff: 01/08/2018
 
 - [Service Fabric](/azure/service-fabric/) は、マイクロサービスのパッケージ化、デプロイ、管理を行うための分散システム プラットフォームです。 マイクロサービスは、コンテナー、バイナリ実行可能ファイル、または [Reliable Services](/azure/service-fabric/service-fabric-reliable-services-introduction) として Service Fabric にデプロイできます。 Reliable Services プログラミング モデルを使うと、サービスは Service Fabric プログラミング API を直接使って、システムのクエリ、正常性のレポート、構成とコードの変更に関する通知の受信、他のサービスの検出を行うことができます。 Service Fabric に関する重要な違いは、Service Fabric では [Reliable Collection](/azure/service-fabric/service-fabric-reliable-services-reliable-collections) を使うステートフル サービスの構築が重視されていることです。
 
-### <a name="containers"></a>コンテナー
+### <a name="containers"></a>Containers
 
 コンテナーとマイクロサービスは同じものであるかのように言われることがあります。 それは正しくありませんが (マイクロサービスを構築するためにコンテナーは必要ありません)、コンテナーの次のような利点はマイクロサービスに特に関連があります。
 

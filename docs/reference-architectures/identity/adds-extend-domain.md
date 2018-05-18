@@ -2,15 +2,15 @@
 title: Active Directory Domain Services (AD DS) を Azure に拡張する
 description: オンプレミスにある Active Directory ドメインを Azure に拡張する
 author: telmosampaio
-ms.date: 04/13/2018
+ms.date: 05/02/2018
 pnp.series.title: Identity management
 pnp.series.prev: azure-ad
 pnp.series.next: adds-forest
-ms.openlocfilehash: bcd1e2b1b925a5d64665c5651c24589a77e39ec9
-ms.sourcegitcommit: f665226cec96ec818ca06ac6c2d83edb23c9f29c
+ms.openlocfilehash: 763fffd321a1b50a562ef462dab59aafae717908
+ms.sourcegitcommit: 0de300b6570e9990e5c25efc060946cb9d079954
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="extend-active-directory-domain-services-ad-ds-to-azure"></a>Active Directory Domain Services (AD DS) を Azure に拡張する
 
@@ -104,7 +104,7 @@ BitLocker または Azure Disk Encryption を使用して、AD DS データベ�
 
 ### <a name="prerequisites"></a>前提条件
 
-1. [参照アーキテクチャ] [ref-arch-repo] GitHub リポジトリに zip ファイルを複製、フォーク、またはダウンロードします。
+1. [参照アーキテクチャ][github] GitHub リポジトリに ZIP ファイルを複製、フォーク、またはダウンロードします。
 
 2. [Azure CLI 2.0][azure-cli-2] をインストールします。
 
@@ -118,34 +118,11 @@ BitLocker または Azure Disk Encryption を使用して、AD DS データベ�
 
 ### <a name="deploy-the-simulated-on-premises-datacenter"></a>シミュレートされたオンプレミスのデータセンターをデプロイする
 
-1. 参照アーキテクチャ リポジトリの `identity/adds-extend-domain` フォルダーに移動します。
+1. GitHub リポジトリの `identity/adds-extend-domain` フォルダーに移動します。
 
-2. `onprem.json` ファイルを開きます。 `adminPassword` を検索し、パスワードの値を追加します。 ファイル内には 3 つのインスタンスがあります。
+2. `onprem.json` ファイルを開きます。 `adminPassword` と `Password` のインスタンスを検索し、パスワードの値を追加します。
 
-    ```bash
-    "adminUsername": "testuser",
-    "adminPassword": "<password>",
-    ```
-
-3. 同じファイルで、`protectedSettings` を検索し、パスワードの値を追加します。 `protectedSettings` インスタンスは 2 つあります (各 AD サーバーに 1 つずつ)。
-
-    ```bash
-    "protectedSettings": {
-      "configurationArguments": {
-        ...
-        "AdminCreds": {
-          "UserName": "testadminuser",
-          "Password": "<password>"
-        },
-        "SafeModeAdminCreds": {
-          "UserName": "testsafeadminuser",
-          "Password": "<password>"
-        }
-      }
-    }
-    ```
-
-4. 次のコマンドを実行し、デプロイが完了するまで待ちます。
+3. 次のコマンドを実行し、デプロイが完了するまで待ちます。
 
     ```bash
     azbb -s <subscription_id> -g <resource group> -l <location> -p onprem.json --deploy
@@ -153,38 +130,15 @@ BitLocker または Azure Disk Encryption を使用して、AD DS データベ�
 
 ### <a name="deploy-the-azure-vnet"></a>Azure VNet をデプロイする
 
-1. `azure.json` ファイルを開きます。  `adminPassword` を検索し、パスワードの値を追加します。 ファイル内には 3 つのインスタンスがあります。
+1. `azure.json` ファイルを開きます。  `adminPassword` と `Password` のインスタンスを検索し、パスワードの値を追加します。 
 
-    ```bash
-    "adminUsername": "testuser",
-    "adminPassword": "<password>",
-    ```
-
-2. 同じファイルで、`protectedSettings` を検索し、パスワードの値を追加します。 `protectedSettings` インスタンスは 2 つあります (各 AD サーバーに 1 つずつ)。
-
-    ```bash
-    "protectedSettings": {
-      "configurationArguments": {
-        ...
-        "AdminCreds": {
-          "UserName": "testadminuser",
-          "Password": "<password>"
-        },
-        "SafeModeAdminCreds": {
-          "UserName": "testsafeadminuser",
-          "Password": "<password>"
-        }
-      }
-    }
-    ```
-
-3. `sharedKey` については、VPN 接続の共有キーを入力します。 パラメーター ファイル内には、`sharedKey` のインスタンスが 2 つあります。
+2. 同じファイルで `sharedKey` のインスタンスを検索し、VPN 接続の共有キーを入力します。 
 
     ```bash
     "sharedKey": "",
     ```
 
-4. 次のコマンドを実行し、デプロイが完了するまで待ちます。
+3. 次のコマンドを実行し、デプロイが完了するまで待ちます。
 
     ```bash
     azbb -s <subscription_id> -g <resource group> -l <location> -p onoprem.json --deploy
@@ -196,15 +150,17 @@ BitLocker または Azure Disk Encryption を使用して、AD DS データベ�
 
 デプロイが完了したら、シミュレートされたオンプレミスの環境から Azure VNet への接続をテストできます。
 
-1. Azure Portal を使用して、`ra-onpremise-mgmt-vm1` という名前の VM を見つけます。
+1. Azure Portal を使用して、作成したリソース グループに移動します。
 
-2. `Connect` をクリックして、VM に対するリモート デスクトップ セッションを開きます。 ユーザー名は `contoso\testuser` で、パスワードは、`onprem.json` パラメーター ファイルで指定したものを使用します。
+2. `ra-onpremise-mgmt-vm1` という名前の VM を見つけます。
 
-3. リモート デスクトップ セッション内から、10.0.4.4 への別のリモート デスクトップ セッションを開きます。これは、`adds-vm1` という名前の VM の IP アドレスです。 ユーザー名は `contoso\testuser` で、パスワードは、`azure.json` パラメーター ファイルで指定したものを使用します。
+3. `Connect` をクリックして、VM に対するリモート デスクトップ セッションを開きます。 ユーザー名は `contoso\testuser` で、パスワードは、`onprem.json` パラメーター ファイルで指定したものを使用します。
 
-4. `adds-vm1` のリモート デスクトップ セッション内から、**サーバー マネージャー**に移動し、**[Add other servers to manage]\(管理する他のサーバーを追加する\)** に移動します。 
+4. リモート デスクトップ セッション内から、10.0.4.4 への別のリモート デスクトップ セッションを開きます。これは、`adds-vm1` という名前の VM の IP アドレスです。 ユーザー名は `contoso\testuser` で、パスワードは、`azure.json` パラメーター ファイルで指定したものを使用します。
 
-5. **[Active Directory]** タブで、**[今すぐ検索]** をクリックします。 AD、AD DS、および Web VM の一覧が表示されます。
+5. `adds-vm1` のリモート デスクトップ セッション内から、**サーバー マネージャー**に移動し、**[Add other servers to manage]\(管理する他のサーバーを追加する\)** に移動します。 
+
+6. **[Active Directory]** タブで、**[今すぐ検索]** をクリックします。 AD、AD DS、および Web VM の一覧が表示されます。
 
    ![](./images/add-servers-dialog.png)
 

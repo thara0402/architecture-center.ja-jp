@@ -5,16 +5,16 @@ description: >-
 
   ガイダンス,vpn gateway,expressroute,ロード バランサー,仮想ネットワーク,active directory
 author: telmosampaio
-ms.date: 11/28/2016
+ms.date: 05/02/2018
 pnp.series.title: Identity management
 pnp.series.prev: adds-extend-domain
 pnp.series.next: adfs
 cardTitle: Create an AD DS forest in Azure
-ms.openlocfilehash: e32a6420821e70c84e77d2c39614f0c45efbb7e2
-ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
+ms.openlocfilehash: 047ecea41ba30ce4cccf17b8c4964a37ae60150f
+ms.sourcegitcommit: 0de300b6570e9990e5c25efc060946cb9d079954
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="create-an-active-directory-domain-services-ad-ds-resource-forest-in-azure"></a>Azure での Active Directory Domain Services (AD DS) リソース フォレストの作成
 
@@ -90,51 +90,71 @@ Active Directory 固有のセキュリティの考慮事項については、[Ac
 
 ## <a name="deploy-the-solution"></a>ソリューションのデプロイ方法
 
-この参照用アーキテクチャをデプロイするためのソリューションは、[GitHub][github] で入手できます。 このソリューションをデプロイする Powershell スクリプトを実行するには、最新バージョンの Azure CLI が必要です。 参照アーキテクチャをデプロイするには、次の手順を実行します。
+このアーキテクチャのデプロイについては、[GitHub][github] を参照してください。 デプロイ全体を完了するには最大 2 時間かかる場合があることに注意してください。これには、VPN ゲートウェイの作成、AD DS を構成するスクリプトの実行などの処理が含まれます。
 
-1. [GitHub][github] からローカル マシンにソリューション フォルダーをダウンロードまたは複製します。
+### <a name="prerequisites"></a>前提条件
 
-2. Azure CLI を開き、ローカルのソリューション フォルダーに移動します。
+1. [参照アーキテクチャ][github] GitHub リポジトリに ZIP ファイルを複製、フォーク、またはダウンロードします。
 
-3. 次のコマンドを実行します。
-   
-    ```Powershell
-    .\Deploy-ReferenceArchitecture.ps1 <subscription id> <location> <mode>
+2. [Azure CLI 2.0][azure-cli-2] をインストールします。
+
+3. [Azure の構成要素][azbb] npm パッケージをインストールします。
+
+4. コマンド プロンプト、bash プロンプト、または PowerShell プロンプトから、以下のコマンドを使用して Azure アカウントにログインします。
+
+   ```bash
+   az login
+   ```
+
+### <a name="deploy-the-simulated-on-premises-datacenter"></a>シミュレートされたオンプレミスのデータセンターをデプロイする
+
+1. GitHub リポジトリの `identity/adds-forest` フォルダーに移動します。
+
+2. `onprem.json` ファイルを開きます。 `adminPassword` と `Password` のインスタンスを検索し、パスワードの値を追加します。
+
+3. 次のコマンドを実行し、デプロイが完了するまで待ちます。
+
+    ```bash
+    azbb -s <subscription_id> -g <resource group> -l <location> -p onprem.json --deploy
     ```
-   
-    `<subscription id>` は、Azure サブスクリプション ID に置き換えてください。
-   
-    `<location>` には、Azure リージョン (`eastus` や `westus` など) を指定します。
-   
-    `<mode>` パラメーターは、デプロイの細分性を制御します。このパラメーターの値は次のいずれかになります。
-   
-   * `Onpremise`: シミュレートされたオンプレミスの環境をデプロイします。
-   * `Infrastructure`: Azure に VNet インフラストラクチャとジャンプ ボックスをデプロイします。
-   * `CreateVpn`: Azure 仮想ネットワーク ゲートウェイをデプロイして、シミュレートされたオンプレミス ネットワークに接続します。
-   * `AzureADDS`: Azure で Active Directory DS サーバーとして機能する VM をデプロイし、Active Directory をそれらの VM にデプロイして、ドメインをデプロイします。
-   * `WebTier`: Web 層の VM とロード バランサーをデプロイします。
-   * `Prepare`: 上記のすべてをデプロイします。 **これは、既存のオンプレミス ネットワークがない状況で、テストまたは評価用に前述の完全な参照アーキテクチャをデプロイする場合に推奨されるオプションです。** 
-   * `Workload`: ビジネスおよびデータ層の VM とロード バランサーをデプロイします。 これらの VM は `Prepare` のデプロイには含まれません。
 
-4. デプロイが完了するまで待ちます。 `Prepare` のデプロイを指定した場合は、数時間かかります。
-     
-5. シミュレートしたオンプレミスの構成を使用している場合は、着信の信頼関係を構成します。
-   
-   1. ジャンプ ボックス (<em>ra-adtrust-security-rg</em> リソース グループの <em>ra-adtrust-mgmt-vm1</em>) に接続します。 パスワード <em>AweS0me@PW</em> を使用して <em>testuser</em> としてログインします。
-   2. ジャンプ ボックスで、<em>contoso.com</em> ドメイン (オンプレミス ドメイン) の最初の VM で RDP セッションを開きます。 この VM の IP アドレスは 192.168.0.4 です。 ユーザー名は <em>contoso\testuser</em>、パスワードは <em>AweS0me@PW</em> です。
-   3. [incoming-trust.ps1][incoming-trust] スクリプトをダウンロードし、実行して *treyresearch.com* ドメインからの着信信頼を作成します。
+### <a name="deploy-the-azure-vnet"></a>Azure VNet をデプロイする
 
-6. 独自のオンプレミス インフラストラクチャを使用している場合:
-   
-   1. [incoming-trust.ps1][incoming-trust] スクリプトをダウンロードします。
-   2. スクリプトを編集し、`$TrustedDomainName` 変数の値を独自のドメイン名で置き換えます。
-   3. スクリプトを実行します。
+1. `azure.json` ファイルを開きます。 `adminPassword` と `Password` のインスタンスを検索し、パスワードの値を追加します。
 
-7. ジャンプ ボックスから、<em>treyresearch.com</em> ドメイン (クラウドのドメイン) の最初の VM に接続します。 この VM の IP アドレスは 10.0.4.4 です。 ユーザー名は <em>treyresearch\testuser</em>、パスワードは <em>AweS0me@PW</em> です。
+2. 同じファイルで `sharedKey` のインスタンスを検索し、VPN 接続の共有キーを入力します。 
 
-8. [outgoing-trust.ps1][outgoing-trust] スクリプトをダウンロードし、実行して *treyresearch.com* ドメインからの着信信頼を作成します。 独自のオンプレミス コンピューターを使用している場合は、まずスクリプトを編集します。 `$TrustedDomainName` 変数を使用するオンプレミス ドメイン名に設定し、`$TrustedDomainDnsIpAddresses` 変数にこのドメインの Active Directory DS サーバーの IP アドレスを指定します。
+    ```bash
+    "sharedKey": "",
+    ```
 
-9. 前の手順が完了するまで数分待ってから、オンプレミスの VM に接続し、「[信頼を検証する][verify-a-trust]」の記事で説明されている手順を実行して *contoso.com* ドメインと *treyresearch.com* ドメイン間の信頼関係が正しく構成されているかどうかを判断します。
+3. 次のコマンドを実行し、デプロイが完了するまで待ちます。
+
+    ```bash
+    azbb -s <subscription_id> -g <resource group> -l <location> -p onoprem.json --deploy
+    ```
+
+   オンプレミスの VNet と同じリソース グループにデプロイします。
+
+
+### <a name="test-the-ad-trust-relation"></a>AD の信頼関係をテストする
+
+1. Azure Portal を使用して、作成したリソース グループに移動します。
+
+2. Azure Portal を使用して、`ra-adt-mgmt-vm1` という名前の VM を見つけます。
+
+2. `Connect` をクリックして、VM に対するリモート デスクトップ セッションを開きます。 ユーザー名は `contoso\testuser` で、パスワードは、`onprem.json` パラメーター ファイルで指定したものを使用します。
+
+3. リモート デスクトップ セッション内から、192.168.0.4 への別のリモート デスクトップ セッションを開きます。これは、`ra-adtrust-onpremise-ad-vm1` という名前の VM の IP アドレスです。 ユーザー名は `contoso\testuser` で、パスワードは、`azure.json` パラメーター ファイルで指定したものを使用します。
+
+4. `ra-adtrust-onpremise-ad-vm1` のリモート デスクトップ セッション内から、**サーバー マネージャー**に移動し、**[ツール]** > **[Active Directory ドメインと信頼関係]** をクリックします。 
+
+5. 左側のウィンドウで contoso.com を右クリックし、**[プロパティ]** を選択します。
+
+6. **[信頼]** タブをクリックします。入力方向の信頼として treyresearch.net が表示されます。
+
+![](./images/ad-forest-trust.png)
+
 
 ## <a name="next-steps"></a>次の手順
 
@@ -144,6 +164,8 @@ Active Directory 固有のセキュリティの考慮事項については、[Ac
 <!-- links -->
 [adds-extend-domain]: adds-extend-domain.md
 [adfs]: adfs.md
+[azure-cli-2]: /azure/install-azure-cli
+[azbb]: https://github.com/mspnp/template-building-blocks/wiki/Install-Azure-Building-Blocks
 
 [implementing-a-secure-hybrid-network-architecture]: ../dmz/secure-vnet-hybrid.md
 [implementing-a-secure-hybrid-network-architecture-with-internet-access]: ../dmz/secure-vnet-dmz.md
