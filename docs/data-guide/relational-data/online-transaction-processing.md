@@ -97,7 +97,7 @@ Azure では、次のすべてのデータ ストアが OLTP とトランザク�
 
 |                              | Azure SQL Database | Azure の仮想マシン内の SQL Server | Azure Database for MySQL | Azure Database for PostgreSQL |
 |------------------------------|--------------------|----------------------------------------|--------------------------|-------------------------------|
-|      マネージド サービス      |        [はい]         |                   いいえ                    |           可能             |              [はい]              |
+|      マネージド サービス      |        はい         |                   いいえ                    |           可能             |              はい              |
 |       実行するプラットフォーム       |        該当なし         |         Windows、Linux、Docker         |           該当なし            |              該当なし              |
 | プログラミング <sup>1</sup> |   T-SQL、.NET、R   |         T-SQL、.NET、R、Python         |  T-SQL、.NET、R、Python  |              SQL              |
 
@@ -108,40 +108,40 @@ Azure では、次のすべてのデータ ストアが OLTP とトランザク�
 | | Azure SQL Database | Azure の仮想マシン内の SQL Server| Azure Database for MySQL | Azure Database for PostgreSQL|
 | --- | --- | --- | --- | --- | --- |
 | データベース インスタンスの最大サイズ | [4 TB](/azure/sql-database/sql-database-resource-limits) | 256 TB | [1 TB](/azure/mysql/concepts-limits) | [1 TB](/azure/postgresql/concepts-limits) |
-| 容量プールをサポート  | [はい] | [はい] | いいえ  | いいえ  |
-| クラスターのスケールアウトをサポート  | いいえ  | [はい] | いいえ  | いいえ  |
-| 動的スケーラビリティ (スケールアップ)  | [はい] | いいえ  | 可能  | [はい] |
+| 容量プールをサポート  | はい | はい | いいえ  | いいえ  |
+| クラスターのスケールアウトをサポート  | いいえ  | はい | いいえ  | いいえ  |
+| 動的スケーラビリティ (スケールアップ)  | はい | いいえ  | 可能  | はい |
 
 ### <a name="analytic-workload-capabilities"></a>分析ワークロード機能
 
 | | Azure SQL Database | Azure の仮想マシン内の SQL Server| Azure Database for MySQL | Azure Database for PostgreSQL|
 | --- | --- | --- | --- | --- | --- | 
-| テンポラル テーブル | [はい] | [はい] | いいえ  | いいえ  |
-| インメモリ (メモリ最適化) テーブル | [はい] | [はい] | いいえ  | いいえ  |
-| 列ストアをサポート | [はい] | [はい] | いいえ  | いいえ  |
-| クエリの適応処理 | [はい] | [はい] | いいえ  | いいえ  |
+| テンポラル テーブル | はい | はい | いいえ  | いいえ  |
+| インメモリ (メモリ最適化) テーブル | はい | はい | いいえ  | いいえ  |
+| 列ストアをサポート | はい | はい | いいえ  | いいえ  |
+| クエリの適応処理 | はい | はい | いいえ  | いいえ  |
 
 ### <a name="availability-capabilities"></a>可用性に関する機能
 
 | | Azure SQL Database | Azure の仮想マシン内の SQL Server| Azure Database for MySQL | Azure Database for PostgreSQL|
 | --- | --- | --- | --- | --- | --- | 
-| 読み取り可能なセカンダリ | [はい] | [はい] | いいえ  | いいえ  | 
-| geography 型のレプリケーション | [はい] | [はい] | いいえ  | いいえ  | 
-| セカンダリへの自動フェールオーバー | [はい] | いいえ  | いいえ  | いいえ |
-| ポイントインタイム リストア | [はい] | はい | はい | [はい] |
+| 読み取り可能なセカンダリ | はい | はい | いいえ  | いいえ  | 
+| geography 型のレプリケーション | はい | はい | いいえ  | いいえ  | 
+| セカンダリへの自動フェールオーバー | はい | いいえ  | いいえ  | いいえ |
+| ポイントインタイム リストア | はい | はい | はい | はい |
 
 ### <a name="security-capabilities"></a>セキュリティ機能
 
 |                                                                                                             | Azure SQL Database | Azure の仮想マシン内の SQL Server | Azure Database for MySQL | Azure Database for PostgreSQL |
 |-------------------------------------------------------------------------------------------------------------|--------------------|----------------------------------------|--------------------------|-------------------------------|
-|                                             行レベルのセキュリティ                                              |        [はい]         |                  はい                   |           はい            |              [はい]              |
-|                                                データ マスク                                                 |        [はい]         |                  [はい]                   |            いいえ             |              いいえ                |
-|                                         透過的なデータ暗号化                                         |        [はい]         |                  はい                   |           はい            |              [はい]              |
-|                                  特定の IP アドレスへのアクセスを制限                                   |        [はい]         |                  はい                   |           はい            |              [はい]              |
-|                                  VNET アクセスのみを許可するようにアクセスを制限                                  |        [はい]         |                  [はい]                   |            いいえ             |              いいえ                |
-|                                    Azure Active Directory 認証                                    |        [はい]         |                  [はい]                   |            いいえ             |              いいえ                |
-|                                       Active Directory 認証                                       |         いいえ          |                  [はい]                   |            いいえ             |              いいえ                |
-|                                         多要素認証                                         |        [はい]         |                  [はい]                   |            いいえ             |              いいえ                |
-| [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) をサポート |        [はい]         |                  はい                   |           [はい]            |              いいえ                |
-|                                                 プライベート IP                                                  |         いいえ          |                  可能                    |           [はい]            |              いいえ                |
+|                                             行レベルのセキュリティ                                              |        はい         |                  はい                   |           はい            |              はい              |
+|                                                データ マスク                                                 |        はい         |                  はい                   |            いいえ             |              いいえ                |
+|                                         透過的なデータ暗号化                                         |        はい         |                  はい                   |           はい            |              はい              |
+|                                  特定の IP アドレスへのアクセスを制限                                   |        はい         |                  はい                   |           はい            |              はい              |
+|                                  VNET アクセスのみを許可するようにアクセスを制限                                  |        はい         |                  はい                   |            いいえ             |              いいえ                |
+|                                    Azure Active Directory 認証                                    |        はい         |                  はい                   |            いいえ             |              いいえ                |
+|                                       Active Directory 認証                                       |         いいえ          |                  はい                   |            いいえ             |              いいえ                |
+|                                         多要素認証                                         |        はい         |                  はい                   |            いいえ             |              いいえ                |
+| [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) をサポート |        はい         |                  はい                   |           はい            |              いいえ                |
+|                                                 プライベート IP                                                  |         いいえ          |                  可能                    |           はい            |              いいえ                |
 
