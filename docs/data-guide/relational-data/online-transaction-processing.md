@@ -110,7 +110,7 @@ Azure では、次のすべてのデータ ストアが OLTP とトランザク�
 | データベース インスタンスの最大サイズ | [4 TB](/azure/sql-database/sql-database-resource-limits) | 256 TB | [1 TB](/azure/mysql/concepts-limits) | [1 TB](/azure/postgresql/concepts-limits) |
 | 容量プールをサポート  | [はい] | [はい] | いいえ  | いいえ  |
 | クラスターのスケールアウトをサポート  | いいえ  | [はい] | いいえ  | いいえ  |
-| 動的スケーラビリティ (スケールアップ)  | [はい] | いいえ  | 可能  | [はい] |
+| 動的スケーラビリティ (スケールアップ)  | [はい] | いいえ  | はい  | [はい] |
 
 ### <a name="analytic-workload-capabilities"></a>分析ワークロード機能
 
