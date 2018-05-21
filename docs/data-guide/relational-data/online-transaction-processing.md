@@ -143,5 +143,6 @@ Azure では、次のすべてのデータ ストアが OLTP とトランザク�
 |                                       Active Directory 認証                                       |         いいえ          |                  [はい]                   |            いいえ             |              いいえ                |
 |                                         多要素認証                                         |        [はい]         |                  [はい]                   |            いいえ             |              いいえ                |
 | [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) をサポート |        [はい]         |                  はい                   |           [はい]            |              いいえ                |
-|                                                 プライベート IP                                                  |         いいえ          |                  可能                    |           [はい]            |              いいえ                |
+|                                                 プライベート IP                                                  |         いいえ          |                  はい                    |           [はい]            |              いいえ                |
+
 
