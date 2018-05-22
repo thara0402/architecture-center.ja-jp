@@ -126,7 +126,7 @@ Azure では、次のすべてのデータ ストアが OLTP とトランザク�
 | | Azure SQL Database | Azure の仮想マシン内の SQL Server| Azure Database for MySQL | Azure Database for PostgreSQL|
 | --- | --- | --- | --- | --- | --- | 
 | 読み取り可能なセカンダリ | [はい] | [はい] | いいえ  | いいえ  | 
-| geography 型のレプリケーション | [はい] | [はい] | いいえ  | いいえ  | 
+| 地理的なレプリケーション | [はい] | [はい] | いいえ  | いいえ  | 
 | セカンダリへの自動フェールオーバー | [はい] | いいえ  | いいえ  | いいえ |
 | ポイントインタイム リストア | [はい] | はい | はい | [はい] |
 
@@ -144,5 +144,4 @@ Azure では、次のすべてのデータ ストアが OLTP とトランザク�
 |                                         多要素認証                                         |        [はい]         |                  [はい]                   |            いいえ             |              いいえ                |
 | [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) をサポート |        [はい]         |                  はい                   |           [はい]            |              いいえ                |
 |                                                 プライベート IP                                                  |         いいえ          |                  はい                    |           [はい]            |              いいえ                |
-
 
