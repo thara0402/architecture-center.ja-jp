@@ -1,4 +1,4 @@
-﻿---
+---
 title: Azure データ アーキテクチャ ガイド
 description: ''
 author: zoinerTejada
