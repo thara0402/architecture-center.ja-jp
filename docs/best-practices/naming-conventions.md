@@ -4,11 +4,11 @@ description: Azure リソースの名前付け規則。 仮想マシン、スト
 author: telmosampaio
 ms.date: 05/18/2017
 pnp.series.title: Best Practices
-ms.openlocfilehash: b4f40c427fc91c6b00d934c9a5dacdca91a55690
-ms.sourcegitcommit: 0de300b6570e9990e5c25efc060946cb9d079954
+ms.openlocfilehash: df536a4b34a29b93edc4e03fa1142e20fe84a6a7
+ms.sourcegitcommit: bb348bd3a8a4e27ef61e8eee74b54b07b65dbf98
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/21/2018
 ---
 # <a name="naming-conventions"></a>名前付け規則
 
@@ -81,11 +81,11 @@ Azure のリソースまたはサービスの種類ごとに、名前付けに�
 |可用性セット |リソース グループ |1 ～ 80 |大文字と小文字は区別されない |英数字、アンダースコア、ハイフン |`<service-short-name>-<context>-as` |`profx-sql-as` |
 |タグ |関連付けられたエンティティ |512 (名前)、256 (値) |大文字と小文字は区別されない |英数字 |`"key" : "value"` |`"department" : "Central IT"` |
 
-### <a name="compute"></a>Compute
+### <a name="compute"></a>コンピューティング
 
 | エンティティ | Scope (スコープ) | Length | 大文字小文字の区別 | 有効な文字 | 推奨パターン | 例 |
 | --- | --- | --- | --- | --- | --- | --- |
-|仮想マシン |リソース グループ |1 ～ 15 (Windows)、1 ～ 64 (Linux) |大文字と小文字は区別されない |英数字、アンダースコア、ハイフン |`<name>-<role>-vm<number>` |`profx-sql-vm1` |
+|仮想マシン |リソース グループ |1 ～ 15 (Windows)、1 ～ 64 (Linux) |大文字と小文字は区別されない |英数字とハイフン |`<name>-<role>-vm<number>` |`profx-sql-vm1` |
 |Function App | グローバル |1 ～ 60 |大文字と小文字は区別されない |英数字とハイフン |`<name>-func` |`calcprofit-func` |
 
 > [!NOTE]
