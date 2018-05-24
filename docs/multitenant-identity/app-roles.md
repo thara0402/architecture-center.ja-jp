@@ -6,11 +6,11 @@ ms:date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications
 pnp.series.prev: signup
 pnp.series.next: authorize
-ms.openlocfilehash: a39c64f003c26f860086701dd988a8bb21fab5bf
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: ec563936e5f00aba79d65844762feeed97ad547d
+ms.sourcegitcommit: bb348bd3a8a4e27ef61e8eee74b54b07b65dbf98
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 05/21/2018
 ---
 # <a name="application-roles"></a>アプリケーション ロール
 
@@ -53,7 +53,7 @@ ms.lasthandoff: 11/14/2017
 ### <a name="implementation"></a>実装
 **ロールを定義します**。 SaaS プロバイダーが、[アプリケーション マニフェスト]でアプリのロールを宣言します。 たとえば、Surveys アプリのマニフェスト エントリは次のとおりです。
 
-```
+```json
 "appRoles": [
   {
     "allowedMemberTypes": [
@@ -123,7 +123,7 @@ if (context.User.HasClaim(ClaimTypes.Role, "Admin")) { ... }
 ### <a name="implementation"></a>実装
 アプリケーション マニフェストで、 `groupMembershipClaims` プロパティを "SecurityGroup" に設定します。 この設定は、AAD からグループ メンバーシップ要求を取得するために必要です。
 
-```
+```json
 {
    // ...
    "groupMembershipClaims": "SecurityGroup",
