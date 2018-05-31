@@ -4,11 +4,12 @@ description: 再試行メカニズムを設定するためのサービス固有�
 author: dragon119
 ms.date: 07/13/2016
 pnp.series.title: Best Practices
-ms.openlocfilehash: d03cc9dd1af92a91bbfab1ebc8c438e6312eeb49
-ms.sourcegitcommit: d08f6ee27e1e8a623aeee32d298e616bc9bb87ff
+ms.openlocfilehash: 65206c5f39a74d228c7eaa0fea0c5b1b0710b22f
+ms.sourcegitcommit: bb348bd3a8a4e27ef61e8eee74b54b07b65dbf98
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/21/2018
+ms.locfileid: "34423019"
 ---
 # <a name="retry-guidance-for-specific-services"></a>特定のサービスの再試行ガイダンス
 
@@ -855,7 +856,7 @@ var stats = await client.GetServiceStatsAsync(null, context);
 
 | **設定** | **既定値** | **意味** |
 | --- | --- | --- |
-| MaximumExecutionTime | 120 秒 | 要求の最大実行時間 (考えられるすべての再試行が含まれます)。 |
+| MaximumExecutionTime | なし | 要求の最大実行時間 (考えられるすべての再試行が含まれます)。 指定しない場合、要求が許可されるのにかかる時間に制限がなくなります。 つまり、要求がハングすることがあります。 |
 | ServerTimeout | なし | 要求のサーバー タイムアウト間隔 (値は秒単位に丸められます)。 指定しない場合、サーバーに対するすべての要求に既定値が使用されます。 通常、この設定を省略してサーバーの既定値が使用されるようにすることが最善のオプションになります。 | 
 | LocationMode | なし | ストレージ アカウントが読み取りアクセス geo 冗長ストレージ (RA-GRS) のレプリケーション オプションを指定して作成されている場合、場所モードを使用して、要求を受け取る場所を示すことができます。 たとえば、**PrimaryThenSecondary** を指定した場合、要求は必ず最初にプライマリの場所に送信されます。 失敗した場合、要求はセカンダリの場所に送信されます。 |
 | RetryPolicy | ExponentialPolicy | 各オプションの詳細については、以下をご覧ください。 |
