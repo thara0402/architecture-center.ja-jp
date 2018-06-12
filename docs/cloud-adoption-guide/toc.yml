@@ -10,6 +10,8 @@
           items:
             - name: '説明: Azure のしくみ'
               href: adoption-intro/azure-explainer.md
+            - name: '説明: クラウド リソース ガバナンスとは'
+              href: adoption-intro/governance-explainer.md
         - name: Azure のデジタル ID について
           items:
             - name: '説明: Azure Active Directory テナントとは'
@@ -62,3 +64,8 @@
                   href: /azure/virtual-machines/linux/quick-create-portal?toc=/azure/architecture/cloud-adoption-guide/toc.json
                 - name: 'ガイダンス: Azure への Linux VM デプロイのベスト プラクティス'
                   href: /azure/architecture/reference-architectures/virtual-machines-linux/single-vm?toc=/azure/architecture/cloud-adoption-guide/toc.json
+    - name: 中級者向けの Azure 導入
+      href: intermediate-stage/overview.md
+      items:
+        - name: ガバナンス設計ガイド
+          href: intermediate-stage/governance-design-guide.md
