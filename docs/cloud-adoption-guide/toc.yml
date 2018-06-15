@@ -17,11 +17,13 @@
             - name: '説明: Azure Active Directory テナントとは'
               href: adoption-intro/tenant-explainer.md
             - name: '方法: Azure Active Directory テナントを取得する'
-              href: /azure/active-directory/develop/active-directory-howto-tenant?toc=/azure/architecture/cloud-adoption-guide/toc.json
+              href: /azure/active-directory/develop/active-directory-howto-tenant
+              maintainContext: true
             - name: 'ガイダンス: Azure AD テナント設計'
               href: adoption-intro/tenant.md
             - name: '方法: ユーザーを Azure AD テナントに追加する'
-              href: /azure/active-directory/add-users-azure-active-directory?toc=/azure/architecture/cloud-adoption-guide/toc.json
+              href: /azure/active-directory/add-users-azure-active-directory
+              maintainContext: true
         - name: Azure サブスクリプションについて
           items:
             - name: '説明: Azure サブスクリプションとは'
@@ -35,35 +37,46 @@
             - name: '説明: Azure リソース グループとは'
               href: adoption-intro/resource-group-explainer.md
             - name: '説明: Azure でのリソース アクセスについて'
-              href: /azure/active-directory/active-directory-understanding-resource-access?toc=/azure/architecture/cloud-adoption-guide/toc.json
+              href: /azure/active-directory/active-directory-understanding-resource-access
+              maintainContext: true
             - name: '方法: ポータルでリソース グループを作成する'
-              href: /azure/azure-resource-manager/resource-group-portal?toc=/azure/architecture/cloud-adoption-guide/toc.json
+              href: /azure/azure-resource-manager/resource-group-portal
+              maintainContext: true
             - name: 'ガイダンス: リソース グループ設計'
               href: adoption-intro/resource-group.md
             - name: 'ガイダンス: Azure リソースの名前付け規則'
-              href: /azure/architecture/best-practices/naming-conventions?toc=/azure/architecture/cloud-adoption-guide/toc.json
+              href: /azure/architecture/best-practices/naming-conventions
+              maintainContext: true
         - name: 基本的なアーキテクチャを Azure にデプロイする
           items:
             - name: サービスとしてのプラットフォーム (PaaS) アーキテクチャ
               items:
                 - name: '方法: 基本的な Web アプリケーションを Azure にデプロイする'
-                  href: /azure/app-service?toc=/azure/architecture/cloud-adoption-guide/toc.json
+                  href: /azure/app-service
+                  maintainContext: true
                 - name: 'ガイダンス: Azure の Web アプリケーションのベスト プラクティス'
-                  href: /azure/architecture/reference-architectures/app-service-web-app/basic-web-app?toc=/azure/architecture/cloud-adoption-guide/toc.json
+                  href: /azure/architecture/reference-architectures/app-service-web-app/basic-web-app
+                  maintainContext: true
             - name: サービスとしてのインフラストラクチャ (IaaS)
               items:
                 - name: '説明: Azure 仮想ネットワークとは'
-                  href: /azure/virtual-network/virtual-networks-overview?toc=/azure/architecture/cloud-adoption-guide/toc.json
+                  href: /azure/virtual-network/virtual-networks-overview
+                  maintainContext: true
                 - name: '方法: 仮想ネットワークを Azure にデプロイする'
-                  href: /azure/virtual-network/virtual-networks-create-vnet-arm-pportal?toc=/azure/architecture/cloud-adoption-guide/toc.json
+                  href: /azure/virtual-network/virtual-networks-create-vnet-arm-pportal
+                  maintainContext: true
                 - name: '方法: 単一の Windows VM IaaS ワークロードを Azure にデプロイする'
-                  href: /azure/virtual-machines/windows/quick-create-portal?toc=/azure/architecture/cloud-adoption-guide/toc.json
+                  href: /azure/virtual-machines/windows/quick-create-portal
+                  maintainContext: true
                 - name: 'ガイダンス: Azure への Windows VM デプロイのベスト プラクティス'
-                  href: /azure/architecture/reference-architectures/virtual-machines-windows/single-vm?toc=/azure/architecture/cloud-adoption-guide/toc.json
+                  href: /azure/architecture/reference-architectures/virtual-machines-windows/single-vm
+                  maintainContext: true
                 - name: '方法: 単一の Linux VM IaaS ワークロードを Azure にデプロイする'
-                  href: /azure/virtual-machines/linux/quick-create-portal?toc=/azure/architecture/cloud-adoption-guide/toc.json
+                  href: /azure/virtual-machines/linux/quick-create-portal
+                  maintainContext: true
                 - name: 'ガイダンス: Azure への Linux VM デプロイのベスト プラクティス'
-                  href: /azure/architecture/reference-architectures/virtual-machines-linux/single-vm?toc=/azure/architecture/cloud-adoption-guide/toc.json
+                  href: /azure/architecture/reference-architectures/virtual-machines-linux/single-vm
+                  maintainContext: true
     - name: 中級者向けの Azure 導入
       href: intermediate-stage/overview.md
       items:
