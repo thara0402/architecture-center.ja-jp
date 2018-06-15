@@ -127,12 +127,16 @@
   items:
     - name: AWS プロフェッショナルのための Azure
       href: aws-professional/index.md
+    - name: Azure でのマイクロサービスの構築
+      href: ./microservices/index.md
     - name: マルチテナント アプリケーションでの ID 管理
       href: multitenant-identity/index.md
-    - name: Cloud Services から Service Fabric に移行する
-      href: service-fabric/migrate-from-cloud-services.md
-    - name: Azure Cloud Services から移行した Azure Service Fabric アプリケーションをリファクタリングする
-      href: service-fabric/refactor-migrated-app.md
+    - name: Cloud Services から Service Fabric への移行
+      items:
+        - name: Service Fabric への Cloud Services アプリケーションの移行
+          href: service-fabric/migrate-from-cloud-services.md
+        - name: Service Fabric アプリケーションのリファクター
+          href: service-fabric/refactor-migrated-app.md
     - name: Azure Resource Manager テンプレート機能の拡張
       href: building-blocks/extending-templates/index.md
 - name: リソース
