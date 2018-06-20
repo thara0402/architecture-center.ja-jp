@@ -2,34 +2,34 @@
 title: Azure アプリケーションの設計原則
 description: Azure アプリケーションの設計原則
 author: MikeWasson
-layout: LandingPage
-ms.openlocfilehash: 57b04839e14804ad97fc9c86e1f9c4fe6e0da472
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 462896098c668c0775464ca498925266cd73c6e1
+ms.sourcegitcommit: 26b04f138a860979aea5d253ba7fecffc654841e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36206806"
 ---
-# <a name="design-principles-for-azure-applications"></a>Azure アプリケーションの設計原則
+# <a name="design-principles-for-azure-applications"></a><span data-ttu-id="8cf77-103">Azure アプリケーションの設計原則</span><span class="sxs-lookup"><span data-stu-id="8cf77-103">Design principles for Azure applications</span></span>
 
-次の設計原則に従って、アプリケーションのスケーラビリティを上げて、回復力や管理しやすさを強化します。 
+<span data-ttu-id="8cf77-104">次の設計原則に従って、アプリケーションのスケーラビリティを上げて、回復力や管理しやすさを強化します。</span><span class="sxs-lookup"><span data-stu-id="8cf77-104">Follow these design principles to make your application more scalable, resilient, and manageable.</span></span> 
 
-**[自動修復機能を設計します](self-healing.md)**。 分散システムでは障害が発生します。 障害の発生に備えてアプリケーションの自動修復機能を設計します。
+<span data-ttu-id="8cf77-105">**[自動修復機能を設計します](self-healing.md)**。</span><span class="sxs-lookup"><span data-stu-id="8cf77-105">**[Design for self healing](self-healing.md)**.</span></span> <span data-ttu-id="8cf77-106">分散システムでは障害が発生します。</span><span class="sxs-lookup"><span data-stu-id="8cf77-106">In a distributed system, failures happen.</span></span> <span data-ttu-id="8cf77-107">障害の発生に備えてアプリケーションの自動修復機能を設計します。</span><span class="sxs-lookup"><span data-stu-id="8cf77-107">Design your application to be self healing when failures occur.</span></span>
 
-**[すべての要素を冗長にします](redundancy.md)**。 単一障害点をなくすようにアプリケーションに冗長性を組み込みます。
+<span data-ttu-id="8cf77-108">**[すべての要素を冗長にします](redundancy.md)**。</span><span class="sxs-lookup"><span data-stu-id="8cf77-108">**[Make all things redundant](redundancy.md)**.</span></span> <span data-ttu-id="8cf77-109">単一障害点をなくすようにアプリケーションに冗長性を組み込みます。</span><span class="sxs-lookup"><span data-stu-id="8cf77-109">Build redundancy into your application, to avoid having single points of failure.</span></span>
  
-**[調整を最小限に抑えます](minimize-coordination.md)**。 アプリケーション サービス間の調整を最小限に抑えてスケーラビリティを実現します。
+<span data-ttu-id="8cf77-110">**[調整を最小限に抑えます](minimize-coordination.md)**。</span><span class="sxs-lookup"><span data-stu-id="8cf77-110">**[Minimize coordination](minimize-coordination.md)**.</span></span> <span data-ttu-id="8cf77-111">アプリケーション サービス間の調整を最小限に抑えてスケーラビリティを実現します。</span><span class="sxs-lookup"><span data-stu-id="8cf77-111">Minimize coordination between application services to achieve scalability.</span></span>
  
-**[スケール アウトするように設計します](scale-out.md)**。需要に応じて新規インスタンスを追加または削除して水平方向に拡張できるようにアプリケーションを設計します。
+<span data-ttu-id="8cf77-112">**[スケール アウトするように設計します](scale-out.md)**。需要に応じて新規インスタンスを追加または削除して水平方向に拡張できるようにアプリケーションを設計します。</span><span class="sxs-lookup"><span data-stu-id="8cf77-112">**[Design to scale out](scale-out.md)**. Design your application so that it can scale horizontally, adding or removing new instances as demand requires.</span></span>
 
-**[制限に対処するようにパーティション化します](partition.md)**。 パーティション分割を使用して、データベース、ネットワーク、コンピューティングの制限に対処します。
+<span data-ttu-id="8cf77-113">**[制限に対処するようにパーティション化します](partition.md)**。</span><span class="sxs-lookup"><span data-stu-id="8cf77-113">**[Partition around limits](partition.md)**.</span></span> <span data-ttu-id="8cf77-114">パーティション分割を使用して、データベース、ネットワーク、コンピューティングの制限に対処します。</span><span class="sxs-lookup"><span data-stu-id="8cf77-114">Use partitioning to work around database, network, and compute limits.</span></span>
 
-**[操作に合わせて設計します](design-for-operations.md)**。 運用チームが必要なツールを得られるようにアプリケーションを設計します。
+<span data-ttu-id="8cf77-115">**[操作に合わせて設計します](design-for-operations.md)**。</span><span class="sxs-lookup"><span data-stu-id="8cf77-115">**[Design for operations](design-for-operations.md)**.</span></span> <span data-ttu-id="8cf77-116">運用チームが必要なツールを得られるようにアプリケーションを設計します。</span><span class="sxs-lookup"><span data-stu-id="8cf77-116">Design your application so that the operations team has the tools they need.</span></span>
 
-**[管理対象サービスを使用します](managed-services.md)**。 可能であればサービスとしてのインフラストラクチャ (IaaS) ではなくサービスとしてのプラットフォーム (PaaS) を使用します。
+<span data-ttu-id="8cf77-117">**[管理対象サービスを使用します](managed-services.md)**。</span><span class="sxs-lookup"><span data-stu-id="8cf77-117">**[Use managed services](managed-services.md)**.</span></span> <span data-ttu-id="8cf77-118">可能であればサービスとしてのインフラストラクチャ (IaaS) ではなくサービスとしてのプラットフォーム (PaaS) を使用します。</span><span class="sxs-lookup"><span data-stu-id="8cf77-118">When possible, use platform as a service (PaaS) rather than infrastructure as a service (IaaS).</span></span>
 
-**[ジョブに最適なデータ ストアを使用します](use-the-best-data-store.md)**。 データに最適なストレージ技術とその使用方法を選択します。 
+<span data-ttu-id="8cf77-119">**[ジョブに最適なデータ ストアを使用します](use-the-best-data-store.md)**。</span><span class="sxs-lookup"><span data-stu-id="8cf77-119">**[Use the best data store for the job](use-the-best-data-store.md)**.</span></span> <span data-ttu-id="8cf77-120">データに最適なストレージ技術とその使用方法を選択します。</span><span class="sxs-lookup"><span data-stu-id="8cf77-120">Pick the storage technology that is the best fit for your data and how it will be used.</span></span> 
  
-**[展開を見込んで設計します](design-for-evolution.md)**。 成功するすべてのアプリケーションは時間の経過と共に変化します。 展開を見込んだ設計は継続的な技術革新のキーです。
+<span data-ttu-id="8cf77-121">**[展開を見込んで設計します](design-for-evolution.md)**。</span><span class="sxs-lookup"><span data-stu-id="8cf77-121">**[Design for evolution](design-for-evolution.md)**.</span></span> <span data-ttu-id="8cf77-122">成功するすべてのアプリケーションは時間の経過と共に変化します。</span><span class="sxs-lookup"><span data-stu-id="8cf77-122">All successful applications change over time.</span></span> <span data-ttu-id="8cf77-123">展開を見込んだ設計は継続的な技術革新のキーです。</span><span class="sxs-lookup"><span data-stu-id="8cf77-123">An evolutionary design is key for continuous innovation.</span></span>
 
-**[ビジネスのニーズに合わせて構築します](build-for-business.md)**。 設計の決定はすべてビジネス要件によって正当化される必要があります。
+<span data-ttu-id="8cf77-124">**[ビジネスのニーズに合わせて構築します](build-for-business.md)**。</span><span class="sxs-lookup"><span data-stu-id="8cf77-124">**[Build for the needs of business](build-for-business.md)**.</span></span> <span data-ttu-id="8cf77-125">設計の決定はすべてビジネス要件によって正当化される必要があります。</span><span class="sxs-lookup"><span data-stu-id="8cf77-125">Every design decision must be justified by a business requirement.</span></span>
 
