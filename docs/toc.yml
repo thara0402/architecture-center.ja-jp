@@ -5,6 +5,8 @@
   items:
     - name: 基本導入ステージ
       href: cloud-adoption-guide/adoption-intro/overview.md
+    - name: 中級導入ステージ
+      href: cloud-adoption-guide/intermediate-stage/overview.md
 - name: アプリケーション アーキテクチャ ガイド
   href: guide/index.md
   items:
@@ -19,7 +21,8 @@
     - name: ソフトウェア品質の重要な要素
       href: guide/pillars.md
     - name: 設計パターン
-      href: patterns/index.md?toc=/azure/architecture/guide/toc.json
+      href: patterns/index.md
+      maintainContext: true
 - name: データ アーキテクチャ ガイド
   href: data-guide/index.md
 - name: 参照アーキテクチャ
@@ -120,7 +123,8 @@
     - name: 回復力のあるアプリケーションの設計
       href: resiliency/index.md
     - name: 回復性のチェックリスト
-      href: checklist/resiliency.md?toc=/azure/architecture/resiliency/toc.json
+      href: checklist/resiliency.md
+      maintainContext: true
     - name: 障害モード分析
       href: resiliency/failure-mode-analysis.md
 - name: シナリオのガイド

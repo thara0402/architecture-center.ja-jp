@@ -60,4 +60,5 @@
     - name: ソフトウェア品質の重要な要素
       href: pillars.md
     - name: 設計パターン
-      href: ../patterns/index.md?toc=/azure/architecture/guide/toc.json
+      href: ../patterns/index.md
+      maintainContext: true
