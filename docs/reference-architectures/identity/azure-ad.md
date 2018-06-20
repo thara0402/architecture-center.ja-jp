@@ -7,11 +7,12 @@ ms.date: 11/28/2016
 pnp.series.next: adds-extend-domain
 pnp.series.prev: ./index
 cardTitle: Integrate on-premises AD with Azure AD
-ms.openlocfilehash: 9475d669b2cb8888a7ceabed7e36317fe63681fd
-ms.sourcegitcommit: d702b4d27e96e7a5a248dc4f2f0e25cf6e82c134
+ms.openlocfilehash: ade79f8ebffc15b423ef6ebfb9b19611c9500cd8
+ms.sourcegitcommit: 85334ab0ccb072dac80de78aa82bcfa0f0044d3f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35252994"
 ---
 # <a name="integrate-on-premises-active-directory-domains-with-azure-active-directory"></a>オンプレミスの Active Directory ドメインと Azure Active Directory を統合する
 
@@ -32,7 +33,7 @@ Azure Active Directory (Azure AD) は、クラウド ベースでマルチテナ
 * オンプレミスのネットワークとアプリケーションの Azure VNet が VPN トンネルまたは ExpressRoute 回線を使って接続されていないアーキテクチャ。
 
 > [!NOTE]
-> 現在、Azure AD はユーザー認証のみをサポートしています。 SQL Server などの一部のアプリケーションとサービスではコンピューターの認証が必要になることがあり、そのような場合にこのソリューションは適していません。
+> Azure AD では、組織のディレクトリに存在するユーザーおよびアプリケーションの ID を認証できます。 SQL Server などの一部のアプリケーションとサービスではコンピューターの認証が必要になることがあり、そのような場合にこのソリューションは適していません。
 > 
 
 その他の考慮事項については、「[オンプレミスの Active Directory を Azure と統合するためのソリューションの選択][considerations]」をご覧ください。 
@@ -54,7 +55,7 @@ Azure Active Directory (Azure AD) は、クラウド ベースでマルチテナ
 
 ## <a name="recommendations"></a>Recommendations
 
-ほとんどのシナリオには、次の推奨事項が適用されます。 これらの推奨事項には、優先される特定の要件がない限り、従ってください。 
+ほとんどのシナリオには、次の推奨事項が適用されます。 これらの推奨事項には、オーバーライドする特定の要件がない限り、従ってください。 
 
 ### <a name="azure-ad-connect-sync-service"></a>Azure AD Connect 同期サービス
 

@@ -2,11 +2,12 @@
 title: 'Azure の導入: 基本'
 description: 企業が Azure を導入するのに必要な基本レベルの知識について説明します。
 author: petertay
-ms.openlocfilehash: e9421b610e4eb07a3ed37bca56e513b0689484ef
-ms.sourcegitcommit: 9ba82cf84cee06ccba398ec04c51dab0e1ca8974
+ms.openlocfilehash: 3f522d1662849d651423d8022ad152c64692b823
+ms.sourcegitcommit: b3d74d8a89b2224fc796ce0e89cea447af43a0d4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35290477"
 ---
 # <a name="adopting-azure-foundational"></a>Azure の導入: 基本
 
@@ -16,6 +17,7 @@ Azure の導入は、企業の組織としての成熟における最初のス�
 
 1. Azure 内部について: 
     - **説明**:[ Azure のしくみ](azure-explainer.md)
+    - **説明**: [クラウド リソース ガバナンスとは](governance-explainer.md)
 2. Azure のエンタープライズ デジタル ID について: 
     - **説明:** [Azure Active Directory テナントとは](tenant-explainer.md)
     - **方法:** [Azure Active Directory テナントを取得する](/azure/active-directory/develop/active-directory-howto-tenant?toc=/azure/architecture/cloud-adoption-guide/toc.json)
@@ -33,14 +35,14 @@ Azure の導入は、企業の組織としての成熟における最初のス�
     - **ガイダンス:** [Azure リソースの名前付け規則](/azure/architecture/best-practices/naming-conventions?toc=/azure/architecture/cloud-adoption-guide/toc.json)
 5. 基本の Azure アーキテクチャのデプロイ: 
     - 「[Azure コンピューティング オプションの概要](/azure/architecture/guide/technology-choices/compute-overview?toc=/azure/architecture/cloud-adoption-guide/toc.json)」で、サービスとしてのインフラストラクチャ (IaaS) やサービスとしてのプラットフォーム (PaaS) など、さまざまな種類の Azure コンピューティング オプションについて確認してください。
-    - さまざまな種類の Azure コンピューティング オプションを理解したので、次は Azure の最初のリソースとして、PaaS の Web アプリケーションまたは IaaS の仮想マシンのどちらかを選択します。
+    - さまざまな種類の Azure コンピューティング オプションを理解したので、次は Azure の最初のリソースとして、Web アプリケーション (PaaS) または仮想マシン (IaaS) のどちらかを選択します。
     - PaaS: サービスとしてのプラットフォームへの導入: 
         - **方法:** [基本的な Web アプリケーションを Azure にデプロイする](/azure/app-service/app-service-web-overview?toc=/azure/architecture/cloud-adoption-guide/toc.json)
         - **ガイダンス:** [基本的な Web アプリケーション](/azure/architecture/reference-architectures/app-service-web-app/basic-web-app?toc=/azure/architecture/cloud-adoption-guide/toc.json)の Azure へのデプロイに関する実証済みプラクティス
     - IaaS: 仮想ネットワークへの導入: 
         - **説明:** [Azure 仮想ネットワーク](/azure/virtual-network/virtual-networks-overview?toc=/azure/architecture/cloud-adoption-guide/toc.json)
         - **方法:** [ポータルを使用して仮想ネットワークを Azure にデプロイする](/azure/virtual-network/virtual-networks-create-vnet-arm-pportal?toc=/azure/architecture/cloud-adoption-guide/toc.json)
-    - IasS: 単一の仮想マシン (VM) ワークロードのデプロイ (Windows および Linux): 
+    - IaaS: 単一の仮想マシン (VM) ワークロードのデプロイ (Windows および Linux):
         - **方法:** [ポータルを使用して Windows VM を Azure にデプロイする](/azure/virtual-machines/windows/quick-create-portal?toc=/azure/architecture/cloud-adoption-guide/toc.json)
         - **ガイダンス:** [Azure での Windows VM の実行に関する実証済みプラクティス](/azure/architecture/reference-architectures/virtual-machines-windows/single-vm?toc=/azure/architecture/cloud-adoption-guide/toc.json)
         - **方法:** [ポータルを使用して Linux VM を Azure にデプロイする](/azure/virtual-machines/linux/quick-create-portal?toc=/azure/architecture/cloud-adoption-guide/toc.json)

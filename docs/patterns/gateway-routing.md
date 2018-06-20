@@ -3,11 +3,12 @@ title: ゲートウェイ ルーティング パターン
 description: 単一のエンドポイントを使用して複数のサービスに要求をルーティングします。
 author: dragon119
 ms.date: 06/23/2017
-ms.openlocfilehash: 53239b23cfd98fad1edc38ca37c2274d5a9d7a0f
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: ea0bc4d31b745043a7ac3afb277dfc46d87ff109
+ms.sourcegitcommit: 85334ab0ccb072dac80de78aa82bcfa0f0044d3f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35252602"
 ---
 # <a name="gateway-routing-pattern"></a>ゲートウェイ ルーティング パターン
 
@@ -72,7 +73,7 @@ server {
 ## <a name="related-guidance"></a>関連するガイダンス
 
 - [フロントエンド用バックエンド パターン](./backends-for-frontends.md)
-- [ゲートウェイ集約パターン](./gateway-aggregation.md)
+- [Gateway Aggregation pattern](./gateway-aggregation.md) (ゲートウェイ集約パターン)
 - [ゲートウェイ オフロード パターン](./gateway-offloading.md)
 
 

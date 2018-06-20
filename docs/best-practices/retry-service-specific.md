@@ -4,12 +4,12 @@ description: 再試行メカニズムを設定するためのサービス固有�
 author: dragon119
 ms.date: 07/13/2016
 pnp.series.title: Best Practices
-ms.openlocfilehash: 65206c5f39a74d228c7eaa0fea0c5b1b0710b22f
-ms.sourcegitcommit: bb348bd3a8a4e27ef61e8eee74b54b07b65dbf98
+ms.openlocfilehash: f02843f179671da04bc2f09326b58075b432ba95
+ms.sourcegitcommit: 85334ab0ccb072dac80de78aa82bcfa0f0044d3f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2018
-ms.locfileid: "34423019"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35253079"
 ---
 # <a name="retry-guidance-for-specific-services"></a>特定のサービスの再試行ガイダンス
 
@@ -38,6 +38,9 @@ ms.locfileid: "34423019"
 
 ## <a name="azure-active-directory"></a>Azure Active Directory
 Azure Active Directory (Azure AD) は、コア ディレクトリ サービス、拡張 ID 制御、セキュリティ、およびアプリケーション アクセス管理を結合した、包括的な ID 管理とアクセス管理のクラウド ソリューションです。 Azure AD は、一元化されたポリシーとルールに基づいてアプリケーションへのアクセス制御を実現するための、ID 管理プラットフォームを開発者に提供します。
+
+> [!NOTE]
+> マネージド サービス ID エンドポイントにおける再試行ガイダンスについては、[トークン取得の Azure VM マネージド サービス ID (MSI) を使用する方法](/azure/active-directory/managed-service-identity/how-to-use-vm-token#error-handling)に関するページをご覧ください。
 
 ### <a name="retry-mechanism"></a>再試行メカニズム
 Active Directory Authentication Library (ADAL) には、Azure Active Directory のための組み込み再試行メカニズムがあります。 予想外のロックアウトを避けるためには、サードパーティのライブラリとアプリケーション コードで失敗した接続の再試行を**実行せず**、ADAL で再試行を処理することをお勧めします。 
@@ -71,7 +74,7 @@ Cosmos DB は、スキーマのない JSON データをサポートする完全�
 ### <a name="policy-configuration"></a>ポリシーの構成
 次の表は、`RetryOptions` クラスの既定の設定を示しています。
 
-| Setting | 既定値 | [説明] |
+| Setting | 既定値 | 説明 |
 | --- | --- | --- |
 | MaxRetryAttemptsOnThrottledRequests |9 |Cosmos DB によってクライアントに対してレート制限が適用されたために要求が失敗した場合の最大再試行回数。 |
 | MaxRetryWaitTimeInSeconds |30 |再試行の最大待機時間 (秒)。 |

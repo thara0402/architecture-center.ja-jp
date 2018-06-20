@@ -4,11 +4,12 @@ description: Azure リソースの名前付け規則。 仮想マシン、スト
 author: telmosampaio
 ms.date: 05/18/2017
 pnp.series.title: Best Practices
-ms.openlocfilehash: df536a4b34a29b93edc4e03fa1142e20fe84a6a7
-ms.sourcegitcommit: bb348bd3a8a4e27ef61e8eee74b54b07b65dbf98
+ms.openlocfilehash: 42d91da3eacdcda66b82dff82ba444170c11d7d1
+ms.sourcegitcommit: 85334ab0ccb072dac80de78aa82bcfa0f0044d3f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35253062"
 ---
 # <a name="naming-conventions"></a>名前付け規則
 
@@ -60,7 +61,7 @@ Azure のリソースに名前を付けるときは、リソースの種類と�
 | 特徴 | 例 | メモ |
 | --- | --- | --- |
 | 環境 |dev、prod、QA |リソースの環境を識別 |
-| 場所 |uw (米国西部)、ue (米国東部) |リソースの展開先のリージョンを識別 |
+| リージョン |uw (米国西部)、ue (米国東部) |リソースの展開先のリージョンを識別 |
 | インスタンス |01、02 |複数の名前付きインスタンスが存在するリソースの場合 (Web サーバーなど)。 |
 | 製品またはサービス |service |リソースがサポートする製品、アプリケーション、サービスを識別 |
 | 役割 |sql、web、messaging |関連付けられているリソースのロールを識別 |
@@ -75,15 +76,15 @@ Azure のリソースまたはサービスの種類ごとに、名前付けに�
 
 ### <a name="general"></a>全般
 
-| エンティティ | Scope (スコープ) | Length | 大文字小文字の区別 | 有効な文字 | 推奨パターン | 例 |
+| エンティティ | スコープ | Length | 大文字小文字の区別 | 有効な文字 | 推奨パターン | 例 |
 | --- | --- | --- | --- | --- | --- | --- |
-|リソース グループ |[サブスクリプション] |1-90 |大文字と小文字は区別されない |英数字、アンダースコア、かっこ、ハイフン、ピリオド (末尾を除く) |`<service short name>-<environment>-rg` |`profx-prod-rg` |
+|リソース グループ |サブスクリプション |1-90 |大文字と小文字は区別されない |英数字、アンダースコア、かっこ、ハイフン、ピリオド (末尾を除く) |`<service short name>-<environment>-rg` |`profx-prod-rg` |
 |可用性セット |リソース グループ |1 ～ 80 |大文字と小文字は区別されない |英数字、アンダースコア、ハイフン |`<service-short-name>-<context>-as` |`profx-sql-as` |
 |タグ |関連付けられたエンティティ |512 (名前)、256 (値) |大文字と小文字は区別されない |英数字 |`"key" : "value"` |`"department" : "Central IT"` |
 
 ### <a name="compute"></a>コンピューティング
 
-| エンティティ | Scope (スコープ) | Length | 大文字小文字の区別 | 有効な文字 | 推奨パターン | 例 |
+| エンティティ | スコープ | Length | 大文字小文字の区別 | 有効な文字 | 推奨パターン | 例 |
 | --- | --- | --- | --- | --- | --- | --- |
 |仮想マシン |リソース グループ |1 ～ 15 (Windows)、1 ～ 64 (Linux) |大文字と小文字は区別されない |英数字とハイフン |`<name>-<role>-vm<number>` |`profx-sql-vm1` |
 |Function App | グローバル |1 ～ 60 |大文字と小文字は区別されない |英数字とハイフン |`<name>-func` |`calcprofit-func` |
@@ -93,7 +94,7 @@ Azure のリソースまたはサービスの種類ごとに、名前付けに�
 
 ### <a name="storage"></a>Storage
 
-| エンティティ | Scope (スコープ) | Length | 大文字小文字の区別 | 有効な文字 | 推奨パターン | 例 |
+| エンティティ | スコープ | Length | 大文字小文字の区別 | 有効な文字 | 推奨パターン | 例 |
 | --- | --- | --- | --- | --- | --- | --- |
 |ストレージ アカウント名 (データ) |グローバル |3 ～ 24 |小文字 |英数字 |`<globally unique name><number>` (ストレージ アカウントの名前付けのために関数を使用して一意の GUID を計算) |`profxdata001` |
 |ストレージ アカウント名 (ディスク) |グローバル |3 ～ 24 |小文字 |英数字 |`<vm name without hyphens>st<number>` |`profxsql001st0` |
@@ -106,7 +107,7 @@ Azure のリソースまたはサービスの種類ごとに、名前付けに�
 
 ### <a name="networking"></a>ネットワーク
 
-| エンティティ | Scope (スコープ) | Length | 大文字小文字の区別 | 有効な文字 | 推奨パターン | 例 |
+| エンティティ | スコープ | Length | 大文字小文字の区別 | 有効な文字 | 推奨パターン | 例 |
 | --- | --- | --- | --- | --- | --- | --- |
 |Virtual Network (VNet) |リソース グループ |2 ～ 64 |大文字と小文字は区別されない |英数字、ハイフン、アンダースコア、ピリオド |`<service short name>-vnet` |`profx-vnet` |
 |サブネット |親 VNet |2 ～ 80 |大文字と小文字は区別されない |英数字、ハイフン、アンダースコア、ピリオド |`<descriptive context>` |`web` |
@@ -166,7 +167,7 @@ Azure Resource Manager では、コンテキストを識別し、自動化を合
 > [!TIP]
 > ストレージ アカウントについては、データ用であるか、ディスク用であるかにかかわらず、複数のストレージ アカウントを活用できるような名前付け規則に従う必要があります (つまり、必ず数値のサフィックスを使用してください)。
 
-Azure ストレージ アカウントの BLOB データにアクセスするためのカスタム ドメイン名を構成できます。 Blob service の既定のエンドポイントは https://<name>.blob.core.windows.net` です。
+Azure ストレージ アカウントの BLOB データにアクセスするためのカスタム ドメイン名を構成できます。 Blob service の既定のエンドポイントは https://\<name\>.blob.core.windows.net です。
 
 ただし、カスタム ドメイン (www.contoso.com など) をストレージ アカウントの BLOB エンドポイントにマップしている場合、ユーザーはそのドメインを使って、ストレージ アカウントの BLOB データにもアクセスできます。 たとえば、カスタム ドメイン名を使用すると、`http://mystorage.blob.core.windows.net/mycontainer/myblob` に、`http://www.contoso.com/mycontainer/myblob` としてアクセスできます。
 

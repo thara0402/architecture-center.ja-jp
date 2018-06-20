@@ -2,11 +2,12 @@
 title: '説明: Azure のしくみ'
 description: Azure の内部機能について説明します。
 author: petertay
-ms.openlocfilehash: b4830fec69ac6d256d934d91ea2c295219925a9a
-ms.sourcegitcommit: ea7108f71dab09175ff69322874d1bcba800a37a
+ms.openlocfilehash: 1cebcc001b8d2ae93d8b0271c48d54617281c7c2
+ms.sourcegitcommit: b3d74d8a89b2224fc796ce0e89cea447af43a0d4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35290511"
 ---
 # <a name="explainer-how-does-azure-work"></a>説明: Azure のしくみ
 
@@ -28,7 +29,7 @@ Azure は、Microsoft のパブリック クラウド プラットフォーム�
 
 ## <a name="next-steps"></a>次の手順
 
-* Azure の内部機能を理解したので、次は Azure 導入の最初のステップである [Azure のデジタル ID について](tenant-explainer.md)の記事に進んでください。 [Azure AD で最初のユーザーを作成する][docs-add-users-to-aad]準備が整います。
+* Azure の内部機能については理解できました。次は、[リソース アクセス ガバナンス](governance-explainer.md)について説明します。 その後、Azure 導入の最初の手順に進みます。ここでは、[Azure のデジタル ID について解説](tenant-explainer.md)します。 その手順が完了したら、いつでも [Azure AD で最初のユーザーを作成する][docs-add-users-to-aad]ことができます。
 
 <!-- Links -->
 
