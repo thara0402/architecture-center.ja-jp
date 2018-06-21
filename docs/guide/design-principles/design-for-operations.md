@@ -2,12 +2,12 @@
 title: 操作に合わせた設計
 description: 運用チームが必要なツールを得られるようにアプリケーションを設計します
 author: MikeWasson
-layout: LandingPage
-ms.openlocfilehash: 76338cc27daf82ccb99df4e4c51c7a5ac6f26065
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 5b9f76c27656e5154fb039ca41976f7209395cd8
+ms.sourcegitcommit: 26b04f138a860979aea5d253ba7fecffc654841e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36206617"
 ---
 # <a name="design-for-operations"></a>操作に合わせた設計
 

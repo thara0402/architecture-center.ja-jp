@@ -2,12 +2,12 @@
 title: 調整を最小限に抑える
 description: アプリケーション サービス間の調整を最小限に抑えてスケーラビリティを実現する
 author: MikeWasson
-layout: LandingPage
-ms.openlocfilehash: 3cab05b539612234fd8e66517b140ac5257c3e70
-ms.sourcegitcommit: a7aae13569e165d4e768ce0aaaac154ba612934f
+ms.openlocfilehash: f26222148db2b48743c52293011ea0a5a58ebe07
+ms.sourcegitcommit: 26b04f138a860979aea5d253ba7fecffc654841e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36206622"
 ---
 # <a name="minimize-coordination"></a>調整を最小限に抑える 
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 01/30/2018
 
 [Scheduler Agent Supervisor][sas-pattern] のようなパターンを使用してワーカー間を調整することができますが、ここでは、作業を分割するのがより適切な方法かもしれません。 各ワーカーには、注文の特定の範囲 (たとえば、請求先リージョンごと) が割り当てられます。 ワーカーがクラッシュした場合、新しいインスタンスは直前のインスタンスが中断された場所を取得しますが、複数のインスタンスは競合しません。
 
-## <a name="recommendations"></a>推奨事項
+## <a name="recommendations"></a>Recommendations
 
 **最終的な整合性の受容**。 データを分散すると、強力な整合性を保証するには調整が必要になります。 たとえば、1 つの操作が 2 つのデータベースを更新するとします。 1 つのトランザクション スコープに入れるのではなく、そのシステムが最終的な整合性に対応できるのであれば (おそらく[補正トランザクション][compensating-transaction]パターンを使用して)、エラーの後に論理的にロールバックするほうがよいでしょう。
 

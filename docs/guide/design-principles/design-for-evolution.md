@@ -2,13 +2,12 @@
 title: 変更を見込んだ設計
 description: 改良を見込んだ設計は、継続的なイノベーションのための鍵です。
 author: MikeWasson
-layout: LandingPage
-ms.openlocfilehash: d05c1813dbc49f3ed8378cac4ea0c584ebdd9ff7
-ms.sourcegitcommit: 85334ab0ccb072dac80de78aa82bcfa0f0044d3f
+ms.openlocfilehash: 9873d5c4e19d738a77a222e1f9a878ac5f5d125f
+ms.sourcegitcommit: 26b04f138a860979aea5d253ba7fecffc654841e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35252892"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36206630"
 ---
 # <a name="design-for-evolution"></a>改良を見込んだ設計
 

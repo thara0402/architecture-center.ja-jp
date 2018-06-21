@@ -2,16 +2,18 @@
 title: '説明: Azure のしくみ'
 description: Azure の内部機能について説明します。
 author: petertay
-ms.openlocfilehash: 1cebcc001b8d2ae93d8b0271c48d54617281c7c2
-ms.sourcegitcommit: b3d74d8a89b2224fc796ce0e89cea447af43a0d4
+ms.openlocfilehash: 88514ba01efabe38a1b92d135321c2e44cef004e
+ms.sourcegitcommit: 26b04f138a860979aea5d253ba7fecffc654841e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35290511"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36206465"
 ---
 # <a name="explainer-how-does-azure-work"></a>説明: Azure のしくみ
 
 Azure は、Microsoft のパブリック クラウド プラットフォームです。 Azure では、サービスとしてのプラットフォーム (PaaS)、サービスとしてのインフラストラクチャ (IaaS)、サービスとしてのデータベース (DBaaS) をはじめ、他の多くのサービスを含む、大規模なサービス コレクションを提供しています。 しかし、そもそも Azure とはどんなもので、どのように動作するのでしょう。
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2ixGo] 
 
 他のクラウド プラットフォームと同様に、Azure は**仮想化**と呼ばれる技術に依存しています。 ほとんどのコンピューター ハードウェアは単純に、シリコン単位で永続的または半永続的にエンコードされた命令のセットであるため、ソフトウェアでエミュレートできます。 ソフトウェアの命令をハードウェアの命令にマップするエミュレーション レイヤーを使用して、仮想化されたハードウェアが実際のハードウェア自体であるかのように、ソフトウェアで実行できます。
 

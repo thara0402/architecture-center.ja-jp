@@ -2,12 +2,12 @@
 title: すべてを冗長化
 description: 冗長性をアプリケーションに組み込むことで、単一障害点をなくします。
 author: MikeWasson
-layout: LandingPage
-ms.openlocfilehash: 05ccf78c2cfbcd4e2d26200e70463d388d54f671
-ms.sourcegitcommit: a7aae13569e165d4e768ce0aaaac154ba612934f
+ms.openlocfilehash: 4f6e3404b2aaf9c28dfd6812975c2709d8cc8c85
+ms.sourcegitcommit: 26b04f138a860979aea5d253ba7fecffc654841e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36206647"
 ---
 # <a name="make-all-things-redundant"></a>すべてを冗長化
 
@@ -15,7 +15,7 @@ ms.lasthandoff: 01/30/2018
 
 耐障害性のあるアプリケーションでは障害が回避されます。 アプリケーションのクリティカル パスを特定してください。 パスの各ポイントに冗長性が確保されていますか。 サブシステムで障害が発生した場合に、アプリケーションは他にフェールオーバーしますか。
 
-## <a name="recommendations"></a>推奨事項 
+## <a name="recommendations"></a>Recommendations 
 
 **ビジネス要件を考慮する**。 システムにどのくらいの冗長性を組み込むかは、コストと複雑さの両方に影響します。 アーキテクチャには、目標復旧時間 (RTO) などのビジネス要件の情報が必要です。 たとえば、複数リージョンのデプロイは、単一リージョンのデプロイよりもコストがかかり、管理も複雑です。 フェールオーバーとフェールバックを処理するための操作手順が必要になります。 追加コストと複雑さが理にかなっているかどうかは、ビジネス シナリオによって異なります。
 

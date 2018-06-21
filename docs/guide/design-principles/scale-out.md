@@ -2,12 +2,12 @@
 title: スケールアウトのための設計
 description: クラウド アプリケーションは、水平方向のスケーリングで設計する必要があります。
 author: MikeWasson
-layout: LandingPage
-ms.openlocfilehash: 8f9b3e99a53f5941f708b0de124f37e6ff7e5ab2
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 8207f322d4312f6a30a8b0db7328b272c1d82de0
+ms.sourcegitcommit: 26b04f138a860979aea5d253ba7fecffc654841e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36206730"
 ---
 # <a name="design-to-scale-out"></a>スケールアウトのための設計
 

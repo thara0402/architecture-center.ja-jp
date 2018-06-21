@@ -2,12 +2,12 @@
 title: '説明: クラウド ガバナンスとは'
 description: Azure とクラウドのリソース ガバナンスの概念を説明します
 author: petertay
-ms.openlocfilehash: 63b04089aad5fc736641f8aaa6ff5247ea8ba13e
-ms.sourcegitcommit: b3d74d8a89b2224fc796ce0e89cea447af43a0d4
+ms.openlocfilehash: 3404beaa719177ee7638feed8a8442b5c3b455c6
+ms.sourcegitcommit: 26b04f138a860979aea5d253ba7fecffc654841e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35291249"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36206482"
 ---
 # <a name="explainer-what-is-cloud-resource-governance"></a>説明: クラウド リソース ガバナンスとは
 
@@ -16,6 +16,8 @@ ms.locfileid: "35291249"
 ただし、開発者が無制限にリソースにアクセスできるようにすると、俊敏性は高まりますが、意図しないコストが発生する場合があります。 たとえば、テスト用に一連のリソースのデプロイを承認された開発チームが、テスト完了後に、そのリソースを削除し忘れることがあります。 これらのリソースのコストは、承認が無効になったり不要になったりしても発生し続けます。 
 
 この問題を解決するのが、リソース アクセス **ガバナンス**です。 ガバナンスとは、組織の目標と要件を満たすために、Azure リソースの使用を継続的に管理、監視、および監査するプロセスを意味します。 
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2ii94] 
 
 これらの目標や要件は組織によって異なるため、1 つのアプローチですべてのガバナンス対応するのは不可能です。 正確には、Azure では、主要ガバナンス ツールとして**リソース ベースのアクセス制御 (RBAC)** と**リソース ポリシー**の 2 つが実装され、これらのツールを使用してガバナンス モデルを設計することは、それぞれの組織の責任です。
 
