@@ -12,6 +12,7 @@ ms.sourcegitcommit: c441fd165e6bebbbbbc19854ec6f3676be9c3b25
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/30/2018
+ms.locfileid: "30270321"
 ---
 # <a name="connect-an-on-premises-network-to-azure-using-expressroute"></a><span data-ttu-id="8b0a6-103">ExpressRoute を使用した Azure へのオンプレミス ネットワークの接続</span><span class="sxs-lookup"><span data-stu-id="8b0a6-103">Connect an on-premises network to Azure using ExpressRoute</span></span>
 

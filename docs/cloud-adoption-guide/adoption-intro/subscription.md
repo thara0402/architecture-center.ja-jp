@@ -7,6 +7,7 @@ ms.sourcegitcommit: 2e8b06e9c07875d65b91d5431bfd4bc465a7a242
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29062060"
 ---
 # <a name="guidance-azure-subscription-design"></a><span data-ttu-id="008d2-103">ガイダンス: Azure サブスクリプション設計</span><span class="sxs-lookup"><span data-stu-id="008d2-103">Guidance: Azure subscription design</span></span> 
 

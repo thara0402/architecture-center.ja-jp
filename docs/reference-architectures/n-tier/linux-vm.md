@@ -8,6 +8,7 @@ ms.sourcegitcommit: a5e549c15a948f6fb5cec786dbddc8578af3be66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/06/2018
+ms.locfileid: "33673584"
 ---
 # <a name="run-a-linux-vm-on-azure"></a><span data-ttu-id="23822-103">Azure での Linux VM の実行</span><span class="sxs-lookup"><span data-stu-id="23822-103">Run a Linux VM on Azure</span></span>
 

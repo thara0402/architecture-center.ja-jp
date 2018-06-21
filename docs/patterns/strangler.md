@@ -8,6 +8,7 @@ ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/14/2017
+ms.locfileid: "24540987"
 ---
 # <a name="strangler-pattern"></a><span data-ttu-id="91f63-103">ストラングラー パターン</span><span class="sxs-lookup"><span data-stu-id="91f63-103">Strangler pattern</span></span>
 

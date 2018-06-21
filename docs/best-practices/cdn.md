@@ -9,6 +9,7 @@ ms.sourcegitcommit: 29fbcb1eec44802d2c01b6d3bcf7d7bd0bae65fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/27/2018
+ms.locfileid: "29563559"
 ---
 # <a name="best-practices-for-using-content-delivery-networks-cdns"></a><span data-ttu-id="a853f-103">コンテンツ配信ネットワーク (CDN) を使用するためのベスト プラクティス</span><span class="sxs-lookup"><span data-stu-id="a853f-103">Best practices for using content delivery networks (CDNs)</span></span>
 

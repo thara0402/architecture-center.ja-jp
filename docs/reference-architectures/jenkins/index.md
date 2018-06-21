@@ -8,6 +8,7 @@ ms.sourcegitcommit: 0de300b6570e9990e5c25efc060946cb9d079954
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/03/2018
+ms.locfileid: "32323926"
 ---
 # <a name="run-a-jenkins-server-on-azure"></a><span data-ttu-id="dbc20-103">Azure で Jenkins サーバーを実行する</span><span class="sxs-lookup"><span data-stu-id="dbc20-103">Run a Jenkins server on Azure</span></span>
 
