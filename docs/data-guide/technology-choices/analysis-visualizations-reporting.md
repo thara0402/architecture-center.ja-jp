@@ -8,6 +8,7 @@ ms.sourcegitcommit: 90cf2de795e50571d597cfcb9b302e48933e7f18
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/14/2018
+ms.locfileid: "29288914"
 ---
 # <a name="choosing-a-data-analytics-technology-in-azure"></a>Azure でのデータ分析とテクノロジの選択
 

@@ -12,6 +12,7 @@ ms.sourcegitcommit: c441fd165e6bebbbbbc19854ec6f3676be9c3b25
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/30/2018
+ms.locfileid: "30270695"
 ---
 # <a name="connect-an-on-premises-network-to-azure-using-a-vpn-gateway"></a>VPN ゲートウェイを使用した Azure へのオンプレミス ネットワークの接続
 

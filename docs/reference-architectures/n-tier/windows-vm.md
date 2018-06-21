@@ -8,6 +8,7 @@ ms.sourcegitcommit: a5e549c15a948f6fb5cec786dbddc8578af3be66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/06/2018
+ms.locfileid: "33673604"
 ---
 # <a name="run-a-windows-vm-on-azure"></a>Azure での Windows VM の実行
 

@@ -12,6 +12,7 @@ ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30846510"
 ---
 # <a name="improve-scalability-in-a-web-application"></a>Web アプリケーションのスケーラビリティの向上
 
@@ -26,7 +27,7 @@ ms.lasthandoff: 04/06/2018
 このアーキテクチャは、「[Basic web application][basic-web-app]」(基本的な Web アプリケーション) で説明されているアーキテクチャに基づいて構築されています。 アーキテクチャに含まれるコンポーネントを次に示します。
 
 * **リソース グループ**。 [リソース グループ][resource-group]は、Azure リソースの論理コンテナーです。
-* **[Web アプリ][app-service-web-app]**と **[API アプリ][app-service-api-app]**。 最新の一般的なアプリケーションには、Web サイトと、1 つ以上の RESTful Web API の両方が含まれていることがあります。 Web API は、ブラウザー クライアント (AJAX 経由)、ネイティブ クライアント アプリケーション、およびサーバー側アプリケーションから使用できます。 Web API の考慮事項については、[API 設計のガイダンス][api-guidance]を参照してください。    
+* **[Web アプリ][app-service-web-app]** と **[API アプリ][app-service-api-app]**。 最新の一般的なアプリケーションには、Web サイトと、1 つ以上の RESTful Web API の両方が含まれていることがあります。 Web API は、ブラウザー クライアント (AJAX 経由)、ネイティブ クライアント アプリケーション、およびサーバー側アプリケーションから使用できます。 Web API の考慮事項については、[API 設計のガイダンス][api-guidance]を参照してください。    
 * **Web ジョブ**。 実行時間が長いタスクをバックグラウンドで実行するには、[Azure WebJobs][webjobs] を使用します。 Web ジョブは、スケジュールを指定して、継続して、またはメッセージがキューに格納されるなどのトリガーに応答して実行できます。 Web ジョブは、App Service アプリのコンテキストでバックグラウンド プロセスとして実行されます。
 * **キュー**。 ここで示すアーキテクチャの場合、アプリケーションはメッセージを [Azure Queue Storage][queue-storage] キューに格納することで、バックグラウンド タスクをキューに格納します。 このメッセージによって、Web ジョブの機能がトリガーされます。 または、Service Bus キューを使用できます。 比較については、[Storage キューと Service Bus キューの比較][queues-compared]に関するページを参照してください。
 * **キャッシュ**。 [Azure Redis Cache][azure-redis] に半静的データを格納します。  
