@@ -19,6 +19,7 @@ ms.sourcegitcommit: 4ec010846b9b5545c843a32e08293f906e512302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/17/2018
+ms.locfileid: "34299918"
 ---
 # <a name="azure-enterprise-scaffold---prescriptive-subscription-governance"></a>Azure エンタープライズ スキャフォールディング - 規範的なサブスクリプション ガバナンス
 俊敏性と柔軟性を求めてパブリック クラウドを採用する企業がますます増えています。 これらの企業は、クラウドの強みを活かして収益を生み出したり、ビジネスのリソースを最適化したりしています。 Microsoft Azure は、企業がさまざまなワークロードやアプリケーションに対応するためにブロックのように組み立てることができる多数のサービスを提供しています。 

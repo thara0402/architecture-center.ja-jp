@@ -6,6 +6,7 @@ ms.sourcegitcommit: c441fd165e6bebbbbbc19854ec6f3676be9c3b25
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/30/2018
+ms.locfileid: "30269939"
 ---
 # <a name="icons-and-diagrams"></a>アイコンとダイアグラム
 

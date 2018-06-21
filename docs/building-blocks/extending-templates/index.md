@@ -8,6 +8,7 @@ ms.sourcegitcommit: ea7108f71dab09175ff69322874d1bcba800a37a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/17/2018
+ms.locfileid: "29963195"
 ---
 # <a name="extend-azure-resource-manager-template-functionality"></a>Azure Resource Manager テンプレート機能の拡張
 

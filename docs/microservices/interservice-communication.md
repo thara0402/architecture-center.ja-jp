@@ -8,6 +8,7 @@ ms.sourcegitcommit: a8453c4bc7c870fa1a12bb3c02e3b310db87530c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/29/2017
+ms.locfileid: "27549129"
 ---
 # <a name="designing-microservices-interservice-communication"></a>マイクロサービスの設計: サービス間通信
 

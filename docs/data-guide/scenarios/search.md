@@ -8,6 +8,7 @@ ms.sourcegitcommit: 90cf2de795e50571d597cfcb9b302e48933e7f18
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/14/2018
+ms.locfileid: "29288814"
 ---
 # <a name="processing-free-form-text-for-search"></a>検索用の自由形式テキストの処理
 

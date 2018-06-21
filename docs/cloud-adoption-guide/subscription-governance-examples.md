@@ -19,6 +19,7 @@ ms.sourcegitcommit: 4ec010846b9b5545c843a32e08293f906e512302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/17/2018
+ms.locfileid: "34299910"
 ---
 # <a name="examples-of-implementing-azure-enterprise-scaffold"></a>Azure エンタープライズ スキャフォールディングの実装例
 この記事では、企業が [Azure エンタープライズ スキャフォールディング](subscription-governance.md)の推奨事項を実装する方法の例を紹介します。 Contoso という架空の会社を使って一般的なシナリオのベスト プラクティスを示します。

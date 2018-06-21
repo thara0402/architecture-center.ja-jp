@@ -14,6 +14,7 @@ ms.sourcegitcommit: d08f6ee27e1e8a623aeee32d298e616bc9bb87ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33811051"
 ---
 # <a name="command-and-query-responsibility-segregation-cqrs-pattern"></a>コマンド クエリ責務分離 (CQRS) パターン
 
