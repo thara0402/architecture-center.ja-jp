@@ -8,6 +8,7 @@ ms.sourcegitcommit: a5e549c15a948f6fb5cec786dbddc8578af3be66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/06/2018
+ms.locfileid: "33673404"
 ---
 # <a name="designing-microservices-identifying-microservice-boundaries"></a><span data-ttu-id="f8707-103">マイクロサービスの設計: マイクロサービス境界の識別</span><span class="sxs-lookup"><span data-stu-id="f8707-103">Designing microservices: Identifying microservice boundaries</span></span>
 

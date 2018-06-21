@@ -9,6 +9,7 @@ ms.sourcegitcommit: c53adf50d3a787956fc4ebc951b163a10eeb5d20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/23/2017
+ms.locfileid: "25545980"
 ---
 # <a name="transient-fault-handling"></a><span data-ttu-id="de929-103">一時的な障害の処理</span><span class="sxs-lookup"><span data-stu-id="de929-103">Transient fault handling</span></span>
 

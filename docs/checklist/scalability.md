@@ -9,6 +9,7 @@ ms.sourcegitcommit: 3d6dba524cc7661740bdbaf43870de7728d60a01
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/11/2018
+ms.locfileid: "27766107"
 ---
 # <a name="scalability-checklist"></a><span data-ttu-id="51b93-103">スケーラビリティのチェックリスト</span><span class="sxs-lookup"><span data-stu-id="51b93-103">Scalability checklist</span></span>
 

@@ -13,6 +13,7 @@ ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30846653"
 ---
 # <a name="leader-election-pattern"></a><span data-ttu-id="008cc-104">リーダー選定パターン</span><span class="sxs-lookup"><span data-stu-id="008cc-104">Leader Election pattern</span></span>
 

@@ -8,6 +8,7 @@ ms.sourcegitcommit: 3d9ee03e2dda23753661a80c7106d1789f5223bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/23/2018
+ms.locfileid: "29477582"
 ---
 # <a name="improper-instantiation-antipattern"></a><span data-ttu-id="0462a-103">不適切なインスタンス化のアンチパターン</span><span class="sxs-lookup"><span data-stu-id="0462a-103">Improper Instantiation antipattern</span></span>
 

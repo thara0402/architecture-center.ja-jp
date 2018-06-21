@@ -8,6 +8,7 @@ ms.sourcegitcommit: f665226cec96ec818ca06ac6c2d83edb23c9f29c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31012838"
 ---
 # <a name="enterprise-bi-with-sql-data-warehouse"></a><span data-ttu-id="ced8b-103">SQL Data Warehouse を使用したエンタープライズ向け BI</span><span class="sxs-lookup"><span data-stu-id="ced8b-103">Enterprise BI with SQL Data Warehouse</span></span>
  

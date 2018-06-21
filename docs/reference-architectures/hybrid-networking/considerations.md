@@ -8,6 +8,7 @@ ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/14/2017
+ms.locfileid: "24541051"
 ---
 # <a name="choose-a-solution-for-connecting-an-on-premises-network-to-azure"></a><span data-ttu-id="a2f99-103">オンプレミス ネットワークを Azure に接続するためのソリューションを選択する</span><span class="sxs-lookup"><span data-stu-id="a2f99-103">Choose a solution for connecting an on-premises network to Azure</span></span>
 

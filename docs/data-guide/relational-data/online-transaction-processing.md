@@ -8,6 +8,7 @@ ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30848701"
 ---
 # <a name="online-transaction-processing-oltp"></a><span data-ttu-id="be252-102">オンライン トランザクション処理 (OLTP)</span><span class="sxs-lookup"><span data-stu-id="be252-102">Online transaction processing (OLTP)</span></span>
 

@@ -8,6 +8,7 @@ ms.sourcegitcommit: f665226cec96ec818ca06ac6c2d83edb23c9f29c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31012428"
 ---
 # <a name="recover-from-data-corruption-or-accidental-deletion"></a><span data-ttu-id="79ec6-103">データの破損または偶発的な削除から復旧する</span><span class="sxs-lookup"><span data-stu-id="79ec6-103">Recover from data corruption or accidental deletion</span></span> 
 

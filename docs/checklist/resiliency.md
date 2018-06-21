@@ -9,6 +9,7 @@ ms.sourcegitcommit: 2123c25b1a0b5501ff1887f98030787191cf6994
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/08/2018
+ms.locfileid: "29782616"
 ---
 # <a name="resiliency-checklist"></a><span data-ttu-id="090a1-103">回復性のチェックリスト</span><span class="sxs-lookup"><span data-stu-id="090a1-103">Resiliency checklist</span></span>
 

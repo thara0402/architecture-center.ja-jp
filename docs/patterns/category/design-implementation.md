@@ -10,6 +10,7 @@ ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30847800"
 ---
 # <a name="design-and-implementation-patterns"></a><span data-ttu-id="7f13d-105">設計と実装のパターン</span><span class="sxs-lookup"><span data-stu-id="7f13d-105">Design and Implementation patterns</span></span>
 

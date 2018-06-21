@@ -9,6 +9,7 @@ ms.sourcegitcommit: 441185360db49cfb3cf39527b68f318d17d4cb3d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/19/2018
+ms.locfileid: "27973112"
 ---
 # <a name="availability-checklist"></a><span data-ttu-id="936ae-103">可用性のチェックリスト</span><span class="sxs-lookup"><span data-stu-id="936ae-103">Availability checklist</span></span>
 

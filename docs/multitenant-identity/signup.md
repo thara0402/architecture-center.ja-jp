@@ -11,6 +11,7 @@ ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/14/2017
+ms.locfileid: "24541403"
 ---
 # <a name="tenant-sign-up-and-onboarding"></a><span data-ttu-id="a777d-103">テナントのサインアップとオンボード</span><span class="sxs-lookup"><span data-stu-id="a777d-103">Tenant sign-up and onboarding</span></span>
 
@@ -24,7 +25,7 @@ ms.lasthandoff: 11/14/2017
 * <span data-ttu-id="a777d-109">アプリケーションに必要な 1 回限りのテナント別セットアップを実行するため。</span><span class="sxs-lookup"><span data-stu-id="a777d-109">Perform any one-time per-tenant setup needed by your application.</span></span>
 
 ## <a name="admin-consent-and-azure-ad-permissions"></a><span data-ttu-id="a777d-110">管理者の同意と Azure AD のアクセス許可</span><span class="sxs-lookup"><span data-stu-id="a777d-110">Admin consent and Azure AD permissions</span></span>
-<span data-ttu-id="a777d-111">Azure AD に対して認証するには、アプリケーションがユーザーのディレクトリにアクセスできる必要があります。</span><span class="sxs-lookup"><span data-stu-id="a777d-111">In order to authenticate with Azure AD, an application needs access to the user's directory.</span></span> <span data-ttu-id="a777d-112">少なくとも、アプリケーションがユーザーのプロファイルを読み取ることができるアクセス許可が必要です。</span><span class="sxs-lookup"><span data-stu-id="a777d-112">At a minimum, the application needs permission to read the user's profile.</span></span> <span data-ttu-id="a777d-113">初めてユーザーがサインインすると、Azure AD は、要求されたアクセス許可の一覧が表示された同意ページを表示します。</span><span class="sxs-lookup"><span data-stu-id="a777d-113">The first time that a user signs in, Azure AD shows a consent page that lists the permissions being requested.</span></span> <span data-ttu-id="a777d-114">ユーザーが **[同意する]**をクリックすると、アプリケーションに対するアクセス許可が付与されます。</span><span class="sxs-lookup"><span data-stu-id="a777d-114">By clicking **Accept**, the user grants permission to the application.</span></span>
+<span data-ttu-id="a777d-111">Azure AD に対して認証するには、アプリケーションがユーザーのディレクトリにアクセスできる必要があります。</span><span class="sxs-lookup"><span data-stu-id="a777d-111">In order to authenticate with Azure AD, an application needs access to the user's directory.</span></span> <span data-ttu-id="a777d-112">少なくとも、アプリケーションがユーザーのプロファイルを読み取ることができるアクセス許可が必要です。</span><span class="sxs-lookup"><span data-stu-id="a777d-112">At a minimum, the application needs permission to read the user's profile.</span></span> <span data-ttu-id="a777d-113">初めてユーザーがサインインすると、Azure AD は、要求されたアクセス許可の一覧が表示された同意ページを表示します。</span><span class="sxs-lookup"><span data-stu-id="a777d-113">The first time that a user signs in, Azure AD shows a consent page that lists the permissions being requested.</span></span> <span data-ttu-id="a777d-114">ユーザーが **[同意する]** をクリックすると、アプリケーションに対するアクセス許可が付与されます。</span><span class="sxs-lookup"><span data-stu-id="a777d-114">By clicking **Accept**, the user grants permission to the application.</span></span>
 
 <span data-ttu-id="a777d-115">既定では、同意はユーザーごとに求められます。</span><span class="sxs-lookup"><span data-stu-id="a777d-115">By default, consent is granted on a per-user basis.</span></span> <span data-ttu-id="a777d-116">サインインするユーザーすべてに、同意ページが表示されます。</span><span class="sxs-lookup"><span data-stu-id="a777d-116">Every user who signs in sees the consent page.</span></span> <span data-ttu-id="a777d-117">ただし、Azure AD では*管理者の同意*もサポートしており、組織全体を代表して AD 管理者が同意することも可能です。</span><span class="sxs-lookup"><span data-stu-id="a777d-117">However, Azure AD also supports  *admin consent*, which allows an AD administrator to consent for an entire organization.</span></span>
 
@@ -32,7 +33,7 @@ ms.lasthandoff: 11/14/2017
 
 ![管理者の同意プロンプト](./images/admin-consent.png)
 
-<span data-ttu-id="a777d-120">管理者が **[同意する]**をクリックすると、同じテナント内の他のユーザーはサインインできるようになり、Azure AD の同意画面はスキップされます。</span><span class="sxs-lookup"><span data-stu-id="a777d-120">After the admin clicks **Accept**, other users within the same tenant can sign in, and Azure AD will skip the consent screen.</span></span>
+<span data-ttu-id="a777d-120">管理者が **[同意する]** をクリックすると、同じテナント内の他のユーザーはサインインできるようになり、Azure AD の同意画面はスキップされます。</span><span class="sxs-lookup"><span data-stu-id="a777d-120">After the admin clicks **Accept**, other users within the same tenant can sign in, and Azure AD will skip the consent screen.</span></span>
 
 <span data-ttu-id="a777d-121">組織全体を代表して権限を付与することになるため、管理者の同意を行えるのは、AD 管理者のみとなっています。</span><span class="sxs-lookup"><span data-stu-id="a777d-121">Only an AD administrator can give admin consent, because it grants permission on behalf of the entire organization.</span></span> <span data-ttu-id="a777d-122">管理者以外のユーザーが、管理者の同意のフローを用いて認証を試みると、Azure AD によって次のエラーが表示されます。</span><span class="sxs-lookup"><span data-stu-id="a777d-122">If a non-administrator tries to authenticate with the admin consent flow, Azure AD displays an error:</span></span>
 

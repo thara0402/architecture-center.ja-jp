@@ -19,6 +19,7 @@ ms.sourcegitcommit: 4ec010846b9b5545c843a32e08293f906e512302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/17/2018
+ms.locfileid: "34299910"
 ---
 # <a name="examples-of-implementing-azure-enterprise-scaffold"></a><span data-ttu-id="00df2-103">Azure エンタープライズ スキャフォールディングの実装例</span><span class="sxs-lookup"><span data-stu-id="00df2-103">Examples of implementing Azure enterprise scaffold</span></span>
 <span data-ttu-id="00df2-104">この記事では、企業が [Azure エンタープライズ スキャフォールディング](subscription-governance.md)の推奨事項を実装する方法の例を紹介します。</span><span class="sxs-lookup"><span data-stu-id="00df2-104">This article provides examples of how an enterprise can implement the recommendations for an [Azure enterprise scaffold](subscription-governance.md).</span></span> <span data-ttu-id="00df2-105">Contoso という架空の会社を使って一般的なシナリオのベスト プラクティスを示します。</span><span class="sxs-lookup"><span data-stu-id="00df2-105">It uses a fictional company named Contoso to illustrate best practices for common scenarios.</span></span>

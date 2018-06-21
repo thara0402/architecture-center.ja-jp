@@ -7,6 +7,7 @@ ms.sourcegitcommit: 2e8b06e9c07875d65b91d5431bfd4bc465a7a242
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29062040"
 ---
 # <a name="explainer-what-is-an-azure-active-directory-tenant"></a><span data-ttu-id="b2fd5-103">説明: Azure Active Directory テナントとは</span><span class="sxs-lookup"><span data-stu-id="b2fd5-103">Explainer: What is an Azure Active Directory tenant?</span></span>
 

@@ -10,6 +10,7 @@ ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30848582"
 ---
 # <a name="messaging-patterns"></a><span data-ttu-id="c9b40-105">メッセージングのパターン</span><span class="sxs-lookup"><span data-stu-id="c9b40-105">Messaging patterns</span></span>
 

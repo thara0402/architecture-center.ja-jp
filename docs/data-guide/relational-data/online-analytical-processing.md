@@ -8,6 +8,7 @@ ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30846809"
 ---
 # <a name="online-analytical-processing-olap"></a><span data-ttu-id="e2393-102">オンライン分析処理 (OLAP)</span><span class="sxs-lookup"><span data-stu-id="e2393-102">Online analytical processing (OLAP)</span></span>
 

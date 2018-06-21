@@ -8,6 +8,7 @@ ms.sourcegitcommit: ea7108f71dab09175ff69322874d1bcba800a37a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/17/2018
+ms.locfileid: "29963195"
 ---
 # <a name="extend-azure-resource-manager-template-functionality"></a><span data-ttu-id="dac1e-103">Azure Resource Manager テンプレート機能の拡張</span><span class="sxs-lookup"><span data-stu-id="dac1e-103">Extend Azure Resource Manager template functionality</span></span>
 

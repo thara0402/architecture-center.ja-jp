@@ -7,6 +7,7 @@ ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30847253"
 ---
 # <a name="cloud-design-patterns"></a><span data-ttu-id="d5cf8-104">クラウド設計パターン</span><span class="sxs-lookup"><span data-stu-id="d5cf8-104">Cloud Design Patterns</span></span>
 

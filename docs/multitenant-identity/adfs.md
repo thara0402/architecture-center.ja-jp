@@ -11,6 +11,7 @@ ms.sourcegitcommit: 3d9ee03e2dda23753661a80c7106d1789f5223bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/23/2018
+ms.locfileid: "29477446"
 ---
 # <a name="federate-with-a-customers-ad-fs"></a><span data-ttu-id="713a6-103">顧客の AD FS とのフェデレーション</span><span class="sxs-lookup"><span data-stu-id="713a6-103">Federate with a customer's AD FS</span></span>
 
@@ -103,21 +104,21 @@ ms.lasthandoff: 02/23/2018
 
 ### <a name="add-the-claims-provider-trust"></a><span data-ttu-id="713a6-200">要求プロバイダー信頼の追加</span><span class="sxs-lookup"><span data-stu-id="713a6-200">Add the claims provider trust</span></span>
 1. <span data-ttu-id="713a6-201">サーバー マネージャーで、**[ツール]** をクリックし、次に **[AD FS の管理]** を選択します。</span><span class="sxs-lookup"><span data-stu-id="713a6-201">In Server Manager, click **Tools**, and then select **AD FS Management**.</span></span>
-2. <span data-ttu-id="713a6-202">コンソール ツリーの **[AD FS]** で、**[要求プロバイダー信頼]** を右クリックします。</span><span class="sxs-lookup"><span data-stu-id="713a6-202">In the console tree, under **AD FS**, right click **Claims Provider Trusts**.</span></span> <span data-ttu-id="713a6-203">**[要求プロバイダー信頼の追加]**を選択します。</span><span class="sxs-lookup"><span data-stu-id="713a6-203">Select **Add Claims Provider Trust**.</span></span>
+2. <span data-ttu-id="713a6-202">コンソール ツリーの **[AD FS]** で、**[要求プロバイダー信頼]** を右クリックします。</span><span class="sxs-lookup"><span data-stu-id="713a6-202">In the console tree, under **AD FS**, right click **Claims Provider Trusts**.</span></span> <span data-ttu-id="713a6-203">**[要求プロバイダー信頼の追加]** を選択します。</span><span class="sxs-lookup"><span data-stu-id="713a6-203">Select **Add Claims Provider Trust**.</span></span>
 3. <span data-ttu-id="713a6-204">**[開始]** をクリックしてウィザードを開始します。</span><span class="sxs-lookup"><span data-stu-id="713a6-204">Click **Start** to start the wizard.</span></span>
 4. <span data-ttu-id="713a6-205">[オンラインまたはローカル ネットワークで公開されている要求プロバイダーについてのデータをインポートする] オプションを選択します。</span><span class="sxs-lookup"><span data-stu-id="713a6-205">Select the option "Import data about the claims provider published online or on a local network".</span></span> <span data-ttu-id="713a6-206">顧客のフェデレーション メタデータ エンドポイントの URI を入力します。</span><span class="sxs-lookup"><span data-stu-id="713a6-206">Enter the URI of the customer's federation metadata endpoint.</span></span> <span data-ttu-id="713a6-207">(例: `https://contoso.com/FederationMetadata/2007-06/FederationMetadata.xml`。)これを顧客から入手する必要があります。</span><span class="sxs-lookup"><span data-stu-id="713a6-207">(Example: `https://contoso.com/FederationMetadata/2007-06/FederationMetadata.xml`.) You will need to get this from the customer.</span></span>
 5. <span data-ttu-id="713a6-208">既定のオプションを使用してウィザードを完了します。</span><span class="sxs-lookup"><span data-stu-id="713a6-208">Complete the wizard using the default options.</span></span>
 
 ### <a name="edit-claims-rules"></a><span data-ttu-id="713a6-209">要求規則の編集</span><span class="sxs-lookup"><span data-stu-id="713a6-209">Edit claims rules</span></span>
-1. <span data-ttu-id="713a6-210">新しく追加した要求プロバイダー信頼を右クリックし、 **[要求規則の編集]**を選択します。</span><span class="sxs-lookup"><span data-stu-id="713a6-210">Right-click the newly added claims provider trust, and select **Edit Claims Rules**.</span></span>
-2. <span data-ttu-id="713a6-211">**[規則の追加]**をクリックします。</span><span class="sxs-lookup"><span data-stu-id="713a6-211">Click **Add Rule**.</span></span>
+1. <span data-ttu-id="713a6-210">新しく追加した要求プロバイダー信頼を右クリックし、 **[要求規則の編集]** を選択します。</span><span class="sxs-lookup"><span data-stu-id="713a6-210">Right-click the newly added claims provider trust, and select **Edit Claims Rules**.</span></span>
+2. <span data-ttu-id="713a6-211">**[規則の追加]** をクリックします。</span><span class="sxs-lookup"><span data-stu-id="713a6-211">Click **Add Rule**.</span></span>
 3. <span data-ttu-id="713a6-212">[入力方向の要求をパス スルーまたはフィルター処理] を選択し、**[次へ]** をクリックします。</span><span class="sxs-lookup"><span data-stu-id="713a6-212">Select "Pass Through or Filter an Incoming Claim" and click **Next**.</span></span>
    <span data-ttu-id="713a6-213">![変換要求規則の追加ウィザード](./images/edit-claims-rule.png)</span><span class="sxs-lookup"><span data-stu-id="713a6-213">![Add Transform Claim Rule Wizard](./images/edit-claims-rule.png)</span></span>
 4. <span data-ttu-id="713a6-214">規則の名前を入力します。</span><span class="sxs-lookup"><span data-stu-id="713a6-214">Enter a name for the rule.</span></span>
-5. <span data-ttu-id="713a6-215">[入力方向の要求の種類] で、 **[UPN]**を選択します。</span><span class="sxs-lookup"><span data-stu-id="713a6-215">Under "Incoming claim type", select **UPN**.</span></span>
+5. <span data-ttu-id="713a6-215">[入力方向の要求の種類] で、 **[UPN]** を選択します。</span><span class="sxs-lookup"><span data-stu-id="713a6-215">Under "Incoming claim type", select **UPN**.</span></span>
 6. <span data-ttu-id="713a6-216">[すべての要求値をパススルーする] を選択します。</span><span class="sxs-lookup"><span data-stu-id="713a6-216">Select "Pass through all claim values".</span></span>
    <span data-ttu-id="713a6-217">![変換要求規則の追加ウィザード](./images/edit-claims-rule2.png)</span><span class="sxs-lookup"><span data-stu-id="713a6-217">![Add Transform Claim Rule Wizard](./images/edit-claims-rule2.png)</span></span>
-7. <span data-ttu-id="713a6-218">**[完了]**をクリックします。</span><span class="sxs-lookup"><span data-stu-id="713a6-218">Click **Finish**.</span></span>
+7. <span data-ttu-id="713a6-218">**[完了]** をクリックします。</span><span class="sxs-lookup"><span data-stu-id="713a6-218">Click **Finish**.</span></span>
 8. <span data-ttu-id="713a6-219">手順 2 - 7 を繰り返し、入力方向の要求の種類に **[アンカー要求の種類]** を指定します。</span><span class="sxs-lookup"><span data-stu-id="713a6-219">Repeat steps 2 - 7, and specify **Anchor Claim Type** for the incoming claim type.</span></span>
 9. <span data-ttu-id="713a6-220">**[OK]** をクリックしてウィザードを完了します。</span><span class="sxs-lookup"><span data-stu-id="713a6-220">Click **OK** to complete the wizard.</span></span>
 
@@ -140,7 +141,7 @@ Set-ADFSClaimsProviderTrust -TargetName "name" -OrganizationalAccountSuffix @("s
 
 ### <a name="add-the-rp-trust"></a><span data-ttu-id="713a6-230">RP 信頼の追加</span><span class="sxs-lookup"><span data-stu-id="713a6-230">Add the RP trust</span></span>
 1. <span data-ttu-id="713a6-231">サーバー マネージャーで、**[ツール]** をクリックし、次に **[AD FS の管理]** を選択します。</span><span class="sxs-lookup"><span data-stu-id="713a6-231">In Server Manager, click **Tools**, and then select **AD FS Management**.</span></span>
-2. <span data-ttu-id="713a6-232">コンソール ツリーの **[AD FS]** で、**[証明書利用者信頼]** を右クリックします。</span><span class="sxs-lookup"><span data-stu-id="713a6-232">In the console tree, under **AD FS**, right click **Relying Party Trusts**.</span></span> <span data-ttu-id="713a6-233">**[証明書利用者信頼の追加]**を選択します。</span><span class="sxs-lookup"><span data-stu-id="713a6-233">Select **Add Relying Party Trust**.</span></span>
+2. <span data-ttu-id="713a6-232">コンソール ツリーの **[AD FS]** で、**[証明書利用者信頼]** を右クリックします。</span><span class="sxs-lookup"><span data-stu-id="713a6-232">In the console tree, under **AD FS**, right click **Relying Party Trusts**.</span></span> <span data-ttu-id="713a6-233">**[証明書利用者信頼の追加]** を選択します。</span><span class="sxs-lookup"><span data-stu-id="713a6-233">Select **Add Relying Party Trust**.</span></span>
 3. <span data-ttu-id="713a6-234">**[要求に対応する]** を選択して、**[開始]** をクリックします。</span><span class="sxs-lookup"><span data-stu-id="713a6-234">Select **Claims Aware** and click **Start**.</span></span>
 4. <span data-ttu-id="713a6-235">**[データ ソースの選択]** ページで、[オンラインまたはローカル ネットワーク上で発行された要求プロバイダーに関するデータをインポートする] オプションを選択します。</span><span class="sxs-lookup"><span data-stu-id="713a6-235">On the **Select Data Source** page, select the option "Import data about the claims provider published online or on a local network".</span></span> <span data-ttu-id="713a6-236">SaaS プロバイダーのフェデレーション メタデータ エンドポイントの URI を入力します。</span><span class="sxs-lookup"><span data-stu-id="713a6-236">Enter the URI of the SaaS provider's federation metadata endpoint.</span></span>
    <span data-ttu-id="713a6-237">![証明書利用者信頼の追加ウィザード](./images/add-rp-trust.png)</span><span class="sxs-lookup"><span data-stu-id="713a6-237">![Add Relying Party Trust Wizard](./images/add-rp-trust.png)</span></span>
@@ -151,9 +152,9 @@ Set-ADFSClaimsProviderTrust -TargetName "name" -OrganizationalAccountSuffix @("s
 8. <span data-ttu-id="713a6-243">**[次へ]** をクリックしてウィザードを完了します。</span><span class="sxs-lookup"><span data-stu-id="713a6-243">Click **Next** to complete the wizard.</span></span>
 
 ### <a name="add-claims-rules"></a><span data-ttu-id="713a6-244">要求規則の追加</span><span class="sxs-lookup"><span data-stu-id="713a6-244">Add claims rules</span></span>
-1. <span data-ttu-id="713a6-245">新しく追加した証明書利用者信頼を右クリックし、 **[要求発行ポリシーの編集]**を選択します。</span><span class="sxs-lookup"><span data-stu-id="713a6-245">Right-click the newly added relying party trust, and select **Edit Claim Issuance Policy**.</span></span>
-2. <span data-ttu-id="713a6-246">**[規則の追加]**をクリックします。</span><span class="sxs-lookup"><span data-stu-id="713a6-246">Click **Add Rule**.</span></span>
-3. <span data-ttu-id="713a6-247">[要求として LDAP 属性を送信] を選択し、 **[次へ]**をクリックします。</span><span class="sxs-lookup"><span data-stu-id="713a6-247">Select "Send LDAP Attributes as Claims" and click **Next**.</span></span>
+1. <span data-ttu-id="713a6-245">新しく追加した証明書利用者信頼を右クリックし、 **[要求発行ポリシーの編集]** を選択します。</span><span class="sxs-lookup"><span data-stu-id="713a6-245">Right-click the newly added relying party trust, and select **Edit Claim Issuance Policy**.</span></span>
+2. <span data-ttu-id="713a6-246">**[規則の追加]** をクリックします。</span><span class="sxs-lookup"><span data-stu-id="713a6-246">Click **Add Rule**.</span></span>
+3. <span data-ttu-id="713a6-247">[要求として LDAP 属性を送信] を選択し、 **[次へ]** をクリックします。</span><span class="sxs-lookup"><span data-stu-id="713a6-247">Select "Send LDAP Attributes as Claims" and click **Next**.</span></span>
 4. <span data-ttu-id="713a6-248">"UPN" など、規則の名前を入力します。</span><span class="sxs-lookup"><span data-stu-id="713a6-248">Enter a name for the rule, such as "UPN".</span></span>
 5. <span data-ttu-id="713a6-249">**[属性ストア]** で、**[Active Directory]** を選択します。</span><span class="sxs-lookup"><span data-stu-id="713a6-249">Under **Attribute store**, select **Active Directory**.</span></span>
    <span data-ttu-id="713a6-250">![変換要求規則の追加ウィザード](./images/add-claims-rules.png)</span><span class="sxs-lookup"><span data-stu-id="713a6-250">![Add Transform Claim Rule Wizard](./images/add-claims-rules.png)</span></span>
@@ -161,11 +162,11 @@ Set-ADFSClaimsProviderTrust -TargetName "name" -OrganizationalAccountSuffix @("s
    * <span data-ttu-id="713a6-252">**[LDAP 属性]** で、**[ユーザー プリンシパル名]** を選択します。</span><span class="sxs-lookup"><span data-stu-id="713a6-252">Under **LDAP Attribute**, select **User-Principal-Name**.</span></span>
    * <span data-ttu-id="713a6-253">**[出力方向の要求の種類]** で、**[UPN]** を選択します。</span><span class="sxs-lookup"><span data-stu-id="713a6-253">Under **Outgoing Claim Type**, select **UPN**.</span></span>
      <span data-ttu-id="713a6-254">![変換要求規則の追加ウィザード](./images/add-claims-rules2.png)</span><span class="sxs-lookup"><span data-stu-id="713a6-254">![Add Transform Claim Rule Wizard](./images/add-claims-rules2.png)</span></span>
-7. <span data-ttu-id="713a6-255">**[完了]**をクリックします。</span><span class="sxs-lookup"><span data-stu-id="713a6-255">Click **Finish**.</span></span>
+7. <span data-ttu-id="713a6-255">**[完了]** をクリックします。</span><span class="sxs-lookup"><span data-stu-id="713a6-255">Click **Finish**.</span></span>
 8. <span data-ttu-id="713a6-256">もう一度 **[規則の追加]** をクリックします。</span><span class="sxs-lookup"><span data-stu-id="713a6-256">Click **Add Rule** again.</span></span>
-9. <span data-ttu-id="713a6-257">[カスタムの規則を使用して要求を送信] を選択し、 **[次へ]**をクリックします。</span><span class="sxs-lookup"><span data-stu-id="713a6-257">Select "Send Claims Using a Custom Rule" and click **Next**.</span></span>
+9. <span data-ttu-id="713a6-257">[カスタムの規則を使用して要求を送信] を選択し、 **[次へ]** をクリックします。</span><span class="sxs-lookup"><span data-stu-id="713a6-257">Select "Send Claims Using a Custom Rule" and click **Next**.</span></span>
 10. <span data-ttu-id="713a6-258">"アンカー要求の種類" など、規則の名前を入力します。</span><span class="sxs-lookup"><span data-stu-id="713a6-258">Enter a name for the rule, such as "Anchor Claim Type".</span></span>
-11. <span data-ttu-id="713a6-259">**[カスタムの規則]**で、次のように入力します。</span><span class="sxs-lookup"><span data-stu-id="713a6-259">Under **Custom rule**, enter the following:</span></span>
+11. <span data-ttu-id="713a6-259">**[カスタムの規則]** で、次のように入力します。</span><span class="sxs-lookup"><span data-stu-id="713a6-259">Under **Custom rule**, enter the following:</span></span>
     
     ```
     EXISTS([Type == "http://schemas.microsoft.com/ws/2014/01/identity/claims/anchorclaimtype"])=>
@@ -174,7 +175,7 @@ Set-ADFSClaimsProviderTrust -TargetName "name" -OrganizationalAccountSuffix @("s
     ```
     
     <span data-ttu-id="713a6-260">この規則によって、種類が `anchorclaimtype` の要求が発行されます。</span><span class="sxs-lookup"><span data-stu-id="713a6-260">This rule issues a claim of type `anchorclaimtype`.</span></span> <span data-ttu-id="713a6-261">この要求は、証明書利用者にユーザーの不変 ID として UPN を使用するように指示します。</span><span class="sxs-lookup"><span data-stu-id="713a6-261">The claim tells the relying party to use UPN as the user's immutable ID.</span></span>
-12. <span data-ttu-id="713a6-262">**[完了]**をクリックします。</span><span class="sxs-lookup"><span data-stu-id="713a6-262">Click **Finish**.</span></span>
+12. <span data-ttu-id="713a6-262">**[完了]** をクリックします。</span><span class="sxs-lookup"><span data-stu-id="713a6-262">Click **Finish**.</span></span>
 13. <span data-ttu-id="713a6-263">**[OK]** をクリックしてウィザードを完了します。</span><span class="sxs-lookup"><span data-stu-id="713a6-263">Click **OK** to complete the wizard.</span></span>
 
 

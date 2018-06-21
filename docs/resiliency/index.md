@@ -10,6 +10,7 @@ ms.sourcegitcommit: f665226cec96ec818ca06ac6c2d83edb23c9f29c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31012639"
 ---
 # <a name="designing-resilient-applications-for-azure"></a><span data-ttu-id="8ea24-103">回復性に優れた Azure 用アプリケーションの設計</span><span class="sxs-lookup"><span data-stu-id="8ea24-103">Designing resilient applications for Azure</span></span>
 

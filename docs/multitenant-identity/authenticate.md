@@ -11,6 +11,7 @@ ms.sourcegitcommit: 8ab30776e0c4cdc16ca0dcc881960e3108ad3e94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/08/2017
+ms.locfileid: "26359257"
 ---
 # <a name="authenticate-using-azure-ad-and-openid-connect"></a><span data-ttu-id="1a862-103">Azure AD および OpenID Connect を使用して認証する</span><span class="sxs-lookup"><span data-stu-id="1a862-103">Authenticate using Azure AD and OpenID Connect</span></span>
 

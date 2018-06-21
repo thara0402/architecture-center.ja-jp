@@ -8,6 +8,7 @@ ms.sourcegitcommit: a5e549c15a948f6fb5cec786dbddc8578af3be66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/06/2018
+ms.locfileid: "33673614"
 ---
 # <a name="n-tier-application-with-apache-cassandra"></a><span data-ttu-id="ca6b8-103">Apache Cassandra を使用する N 層アプリケーション</span><span class="sxs-lookup"><span data-stu-id="ca6b8-103">N-tier application with Apache Cassandra</span></span>
 

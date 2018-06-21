@@ -19,6 +19,7 @@ ms.sourcegitcommit: 4ec010846b9b5545c843a32e08293f906e512302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/17/2018
+ms.locfileid: "34299918"
 ---
 # <a name="azure-enterprise-scaffold---prescriptive-subscription-governance"></a><span data-ttu-id="8268b-103">Azure エンタープライズ スキャフォールディング - 規範的なサブスクリプション ガバナンス</span><span class="sxs-lookup"><span data-stu-id="8268b-103">Azure enterprise scaffold - prescriptive subscription governance</span></span>
 <span data-ttu-id="8268b-104">俊敏性と柔軟性を求めてパブリック クラウドを採用する企業がますます増えています。</span><span class="sxs-lookup"><span data-stu-id="8268b-104">Enterprises are increasingly adopting the public cloud for its agility and flexibility.</span></span> <span data-ttu-id="8268b-105">これらの企業は、クラウドの強みを活かして収益を生み出したり、ビジネスのリソースを最適化したりしています。</span><span class="sxs-lookup"><span data-stu-id="8268b-105">They are utilizing the cloud's strengths to generate revenue or optimize resources for the business.</span></span> <span data-ttu-id="8268b-106">Microsoft Azure は、企業がさまざまなワークロードやアプリケーションに対応するためにブロックのように組み立てることができる多数のサービスを提供しています。</span><span class="sxs-lookup"><span data-stu-id="8268b-106">Microsoft Azure provides a multitude of services that enterprises can assemble like building blocks to address a wide array of workloads and applications.</span></span> 

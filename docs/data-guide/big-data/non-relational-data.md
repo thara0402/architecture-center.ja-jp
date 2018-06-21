@@ -8,6 +8,7 @@ ms.sourcegitcommit: 51f49026ec46af0860de55f6c082490e46792794
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/03/2018
+ms.locfileid: "30298670"
 ---
 # <a name="non-relational-data-and-nosql"></a><span data-ttu-id="d9d0d-102">非リレーショナル データと NoSQL</span><span class="sxs-lookup"><span data-stu-id="d9d0d-102">Non-relational data and NoSQL</span></span>
 

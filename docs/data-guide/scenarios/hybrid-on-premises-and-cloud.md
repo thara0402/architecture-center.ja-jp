@@ -8,6 +8,7 @@ ms.sourcegitcommit: 90cf2de795e50571d597cfcb9b302e48933e7f18
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/14/2018
+ms.locfileid: "29289688"
 ---
 # <a name="extending-on-premises-data-solutions-to-the-cloud"></a><span data-ttu-id="6b88c-102">オンプレミス データ ソリューションのクラウドへの拡張</span><span class="sxs-lookup"><span data-stu-id="6b88c-102">Extending on-premises data solutions to the cloud</span></span>
 

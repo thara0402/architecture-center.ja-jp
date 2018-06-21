@@ -9,6 +9,7 @@ ms.sourcegitcommit: 3426a9c5ed937f097725c487cf3d073ae5e2a347
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/01/2018
+ms.locfileid: "28907048"
 ---
 # <a name="background-jobs"></a><span data-ttu-id="6cd3f-103">バックグラウンド ジョブ</span><span class="sxs-lookup"><span data-stu-id="6cd3f-103">Background jobs</span></span>
 [!INCLUDE [header](../_includes/header.md)]

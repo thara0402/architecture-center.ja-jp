@@ -8,6 +8,7 @@ ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30847783"
 ---
 # <a name="choosing-a-microsoft-cognitive-services-technology"></a><span data-ttu-id="9769c-102">Microsoft Cognitive Services テクノロジの選択</span><span class="sxs-lookup"><span data-stu-id="9769c-102">Choosing a Microsoft cognitive services technology</span></span>
 

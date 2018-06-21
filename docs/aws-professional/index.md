@@ -10,6 +10,7 @@ ms.sourcegitcommit: f665226cec96ec818ca06ac6c2d83edb23c9f29c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31012622"
 ---
 # <a name="azure-for-aws-professionals"></a><span data-ttu-id="d84a1-106">AWS プロフェッショナルのための Azure</span><span class="sxs-lookup"><span data-stu-id="d84a1-106">Azure for AWS Professionals</span></span>
 

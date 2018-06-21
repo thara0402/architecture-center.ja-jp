@@ -10,6 +10,7 @@ ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30848531"
 ---
 # <a name="performance-and-scalability-patterns"></a><span data-ttu-id="c84fc-108">パフォーマンスとスケーラビリティのパターン</span><span class="sxs-lookup"><span data-stu-id="c84fc-108">Performance and Scalability patterns</span></span>
 

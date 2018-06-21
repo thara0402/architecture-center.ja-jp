@@ -8,6 +8,7 @@ ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/14/2017
+ms.locfileid: "24540011"
 ---
 # <a name="gateway-offloading-pattern"></a><span data-ttu-id="50e45-103">ゲートウェイ オフロード パターン</span><span class="sxs-lookup"><span data-stu-id="50e45-103">Gateway Offloading pattern</span></span>
 

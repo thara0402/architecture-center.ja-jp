@@ -11,6 +11,7 @@ ms.sourcegitcommit: 8ab30776e0c4cdc16ca0dcc881960e3108ad3e94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/08/2017
+ms.locfileid: "26359241"
 ---
 # <a name="cache-access-tokens"></a><span data-ttu-id="b271e-103">アクセス トークンのキャッシュ</span><span class="sxs-lookup"><span data-stu-id="b271e-103">Cache access tokens</span></span>
 

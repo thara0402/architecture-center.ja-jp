@@ -8,6 +8,7 @@ ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30846884"
 ---
 # <a name="choosing-an-analytical-data-store-in-azure"></a><span data-ttu-id="bd575-102">Azure で使用する分析データ ストアの選択</span><span class="sxs-lookup"><span data-stu-id="bd575-102">Choosing an analytical data store in Azure</span></span>
 

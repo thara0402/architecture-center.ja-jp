@@ -6,6 +6,7 @@ ms.sourcegitcommit: d702b4d27e96e7a5a248dc4f2f0e25cf6e82c134
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31771688"
 ---
 # <a name="azure-application-architecture-guide"></a>Azure アプリケーション アーキテクチャ ガイド
 

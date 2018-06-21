@@ -11,6 +11,7 @@ ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30847749"
 ---
 # <a name="deploy-highly-available-network-virtual-appliances"></a><span data-ttu-id="f3ac2-103">高可用性のネットワーク仮想アプライアンスをデプロイする</span><span class="sxs-lookup"><span data-stu-id="f3ac2-103">Deploy highly available network virtual appliances</span></span>
 

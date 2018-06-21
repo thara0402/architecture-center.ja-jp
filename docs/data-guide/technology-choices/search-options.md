@@ -8,6 +8,7 @@ ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30848616"
 ---
 # <a name="choosing-a-search-data-store-in-azure"></a><span data-ttu-id="4838a-102">Azure での検索データ ストアの選択</span><span class="sxs-lookup"><span data-stu-id="4838a-102">Choosing a search data store in Azure</span></span>
 

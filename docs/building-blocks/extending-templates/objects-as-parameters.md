@@ -8,6 +8,7 @@ ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30847177"
 ---
 # <a name="use-an-object-as-a-parameter-in-an-azure-resource-manager-template"></a><span data-ttu-id="d1583-103">Azure Resource Manager テンプレートのパラメーターとしてオブジェクトを使用する</span><span class="sxs-lookup"><span data-stu-id="d1583-103">Use an object as a parameter in an Azure Resource Manager template</span></span>
 
