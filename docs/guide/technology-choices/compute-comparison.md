@@ -3,12 +3,13 @@ title: Azure コンピューティング サービスを選択するための条
 description: 複数の軸間で Azure コンピューティング サービスを比較します
 author: MikeWasson
 layout: LandingPage
-ms.date: 04/21/2018
-ms.openlocfilehash: ff90ec41c56ae0ecb81bc82128f02fd06d02cb32
-ms.sourcegitcommit: d702b4d27e96e7a5a248dc4f2f0e25cf6e82c134
+ms.date: 06/13/2018
+ms.openlocfilehash: 29c21c44bdf3a3bfa29f17015565eecf5f86163b
+ms.sourcegitcommit: 26b04f138a860979aea5d253ba7fecffc654841e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36206657"
 ---
 # <a name="criteria-for-choosing-an-azure-compute-service"></a>Azure コンピューティング サービスを選択するための条件
 
@@ -18,7 +19,7 @@ ms.lasthandoff: 04/23/2018
 
 | 条件 | Virtual Machines | App Service | Service Fabric | Azure Functions | Azure Container Service | Container Instances | Azure Batch |
 |----------|-----------------|-------------|----------------|-----------------|-------------------------|----------------|-------------|
-| アプリケーションの構成 | 非依存 | [アプリケーション] | サービス、ゲスト実行可能ファイル、コンテナー | Functions | Containers | Containers | スケジュールされたジョブ  |
+| アプリケーションの構成 | 非依存 | アプリケーション、コンテナー | サービス、ゲスト実行可能ファイル、コンテナー | Functions | Containers | Containers | スケジュールされたジョブ  |
 | 密度 | 非依存 | アプリの計画を介した、インスタンスごとの複数のアプリ | VM ごとに複数のサービス | 専用インスタンスなし <a href="#note1"><sup>1</sup></a> | VM ごとに複数のコンテナー |専用インスタンスなし | VM ごとに複数のアプリ |
 | 最小ノード数 | 1 <a href="#note2"><sup>2</sup></a>  | 1 | 5 <a href="#note3"><sup>3</sup></a> | 専用ノードなし <a href="#note1"><sup>1</sup></a> | 3 | 専用ノードなし | 1 <a href="#note4"><sup>4</sup></a> |
 | 状態管理 | ステートレスまたはステートフル | ステートレス | ステートレスまたはステートフル | ステートレス | ステートレスまたはステートフル | ステートレス | ステートレス |
@@ -29,12 +30,12 @@ ms.lasthandoff: 04/23/2018
 
 メモ
 
-1. <span id="note1">従量課金プランを使用している場合。 App Service プランを使用している場合、関数は、App Service プランに割り当てられた VM 上で実行されます。 [Azure Functions の適切なサービス プランを選択する][function-plans]に関する記事をご覧ください。</a>
-2. <span id="note2">2 つ以上のインスタンスによる、より高い SLA。</a>
-3. <span id="note3">運用環境の場合。</a>
-4. <span id="note4">ジョブの完了後、0 にスケールダウンできます。</a>
-5. <span id="note5">App Service Environment (ASE) が必要です。</a>
-6. <span id="note7">ASE または BizTalk ハイブリッド接続が必要です。</a>
+1. <span id="note1">従量課金プランを使用している場合。App Service プランを使用している場合、関数は、App Service プランに割り当てられた VM 上で実行されます。[Azure Functions の適切なサービス プランを選択する][function-plans]に関する記事をご覧ください。</span>
+2. <span id="note2">2 つ以上のインスタンスによる、より高い SLA。</span>
+3. <span id="note3">運用環境の場合。</span>
+4. <span id="note4">ジョブの完了後、0 にスケールダウンできます。</span>
+5. <span id="note5">App Service Environment (ASE) が必要です。</span>
+6. <span id="note7">ASE または BizTalk ハイブリッド接続が必要です。</span>
 
 ## <a name="devops"></a>DevOps
 
@@ -46,8 +47,8 @@ ms.lasthandoff: 04/23/2018
 
 メモ
 
-1. <span id="note1b">オプションには、ASP.NET または node.js (iisnode) の IIS Express、PHP Web サーバー、Azure Toolkit for IntelliJ、Azure Toolkit for Eclipse などがあります。 App Service では、デプロイ済みの Web アプリのリモート デバッグもサポートしています。</a>
-2. <span id="note2b">[リソース マネージャーのプロバイダー、リージョン、API のバージョン、およびスキーマ][resource-manager-supported-services]に関する記事をご覧ください。 
+1. <span id="note1b">オプションには、ASP.NET または node.js (iisnode) の IIS Express、PHP Web サーバー、Azure Toolkit for IntelliJ、Azure Toolkit for Eclipse などがあります。App Service では、デプロイ済みの Web アプリのリモート デバッグもサポートしています。</span>
+2. <span id="note2b">[Resource Manager のプロバイダー、リージョン、API のバージョン、およびスキーマ][resource-manager-supported-services]に関する記事をご覧ください。</span> 
 
 
 ## <a name="scalability"></a>スケーラビリティ
@@ -56,12 +57,13 @@ ms.lasthandoff: 04/23/2018
 |----------|-----------------|-------------|----------------|-----------------|-------------------------|----------------|-------------|
 | 自動スケール | VM スケール セット | 組み込みのサービス | VM スケール セット | 組み込みのサービス | サポートされていません | サポートされていません | 該当なし |
 | Load Balancer | Azure Load Balancer | 統合 | Azure Load Balancer | 統合 | Azure Load Balancer |  組み込みのサポートなし | Azure Load Balancer |
-| スケールの制限 | プラットフォーム イメージ: VMSS あたり 1000 個のノード、カスタム イメージ: VMSS あたり 100 個のノード | 20 個のインスタンス、App Service Environment で 50 | VMSS あたり 100 個のノード | 無制限 <a href="#note1c"><sup>1</sup></a> | 100 |サブスクリプションあたり 20 コンテナー グループ <a href="#note2c"><sup>2</sup></a> | 既定で 20 個のコアの上限。 増やすには、カスタマー サービスに問い合わせてください。 |
+| スケールの制限 | プラットフォーム イメージ: VMSS あたり 1000 個のノード、カスタム イメージ: VMSS あたり 100 個のノード | 20 個のインスタンス、App Service Environment で 50 | VMSS あたり 100 個のノード | 無制限 <a href="#note1c"><sup>1</sup></a> | 100 <a href="#note2c"><sup>2</sup></a> |サブスクリプションあたり 20 コンテナー グループ (既定) 増やすには、カスタマー サービスに問い合わせてください。 <a href="#note3c"><sup>3</sup></a> | 既定で 20 個のコアの上限。 増やすには、カスタマー サービスに問い合わせてください。 |
 
 メモ
 
-1. <span id="note1c">従量課金プランを使用している場合。 App Service プランを使用している場合は、App Service のスケール制限が適用されます。 [Azure Functions の適切なサービス プランを選択する][function-plans]に関する記事をご覧ください。</a>
-2. <span id="note2c">「[Azure Container Instances のクォータとリージョンの可用性](/azure/container-instances/container-instances-quotas)」を参照してください。</a>
+1. <span id="note1c">従量課金プランを使用している場合。App Service プランを使用している場合は、App Service のスケール制限が適用されます。[Azure Functions の適切なサービス プランを選択する][function-plans]に関する記事をご覧ください。</span>
+2. <span id="note2c">「[Container Service クラスター内のエージェント ノードのスケーリング][scale-acs]」を参照してください。</span>
+3. <span id="note3c">「[Azure Container Instances のクォータとリージョンの可用性](/azure/container-instances/container-instances-quotas)」を参照してください。</span>
 
 
 ## <a name="availability"></a>可用性
@@ -75,9 +77,9 @@ ms.lasthandoff: 04/23/2018
 
 | 条件 | Virtual Machines | App Service | Service Fabric | Azure Functions | Azure Container Service | Container Instances | Azure Batch |
 |----------|-----------------|-------------|----------------|-----------------|-------------------------|----------------|-------------|
-| SSL | VM で構成済み | サポートされています | サポートされています  | サポートされています | VM で構成済み | サポートされていません | サポートされています |
+| SSL | VM で構成済み | サポートされています | サポートされています  | サポートされています | VM で構成済み | サイドカー コンテナーでサポートされています | サポートされています |
 | コスト | [Windows][cost-windows-vm]、[Linux][cost-linux-vm] | [App Service の価格][cost-app-service] | [Service Fabric の価格][cost-service-fabric] | [Azure Functions の価格][cost-functions] | [Azure Container Service の価格][cost-acs] | [Container Instances の価格](https://azure.microsoft.com/pricing/details/container-instances/) | [Azure Batch の価格][cost-batch]
-| 適切なアーキテクチャ スタイル | n 層、ビッグ コンピューティング (HPC) | Web キューワーカー | マイクロサービス、イベント駆動型アーキテクチャ (EDA) | マイクロサービス、EDA | マイクロサービス、EDA | マイクロサービス、タスクの自動化、バッチ ジョブ  | ビッグ コンピューティング |
+| 適切なアーキテクチャ スタイル | [n 層][n-tier]、[ビッグ コンピューティング][big-compute] (HPC) | [Web キューワーカー][w-q-w] | [マイクロサービス][microservices]、[イベント駆動型アーキテクチャ][event-driven] | [マイクロサービス][microservices]、[イベント駆動型アーキテクチャ][event-driven] | [マイクロサービス][microservices]、[イベント駆動型アーキテクチャ][event-driven] | [マイクロサービス][microservices]、タスクの自動化、バッチ ジョブ  | [ビッグ コンピューティング][big-compute] (HPC) |
 
 [cost-linux-vm]: https://azure.microsoft.com/pricing/details/virtual-machines/linux/
 [cost-windows-vm]: https://azure.microsoft.com/pricing/details/virtual-machines/windows/
@@ -96,3 +98,12 @@ ms.lasthandoff: 04/23/2018
 [sla-vm]: https://azure.microsoft.com/support/legal/sla/virtual-machines/
 
 [resource-manager-supported-services]: /azure/azure-resource-manager/resource-manager-supported-services
+[scale-acs]: /azure/container-service/kubernetes/container-service-scale#scaling-considerations
+
+[n-tier]: ../architecture-styles/n-tier.md
+[w-q-w]: ../architecture-styles/web-queue-worker.md
+[microservices]: ../architecture-styles/microservices.md
+[event-driven]: ../architecture-styles/event-driven.md
+[big-date]: ../architecture-styles/big-data.md
+[big-compute]: ../architecture-styles/big-compute.md
+
