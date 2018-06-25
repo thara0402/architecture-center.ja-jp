@@ -5,11 +5,12 @@ author: telmosampaio
 ms.date: 04/09/2018
 pnp.series.title: Implement a hub-spoke network topology in Azure
 pnp.series.prev: expressroute
-ms.openlocfilehash: f04af90f328a0434d44ca7ea90309f3209a3b69d
-ms.sourcegitcommit: f665226cec96ec818ca06ac6c2d83edb23c9f29c
+ms.openlocfilehash: 4ebb0d4df3e1907662537516cae1f077e68e47b4
+ms.sourcegitcommit: f7418f8bdabc8f5ec33ae3551e3fbb466782caa5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36209578"
 ---
 # <a name="implement-a-hub-spoke-network-topology-in-azure"></a>Azure にハブスポーク ネットワーク トポロジを実装する
 
@@ -58,7 +59,7 @@ ms.lasthandoff: 04/16/2018
 
 ## <a name="recommendations"></a>Recommendations
 
-ほとんどのシナリオには、次の推奨事項が適用されます。 これらの推奨事項には、優先される特定の要件がない限り、従ってください。
+ほとんどのシナリオには、次の推奨事項が適用されます。 これらの推奨事項には、オーバーライドする特定の要件がない限り、従ってください。
 
 ### <a name="resource-groups"></a>リソース グループ
 
@@ -272,7 +273,7 @@ TcpTestSucceeded : True
 
 2. `Connect` をクリックして、VM に対するリモート デスクトップ セッションを開きます。 `onprem.json` パラメーター ファイルで指定したパスワードを使用します。
 
-3. VM で PowerShell コンソールを開き、`Test-NetConnection` コマンドレットを使用して、ハブ VNet の ジャンプボックス VM に接続できることを確認します。
+3. VM で PowerShell コンソールを開き、`Test-NetConnection` コマンドレットを使用して、スポーク VNet の ジャンプボックス VM に接続できることを確認します。
 
    ```powershell
    Test-NetConnection 10.1.0.68 -CommonTCPPort RDP

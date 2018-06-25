@@ -2,12 +2,13 @@
 title: Azure コンピューティング サービスのデシジョン ツリー
 description: コンピューティング サービスを選択するためのフローチャート
 author: MikeWasson
-ms.date: 04/21/2018
-ms.openlocfilehash: 3dcfbd156d4fced863a56bcc8bb74483aa665f9f
-ms.sourcegitcommit: 7ced70ebc11aa0df0dc0104092d3cc6ad5c28bd6
+ms.date: 06/13/2018
+ms.openlocfilehash: 60bb84d4bf210888d3d43498db043b6e452f6a80
+ms.sourcegitcommit: 26b04f138a860979aea5d253ba7fecffc654841e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36206725"
 ---
 # <a name="decision-tree-for-azure-compute-services"></a>Azure コンピューティング サービスのデシジョン ツリー
 
@@ -25,5 +26,20 @@ Azure では、複数の方法でお使いのアプリケーション コード�
 
 アプリケーションが複数のワークロードで構成されている場合は、それぞれのワークロードを個別に評価します。 完全なソリューションに、複数のコンピューティング サービスに組み込むことができます。
 
+## <a name="flowchart"></a>フローチャート
+
 ![](../images/compute-decision-tree.svg)
 
+## <a name="definitions"></a>定義
+
+- **未開発:** ゼロから構築された完全に新しいソフトウェア プロジェクトです。 レガシ コードは含まれません。 
+
+- **ブラウンフィールド:** 既存のアプリケーションに基づいて構築されたソフトウェア プロジェクトです。 レガシ コードまたはフレームワークが継承されている可能性があります。
+
+- **リフト アンド シフト:** アプリケーションの再設計やコード変更なしで、ワークロードをクラウドに移行する戦略です。 "*リホスト*" とも呼ばれます。 詳細については、「[Azure Migration Center](https://azure.microsoft.com/migration/)」を参照してください。
+
+- **クラウド用に最適化:** アプリケーションをリファクタリングすることでクラウドネイティブの機能を利用して、クラウドに移行する戦略です。
+
+## <a name="next-steps"></a>次の手順
+
+考慮する必要がある追加条件については、「[Azure コンピューティング サービスを選択するための条件](./compute-comparison.md)」を参照してください。

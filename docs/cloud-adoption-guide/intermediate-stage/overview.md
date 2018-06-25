@@ -2,12 +2,12 @@
 title: 'Azure の導入: 中級'
 description: 企業が Azure を導入するのに必要な中級レベルの知識について説明します
 author: petertay
-ms.openlocfilehash: 39b98595dd615ba1aa36921e48a0b23797bebaa0
-ms.sourcegitcommit: b3d74d8a89b2224fc796ce0e89cea447af43a0d4
+ms.openlocfilehash: 227d9558647ed8076b2832d95e192f2f0c43b9db
+ms.sourcegitcommit: 26b04f138a860979aea5d253ba7fecffc654841e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35291304"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36206363"
 ---
 # <a name="azure-cloud-adoption-guide-intermediate-overview"></a>Azure クラウド導入ガイド: 概要 (中級)
 
@@ -53,31 +53,31 @@ Azure クラウド導入ガイドの[基本ステージ](/azure/architecture/clo
 次の手順に従います。
 
 1. [Azure アカウント](/azure/active-directory/sign-up-organization)を作成します (まだ組織にない場合)。 Azure アカウントにサインアップしたユーザーは、Azure アカウント管理者になります。また、組織の指導者は、このロールを担う個人を選択する必要があります。 この個人は、次を担当します。
-  * サブスクリプションの作成。
-  * これらのサブスクリプションのユーザー ID が格納される [Azure Active Directory (AD)](/azure/active-directory/active-directory-whatis) テナントの作成と管理。    
+    * サブスクリプションの作成。
+    * これらのサブスクリプションのユーザー ID が格納される [Azure Active Directory (AD)](/azure/active-directory/active-directory-whatis) テナントの作成と管理。    
 2. ご自身の組織の指導チームは、次の作業を行う担当者を決めます。
-  * ユーザー ID の管理。ご自身の組織の Azure アカウントの作成時に [Azure AD テナント](/azure/active-directory/develop/active-directory-howto-tenant)が既定で作成されます。アカウント管理者は、[Azure AD グローバル管理者](/azure/active-directory/active-directory-assign-admin-roles-azure-portal#details-about-the-global-administrator-role)として既定で追加されます。 ご自身の組織がユーザー ID 管理の担当者として別のユーザーを選択するには、[そのユーザーに Azure AD グローバル管理者ロールを割り当て](/azure/active-directory/active-directory-users-assign-role-azure-portal)ます。 
-  * サブスクリプション。これらのユーザーは次を行います。
-    * そのサブスクリプションのリソース使用量に関連付けられているコストの管理。
-    * リソース アクセスのための最小限のアクセス許可モデルの実装と維持。
-    * サービス制限の追跡。
-  * 共有インフラストラクチャ サービス (ご自身の組織がこのモデルの使用を決めた場合)。このユーザーは次を担当します。
-    * オンプレミスと Azure ネットワークの接続。 
-    * Azure 内での仮想ネットワーク ピアリング経由のネットワーク接続の所有権。
-  * ワークロード所有者。 
+    * ユーザー ID の管理。ご自身の組織の Azure アカウントの作成時に [Azure AD テナント](/azure/active-directory/develop/active-directory-howto-tenant)が既定で作成されます。アカウント管理者は、[Azure AD グローバル管理者](/azure/active-directory/active-directory-assign-admin-roles-azure-portal#details-about-the-global-administrator-role)として既定で追加されます。 ご自身の組織がユーザー ID 管理の担当者として別のユーザーを選択するには、[そのユーザーに Azure AD グローバル管理者ロールを割り当て](/azure/active-directory/active-directory-users-assign-role-azure-portal)ます。 
+    * サブスクリプション。これらのユーザーは次を行います。
+        * そのサブスクリプションのリソース使用量に関連付けられているコストの管理。
+        * リソース アクセスのための最小限のアクセス許可モデルの実装と維持。
+        * サービス制限の追跡。
+    * 共有インフラストラクチャ サービス (ご自身の組織がこのモデルの使用を決めた場合)。このユーザーは次を担当します。
+        * オンプレミスと Azure ネットワークの接続。 
+        * Azure 内での仮想ネットワーク ピアリング経由のネットワーク接続の所有権。
+    * ワークロード所有者。 
 3. Azure AD グローバル管理者は、次に対する[ユーザー アカウントを新しく作成](/azure/active-directory/add-users-azure-active-directory)します。
-  * 各環境に関連付けられている各サブスクリプションの**サブスクリプション所有者**になる人。 これは、サブスクリプション **サービス管理者**に、各サブスクリプション/環境のリソース アクセス管理のタスクが割り当てられない場合にのみ必要です。
-  * **ネットワーク操作ユーザー**になる人。
-  * **ワークロード所有者**になる人。
+    * 各環境に関連付けられている各サブスクリプションの**サブスクリプション所有者**になる人。 これは、サブスクリプション **サービス管理者**に、各サブスクリプション/環境のリソース アクセス管理のタスクが割り当てられない場合にのみ必要です。
+    * **ネットワーク操作ユーザー**になる人。
+    * **ワークロード所有者**になる人。
 4. Azure アカウント管理者は、[Azure アカウント ポータル](https://account.azure.com)を使用して、次の 3 つのサブスクリプションを作成します。
-  * **共有インフラストラクチャ**環境のサブスクリプション。
-  * **運用**環境のサブスクリプション。 
-  * **開発**環境のサブスクリプション。 
+    * **共有インフラストラクチャ**環境のサブスクリプション。
+    * **運用**環境のサブスクリプション。 
+    * **開発**環境のサブスクリプション。 
 5. Azure アカウント管理者は、[サブスクリプション サービス所有者を各サブスクリプションに追加](/azure/billing/billing-add-change-azure-subscription-administrator#add-an-rbac-owner-admin-for-a-subscription-in-azure-portal)します。
-6. **ワークロード所有者**の承認プロセスを作成して、リソース グループの作成を要求します。 承認プロセスは、さまざまな方法で実装できます。たとえば、電子メールや、[SharePoint ワークフロー](https://support.office.com/article/introduction-to-sharepoint-workflow-07982276-54e8-4e17-8699-5056eff4d9e3)などのプロセス管理ツールを使用できます。 承認プロセスでは、次の手順に従うことができます。
-  1. **ワークロード所有者**は、**開発**環境、**運用**環境、またはその両方で、必要な Azure リソースの部品表を準備して、**サブスクリプション所有者**に送信します。
-  2. **サブスクリプション所有者**は部品表を確認し、要求されたリソースを検証して、そのリソースが計画的な使用に適していることを確かめます。たとえば、要求された[仮想マシンのサイズ](/azure/virtual-machines/windows/sizes)が正しいことをチェックします。
-  3. 要求が承認されなかった場合は、**ワークロード所有者**に通知されます。 要求が承認された場合、**サブスクリプション所有者**は、自分の組織の[名前付け規則](/azure/architecture/best-practices/naming-conventions)に従って[要求されたリソース グループを作成](/azure/azure-resource-manager/resource-group-portal#manage-resource-groups)し、[**共同作成者**ロール](/azure/role-based-access-control/built-in-roles#contributor)と共に[**ワークロード所有者**を追加](/azure/role-based-access-control/role-assignments-portal#add-access)して、リソース グループが作成されたことを**ワークロード所有者**に通知します。
+6. **ワークロード所有者**の承認プロセスを作成して、リソース グループの作成を要求します。 承認プロセスは、さまざまな方法で実装できます。たとえば、電子メールや、[SharePoint ワークフロー](https://support.office.com/article/introduction-to-sharepoint-workflow-07982276-54e8-4e17-8699-5056eff4d9e3)などのプロセス管理ツールを使用できます。 承認プロセスでは、次の手順に従うことができます。  
+    * **ワークロード所有者**は、**開発**環境、**運用**環境、またはその両方で、必要な Azure リソースの部品表を準備して、**サブスクリプション所有者**に送信します。
+    * **サブスクリプション所有者**は部品表を確認し、要求されたリソースを検証して、そのリソースが計画的な使用に適していることを確かめます。たとえば、要求された[仮想マシンのサイズ](/azure/virtual-machines/windows/sizes)が正しいことをチェックします。
+    * 要求が承認されなかった場合は、**ワークロード所有者**に通知されます。 要求が承認された場合、**サブスクリプション所有者**は、自分の組織の[名前付け規則](/azure/architecture/best-practices/naming-conventions)に従って[要求されたリソース グループを作成](/azure/azure-resource-manager/resource-group-portal#manage-resource-groups)し、[**共同作成者**ロール](/azure/role-based-access-control/built-in-roles#contributor)と共に[**ワークロード所有者**を追加](/azure/role-based-access-control/role-assignments-portal#add-access)して、リソース グループが作成されたことを**ワークロード所有者**に通知します。
 7. ワークロード所有者の承認プロセスを作成して、仮想ネットワーク ピアリング接続を共有インフラストラクチャ所有者に要求します。 前の手順と同様に、この承認プロセスは、電子メールまたはプロセス管理ツールを使用して実装できます。
 
 ガバナンス モデルが実装されたので、共有インフラストラクチャ サービスをデプロイできます。

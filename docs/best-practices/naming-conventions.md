@@ -4,12 +4,12 @@ description: Azure リソースの名前付け規則。 仮想マシン、スト
 author: telmosampaio
 ms.date: 05/18/2017
 pnp.series.title: Best Practices
-ms.openlocfilehash: 42d91da3eacdcda66b82dff82ba444170c11d7d1
-ms.sourcegitcommit: 85334ab0ccb072dac80de78aa82bcfa0f0044d3f
+ms.openlocfilehash: a92b6a1a23b35e7379f586d477b6f7cc6ccfc7e1
+ms.sourcegitcommit: 26b04f138a860979aea5d253ba7fecffc654841e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35253062"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36206380"
 ---
 # <a name="naming-conventions"></a>名前付け規則
 
@@ -34,7 +34,7 @@ Azure サブスクリプションに名前を付ける際、詳細な名前に�
 `<Company> <Department (optional)> <Product Line (optional)> <Environment>`
 
 * "Company" は、通常、各サブスクリプションで同じにします。 ただし、一部の企業には、組織構造内に子会社があります。 こうした企業は、中央の IT グループによって管理されている場合があります。 このような場合は、親会社の名前 (*Contoso*) と子会社の名前 (*Northwind*) の両方を指定することで区別できます。
-* "Department" は個人のグループが働いている組織内での名前です。 名前空間内でのこの項目は省略してもかまいません。
+* "Department" は組織内の名前で、個人グループが含まれます。 名前空間内でのこの項目は省略してもかまいません。
 * "Product Line" は部署内で遂行される職務や製品の個別の名前です。 一般に、内部向けのサービスやアプリケーションでは省略してもかまいません。 ただし、簡単に区別および識別できる必要のある外部向けのサービスには使用することを強くお勧めします (課金レコードの明確な区別などのため)。
 * "Environment" は、"Dev"、"QA"、"Prod" など、アプリケーションまたはサービスのデプロイ ライフサイクルを示す名前です。
 
