@@ -3,12 +3,12 @@ title: Azure コンピューティング サービスのデシジョン ツリ�
 description: コンピューティング サービスを選択するためのフローチャート
 author: MikeWasson
 ms.date: 06/13/2018
-ms.openlocfilehash: 60bb84d4bf210888d3d43498db043b6e452f6a80
-ms.sourcegitcommit: 26b04f138a860979aea5d253ba7fecffc654841e
+ms.openlocfilehash: 689ec3f265e563273a75ad98268d03624a7b4536
+ms.sourcegitcommit: ce2fa8ac2d310f7078317cade12f1b89db1ffe06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36206725"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36338185"
 ---
 # <a name="decision-tree-for-azure-compute-services"></a>Azure コンピューティング サービスのデシジョン ツリー
 
@@ -25,6 +25,8 @@ Azure では、複数の方法でお使いのアプリケーション コード�
 - [コンピューティングの比較表](./compute-comparison.md)
 
 アプリケーションが複数のワークロードで構成されている場合は、それぞれのワークロードを個別に評価します。 完全なソリューションに、複数のコンピューティング サービスに組み込むことができます。
+
+Azure でコンテナーをホストする際のオプションの詳細については、https://azure.microsoft.com/overview/containers/ を参照してください。
 
 ## <a name="flowchart"></a>フローチャート
 

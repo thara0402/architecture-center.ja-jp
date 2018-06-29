@@ -2,16 +2,13 @@
 title: SQL Server を使用した n 層アプリケーション
 description: 可用性、セキュリティ、スケーラビリティ、および管理容易性のために Azure で多層アーキテクチャを実装する方法について説明します。
 author: MikeWasson
-ms.date: 05/03/2018
-pnp.series.title: Windows VM workloads
-pnp.series.next: multi-region-application
-pnp.series.prev: multi-vm
-ms.openlocfilehash: 0f170f2fbcbbfeace53db199cb5d3949415b5546
-ms.sourcegitcommit: a5e549c15a948f6fb5cec786dbddc8578af3be66
+ms.date: 06/23/2018
+ms.openlocfilehash: 050ea9b3104a2dc9af4cdaad3b4540cd75434e9d
+ms.sourcegitcommit: 767c8570d7ab85551c2686c095b39a56d813664b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2018
-ms.locfileid: "33673594"
+ms.lasthandoff: 06/24/2018
+ms.locfileid: "36746674"
 ---
 # <a name="n-tier-application-with-sql-server"></a>SQL Server を使用した n 層アプリケーション
 
@@ -43,9 +40,11 @@ ms.locfileid: "33673594"
 
 * **ジャンプボックス。** [要塞ホスト]とも呼ばれます。 管理者が他の VM に接続するために使用するネットワーク上のセキュアな VM です。 ジャンプボックスの NSG は、セーフ リストにあるパブリック IP アドレスからのリモート トラフィックのみを許可します。 NSG は、リモート デスクトップ (RDP) トラフィックを許可する必要があります。
 
-* **SQL Server Always On 可用性グループ。** レプリケーションとフェールオーバーを有効にすることで、データ層で高い可用性を提供します。
+* **SQL Server Always On 可用性グループ。** レプリケーションとフェールオーバーを有効にすることで、データ層で高い可用性を提供します。 これは、Windows Server フェールオーバー クラスター (WSFC) テクノロジを使用してフェールオーバーを行います。
 
-* **Active Directory Domain Services (AD DS) サーバー。** SQL Server Always On 可用性グループは、Windows Server フェールオーバー クラスター (WSFC) テクノロジでフェールオーバーできるように、ドメインに参加しています。 
+* **Active Directory Domain Services (AD DS) サーバー。** フェールオーバー クラスターと、これに関連するクラスター化されたロールを表すコンピューター オブジェクトは、Active Directory Domain Services (AD DS) に作成されます。
+
+* **クラウド監視**。 フェールオーバー クラスターでは、そのノードの半数以上が実行されている必要があり、"クォーラムに達している" と呼びます。 クラスターにノードが 2 つしかない場合は、ネットワークのパーティションにより、各ノードは自身がマスター ノードであると認識する可能性があります。 この場合、"*監視*" によって優先順位を決定し、クォーラムを確立する必要があります。 監視は、クォーラムを確立する際の優先順位決定者として動作可能な、共有ディスクなどのリソースです。 クラウド監視は、Azure Blob Storage を使用する一種の監視です。 クォーラムの概念の詳細については、「[Understanding cluster and pool quorum (クラスターとプール クォーラムについて)](/windows-server/storage/storage-spaces/understand-quorum)」を参照してください。 クラウド監視の詳細については、「[Deploy a cloud witness for a Failover Cluster (フェールオーバー クラスター用にクラウド監視をデプロイする)](/windows-server/failover-clustering/deploy-cloud-witness)」を参照してください。 
 
 * **Azure DNS**。 [Azure DNS][azure-dns] は、DNS ドメインのホスティング サービスであり、Microsoft Azure インフラストラクチャを使用した名前解決を提供します。 Azure でドメインをホストすることで、その他の Azure サービスと同じ資格情報、API、ツール、課金情報を使用して DNS レコードを管理できます。
 
@@ -157,13 +156,13 @@ VM スケール セットを使用していない場合は、同じ層の VM を
 
 ## <a name="deploy-the-solution"></a>ソリューションのデプロイ方法
 
-このリファレンス アーキテクチャのデプロイについては、[GitHub][github-folder] を参照してください。 
+このリファレンス アーキテクチャのデプロイについては、[GitHub][github-folder] を参照してください。 デプロイ全体を完了するには最大 2 時間かかる場合があります。これには、AD DS、Windows Server フェールオーバー クラスター、および SQL Server 可用性グループを構成するスクリプトの実行時間が含まれます。
 
 ### <a name="prerequisites"></a>前提条件
 
 1. [参照アーキテクチャ][ref-arch-repo] GitHub リポジトリに ZIP ファイルを複製、フォーク、またはダウンロードします。
 
-2. Azure CLI 2.0 がコンピューターにインストールされていることを確認してください。 CLI をインストールするには、「[Azure CLI 2.0 のインストール][azure-cli-2]」の手順に従ってください。
+2. [Azure CLI 2.0][azure-cli-2] をインストールします。
 
 3. [Azure の構成要素][azbb] npm パッケージをインストールします。
 
@@ -171,32 +170,80 @@ VM スケール セットを使用していない場合は、同じ層の VM を
    npm install -g @mspnp/azure-building-blocks
    ```
 
-4. コマンド プロンプト、bash プロンプト、または PowerShell プロンプトから、以下のコマンドの 1 つを使用して Azure アカウントにログインし、プロンプトに従います。
+4. コマンド プロンプト、bash プロンプト、または PowerShell プロンプトから、以下のコマンドを使用して Azure アカウントにログインします。
 
    ```bash
    az login
    ```
 
-### <a name="deploy-the-solution-using-azbb"></a>azbb を使用したソリューションのデプロイ
+### <a name="deploy-the-solution"></a>ソリューションのデプロイ方法 
 
-N 層アプリケーションの参照アーキテクチャで Windows VM をデプロイするには、次の手順に従います。
+1. 次のコマンドを実行して、リソース グループを作成します。
 
-1. 上の前提条件の手順 1 で複製したリポジトリの `virtual-machines\n-tier-windows` フォルダーに移動します。
+    ```bash
+    az group create --location <location> --name <resource-group-name>
+    ```
 
-2. このパラメーター ファイルは、デプロイ内の各 VM の既定の管理者ユーザー名とパスワードを指定します。 参照アーキテクチャをデプロイする前に、これらを変更する必要があります。 `n-tier-windows.json` ファイルを開き、各 **adminUsername** および **adminPassword** フィールドを新しい設定に置き換えます。
-  
-   > [!NOTE]
-   > このデプロイ中に実行される複数のスクリプトが **VirtualMachineExtension** オブジェクトと、一部の **VirtualMachine** オブジェクトの **extensions** 設定の両方に存在します。 これらのスクリプトのいくつかには、今変更した管理者ユーザー名とパスワードが必要です。 これらのスクリプトをレビューして、正しい資格情報を指定したことを確認することをお勧めします。 正しい資格情報を指定していない場合は、デプロイが失敗する可能性があります。
-   > 
-   > 
+2. 次のコマンドを実行して、クラウド監視のストレージ アカウントを作成します。
 
-ファイルを保存します。
+    ```bash
+    az storage account create --location <location> \
+      --name <storage-account-name> \
+      --resource-group <resource-group-name> \
+      --sku Standard_LRS
+    ```
 
-3. 次に示すように、**azbb** コマンド ライン ツールを使用して参照アーキテクチャをデプロイします。
+3. 参照アーキテクチャ GitHub リポジトリの `virtual-machines\n-tier-windows` フォルダーに移動します。
 
-   ```bash
-   azbb -s <your subscription_id> -g <your resource_group_name> -l <azure region> -p n-tier-windows.json --deploy
-   ```
+4. `n-tier-windows.json` ファイルを開きます。 
+
+5. "witnessStorageBlobEndPoint" のすべてのインスタンスを検索し、プレース ホルダー テキストを手順 2. のストレージ アカウントの名前で置き換えます。
+
+    ```json
+    "witnessStorageBlobEndPoint": "https://[replace-with-storageaccountname].blob.core.windows.net",
+    ```
+
+6. 次のコマンドを実行して、ストレージ アカウントのアカウント キーを一覧表示します。
+
+    ```bash
+    az storage account keys list \
+      --account-name <storage-account-name> \
+      --resource-group <resource-group-name>
+    ```
+
+    出力は次のようになります。 `key1` の値をコピーします。
+
+    ```json
+    [
+    {
+        "keyName": "key1",
+        "permissions": "Full",
+        "value": "..."
+    },
+    {
+        "keyName": "key2",
+        "permissions": "Full",
+        "value": "..."
+    }
+    ]
+    ```
+
+7. `n-tier-windows.json` ファイルで、"witnessStorageAccountKey" のすべてのインスタンスを検索し、アカウント キーに貼り付けます。
+
+    ```json
+    "witnessStorageAccountKey": "[replace-with-storagekey]"
+    ```
+
+8. `n-tier-windows.json` ファイルで、インスタンス `testPassw0rd!23`、`test$!Passw0rd111`、および `AweS0me@SQLServicePW` をすべて検索します。 これらをご自身のパスワードで置き換えて、ファイルを保存します。
+
+    > [!NOTE]
+    > 管理者ユーザー名を変更する場合は、JSON ファイルの `extensions` ブロックも更新する必要があります。 
+
+9. 次のコマンドを実行して、アーキテクチャをデプロイします。
+
+    ```bash
+    azbb -s <your subscription_id> -g <resource_group_name> -l <location> -p n-tier-windows.json --deploy
+    ```
 
 Azure の構成要素を使用してこのサンプルの参照アーキテクチャをデプロイする方法の詳細については、「[GitHub リポジトリ][git]」を参照してください。
 
