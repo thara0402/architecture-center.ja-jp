@@ -6,12 +6,12 @@ ms:date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications
 pnp.series.prev: app-roles
 pnp.series.next: web-api
-ms.openlocfilehash: 03c4d5fa10c75437a7b066534619ba9a123c350c
-ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
+ms.openlocfilehash: 321dc52a3e6f803a032288c2341e490cdba8c20a
+ms.sourcegitcommit: 9a2d56ac7927f0a2bbfee07198d43d9c5cb85755
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30849673"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36327655"
 ---
 # <a name="role-based-and-resource-based-authorization"></a>ロールベースおよびリソースベースの承認
 
@@ -218,7 +218,7 @@ public class SurveyAuthorizationHandler : AuthorizationHandler<OperationAuthoriz
 }
 ```
 
-マルチ テナント アプリケーションでは、アクセス許可が別のテナント データに "リーク" しないことを確認する必要があります。 Surveys アプリでは、共同作成者のアクセス許可はテナント間で認められており &mdash; 別のテナントのユーザーを共同作成者として割り当てることができます。 その他のアクセス許可の種類は、そのユーザーのテナントに属するリソースに制限されます。 この要件を適用するには、アクセス許可を付与する前に、コードでテナント ID を確認します。 (アンケートの作成時に割り当てられた `TenantId` フィールドです。)
+マルチ テナント アプリケーションでは、アクセス許可が別のテナント データに "リーク" しないことを確認する必要があります。 Surveys アプリでは、共同作成者のアクセス許可はテナント間で認められており、別のテナントのユーザーを共同作成者として割り当てることができます。 その他のアクセス許可の種類は、そのユーザーのテナントに属するリソースに制限されます。 この要件を適用するには、アクセス許可を付与する前に、コードでテナント ID を確認します。 (アンケートの作成時に割り当てられた `TenantId` フィールドです。)
 
 次の手順では、アクセス許可に対して操作 (読み取り、更新、削除など) を確認します。 Surveys アプリは、関数のルックアップ テーブルを使用して、この手順を実装します。
 
