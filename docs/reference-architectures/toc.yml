@@ -16,6 +16,8 @@
       items:
         - name: SQL Data Warehouse を使用したエンタープライズ向け BI
           href: data/enterprise-bi-sqldw.md
+        - name: SQL Data Warehouse と Data Factory を使用したエンタープライズ BI の自動化
+          href: data/enterprise-bi-adf.md
     - name: ハイブリッド ネットワーク
       href: hybrid-networking/index.md
       items:
