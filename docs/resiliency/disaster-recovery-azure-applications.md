@@ -3,12 +3,12 @@ title: Azure アプリケーションのディザスター リカバリー
 description: Microsoft Azure でのディザスター リカバリーに対応したアプリケーションを設計するための方法に関する技術的概要と詳細。
 author: adamglick
 ms.date: 05/26/2017
-ms.openlocfilehash: 7235e752cf1b96e392a700b223d63b07c0f85b66
-ms.sourcegitcommit: 3d9ee03e2dda23753661a80c7106d1789f5223bb
+ms.openlocfilehash: 2d890e479e008e03dcfce9b7240f8bcbaf270372
+ms.sourcegitcommit: e8f4786b187697b1bea374e5f35f217c65d2dfe0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2018
-ms.locfileid: "29477776"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37343381"
 ---
 # <a name="disaster-recovery-for-azure-applications"></a>Azure アプリケーションのディザスター リカバリー
 
@@ -278,7 +278,7 @@ DR 戦略が複数のクラウド プラットフォームに依存している�
 Automation に関するベスト プラクティスとしては、Azure 障害復旧のための PowerShell スクリプトまたはコマンド ライン インターフェイス (CLI) スクリプトのリポジトリを作成します。 すばやくアクセスできるように明確にマークして分類します。 スクリプトのリポジトリとバージョンを管理するプライマリ ユーザーを指定します。 パラメーターの説明とスクリプトの使用例をドキュメントにします。 また、このドキュメントと Azure のデプロイの同期を保ちます。 これが、リポジトリのすべての部分を担当するプライマリ ユーザーを配置する目的です。
 
 ## <a name="failure-detection"></a>障害の検出
-可用性と障害復旧に関する問題を正しく処理するには、障害を検出して診断できる必要があります。 システムまたはそのコンポーネントが突然利用不可になったタイミングを迅速に認識するために、サーバーとデプロイの詳細な監視を実行します。 クラウド サービスとその依存関係の全体的な正常性を評価する監視ツールで、この作業の一部を実行できます。 適切な Microsoft のツールの 1 つは [System Center 2016](https://www.microsoft.com/server-cloud/products/system-center-2016/) です。 サード パーティ製ツールも監視機能を提供できます。 ほとんどの監視ソリューションは、主要なパフォーマンス カウンターとサービスの可用性を追跡します。
+可用性と障害復旧に関する問題を正しく処理するには、障害を検出して診断できる必要があります。 システムまたはそのコンポーネントが突然利用不可になったタイミングを迅速に認識するために、サーバーとデプロイの詳細な監視を実行します。 クラウド サービスとその依存関係の全体的な正常性を評価する監視ツールで、この作業の一部を実行できます。 適切な Microsoft のツールの 1 つは [System Center 2016](https://www.microsoft.com/cloud-platform/system-center) です。 サード パーティ製ツールも監視機能を提供できます。 ほとんどの監視ソリューションは、主要なパフォーマンス カウンターとサービスの可用性を追跡します。
 
 これらのツールは不可欠ですが、クラウド サービスでの障害検出およびレポートについて計画を立てることも必要です。 また、Azure 診断の適切な使用を計画する必要があります。 カスタム パフォーマンス カウンターまたはイベント ログ エントリも、全体的な戦略に組み込むことができます。 これらは障害の間により多くのデータを提供し、問題をすばやく診断して完全な機能を復元するのに役立ちます。 また、監視ツールがアプリケーションの正常性の判断に使用できる追加メトリックも提供します。 詳細については、「 [Azure Cloud Services での Azure 診断の有効化](/azure/cloud-services/cloud-services-dotnet-diagnostics/)」を参照してください。 総合的な "正常性モデル" を計画する方法の詳細については、「 [Failsafe: Guidance for Resilient Cloud Architectures (フェールセーフ: 回復力のあるクラウド アーキテクチャに関するガイダンス)](https://channel9.msdn.com/Series/FailSafe)」を参照してください。
 

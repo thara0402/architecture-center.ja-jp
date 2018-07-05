@@ -8,12 +8,12 @@ pnp.series.title: Cloud Design Patterns
 pnp.pattern.categories:
 - data-management
 - performance-scalability
-ms.openlocfilehash: 328483e24c75137f07576104d50dc59d426b8ac4
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: a4e35a19851f4742b5c154197c22bb1fe13de108
+ms.sourcegitcommit: e9d9e214529edd0dc78df5bda29615b8fafd0e56
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
-ms.locfileid: "24543019"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37091106"
 ---
 # <a name="sharding-pattern"></a>シャーディング パターン
 
@@ -221,5 +221,4 @@ Trace.TraceInformation("Fanout query complete - Record Count: {0}",
 - [Materialized View Pattern (具体化されたビュー パターン)](materialized-view.md) クエリ操作のパフォーマンスを維持するには、特に、サマリー データがシャード全体に分散された情報に基づいている場合は、データを集計、要約する具体化されたビューを作成すると便利です。 これらのビューの生成、作成方法について説明します。
 - [シャード レッスン](http://www.addsimplicity.com/adding_simplicity_an_engi/2008/08/shard-lessons.html): Adding Simplicity ブログ。
 - [データベースのシャーディング](http://dbshards.com/database-sharding/): CodeFutures web サイト。
-- [スケーラビリティ戦略の概要: データベース シャーディング](http://blog.maxindelicato.com/2008/12/scalability-strategies-primer-database-sharding.html): Max Indelicato のブログ。
 - [スケーラブルなデータベースの構築: データベース シャーディング スキームの長所と短所](http://www.25hoursaday.com/weblog/2009/01/16/BuildingScalableDatabasesProsAndConsOfVariousDatabaseShardingSchemes.aspx): Dare Obasanjo のブログ。

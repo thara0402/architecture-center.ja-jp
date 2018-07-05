@@ -3,12 +3,12 @@ title: Azure での Linux VM の実行
 description: 拡張性、回復性、管理容易性、セキュリティに注目しながら、Azure で Linux VM を実行する方法。
 author: telmosampaio
 ms.date: 04/03/2018
-ms.openlocfilehash: f29b7225c2e0edbb1569c9e3a55d112d12041af8
-ms.sourcegitcommit: a5e549c15a948f6fb5cec786dbddc8578af3be66
+ms.openlocfilehash: 3d0492d05280e8c296cdfc4157aa0387a70337bf
+ms.sourcegitcommit: 58d93e7ac9a6d44d5668a187a6827d7cd4f5a34d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2018
-ms.locfileid: "33673584"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37142320"
 ---
 # <a name="run-a-linux-vm-on-azure"></a>Azure での Linux VM の実行
 
@@ -144,17 +144,7 @@ VM は、[計画的メンテナンス][planned-maintenance]または[計画外�
 
 ### <a name="prerequisites"></a>前提条件
 
-1. [参照アーキテクチャ][ref-arch-repo] GitHub リポジトリに ZIP ファイルを複製、フォーク、またはダウンロードします。
-
-2. Azure CLI 2.0 がコンピューターにインストールされていることを確認してください。 CLI のインストール手順については、「[Azure CLI 2.0 のインストール][azure-cli-2]」をご覧ください。
-
-3. [Azure の構成要素][azbb] npm パッケージをインストールします。
-
-4. コマンド プロンプト、bash プロンプト、または PowerShell プロンプトから、次のコマンドを入力して Azure アカウントにログインします。
-
-  ```bash
-  az login
-  ```
+[!INCLUDE [ref-arch-prerequisites.md](../../../includes/ref-arch-prerequisites.md)]
 
 5. SSH キー ペアを作成します。 詳細については、「[Azure に Linux VM 用の SSH 公開キーと秘密キーのペアを作成して使用する方法](/azure/virtual-machines/linux/mac-create-ssh-keys)」を参照してください。
 

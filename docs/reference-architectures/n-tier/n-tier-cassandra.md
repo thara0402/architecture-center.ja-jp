@@ -3,12 +3,12 @@ title: Apache Cassandra を使用する N 層アプリケーション
 description: Microsoft Azure で N 層アーキテクチャの Linux VM を実行する方法について説明します。
 author: MikeWasson
 ms.date: 05/03/2018
-ms.openlocfilehash: 46e9a821a33dd3ea3ae9129ab5ad69172bfcd667
-ms.sourcegitcommit: a5e549c15a948f6fb5cec786dbddc8578af3be66
+ms.openlocfilehash: 7ee14088a2fae3cfc5c1119daf717236c75ecc6a
+ms.sourcegitcommit: 58d93e7ac9a6d44d5668a187a6827d7cd4f5a34d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2018
-ms.locfileid: "33673614"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37142235"
 ---
 # <a name="n-tier-application-with-apache-cassandra"></a>Apache Cassandra を使用する N 層アプリケーション
 
@@ -144,21 +144,7 @@ Cassandra クラスターのために検討するフェールオーバー シナ
 
 ### <a name="prerequisites"></a>前提条件
 
-1. [参照アーキテクチャ][ref-arch-repo] GitHub リポジトリに ZIP ファイルを複製、フォーク、またはダウンロードします。
-
-2. Azure CLI 2.0 がコンピューターにインストールされていることを確認してください。 CLI をインストールするには、「[Azure CLI 2.0 のインストール][azure-cli-2]」の手順に従ってください。
-
-3. [Azure の構成要素][azbb] npm パッケージをインストールします。
-
-   ```bash
-   npm install -g @mspnp/azure-building-blocks
-   ```
-
-4. コマンド プロンプト、bash プロンプト、または PowerShell プロンプトから、以下のコマンドの 1 つを使用して Azure アカウントにログインし、プロンプトに従います。
-
-   ```bash
-   az login
-   ```
+[!INCLUDE [ref-arch-prerequisites.md](../../../includes/ref-arch-prerequisites.md)]
 
 ### <a name="deploy-the-solution-using-azbb"></a>azbb を使用したソリューションのデプロイ
 

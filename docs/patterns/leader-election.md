@@ -8,12 +8,12 @@ pnp.series.title: Cloud Design Patterns
 pnp.pattern.categories:
 - design-implementation
 - resiliency
-ms.openlocfilehash: 3e7d47f70f660f2507f0619e1c41bf9a32a25be4
-ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
+ms.openlocfilehash: 8c8efa0846550557bb53ea81f85ac0e303a77b19
+ms.sourcegitcommit: f19314f18cd794ebe380fa722ca92066b8735b56
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30846653"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37348271"
 ---
 # <a name="leader-election-pattern"></a>リーダー選定パターン
 
@@ -200,6 +200,5 @@ private static async Task MyLeaderCoordinatorTask(CancellationToken token)
 - [タスク ベースの非同期パターン](https://msdn.microsoft.com/library/hh873175.aspx)。
 - [Bully Algorithm (ブリー アルゴリズム) ](http://www.cs.colostate.edu/~cs551/CourseNotes/Synchronization/BullyExample.html)を示したサンプル。
 - [Ring Algorithm (リング アルゴリズム) ](http://www.cs.colostate.edu/~cs551/CourseNotes/Synchronization/RingElectExample.html)を示したサンプル。
-- Microsoft Open Technologies の Web サイトの記事「[Apache Zookeeper on Microsoft Azure (Microsoft Azure の Apache Zookeeper)](https://msopentech.com/opentech-projects/apache-zookeeper-on-windows-azure-2/)」。
 - Apache ZooKeeper の [Apache Curator](http://curator.apache.org/) クライアント ライブラリ。
 - MSDN の記事「[Lease Blob (REST API) (Blob のリース (REST API))](https://msdn.microsoft.com/library/azure/ee691972.aspx)」。

@@ -6,12 +6,12 @@ ms.date: 05/02/2018
 pnp.series.title: Identity management
 pnp.series.prev: azure-ad
 pnp.series.next: adds-forest
-ms.openlocfilehash: 763fffd321a1b50a562ef462dab59aafae717908
-ms.sourcegitcommit: 0de300b6570e9990e5c25efc060946cb9d079954
+ms.openlocfilehash: ecf24a05d071c0d0283fc962b13285108b5ac4bd
+ms.sourcegitcommit: 58d93e7ac9a6d44d5668a187a6827d7cd4f5a34d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32323875"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37142275"
 ---
 # <a name="extend-active-directory-domain-services-ad-ds-to-azure"></a>Active Directory Domain Services (AD DS) を Azure に拡張する
 
@@ -40,7 +40,7 @@ UDR と NVA の設定について詳しくは、「[Implementing a secure hybrid
 
 ## <a name="recommendations"></a>Recommendations
 
-ほとんどのシナリオには、次の推奨事項が適用されます。 これらの推奨事項には、優先される特定の要件がない限り、従ってください。 
+ほとんどのシナリオには、次の推奨事項が適用されます。 これらの推奨事項には、オーバーライドする特定の要件がない限り、従ってください。 
 
 ### <a name="vm-recommendations"></a>VM の推奨事項
 
@@ -105,17 +105,7 @@ BitLocker または Azure Disk Encryption を使用して、AD DS データベ�
 
 ### <a name="prerequisites"></a>前提条件
 
-1. [参照アーキテクチャ][github] GitHub リポジトリに ZIP ファイルを複製、フォーク、またはダウンロードします。
-
-2. [Azure CLI 2.0][azure-cli-2] をインストールします。
-
-3. [Azure の構成要素][azbb] npm パッケージをインストールします。
-
-4. コマンド プロンプト、bash プロンプト、または PowerShell プロンプトから、以下のコマンドを使用して Azure アカウントにログインします。
-
-   ```bash
-   az login
-   ```
+[!INCLUDE [ref-arch-prerequisites.md](../../../includes/ref-arch-prerequisites.md)]
 
 ### <a name="deploy-the-simulated-on-premises-datacenter"></a>シミュレートされたオンプレミスのデータセンターをデプロイする
 
