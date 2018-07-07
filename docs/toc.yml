@@ -127,6 +127,8 @@
       maintainContext: true
     - name: 障害モード分析
       href: resiliency/failure-mode-analysis.md
+- name: シナリオ例
+  href: example-scenario/index.md
 - name: シナリオのガイド
   items:
     - name: AWS プロフェッショナルのための Azure
