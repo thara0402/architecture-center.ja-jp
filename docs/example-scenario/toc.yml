@@ -1,0 +1,19 @@
+- name: Azure アーキテクチャ センター
+  href: /azure/architecture
+- name: シナリオ例
+  href: index.md
+  items:
+    - name: AI
+      items:
+        - name: 画像処理
+          href: ai/intelligent-apps-image-processing.md
+    - name: アプリケーション
+      items:
+        - name: ホテル予約チャットボット
+          href: apps/commerce-chatbot.md
+        - name: Azure Kubernetes Service での DevOps
+          href: apps/devops-with-aks.md
+    - name: データと分析
+      items:
+        - name: リアルタイムでの不正検出
+          href: data/fraud-detection.md
