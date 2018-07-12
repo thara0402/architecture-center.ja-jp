@@ -2,21 +2,21 @@
 title: Azure における安全なハイブリッド ネットワーク アーキテクチャの実装
 description: 安全なハイブリッド ネットワーク アーキテクチャを Azure に実装する方法。
 author: telmosampaio
-ms.date: 11/23/2016
+ms.date: 07/01/2018
 pnp.series.title: Network DMZ
 pnp.series.prev: ./index
 pnp.series.next: secure-vnet-dmz
 cardTitle: DMZ between Azure and on-premises
-ms.openlocfilehash: 81dea2e4439d5a01ebb88ab86dc0a59609bb7bc3
-ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
+ms.openlocfilehash: 45583473ef297b2c7a5b0c4baff52485286dd051
+ms.sourcegitcommit: 9b459f75254d97617e16eddd0d411d1f80b7fe90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30849656"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37403166"
 ---
 # <a name="dmz-between-azure-and-your-on-premises-datacenter"></a>Azure とオンプレミス データセンター間の DMZ
 
-次のリファレンス アーキテクチャは、オンプレミスのネットワークを Azure に拡張する、セキュリティ保護されたハイブリッド ネットワークを示しています。 このアーキテクチャには、*境界ネットワーク*とも呼ばれる DMZ が、オンプレミス ネットワークと Azure の仮想ネットワーク (VNet) の間に実装されています。 DMZ には、ファイアウォールやパケット検査などのセキュリティ機能を実装する、ネットワーク仮想アプライアンス (NVA) が含まれています。 VNet からの発信トラフィックはすべてオンプレミス ネットワーク経由でインターネットに強制的にトンネリングされるため、トラフィックの監査が可能です。
+次のリファレンス アーキテクチャは、オンプレミスのネットワークを Azure に拡張する、セキュリティ保護されたハイブリッド ネットワークを示しています。 このアーキテクチャには、*境界ネットワーク*とも呼ばれる DMZ が、オンプレミス ネットワークと Azure の仮想ネットワーク (VNet) の間に実装されています。 DMZ には、ファイアウォールやパケット検査などのセキュリティ機能を実装する、ネットワーク仮想アプライアンス (NVA) が含まれています。 VNet からの発信トラフィックはすべてオンプレミス ネットワーク経由でインターネットに強制的にトンネリングされるため、トラフィックの監査が可能です。 [**こちらのソリューションをデプロイしてください**。](#deploy-the-solution)
 
 [![0]][0] 
 
@@ -48,7 +48,7 @@ ms.locfileid: "30849656"
 
 ## <a name="recommendations"></a>Recommendations
 
-ほとんどのシナリオには、次の推奨事項が適用されます。 これらの推奨事項には、優先される特定の要件がない限り、従ってください。 
+ほとんどのシナリオには、次の推奨事項が適用されます。 これらの推奨事項には、オーバーライドする特定の要件がない限り、従ってください。 
 
 ### <a name="access-control-recommendations"></a>アクセスの制御に関する推奨事項
 
@@ -78,7 +78,8 @@ VM、VNet、ロード バランサーなどの Azure リソースは、リソー
 
 ### <a name="nva-recommendations"></a>NVA の推奨事項
 
-NVA は、ネットワーク トラフィックの管理と監視のためのさまざまなサービスを提供します。 [Azure Marketplace][azure-marketplace-nva] では、使用できる複数のサード パーティー ベンダー製 NVA が提供されています。 これらのサード パーティー製 NVA に要件を満たしているものがない場合は、VM を使用してカスタム NVA を作成できます。 
+NVA は、ネットワーク トラフィックの管理と監視のためのさまざまなサービスを提供します。 
+  [Azure Marketplace][azure-marketplace-nva] では、使用できる複数のサード パーティー ベンダー製 NVA が提供されています。 これらのサード パーティー製 NVA に要件を満たしているものがない場合は、VM を使用してカスタム NVA を作成できます。 
 
 たとえば、この参照アーキテクチャのソリューションのデプロイでは、VM 上に次の機能を備えた NVA を実装します。
 
@@ -159,19 +160,65 @@ NVA の前のロード バランサーも、負荷分散規則で開いていな
 ### <a name="devops-access"></a>DevOps アクセス
 [RBAC][rbac] を使用して、DevOps が各階層で実行できる操作を制限します。 アクセス許可を付与する場合は、[最小限の特権の原則][security-principle-of-least-privilege]に従ってください。 構成の変更がすべて計画されたものであることを確認するため、すべての管理操作をログに記録し、定期的な監査を実行します。
 
-## <a name="solution-deployment"></a>ソリューションのデプロイ
+## <a name="deploy-the-solution"></a>ソリューションのデプロイ方法
 
-これらの推奨事項を実装する参照アーキテクチャのデプロイは、[GitHub][github-folder] で入手できます。 参照アーキテクチャは、次の手順に従ってデプロイできます。
+これらの推奨事項を実装する参照アーキテクチャのデプロイは、[GitHub][github-folder] で入手できます。 
 
-1. 下のボタンをクリックしてください。<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmspnp%2Freference-architectures%2Fmaster%2Fdmz%2Fsecure-vnet-hybrid%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
-2. Azure Portal でリンクが開いたら、いくつかの設定に値を入力する必要があります。   
-   * **リソース グループ**の名前はパラメーター ファイルで既に定義されているため、**[新規作成]** を選択し、テキスト ボックスに「`ra-private-dmz-rg`」と入力します。
-   * **[場所]** ボックスの一覧でリージョンを選択します。
-   * **[Template Root Uri (テンプレート ルート URI)]** または **[Parameter Root Uri (パラメーター ルート URI)]** ボックスは編集しないでください。
-   * 使用条件を確認し、**[上記の使用条件に同意する]** チェック ボックスをオンにします。
-   * **[購入]** ボタンをクリックします。
-3. デプロイが完了するまで待ちます。
-4. パラメーター ファイルには、すべての VM のハードコーディングされた管理者のユーザー名とパスワードが含まれているため、この両方をすぐに変更することを強くお勧めします。 デプロイ内の VM ごとに、Azure ポータルで VM を選択し、**[サポート + トラブルシューティング]** ブレードで **[パスワードのリセット]** をクリックします。 **[モード]** ボックスの一覧の **[パスワードのリセット]** を選択し、新しい**ユーザー名**と**パスワード**を選択します。 **[更新]** ボタンをクリックして保存します。
+### <a name="prerequisites"></a>前提条件
+
+[!INCLUDE [ref-arch-prerequisites.md](../../../includes/ref-arch-prerequisites.md)]
+
+### <a name="deploy-resources"></a>リソースのデプロイ
+
+1. 参照アーキテクチャ GitHub リポジトリの `/dmz/secure-vnet-hybrid` フォルダーに移動します。
+
+2. 次のコマンドを実行します。
+
+    ```bash
+    azbb -s <subscription_id> -g <resource_group_name> -l <region> -p onprem.json --deploy
+    ```
+
+3. 次のコマンドを実行します。
+
+    ```bash
+    azbb -s <subscription_id> -g <resource_group_name> -l <region> -p secure-vnet-hybrid.json --deploy
+    ```
+
+### <a name="connect-the-on-premises-and-azure-gateways"></a>オンプレミスと Azure ゲートウェイに接続する
+
+この手順では、2 つのローカル ネットワーク ゲートウェイを接続します。
+
+1. Azure portal で、作成したリソース グループに移動します。 
+
+2. `ra-vpn-vgw-pip` という名前のリソースを探し、**[概要]** ブレードに表示されている IP アドレスをコピーします。
+
+3. `onprem-vpn-lgw` という名前のリソースを探します。
+
+4. **[構成]** ブレードをクリックします。 **[IP アドレス]** に手順 2 の IP アドレスを貼り付けます。
+
+    ![](./images/local-net-gw.png)
+
+5. **[保存]** をクリックし、処理が完了するまで待ちます。 完了までに約 5 分かかります。
+
+6. `onprem-vpn-gateway1-pip` という名前のリソースを探します。 **[概要]** ブレードに表示されている IP アドレスをコピーします。
+
+7. `ra-vpn-lgw` という名前のリソースを探します。 
+
+8. **[構成]** ブレードをクリックします。 **[IP アドレス]** に手順 6 の IP アドレスを貼り付けます。
+
+9. **[保存]** をクリックし、処理が完了するまで待ちます。
+
+10. 接続を確認するには、各ゲートウェイの **[接続]** ブレードに移動します。 状態が **[接続済み]** であることを確認します。
+
+### <a name="verify-that-network-traffic-reaches-the-web-tier"></a>ネットワーク トラフィックが Web 階層に到達していることを確認する
+
+1. Azure portal で、作成したリソース グループに移動します。 
+
+2. プライベート DMZ の前面にあるロード バランサーである `int-dmz-lb` という名前のリソースを探します。 **[概要]** ブレードからプライベート IP アドレスをコピーします。
+
+3. `jb-vm1` という名前の VM を見つけます。 **[接続]** をクリックし、リモート デスクトップを使用して VM に接続します。 ユーザー名とパスワードは、onprem.json ファイルに指定されています。
+
+4. リモート デスクトップ セッションから Web ブラウザーを開き、手順 2 の IP アドレスに移動します。 既定の Apache2 サーバーのホーム ページが表示されます。
 
 ## <a name="next-steps"></a>次の手順
 

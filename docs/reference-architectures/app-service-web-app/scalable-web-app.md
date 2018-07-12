@@ -8,11 +8,11 @@ pnp.series.next: multi-region-web-app
 ms.date: 11/23/2016
 cardTitle: Improve scalability
 ms.openlocfilehash: 6459acebfa25491332e2118b9e8fe51d5fc79ff3
-ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
+ms.sourcegitcommit: 5d99b195388b7cabba383c49a81390ac48f86e8a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30846510"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37958808"
 ---
 # <a name="improve-scalability-in-a-web-application"></a>Web アプリケーションのスケーラビリティの向上
 
@@ -51,7 +51,7 @@ Web アプリケーションと Web API は、別の App Service アプリとし
 
 App Service Mobile Apps の *Easy Tables* または *Easy API* 機能を使用する予定の場合は、そのために別の App Service アプリを作成します。  これらの機能は、機能を有効にするための特定のアプリケーション フレームワークに依存しています。
 
-### <a name="webjobs"></a>Web ジョブ
+### <a name="webjobs"></a>WebJobs
 多くのリソースを消費する Web ジョブは、別の App Service プラン内の空の App Service アプリにデプロイすることを検討してください。 こうすることで、Web ジョブ専用のインスタンスを用意できます。 [バックグラウンド ジョブのガイダンス][webjobs-guidance]を参照してください。  
 
 ### <a name="cache"></a>キャッシュ

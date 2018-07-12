@@ -1,40 +1,48 @@
 ---
 title: SQL Data Warehouse を使用したエンタープライズ向け BI
 description: Azure を使用して、オンプレミスに保存されたリレーショナル データからビジネスの洞察を獲得します。
-author: alexbuckgit
-ms.date: 04/13/2018
-ms.openlocfilehash: b5e5aa32fc9cc8c7b8b5a42c9a4fc3e0216b2f72
-ms.sourcegitcommit: f665226cec96ec818ca06ac6c2d83edb23c9f29c
+author: MikeWasson
+ms.date: 07/01/2018
+ms.openlocfilehash: e3542e40b4b6d1f604f93bb21528f34ba7f22fc6
+ms.sourcegitcommit: 58d93e7ac9a6d44d5668a187a6827d7cd4f5a34d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31012838"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37142337"
 ---
 # <a name="enterprise-bi-with-sql-data-warehouse"></a>SQL Data Warehouse を使用したエンタープライズ向け BI
- 
+
 この参照アーキテクチャでは、オンプレミスの SQL Server データベースから SQL Data Warehouse にデータを移動し、そのデータを分析用に変換する [ELT](../../data-guide/relational-data/etl.md#extract-load-and-transform-elt) (抽出-読み込み-変換) パイプラインを実装します。 [**こちらのソリューションをデプロイしてください**。](#deploy-the-solution)
 
 ![](./images/enterprise-bi-sqldw.png)
 
 **シナリオ**: ある組織に、オンプレミスの SQL Server データベースに格納された大規模な OLTP データ セットがあります。 この組織では、SQL Data Warehouse を使用して Power BI で分析を実行したいと考えています。 
 
-この参照アーキテクチャは、一度だけのジョブまたはオンデマンドのジョブ用に設計されています。 継続的に (毎時または毎日) データを移動する必要がある場合は、Azure Data Factory を使用して自動化されたワークフローを定義することをお勧めします。
+この参照アーキテクチャは、一度だけのジョブまたはオンデマンドのジョブ用に設計されています。 継続的に (毎時または毎日) データを移動する必要がある場合は、Azure Data Factory を使用して自動化されたワークフローを定義することをお勧めします。 Data Factory を使用する参照アーキテクチャについては、「[Automated enterprise BI with SQL Data Warehouse and Azure Data Factory](./enterprise-bi-adf.md)」(SQL Data Warehouse と Azure Data Factory を使用したエンタープライズ BI の自動化) を参照してください。
 
 ## <a name="architecture"></a>アーキテクチャ
 
 アーキテクチャは、次のコンポーネントで構成されます。
 
-**SQL Server**。 ソース データは、オンプレミスの SQL Server データベースにあります。 オンプレミス環境をシミュレートするために、このアーキテクチャのデプロイ スクリプトでは、SQL Server がインストールされた Azure の仮想マシンがプロビジョニングされます。 
+### <a name="data-source"></a>データ ソース
+
+**SQL Server**。 ソース データは、オンプレミスの SQL Server データベースにあります。 オンプレミス環境をシミュレートするために、このアーキテクチャのデプロイ スクリプトでは、SQL Server がインストールされた Azure の VM がプロビジョニングされます。 [Wide World Importers OLTP サンプル データベース][wwi]は、ソース データベースとして使用されます。
+
+### <a name="ingestion-and-data-storage"></a>インジェストとデータ ストレージ
 
 **Blob Storage**。 Blob Storage は、データを SQL Data Warehouse に読み込む前にコピーするためのステージング領域として使用されます。
 
 **Azure SQL Data Warehouse**。 [SQL Data Warehouse](/azure/sql-data-warehouse/) は、大規模なデータの分析を目的として設計された分散システムです。 超並列処理 (MPP) がサポートされているので、ハイパフォーマンス分析の実行に適しています。 
+
+### <a name="analysis-and-reporting"></a>分析とレポート
 
 **Azure Analysis Services**。 [Analysis Services](/azure/analysis-services/) は、データ モデリング機能を提供する完全なマネージド サービスです。 Analysis Services を使用して、ユーザーがクエリを実行できるセマンティック モデルを作成します。 Analysis Services は、BI ダッシュボード シナリオで特に役立ちます。 このアーキテクチャでは、Analysis Services がデータ ウェアハウスからデータを読み取ってセマンティック モデルを処理し、ダッシュボードのクエリを効率的に処理します。 また、レプリカをスケールアウトしてクエリ処理を高速化することで、エラスティック同時実行もサポートします。
 
 現在、Azure Analysis Services では表形式モデルをサポートしていますが、多次元モデルはサポートしていません。 表形式モデルではリレーショナル モデリング構造 (テーブル、列) を使用し、多次元モデルでは OLAP モデリング構造 (キューブ、ディメンション、メジャー) を使用します。 多次元モデルが必要な場合は、SQL Server Analysis Services (SSAS) を使用します。 詳細については、「[テーブル ソリューションと多次元ソリューションの比較](/sql/analysis-services/comparing-tabular-and-multidimensional-solutions-ssas)」をご覧ください。
 
 **Power BI**。 Power BI は、データを分析してビジネスの洞察を得る一連のビジネス分析ツールです。 このアーキテクチャでは、Analysis Services に格納されたセマンティック モデルに対してクエリが実行されます。
+
+### <a name="authentication"></a>認証
 
 **Azure Active Directory** (Azure AD)。Power BI から Analysis Services サーバーに接続するユーザーを認証します。
 
@@ -188,21 +196,13 @@ Azure Analysis Services では、Azure Active Directory (Azure AD) を使用し�
 
 ### <a name="prerequisites"></a>前提条件
 
-1. [Azure 参照アーキテクチャ][ref-arch-repo] GitHub リポジトリの ZIP ファイルを複製、フォーク、またはダウンロードします。
-
-2. [Azure の構成要素][azbb-wiki] (azbb) をインストールします。
-
-3. コマンド プロンプト、bash プロンプト、または PowerShell プロンプトから、次のコマンドを使用し、指示に従って Azure アカウントにログインします。
-
-  ```bash
-  az login  
-  ```
+[!INCLUDE [ref-arch-prerequisites.md](../../../includes/ref-arch-prerequisites.md)]
 
 ### <a name="deploy-the-simulated-on-premises-server"></a>シミュレートされたオンプレミスのサーバーをデプロイする
 
-まず、SQL Server 2017 と関連ツールを含む、シミュレートされたオンプレミスのサーバーとして VM をデプロイします。 また、この手順では、サンプルの [Wide World Importers OLTP データベース](/sql/sample/world-wide-importers/wide-world-importers-oltp-database)を SQL Server に読み込みます。
+まず、SQL Server 2017 と関連ツールを含む、シミュレートされたオンプレミスのサーバーとして VM をデプロイします。 また、この手順では、[Wide World Importers OLTP データベース][wwi]を SQL Server に読み込みます。
 
-1. 前述の前提条件の手順でダウンロードしたリポジトリの `data\enterprise-bi-sqldw\onprem\templates` フォルダーに移動します。
+1. リポジトリの `data\enterprise_bi_sqldw\onprem\templates` フォルダーに移動します。
 
 2. `onprem.parameters.json` ファイルで、`adminUsername` と `adminPassword` の値を置き換えます。 また、`SqlUserCredentials` セクションの値を、ユーザー名およびパスワードと一致するように変更します。 userName プロパティの `.\\` プレフィックスに注意してください。
     
@@ -216,28 +216,39 @@ Azure Analysis Services では、Azure Active Directory (Azure AD) を使用し�
 3. 次のように `azbb` を実行して、オンプレミスのサーバーをデプロイします。
 
     ```bash
-    azbb -s <subscription_id> -g <resource_group_name> -l <location> -p onprem.parameters.json --deploy
+    azbb -s <subscription_id> -g <resource_group_name> -l <region> -p onprem.parameters.json --deploy
     ```
+
+    SQL Data Warehouse と Azure Analysis Services をサポートするリージョンを指定します。 「[リージョン別の Azure 製品](https://azure.microsoft.com/global-infrastructure/services/)」を参照してください。
 
 4. デプロイが完了するまで 20 ～ 30 分かかることがあります。これには、ツールをインストールし、データベースを復元する [DSC](/powershell/dsc/overview) スクリプトの実行が含まれます。 リソース グループ内のリソースを確認して、Azure Portal 上でデプロイを確認します。 `sql-vm1` 仮想マシンとその関連するリソースが表示されます。
 
 ### <a name="deploy-the-azure-resources"></a>Azure リソースをデプロイする
 
-この手順では、ストレージ アカウントと共に、Azure SQL Data Warehouse と Azure Analysis Services をプロビジョニングします。 必要であれば、前の手順と並行してこの手順を実行できます。
+この手順では、ストレージ アカウントと共に、SQL Data Warehouse と Azure Analysis Services をプロビジョニングします。 必要であれば、前の手順と並行してこの手順を実行できます。
 
-1. 前述の前提条件の手順でダウンロードしたリポジトリの `data\enterprise-bi-sqldw\azure\templates` フォルダーに移動します。
+1. リポジトリの `data\enterprise_bi_sqldw\azure\templates` フォルダーに移動します。
 
-2. 次の Azure CLI コマンドを実行して、リソース グループを作成します (かっこで囲まれた指定のパラメーターを置き換えます)。 前の手順でオンプレミスのサーバーに使用したものとは異なるリソース グループにデプロイできます。 
-
-    ```bash
-    az group create --name <resource_group_name> --location <location>  
-    ```
-
-3. 次の Azure CLI コマンドを実行して、Azure リソースをデプロイします (かっこで囲まれた指定のパラメーターを置き換えます)。 `storageAccountName` パラメーターは、ストレージ アカウントの[名前付け規則](../../best-practices/naming-conventions.md#naming-rules-and-restrictions)に従う必要があります。 `analysisServerAdmin` パラメーターには、Azure Active Directory ユーザー プリンシパル名 (UPN) を使用します。
+2. 次の Azure CLI コマンドを実行して、リソース グループを作成します。 前の手順とは異なるリソース グループにデプロイできますが、同じリージョンを選択してください。 
 
     ```bash
-    az group deployment create --resource-group <resource_group_name> --template-file azure-resources-deploy.json --parameters "dwServerName"="<server_name>" "dwAdminLogin"="<admin_username>" "dwAdminPassword"="<password>" "storageAccountName"="<storage_account_name>" "analysisServerName"="<analysis_server_name>" "analysisServerAdmin"="user@contoso.com"
+    az group create --name <resource_group_name> --location <region>  
     ```
+
+3. 次の Azure CLI コマンドを実行して、Azure リソースをデプロイします。 山かっこ内に示されるパラメーター値を置き換えます。 
+
+    ```bash
+    az group deployment create --resource-group <resource_group_name> \
+     --template-file azure-resources-deploy.json \
+     --parameters "dwServerName"="<server_name>" \
+     "dwAdminLogin"="<admin_username>" "dwAdminPassword"="<password>" \ 
+     "storageAccountName"="<storage_account_name>" \
+     "analysisServerName"="<analysis_server_name>" \
+     "analysisServerAdmin"="user@contoso.com"
+    ```
+
+    - `storageAccountName` パラメーターは、ストレージ アカウントの[名前付け規則](../../best-practices/naming-conventions.md#naming-rules-and-restrictions)に従う必要があります。
+    - `analysisServerAdmin` パラメーターには、Azure Active Directory ユーザー プリンシパル名 (UPN) を使用します。
 
 4. リソース グループ内のリソースを確認して、Azure Portal 上でデプロイを確認します。 ストレージ アカウント、Azure SQL Data Warehouse インスタンス、Analysis Services インスタンスが表示されます。
 
@@ -261,7 +272,7 @@ Azure Analysis Services では、Azure Active Directory (Azure AD) を使用し�
 
 3. Azure Portal 上でストレージ アカウントに移動し、Blob service を選択して、`wwi` コンテナーを開き、ソース データが Blob Storage にコピーされていることを確認します。 `WorldWideImporters_Application_*` で始まるテーブルの一覧が表示されます。
 
-### <a name="execute-the-data-warehouse-scripts"></a>データ ウェアハウスのスクリプトを実行する
+### <a name="run-the-data-warehouse-scripts"></a>データ ウェアハウスのスクリプトを実行する
 
 1. リモート デスクトップ セッションから、SQL Server Management Studio (SSMS) を起動します。 
 
@@ -298,7 +309,7 @@ SMSS に、`wwi` データベースの一連の `prd.*` テーブルが表示さ
 SELECT TOP 10 * FROM prd.CityDimensions
 ```
 
-### <a name="build-the-azure-analysis-services-model"></a>Azure Analysis Services モデルを作成する
+## <a name="build-the-analysis-services-model"></a>Analysis Services モデルを作成する
 
 この手順では、データ ウェアハウスからデータをインポートする表形式モデルを作成します。 次に、そのモデルを Azure Analysis Services にデプロイします。
 
@@ -347,7 +358,7 @@ SELECT TOP 10 * FROM prd.CityDimensions
 
     ![](./images/analysis-services-models.png)
 
-### <a name="analyze-the-data-in-power-bi-desktop"></a>Power BI Desktop でデータを分析する
+## <a name="analyze-the-data-in-power-bi-desktop"></a>Power BI Desktop でデータを分析する
 
 この手順では、Power BI を使用して Analysis Services のデータからレポートを作成します。
 
@@ -371,7 +382,7 @@ SELECT TOP 10 * FROM prd.CityDimensions
 
 8. **[prd.CityDimensions]** > **[City]** を **[凡例]** ウェルにドラッグします。
 
-9. [フィールド] ウィンドウで **[prd.SalesFact]** を展開します。
+9. **[フィールド]** ウィンドウで **[prd.SalesFact]** を展開します。
 
 10. **[prd.SalesFact]** > **[Total Excluding Tax]** を **[値]** ウェルにドラッグします。
 
@@ -404,4 +415,4 @@ Power BI Desktop の詳細については、「[Power BI Desktop の概要](/pow
 [github-folder]: https://github.com/mspnp/reference-architectures/tree/master/data/enterprise_bi_sqldw
 [ref-arch-repo]: https://github.com/mspnp/reference-architectures
 [ref-arch-repo-folder]: https://github.com/mspnp/reference-architectures/tree/master/data/enterprise_bi_sqldw
-
+[wwi]: /sql/sample/world-wide-importers/wide-world-importers-oltp-database

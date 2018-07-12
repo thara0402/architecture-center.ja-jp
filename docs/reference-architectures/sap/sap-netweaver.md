@@ -3,21 +3,23 @@ title: AnyDB 向けの SAP NetWeaver (Windows) を Azure Virtual Machines にデ
 description: 高可用性を備えた Azure の Linux環境で SAP S/4HANA を実行するための実証済みプラクティス。
 author: lbrader
 ms.date: 05/11/2018
-ms.openlocfilehash: 0efe3e78d9e1809fdab52044b75e432742786b79
-ms.sourcegitcommit: bb348bd3a8a4e27ef61e8eee74b54b07b65dbf98
+ms.openlocfilehash: 90334e4872bdd15d59aa16286a031d07f3d1bb2f
+ms.sourcegitcommit: 86d86d71e392550fd65c4f76320d7ecf0b72e1f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2018
-ms.locfileid: "34423061"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37864540"
 ---
 # <a name="deploy-sap-netweaver-windows-for-anydb-on-azure-virtual-machines"></a>AnyDB 向けの SAP NetWeaver (Windows) を Azure Virtual Machines にデプロイする
 
 この参照用アーキテクチャは、高可用性を備えた Azure の Windows 環境で SAP NetWeaver を実行するための一連の実証済みプラクティスを示しています。 データベースは AnyDB (SAP HANA を除く、サポートされている任意の DBMS を表す SAP 用語) です。 このアーキテクチャは特定の仮想マシン (VM) サイズでデプロイされ、お客様の組織のニーズに合わせて変更できます。
 
-![](./images/sap-s4hana.png)
- 
+![](./images/sap-netweaver.png)
+
+"*このアーキテクチャの [Visio ファイル][visio-download]をダウンロードします。*"
+
 > [!NOTE] 
-> この参照用アーキテクチャに従って SAP 製品をデプロイするには、SAP 製品と他の Microsoft 以外のテクノロジの適切なライセンスが必要です。
+> この参照用アーキテクチャをデプロイするには、SAP 製品と他の Microsoft 以外のテクノロジの適切なライセンスが必要です。
 
 ## <a name="architecture"></a>アーキテクチャ
 このアーキテクチャは、次のインフラストラクチャ コンポーネントと主要ソフトウェア コンポーネントで構成されます。
@@ -174,3 +176,4 @@ Windows 仮想マシン ディスクを暗号化するには、[Azure Disk Encry
 - [SAP Community](https://www.sap.com/community.html)
 - [Stack Overflow](https://stackoverflow.com/tags/sap/)
 
+[visio-download]: https://archcenter.blob.core.windows.net/cdn/sap-reference-architectures.vsdx

@@ -3,18 +3,20 @@ title: SAP HANA on Azure Large Instances を実行する
 description: Azure Large Instances の高可用性環境で SAP HANA を実行するための実証済みプラクティス。
 author: lbrader
 ms.date: 05/16/2018
-ms.openlocfilehash: 7605fa8a0012aaef3f7323c6f88614b640152e3b
-ms.sourcegitcommit: bb348bd3a8a4e27ef61e8eee74b54b07b65dbf98
+ms.openlocfilehash: 746161ac51335af5c48a559830d6e0345dcfb7b1
+ms.sourcegitcommit: 86d86d71e392550fd65c4f76320d7ecf0b72e1f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2018
-ms.locfileid: "34423060"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37864523"
 ---
 # <a name="run-sap-hana-on-azure-large-instances"></a>SAP HANA on Azure Large Instances を実行する
 
 この参照用アーキテクチャは、高可用性とディザスター リカバリー (DR) を備えた SAP HANA on Azure (Large Instances) を実行するための一連の実証済みプラクティスを示しています。 このサービスは、HANA Large Instances と呼ばれ、Azure リージョン内の物理サーバーに配置されます。 
 
 ![0][0]
+
+"*このアーキテクチャの [Visio ファイル][visio-download]をダウンロードします。*"
 
 > [!NOTE]
 > この参照用アーキテクチャをデプロイするには、SAP 製品と他の Microsoft 以外のテクノロジの適切なライセンスが必要です。
@@ -201,3 +203,5 @@ CPU、メモリ、ネットワーク帯域幅、記憶域スペースなどの H
 [type]: /azure/virtual-machines/workloads/sap/hana-installation
 [vnet]: /azure/virtual-network/virtual-networks-overview
 [0]: ./images/sap-hana-large-instances.png "Azure Large Instances を使用した SAP HANA アーキテクチャ"
+
+[visio-download]: https://archcenter.blob.core.windows.net/cdn/sap-reference-architectures.vsdx

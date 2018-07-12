@@ -7,12 +7,12 @@ ms.date: 11/28/2016
 pnp.series.next: adds-extend-domain
 pnp.series.prev: ./index
 cardTitle: Integrate on-premises AD with Azure AD
-ms.openlocfilehash: ade79f8ebffc15b423ef6ebfb9b19611c9500cd8
-ms.sourcegitcommit: 85334ab0ccb072dac80de78aa82bcfa0f0044d3f
+ms.openlocfilehash: 21a6474db94d34e23f79d1ba0e35943c0cb52966
+ms.sourcegitcommit: d5db5b8ed7429f056130096d0ef4b249b564599a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35252994"
+ms.lasthandoff: 07/01/2018
+ms.locfileid: "37141386"
 ---
 # <a name="integrate-on-premises-active-directory-domains-with-azure-active-directory"></a>オンプレミスの Active Directory ドメインと Azure Active Directory を統合する
 
@@ -216,7 +216,7 @@ Azure AD Connect の管理に関する詳細とヒントについては、「[Az
 
 ## <a name="deploy-the-solution"></a>ソリューションのデプロイ方法
 
-以上の推奨事項と考慮事項を実装する参照アーキテクチャのデプロイは、GitHub で入手できます。 この参照アーキテクチャでは、シミュレートされたオンプレミスのネットワークが Azure にデプロイされるので、それを使ってテストや実験を行うことができます。 参照アーキテクチャは、次の手順に従って、Windows または Linux VM にデプロイできます。 
+以上の推奨事項と考慮事項を実装する参照アーキテクチャのデプロイは、GitHub で入手できます。 この参照アーキテクチャでは、シミュレートされたオンプレミスのネットワークが Azure に展開されるので、それを使ってテストや実験を行うことができます。 参照アーキテクチャは、次の手順に従って、Windows または Linux VM にデプロイできます。 
 
 1. 下のボタンをクリックしてください。<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmspnp%2Freference-architectures%2Fmaster%2Fidentity%2Fazure-ad%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
 2. Azure Portal でリンクが開いたら、いくつかの設定に値を入力する必要があります。 

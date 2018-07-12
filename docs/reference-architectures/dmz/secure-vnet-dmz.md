@@ -2,21 +2,21 @@
 title: Azure とインターネットの間の DMZ の実装
 description: インターネットにアクセスするセキュリティ保護されたハイブリッド ネットワーク アーキテクチャを Azure に実装する方法。
 author: telmosampaio
-ms.date: 11/23/2016
+ms.date: 07/02/2018
 pnp.series.title: Network DMZ
 pnp.series.next: nva-ha
 pnp.series.prev: secure-vnet-hybrid
 cardTitle: DMZ between Azure and the Internet
-ms.openlocfilehash: c88545b1fcae49b413e7e2b6ac5bd92d3fd3456d
-ms.sourcegitcommit: c441fd165e6bebbbbbc19854ec6f3676be9c3b25
+ms.openlocfilehash: 7a062d2394ae8b3bd1b17c19cbdf512327f9a766
+ms.sourcegitcommit: 9b459f75254d97617e16eddd0d411d1f80b7fe90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
-ms.locfileid: "30270406"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37403149"
 ---
 # <a name="dmz-between-azure-and-the-internet"></a>Azure とインターネットの間の DMZ
 
-次のリファレンス アーキテクチャは、オンプレミスのネットワークを Azure に拡張してインターネット トラフィックも受け入れる、セキュリティ保護されたハイブリッド ネットワークを示しています。 
+次のリファレンス アーキテクチャは、オンプレミスのネットワークを Azure に拡張してインターネット トラフィックも受け入れる、セキュリティ保護されたハイブリッド ネットワークを示しています。 [**こちらのソリューションをデプロイしてください**。](#deploy-the-solution)
 
 [![0]][0] 
 
@@ -41,7 +41,7 @@ ms.locfileid: "30270406"
 
 ## <a name="recommendations"></a>Recommendations
 
-ほとんどのシナリオには、次の推奨事項が適用されます。 これらの推奨事項には、優先される特定の要件がない限り、従ってください。 
+ほとんどのシナリオには、次の推奨事項が適用されます。 これらの推奨事項には、オーバーライドする特定の要件がない限り、従ってください。 
 
 ### <a name="nva-recommendations"></a>NVA の推奨事項
 
@@ -79,37 +79,70 @@ ms.locfileid: "30270406"
 
 すべてのポートに着信したすべての要求をログに記録する必要があります。 このログを定期的に監査して、特に予期されたパラメーターの範囲外にある要求の有無を調べます。そのような要求は、侵入の試みを示唆している可能性があります。
 
-## <a name="solution-deployment"></a>ソリューションのデプロイ
 
-これらの推奨事項を実装する参照アーキテクチャのデプロイは、[GitHub][github-folder] で入手できます。 リファレンス アーキテクチャは、次の手順に従って、Windows または Linux Vm のいずれにもデプロイできます。
+## <a name="deploy-the-solution"></a>ソリューションのデプロイ方法
 
-1. 下のボタンをクリックしてください。<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmspnp%2Freference-architectures%2Fmaster%2Fdmz%2Fsecure-vnet-dmz%2FvirtualNetwork.azuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
-2. Azure Portal でリンクが開いたら、いくつかの設定に値を入力する必要があります。
-   * **リソース グループ**の名前はパラメーター ファイルで既に定義されているため、**[新規作成]** を選択し、テキスト ボックスに「`ra-public-dmz-network-rg`」と入力します。
-   * **[場所]** ボックスの一覧でリージョンを選択します。
-   * **[Template Root Uri (テンプレート ルート URI)]** または **[Parameter Root Uri (パラメーター ルート URI)]** ボックスは編集しないでください。
-   * **[OS の種類]** ボックスの一覧の **[Windows]** または **[linux]**. を選択します。
-   * 使用条件を確認し、**[上記の使用条件に同意する]** チェック ボックスをオンにします。
-   * **[購入]** ボタンをクリックします。
-3. デプロイが完了するまで待ちます。
-4. 下のボタンをクリックしてください。<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmspnp%2Freference-architectures%2Fmaster%2Fdmz%2Fsecure-vnet-dmz%2Fworkload.azuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
-5. Azure Portal でリンクが開いたら、いくつかの設定に値を入力する必要があります。
-   * **リソース グループ**の名前はパラメーター ファイルで既に定義されているため、**[新規作成]** を選択し、テキスト ボックスに「`ra-public-dmz-wl-rg`」と入力します。
-   * **[場所]** ボックスの一覧でリージョンを選択します。
-   * **[Template Root Uri (テンプレート ルート URI)]** または **[Parameter Root Uri (パラメーター ルート URI)]** ボックスは編集しないでください。
-   * 使用条件を確認し、**[上記の使用条件に同意する]** チェック ボックスをオンにします。
-   * **[購入]** ボタンをクリックします。
-6. デプロイが完了するまで待ちます。
-7. 下のボタンをクリックしてください。<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmspnp%2Freference-architectures%2Fmaster%2Fdmz%2Fsecure-vnet-dmz%2Fsecurity.azuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
-8. Azure Portal でリンクが開いたら、いくつかの設定に値を入力する必要があります。
-   * **リソース グループ**の名前はパラメーター ファイルで既に定義されているため、**[既存のものを使用]** を選択し、テキスト ボックスに「`ra-public-dmz-network-rg`」と入力します。
-   * **[場所]** ボックスの一覧でリージョンを選択します。
-   * **[Template Root Uri (テンプレート ルート URI)]** または **[Parameter Root Uri (パラメーター ルート URI)]** ボックスは編集しないでください。
-   * 使用条件を確認し、**[上記の使用条件に同意する]** チェック ボックスをオンにします。
-   * **[購入]** ボタンをクリックします。
-9. デプロイが完了するまで待ちます。
-10. パラメーター ファイルには、すべての VM のハードコーディングされた管理者のユーザー名とパスワードが含まれているため、この両方をすぐに変更することを強くお勧めします。 デプロイの各 VM で、Azure ポータルで VM を選択し、**[サポート + トラブルシューティング]** ブレードで **[パスワードのリセット]** をクリックします。 **[モード]** ボックスの一覧の **[パスワードのリセット]** を選択し、新しい**ユーザー名**と**パスワード**を選択します。 **[更新]** ボタンをクリックして保存します。
+これらの推奨事項を実装する参照アーキテクチャのデプロイは、[GitHub][github-folder] で入手できます。 
 
+### <a name="prerequisites"></a>前提条件
+
+[!INCLUDE [ref-arch-prerequisites.md](../../../includes/ref-arch-prerequisites.md)]
+
+### <a name="deploy-resources"></a>リソースのデプロイ
+
+1. 参照アーキテクチャ GitHub リポジトリの `/dmz/secure-vnet-hybrid` フォルダーに移動します。
+
+2. 次のコマンドを実行します。
+
+    ```bash
+    azbb -s <subscription_id> -g <resource_group_name> -l <region> -p onprem.json --deploy
+    ```
+
+3. 次のコマンドを実行します。
+
+    ```bash
+    azbb -s <subscription_id> -g <resource_group_name> -l <region> -p secure-vnet-hybrid.json --deploy
+    ```
+
+### <a name="connect-the-on-premises-and-azure-gateways"></a>オンプレミスと Azure ゲートウェイに接続する
+
+この手順では、2 つのローカル ネットワーク ゲートウェイを接続します。
+
+1. Azure portal で、作成したリソース グループに移動します。 
+
+2. `ra-vpn-vgw-pip` という名前のリソースを見つけて、**[概要]** ブレードに表示されている IP アドレスをコピーします。
+
+3. `onprem-vpn-lgw` という名前のリソースを探します。
+
+4. **[構成]** ブレードをクリックします。 **[IP アドレス]** に手順 2 の IP アドレスを貼り付けます。
+
+    ![](./images/local-net-gw.png)
+
+5. **[保存]** をクリックし、処理が完了するまで待ちます。 完了までに約 5 分かかります。
+
+6. `onprem-vpn-gateway1-pip` という名前のリソースを探します。 **[概要]** ブレードに表示されている IP アドレスをコピーします。
+
+7. `ra-vpn-lgw` という名前のリソースを探します。 
+
+8. **[構成]** ブレードをクリックします。 **[IP アドレス]** に手順 6 の IP アドレスを貼り付けます。
+
+9. **[保存]** をクリックし、処理が完了するまで待ちます。
+
+10. 接続を確認するには、各ゲートウェイの **[接続]** ブレードに移動します。 状態が **[接続済み]** であることを確認します。
+
+### <a name="verify-that-network-traffic-reaches-the-web-tier"></a>ネットワーク トラフィックが Web 階層に到達していることを確認する
+
+1. Azure portal で、作成したリソース グループに移動します。 
+
+2. パブリック DMZ の前面にあるロード バランサーである `pub-dmz-lb` という名前のリソースを探します。 
+
+3. **[概要]** ブレードからパブリック IP アドレスをコピーし、このアドレスを Web ブラウザーで開きます。 既定の Apache2 サーバーのホーム ページが表示されます。
+
+4. プライベート DMZ の前面にあるロード バランサーである `int-dmz-lb` という名前のリソースを探します。 **[概要]** ブレードからプライベート IP アドレスをコピーします。
+
+5. `jb-vm1` という名前の VM を見つけます。 **[接続]** をクリックし、リモート デスクトップを使用して VM に接続します。 ユーザー名とパスワードは、onprem.json ファイルに指定されています。
+
+6. リモート デスクトップ セッションから Web ブラウザーを開き、手順 4 の IP アドレスに移動します。 既定の Apache2 サーバーのホーム ページが表示されます。
 
 [availability-set]: /azure/virtual-machines/virtual-machines-windows-manage-availability
 [github-folder]: https://github.com/mspnp/reference-architectures/tree/master/dmz/secure-vnet-dmz

@@ -4,12 +4,12 @@ description: Microsoft Azure で実行する基本的な Web アプリケーシ�
 author: MikeWasson
 ms.date: 12/12/2017
 cardTitle: Basic web application
-ms.openlocfilehash: efd831b1f54fa0662bdfa9874318e7b314172215
-ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
+ms.openlocfilehash: bc8cf9b5c66fc451d097cbc992ecb9a249645dce
+ms.sourcegitcommit: e9d9e214529edd0dc78df5bda29615b8fafd0e56
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30846405"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37091123"
 ---
 # <a name="basic-web-application"></a>基本的な Web アプリケーション
 [!INCLUDE [header](../../_includes/header.md)]
@@ -158,7 +158,7 @@ App Service アプリには、`production` という名前のデプロイ スロ
 
 * Azure Portal の[トラブルシューティング ブレード][troubleshoot-blade]を使用して、一般的な問題の解決策を見つけます。
 * [ログ ストリーミング][web-app-log-stream]を有効にして、ほぼリアルタイムでログ情報を監視します。
-* [Kudu ダッシュボード][kudu]には、アプリケーションを監視およびデバッグするためのツールがいくつか用意されています。 詳細については、[知っておくべき Azure Websites のオンライン ツール][kudu]に関するページ (ブログ記事) を参照してください。 Kudu ダッシュボードには Azure Portal からアクセスできます。 アプリのブレードを開き、<strong>[ツール]</strong>、<strong>Kudu</strong> の順にクリックします。
+* [Kudu ダッシュボード][kudu]には、アプリケーションを監視およびデバッグするためのツールがいくつか用意されています。 詳細については、[知っておくべき Azure Websites のオンライン ツール][kudu]に関するページ (ブログ記事) を参照してください。 Kudu ダッシュボードには Azure Portal からアクセスできます。 アプリのブレードを開き、<strong>[ツール]</strong>、<strong>[Kudu]</strong> の順にクリックします。
 * Visual Studio を使用する場合、デバッグとトラブルシューティングのヒントについては、「[Visual Studio を使用した Azure App Service のトラブルシューティング][troubleshoot-web-app]」を参照してください。
 
 ## <a name="security-considerations"></a>セキュリティに関する考慮事項
@@ -198,7 +198,7 @@ App Service 認証の制限は次のとおりです。
 * マルチテナント シナリオでは、アプリケーションがトークン発行者を検証するロジックを実装する必要がある。
 
 ## <a name="deploy-the-solution"></a>ソリューションのデプロイ方法
-このアーキテクチャの Resource Manager テンプレートの例については、[GitHub をご覧ください][paas-basic-arm-template]。
+このアーキテクチャの Resource Manager テンプレートの例については、[GitHub を参照してください][paas-basic-arm-template]。
 
 PowerShell を使用してテンプレートをデプロイするには、次のコマンドを実行します。
 

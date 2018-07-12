@@ -3,12 +3,12 @@ title: ストリーム処理テクノロジの選択
 description: ''
 author: zoinerTejada
 ms:date: 02/12/2018
-ms.openlocfilehash: 29e4cd3d5ea6e10f036bfe226152290512dafa65
-ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
+ms.openlocfilehash: fd93418c62b584e79f229e9f42703d148aeb0eca
+ms.sourcegitcommit: e9d9e214529edd0dc78df5bda29615b8fafd0e56
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30848650"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37091065"
 ---
 # <a name="choosing-a-stream-processing-technology-in-azure"></a>Azure でのストリーム処理テクノロジの選択
 
@@ -53,8 +53,8 @@ Azure では、以下のすべてのデータ ストアがリアルタイム処�
 
 | | Azure Stream Analytics | Spark Streaming を使用する HDInsight | Azure Databricks における Apache Spark | Storm を使用する HDInsight | Azure Functions | Azure App Service WebJobs |
 | --- | --- | --- | --- | --- | --- | --- | 
-| 入力 | [Stream Analytics の入力](/azure/stream-analytics/stream-analytics-define-inputs)  | Event Hubs、IoT Hub、Kafka、HDFS、Storage Blobs、Azure Data Lake Store  | Event Hubs、IoT Hub、Kafka、HDFS、Storage Blobs、Azure Data Lake Store  | Event Hubs、IoT Hub、Storage Blobs、Azure Data Lake Store  | [サポートされるバインディング](/azure/azure-functions/functions-triggers-bindings#supported-bindings) | Service Bus、Storage Queues、Storage Blobs、Event Hubs、WebHooks、Cosmos DB、Files |
-| シンク |  [Stream Analytics の出力](/azure/stream-analytics/stream-analytics-define-outputs) | HDFS、Kafka、Storage Blobs、Azure Data Lake Store、Cosmos DB | HDFS、Kafka、Storage Blobs、Azure Data Lake Store、Cosmos DB | Event Hubs、Service Bus、Kafka | [サポートされるバインディング](/azure/azure-functions/functions-triggers-bindings#supported-bindings) | Service Bus、Storage Queues、Storage Blobs、Event Hubs、WebHooks、Cosmos DB、Files | 
+| 入力 | Azure Event Hubs、Azure IoT Hub、Azure Blob ストレージ  | Event Hubs、IoT Hub、Kafka、HDFS、Storage Blobs、Azure Data Lake Store  | Event Hubs、IoT Hub、Kafka、HDFS、Storage Blobs、Azure Data Lake Store  | Event Hubs、IoT Hub、Storage Blobs、Azure Data Lake Store  | [サポートされるバインディング](/azure/azure-functions/functions-triggers-bindings#supported-bindings) | Service Bus、Storage Queues、Storage Blobs、Event Hubs、WebHooks、Cosmos DB、Files |
+| シンク |  Azure Data Lake Store、Azure SQL Database、Storage Blobs、Event Hubs、Power BI、Table Storage、Service Bus Queues、Service Bus Topics、Cosmos DB、Azure Functions  | HDFS、Kafka、Storage Blobs、Azure Data Lake Store、Cosmos DB | HDFS、Kafka、Storage Blobs、Azure Data Lake Store、Cosmos DB | Event Hubs、Service Bus、Kafka | [サポートされるバインディング](/azure/azure-functions/functions-triggers-bindings#supported-bindings) | Service Bus、Storage Queues、Storage Blobs、Event Hubs、WebHooks、Cosmos DB、Files | 
 
 ### <a name="processing-capabilities"></a>処理機能
 

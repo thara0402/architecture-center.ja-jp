@@ -3,12 +3,12 @@ title: リアルタイム処理
 description: ''
 author: zoinerTejada
 ms:date: 02/12/2018
-ms.openlocfilehash: 8d3497c37d15dc0aa4645ddfce3bd30740217b2c
-ms.sourcegitcommit: 51f49026ec46af0860de55f6c082490e46792794
+ms.openlocfilehash: 4abb159924f902b5babe0673cc021e80b00c8529
+ms.sourcegitcommit: e9d9e214529edd0dc78df5bda29615b8fafd0e56
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30298630"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37090987"
 ---
 # <a name="real-time-processing"></a>リアルタイム処理
 
@@ -56,7 +56,7 @@ ms.locfileid: "30298630"
 
 ### <a name="stream-processing"></a>ストリーム処理
 
-- **Azure Stream Analytics**。 Azure Stream Analytics では、データのアンバウンド ストリームに対して永続クエリを実行できます。 これらのクエリでは、ストレージまたはメッセージ ブローカーからのデータ ストリームを使用し、テンポラル ウィンドウに基づいてデータをフィルター処理および集計して、結果をストレージなどのシンク、データベース、または直接 Power BI のレポートに書き込みます。
+- **Azure Stream Analytics**。 Azure Stream Analytics では、データのアンバウンド ストリームに対して永続クエリを実行できます。 これらのクエリでは、ストレージまたはメッセージ ブローカーからのデータ ストリームを使用し、テンポラル ウィンドウに基づいてデータをフィルター処理および集計して、結果をストレージなどのシンク、データベース、または直接 Power BI のレポートに書き込みます。 Stream Analytics は、テンポラル コントラクトと地理空間コントラクトをサポートする SQL ベースのクエリ言語を使用します。JavaScript を使用して拡張できます。
 - **Storm**。 Apache Storm はストリーム処理のためのオープン ソース フレームワークであり、スパウトとボルトのトポロジを使用して、リアルタイム ストリーミング データ ソースからの結果を使用、処理、出力します。 Azure HDInsight クラスターで Storm をプロビジョニングし、Java や C# でトポロジを実装できます。
 - **Spark Streaming**。 Apache Spark は、一般的なデータ処理のためのオープン ソースの分散プラットフォームです。 Spark は、Java、Scala、Python などのサポートされている Spark 言語でコードを記述できる Spark Streaming API を提供します。 Spark 2.0 では、よりシンプルで一貫性の高いプログラミング モデルを提供する Spark Structured Streaming API が導入されました。 Spark 2.0 は、Azure HDInsight クラスターで使用できます。
 
