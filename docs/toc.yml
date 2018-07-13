@@ -1,165 +1,531 @@
 - name: Azure アーキテクチャ センター
   href: index.md
-- name: Azure クラウド導入ガイド
-  href: cloud-adoption-guide/index.md
+- name: クラウドの基礎
   items:
-    - name: 基本導入ステージ
-      href: cloud-adoption-guide/adoption-intro/overview.md
-    - name: 中級導入ステージ
-      href: cloud-adoption-guide/intermediate-stage/overview.md
-- name: アプリケーション アーキテクチャ ガイド
-  href: guide/index.md
-  items:
-    - name: アーキテクチャ スタイル
-      href: guide/architecture-styles/index.md
-    - name: 計算サービスの選択
-      href: guide/technology-choices/compute-overview.md
-    - name: データ ストアの選択
-      href: guide/technology-choices/data-store-overview.md
-    - name: 設計原則
-      href: guide/design-principles/index.md
-    - name: ソフトウェア品質の重要な要素
-      href: guide/pillars.md
-    - name: 設計パターン
-      href: patterns/index.md
-      maintainContext: true
-- name: データ アーキテクチャ ガイド
-  href: data-guide/index.md
-- name: 参照アーキテクチャ
-  href: reference-architectures/index.md
-  items:
-    - name: App Service Web アプリケーション
-      href: reference-architectures/app-service-web-app/index.md
-    - name: ハイブリッド ネットワーク
-      href: reference-architectures/hybrid-networking/index.md
-    - name: ID 管理
-      href: reference-architectures/identity/index.md
-    - name: Jenkins サーバー
-      href: reference-architectures/jenkins/index.md
-    - name: n 層アプリケーション
-      href: reference-architectures/n-tier/index.md
-    - name: ネットワーク DMZ
-      href: reference-architectures/dmz/index.md
-    - name: SAP on Azure
-      href: reference-architectures/sap/index.md
-    - name: SharePoint Server 2016
-      href: reference-architectures/sharepoint/index.md
-- name: クラウド設計パターン
-  href: patterns/index.md
-  items:
-    - name: 可用性のパターン
-      href: patterns/category/availability.md
-    - name: データ管理のパターン
-      href: patterns/category/data-management.md
-    - name: 設計と実装のパターン
-      href: patterns/category/design-implementation.md
-    - name: 管理と監視のパターン
-      href: patterns/category/management-monitoring.md
-    - name: メッセージングのパターン
-      href: patterns/category/messaging.md
-    - name: パフォーマンスとスケーラビリティのパターン
-      href: patterns/category/performance-scalability.md
-    - name: 回復性のパターン
-      href: patterns/category/resiliency.md
-    - name: セキュリティのパターン
-      href: patterns/category/security.md
-- name: ベスト プラクティス
-  items:
-    - name: API 設計
-      href: best-practices/api-design.md
-    - name: API 実装
-      href: best-practices/api-implementation.md
-    - name: 自動スケール
-      href: best-practices/auto-scaling.md
-    - name: バックグラウンド ジョブ
-      href: best-practices/background-jobs.md
-    - name: キャッシュ
-      href: best-practices/caching.md
-    - name: Content Delivery Network
-      href: best-practices/cdn.md
-    - name: データのパーティション分割
-      href: best-practices/data-partitioning.md
-    - name: 監視と診断
-      href: best-practices/monitoring.md
-    - name: 名前付け規則
-      href: best-practices/naming-conventions.md
-    - name: 一時的な障害の処理
-      href: best-practices/transient-faults.md
-    - name: 特定のサービスの再試行ガイダンス
-      href: best-practices/retry-service-specific.md
-- name: パフォーマンスのアンチパターン
-  href: antipatterns/index.md
-  items:
-    - name: ビジー状態のデータベース
-      href: antipatterns/busy-database/index.md
-    - name: ビジー状態のフロント エンド
-      href: antipatterns/busy-front-end/index.md
-    - name: 頻度の高い I/O
-      href: antipatterns/chatty-io/index.md
-    - name: 余分なフェッチ
-      href: antipatterns/extraneous-fetching/index.md
-    - name: 不適切なインスタンス化
-      href: antipatterns/improper-instantiation/index.md
-    - name: モノリシック永続化
-      href: antipatterns/monolithic-persistence/index.md
-    - name: キャッシュなし
-      href: antipatterns/no-caching/index.md
-    - name: 同期 I/O
-      href: antipatterns/synchronous-io/index.md
-- name: 設計レビューのチェックリスト
-  items:
-    - name: 可用性
-      href: checklist/availability.md
-    - name: DevOps
-      href: checklist/dev-ops.md
-    - name: 回復性 (一般)
-      href: checklist/resiliency.md
-    - name: 回復性 (Azure サービス)
-      href: checklist/resiliency-per-service.md
-    - name: スケーラビリティ
-      href: checklist/scalability.md
-- name: 回復性の設計
-  items:
-    - name: 回復力のあるアプリケーションの設計
-      href: resiliency/index.md
-    - name: 回復性のチェックリスト
-      href: checklist/resiliency.md
-      maintainContext: true
-    - name: 障害モード分析
-      href: resiliency/failure-mode-analysis.md
-- name: シナリオ例
-  href: example-scenario/index.md
-- name: シナリオのガイド
-  items:
-    - name: AWS プロフェッショナルのための Azure
-      href: aws-professional/index.md
+    - name: アプリケーション アーキテクチャ ガイド
+      items:
+        - name: はじめに
+          href: guide/index.md
+        - name: アーキテクチャ スタイル
+          items:
+            - name: 概要
+              href: guide/architecture-styles/index.md
+            - name: n 層アプリケーション
+              href: guide/architecture-styles/n-tier.md
+            - name: Web キューワーカー
+              href: guide/architecture-styles/web-queue-worker.md
+            - name: マイクロサービス
+              href: guide/architecture-styles/microservices.md
+            - name: CQRS
+              href: guide/architecture-styles/cqrs.md
+            - name: イベントドリブン アーキテクチャ
+              href: guide/architecture-styles/event-driven.md
+            - name: ビッグ データ
+              href: guide/architecture-styles/big-data.md
+            - name: ビッグ コンピューティング
+              href: guide/architecture-styles/big-compute.md
+        - name: 計算サービスの選択
+          items:
+            - name: 概要
+              href: guide/technology-choices/compute-overview.md
+            - name: デシジョン ツリー
+              href: guide/technology-choices/compute-decision-tree.md
+            - name: コンピューティングの比較
+              href: guide/technology-choices/compute-comparison.md
+        - name: データ ストアの選択
+          items:
+            - name: 概要
+              href: guide/technology-choices/data-store-overview.md
+            - name: データ ストアの比較
+              href: guide/technology-choices/data-store-comparison.md
+        - name: 設計原則
+          items:
+            - name: 概要
+              href: guide/design-principles/index.md
+            - name: 自動修復機能の設計
+              href: guide/design-principles/self-healing.md
+            - name: すべてを冗長化
+              href: guide/design-principles/redundancy.md
+            - name: 調整を最小限に抑える
+              href: guide/design-principles/minimize-coordination.md
+            - name: スケール アウトのための設計
+              href: guide/design-principles/scale-out.md
+            - name: 制限に対処するパーティション化
+              href: guide/design-principles/partition.md
+            - name: 操作に合わせた設計
+              href: guide/design-principles/design-for-operations.md
+            - name: 管理対象サービスの使用
+              href: guide/design-principles/managed-services.md
+            - name: ジョブに最適なデータ ストアの使用
+              href: guide/design-principles/use-the-best-data-store.md
+            - name: 展開を見込んだ設計
+              href: guide/design-principles/design-for-evolution.md
+            - name: ビジネス ニーズに合わせた構築
+              href: guide/design-principles/build-for-business.md
+        - name: ソフトウェア品質の重要な要素
+          href: guide/pillars.md
+        - name: クラウド アーキテクチャのベスト プラクティス
+          items:
+            - name: API 設計
+              href: best-practices/api-design.md
+            - name: API 実装
+              href: best-practices/api-implementation.md
+            - name: 自動スケール
+              href: best-practices/auto-scaling.md
+            - name: バックグラウンド ジョブ
+              href: best-practices/background-jobs.md
+            - name: キャッシュ
+              href: best-practices/caching.md
+            - name: Content Delivery Network
+              href: best-practices/cdn.md
+            - name: データのパーティション分割
+              href: best-practices/data-partitioning.md
+            - name: 監視と診断
+              href: best-practices/monitoring.md
+            - name: 名前付け規則
+              href: best-practices/naming-conventions.md
+            - name: 一時的な障害の処理
+              href: best-practices/transient-faults.md
+            - name: 特定のサービスの再試行ガイダンス
+              href: best-practices/retry-service-specific.md
+    - name: データ アーキテクチャ ガイド
+      items:
+        - name: はじめに
+          href: data-guide/index.md
+        - name: 従来の RDBMS ワークロード
+          items:
+            - name: 概要
+              href: data-guide/relational-data/index.md
+            - name: オンライン トランザクション処理 (OLTP)
+              href: data-guide/relational-data/online-transaction-processing.md
+            - name: データ ウェアハウス
+              href: data-guide/relational-data/data-warehousing.md
+            - name: オンライン分析処理 (OLAP)
+              href: data-guide/relational-data/online-analytical-processing.md
+            - name: 抽出、変換、読み込み (ETL)
+              href: data-guide/relational-data/etl.md
+        - name: ビッグ データ アーキテクチャ
+          items:
+            - name: 概要
+              href: data-guide/big-data/index.md
+            - name: バッチ処理
+              href: data-guide/big-data/batch-processing.md
+            - name: リアルタイム処理
+              href: data-guide/big-data/real-time-processing.md
+            - name: 大規模な機械学習
+              href: data-guide/big-data/machine-learning-at-scale.md
+            - name: 非リレーショナル データ ストア
+              href: data-guide/big-data/non-relational-data.md
+            - name: シナリオ
+              items:
+                - name: 高度な分析
+                  href: data-guide/scenarios/advanced-analytics.md
+                - name: データ レイク
+                  href: data-guide/scenarios/data-lake.md
+                - name: 自由形式のテキスト検索
+                  href: data-guide/scenarios/search.md
+                - name: 対話型データ探索
+                  href: data-guide/scenarios/interactive-data-exploration.md
+                - name: 自然言語処理
+                  href: data-guide/scenarios/natural-language-processing.md
+                - name: 時系列ソリューション
+                  href: data-guide/scenarios/time-series.md
+                - name: CSV ファイルと JSON ファイルの操作
+                  href: data-guide/scenarios/csv-and-json.md
+            - name: テクノロジの選択
+              items:
+                - name: 分析データ ストア
+                  href: data-guide/technology-choices/analytical-data-stores.md
+                - name: 分析とレポート
+                  href: data-guide/technology-choices/analysis-visualizations-reporting.md
+                - name: バッチ処理
+                  href: data-guide/technology-choices/batch-processing.md
+                - name: Cognitive Services
+                  href: data-guide/technology-choices/cognitive-services.md
+                - name: データ ストレージ
+                  href: data-guide/technology-choices/data-storage.md
+                - name: 機械学習
+                  href: data-guide/technology-choices/data-science-and-machine-learning.md
+                - name: 自然言語処理
+                  href: data-guide/technology-choices/natural-language-processing.md
+                - name: パイプライン オーケストレーション
+                  href: data-guide/technology-choices/pipeline-orchestration-data-movement.md
+                - name: リアルタイム メッセージ取り込み
+                  href: data-guide/technology-choices/real-time-ingestion.md
+                - name: データ ストアの検索
+                  href: data-guide/technology-choices/search-options.md
+                - name: ストリーム処理
+                  href: data-guide/technology-choices/stream-processing.md
+        - name: 横断的関心事
+          items:
+            - name: データ転送
+              href: data-guide/scenarios/data-transfer.md
+            - name: オンプレミス データ ソリューションのクラウドへの拡張
+              href: data-guide/scenarios/hybrid-on-premises-and-cloud.md
+            - name: データ保護ソリューション
+              href: data-guide/scenarios/securing-data-solutions.md
+    - name: クラウド設計パターン
+      items:
+        - name: 概要
+          href: patterns/index.md
+        - name: カテゴリ
+          items:
+            - name: 可用性
+              href: patterns/category/availability.md
+            - name: '[データ管理]'
+              href: patterns/category/data-management.md
+            - name: 設計と実装
+              href: patterns/category/design-implementation.md
+            - name: メッセージング
+              href: patterns/category/messaging.md
+            - name: 管理と監視
+              href: patterns/category/management-monitoring.md
+            - name: パフォーマンスと拡張性
+              href: patterns/category/performance-scalability.md
+            - name: 回復性
+              href: patterns/category/resiliency.md
+            - name: セキュリティ
+              href: patterns/category/security.md
+        - name: アンバサダー
+          href: patterns/ambassador.md
+        - name: 破損対策レイヤー
+          href: patterns/anti-corruption-layer.md
+        - name: フロントエンド用バックエンド
+          href: patterns/backends-for-frontends.md
+        - name: バルクヘッド
+          href: patterns/bulkhead.md
+        - name: キャッシュ アサイド
+          href: patterns/cache-aside.md
+        - name: サーキット ブレーカー
+          href: patterns/circuit-breaker.md
+        - name: コマンド クエリ責務分離 (CQRS)
+          href: patterns/cqrs.md
+        - name: 補正トランザクション
+          href: patterns/compensating-transaction.md
+        - name: 競合コンシューマー
+          href: patterns/competing-consumers.md
+        - name: コンピューティング リソース統合
+          href: patterns/compute-resource-consolidation.md
+        - name: イベント ソーシング
+          href: patterns/event-sourcing.md
+        - name: 外部構成ストア
+          href: patterns/external-configuration-store.md
+        - name: フェデレーション ID
+          href: patterns/federated-identity.md
+        - name: ゲートキーパー
+          href: patterns/gatekeeper.md
+        - name: ゲートウェイ集約
+          href: patterns/gateway-aggregation.md
+        - name: ゲートウェイ オフロード
+          href: patterns/gateway-offloading.md
+        - name: ゲートウェイ ルーティング
+          href: patterns/gateway-routing.md
+        - name: 正常性エンドポイント監視
+          href: patterns/health-endpoint-monitoring.md
+        - name: テーブルのインデックス作成
+          href: patterns/index-table.md
+        - name: リーダー選定
+          href: patterns/leader-election.md
+        - name: 具体化されたビュー
+          href: patterns/materialized-view.md
+        - name: パイプとフィルター
+          href: patterns/pipes-and-filters.md
+        - name: Priority Queue
+          href: patterns/priority-queue.md
+        - name: キュー ベースの負荷平準化
+          href: patterns/queue-based-load-leveling.md
+        - name: Retry
+          href: patterns/retry.md
+        - name: Scheduler Agent Supervisor
+          href: patterns/scheduler-agent-supervisor.md
+        - name: シャーディング
+          href: patterns/sharding.md
+        - name: サイドカー
+          href: patterns/sidecar.md
+        - name: 静的コンテンツ ホスティング
+          href: patterns/static-content-hosting.md
+        - name: ストラングラー
+          href: patterns/strangler.md
+        - name: 調整
+          href: patterns/throttling.md
+        - name: バレット キー
+          href: patterns/valet-key.md
+    - name: パフォーマンスのアンチパターン
+      items:
+        - name: 概要
+          href: antipatterns/index.md
+        - name: ビジー状態のデータベース
+          href: antipatterns/busy-database/index.md
+        - name: ビジー状態のフロント エンド
+          href: antipatterns/busy-front-end/index.md
+        - name: 頻度の高い I/O
+          href: antipatterns/chatty-io/index.md
+        - name: 余分なフェッチ
+          href: antipatterns/extraneous-fetching/index.md
+        - name: 不適切なインスタンス化
+          href: antipatterns/improper-instantiation/index.md
+        - name: モノリシック永続化
+          href: antipatterns/monolithic-persistence/index.md
+        - name: キャッシュなし
+          href: antipatterns/no-caching/index.md
+        - name: 同期 I/O
+          href: antipatterns/synchronous-io/index.md
     - name: Azure でのマイクロサービスの構築
-      href: ./microservices/index.md
-    - name: マルチテナント アプリケーションでの ID 管理
-      href: multitenant-identity/index.md
-    - name: Cloud Services から Service Fabric への移行
+      items:
+        - name: はじめに
+          href: microservices/index.md
+        - name: ドメイン分析
+          href: microservices/domain-analysis.md
+        - name: マイクロサービス境界の識別
+          href: microservices/microservice-boundaries.md
+        - name: データに関する考慮事項
+          href: microservices/data-considerations.md
+        - name: サービス間の通信
+          href: microservices/interservice-communication.md
+        - name: API 設計
+          href: microservices/api-design.md
+        - name: インジェストとワークフロー
+          href: microservices/ingestion-workflow.md
+        - name: API ゲートウェイ
+          href: microservices/gateway.md
+        - name: ログ記録と監視
+          href: microservices/logging-monitoring.md
+        - name: CI/CD
+          href: microservices/ci-cd.md
+    - name: マルチテナント ID の管理
+      items:
+        - name: はじめに
+          href: multitenant-identity/index.md
+        - name: Tailspin シナリオ
+          href: multitenant-identity/tailspin.md
+        - name: 認証
+          href: multitenant-identity/authenticate.md
+        - name: 要求ベースの ID
+          href: multitenant-identity/claims.md
+        - name: テナントのサインアップ
+          href: multitenant-identity/signup.md
+        - name: アプリケーション ロール
+          href: multitenant-identity/app-roles.md
+        - name: 承認
+          href: multitenant-identity/authorize.md
+        - name: Web API のセキュリティ保護
+          href: multitenant-identity/web-api.md
+        - name: アクセス トークンのキャッシュ
+          href: multitenant-identity/token-cache.md
+        - name: クライアント アサーション
+          href: multitenant-identity/client-assertion.md
+        - name: アプリケーション シークレットの保護
+          href: multitenant-identity/key-vault.md
+        - name: 顧客の AD FS とのフェデレーション
+          href: multitenant-identity/adfs.md
+        - name: Surveys アプリケーションの実行
+          href: multitenant-identity/run-the-app.md
+    - name: Cloud Services から Service Fabric に移行する
       items:
         - name: Service Fabric への Cloud Services アプリケーションの移行
           href: service-fabric/migrate-from-cloud-services.md
         - name: Service Fabric アプリケーションのリファクター
           href: service-fabric/refactor-migrated-app.md
-    - name: Azure Resource Manager テンプレート機能の拡張
-      href: building-blocks/extending-templates/index.md
-- name: リソース
+- name: シナリオ例
   items:
-    - name: Azure のロードマップ
-      href: 'https://azure.microsoft.com/roadmap/'
-    - name: 'Microsoft セキュリティ センター: Azure'
-      href: 'https://www.microsoft.com/en-us/trustcenter/cloudservices/azure'
-    - name: アイコンと図
-      href: resources/diagrams.md
-    - name: Azure 更新プログラムの予定
-      href: 'https://azure.microsoft.com/updates/'
-    - name: トレーニング
-      href: 'https://azure.microsoft.com/community/training/'
-    - name: SQLCAT ブログ
-      href: 'https://blogs.msdn.microsoft.com/sqlcat/'
-    - name: AzureCAT ブログ
-      href: 'https://blogs.msdn.microsoft.com/azurecat/'
-    - name: ホワイト ペーパー
-      href: 'https://azure.microsoft.com/resources/whitepapers/'
+    - name: 概要
+      href: example-scenario/index.md
+    - name: AI
+      items:
+        - name: 画像処理
+          href: example-scenario/ai/intelligent-apps-image-processing.md
+    - name: アプリケーション
+      items:
+        - name: ホテル予約チャットボット
+          href: example-scenario/apps/commerce-chatbot.md
+        - name: Azure Kubernetes Service での DevOps
+          href: example-scenario/apps/devops-with-aks.md
+    - name: データと分析
+      items:
+        - name: リアルタイムでの不正検出
+          href: example-scenario/data/fraud-detection.md
+- name: 参照アーキテクチャ
+  items:
+    - name: 概要
+      href: reference-architectures/index.md
+    - name: App Service Web アプリケーション
+      items:
+        - name: 基本的な Web アプリケーション
+          href: reference-architectures/app-service-web-app/basic-web-app.md
+        - name: スケーラビリティの向上
+          href: reference-architectures/app-service-web-app/scalable-web-app.md
+        - name: 複数リージョンのデプロイ
+          href: reference-architectures/app-service-web-app/multi-region.md
+    - name: ビッグ データ
+      items:
+        - name: SQL Data Warehouse を使用したエンタープライズ向け BI
+          href: reference-architectures/data/enterprise-bi-sqldw.md
+        - name: SQL Data Warehouse と Data Factory を使用したエンタープライズ BI の自動化
+          href: reference-architectures/data/enterprise-bi-adf.md
+    - name: ハイブリッド ネットワーク
+      items:
+        - name: 概要
+          href: reference-architectures/hybrid-networking/index.md
+        - name: VPN
+          href: reference-architectures/hybrid-networking/vpn.md
+        - name: ExpressRoute
+          href: reference-architectures/hybrid-networking/expressroute.md
+        - name: VPN のフェールオーバーを伴う ExpressRoute
+          href: reference-architectures/hybrid-networking/expressroute-vpn-failover.md
+        - name: ハブスポーク トポロジ
+          href: reference-architectures/hybrid-networking/hub-spoke.md
+        - name: 共有サービスを含むハブスポーク トポロジ
+          href: reference-architectures/hybrid-networking/shared-services.md
+    - name: ID 管理
+      items:
+        - name: 概要
+          href: reference-architectures/identity/index.md
+        - name: オンプレミス AD と Azure AD の統合
+          href: reference-architectures/identity/azure-ad.md
+        - name: AD DS の Azure への拡張
+          href: reference-architectures/identity/adds-extend-domain.md
+        - name: Azure での AD DS フォレストの作成
+          href: reference-architectures/identity/adds-forest.md
+        - name: AD FS を Azure に拡張する
+          href: reference-architectures/identity/adfs.md
+    - name: n 層アプリケーション
+      items:
+        - name: SQL Server を使用した n 層アプリケーション
+          href: reference-architectures/n-tier/n-tier-sql-server.md
+        - name: マルチリージョン n 層アプリケーション
+          href: reference-architectures/n-tier/multi-region-sql-server.md
+        - name: Cassandra を使用した n 層アプリケーション
+          href: reference-architectures/n-tier/n-tier-cassandra.md
+        - name: Linux VM のデプロイ
+          href: reference-architectures/n-tier/linux-vm.md
+        - name: Windows VM のデプロイ
+          href: reference-architectures/n-tier/windows-vm.md
+    - name: ネットワーク DMZ
+      items:
+        - name: Azure とオンプレミスの間の DMZ
+          href: reference-architectures/dmz/secure-vnet-hybrid.md
+        - name: Azure とインターネットの間の DMZ
+          href: reference-architectures/dmz/secure-vnet-dmz.md
+        - name: 高可用性ネットワーク仮想アプライアンス
+          href: reference-architectures/dmz/nva-ha.md
+    - name: SAP
+      items:
+        - name: AnyDB 向けの SAP NetWeaver
+          href: reference-architectures/sap/sap-netweaver.md
+        - name: SAP S/4HANA
+          href: reference-architectures/sap/sap-s4hana.md
+        - name: SAP HANA on Azure Large Instances
+          href: reference-architectures/sap/hana-large-instances.md
+    - name: Jenkins サーバー
+      href: reference-architectures/jenkins/index.md
+    - name: SharePoint Server 2016
+      href: reference-architectures/sharepoint/index.md
+- name: デザイン レビュー フレームワーク
+  items:
+    - name: 回復性の設計
+      href: resiliency/index.md
+    - name: 障害モード分析
+      href: resiliency/failure-mode-analysis.md
+    - name: 可用性のチェックリスト
+      href: checklist/availability.md
+    - name: DevOps チェックリスト
+      href: checklist/dev-ops.md
+    - name: 回復性のチェックリスト (一般)
+      href: checklist/resiliency.md
+    - name: 回復性のチェックリスト (Azure サービス)
+      href: checklist/resiliency-per-service.md
+    - name: スケーラビリティのチェックリスト
+      href: checklist/scalability.md
+- name: クラウド導入ガイド
+  items:
+    - name: はじめに
+      href: cloud-adoption-guide/index.md
+    - name: 基本的な Azure 導入
+      items:
+        - name: 概要
+          href: cloud-adoption-guide/adoption-intro/overview.md
+        - name: Azure 内部構成について
+          items:
+            - name: '説明: Azure のしくみ'
+              href: cloud-adoption-guide/adoption-intro/azure-explainer.md
+            - name: '説明: クラウド リソース ガバナンスとは'
+              href: cloud-adoption-guide/adoption-intro/governance-explainer.md
+        - name: Azure のデジタル ID について
+          items:
+            - name: '説明: Azure Active Directory テナントとは'
+              href: cloud-adoption-guide/adoption-intro/tenant-explainer.md
+            - name: '方法: Azure Active Directory テナントを取得する'
+              href: /azure/active-directory/develop/active-directory-howto-tenant
+              maintainContext: true
+            - name: 'ガイダンス: Azure AD テナント設計'
+              href: cloud-adoption-guide/adoption-intro/tenant.md
+            - name: '方法: ユーザーを Azure AD テナントに追加する'
+              href: /azure/active-directory/add-users-azure-active-directory
+              maintainContext: true
+        - name: Azure サブスクリプションについて
+          items:
+            - name: '説明: Azure サブスクリプションとは'
+              href: cloud-adoption-guide/adoption-intro/subscription-explainer.md
+            - name: 'ガイダンス: Azure サブスクリプション設計'
+              href: cloud-adoption-guide/adoption-intro/subscription.md
+        - name: Azure でのリソース管理について
+          items:
+            - name: '説明: Azure Resource Manager とは'
+              href: cloud-adoption-guide/adoption-intro/resource-manager-explainer.md
+            - name: '説明: Azure リソース グループとは'
+              href: cloud-adoption-guide/adoption-intro/resource-group-explainer.md
+            - name: '説明: Azure でのリソース アクセスについて'
+              href: /azure/active-directory/active-directory-understanding-resource-access
+              maintainContext: true
+            - name: '方法: ポータルでリソース グループを作成する'
+              href: /azure/azure-resource-manager/resource-group-portal
+              maintainContext: true
+            - name: 'ガイダンス: リソース グループ設計'
+              href: cloud-adoption-guide/adoption-intro/resource-group.md
+            - name: 'ガイダンス: Azure リソースの名前付け規則'
+              href: /azure/architecture/best-practices/naming-conventions
+              maintainContext: true
+        - name: 基本的なアーキテクチャを Azure にデプロイする
+          items:
+            - name: サービスとしてのプラットフォーム (PaaS) アーキテクチャ
+              items:
+                - name: '方法: 基本的な Web アプリケーションを Azure にデプロイする'
+                  href: /azure/app-service
+                  maintainContext: true
+                - name: 'ガイダンス: Azure の Web アプリケーションのベスト プラクティス'
+                  href: /azure/architecture/reference-architectures/app-service-web-app/basic-web-app
+                  maintainContext: true
+            - name: サービスとしてのインフラストラクチャ (IaaS)
+              items:
+                - name: '説明: Azure 仮想ネットワークとは'
+                  href: /azure/virtual-network/virtual-networks-overview
+                  maintainContext: true
+                - name: '方法: 仮想ネットワークを Azure にデプロイする'
+                  href: /azure/virtual-network/virtual-networks-create-vnet-arm-pportal
+                  maintainContext: true
+                - name: '方法: 単一の Windows VM IaaS ワークロードを Azure にデプロイする'
+                  href: /azure/virtual-machines/windows/quick-create-portal
+                  maintainContext: true
+                - name: 'ガイダンス: Azure への Windows VM デプロイのベスト プラクティス'
+                  href: /azure/architecture/reference-architectures/virtual-machines-windows/single-vm
+                  maintainContext: true
+                - name: '方法: 単一の Linux VM IaaS ワークロードを Azure にデプロイする'
+                  href: /azure/virtual-machines/linux/quick-create-portal
+                  maintainContext: true
+                - name: 'ガイダンス: Azure への Linux VM デプロイのベスト プラクティス'
+                  href: /azure/architecture/reference-architectures/virtual-machines-linux/single-vm
+                  maintainContext: true
+    - name: 中級者向けの Azure 導入
+      items:
+        - name: 概要
+          href: cloud-adoption-guide/intermediate-stage/overview.md
+        - name: ガバナンス設計ガイド
+          href: cloud-adoption-guide/intermediate-stage/governance-design-guide.md
+- name: Azure 仮想データセンター
+  href: vdc/index.md
+- name: AWS プロフェッショナルのための Azure
+  items:
+    - name: 概要
+      href: aws-professional/index.md
+    - name: サービスの比較
+      href: aws-professional/services.md

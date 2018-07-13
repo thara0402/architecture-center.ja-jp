@@ -3,12 +3,12 @@ title: 高可用性 SharePoint Server 2016 ファームの Azure での実行
 description: 高可用性 SharePoint Server 2016 ファームを Azure で設定するための実証済みプラクティス。
 author: njray
 ms.date: 08/01/2017
-ms.openlocfilehash: d1e3f0b73c94844ac649bf2abb6917809202fdb7
-ms.sourcegitcommit: c441fd165e6bebbbbbc19854ec6f3676be9c3b25
+ms.openlocfilehash: 9fe4fc09cf3babdf3ec8e8f27049f90e0047e9f0
+ms.sourcegitcommit: 776b8c1efc662d42273a33de3b82ec69e3cd80c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
-ms.locfileid: "30270124"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38987711"
 ---
 # <a name="run-a-high-availability-sharepoint-server-2016-farm-in-azure"></a>高可用性 SharePoint Server 2016 ファームの Azure での実行
 
@@ -38,7 +38,9 @@ ms.locfileid: "30270124"
 
 - **ゲートウェイ**。 ゲートウェイによって、オンプレミス ネットワークと Azure 仮想ネットワークの間に接続が提供されます。 この接続は ExpressRoute またはサイト間 VPN を使用できます。 詳しくは、「[オンプレミス ネットワークの Azure への接続][hybrid-ra]」をご覧ください。
 
-- **Windows Server Active Directory (AD) ドメイン コントローラー**。 SharePoint Server 2016 では Azure Active Directory Domain Services の使用はサポートされないため、Windows Server AD ドメイン コントローラーをデプロイする必要があります。 これらのドメイン コントローラーは Azure VNet で実行し、オンプレミスの Windows Server AD フォレストと信頼関係を保ちます。 SharePoint ファーム リソースに対するクライアント Web 要求は、ゲートウェイ接続経由でオンプレミス ネットワークに認証のトラフィックを送信する代わりに、VNet 内で認証されます。 DNS では、イントラネット A または CNAME レコードが作成されるため、イントラネット ユーザーは SharePoint ファームの名前を内部ロード バランサーのプライベート IP アドレスに解決できます。
+- **Windows Server Active Directory (AD) ドメイン コントローラー**。 この参照アーキテクチャは、Windows Server AD ドメイン コントローラーをデプロイします。 これらのドメイン コントローラーは Azure VNet で実行し、オンプレミスの Windows Server AD フォレストと信頼関係を保ちます。 SharePoint ファーム リソースに対するクライアント Web 要求は、ゲートウェイ接続経由でオンプレミス ネットワークに認証のトラフィックを送信する代わりに、VNet 内で認証されます。 DNS では、イントラネット A または CNAME レコードが作成されるため、イントラネット ユーザーは SharePoint ファームの名前を内部ロード バランサーのプライベート IP アドレスに解決できます。
+
+  SharePoint Server 2016 でも、[Azure Active Directory Domain Services](/azure/active-directory-domain-services/) を利用できます。 Azure AD Domain Services はマネージド ドメイン サービスを提供するので、Azure にドメイン コントローラーをデプロイし、管理する必要はありません。
 
 - **SQL Server Always On 可用性グループ**。 SQL Server データベースの高可用性を実現するには、[SQL Server Always On 可用性グループ][sql-always-on]を推奨します。 2 つの仮想マシンが SQL Server で使用されます。 1 つにはプライマリ データベース レプリカが含まれ、もう 1 つにはセカンダリ レプリカが含まれます。 
 

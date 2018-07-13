@@ -3,12 +3,12 @@ title: Azure アーキテクチャ センター
 description: Azure アーキテクチャ センターとは、Microsoft Azure を使用したソリューションを構築するためのガイダンス、計画、パターン、ベスト プラクティスが提供される公式のセンターです。 これらは Microsoft patterns & practices チームによってまとめられています。
 layout: LandingPage
 ms.topic: landing-page
-ms.openlocfilehash: 0ac5dd79f765fe9b649cc2ca83c0213b4ba28544
-ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
+ms.openlocfilehash: 544196faa7156c5636b03d3f402bc48dcc63975f
+ms.sourcegitcommit: 776b8c1efc662d42273a33de3b82ec69e3cd80c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30847732"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38987592"
 ---
 # <a name="azure-architecture-center"></a>Azure アーキテクチャ センター
 
@@ -79,7 +79,7 @@ ms.locfileid: "30847732"
                         </div>
                         <div class="cardText">
                             <h3>Azure でのマイクロサービスの構築</h3>
-                            <p>このマルチパート シリーズは、Azure でマイクロサービス アーキテクチャを設計するプロセスについて説明します。 リファレンス実装も含まれます。</p>
+                            <p>このデザイン ガイドでは、Azure でマイクロサービス アーキテクチャを設計して構築するプロセスについて説明します。 リファレンス実装も含まれます。</p>
                         </div>
                     </div>
                 </div>
@@ -118,7 +118,7 @@ ms.locfileid: "30847732"
                             </div>
                         </div>
                         <div class="cardText">
-                            <h3>クラウド アプリケーションのベスト プラクティス</h3>
+                            <h3>クラウド ベスト プラクティス</h3>
                             <p>自動スケール、キャッシュ、データのパーティション分割、API 設計などの側面について説明する、クラウド アプリケーションのベスト プラクティス。</p>
                         </div>
                     </div>
@@ -246,46 +246,6 @@ ms.locfileid: "30847732"
             </div>
         </a>
     </li>
-    <!-- Sharepoint -->
-    <li>
-        <a href="/azure/architecture/reference-architectures/sharepoint">
-            <div class="cardSize">
-                <div class="cardPadding">
-                    <div class="card">
-                        <div class="cardImageOuter">
-                            <div class="cardImage">
-                                <img src="/azure/architecture/reference-architectures/sharepoint/images/sharepoint.svg" alt="" />
-                            </div>
-                        </div>
-                        <div class="cardText">
-                            <h3>Azure での SharePoint Server 2016 の実行</h3>
-                            <p>高可用性 SharePoint Server 2016 ファームを Azure にデプロイして実行します。</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </a>
-    </li>
-    <!-- SAP -->
-    <li>
-        <a href="/azure/architecture/reference-architectures/sap">
-            <div class="cardSize">
-                <div class="cardPadding">
-                    <div class="card">
-                        <div class="cardImageOuter">
-                            <div class="cardImage">
-                                <img src="/azure/architecture/reference-architectures/sap/images/sap.svg" width="100%" alt="" />
-                            </div>
-                        </div>
-                        <div class="cardText">
-                            <h3>Azure での SAP HANA の実行</h3>
-                            <p>SAP NetWeaver および SAP HANA を Azure の高可用性環境にデプロイして実行します。</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </a>
-    </li>
     <!-- Multitenant identity -->
     <li>
         <a href="/azure/architecture/multitenant-identity">
@@ -300,46 +260,6 @@ ms.locfileid: "30847732"
                         <div class="cardText">
                             <h3>マルチテナント アプリケーションの ID 管理</h3>
                             <p>ID の管理に Azure AD を使用する場合の、マルチテナント方式のベスト プラクティスについて説明します。</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </a>
-    </li>
-    <!-- AzureCAT blog -->
-    <li>
-        <a href="https://blogs.msdn.microsoft.com/azurecat/">
-            <div class="cardSize">
-                <div class="cardPadding">
-                    <div class="card">
-                        <div class="cardImageOuter">
-                            <div class="cardImage">
-                                <img src="_images/azurecat.svg" alt="" />
-                            </div>
-                        </div>
-                        <div class="cardText">
-                            <h3>Azure Customer Advisory Team</h3>
-                            <p>AzureCAT チームのブログ</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </a>
-    </li>
-    <!-- SQL CAT blog -->
-    <li>
-        <a href="https://blogs.msdn.microsoft.com/sqlcat/">
-            <div class="cardSize">
-                <div class="cardPadding">
-                    <div class="card">
-                        <div class="cardImageOuter">
-                            <div class="cardImage">
-                                <img src="_images/sqlcat.svg" alt="" />
-                            </div>
-                        </div>
-                        <div class="cardText">
-                            <h3>SQL Server Customer Advisory Team</h3>
-                            <p>SQLCAT チームのブログ</p>
                         </div>
                     </div>
                 </div>
