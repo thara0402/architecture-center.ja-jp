@@ -2,13 +2,13 @@
 title: 高可用性 SharePoint Server 2016 ファームの Azure での実行
 description: 高可用性 SharePoint Server 2016 ファームを Azure で設定するための実証済みプラクティス。
 author: njray
-ms.date: 08/01/2017
-ms.openlocfilehash: 9fe4fc09cf3babdf3ec8e8f27049f90e0047e9f0
-ms.sourcegitcommit: 776b8c1efc662d42273a33de3b82ec69e3cd80c5
+ms.date: 07/14/2018
+ms.openlocfilehash: ff690300cb5f4af301bcfac58ac10b9b3c47f96d
+ms.sourcegitcommit: 71cbef121c40ef36e2d6e3a088cb85c4260599b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38987711"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39060899"
 ---
 # <a name="run-a-high-availability-sharepoint-server-2016-farm-in-azure"></a>高可用性 SharePoint Server 2016 ファームの Azure での実行
 
@@ -172,78 +172,104 @@ SharePoint Server 2016 の実行に使用されるドメインレベル サー�
 
 ## <a name="deploy-the-solution"></a>ソリューションのデプロイ方法
 
-この参照用アーキテクチャのデプロイ スクリプトについては、[GitHub][github] をご覧ください。 
+このリファレンス アーキテクチャのデプロイについては、[GitHub][github] を参照してください。 デプロイ全体が完了するのに数時間かかる場合があります。
 
-このアーキテクチャは段階的にデプロイすることも一度にデプロイすることもできます。 最初は、各デプロイの内容を確認できるように、段階的なデプロイをお勧めします。 次のいずれかの "*モード*" パラメーターを使用して段階を指定します。
+デプロイによってサブスクリプション内に作成されるリソース グループは、次のとおりです。
 
-| Mode           | 実行内容                                                                                                            |
-|----------------|-------------------------------------------------------------------------------------------------------------------------|
-| onprem         | (省略可能) テストまたは評価のために、シミュレーション オンプレミス ネットワーク環境をデプロイします。 この手順では実際のオンプレミス ネットワークには接続しません。 |
-| infrastructure | SharePoint 2016 ネットワーク インフラストラクチャと jumpbox を Azure にデプロイします。                                                |
-| createvpn      | SharePoint とオンプレミス ネットワークの両方に仮想ネットワーク ゲートウェイをデプロイし、接続します。 この手順は、`onprem` 手順を実行した場合のみ実行します。                |
-| ワークロード       | SharePoint サーバーを SharePoint ネットワークにデプロイします。                                                               |
-| security       | ネットワーク セキュリティ グループを SharePoint ネットワークにデプロイします。                                                           |
-| すべて            | 上記のすべてをデプロイします。                            
+- ra-onprem-sp2016-rg
+- ra-sp2016-network-rg
 
+テンプレート パラメーター ファイルは、これらの名前を参照します。したがって、名前を変更する場合は、それに合わせてパラメーター ファイルも更新します。 
 
-シミュレーション オンプレミス ネットワーク環境に対してアーキテクチャを段階的にデプロイするには、次の手順を順番に実行します。
-
-1. onprem
-2. インフラストラクチャ
-3. createvpn
-4. ワークロード
-5. security
-
-シミュレーション オンプレミス ネットワーク環境なしで、アーキテクチャを段階的にデプロイするには、次の手順を順番に実行します。
-
-1. インフラストラクチャ
-2. ワークロード
-3. security
-
-すべてを 1 回の手順でデプロイするには `all` を使用します。 プロセス全体に数時間かかる場合があることに注意してください。
+パラメーター ファイルには、ハードコーディングされたパスワードがさまざまな場所に含まれています。 デプロイする前にこれらの値を変更します。
 
 ### <a name="prerequisites"></a>前提条件
 
-* 最新バージョンの [Azure PowerShell][azure-ps] をインストールします。
+[!INCLUDE [ref-arch-prerequisites.md](../../../includes/ref-arch-prerequisites.md)]
 
-* この参照用アーキテクチャをデプロイする前に、サブスクリプションに十分なクォータ (38 個以上のコア) があることを確認します。 不足している場合は、Azure ポータルを使用して、クォータを増やすためのサポート要求を発行します。
+### <a name="deploy-the-solution"></a>ソリューションのデプロイ方法 
 
-* このデプロイのコストを見積もるには、[料金計算ツール][azure-pricing]をご覧ください。
+1. シミュレートされたオンプレミス ネットワークをデプロイするには、次のコマンドを実行します。
 
-### <a name="deploy-the-reference-architecture"></a>参照用アーキテクチャのデプロイ
+    ```bash
+    azbb -s <subscription_id> -g ra-onprem-sp2016-rg -l <location> -p onprem.json --deploy
+    ```
 
-1.  [GitHub リポジトリ][github]をローカル コンピューターにダウンロードするか複製します。
+2. Azure VNet および VPN ゲートウェイをデプロイするには、次のコマンドを実行します。
 
-2.  PowerShell ウィンドウを開き、`/sharepoint/sharepoint-2016` フォルダーに移動します。
+    ```bash
+    azbb -s <subscription_id> -g ra-onprem-sp2016-rg -l <location> -p connections.json --deploy
+    ```
 
-3.  次の PowerShell コマンドを実行します。 \<subscription id\> として Azure サブスクリプション ID を指定します。 \<location\> には、Azure リージョン (`eastus` や `westus` など) を指定します。 \<mode\> には、`onprem``infrastructure`、`createvpn`、`workload``security`、または `all` を指定します。
+3. Jumpbox、AD ドメイン コントローラー、SQL Server VM をデプロイするには、次のコマンドを実行します。
+
+    ```bash
+    azbb -s <subscription_id> -g ra-onprem-sp2016-rg -l <location> -p azure1.json --deploy
+    ```
+
+4. フェールオーバー クラスターと可用性グループを作成するには、次のコマンドを実行します。 
+
+    ```bash
+    azbb -s <subscription_id> -g ra-onprem-sp2016-rg -l <location> -p azure2-cluster.json --deploy
+
+5. Run the following command to deploy the remaining VMs.
+
+    ```bash
+    azbb -s <subscription_id> -g ra-onprem-sp2016-rg -l <location> -p azure3.json --deploy
+    ```
+
+この時点では、SQL Server Always On 可用性グループ用の Web フロントエンドからロード バランサーへの TCP 接続を確立できることを確認してください。 そのためには、次の手順を実行します。
+
+1. Azure Portal を使用して、`ra-sp2016-network-rg` リソース グループで `ra-sp-jb-vm1` という名前の VM を見つけます。 これは、Jumpbox VM です。
+
+2. `Connect` をクリックして、VM に対するリモート デスクトップ セッションを開きます。 `azure1.json` パラメーター ファイルで指定したパスワードを使用します。
+
+3. リモート デスクトップ セッションから 10.0.5.4 にログインします。 これは、`ra-sp-app-vm1` という名前の VM の IP アドレスです。
+
+4. VM で PowerShell コンソールを開き、`Test-NetConnection` コマンドレットを使用して、ロード バランサーに接続できることを確認します。
 
     ```powershell
-    .\Deploy-ReferenceArchitecture.ps1 <subscription id> <location> <mode>
-    ```   
-4. プロンプトが表示されたら、Azure アカウントにログオンします。 選択したモードによって異なりますが、デプロイ スクリプトは完了するまでに数時間かかることがあります。
+    Test-NetConnection 10.0.3.100 -Port 1433
+    ```
 
-5. デプロイが完了したら、スクリプトを実行して SQL Server Always On 可用性グループを構成します。 詳しくは、[readme][readme] をご覧ください。
+出力は次のようになります。
 
-> [!WARNING]
-> パラメーター ファイルには、ハードコーディングされたパスワード (`AweS0me@PW`) がさまざまな場所に含まれています。 デプロイする前にこれらの値を変更します。
+```powershell
+ComputerName     : 10.0.3.100
+RemoteAddress    : 10.0.3.100
+RemotePort       : 1433
+InterfaceAlias   : Ethernet 3
+SourceAddress    : 10.0.0.132
+TcpTestSucceeded : True
+```
 
+失敗した場合は、Azure Portal を使用して、`ra-sp-sql-vm2` という名前の VM を再起動します。 VM を再起動した後、`Test-NetConnection` コマンドを再実行します。 接続の正常な確立のため、VM が再起動した後、約 1 分待機しなければならない場合があります。 
 
-## <a name="validate-the-deployment"></a>デプロイの検証
+デプロイを次のように完了します。
 
-この参照用アーキテクチャをデプロイすると、次のリソース グループが使用したサブスクリプションの下に一覧表示されます。
+1. SharePoint ファームのプライマリ ノードをデプロイするには、次のコマンドを実行します。
 
-| リソース グループ        | 目的                                                                                         |
-|-----------------------|-------------------------------------------------------------------------------------------------|
-| ra-onprem-sp2016-rg   | オンプレミス ネットワークの Active Directory とのシミュレーションおよび SharePoint 2016 ネットワークとのフェデレーション |
-| ra-sp2016-network-rg  | SharePoint デプロイをサポートするインフラストラクチャ                                                 |
-| ra-sp2016-workload-rg | SharePoint およびサポート リソース                                                             |
+    ```bash
+    azbb -s <subscription_id> -g ra-onprem-sp2016-rg -l <location> -p azure4-sharepoint-server.json --deploy
+    ```
 
-### <a name="validate-access-to-the-sharepoint-site-from-the-on-premises-network"></a>オンプレミス ネットワークから SharePoint サイトへのアクセスの検証
+2. SharePoint キャッシュ、検索、Web をデプロイするには、次のコマンドを実行します。
 
-1. [Azure ポータル][azure-portal]の **[リソース グループ]** の下で `ra-onprem-sp2016-rg` リソース グループを選択します。
+    ```bash
+    azbb -s <subscription_id> -g ra-onprem-sp2016-rg -l <location> -p azure5-sharepoint-farm.json --deploy
+    ```
 
-2. リソースの一覧で、`ra-adds-user-vm1` という名前の VM リソースを選択します。 
+3. NSG ルールを作成するには、次のコマンドを実行します。
+
+    ```bash
+    azbb -s <subscription_id> -g ra-onprem-sp2016-rg -l <location> -p azure6-security.json --deploy
+    ```
+
+### <a name="validate-the-deployment"></a>デプロイの検証
+
+1. [Azure Portal][azure-portal] で、`ra-onprem-sp2016-rg` リソース グループに移動します。
+
+2. リソースの一覧で、`ra-onpr-u-vm1` という名前の VM リソースを選択します。 
 
 3. 「[仮想マシンへの接続][connect-to-vm]」の説明に従って、VM に接続します。 ユーザー名は `\onpremuser` です。
 
@@ -252,38 +278,6 @@ SharePoint Server 2016 の実行に使用されるドメインレベル サー�
 6.  **[Windows セキュリティ]** ボックスで、ユーザー名として `contoso.local\testuser` を使用して SharePoint ポータルにログオンします。
 
 このログオンは、オンプレミス ネットワークで使用される Fabrikam.com ドメインから SharePoint ポータルで使用される contoso.local ドメインにトンネリングします。 SharePoint サイトが開くと、ルート デモ サイトが表示されます。
-
-### <a name="validate-jumpbox-access-to-vms-and-check-configuration-settings"></a>jumpbox の VM へのアクセスの検証と構成設定の確認
-
-1.  [Azure ポータル][azure-portal]の **[リソース グループ]** の下で `ra-sp2016-network-rg` リソース グループを選択します。
-
-2.  リソースの一覧で、`ra-sp2016-jb-vm1` という名前の VM リソースを選択します。これが jumpbox です。
-
-3. 「[仮想マシンへの接続][connect-to-vm]」の説明に従って、VM に接続します。 ユーザー名は `testuser` です。
-
-4.  jumpbox にログオンした後で、jumpbox から RDP セッションを開きます。 VNet 内の他の VM に接続します。 ユーザー名は `testuser` です。 リモート コンピューターのセキュリティ証明書に関する警告は無視してかまいません。
-
-5.  VM へのリモート接続が開いたら、構成を確認し、サーバー マネージャーなど管理ツールを使用して変更を加えます。
-
-次の表には、デプロイされる VM を示します。 
-
-| リソース名      | 目的                                   | リソース グループ        | VM 名                       |
-|--------------------|-------------------------------------------|-----------------------|-------------------------------|
-| Ra-sp2016-ad-vm1   | Active Directory + DNS                    | Ra-sp2016-network-rg  | Ad1.contoso.local             |
-| Ra-sp2016-ad-vm2   | Active Directory + DNS                    | Ra-sp2016-network-rg  | Ad2.contoso.local             |
-| Ra-sp2016-fsw-vm1  | SharePoint                                | Ra-sp2016-network-rg  | Fsw1.contoso.local            |
-| Ra-sp2016-jb-vm1   | Jumpbox                                   | Ra-sp2016-network-rg  | Jb (パブリック IP を使用してログオン) |
-| Ra-sp2016-sql-vm1  | SQL Always On - フェールオーバー                  | Ra-sp2016-network-rg  | Sq1.contoso.local             |
-| Ra-sp2016-sql-vm2  | SQL Always On - プライマリ                   | Ra-sp2016-network-rg  | Sq2.contoso.local             |
-| Ra-sp2016-app-vm1  | SharePoint 2016 アプリケーション MinRole       | Ra-sp2016-workload-rg | App1.contoso.local            |
-| Ra-sp2016-app-vm2  | SharePoint 2016 アプリケーション MinRole       | Ra-sp2016-workload-rg | App2.contoso.local            |
-| Ra-sp2016-dch-vm1  | SharePoint 2016 分散キャッシュ MinRole | Ra-sp2016-workload-rg | Dch1.contoso.local            |
-| Ra-sp2016-dch-vm2  | SharePoint 2016 分散キャッシュ MinRole | Ra-sp2016-workload-rg | Dch2.contoso.local            |
-| Ra-sp2016-srch-vm1 | SharePoint 2016 検索 MinRole            | Ra-sp2016-workload-rg | Srch1.contoso.local           |
-| Ra-sp2016-srch-vm2 | SharePoint 2016 検索 MinRole            | Ra-sp2016-workload-rg | Srch2.contoso.local           |
-| Ra-sp2016-wfe-vm1  | SharePoint 2016 Web フロント エンド MinRole     | Ra-sp2016-workload-rg | Wfe1.contoso.local            |
-| Ra-sp2016-wfe-vm2  | SharePoint 2016 Web フロント エンド MinRole     | Ra-sp2016-workload-rg | Wfe2.contoso.local            |
-
 
 **_この参照用アーキテクチャの共同作成者_** &mdash; Joe Davies、Bob Fox、Neil Hodgkinson、Paul Stork
 
