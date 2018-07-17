@@ -298,7 +298,7 @@
           href: multitenant-identity/index.md
         - name: Tailspin シナリオ
           href: multitenant-identity/tailspin.md
-        - name: 認証
+        - name: Authentication
           href: multitenant-identity/authenticate.md
         - name: 要求ベースの ID
           href: multitenant-identity/claims.md
@@ -332,18 +332,32 @@
       href: example-scenario/index.md
     - name: AI
       items:
-        - name: 画像処理
+        - name: 画像の分類
           href: example-scenario/ai/intelligent-apps-image-processing.md
     - name: アプリケーション
       items:
         - name: ホテル予約チャットボット
           href: example-scenario/apps/commerce-chatbot.md
-        - name: Azure Kubernetes Service での DevOps
+        - name: コンテナー付きの DevOps
           href: example-scenario/apps/devops-with-aks.md
+        - name: VSTS 付きの DevOps
+          href: example-scenario/apps/devops-dotnet-webapp.md
+        - name: 開発/テスト用 SAP
+          href: example-scenario/apps/sap-dev-test.md
+        - name: eコマース フロントエンド
+          href: example-scenario/apps/ecommerce-scenario.md
     - name: データと分析
       items:
         - name: リアルタイムでの不正検出
           href: example-scenario/data/fraud-detection.md
+        - name: スケーラブルな注文処理
+          href: example-scenario/data/ecommerce-order-processing.md
+    - name: インフラストラクチャ
+      items:
+        - name: 多層 Windows
+          href: example-scenario/infrastructure/regulated-multitier-app.md
+        - name: HPC ビデオのレンダリング
+          href: example-scenario/infrastructure/video-rendering.md
 - name: 参照アーキテクチャ
   items:
     - name: 概要
