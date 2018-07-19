@@ -6,12 +6,12 @@ ms:date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications
 pnp.series.prev: authorize
 pnp.series.next: token-cache
-ms.openlocfilehash: 65529280c5849e36ed7ff23de08a0b485034d0d8
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 2d02ff7be04c6ebec888039453fe1ac7e957b301
+ms.sourcegitcommit: f7fa67e3bdbc57d368edb67bac0e1fdec63695d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
-ms.locfileid: "24541467"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37843676"
 ---
 # <a name="secure-a-backend-web-api"></a>バックエンド Web API をセキュリティで保護する
 
@@ -68,7 +68,7 @@ Tailspin アプリケーションは、デリゲートされたユーザー ID �
 いずれのアプローチにおいても、Web アプリケーションは Web API を呼び出すのに必要な資格情報であるアクセス トークンを取得する必要があります。
 
 * デリゲートされたユーザー ID の場合、トークンは、ユーザーの代わりにトークンを発行できる IDP から入手します。
-* クライアントの資格情報の場合、アプリケーションは IDP からトークンを取得するか、独自のトークン サーバーをホストします。 (ただし、トークン サーバーを最初から作成することはせずに、十分にテストされているフレームワーク ([IdentityServer3] など) を使用してください。)Azure AD で認証する場合、クライアントの資格情報フローでも、Azure AD からアクセス トークンを取得することを強くお勧めします。
+* クライアントの資格情報の場合、アプリケーションは IDP からトークンを取得するか、独自のトークン サーバーをホストします。 (ただし、トークン サーバーを最初から作成することはせずに、十分にテストされているフレームワーク ([IdentityServer4] など) を使用してください。)Azure AD で認証する場合、クライアントの資格情報フローでも、Azure AD からアクセス トークンを取得することを強くお勧めします。
 
 以降、この記事では、アプリケーションが Azure AD を使用して認証している前提で説明します。
 
@@ -109,13 +109,13 @@ public override async Task AuthorizationCodeReceived(AuthorizationCodeReceivedCo
 
 必要な各種パラメーターを次に示します。
 
-* `authority`」を参照してください。 サインインしたユーザーのテナント ID が元になります。 (SaaS プロバイダーのテナント ID ではありません)  
-* `authorizationCode`」を参照してください。 IDP から取得し直した認証コード。
-* `clientId`」を参照してください。 Web アプリケーションのクライアント ID。
-* `clientSecret`」を参照してください。 Web アプリケーションのクライアント シークレット。
-* `redirectUri`」を参照してください。 OpenID 接続用に設定したリダイレクト URI。 ここに、IDP がトークンでコールバックします。
-* `resourceID`」を参照してください。 Azure AD で Web API を登録するときに作成した URI です。
-* `tokenCache`」を参照してください。 アクセス トークンをキャッシュするオブジェクト。 [トークンのキャッシュ]に関する記事をご覧ください。
+* `authority` サインインしたユーザーのテナント ID が元になります。 (SaaS プロバイダーのテナント ID ではありません)  
+* `authorizationCode` IDP から取得し直した認証コード。
+* `clientId` Web アプリケーションのクライアント ID。
+* `clientSecret` Web アプリケーションのクライアント シークレット。
+* `redirectUri` OpenID 接続用に設定したリダイレクト URI。 ここに、IDP がトークンでコールバックします。
+* `resourceID` Azure AD で Web API を登録するときに作成した URI です。
+* `tokenCache` アクセス トークンをキャッシュするオブジェクト。 [トークンのキャッシュ]に関する記事をご覧ください。
 
 `AcquireTokenByAuthorizationCodeAsync` が成功すると、ADAL はトークンをキャッシュします。 後でキャッシュからトークンを取得するには、次のように AcquireTokenSilentAsync を呼び出します。
 
@@ -271,7 +271,7 @@ public void ConfigureServices(IServiceCollection services)
 [JwtBearer]: https://www.nuget.org/packages/Microsoft.AspNet.Authentication.JwtBearer
 
 [Tailspin Surveys]: tailspin.md
-[IdentityServer3]: https://github.com/IdentityServer/IdentityServer3
+[IdentityServer4]: https://github.com/IdentityServer/IdentityServer4
 [アプリケーション マニフェストの更新]: ./run-the-app.md#update-the-application-manifests
 [トークンのキャッシュ]: token-cache.md
 [テナントのサインアップ]: signup.md
