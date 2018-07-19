@@ -5,12 +5,12 @@ author: telmosampaio
 ms.date: 04/09/2018
 pnp.series.title: Implement a hub-spoke network topology in Azure
 pnp.series.prev: expressroute
-ms.openlocfilehash: 925e0f47cf6b9aa1ad48ffae2c9561a2393bf601
-ms.sourcegitcommit: 58d93e7ac9a6d44d5668a187a6827d7cd4f5a34d
+ms.openlocfilehash: 9105748f434e5d655b09b1fe0775417f33a912b0
+ms.sourcegitcommit: f7fa67e3bdbc57d368edb67bac0e1fdec63695d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37142252"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37843594"
 ---
 # <a name="implement-a-hub-spoke-network-topology-in-azure"></a>Azure にハブスポーク ネットワーク トポロジを実装する
 
@@ -163,7 +163,7 @@ Azure の [VNet ごとの VNet ピアリング数の制限][vnet-peering-limit]�
 
 2. (省略可能) Linux デプロイの場合は、`osType` を `Linux` に設定します。
 
-3. `sharedKey` については、VPN 接続の共有キーを入力します。 
+3. `sharedKey` の両方のインスタンスを見つけ、VPN 接続の共有キーを入力します。 値は一致する必要があります。
 
     ```bash
     "sharedKey": "",
