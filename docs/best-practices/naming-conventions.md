@@ -4,12 +4,12 @@ description: Azure リソースの名前付け規則。 仮想マシン、スト
 author: telmosampaio
 ms.date: 05/18/2017
 pnp.series.title: Best Practices
-ms.openlocfilehash: a92b6a1a23b35e7379f586d477b6f7cc6ccfc7e1
-ms.sourcegitcommit: 26b04f138a860979aea5d253ba7fecffc654841e
+ms.openlocfilehash: b9833654f63dc81ff6d05b9c49897e0c58de2683
+ms.sourcegitcommit: 86d86d71e392550fd65c4f76320d7ecf0b72e1f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36206380"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37864557"
 ---
 # <a name="naming-conventions"></a>名前付け規則
 
@@ -61,10 +61,10 @@ Azure のリソースに名前を付けるときは、リソースの種類と�
 | 特徴 | 例 | メモ |
 | --- | --- | --- |
 | 環境 |dev、prod、QA |リソースの環境を識別 |
-| リージョン |uw (米国西部)、ue (米国東部) |リソースの展開先のリージョンを識別 |
+| Location |uw (米国西部)、ue (米国東部) |リソースの展開先のリージョンを識別 |
 | インスタンス |01、02 |複数の名前付きインスタンスが存在するリソースの場合 (Web サーバーなど)。 |
 | 製品またはサービス |service |リソースがサポートする製品、アプリケーション、サービスを識別 |
-| 役割 |sql、web、messaging |関連付けられているリソースのロールを識別 |
+| Role |sql、web、messaging |関連付けられているリソースのロールを識別 |
 
 企業またはプロジェクトの特定の名前付け規則を策定する際には、一般的な接辞のセットと接辞の位置 (サフィックスまたはプリフィックス) を選択することが重要です。
 
@@ -76,7 +76,7 @@ Azure のリソースまたはサービスの種類ごとに、名前付けに�
 
 ### <a name="general"></a>全般
 
-| エンティティ | スコープ | Length | 大文字小文字の区別 | 有効な文字 | 推奨パターン | 例 |
+| エンティティ | Scope (スコープ) | Length | 大文字小文字の区別 | 有効な文字 | 推奨パターン | 例 |
 | --- | --- | --- | --- | --- | --- | --- |
 |リソース グループ |サブスクリプション |1-90 |大文字と小文字は区別されない |英数字、アンダースコア、かっこ、ハイフン、ピリオド (末尾を除く) |`<service short name>-<environment>-rg` |`profx-prod-rg` |
 |可用性セット |リソース グループ |1 ～ 80 |大文字と小文字は区別されない |英数字、アンダースコア、ハイフン |`<service-short-name>-<context>-as` |`profx-sql-as` |
@@ -84,7 +84,7 @@ Azure のリソースまたはサービスの種類ごとに、名前付けに�
 
 ### <a name="compute"></a>コンピューティング
 
-| エンティティ | スコープ | Length | 大文字小文字の区別 | 有効な文字 | 推奨パターン | 例 |
+| エンティティ | Scope (スコープ) | Length | 大文字小文字の区別 | 有効な文字 | 推奨パターン | 例 |
 | --- | --- | --- | --- | --- | --- | --- |
 |仮想マシン |リソース グループ |1 ～ 15 (Windows)、1 ～ 64 (Linux) |大文字と小文字は区別されない |英数字とハイフン |`<name>-<role>-vm<number>` |`profx-sql-vm1` |
 |Function App | グローバル |1 ～ 60 |大文字と小文字は区別されない |英数字とハイフン |`<name>-func` |`calcprofit-func` |
@@ -94,7 +94,7 @@ Azure のリソースまたはサービスの種類ごとに、名前付けに�
 
 ### <a name="storage"></a>Storage
 
-| エンティティ | スコープ | Length | 大文字小文字の区別 | 有効な文字 | 推奨パターン | 例 |
+| エンティティ | Scope (スコープ) | Length | 大文字小文字の区別 | 有効な文字 | 推奨パターン | 例 |
 | --- | --- | --- | --- | --- | --- | --- |
 |ストレージ アカウント名 (データ) |グローバル |3 ～ 24 |小文字 |英数字 |`<globally unique name><number>` (ストレージ アカウントの名前付けのために関数を使用して一意の GUID を計算) |`profxdata001` |
 |ストレージ アカウント名 (ディスク) |グローバル |3 ～ 24 |小文字 |英数字 |`<vm name without hyphens>st<number>` |`profxsql001st0` |
@@ -107,7 +107,7 @@ Azure のリソースまたはサービスの種類ごとに、名前付けに�
 
 ### <a name="networking"></a>ネットワーク
 
-| エンティティ | スコープ | Length | 大文字小文字の区別 | 有効な文字 | 推奨パターン | 例 |
+| エンティティ | Scope (スコープ) | Length | 大文字小文字の区別 | 有効な文字 | 推奨パターン | 例 |
 | --- | --- | --- | --- | --- | --- | --- |
 |Virtual Network (VNet) |リソース グループ |2 ～ 64 |大文字と小文字は区別されない |英数字、ハイフン、アンダースコア、ピリオド |`<service short name>-vnet` |`profx-vnet` |
 |サブネット |親 VNet |2 ～ 80 |大文字と小文字は区別されない |英数字、ハイフン、アンダースコア、ピリオド |`<descriptive context>` |`web` |
@@ -122,7 +122,7 @@ Azure のリソースまたはサービスの種類ごとに、名前付けに�
 
 ## <a name="organize-resources-with-tags"></a>タグによるリソースの整理
 
-Azure Resource Manager では、コンテキストを識別し、自動化を合理化するために、任意のテキスト文字列を使用したエンティティへのタグ付けがサポートされています。  たとえば、タグ `"sqlVersion: "sql2014ee"` では、自動化されたスクリプトを実行するために SQL Server 2014 Enterprise エディションが実行されている VM をデプロイ内で識別できます。  タグは、コンテキストを明確化するために、選択した名前付け規則と共に使用してください。
+Azure Resource Manager では、コンテキストを識別し、自動化を合理化するために、任意のテキスト文字列を使用したエンティティへのタグ付けがサポートされています。  たとえば、`"sqlVersion"="sql2014ee"` タグでは、SQL Server 2014 Enterprise Edition を実行している VM を識別できます。 タグは、コンテキストを明確化するために、選択した名前付け規則と共に使用してください。
 
 > [!TIP]
 > タグには、リソース グループをまたいで適用できるため、異なるデプロイ間でエンティティどうしを関連付けることができるという利点もあります。
