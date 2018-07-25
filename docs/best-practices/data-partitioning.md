@@ -164,7 +164,7 @@ ms.locfileid: "29059974"
 * **可能な限り、最も頻度の高いデータベース操作で対象となるデータを各パーティションで一緒になるように配置して、パーティションをまたがるデータ アクセス操作を最小限にします**。 パーティションをまたがるクエリは、単一パーティション内だけのクエリよりも時間がかかることがあります。また、あるクエリ セットに対してパーティションを最適化すると、別のクエリ セットが悪影響を受けることがあります。 パーティションをまたがるクエリを回避できない場合は、並列クエリを実行することによってクエリ時間を最小限に、アプリケーション内で結果を集計します。 この方法は状況によっては実現できないことがあります。たとえば、あるクエリの結果を取得して、次のクエリで使用することが必要な場合です。
 * **クエリで、郵便番号表や製品リストなど比較的静的な参照データが使用される場合、すべてのパーティションでこのデータをレプリケートして、それぞれのパーティションで個別の検索操作が必要にならないようにすることを検討します**。 この方法は、参照データが、システム全体からの過度なトラフィックの対象である "ホット" データセットになる可能性も小さくします。 ただし、この参照データに対して発生する可能性のあるあらゆる変更を同期化することに伴う追加コストも発生します。
 * **可能な限り、垂直的パーティション間、および機能的パーティション間での参照整合性の要件を最小化します**。 これらの構成では、データが更新および消費された場合に、パーティション間での参照整合性を、アプリケーション自体が維持する必要があります。 複数のパーティション間でデータを結合する必要のあるクエリは、同一パーティション内でのみデータを結合するクエリよりも低速に実行します。これは、アプリケーションが一般的に、キーに基づいてクエリを実行し、続いて外部キーに基づいてクエリを実行する必要があるためです。 このような状況では、パーティション分割の代わりに、関連するデータのレプリケートまたは非正規化を検討します。 パーティション間結合が必要な場合にクエリ時間を最小化するには、パーティション上で並列クエリを実行し、データをアプリケーション内で結合します。
-* **パーティション分割構成がパーティション間のデータ整合性に及ぼす影響を考慮します。** 強力な整合性が実際に要件であるかどうかを評価します。 クラウドでの一般的な手法では、強力な整合性の代わりに、結果整合性を実装します。 各パーティションのデータは個別に更新され、アプリケーションのロジックはすべての更新が正常に完了したことを確認します。 また、結果整合性の操作が実行している間、データをクエリすることにより発生する可能性のある不整合を処理することができます。 結果整合性を実装する方法の詳細については、「 [Data consistency primer (データ整合性入門)]」を参照してください。
+* **パーティション分割構成がパーティション間のデータ整合性に及ぼす影響を考慮します。** 強力な整合性が実際に要件であるかどうかを評価します。 クラウドでの一般的な手法では、強力な整合性の代わりに、結果整合性を実装します。 各パーティションのデータは個別に更新され、アプリケーションのロジックはすべての更新が正常に完了したことを確認します。 また、結果整合性の操作が実行している間、データをクエリすることにより発生する可能性のある不整合を処理することができます。 結果整合性を実装する方法の詳細については、「 [Data consistency primer (データ整合性入門) (データ整合性入門)]」を参照してください。
 * **クエリが正しいパーティションを見つける方法を考慮します**。 必要なデータを見つけるためにクエリがすべてのパーティションをスキャンする必要がある場合、複数の並列クエリが実行中である場合でも、パフォーマンスに非常に大きな影響を及ぼします。 垂直的パーティション分割および機能的パーティション分割と共に使用されるクエリは、本質的にパーティションを指定できますが、 水平的パーティション分割 (シャーディング) が使用される場合、すべてのシャードが同じスキーマを持つので、項目を見つけることが困難になる可能性があります。 シャーディングに対する一般的な解決法は、データの特定の項目のシャード場所を検索するために使用できるマップを維持することです。 このマップは、アプリケーションのシャーディング ロジックに実装することも、データ ストアが透過的シャーディングをサポートする場合にはデータ ストアにより維持されるようにすることもできます。
 * **水平的パーティション分割戦略を使用する場合、シャードを定期的に再調整します**。 これにより、サイズおよびワークロードが均等になるようにデータを分散することにより、ホットスポットの最小化、クエリ パフォーマンスの最大化、および物理ストレージ制限の回避を達成します。 ただし、これは複雑なタスクで、多くの場合、カスタム ツールまたはカスタム プロセスの使用が必要になります。
 * **各パーティションをレプリケートする場合、障害に対する保護能力が高まります**。 単一のレプリカで障害が発生しても、動作しているコピーにクエリを振り向けることができます。
@@ -183,7 +183,7 @@ ms.locfileid: "29059974"
 一般的に、データ ストレージ テクノロジそれぞれに、パーティション分割をサポートするための独自の機能があります。 次のセクションでは、Azure アプリケーションで一般的に使用されるデータ ストアによって実装されるオプションの概要について説明します。 これらの機能を最大限に活用できるようにアプリケーションを設計するための考慮事項についても説明します。
 
 ## <a name="partitioning-strategies-for-azure-sql-database"></a>Azure SQL Database 用のパーティション分割戦略
-Azure SQL Database はクラウドで動作するサービスとしてのリレーショナル データベースです。 Microsoft SQL Server を基盤にしています。 リレーショナル データベースでは、情報はテーブルに分割されます。各テーブルは、エンティティに関する情報を一連の行として保持します。 各行には、エンティティの個々のフィールドのデータを保持する列が含まれます。 Microsoft Web サイトの「[SQL Database とは]」のページでは、SQL データベースの作成と使用に関する詳細な資料が提供されています。
+Azure SQL Database はクラウドで動作するサービスとしてのリレーショナル データベースです。 Microsoft SQL Server を基盤にしています。 リレーショナル データベースでは、情報はテーブルに分割されます。各テーブルは、エンティティに関する情報を一連の行として保持します。 各行には、エンティティの個々のフィールドのデータを保持する列が含まれます。 Microsoft Web サイトの「[SQL Database とは SQL Database の概要、技術の詳細、DTU の説明]」のページでは、SQL データベースの作成と使用に関する詳細な資料が提供されています。
 
 ## <a name="horizontal-partitioning-with-elastic-database"></a>Elastic Database での水平的パーティション分割
 1 つの SQL データベースには保持できるデータ量に制限があります。 スループットにはアーキテクチャ上の要因とアーキテクチャがサポートする同時接続数による制約があります。 SQL Database の Elastic Database 機能は、SQL データベースの水平スケーリングをサポートします。 Elastic Database を使用することで、複数の SQL データベースにまたがってデータをシャードにパーティション分割できます。 また、処理する必要のあるデータ量が増加または減少する場合にシャードを追加または削除できます。 さらに、Elastic Database を使用して負荷をデータベース全体に分散することにより、競合を少なくすることもできます。
@@ -197,7 +197,7 @@ Azure SQL Database はクラウドで動作するサービスとしてのリレ�
 
 プログラマーは、データセットをシャードレット キーに関連付ける処理を実装する必要があります。 個別の SQL データベースは、グローバル シャード マップ マネージャーとして機能します。 このデータベースには、システム内のすべてのシャードとシャードレットの一覧が含まれています。 データにアクセスするクライアント アプリケーションは、最初に、グローバル シャード マップ マネージャー データベースに接続し、シャード マップ (シャードとシャードレットの一覧) のコピーを取得して、ローカルにキャッシュします。
 
-次に、アプリケーションはこの情報を使用して、データ要求を該当するシャードに転送します。 この機能は、NuGet パッケージとして利用できる Azure SQL Database Elastic Database Client Library に含まれる一連の API の背後に隠されています。 Elastic Database の包括的な情報については、Microsoft Web サイトの「 [Elastic Database の機能の概要] 」を参照してください。
+次に、アプリケーションはこの情報を使用して、データ要求を該当するシャードに転送します。 この機能は、NuGet パッケージとして利用できる Azure SQL Database Elastic Database Client Library に含まれる一連の API の背後に隠されています。 Elastic Database の包括的な情報については、Microsoft Web サイトの「 [Elastic Database 機能の概要] 」を参照してください。
 
 > [!NOTE]
 > グローバル シャード マップ マネージャー データベースをレプリケートすることにより、遅延を小さくし、可用性を向上させることができます。 Premium 価格レベルの 1 つを使用してデータベースを実装する場合、アクティブ geo レプリケーションを構成して、データを異なるリージョン内のデータベースに連続してコピーできます。 ユーザーが存在する各リージョンにデータベースのコピーを作成します。 そして、このコピーに接続してシャード マップを取得するようにアプリケーションを構成します。
@@ -240,7 +240,7 @@ Elastic Database では、データをシャードレットにマップし、シ
   > Elastic Database API のシャード間クエリ機能は、同じスキーマを含むシャード マップ内の各シャードレットに依存します。
   >
   >
-* トランザクション操作は、同一のシャード内で保持されているデータを対象にする場合にのみサポートされます。シャード間ではサポートされません。 トランザクションは、シャードレットをまたがってデータにアクセスできますが、シャードレットが同一のシャードに属する場合に限られます。 このため、ビジネス ロジックがトランザクションを実行する必要がある場合、影響を受けるデータを同一のシャードに格納するか、または結果整合性を実装します。 詳細については、「 [Data consistency primer (データ整合性入門)]。
+* トランザクション操作は、同一のシャード内で保持されているデータを対象にする場合にのみサポートされます。シャード間ではサポートされません。 トランザクションは、シャードレットをまたがってデータにアクセスできますが、シャードレットが同一のシャードに属する場合に限られます。 このため、ビジネス ロジックがトランザクションを実行する必要がある場合、影響を受けるデータを同一のシャードに格納するか、または結果整合性を実装します。 詳細については、「 [Data consistency primer (データ整合性入門) (データ整合性入門)]。
 * シャードを、シャードのデータにアクセスするユーザーの近くに配置します (geo 配置シャード)。 この戦略は、遅延を小さくするのに役立ちます。
 * アクセス頻度の非常に高いシャード (ホットスポット) と低いシャードが混在しないようにします。 シャード間で負荷が均等に分散されるようにします。 これを行うには、シャードレット キーをハッシュ処理することが必要になることがあります。
 * geo 配置シャードを実装する場合、ハッシュ処理されたキーが、データにアクセスするユーザーの近くに格納されているシャードに保持されているシャードレットにマッピングすることを確認する必要があります。
@@ -264,7 +264,7 @@ Table Storage と Blob Storage は、本質的にキー値ストアで、それ�
 * **ゾーン冗長ストレージ**: 同じリージョン内 (または地理的に近い 2 つのリージョン間) の異なるデータセンター間で 3 つのデータ コピーを維持します。 この形態の冗長性は、単一のデータセンター内で発生する災害に対して保護を提供できますが、リージョン全体に影響する大規模なネットワーク切断に対しては保護を提供できません。 ゾーン冗長ストレージは、現在、ブロック BLOB に対してのみ利用できることに注意してください。
 * **geo 冗長ストレージ**: 6 つのデータ コピーを維持します。3 つのコピーを 1 つのリージョン (ローカル リージョン) に、別の 3 つのコピーをリモート リージョンに維持します。 この形態の冗長性は、災害に対する最高レベルの保護を提供します。
 
-Microsoft は、Azure Storage の拡張性ターゲットを公表しています。 詳細については、Microsoft Web サイトの「 [Azure Storage scalability and performance targets] 」を参照してください。 現在、ストレージ アカウントの総容量は、500 TB を超えることはできません (これには、Table Storage、File Storage、および Blob Storage に保持されているデータのサイズと、ストレージ キューに保持されている未処理のメッセージのサイズが含まれます)。
+Microsoft は、Azure Storage の拡張性ターゲットを公表しています。 詳細については、Microsoft Web サイトの「 [Azure Storage のスケーラビリティおよびパフォーマンスのターゲット] 」を参照してください。 現在、ストレージ アカウントの総容量は、500 TB を超えることはできません (これには、Table Storage、File Storage、および Blob Storage に保持されているデータのサイズと、ストレージ キューに保持されている未処理のメッセージのサイズが含まれます)。
 
 ストレージ アカウント (1 KB エンティティ、BLOB、またはメッセージのサイズを想定) に対する要求の最大レートは、1 秒あたり 20,000 要求です。 ストレージ アカウントの最大値は、ファイル共有あたり 1000 IOPS (8 KB のサイズ) です。 システムでこれらの制限を超えることが想定される場合は、負荷を複数のストレージ アカウント間でパーティション分割することを検討します。 Azure サブスクリプションあたり、最大 200 ストレージ アカウントを作成できます。 ただし、これらの制限は将来変更される可能性があることに注意してください。
 
@@ -305,7 +305,7 @@ Azure Table Storage 用にエンティティを設計する際には、次の点
   >
 * パーティション キーおよび行キー以外のフィールドを使用してデータを検索するクエリを定期的に実行する場合、 [インデックス テーブル パターン]を使用することを検討します。
 * 単純に増加または減少する数列 ("0001"、"0002"、"0003"、など) を使用してパーティション キーを生成する場合で、各パーティションには少量のデータしか含まれない場合、Azure Table Storage は、これらのパーティションを物理的にグループ化して、同一のサーバーに配置することがあります。 このメカニズムでは、アプリケーションはパーティションの連続した範囲を対象にするクエリ (範囲クエリ) を実行する可能性が最も高く、このようにすることで最適化されると想定します。 ただし、この手法は、新しいエンティティのすべての挿入操作が連続する範囲の 1 つの末尾または別の末尾に集中する可能性があるので、単一サーバー上にホットスポットを発生させる可能性があります。 また、拡張性が損なわれる可能性もあります。 サーバー間で負荷をさらに均等に分散するために、パーティション キーをハッシュ処理して、数列をさらにランダム化することを検討します。
-* Azure Table Storage は、同一パーティションに属するエンティティに対するトランザクション操作をサポートします。 これは、アプリケーションが、複数の挿入、更新、削除、置換、またはマージの操作を 1 つのアトミック単位として実行できることを意味します (トランザクションに含まれるエントリが 100 個以下で、要求のペイロードが 4 MB を超えない場合)。 複数のパーティションにまたがる操作はトランザクションとしてはサポートされません。また、「[Data consistency primer (データ整合性入門)]」で説明されている最終的整合性を実装することが必要になることがあります。 Table Storage とトランザクションの詳細については、Microsoft Web サイトの「[Performing Entity Group Transactions (エンティティ グループ トランザクションの実行)]」のページを参照してください。
+* Azure Table Storage は、同一パーティションに属するエンティティに対するトランザクション操作をサポートします。 これは、アプリケーションが、複数の挿入、更新、削除、置換、またはマージの操作を 1 つのアトミック単位として実行できることを意味します (トランザクションに含まれるエントリが 100 個以下で、要求のペイロードが 4 MB を超えない場合)。 複数のパーティションにまたがる操作はトランザクションとしてはサポートされません。また、「[Data consistency primer (データ整合性入門) (データ整合性入門)]」で説明されている最終的整合性を実装することが必要になることがあります。 Table Storage とトランザクションの詳細については、Microsoft Web サイトの「[Performing Entity Group Transactions] \(エンティティ グループ トランザクションの実行)」のページを参照してください。
 * パーティション キーの粒度については、入念に注意を払ってください。以下はその理由です。
   * すべてのエンティティで同じパーティション キーを使用すると、Table Storage サービスにより、1 つのサーバー上に保持される単一の大きなパーティションが作成されます。 これにより、スケールアウトが機能しなくなり、負荷が単一のサーバーに集中します。 結論として、この手法が適しているのは、少量のエンティティを管理するシステムだけです。 ただし、この手法では、すべてのエンティティをエンティティ グループ トランザクションの対象にすることができます。
   * 各エンティティに対して一意のパーティション キーを使用すると、Table Storage サービスにより、エンティティごとに異なるパーティションが作成され、結果として、エンティティのサイズに依存して小さなパーティションが大量に作成される可能性があります。 この手法は、単一パーティション キーの手法よりも拡張性に優れていますが、エンティティ グループ トランザクションは使用できません。 また、複数のエンティティをフェッチするクエリが複数のサーバーからの読み込みを実行する可能性があります。 ただし、アプリケーションが範囲クエリを実行し、単純数列を使用してパーティション キーを生成すると、これらのクエリが最適化される可能性があります。
@@ -430,7 +430,7 @@ Azure Redis Cache ではないネイティブ Redis は、Redis クラスタリ�
 >
 >
 
-Redis Web サイトの「 [Partitioning: how to split data among multiple Redis instances (パーティション分割: 複数の Redis インスタンス間でデータを分割する方法)] 」には、Redis へのパーティション分割の実装に関する詳細情報が記載されています。 このセクションの以降の説明では、クライアント側またはプロキシに支援されたパーティション分割を実装していると想定します。
+Redis Web サイトの「 [Partitioning: how to split data among multiple Redis instances (パーティション分割: 複数の Redis インスタンス間でデータを分割する方法) (パーティション分割: 複数の Redis インスタンス間でデータを分割する方法)] 」には、Redis へのパーティション分割の実装に関する詳細情報が記載されています。 このセクションの以降の説明では、クライアント側またはプロキシに支援されたパーティション分割を実装していると想定します。
 
 Azure Redis Cache でデータをパーティション分割する方法を決定する際には、次の点を検討する必要があります。
 
@@ -469,11 +469,11 @@ Azure Redis Cache でデータをパーティション分割する方法を決�
 * Redis は、限定された数のアトミック操作をサポートします。 複数のキーと値をサポートするこの種の操作は、MGET 操作と MSET 操作だけです。 MGET 操作は指定したキー リストの値のコレクションを返し、MSET 操作は指定したキー リストの値のコレクションを格納します。 これらの操作を使用する必要がある場合、MSET コマンドと MGET コマンドによって参照されるキー値ペアは、同一のデータベースに格納される必要があります。
 
 ## <a name="partitioning-strategies-for-azure-service-fabric"></a>Azure Service Fabric のためのパーティション分割戦略
-Azure Service Fabric は、クラウドの分散アプリケーションにランタイムを提供する microservices プラットフォームです。 Service Fabric は、.Net ゲストの実行可能ファイル、ステートフルおよびステートレスなサービス、およびコンテナーをサポートしています。 ステートフルなサービスは、Service Fabric クラスター内のキー値コレクションにデータを永続的に格納する[信頼性の高いコレクション][service-fabric-reliable-collections]を提供します。 信頼性の高いコレクション内のパーティション分割キー戦略の詳細については、[信頼性の高い Azure Service Fabric コレクションのためのガイドラインと推奨事項]を参照してください。
+Azure Service Fabric は、クラウドの分散アプリケーションにランタイムを提供する microservices プラットフォームです。 Service Fabric は、.Net ゲストの実行可能ファイル、ステートフルおよびステートレスなサービス、およびコンテナーをサポートしています。 ステートフルなサービスは、Service Fabric クラスター内のキー値コレクションにデータを永続的に格納する[信頼性の高いコレクション][service-fabric-reliable-collections]を提供します。 信頼性の高いコレクション内のパーティション分割キー戦略の詳細については、[Azure Service Fabric の Reliable Collections のガイドラインと推奨事項]を参照してください。
 
 ### <a name="more-information"></a>詳細情報
 * [Azure Service Fabric の概要]は、Azure Service Fabric の導入です。
-* [Partition Service Fabric 信頼性の高いサービス]では、Azure Service Fabric で信頼性の高いサービスについて詳しく説明しています。
+* [Service Fabric Reliable Services のパーティション分割]では、Azure Service Fabric で信頼性の高いサービスについて詳しく説明しています。
 
 ## <a name="partitioning-strategies-for-azure-event-hubs"></a>Azure Event Hubs のためのパーティション分割戦略
 
@@ -525,26 +525,26 @@ Event Hubs でのパーティションの使用の詳細については、「[Ev
 ## <a name="related-patterns-and-guidance"></a>関連のあるパターンとガイダンス
 データの一貫性を実装するための戦略を検討するときは、次のパターンもシナリオに関連する可能性があります。
 
-* Microsoft Web サイトの「[Data consistency primer (データ整合性入門)]」のページでは、クラウドなどの分散環境で一貫性を維持するための戦略が説明されています。
-* Microsoft Web サイトの「[Data Partitioning Guidance (データ パーティション分割ガイダンス)]」のページでは、分散ソリューションのさまざまな条件を満たすためにパーティションを設計する作業の全般的な概要が説明されています。
+* Microsoft Web サイトの「[Data consistency primer (データ整合性入門) (データ整合性入門)]」のページでは、クラウドなどの分散環境で一貫性を維持するための戦略が説明されています。
+* Microsoft Web サイトの「[Data Partitioning Guidance]」 \(データ パーティション分割ガイダンス)のページでは、分散ソリューションのさまざまな条件を満たすためにパーティションを設計する作業の全般的な概要が説明されています。
 * Microsoft Web サイトの「[Sharding Pattern (シャーディング パターン)]」では、データをシャーディングするための一般的な戦略の概要が説明されています。
-* Microsoft Web サイトの「[Index Table Pattern (インデックス テーブル パターン)]」では、データに対してセカンダリ インデックスを作成する方法が説明されています。 この手法を使用すると、アプリケーションは、コレクションのプライマリ キーを参照しないクエリで、データをすばやく取得できます。
-* Microsoft Web サイトの「[Materialized View Pattern (具体化されたビュー パターン)]」では、高速なクエリ操作をサポートするために、データを要約し、かつデータが事前に取り込まれているビューを生成する方法が説明されています。 この手法は、要約対象のデータを含むパーティションが複数のサイトにまたがって分散されている場合に、パーティション分割されたデータ ストアで役立つ可能性があります。
+* Microsoft Web サイトの「[インデックス テーブル パターン]」では、データに対してセカンダリ インデックスを作成する方法が説明されています。 この手法を使用すると、アプリケーションは、コレクションのプライマリ キーを参照しないクエリで、データをすばやく取得できます。
+* Microsoft Web サイトの「[Materialized View Pattern] \(具体化されたビュー パターン)」では、高速なクエリ操作をサポートするために、データを要約し、かつデータが事前に取り込まれているビューを生成する方法が説明されています。 この手法は、要約対象のデータを含むパーティションが複数のサイトにまたがって分散されている場合に、パーティション分割されたデータ ストアで役立つ可能性があります。
 * Microsoft Web サイトの [Azure Content Delivery Network の使用] に関する記事では、Azure で Content Delivery Network を構成および使用するための詳細なガイダンスが提供されています。
 
 ## <a name="more-information"></a>詳細情報
-* Microsoft Web サイトの「[SQL Database とは]」のページでは、SQL データベースを作成および使用する方法が詳細に説明されています。
-* Microsoft Web サイトの「[Elastic Database の機能の概要]」ページでは、Elastic Database が包括的に説明されています。
+* Microsoft Web サイトの「[SQL Database とは SQL Database の概要、技術の詳細、DTU の説明]」のページでは、SQL データベースを作成および使用する方法が詳細に説明されています。
+* Microsoft Web サイトの「[Elastic Database 機能の概要]」ページでは、Elastic Database が包括的に説明されています。
 * Microsoft Web サイトの「[Elastic Database 分割/マージ ツールを使用したスケーリング]」のページでは、Split/Merge サービスを使用して Elastic Database シャードを管理する方法が説明されています。
 * Microsoft Web サイトの「[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](https://msdn.microsoft.com/library/azure/dn249410.aspx)」ページでは、Azure Storage のサイズとスループットに関する現在の制限が説明されています。
-* Microsoft Web サイトの「[エンティティ グループ トランザクションの実行]」ページでは、Azure Table Storage に格納されているエンティティを対象にするトランザクション操作を実装する方法が、詳細に説明されています。
-* Microsoft Web サイトの「[Azure Table Storage の設計ガイド]」の記事では、Azure Table Storage でデータをパーティション分割する方法が詳細に説明されています。
+* Microsoft Web サイトの「[Performing Entity Group Transactions]」 \(エンティティ グループ トランザクションの実行)ページでは、Azure Table Storage に格納されているエンティティを対象にするトランザクション操作を実装する方法が、詳細に説明されています。
+* Microsoft Web サイトの「[Azure Storage テーブルの設計ガイド]」の記事では、Azure Table Storage でデータをパーティション分割する方法が詳細に説明されています。
 * Microsoft Web サイトの [Azure Content Delivery Network の使用] に関するページでは、Azure Content Delivery Network を使用して、Azure Blob Storage に保持されているデータをレプリケートする方法が説明されています。
 * Microsoft Web サイトの「[Azure Search とは]」ページでは、Azure Search で利用できる機能が詳細に説明されています。
 * Microsoft Web サイトの「[Azure Search サービスの制限]」のページでは、Azure Search の各インスタンスの容量が説明されています。
-* Microsoft Web サイトの「[サポートされるデータ型 (Azure Search)]」のページでは、検索可能ドキュメントおよびインデックスとして使用可能なデータ型の概要が説明されています。
+* Microsoft Web サイトの「[Supported data types (Azure Search) (サポートされるデータ型 (Azure Search))]」のページでは、検索可能ドキュメントおよびインデックスとして使用可能なデータ型の概要が説明されています。
 * Microsoft Web サイトの「[Azure Redis Cache]」のページでは、Azure Redis Cache の概要が説明されています。
-* Redis Web サイトの「[Partitioning: how to split data among multiple Redis instances (パーティション分割: 複数の Redis インスタンス間でデータを分割する方法)]」のページでは、Redis でパーティション分割を実装する方法が説明されています。
+* Redis Web サイトの「[Partitioning: how to split data among multiple Redis instances (パーティション分割: 複数の Redis インスタンス間でデータを分割する方法) (パーティション分割: 複数の Redis インスタンス間でデータを分割する方法)]」のページでは、Redis でパーティション分割を実装する方法が説明されています。
 * Microsoft Web サイトの「[Running Redis on a CentOS Linux VM in Microsoft Azure (Microsoft Azure の CentOS Linux VM 上での Redis の実行)]」のページでは、Azure VM として実行される Redis ノードの構築および設定方法を示す例について説明しています。
 * Redis Web サイトの「[Data Types (データ型)]」のページでは、Redis および Azure Redis Cache で利用可能なデータ型が説明されています。
 
@@ -552,26 +552,26 @@ Event Hubs でのパーティションの使用の詳細については、「[Ev
 [azure-limits]: /azure/azure-subscription-service-limits
 [Azure Content Delivery Network]: /azure/cdn/cdn-overview
 [Azure Redis Cache]: http://azure.microsoft.com/services/cache/
-[Azure Storage Scalability and Performance Targets]: /azure/storage/storage-scalability-targets
-[Azure Storage Table Design Guide]: /azure/storage/storage-table-design-guide
+[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット]: /azure/storage/storage-scalability-targets
+[Azure Storage テーブルの設計ガイド]: /azure/storage/storage-table-design-guide
 [Building a Polyglot Solution (多言語ソリューションの構築)]: https://msdn.microsoft.com/library/dn313279.aspx
 [cosmos-db-ru]: /azure/cosmos-db/request-units
 [Data Access for Highly-Scalable Solutions: Using SQL, NoSQL, and Polyglot Persistence (拡張性の高いソリューション用のデータ アクセス: SQL、NoSQL、および Polyglot の永続化機能の使用)]: https://msdn.microsoft.com/library/dn271399.aspx
-[Data consistency primer (データ整合性入門)]: http://aka.ms/Data-Consistency-Primer
+[Data consistency primer (データ整合性入門) (データ整合性入門)]: http://aka.ms/Data-Consistency-Primer
 [Data Partitioning Guidance]: https://msdn.microsoft.com/library/dn589795.aspx
-[Data Types]: http://redis.io/topics/data-types
+[Data Types (データ型)]: http://redis.io/topics/data-types
 [cosmosdb-sql-api]: /azure/cosmos-db/sql-api-introduction
-[Elastic Database の機能の概要]: /azure/sql-database/sql-database-elastic-scale-introduction
+[Elastic Database 機能の概要]: /azure/sql-database/sql-database-elastic-scale-introduction
 [event-hubs]: /azure/event-hubs
 [Federations Migration Utility]: https://code.msdn.microsoft.com/vstudio/Federations-Migration-ce61e9c1
-[信頼性の高い Azure Service Fabric コレクションのためのガイドラインと推奨事項]: /azure/service-fabric/service-fabric-reliable-services-reliable-collections-guidelines
-[Index Table Pattern]: http://aka.ms/Index-Table-Pattern
+[Azure Service Fabric の Reliable Collections のガイドラインと推奨事項]: /azure/service-fabric/service-fabric-reliable-services-reliable-collections-guidelines
+[インデックス テーブル パターン]: http://aka.ms/Index-Table-Pattern
 [Materialized View Pattern]: http://aka.ms/Materialized-View-Pattern
 [マルチシャード クエリ実行]: /azure/sql-database/sql-database-elastic-scale-multishard-querying
 [Azure Service Fabric の概要]: /azure/service-fabric/service-fabric-overview
-[Partition Service Fabric 信頼性の高いサービス]: /azure/service-fabric/service-fabric-concepts-partitioning
-[Partitioning: how to split data among multiple Redis instances (パーティション分割: 複数の Redis インスタンス間でデータを分割する方法)]: http://redis.io/topics/partitioning
-[Performing Entity Group Transactions (エンティティ グループ トランザクションの実行)]: https://msdn.microsoft.com/library/azure/dd894038.aspx
+[Service Fabric Reliable Services のパーティション分割]: /azure/service-fabric/service-fabric-concepts-partitioning
+[Partitioning: how to split data among multiple Redis instances (パーティション分割: 複数の Redis インスタンス間でデータを分割する方法) (パーティション分割: 複数の Redis インスタンス間でデータを分割する方法)]: http://redis.io/topics/partitioning
+[Performing Entity Group Transactions]: https://msdn.microsoft.com/library/azure/dd894038.aspx
 [Redis cluster tutorial (Redis クラスターのチュートリアル)]: http://redis.io/topics/cluster-tutorial
 [Running Redis on a CentOS Linux VM in Microsoft Azure (Microsoft Azure の CentOS Linux VM 上での Redis の実行)]: http://blogs.msdn.com/b/tconte/archive/2012/06/08/running-redis-on-a-centos-linux-vm-in-windows-azure.aspx
 [Elastic Database 分割/マージ ツールを使用したスケーリング]: /azure/sql-database/sql-database-elastic-scale-overview-split-and-merge
@@ -584,4 +584,4 @@ Event Hubs でのパーティションの使用の詳細については、「[Ev
 [Transactions (トランザクション)]: http://redis.io/topics/transactions
 [Event Hubs とは]: /azure/event-hubs/event-hubs-what-is-event-hubs
 [Azure Search とは]: /azure/search/search-what-is-azure-search
-[SQL Database とは]: /azure/sql-database/sql-database-technical-overview
+[SQL Database とは SQL Database の概要、技術の詳細、DTU の説明]: /azure/sql-database/sql-database-technical-overview

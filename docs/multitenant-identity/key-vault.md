@@ -103,7 +103,7 @@ Surveys アプリケーションが登録されている Azure AD テナント�
 
 2. [[Azure Portal]][azure-portal] で、ポータルの右上隅にあるアカウントを選択して、Survey アプリケーションが登録されているディレクトリに移動します。
 
-3. **[Azure Active Directory]** > **[アプリの登録]** > [Surveys] の順に選択します。
+3. **[Azure Active Directory]** > **[アプリの登録]** > Surveys の順に選択します。
 
 4.  **[マニフェスト]** をクリックし、**[編集]** をクリックします。
 
