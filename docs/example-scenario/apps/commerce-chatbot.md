@@ -1,26 +1,26 @@
 ---
-title: ホテル予約用の会話型 Azure チャットボット
-description: Azure Bot Service、Cognitive Services と LUIS、Azure SQL Database、Application Insights を使用して、商取引アプリケーション用の会話型チャットボットを構築するための実証済みのソリューション。
+title: Azure でのホテル予約用の会話型チャットボット
+description: Azure Bot Service、Cognitive Services と LUIS、Azure SQL Database、Application Insights を使用して、商取引アプリケーション用の会話型チャットボットを構築するための実証済みのシナリオ。
 author: iainfoulds
 ms.date: 07/05/2018
-ms.openlocfilehash: 85bdc3194961bbbd8d89db34e5c56e4baa8d8599
-ms.sourcegitcommit: 5d99b195388b7cabba383c49a81390ac48f86e8a
+ms.openlocfilehash: b664faf20d806824c2581346aaa592b0d74207da
+ms.sourcegitcommit: 71cbef121c40ef36e2d6e3a088cb85c4260599b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37891330"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39060865"
 ---
-# <a name="conversational-azure-chatbot-for-hotel-reservations"></a>ホテル予約用の会話型 Azure チャットボット
+# <a name="conversational-chatbot-for-hotel-reservations-on-azure"></a>Azure でのホテル予約用の会話型チャットボット
 
-このシナリオ例は、会話型チャットボットをアプリケーションに統合する必要がある企業に適用されます。 このソリューションでは、顧客が Web アプリケーションまたはモバイル アプリケーションを使用して空室状況を確認し、宿泊施設を予約できる C# チャットボットをホテル チェーンで使用します。
+このシナリオ例は、会話型チャットボットをアプリケーションに統合する必要がある企業に適用されます。 このシナリオでは、顧客が Web アプリケーションまたはモバイル アプリケーションを使用して空室状況を確認し、宿泊施設を予約できる C# チャットボットをホテル チェーンで使用します。
 
 シナリオ例では、顧客がホテルの空室状況を確認して部屋を予約する方法、レストランのテイクアウト メニューを表示して料理を注文をする方法、写真を検索してプリントを注文する方法を提供します。 従来、企業は顧客の要求に対応するために、カスタマー サービス エージェントを雇用してトレーニングする必要があり、顧客は担当者が支援できるようになるまで待つ必要がありました。
 
 Bot Service と Language Understanding Service や Speech API サービスなどの Azure サービスを使用することで、企業は自動化されたスケーラブルなボットを使って顧客を支援し、注文や予約を処理できます。
 
-## <a name="potential-use-cases"></a>考えられるユース ケース
+## <a name="related-use-cases"></a>関連するユース ケース
 
-次のユース ケースについて、このソリューションを検討してください。
+次のユース ケースについて、このシナリオを検討してください。
 
 * レストランのテイクアウト メニューを表示し、料理を注文する
 * ホテルの空室状況を確認し、部屋を予約する
@@ -30,7 +30,7 @@ Bot Service と Language Understanding Service や Speech API サービスなど
 
 ![会話型チャットボットに関与する Azure コンポーネントのアーキテクチャの概要][architecture]
 
-このソリューションは、ホテルのコンシェルジュとして機能する会話型ボットを対象としています。 このソリューションのデータ フローは次のとおりです。
+このシナリオでは、ホテルのコンシェルジュとして機能する会話型ボットに対応できます。 このシナリオのデータ フローは次のとおりです。
 
 1. 顧客がモバイル アプリまたは Web アプリを使用してチャットボットにアクセスします。
 2. Azure Active Directory B2C (Business 2 Customer) を使用してユーザーが認証されます。
@@ -58,19 +58,19 @@ Bot Service と Language Understanding Service や Speech API サービスなど
 
 ### <a name="availability"></a>可用性
 
-このソリューションでは、Azure SQL Database を使用して顧客の予約を格納します。 SQL Database には、ゾーン冗長データベース、フェールオーバー グループ、geo レプリケーションなどの機能が用意されています。 詳細については、[Azure SQL Database の可用性機能][sqlavailability-docs]に関するセクションをご覧ください。
+このシナリオでは、Azure SQL Database を使用して顧客の予約を格納します。 SQL Database には、ゾーン冗長データベース、フェールオーバー グループ、geo レプリケーションなどの機能が用意されています。 詳細については、[Azure SQL Database の可用性機能][sqlavailability-docs]に関するセクションをご覧ください。
 
-可用性に関する他のトピックについては、Azure アーキテクチャ センターの「[可用性のチェックリスト][availability]」をご覧ください。
+可用性に関する他のトピックについては、Azure アーキテクチャ センターの[可用性のチェックリスト][availability]を参照してください。
 
 ### <a name="scalability"></a>スケーラビリティ
 
-このソリューションでは、Azure App Service を使用します。 App Service により、ボットを実行するインスタンスの数を自動的にスケーリングできます。 この機能を使用することで、Web アプリケーションやチャットボットに対する顧客の要求に対応できます。 自動スケールの詳細については、アーキテクチャ センターの[自動スケールのベスト プラクティス][autoscaling]に関する記事をご覧ください。
+このシナリオでは、Azure App Service を使用します。 App Service により、ボットを実行するインスタンスの数を自動的にスケーリングできます。 この機能を使用することで、Web アプリケーションやチャットボットに対する顧客の要求に対応できます。 自動スケールの詳細については、アーキテクチャ センターの[自動スケールのベスト プラクティス][autoscaling]に関する記事をご覧ください。
 
 スケーラビリティに関する他のトピックについては、Azure アーキテクチャ センターの「[スケーラビリティのチェックリスト][scalability]」をご覧ください。
 
 ### <a name="security"></a>セキュリティ
 
-このソリューションでは、Azure Active Directory B2C (Business 2 Consumer) を使用してユーザーを認証します。 AAD B2C を使用することで、機密性の高い顧客のアカウント情報や資格情報がチャットボットによって保存されることはありません。 詳細については、[Azure Active Directory B2C の概要][aadb2c-docs]に関する記事をご覧ください。
+このシナリオでは、Azure Active Directory B2C (Business 2 Consumer) を使用してユーザーを認証します。 AAD B2C を使用することで、機密性の高い顧客のアカウント情報や資格情報がチャットボットによって保存されることはありません。 詳細については、[Azure Active Directory B2C の概要][aadb2c-docs]に関する記事をご覧ください。
 
 Azure SQL Database に格納される情報は、Transparent Data Encryption (TDE) を使用して保存時に暗号化されます。 また、SQL Database では、クエリおよび処理中にデータを暗号化する Always Encrypted も提供します。 SQL Database のセキュリティの詳細については、[Azure SQL Database のセキュリティとコンプライアンス][sqlsecurity-docs]に関するセクションをご覧ください。
 
@@ -78,15 +78,15 @@ Azure SQL Database に格納される情報は、Transparent Data Encryption (TD
 
 ### <a name="resiliency"></a>回復性
 
-このソリューションでは、Azure SQL Database を使用して顧客の予約を格納します。 SQL Database には、ゾーン冗長データベース、フェールオーバー グループ、geo レプリケーション、自動バックアップなどの機能が用意されています。 これらの機能により、メンテナンス イベントやシステム停止が発生した場合に、アプリケーションを実行し続けることができます。 詳細については、[Azure SQL Database の可用性機能][sqlavailability-docs]に関するセクションをご覧ください。
+このシナリオでは、Azure SQL Database を使用して顧客の予約を格納します。 SQL Database には、ゾーン冗長データベース、フェールオーバー グループ、geo レプリケーション、自動バックアップなどの機能が用意されています。 これらの機能により、メンテナンス イベントやシステム停止が発生した場合に、アプリケーションを実行し続けることができます。 詳細については、[Azure SQL Database の可用性機能][sqlavailability-docs]に関するセクションをご覧ください。
 
-アプリケーションの正常性を監視するために、このソリューションでは Application Insights を使用します。 Application Insights により、チャットボットのカスタマー エクスペリエンスや可用性に影響を及ぼすパフォーマンスの問題についてアラートを生成し、対応できます。 詳細については、「[Application Insights とは何か?][appinsights-docs]」をご覧ください。
+アプリケーションの正常性を監視するために、このシナリオでは Application Insights を使用します。 Application Insights により、チャットボットのカスタマー エクスペリエンスや可用性に影響を及ぼすパフォーマンスの問題についてアラートを生成し、対応できます。 詳細については、「[Application Insights とは何か?][appinsights-docs]」をご覧ください。
 
 回復性に優れたソリューションの設計に関する一般的なガイダンスについては、「[回復性に優れた Azure 用アプリケーションの設計][resiliency]」をご覧ください。
 
-## <a name="deploy-the-solution"></a>ソリューションのデプロイ方法
+## <a name="deploy-the-scenario"></a>シナリオのデプロイ
 
-このソリューションは、最も重視される分野を検討するために、次の 3 つのコンポーネントに分かれています。
+このシナリオは、最も重視される分野を検討するために、次の 3 つのコンポーネントに分かれています。
 
 * [インフラストラクチャ コンポーネント](#deploy-infrastructure-components)。 Azure Resource Manger テンプレートを使用して、コア インフラストラクチャ コンポーネント (App Service、Web App、Application Insights、ストレージ アカウント、SQL Server およびデータベース) をデプロイします。
 * [Web App チャットボット](#deploy-web-app-chatbot)。 Azure CLI を使用して、Bot Service および Language Understanding and Intelligent Services (LUIS) アプリと共にボットをデプロイします。
@@ -135,11 +135,11 @@ az bot create \
 
 * [コマース ボット C# サンプル](https://github.com/Microsoft/AzureBotServices-scenarios/tree/master/CSharp/Commerce/src)
 
-このサンプル アプリケーションには、Azure Active Directory 認証コンポーネント、および Cognitive Services の Language Understanding and Intelligent Services (LUIS) コンポーネントとの統合が含まれています。 アプリケーションでは、ソリューションをビルドしてデプロイするために Visual Studio が必要です。 AAD B2C と LUIS アプリの構成に関する追加情報については、GitHub リポジトリのドキュメントをご覧ください。
+このサンプル アプリケーションには、Azure Active Directory 認証コンポーネント、および Cognitive Services の Language Understanding and Intelligent Services (LUIS) コンポーネントとの統合が含まれています。 アプリケーションでは、シナリオを構築してデプロイするために Visual Studio が必要です。 AAD B2C と LUIS アプリの構成に関する追加情報については、GitHub リポジトリのドキュメントをご覧ください。
 
 ## <a name="pricing"></a>価格
 
-このソリューションの実行コストを調べるために、すべてのサービスがコスト計算ツールに事前構成されています。 特定のユース ケースについて価格の変化を確認するには、予想されるトラフィックに合わせて該当する変数を変更します。
+このシナリオの実行コストを調べることができるように、すべてのサービスがコスト計算ツールで事前構成されています。 特定のユース ケースについて価格の変化を確認するには、予想されるトラフィックに合わせて該当する変数を変更します。
 
 チャットボットが処理すると予想されるメッセージの量に基づいて、次の 3 つのサンプル コスト プロファイルが用意されています。
 

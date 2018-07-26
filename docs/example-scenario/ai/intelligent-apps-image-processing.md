@@ -1,16 +1,16 @@
 ---
-title: インテリジェントなアプリ - Azure でのイメージ処理
-description: イメージ処理を Azure アプリケーションに組み込む実証済みのソリューション。
+title: Azure での保険金請求イメージの分類
+description: イメージ処理を Azure アプリケーションに組み込む実証済みのシナリオ。
 author: david-stanford
 ms.date: 07/05/2018
-ms.openlocfilehash: c5bfb9a929ddddda4336e1cbc8665a0b4d3bbe2c
-ms.sourcegitcommit: 5d99b195388b7cabba383c49a81390ac48f86e8a
+ms.openlocfilehash: 361a88234fd9ed918ab7664893f86666b4328b8c
+ms.sourcegitcommit: 71cbef121c40ef36e2d6e3a088cb85c4260599b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37891333"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39060831"
 ---
-# <a name="insurance-claim-image-classification-on-azure"></a>Azure での保険金請求イメージの分類
+# <a name="image-classification-for-insurance-claims-on-azure"></a>Azure での保険金請求イメージの分類
 
 このシナリオの例は、イメージを処理する必要があるビジネスに適用できます。
 
@@ -18,19 +18,18 @@ ms.locfileid: "37891333"
 
 Computer Vision API、Azure Functions などの Azure サービスを使用すると、企業はサーバーを個別に管理する必要がなくなり、コストを削減できるほか、既に Microsoft で開発済みの、Cognitive Services でのイメージ処理に関する専門知識を活用することができます。 このシナリオでは、特にイメージ処理を扱っています。 別の AI ニーズがある場合は、一連の [Cognitive Services][cognitive-docs] について検討してください。
 
-## <a name="potential-use-cases"></a>考えられるユース ケース
+## <a name="related-use-cases"></a>関連するユース ケース
 
-次のユース ケースについて、このソリューションを検討してください。
+次のユース ケースについて、このシナリオを検討してください。
 
 * ファッション Web サイトのイメージを分類する。
-* 保険金請求のイメージを分類する
 * ゲームのスクリーンショットの利用統計情報を分類する。
 
 ## <a name="architecture"></a>アーキテクチャ
 
 ![インテリジェントなアプリのアーキテクチャ - Computer Vision][architecture-computer-vision]
 
-このソリューションは、Web またはモバイル アプリケーションのバックエンド コンポーネントを対象としています。 ソリューションのデータ フローは次のとおりです。
+このシナリオでは、Web またはモバイル アプリケーションのバックエンド コンポーネントに対応できます。 シナリオのデータ フローは次のとおりです。
 
 1. Azure Functions が、API レイヤーとして機能します。 これらの API により、アプリケーションでイメージをアップロードし、Cosmos DB からデータを取得できます。
 
@@ -64,7 +63,7 @@ Computer Vision API、Azure Functions などの Azure サービスを使用す�
 
 ### <a name="scalability"></a>スケーラビリティ
 
-ほとんどの場合、このソリューションのすべてのコンポーネントが、自動スケーリングされるマネージド サービスです。 注目すべき例外がいくつかあります。Azure Functions のインスタンス数は最大 200 個に制限されています。 それを超えてスケーリングする場合は、複数のリージョンまたはアプリ プランを検討してください。
+ほとんどの場合、このシナリオのすべてのコンポーネントが、自動スケーリングされるマネージド サービスです。 注目すべき例外がいくつかあります。Azure Functions のインスタンス数は最大 200 個に制限されています。 それを超えてスケーリングする場合は、複数のリージョンまたはアプリ プランを検討してください。
 
 Cosmos DB は、プロビジョニング済み要求ユニット (RU) の点からいうと、自動スケーリングされません。  ご自身の要件の推定に関するガイダンスについては、Microsoft ドキュメントの[要求ユニット][request-units]に関するページをご覧ください。 Cosmos DB でスケーリングのメリットを十分に活用するには、[パーティション キー][partition-key]についても確認する必要があります。
 
@@ -80,13 +79,13 @@ NoSQL データベースでは、可用性、スケーラビリティ、およ�
 
 ### <a name="resiliency"></a>回復性
 
-このソリューションのすべてのコンポーネントが管理されているため、すべてについて、リージョン レベルの回復性が自動的に確保されます。 
+このシナリオのすべてのコンポーネントが管理されているため、すべてについて、リージョン レベルの回復性が自動的に確保されます。
 
 回復性に優れたソリューションの設計に関する一般的なガイダンスについては、「[回復性に優れた Azure 用アプリケーションの設計][resiliency]」をご覧ください。
 
 ## <a name="pricing"></a>価格
 
-このソリューションの実行コストを調べるために、すべてのサービスがコスト計算ツールに事前構成されています。 特定のユース ケースについて価格の変化を確認するには、予想されるトラフィックに合わせて該当する変数を変更します。
+このシナリオの実行コストを調べることができるように、すべてのサービスがコスト計算ツールで事前構成されています。 特定のユース ケースについて価格の変化を確認するには、予想されるトラフィックに合わせて該当する変数を変更します。
 
 トラフィックの量に基づいて、次の 3 つのサンプル コスト プロファイルが用意されています (すべてのイメージのサイズが 100 KB であると想定しています)。
 
@@ -96,7 +95,7 @@ NoSQL データベースでは、可用性、スケーラビリティ、およ�
 
 ## <a name="related-resources"></a>関連リソース
 
-このソリューションのガイド付きラーニング パスについては、「[Build a serverless web app in Azure (Azure でのサーバーレス Web アプリの構築)][serverless]」を参照してください。  
+このシナリオのガイド付きラーニング パスについては、「[Build a serverless web app in Azure (Azure でのサーバーレス Web アプリの構築)][serverless]」を参照してください。  
 
 これを運用環境に移行する前に、Azure Functions の[ベスト プラクティス][functions-best-practices]に関するページをご確認ください。
 

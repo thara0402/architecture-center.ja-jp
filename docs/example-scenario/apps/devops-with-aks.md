@@ -1,26 +1,26 @@
 ---
-title: Jenkins と Azure Kubernetes Service を使用した DevOps
-description: Jenkins、Azure Container Registry、Azure Kubernetes Service、Cosmos DB、Grafana を使用する、Node.js Web アプリの DevOps パイプラインを構築するための実証済みのソリューション。
+title: コンテナー ベースのワークロード用の CI/CD パイプライン
+description: Jenkins、Azure Container Registry、Azure Kubernetes Service、Cosmos DB、Grafana を使用する、Node.js Web アプリの DevOps パイプラインを構築するための実証済みのシナリオ。
 author: iainfoulds
 ms.date: 07/05/2018
-ms.openlocfilehash: 9dbd1cb335f1c03c54ea342466594048e907d040
-ms.sourcegitcommit: 5d99b195388b7cabba383c49a81390ac48f86e8a
+ms.openlocfilehash: d9f6571234a0c3e67a233cfda1a37f6fb32929a3
+ms.sourcegitcommit: 71cbef121c40ef36e2d6e3a088cb85c4260599b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37891338"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39060763"
 ---
-# <a name="deploy-a-container-based-devops-pipeline-for-modern-application-development-with-jenkins-and-azure-kubernetes-service"></a>Jenkins と Azure Kubernetes Service を使用した最新のアプリケーション開発のためのコンテナー ベースの DevOps パイプラインのデプロイ
+# <a name="cicd-pipeline-for-container-based-workloads"></a>コンテナー ベースのワークロード用の CI/CD パイプライン
 
-このシナリオ例は、コンテナーと DevOps ワークフローを使用してアプリケーション開発を最新化することを求めている企業に適用されます。 このソリューションでは、Jenkins によって Node.js Web アプリがビルドされ、Azure Container Registry と Azure Kubernetes Service にデプロイされます。 グローバル分散データベース層には、Azure Cosmos DB が使用されます。 アプリケーションのパフォーマンスの監視とトラブルシューティングのために、Azure Monitor が Grafana インスタンスおよびダッシュボードと統合されています。
+このシナリオ例は、コンテナーと DevOps ワークフローを使用してアプリケーション開発を最新化することを求めている企業に適用されます。 このシナリオでは、Jenkins によって Node.js Web アプリが構築され、Azure Container Registry と Azure Kubernetes Service にデプロイされます。 グローバル分散データベース層には、Azure Cosmos DB が使用されます。 アプリケーションのパフォーマンスの監視とトラブルシューティングのために、Azure Monitor が Grafana インスタンスおよびダッシュボードと統合されています。
 
 アプリケーションのシナリオ例には、自動化された開発環境の提供、新しいコードのコミットの検証、ステージング環境または運用環境への新しいデプロイのプッシュが含まれます。 従来、企業はアプリケーションや更新プログラムを手動でビルドしてコンパイルし、大規模なモノリシック コード ベースを維持する必要がありました。 継続的インテグレーション (CI) と継続的配置 (CD) を使用する最新のアプリケーション開発手法により、サービスの構築、テスト、デプロイを迅速化できます。 この最新の手法により、アプリケーションや更新プログラムを顧客により迅速にリリースし、変化するビジネス要求により俊敏に対応することができます。
 
 Azure Kubernetes Service、Container Registry、Cosmos DB などの Azure サービスを使用することで、企業は最新のアプリケーション開発技術やツールを使って、高可用性の実装プロセスを簡素化できます。
 
-## <a name="potential-use-cases"></a>考えられるユース ケース
+## <a name="related-use-cases"></a>関連するユース ケース
 
-次のユース ケースについて、このソリューションを検討してください。
+次のユース ケースについて、このシナリオを検討してください。
 
 * アプリケーション開発プラクティスを、コンテナー ベースのマイクロサービス手法に最新化する。
 * アプリケーションの開発とデプロイのライフサイクルを加速化する。
@@ -28,9 +28,9 @@ Azure Kubernetes Service、Container Registry、Cosmos DB などの Azure サー
 
 ## <a name="architecture"></a>アーキテクチャ
 
-![Jenkins、Azure Container Registry、Azure Kubernetes Service を使用した DevOps ソリューションに関与する Azure コンポーネントのアーキテクチャの概要][architecture]
+![Jenkins、Azure Container Registry、Azure Kubernetes Service を使用した DevOps シナリオに関与する Azure コンポーネントのアーキテクチャの概要][architecture]
 
-このソリューションは、Node.js Web アプリケーションおよびデータベース バックエンドの DevOps パイプラインを対象としています。 このソリューションのデータ フローは次のとおりです。
+このシナリオでは、Node.js Web アプリケーションおよびデータベース バックエンドの DevOps パイプラインに対応できます。 このシナリオのデータ フローは次のとおりです。
 
 1. 開発者が、Node.js Web アプリケーションのソース コードに変更を加えます。
 2. コードの変更がソース管理リポジトリ (GitHub など) にコミットされます。
@@ -43,7 +43,7 @@ Azure Kubernetes Service、Container Registry、Cosmos DB などの Azure サー
 
 ### <a name="components"></a>コンポーネント
 
-* [Jenkins][jenkins]: オープンソースのオートメーション サーバーです。Azure サービスと統合することで、継続的インテグレーション (CI) と継続的配置 (CD) が可能になります。 このソリューションでは、Jenkins によって、ソース管理へのコミットに基づいて新しいコンテナー イメージの作成が調整され、それらのイメージが Azure Container Registry にプッシュされた後、Azure Kubernetes Service 内でアプリケーション インスタンスが更新されます。
+* [Jenkins][jenkins]: オープンソースのオートメーション サーバーです。Azure サービスと統合することで、継続的インテグレーション (CI) と継続的配置 (CD) が可能になります。 このシナリオでは、Jenkins によって、ソース管理へのコミットに基づいて新しいコンテナー イメージの作成が調整され、それらのイメージが Azure Container Registry にプッシュされた後、Azure Kubernetes Service 内でアプリケーション インスタンスが更新されます。
 * [Azure Linux Virtual Machines][azurevm-docs]: Jenkins インスタンスと Grafana インスタンスを実行するために使用されます。
 * [Azure Container Registry][azureacr-docs]: Azure Kubernetes Service クラスターで使用されるコンテナー イメージを保存し、管理します。 イメージは安全に保存されています。Azure プラットフォームによって他のリージョンにレプリケートすることで、デプロイ時間を短縮できます。
 * [Azure Kubernetes Service][azureaks-docs]: コンテナー オーケストレーションの専門知識がなくても、コンテナー化されたアプリケーションをデプロイし、管理できるマネージド Kubernetes プラットフォームです。 ホストされた Kubernetes サービスとして、Azure は正常性監視やメンテナンスなどの重要なタスクを自動的に処理します。
@@ -61,11 +61,11 @@ Azure Kubernetes Service、Container Registry、Cosmos DB などの Azure サー
 
 ### <a name="availability"></a>可用性
 
-アプリケーションのパフォーマンスを監視し、問題を報告するために、このソリューションでは Azure Monitor と Grafana を組み合わせてビジュアル ダッシュボードを提供します。 これらのツールを使用すると、コードの更新が必要になる可能性のあるパフォーマンスの問題を監視し、トラブルシューティングを行うことができます。コードの更新は、すべて CI/CD パイプラインを使用して展開できます。
+アプリケーションのパフォーマンスを監視し、問題を報告するために、このシナリオでは Azure Monitor と Grafana を組み合わせてビジュアル ダッシュボードを提供します。 これらのツールを使用すると、コードの更新が必要になる可能性のあるパフォーマンスの問題を監視し、トラブルシューティングを行うことができます。コードの更新は、すべて CI/CD パイプラインを使用して展開できます。
 
 Azure Kubernetes Service クラスターに含まれるロード バランサーは、アプリケーションを実行する 1 つ以上のコンテナー (ポッド) にアプリケーション トラフィックを分散します。 コンテナー化されたアプリケーションを Kubernetes で実行するこのアプローチにより、可用性の高いインフラストラクチャが顧客に提供されます。
 
-可用性に関する他のトピックについては、アーキテクチャ センターで提供される[可用性のチェックリスト][availability]をご覧ください。
+可用性に関する他のトピックについては、アーキテクチャ センターで入手できる[可用性のチェックリスト][availability]を参照してください。
 
 ### <a name="scalability"></a>スケーラビリティ
 
@@ -77,37 +77,37 @@ Azure Kubernetes Service を使用すると、アプリケーションの要求�
 
 ### <a name="security"></a>セキュリティ
 
-攻撃フットプリントを最小限に抑えるために、このソリューションでは Jenkins VM インスタンスが HTTP 経由で公開されることはありません。 Jenkins を操作する必要がある管理タスクについては、ローカル コンピューターから SSH トンネルを使用して、セキュリティで保護されたリモート接続を作成します。 Jenkins および Grafana VM インスタンスには、SSH 公開キー認証のみを使用できます。 パスワード ベースのログインは無効になります。 詳細については、「[Azure で Jenkins サーバーを実行する](../../reference-architectures/jenkins/index.md)」をご覧ください。
+攻撃フットプリントを最小限に抑えるために、このシナリオでは Jenkins VM インスタンスが HTTP 経由で公開されることはありません。 Jenkins を操作する必要がある管理タスクについては、ローカル コンピューターから SSH トンネルを使用して、セキュリティで保護されたリモート接続を作成します。 Jenkins および Grafana VM インスタンスには、SSH 公開キー認証のみを使用できます。 パスワード ベースのログインは無効になります。 詳細については、「[Azure で Jenkins サーバーを実行する](../../reference-architectures/jenkins/index.md)」をご覧ください。
 
-資格情報とアクセス許可を分離するために、このソリューションでは専用の Azure Active Directory (AD) サービス プリンシパルを使用します。 このサービス プリンシパルの資格情報は、セキュリティで保護された資格情報オブジェクトとして Jenkins に保存されているため、スクリプトやビルド パイプライン内で直接公開されたり表示されたりすることはありません。
+資格情報とアクセス許可を分離するために、このシナリオでは専用の Azure Active Directory (AD) サービス プリンシパルを使用します。 このサービス プリンシパルの資格情報は、セキュリティで保護された資格情報オブジェクトとして Jenkins に保存されているため、スクリプトやビルド パイプライン内で直接公開されたり表示されたりすることはありません。
 
 セキュリティで保護されたソリューションの設計に関する一般的なガイダンスについては、「[Azure のセキュリティのドキュメント][security]」をご覧ください。
 
 ### <a name="resiliency"></a>回復性
 
-このソリューションでは、アプリケーションに Azure Kubernetes Service を使用します。 Kubernetes には、コンテナー (ポッド) を監視し、問題が発生した場合に再起動する回復性コンポーネントが組み込まれています。 実行中の複数の Kubernetes ノードと組み合わせることで、アプリケーションは使用できなくなっているポッドやノードを許容できます。
+このシナリオでは、アプリケーションに Azure Kubernetes Service を使用します。 Kubernetes には、コンテナー (ポッド) を監視し、問題が発生した場合に再起動する回復性コンポーネントが組み込まれています。 実行中の複数の Kubernetes ノードと組み合わせることで、アプリケーションは使用できなくなっているポッドやノードを許容できます。
 
 回復性に優れたソリューションの設計に関する一般的なガイダンスについては、「[回復性に優れた Azure 用アプリケーションの設計][resiliency]」をご覧ください。
 
-## <a name="deploy-the-solution"></a>ソリューションのデプロイ方法
+## <a name="deploy-the-scenario"></a>シナリオのデプロイ
 
-**前提条件**
+**前提条件:** 
 
 * 既存の Azure アカウントが必要です。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 * SSH 公開キー ペアが必要です。 公開キー ペアの作成手順については、[Linux VM 用の SSH キー ペアの作成と使用][sshkeydocs]に関する記事をご覧ください。
 * サービスとリソースの認証用に Azure Active Directory (AD) サービス プリンシパルが必要です。 必要に応じて、[az ad sp create-for-rbac][createsp] を使用してサービス プリンシパルを作成できます。
 
     ```azurecli-interactive
-    az ad sp create-for-rbac --name myDevOpsSolution
+    az ad sp create-for-rbac --name myDevOpsScenario
     ```
 
-    このコマンドの出力の *appId* と *password* をメモしておきます。 これらの値は、ソリューションをデプロイするときにテンプレートに入力します。
+    このコマンドの出力の *appId* と *password* をメモしておきます。 これらの値は、シナリオをデプロイするときにテンプレートに入力します。
 
-Azure Resource Manager テンプレートを使用してこのソリューションをデプロイするには、次の手順を実行します。
+Azure Resource Manager テンプレートを使用してこのシナリオをデプロイするには、次の手順を実行します。
 
 1. **[Deploy to Azure]\(Azure にデプロイ\)** をクリックします。<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmspnp%2Fsolution-architectures%2Fmaster%2Fapps%2Fdevops-with-aks%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 2. Azure portal でテンプレートのデプロイが開くまで待ってから、次の手順を実行します。
-   * リソース グループを**新規作成**し、テキスト ボックスに名前 (例: *myAKSDevOpsSolution*) を指定します。
+   * リソース グループを**新規作成**し、テキスト ボックスに名前 (例: *myAKSDevOpsScenario*) を指定します。
    * **[場所]** ドロップダウン ボックスでリージョンを選択します。
    * `az ad sp create-for-rbac` コマンドで出力されたサービス プリンシパルのアプリ ID とパスワードを入力します。
    * Jenkins インスタンスと Grafana コンソールのユーザー名とセキュリティで保護されたパスワードを入力します。
@@ -119,7 +119,7 @@ Azure Resource Manager テンプレートを使用してこのソリューショ
 
 ## <a name="pricing"></a>価格
 
-このソリューションの実行コストを調べるために、すべてのサービスがコスト計算ツールに事前構成されています。 特定のユース ケースについて価格の変化を確認するには、予想されるトラフィックに合わせて該当する変数を変更します。 予想されるトラフィックに合わせて
+このシナリオの実行コストを調べることができるように、すべてのサービスがコスト計算ツールで事前構成されています。 特定のユース ケースについて価格の変化を確認するには、予想されるトラフィックに合わせて該当する変数を変更します。 予想されるトラフィックに合わせて
 
 保存するコンテナー イメージの数とアプリケーションを実行する Kubernetes ノードの数に基づいて、3 つのサンプル コスト プロファイルが用意されています。
 
@@ -129,7 +129,7 @@ Azure Resource Manager テンプレートを使用してこのソリューショ
 
 ## <a name="related-resources"></a>関連リソース
 
-このソリューションでは、Azure Container Registry と Azure Kubernetes Service を使用して、コンテナー ベースのアプリケーションを格納し、実行しました。 オーケストレーション コンポーネントをプロビジョニングしなくても、Azure Container Instances を使用して、コンテナー ベースのアプリケーションを実行することもできます。 詳細については、[Azure Container Instances の概要][azureaci-docs]に関する記事をご覧ください。
+このシナリオでは、Azure Container Registry と Azure Kubernetes Service を使用して、コンテナー ベースのアプリケーションを格納し、実行しました。 オーケストレーション コンポーネントをプロビジョニングしなくても、Azure Container Instances を使用して、コンテナー ベースのアプリケーションを実行することもできます。 詳細については、[Azure Container Instances の概要][azureaci-docs]に関する記事をご覧ください。
 
 <!-- links -->
 [architecture]: ./media/devops-with-aks/architecture-devops-with-aks.png

@@ -1,14 +1,14 @@
 ---
-title: 高度な分析 &mdash; リアルタイムでの不正検出
-description: Azure Event Hubs と Stream Analytics を使用して、不正行為をリアルタイムで検出する実証済みのソリューション。
+title: Azure におけるリアルタイムでの不正検出
+description: Azure Event Hubs と Stream Analytics を使用して、不正行為をリアルタイムで検出する実証済みのシナリオ。
 author: alexbuckgit
 ms.date: 07/05/2018
-ms.openlocfilehash: cf375445b38b0ff7d6fbc400902d5e97b34b4fed
-ms.sourcegitcommit: 5d99b195388b7cabba383c49a81390ac48f86e8a
+ms.openlocfilehash: e22322133adf40d033ac5af98069cb00765d14ca
+ms.sourcegitcommit: 71cbef121c40ef36e2d6e3a088cb85c4260599b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37891325"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39060814"
 ---
 # <a name="real-time-fraud-detection-on-azure"></a>Azure におけるリアルタイムでの不正検出
 
@@ -19,10 +19,10 @@ ms.locfileid: "37891325"
 Event Hubs、Stream Analytics などのフル マネージド Azure サービスを使用すると、企業はサーバーを個別に管理する必要がなくなり、コストを削減し、クラウド規模のデータ インジェストとリアルタイム分析で Microsoft の専門知識を活用することができます。 このシナリオでは、特に不正行為の検出を扱っています。 データ分析について他のニーズがある場合は、使用可能な [Azure Analytics サービス][product-category]の一覧を確認する必要があります。
 
 このサンプルは、広範なデータ処理アーキテクチャと戦略の一部です。 全体的なアーキテクチャのこの側面における別のオプションについては、この記事の後半で説明します。
- 
-## <a name="potential-use-cases"></a>考えられるユース ケース
 
-次のユース ケースついて、このソリューションを検討してください。
+## <a name="related-use-cases"></a>関連するユース ケース
+
+次のユース ケースについて、このシナリオを検討してください。
 
 * 電気通信シナリオで不正な携帯電話呼び出しを検出する。
 * 金融機関向けに不正なクレジット カード トランザクションを特定する。
@@ -30,9 +30,9 @@ Event Hubs、Stream Analytics などのフル マネージド Azure サービス
 
 ## <a name="architecture"></a>アーキテクチャ
 
-![リアルタイム不正検出ソリューションの Azure コンポーネント アーキテクチャの概要][architecture-diagram]
+![リアルタイム不正検出シナリオの Azure コンポーネント アーキテクチャの概要][architecture-diagram]
 
-このソリューションは、リアルタイム分析パイプラインのバックエンド コンポーネントを対象としています。 ソリューションのデータ フローは次のとおりです。
+このシナリオでは、リアルタイム分析パイプラインのバックエンド コンポーネントに対応できます。 シナリオのデータ フローは次のとおりです。
 
 1. 携帯電話呼び出しメタデータが、ソース システムから Azure Event Hubs インスタンスに送信されます。 
 2. Stream Analytics ジョブが開始され、イベント ハブ ソースを介してデータが受信されます。
@@ -41,9 +41,9 @@ Event Hubs、Stream Analytics などのフル マネージド Azure サービス
 
 ### <a name="components"></a>コンポーネント
 
-* [Azure Event Hubs][docs-event-hubs] はリアルタイム ストリーミング プラットフォームであり、毎秒数百万のイベントを受け取って処理できるイベント インジェスト サービスです。 Event Hubs では、分散されたソフトウェアやデバイスから生成されるイベント、データ、またはテレメトリを処理および格納できます。 このソリューションでは、Event Hubs が、すべての電話呼び出しメタデータを受け取り、不正行為に関する分析を実行します。
-* [Azure Stream Analytics][docs-stream-analytics] は、デバイスおよび他のデータ ソースからの大量のデータ ストリームを分析できるイベント処理エンジンです。 また、データ ストリームから情報を抽出し、パターンやリレーションシップを特定することもできます。 これらのパターンでは、その他のダウンストリーム アクションをトリガーできます。 このソリューションでは、Stream Analytics によって、Event Hubs からの入力ストリームが変換され、不正な呼び出しが特定されます。
-* このソリューションでは、[Blob Storage][docs-blob-storage] を使って、Stream Analytics ジョブの結果が格納されます。
+* [Azure Event Hubs][docs-event-hubs] はリアルタイム ストリーミング プラットフォームであり、毎秒数百万のイベントを受け取って処理できるイベント インジェスト サービスです。 Event Hubs では、分散されたソフトウェアやデバイスから生成されるイベント、データ、またはテレメトリを処理および格納できます。 このシナリオでは、Event Hubs が、すべての電話呼び出しメタデータを受け取り、不正行為に関する分析を実行します。
+* [Azure Stream Analytics][docs-stream-analytics] は、デバイスおよび他のデータ ソースからの大量のデータ ストリームを分析できるイベント処理エンジンです。 また、データ ストリームから情報を抽出し、パターンやリレーションシップを特定することもできます。 これらのパターンでは、その他のダウンストリーム アクションをトリガーできます。 このシナリオでは、Stream Analytics によって、Event Hubs からの入力ストリームが変換され、不正な呼び出しが特定されます。
+* このシナリオでは、[Blob Storage][docs-blob-storage] を使って、Stream Analytics ジョブの結果が格納されます。
 
 ## <a name="considerations"></a>考慮事項
 
@@ -61,9 +61,9 @@ Azure Monitor には、さまざまな Azure サービスにわたって監視�
 
 ### <a name="scalability"></a>スケーラビリティ
 
-このソリューションのコンポーネントは、ハイパースケール インジェストと超並列リアルタイム分析を実現するように設計されています。 Azure Event Hubs は高度にスケーラブルで、毎秒数百万のイベントを、短い待機時間で受け取って処理できます。  Event Hubs では、スループット ユニット数が、使用量のニーズに合わせて[自動的にスケールアップ](/azure/event-hubs/event-hubs-auto-inflate)できます。 Azure Stream Analytics では、多くのソースからの大量のストリーミング データを分析できます。 Stream Analytics をスケールアップするには、ご自身のストリーミング ジョブを実行するために割り当てられている[ストリーミング ユニット](/azure/stream-analytics/stream-analytics-streaming-unit-consumption)数を増やします。
+このシナリオのコンポーネントは、ハイパースケール インジェストと超並列リアルタイム分析を実現するように設計されています。 Azure Event Hubs は高度にスケーラブルで、毎秒数百万のイベントを、短い待機時間で受け取って処理できます。  Event Hubs では、スループット ユニット数が、使用量のニーズに合わせて[自動的にスケールアップ](/azure/event-hubs/event-hubs-auto-inflate)できます。 Azure Stream Analytics では、多くのソースからの大量のストリーミング データを分析できます。 Stream Analytics をスケールアップするには、ご自身のストリーミング ジョブを実行するために割り当てられている[ストリーミング ユニット](/azure/stream-analytics/stream-analytics-streaming-unit-consumption)数を増やします。
 
-スケーラブルなソリューションの設計に関する一般的なガイダンスについては、Azure アーキテクチャ センターの「[スケーラビリティのチェックリスト][scalability]」を参照してください。
+スケーラブルなシナリオの設計に関する一般的なガイダンスについては、Azure アーキテクチャ センターの[スケーラビリティのチェックリスト][scalability]を参照してください。
 
 ### <a name="security"></a>セキュリティ
 
@@ -75,13 +75,13 @@ Azure Event Hubs では、Shared Access Signature (SAS) トークンとイベン
 
 回復性に優れたソリューションの設計に関する一般的なガイダンスについては、「[回復性に優れた Azure 用アプリケーションの設計][resiliency]」をご覧ください。
 
-## <a name="deploy-the-solution"></a>ソリューションのデプロイ方法
+## <a name="deploy-the-scenario"></a>シナリオのデプロイ
 
-このソリューションをデプロイするには、こちらの[ステップバイステップのチュートリアル][tutorial]に従います。このチュートリアルでは、ソリューションの各コンポーネントを手動でデプロイする方法を示しています。 また、このチュートリアルは、サンプル電話呼び出しメタデータを生成し、そのデータをイベント ハブ インスタンスに送信するための .NET クライアント アプリケーションも提供します。 
+このシナリオをデプロイするには、こちらの[ステップ バイ ステップのチュートリアル][tutorial]に従います。このチュートリアルでは、シナリオの各コンポーネントを手動でデプロイする方法を示しています。 また、このチュートリアルは、サンプル電話呼び出しメタデータを生成し、そのデータをイベント ハブ インスタンスに送信するための .NET クライアント アプリケーションも提供します。
 
 ## <a name="pricing"></a>価格
 
-このソリューションの実行コストを調べるために、すべてのサービスがコスト計算ツールに事前構成されています。 特定のユース ケースについて価格の変化を確認するには、予想されるデータ ボリュームに合わせて該当する変数を変更します。
+このシナリオの実行コストを調べることができるように、すべてのサービスがコスト計算ツールで事前構成されています。 特定のユース ケースについて価格の変化を確認するには、予想されるデータ ボリュームに合わせて該当する変数を変更します。
 
 取得するトラフィックの量に基づいて、次の 3 つのサンプル コスト プロファイルが用意されています。
 
@@ -91,7 +91,7 @@ Azure Event Hubs では、Shared Access Signature (SAS) トークンとイベン
 
 ## <a name="related-resources"></a>関連リソース
 
-不正検出のシナリオがさらに複雑な場合は、機械学習モデルを活用できます。 Machine Learning Server を使用して構築されたソリューションについては、[Machine Learning Server を使用した不正検出][r-server-fraud-detection]に関するページをご覧ください。 Machine Learning Server を使用した他のソリューション テンプレートについては、[データ サイエンスのシナリオとソリューション テンプレート][docs-r-server-sample-solutions]に関するページをご覧ください。 Azure Data Lake Analytics を使用したソリューションの例については、「[Using Azure Data Lake and R for Fraud Detection (不正検出に Azure Data Lake および R を使用する)][technet-fraud-detection]」を参照してください。  
+不正検出のシナリオがさらに複雑な場合は、機械学習モデルを活用できます。 Machine Learning Server を使用して構築されたシナリオについては、[Machine Learning Server を使用した不正検出][r-server-fraud-detection]に関するページをご覧ください。 Machine Learning Server を使用した他のソリューション テンプレートについては、[データ サイエンスのシナリオとソリューション テンプレート][docs-r-server-sample-solutions]に関するページをご覧ください。 Azure Data Lake Analytics を使用したソリューションの例については、「[Using Azure Data Lake and R for Fraud Detection (不正検出に Azure Data Lake および R を使用する)][technet-fraud-detection]」を参照してください。  
 
 <!-- links -->
 [product-category]: https://azure.microsoft.com/product-categories/analytics/
