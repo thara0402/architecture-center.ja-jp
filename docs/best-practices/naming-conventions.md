@@ -4,12 +4,12 @@ description: Azure リソースの名前付け規則。 仮想マシン、スト
 author: telmosampaio
 ms.date: 05/18/2017
 pnp.series.title: Best Practices
-ms.openlocfilehash: b9833654f63dc81ff6d05b9c49897e0c58de2683
-ms.sourcegitcommit: 86d86d71e392550fd65c4f76320d7ecf0b72e1f6
+ms.openlocfilehash: 09bcfa3c0a0c46605f0025adad06f8049f109f1b
+ms.sourcegitcommit: 776b8c1efc662d42273a33de3b82ec69e3cd80c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37864557"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38987735"
 ---
 # <a name="naming-conventions"></a>名前付け規則
 
@@ -78,7 +78,7 @@ Azure のリソースまたはサービスの種類ごとに、名前付けに�
 
 | エンティティ | Scope (スコープ) | Length | 大文字小文字の区別 | 有効な文字 | 推奨パターン | 例 |
 | --- | --- | --- | --- | --- | --- | --- |
-|リソース グループ |サブスクリプション |1-90 |大文字と小文字は区別されない |英数字、アンダースコア、かっこ、ハイフン、ピリオド (末尾を除く) |`<service short name>-<environment>-rg` |`profx-prod-rg` |
+|リソース グループ |サブスクリプション |1-90 |大文字と小文字は区別されない |英数字、アンダースコア、かっこ、ハイフン、ピリオド (末尾を除く)、および Unicode 文字 |`<service short name>-<environment>-rg` |`profx-prod-rg` |
 |可用性セット |リソース グループ |1 ～ 80 |大文字と小文字は区別されない |英数字、アンダースコア、ハイフン |`<service-short-name>-<context>-as` |`profx-sql-as` |
 |タグ |関連付けられたエンティティ |512 (名前)、256 (値) |大文字と小文字は区別されない |英数字 |`"key" : "value"` |`"department" : "Central IT"` |
 
