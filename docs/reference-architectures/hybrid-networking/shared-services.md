@@ -5,222 +5,222 @@ author: telmosampaio
 ms.date: 06/19/2018
 pnp.series.title: Implement a hub-spoke network topology with shared services in Azure
 pnp.series.prev: hub-spoke
-ms.openlocfilehash: 555d08e5d3792f8699875c6d6aa8a1a42eadd477
-ms.sourcegitcommit: 58d93e7ac9a6d44d5668a187a6827d7cd4f5a34d
+ms.openlocfilehash: 283251d5b11f76985405410c5c237e5a64ee98fe
+ms.sourcegitcommit: 71cbef121c40ef36e2d6e3a088cb85c4260599b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37142354"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39060797"
 ---
-# <a name="implement-a-hub-spoke-network-topology-with-shared-services-in-azure"></a><span data-ttu-id="a155f-103">Azure に共有サービスを含むハブスポーク ネットワーク トポロジを実装する</span><span class="sxs-lookup"><span data-stu-id="a155f-103">Implement a hub-spoke network topology with shared services in Azure</span></span>
+# <a name="implement-a-hub-spoke-network-topology-with-shared-services-in-azure"></a><span data-ttu-id="c4a34-103">Azure に共有サービスを含むハブスポーク ネットワーク トポロジを実装する</span><span class="sxs-lookup"><span data-stu-id="c4a34-103">Implement a hub-spoke network topology with shared services in Azure</span></span>
 
-<span data-ttu-id="a155f-104">この参照アーキテクチャは、[ハブスポーク][guidance-hub-spoke]参照アーキテクチャに基づいて作成されており、すべてのスポークで利用できる共有サービスがハブに含まれます。</span><span class="sxs-lookup"><span data-stu-id="a155f-104">This reference architecture builds on the [hub-spoke][guidance-hub-spoke] reference architecture to include shared services in the hub that can be consumed by all spokes.</span></span> <span data-ttu-id="a155f-105">クラウドへのデータセンターの移行と[仮想データセンター]の構築に向けた最初の手順として、共有する必要がある最初のサービスが ID とセキュリティです。</span><span class="sxs-lookup"><span data-stu-id="a155f-105">As a first step toward migrating a datacenter to the cloud, and building a [virtual datacenter], the first services you need to share are identity and security.</span></span> <span data-ttu-id="a155f-106">この参照アーキテクチャは、Active Directory サービスをオンプレミスのデータセンターから Azure に拡張する方法と、ハブスポーク トポロジに、ファイアウォールとして動作可能なネットワーク仮想アプライアンス (NVA) を追加する方法を示しています。</span><span class="sxs-lookup"><span data-stu-id="a155f-106">This reference architecture shows you how to extend your Active Directory services from your on-premises datacenter to Azure, and how to add a network virtual appliance (NVA) that can act as a firewall, in a hub-spoke topology.</span></span>  <span data-ttu-id="a155f-107">[**このソリューションをデプロイします**](#deploy-the-solution)。</span><span class="sxs-lookup"><span data-stu-id="a155f-107">[**Deploy this solution**](#deploy-the-solution).</span></span>
+<span data-ttu-id="c4a34-104">この参照アーキテクチャは、[ハブスポーク][guidance-hub-spoke]参照アーキテクチャに基づいて作成されており、すべてのスポークで利用できる共有サービスがハブに含まれます。</span><span class="sxs-lookup"><span data-stu-id="c4a34-104">This reference architecture builds on the [hub-spoke][guidance-hub-spoke] reference architecture to include shared services in the hub that can be consumed by all spokes.</span></span> <span data-ttu-id="c4a34-105">クラウドへのデータセンターの移行と[仮想データセンター]の構築に向けた最初の手順として、共有する必要がある最初のサービスが ID とセキュリティです。</span><span class="sxs-lookup"><span data-stu-id="c4a34-105">As a first step toward migrating a datacenter to the cloud, and building a [virtual datacenter], the first services you need to share are identity and security.</span></span> <span data-ttu-id="c4a34-106">この参照アーキテクチャは、Active Directory サービスをオンプレミスのデータセンターから Azure に拡張する方法と、ハブスポーク トポロジに、ファイアウォールとして動作可能なネットワーク仮想アプライアンス (NVA) を追加する方法を示しています。</span><span class="sxs-lookup"><span data-stu-id="c4a34-106">This reference architecture shows you how to extend your Active Directory services from your on-premises datacenter to Azure, and how to add a network virtual appliance (NVA) that can act as a firewall, in a hub-spoke topology.</span></span>  <span data-ttu-id="c4a34-107">[**このソリューションをデプロイします**](#deploy-the-solution)。</span><span class="sxs-lookup"><span data-stu-id="c4a34-107">[**Deploy this solution**](#deploy-the-solution).</span></span>
 
-<span data-ttu-id="a155f-108">![[0]][0]</span><span class="sxs-lookup"><span data-stu-id="a155f-108">![[0]][0]</span></span>
+<span data-ttu-id="c4a34-108">![[0]][0]</span><span class="sxs-lookup"><span data-stu-id="c4a34-108">![[0]][0]</span></span>
 
-<span data-ttu-id="a155f-109">*このアーキテクチャの [Visio ファイル][visio-download]をダウンロードします。*</span><span class="sxs-lookup"><span data-stu-id="a155f-109">*Download a [Visio file][visio-download] of this architecture*</span></span>
+<span data-ttu-id="c4a34-109">*このアーキテクチャの [Visio ファイル][visio-download]をダウンロードします。*</span><span class="sxs-lookup"><span data-stu-id="c4a34-109">*Download a [Visio file][visio-download] of this architecture*</span></span>
 
-<span data-ttu-id="a155f-110">このトポロジの利点は次のとおりです。</span><span class="sxs-lookup"><span data-stu-id="a155f-110">The benefits of this topology include:</span></span>
+<span data-ttu-id="c4a34-110">このトポロジの利点は次のとおりです。</span><span class="sxs-lookup"><span data-stu-id="c4a34-110">The benefits of this topology include:</span></span>
 
-* <span data-ttu-id="a155f-111">**コストの削減**: 複数のワークロードを共有するサービス (ネットワーク仮想アプライアンス (NVA) や DNS サーバーなど) を 1 か所に集めます。</span><span class="sxs-lookup"><span data-stu-id="a155f-111">**Cost savings** by centralizing services that can be shared by multiple workloads, such as network virtual appliances (NVAs) and DNS servers, in a single location.</span></span>
-* <span data-ttu-id="a155f-112">**サブスクリプション数の上限の解消**: 中央のハブに別のサブスクリプションから VNet をピアリングします。</span><span class="sxs-lookup"><span data-stu-id="a155f-112">**Overcome subscriptions limits** by peering VNets from different subscriptions to the central hub.</span></span>
-* <span data-ttu-id="a155f-113">**問題の分離**: 中央の IT (SecOps、InfraOps) とワークロード (DevOps) の間で実施します。</span><span class="sxs-lookup"><span data-stu-id="a155f-113">**Separation of concerns** between central IT (SecOps, InfraOps) and workloads (DevOps).</span></span>
+* <span data-ttu-id="c4a34-111">**コストの削減**: 複数のワークロードを共有するサービス (ネットワーク仮想アプライアンス (NVA) や DNS サーバーなど) を 1 か所に集めます。</span><span class="sxs-lookup"><span data-stu-id="c4a34-111">**Cost savings** by centralizing services that can be shared by multiple workloads, such as network virtual appliances (NVAs) and DNS servers, in a single location.</span></span>
+* <span data-ttu-id="c4a34-112">**サブスクリプション数の上限の解消**: 中央のハブに別のサブスクリプションから VNet をピアリングします。</span><span class="sxs-lookup"><span data-stu-id="c4a34-112">**Overcome subscriptions limits** by peering VNets from different subscriptions to the central hub.</span></span>
+* <span data-ttu-id="c4a34-113">**問題の分離**: 中央の IT (SecOps、InfraOps) とワークロード (DevOps) の間で実施します。</span><span class="sxs-lookup"><span data-stu-id="c4a34-113">**Separation of concerns** between central IT (SecOps, InfraOps) and workloads (DevOps).</span></span>
 
-<span data-ttu-id="a155f-114">このアーキテクチャの一般的な用途は次のとおりです。</span><span class="sxs-lookup"><span data-stu-id="a155f-114">Typical uses for this architecture include:</span></span>
+<span data-ttu-id="c4a34-114">このアーキテクチャの一般的な用途は次のとおりです。</span><span class="sxs-lookup"><span data-stu-id="c4a34-114">Typical uses for this architecture include:</span></span>
 
-* <span data-ttu-id="a155f-115">DNS、IDS、NTP、AD DS などの共有サービスを必要とするさまざまな環境 (開発、テスト、運用など) でデプロイされるワークロード。</span><span class="sxs-lookup"><span data-stu-id="a155f-115">Workloads deployed in different environments, such as development, testing, and production, that require shared services such as DNS, IDS, NTP, or AD DS.</span></span> <span data-ttu-id="a155f-116">共有サービスはハブ VNet に配置され、分離性を維持するために各環境はスポークにデプロイされます。</span><span class="sxs-lookup"><span data-stu-id="a155f-116">Shared services are placed in the hub VNet, while each environment is deployed to a spoke to maintain isolation.</span></span>
-* <span data-ttu-id="a155f-117">相互接続が不要であり、共有サービスへのアクセスは必要なワークロード。</span><span class="sxs-lookup"><span data-stu-id="a155f-117">Workloads that do not require connectivity to each other, but require access to shared services.</span></span>
-* <span data-ttu-id="a155f-118">セキュリティ要素 (DMZ としてのハブのファイアウォールなど) の一元管理、および各スポークにおけるワークロードの分別管理が必要なエンタープライズ。</span><span class="sxs-lookup"><span data-stu-id="a155f-118">Enterprises that require central control over security aspects, such as a firewall in the hub as a DMZ, and segregated management for the workloads in each spoke.</span></span>
+* <span data-ttu-id="c4a34-115">DNS、IDS、NTP、AD DS などの共有サービスを必要とするさまざまな環境 (開発、テスト、運用など) でデプロイされるワークロード。</span><span class="sxs-lookup"><span data-stu-id="c4a34-115">Workloads deployed in different environments, such as development, testing, and production, that require shared services such as DNS, IDS, NTP, or AD DS.</span></span> <span data-ttu-id="c4a34-116">共有サービスはハブ VNet に配置され、分離性を維持するために各環境はスポークにデプロイされます。</span><span class="sxs-lookup"><span data-stu-id="c4a34-116">Shared services are placed in the hub VNet, while each environment is deployed to a spoke to maintain isolation.</span></span>
+* <span data-ttu-id="c4a34-117">相互接続が不要であり、共有サービスへのアクセスは必要なワークロード。</span><span class="sxs-lookup"><span data-stu-id="c4a34-117">Workloads that do not require connectivity to each other, but require access to shared services.</span></span>
+* <span data-ttu-id="c4a34-118">セキュリティ要素 (DMZ としてのハブのファイアウォールなど) の一元管理、および各スポークにおけるワークロードの分別管理が必要なエンタープライズ。</span><span class="sxs-lookup"><span data-stu-id="c4a34-118">Enterprises that require central control over security aspects, such as a firewall in the hub as a DMZ, and segregated management for the workloads in each spoke.</span></span>
 
-## <a name="architecture"></a><span data-ttu-id="a155f-119">アーキテクチャ</span><span class="sxs-lookup"><span data-stu-id="a155f-119">Architecture</span></span>
+## <a name="architecture"></a><span data-ttu-id="c4a34-119">アーキテクチャ</span><span class="sxs-lookup"><span data-stu-id="c4a34-119">Architecture</span></span>
 
-<span data-ttu-id="a155f-120">アーキテクチャは、次のコンポーネントで構成されます。</span><span class="sxs-lookup"><span data-stu-id="a155f-120">The architecture consists of the following components.</span></span>
+<span data-ttu-id="c4a34-120">アーキテクチャは、次のコンポーネントで構成されます。</span><span class="sxs-lookup"><span data-stu-id="c4a34-120">The architecture consists of the following components.</span></span>
 
-* <span data-ttu-id="a155f-121">**オンプレミス ネットワーク**。</span><span class="sxs-lookup"><span data-stu-id="a155f-121">**On-premises network**.</span></span> <span data-ttu-id="a155f-122">組織内で実行されているプライベートなローカル エリア ネットワークです。</span><span class="sxs-lookup"><span data-stu-id="a155f-122">A private local-area network running within an organization.</span></span>
+* <span data-ttu-id="c4a34-121">**オンプレミス ネットワーク**。</span><span class="sxs-lookup"><span data-stu-id="c4a34-121">**On-premises network**.</span></span> <span data-ttu-id="c4a34-122">組織内で実行されているプライベートなローカル エリア ネットワークです。</span><span class="sxs-lookup"><span data-stu-id="c4a34-122">A private local-area network running within an organization.</span></span>
 
-* <span data-ttu-id="a155f-123">**VPN デバイス**。</span><span class="sxs-lookup"><span data-stu-id="a155f-123">**VPN device**.</span></span> <span data-ttu-id="a155f-124">オンプレミス ネットワークへの外部接続を提供するデバイスまたはサービスです。</span><span class="sxs-lookup"><span data-stu-id="a155f-124">A device or service that provides external connectivity to the on-premises network.</span></span> <span data-ttu-id="a155f-125">VPN デバイスには、ハードウェア デバイス、または Windows Server 2012 のルーティングとリモート アクセス サービス (RRAS) などのソフトウェア ソリューションがあります。</span><span class="sxs-lookup"><span data-stu-id="a155f-125">The VPN device may be a hardware device, or a software solution such as the Routing and Remote Access Service (RRAS) in Windows Server 2012.</span></span> <span data-ttu-id="a155f-126">サポート対象の VPN アプライアンスの一覧と選択した VPN アプライアンスを Azure に接続するための構成については、「[サイト間 VPN ゲートウェイ接続用の VPN デバイスと IPsec/IKE パラメーターについて][vpn-appliance]」をご覧ください。</span><span class="sxs-lookup"><span data-stu-id="a155f-126">For a list of supported VPN appliances and information on configuring selected VPN appliances for connecting to Azure, see [About VPN devices for Site-to-Site VPN Gateway connections][vpn-appliance].</span></span>
+* <span data-ttu-id="c4a34-123">**VPN デバイス**。</span><span class="sxs-lookup"><span data-stu-id="c4a34-123">**VPN device**.</span></span> <span data-ttu-id="c4a34-124">オンプレミス ネットワークへの外部接続を提供するデバイスまたはサービスです。</span><span class="sxs-lookup"><span data-stu-id="c4a34-124">A device or service that provides external connectivity to the on-premises network.</span></span> <span data-ttu-id="c4a34-125">VPN デバイスには、ハードウェア デバイス、または Windows Server 2012 のルーティングとリモート アクセス サービス (RRAS) などのソフトウェア ソリューションがあります。</span><span class="sxs-lookup"><span data-stu-id="c4a34-125">The VPN device may be a hardware device, or a software solution such as the Routing and Remote Access Service (RRAS) in Windows Server 2012.</span></span> <span data-ttu-id="c4a34-126">サポート対象の VPN アプライアンスの一覧と選択した VPN アプライアンスを Azure に接続するための構成については、「[サイト間 VPN ゲートウェイ接続用の VPN デバイスと IPsec/IKE パラメーターについて][vpn-appliance]」をご覧ください。</span><span class="sxs-lookup"><span data-stu-id="c4a34-126">For a list of supported VPN appliances and information on configuring selected VPN appliances for connecting to Azure, see [About VPN devices for Site-to-Site VPN Gateway connections][vpn-appliance].</span></span>
 
-* <span data-ttu-id="a155f-127">**VPN 仮想ネットワーク ゲートウェイまたは ExpressRoute ゲートウェイ**。</span><span class="sxs-lookup"><span data-stu-id="a155f-127">**VPN virtual network gateway or ExpressRoute gateway**.</span></span> <span data-ttu-id="a155f-128">仮想ネットワーク ゲートウェイでは、オンプレミス ネットワークとの接続に使用する VPN デバイス (ExpressRoute 回線) に VNet を接続できます。</span><span class="sxs-lookup"><span data-stu-id="a155f-128">The virtual network gateway enables the VNet to connect to the VPN device, or ExpressRoute circuit, used for connectivity with your on-premises network.</span></span> <span data-ttu-id="a155f-129">詳しくは、「[Connect an on-premises network to a Microsoft Azure virtual network][connect-to-an-Azure-vnet]」(Microsoft Azure 仮想ネットワークにオンプレミス ネットワークを接続する) をご覧ください。</span><span class="sxs-lookup"><span data-stu-id="a155f-129">For more information, see [Connect an on-premises network to a Microsoft Azure virtual network][connect-to-an-Azure-vnet].</span></span>
-
-> [!NOTE]
-> <span data-ttu-id="a155f-130">この参照アーキテクチャのデプロイ スクリプトでは、VPN ゲートウェイを使用して接続し、Azure の VNet を使用してオンプレミス ネットワークをシミュレートします。</span><span class="sxs-lookup"><span data-stu-id="a155f-130">The deployment scripts for this reference architecture use a VPN gateway for connectivity, and a VNet in Azure to simulate your on-premises network.</span></span>
-
-* <span data-ttu-id="a155f-131">**ハブ VNet**。</span><span class="sxs-lookup"><span data-stu-id="a155f-131">**Hub VNet**.</span></span> <span data-ttu-id="a155f-132">ハブスポーク トポロジのハブとして使用する Azure VNet。</span><span class="sxs-lookup"><span data-stu-id="a155f-132">Azure VNet used as the hub in the hub-spoke topology.</span></span> <span data-ttu-id="a155f-133">ハブは、オンプレミス ネットワークへの主要な接続ポイントであり、スポーク VNet でホストされるさまざまなワークロードによって消費できるサービスをホストする場所です。</span><span class="sxs-lookup"><span data-stu-id="a155f-133">The hub is the central point of connectivity to your on-premises network, and a place to host services that can be consumed by the different workloads hosted in the spoke VNets.</span></span>
-
-* <span data-ttu-id="a155f-134">**ゲートウェイ サブネット**。</span><span class="sxs-lookup"><span data-stu-id="a155f-134">**Gateway subnet**.</span></span> <span data-ttu-id="a155f-135">複数の仮想ネットワーク ゲートウェイが同じサブネットに保持されます。</span><span class="sxs-lookup"><span data-stu-id="a155f-135">The virtual network gateways are held in the same subnet.</span></span>
-
-* <span data-ttu-id="a155f-136">**共有サービス サブネット**。</span><span class="sxs-lookup"><span data-stu-id="a155f-136">**Shared services subnet**.</span></span> <span data-ttu-id="a155f-137">DNS や AD DS など、すべてのスポーク間で共有できるサービスをホストするために使用されるハブ VNet 内のサブネットです。</span><span class="sxs-lookup"><span data-stu-id="a155f-137">A subnet in the hub VNet used to host services that can be shared among all spokes, such as DNS or AD DS.</span></span>
-
-* <span data-ttu-id="a155f-138">**DMZ サブネット**。</span><span class="sxs-lookup"><span data-stu-id="a155f-138">**DMZ subnet**.</span></span> <span data-ttu-id="a155f-139">ファイアウォールなどの、セキュリティ アプライアンスとして動作できる NVA をホストするために使用されるハブ VNet のサブネットです。</span><span class="sxs-lookup"><span data-stu-id="a155f-139">A subnet in the hub VNet used to host NVAs that can act as security appliances, such as firewalls.</span></span>
-
-* <span data-ttu-id="a155f-140">**スポーク VNet**。</span><span class="sxs-lookup"><span data-stu-id="a155f-140">**Spoke VNets**.</span></span> <span data-ttu-id="a155f-141">ハブスポーク トポロジでスポークとして使用される 1 つ以上の Azure VNet です。</span><span class="sxs-lookup"><span data-stu-id="a155f-141">One or more Azure VNets that are used as spokes in the hub-spoke topology.</span></span> <span data-ttu-id="a155f-142">スポークを使用すると、独自の VNet にワークロードを分離して、その他のスポークから個別に管理できます。</span><span class="sxs-lookup"><span data-stu-id="a155f-142">Spokes can be used to isolate workloads in their own VNets, managed separately from other spokes.</span></span> <span data-ttu-id="a155f-143">各ワークロードには複数の階層が含まれる場合があります。これらの階層には、Azure ロード バランサーを使用して接続されている複数のサブネットがあります。</span><span class="sxs-lookup"><span data-stu-id="a155f-143">Each workload might include multiple tiers, with multiple subnets connected through Azure load balancers.</span></span> <span data-ttu-id="a155f-144">アプリケーション インフラストラクチャについて詳しくは、「[Running Windows VM workloads][windows-vm-ra]」(Windows VM ワークロードを実行する) および「[Running Linux VM workloads][linux-vm-ra]」(Linux VM ワークロードを実行する) をご覧ください。</span><span class="sxs-lookup"><span data-stu-id="a155f-144">For more information about the application infrastructure, see [Running Windows VM workloads][windows-vm-ra] and [Running Linux VM workloads][linux-vm-ra].</span></span>
-
-* <span data-ttu-id="a155f-145">**VNet ピアリング**。</span><span class="sxs-lookup"><span data-stu-id="a155f-145">**VNet peering**.</span></span> <span data-ttu-id="a155f-146">[ピアリング接続][vnet-peering]を使用して、同じ Azure リージョン内の 2 つの VNet を接続できます。</span><span class="sxs-lookup"><span data-stu-id="a155f-146">Two VNets in the same Azure region can be connected using a [peering connection][vnet-peering].</span></span> <span data-ttu-id="a155f-147">ピアリング接続は、VNet 間の待機時間の短い非推移的な接続です。</span><span class="sxs-lookup"><span data-stu-id="a155f-147">Peering connections are non-transitive, low latency connections between VNets.</span></span> <span data-ttu-id="a155f-148">ピアリングが完了すると、VNet は、ルーターがなくても Azure のバックボーンを使用してトラフィックを交換します。</span><span class="sxs-lookup"><span data-stu-id="a155f-148">Once peered, the VNets exchange traffic by using the Azure backbone, without the need for a router.</span></span> <span data-ttu-id="a155f-149">ハブスポーク ネットワーク トポロジでは、VNet ピアリングを使用して、ハブを各スポークに接続します。</span><span class="sxs-lookup"><span data-stu-id="a155f-149">In a hub-spoke network topology, you use VNet peering to connect the hub to each spoke.</span></span>
+* <span data-ttu-id="c4a34-127">**VPN 仮想ネットワーク ゲートウェイまたは ExpressRoute ゲートウェイ**。</span><span class="sxs-lookup"><span data-stu-id="c4a34-127">**VPN virtual network gateway or ExpressRoute gateway**.</span></span> <span data-ttu-id="c4a34-128">仮想ネットワーク ゲートウェイでは、オンプレミス ネットワークとの接続に使用する VPN デバイス (ExpressRoute 回線) に VNet を接続できます。</span><span class="sxs-lookup"><span data-stu-id="c4a34-128">The virtual network gateway enables the VNet to connect to the VPN device, or ExpressRoute circuit, used for connectivity with your on-premises network.</span></span> <span data-ttu-id="c4a34-129">詳しくは、「[Connect an on-premises network to a Microsoft Azure virtual network][connect-to-an-Azure-vnet]」(Microsoft Azure 仮想ネットワークにオンプレミス ネットワークを接続する) をご覧ください。</span><span class="sxs-lookup"><span data-stu-id="c4a34-129">For more information, see [Connect an on-premises network to a Microsoft Azure virtual network][connect-to-an-Azure-vnet].</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="a155f-150">この記事で説明するのは [Resource Manager](/azure/azure-resource-manager/resource-group-overview) のデプロイのみですが、クラシック VNet を同じサブスクリプションの Resource Manager VNet に接続することもできます。</span><span class="sxs-lookup"><span data-stu-id="a155f-150">This article only covers [Resource Manager](/azure/azure-resource-manager/resource-group-overview) deployments, but you can also connect a classic VNet to a Resource Manager VNet in the same subscription.</span></span> <span data-ttu-id="a155f-151">これにより、クラシック デプロイ をスポークでホストして、ハブで共有するサービスのメリットを引き続き得ることができます。</span><span class="sxs-lookup"><span data-stu-id="a155f-151">That way, your spokes can host classic deployments and still benefit from services shared in the hub.</span></span>
+> <span data-ttu-id="c4a34-130">この参照アーキテクチャのデプロイ スクリプトでは、VPN ゲートウェイを使用して接続し、Azure の VNet を使用してオンプレミス ネットワークをシミュレートします。</span><span class="sxs-lookup"><span data-stu-id="c4a34-130">The deployment scripts for this reference architecture use a VPN gateway for connectivity, and a VNet in Azure to simulate your on-premises network.</span></span>
 
-## <a name="recommendations"></a><span data-ttu-id="a155f-152">Recommendations</span><span class="sxs-lookup"><span data-stu-id="a155f-152">Recommendations</span></span>
+* <span data-ttu-id="c4a34-131">**ハブ VNet**。</span><span class="sxs-lookup"><span data-stu-id="c4a34-131">**Hub VNet**.</span></span> <span data-ttu-id="c4a34-132">ハブスポーク トポロジのハブとして使用する Azure VNet。</span><span class="sxs-lookup"><span data-stu-id="c4a34-132">Azure VNet used as the hub in the hub-spoke topology.</span></span> <span data-ttu-id="c4a34-133">ハブは、オンプレミス ネットワークへの主要な接続ポイントであり、スポーク VNet でホストされるさまざまなワークロードによって消費できるサービスをホストする場所です。</span><span class="sxs-lookup"><span data-stu-id="c4a34-133">The hub is the central point of connectivity to your on-premises network, and a place to host services that can be consumed by the different workloads hosted in the spoke VNets.</span></span>
 
-<span data-ttu-id="a155f-153">[ハブスポーク][guidance-hub-spoke]参照アーキテクチャのすべての推奨事項が、共有サービスの参照アーキテクチャにも適用されます。</span><span class="sxs-lookup"><span data-stu-id="a155f-153">All the recommendations for the [hub-spoke][guidance-hub-spoke] reference architecture also apply to the shared services reference architecture.</span></span> 
+* <span data-ttu-id="c4a34-134">**ゲートウェイ サブネット**。</span><span class="sxs-lookup"><span data-stu-id="c4a34-134">**Gateway subnet**.</span></span> <span data-ttu-id="c4a34-135">複数の仮想ネットワーク ゲートウェイが同じサブネットに保持されます。</span><span class="sxs-lookup"><span data-stu-id="c4a34-135">The virtual network gateways are held in the same subnet.</span></span>
 
-<span data-ttu-id="a155f-154">また、共有サービスのほとんどのシナリオには、次の推奨事項が適用されます。</span><span class="sxs-lookup"><span data-stu-id="a155f-154">ALso, the following recommendations apply for most scenarios under shared services.</span></span> <span data-ttu-id="a155f-155">これらの推奨事項には、オーバーライドする特定の要件がない限り、従ってください。</span><span class="sxs-lookup"><span data-stu-id="a155f-155">Follow these recommendations unless you have a specific requirement that overrides them.</span></span>
+* <span data-ttu-id="c4a34-136">**共有サービス サブネット**。</span><span class="sxs-lookup"><span data-stu-id="c4a34-136">**Shared services subnet**.</span></span> <span data-ttu-id="c4a34-137">DNS や AD DS など、すべてのスポーク間で共有できるサービスをホストするために使用されるハブ VNet 内のサブネットです。</span><span class="sxs-lookup"><span data-stu-id="c4a34-137">A subnet in the hub VNet used to host services that can be shared among all spokes, such as DNS or AD DS.</span></span>
 
-### <a name="identity"></a><span data-ttu-id="a155f-156">ID</span><span class="sxs-lookup"><span data-stu-id="a155f-156">Identity</span></span>
+* <span data-ttu-id="c4a34-138">**DMZ サブネット**。</span><span class="sxs-lookup"><span data-stu-id="c4a34-138">**DMZ subnet**.</span></span> <span data-ttu-id="c4a34-139">ファイアウォールなどの、セキュリティ アプライアンスとして動作できる NVA をホストするために使用されるハブ VNet のサブネットです。</span><span class="sxs-lookup"><span data-stu-id="c4a34-139">A subnet in the hub VNet used to host NVAs that can act as security appliances, such as firewalls.</span></span>
 
-<span data-ttu-id="a155f-157">ほとんどの企業組織のオンプレミス データセンターには Active Directory ディレクトリ サービス (ADDS) 環境があります。</span><span class="sxs-lookup"><span data-stu-id="a155f-157">Most enterprise organizations have an Active Directory Directory Services (ADDS) environment in their on-premises datacenter.</span></span> <span data-ttu-id="a155f-158">ADDS に依存しているオンプレミスのネットワークから Azure に移動される資産の管理を容易にするには、Azure で ADDS ドメイン コントローラーをホストすることをお勧めします。</span><span class="sxs-lookup"><span data-stu-id="a155f-158">To facilitate management of assets moved to Azure from your on-premises network that depend on ADDS, it is recommended to host ADDS domain controllers in Azure.</span></span>
+* <span data-ttu-id="c4a34-140">**スポーク VNet**。</span><span class="sxs-lookup"><span data-stu-id="c4a34-140">**Spoke VNets**.</span></span> <span data-ttu-id="c4a34-141">ハブスポーク トポロジでスポークとして使用される 1 つ以上の Azure VNet です。</span><span class="sxs-lookup"><span data-stu-id="c4a34-141">One or more Azure VNets that are used as spokes in the hub-spoke topology.</span></span> <span data-ttu-id="c4a34-142">スポークを使用すると、独自の VNet にワークロードを分離して、その他のスポークから個別に管理できます。</span><span class="sxs-lookup"><span data-stu-id="c4a34-142">Spokes can be used to isolate workloads in their own VNets, managed separately from other spokes.</span></span> <span data-ttu-id="c4a34-143">各ワークロードには複数の階層が含まれる場合があります。これらの階層には、Azure ロード バランサーを使用して接続されている複数のサブネットがあります。</span><span class="sxs-lookup"><span data-stu-id="c4a34-143">Each workload might include multiple tiers, with multiple subnets connected through Azure load balancers.</span></span> <span data-ttu-id="c4a34-144">アプリケーション インフラストラクチャについて詳しくは、「[Running Windows VM workloads][windows-vm-ra]」(Windows VM ワークロードを実行する) および「[Running Linux VM workloads][linux-vm-ra]」(Linux VM ワークロードを実行する) をご覧ください。</span><span class="sxs-lookup"><span data-stu-id="c4a34-144">For more information about the application infrastructure, see [Running Windows VM workloads][windows-vm-ra] and [Running Linux VM workloads][linux-vm-ra].</span></span>
 
-<span data-ttu-id="a155f-159">Azure とオンプレミスの環境を別々に管理するグループ ポリシー オブジェクトを使用する場合は、Azure リージョンごとに別の AD サイトを使用します。</span><span class="sxs-lookup"><span data-stu-id="a155f-159">If you make use of Group Policy Objects, that you want to control separately for Azure and your on-premises environment, use a different AD site for each Azure region.</span></span> <span data-ttu-id="a155f-160">依存するワークロードがアクセスできる中心の VNet (ハブ) に、ドメイン コントローラーを配置します。</span><span class="sxs-lookup"><span data-stu-id="a155f-160">Place your domain controllers in a central VNet (hub) that dependent workloads can access.</span></span>
-
-### <a name="security"></a><span data-ttu-id="a155f-161">セキュリティ</span><span class="sxs-lookup"><span data-stu-id="a155f-161">Security</span></span>
-
-<span data-ttu-id="a155f-162">オンプレミスの環境から Azure にワークロードを移動すると、これらのワークロードの一部を VM でホストする必要があります。</span><span class="sxs-lookup"><span data-stu-id="a155f-162">As you move workloads from your on-premises environment to Azure, some of these workloads will require to be hosted in VMs.</span></span> <span data-ttu-id="a155f-163">コンプライアンス上の理由から、これらのワークロードを通過するトラフィックを制限することが必要になる場合があります。</span><span class="sxs-lookup"><span data-stu-id="a155f-163">For compliance reasons, you may need to enforce restrictions on traffic traversing those workloads.</span></span> 
-
-<span data-ttu-id="a155f-164">Azure では、ネットワーク仮想アプライアンス (NVA) を使用して、さまざまな種類のセキュリティおよびパフォーマンス サービスをホストできます。</span><span class="sxs-lookup"><span data-stu-id="a155f-164">You can use network virtual appliances (NVAs) in Azure to host different types of security and performance services.</span></span> <span data-ttu-id="a155f-165">現在、オンプレミスで特定のアプライアンスのセットを使い慣れている場合は、可能であれば、Azure で同じ仮想アプライアンスを使用することをお勧めします。</span><span class="sxs-lookup"><span data-stu-id="a155f-165">If you are familiar with a given set of appliances on-premises today, it is recommended to use the same virtualized appliances in Azure, where applicable.</span></span>
+* <span data-ttu-id="c4a34-145">**VNet ピアリング**。</span><span class="sxs-lookup"><span data-stu-id="c4a34-145">**VNet peering**.</span></span> <span data-ttu-id="c4a34-146">[ピアリング接続][vnet-peering]を使用して、同じ Azure リージョン内の 2 つの VNet を接続できます。</span><span class="sxs-lookup"><span data-stu-id="c4a34-146">Two VNets in the same Azure region can be connected using a [peering connection][vnet-peering].</span></span> <span data-ttu-id="c4a34-147">ピアリング接続は、VNet 間の待機時間の短い非推移的な接続です。</span><span class="sxs-lookup"><span data-stu-id="c4a34-147">Peering connections are non-transitive, low latency connections between VNets.</span></span> <span data-ttu-id="c4a34-148">ピアリングが完了すると、VNet は、ルーターがなくても Azure のバックボーンを使用してトラフィックを交換します。</span><span class="sxs-lookup"><span data-stu-id="c4a34-148">Once peered, the VNets exchange traffic by using the Azure backbone, without the need for a router.</span></span> <span data-ttu-id="c4a34-149">ハブスポーク ネットワーク トポロジでは、VNet ピアリングを使用して、ハブを各スポークに接続します。</span><span class="sxs-lookup"><span data-stu-id="c4a34-149">In a hub-spoke network topology, you use VNet peering to connect the hub to each spoke.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="a155f-166">この参照アーキテクチャのデプロイ スクリプトでは、IP 転送が有効な Ubuntu VM を使用してネットワーク仮想アプライアンスを模倣します。</span><span class="sxs-lookup"><span data-stu-id="a155f-166">The deployment scripts for this reference architecture use an Ubuntu VM with IP forwarding enabled to mimic a network virtual appliance.</span></span>
+> <span data-ttu-id="c4a34-150">この記事で説明するのは [Resource Manager](/azure/azure-resource-manager/resource-group-overview) のデプロイのみですが、クラシック VNet を同じサブスクリプションの Resource Manager VNet に接続することもできます。</span><span class="sxs-lookup"><span data-stu-id="c4a34-150">This article only covers [Resource Manager](/azure/azure-resource-manager/resource-group-overview) deployments, but you can also connect a classic VNet to a Resource Manager VNet in the same subscription.</span></span> <span data-ttu-id="c4a34-151">これにより、クラシック デプロイ をスポークでホストして、ハブで共有するサービスのメリットを引き続き得ることができます。</span><span class="sxs-lookup"><span data-stu-id="c4a34-151">That way, your spokes can host classic deployments and still benefit from services shared in the hub.</span></span>
 
-## <a name="considerations"></a><span data-ttu-id="a155f-167">考慮事項</span><span class="sxs-lookup"><span data-stu-id="a155f-167">Considerations</span></span>
+## <a name="recommendations"></a><span data-ttu-id="c4a34-152">Recommendations</span><span class="sxs-lookup"><span data-stu-id="c4a34-152">Recommendations</span></span>
 
-### <a name="overcoming-vnet-peering-limits"></a><span data-ttu-id="a155f-168">VNet ピアリングの制限の解消</span><span class="sxs-lookup"><span data-stu-id="a155f-168">Overcoming VNet peering limits</span></span>
+<span data-ttu-id="c4a34-153">[ハブスポーク][guidance-hub-spoke]参照アーキテクチャのすべての推奨事項が、共有サービスの参照アーキテクチャにも適用されます。</span><span class="sxs-lookup"><span data-stu-id="c4a34-153">All the recommendations for the [hub-spoke][guidance-hub-spoke] reference architecture also apply to the shared services reference architecture.</span></span> 
 
-<span data-ttu-id="a155f-169">Azure の [VNet ごとの VNet ピアリング数の制限][vnet-peering-limit]を考慮してください。</span><span class="sxs-lookup"><span data-stu-id="a155f-169">Make sure you consider the [limitation on number of VNets peerings per VNet][vnet-peering-limit] in Azure.</span></span> <span data-ttu-id="a155f-170">制限を超える数のスポークを許可する場合は、ハブスポークハブスポーク トポロジの作成を検討してください。このトポロジでは、第 1 レベルのスポークもハブとして機能します。</span><span class="sxs-lookup"><span data-stu-id="a155f-170">If you decide you need more spokes than the limit will allow, consider creating a hub-spoke-hub-spoke topology, where the first level of spokes also act as hubs.</span></span> <span data-ttu-id="a155f-171">この手法を次の図に示します。</span><span class="sxs-lookup"><span data-stu-id="a155f-171">The following diagram shows this approach.</span></span>
+<span data-ttu-id="c4a34-154">また、共有サービスのほとんどのシナリオには、次の推奨事項が適用されます。</span><span class="sxs-lookup"><span data-stu-id="c4a34-154">Also, the following recommendations apply for most scenarios under shared services.</span></span> <span data-ttu-id="c4a34-155">これらの推奨事項には、オーバーライドする特定の要件がない限り、従ってください。</span><span class="sxs-lookup"><span data-stu-id="c4a34-155">Follow these recommendations unless you have a specific requirement that overrides them.</span></span>
 
-<span data-ttu-id="a155f-172">![[3]][3]</span><span class="sxs-lookup"><span data-stu-id="a155f-172">![[3]][3]</span></span>
+### <a name="identity"></a><span data-ttu-id="c4a34-156">ID</span><span class="sxs-lookup"><span data-stu-id="c4a34-156">Identity</span></span>
 
-<span data-ttu-id="a155f-173">また、多数のスポークに合わせてハブを拡張するために、ハブで共有するサービスも検討してください。</span><span class="sxs-lookup"><span data-stu-id="a155f-173">Also consider what services are shared in the hub, to ensure the hub scales for a larger number of spokes.</span></span> <span data-ttu-id="a155f-174">たとえば、ハブがファイアウォール サービスを提供する場合は、複数のスポークを追加するときにファイアウォール ソリューションの帯域幅の制限を検討します。</span><span class="sxs-lookup"><span data-stu-id="a155f-174">For instance, if your hub provides firewall services, consider the bandwidth limits of your firewall solution when adding multiple spokes.</span></span> <span data-ttu-id="a155f-175">このような一部の共有サービスを第 2 レベルのハブに移動することをお勧めします。</span><span class="sxs-lookup"><span data-stu-id="a155f-175">You might want to move some of these shared services to a second level of hubs.</span></span>
+<span data-ttu-id="c4a34-157">ほとんどの企業組織のオンプレミス データセンターには Active Directory ディレクトリ サービス (ADDS) 環境があります。</span><span class="sxs-lookup"><span data-stu-id="c4a34-157">Most enterprise organizations have an Active Directory Directory Services (ADDS) environment in their on-premises datacenter.</span></span> <span data-ttu-id="c4a34-158">ADDS に依存しているオンプレミスのネットワークから Azure に移動される資産の管理を容易にするには、Azure で ADDS ドメイン コントローラーをホストすることをお勧めします。</span><span class="sxs-lookup"><span data-stu-id="c4a34-158">To facilitate management of assets moved to Azure from your on-premises network that depend on ADDS, it is recommended to host ADDS domain controllers in Azure.</span></span>
 
-## <a name="deploy-the-solution"></a><span data-ttu-id="a155f-176">ソリューションのデプロイ方法</span><span class="sxs-lookup"><span data-stu-id="a155f-176">Deploy the solution</span></span>
+<span data-ttu-id="c4a34-159">Azure とオンプレミスの環境を別々に管理するグループ ポリシー オブジェクトを使用する場合は、Azure リージョンごとに別の AD サイトを使用します。</span><span class="sxs-lookup"><span data-stu-id="c4a34-159">If you make use of Group Policy Objects, that you want to control separately for Azure and your on-premises environment, use a different AD site for each Azure region.</span></span> <span data-ttu-id="c4a34-160">依存するワークロードがアクセスできる中心の VNet (ハブ) に、ドメイン コントローラーを配置します。</span><span class="sxs-lookup"><span data-stu-id="c4a34-160">Place your domain controllers in a central VNet (hub) that dependent workloads can access.</span></span>
 
-<span data-ttu-id="a155f-177">このアーキテクチャのデプロイについては、[GitHub][ref-arch-repo] を参照してください。</span><span class="sxs-lookup"><span data-stu-id="a155f-177">A deployment for this architecture is available on [GitHub][ref-arch-repo].</span></span> <span data-ttu-id="a155f-178">デプロイによってサブスクリプション内に作成されるリソース グループは、次のとおりです。</span><span class="sxs-lookup"><span data-stu-id="a155f-178">The deployment creates the following resource groups in your subscription:</span></span>
+### <a name="security"></a><span data-ttu-id="c4a34-161">セキュリティ</span><span class="sxs-lookup"><span data-stu-id="c4a34-161">Security</span></span>
 
-- <span data-ttu-id="a155f-179">hub-adds-rg</span><span class="sxs-lookup"><span data-stu-id="a155f-179">hub-adds-rg</span></span>
-- <span data-ttu-id="a155f-180">hub-nva-rg</span><span class="sxs-lookup"><span data-stu-id="a155f-180">hub-nva-rg</span></span>
-- <span data-ttu-id="a155f-181">hub-vnet-rg</span><span class="sxs-lookup"><span data-stu-id="a155f-181">hub-vnet-rg</span></span>
-- <span data-ttu-id="a155f-182">onprem-vnet-rg</span><span class="sxs-lookup"><span data-stu-id="a155f-182">onprem-vnet-rg</span></span>
-- <span data-ttu-id="a155f-183">spoke1-vnet-rg</span><span class="sxs-lookup"><span data-stu-id="a155f-183">spoke1-vnet-rg</span></span>
-- <span data-ttu-id="a155f-184">spoke2-vent-rg</span><span class="sxs-lookup"><span data-stu-id="a155f-184">spoke2-vent-rg</span></span>
+<span data-ttu-id="c4a34-162">オンプレミスの環境から Azure にワークロードを移動すると、これらのワークロードの一部を VM でホストする必要があります。</span><span class="sxs-lookup"><span data-stu-id="c4a34-162">As you move workloads from your on-premises environment to Azure, some of these workloads will require to be hosted in VMs.</span></span> <span data-ttu-id="c4a34-163">コンプライアンス上の理由から、これらのワークロードを通過するトラフィックを制限することが必要になる場合があります。</span><span class="sxs-lookup"><span data-stu-id="c4a34-163">For compliance reasons, you may need to enforce restrictions on traffic traversing those workloads.</span></span> 
 
-<span data-ttu-id="a155f-185">テンプレート パラメーター ファイルは、これらの名前を参照します。したがって、名前を変更する場合は、それに合わせてパラメーター ファイルも更新します。</span><span class="sxs-lookup"><span data-stu-id="a155f-185">The template parameter files refer to these names, so if you change them, update the parameter files to match.</span></span>
+<span data-ttu-id="c4a34-164">Azure では、ネットワーク仮想アプライアンス (NVA) を使用して、さまざまな種類のセキュリティおよびパフォーマンス サービスをホストできます。</span><span class="sxs-lookup"><span data-stu-id="c4a34-164">You can use network virtual appliances (NVAs) in Azure to host different types of security and performance services.</span></span> <span data-ttu-id="c4a34-165">現在、オンプレミスで特定のアプライアンスのセットを使い慣れている場合は、可能であれば、Azure で同じ仮想アプライアンスを使用することをお勧めします。</span><span class="sxs-lookup"><span data-stu-id="c4a34-165">If you are familiar with a given set of appliances on-premises today, it is recommended to use the same virtualized appliances in Azure, where applicable.</span></span>
 
-### <a name="prerequisites"></a><span data-ttu-id="a155f-186">前提条件</span><span class="sxs-lookup"><span data-stu-id="a155f-186">Prerequisites</span></span>
+> [!NOTE]
+> <span data-ttu-id="c4a34-166">この参照アーキテクチャのデプロイ スクリプトでは、IP 転送が有効な Ubuntu VM を使用してネットワーク仮想アプライアンスを模倣します。</span><span class="sxs-lookup"><span data-stu-id="c4a34-166">The deployment scripts for this reference architecture use an Ubuntu VM with IP forwarding enabled to mimic a network virtual appliance.</span></span>
+
+## <a name="considerations"></a><span data-ttu-id="c4a34-167">考慮事項</span><span class="sxs-lookup"><span data-stu-id="c4a34-167">Considerations</span></span>
+
+### <a name="overcoming-vnet-peering-limits"></a><span data-ttu-id="c4a34-168">VNet ピアリングの制限の解消</span><span class="sxs-lookup"><span data-stu-id="c4a34-168">Overcoming VNet peering limits</span></span>
+
+<span data-ttu-id="c4a34-169">Azure の [VNet ごとの VNet ピアリング数の制限][vnet-peering-limit]を考慮してください。</span><span class="sxs-lookup"><span data-stu-id="c4a34-169">Make sure you consider the [limitation on number of VNets peerings per VNet][vnet-peering-limit] in Azure.</span></span> <span data-ttu-id="c4a34-170">制限を超える数のスポークを許可する場合は、ハブスポークハブスポーク トポロジの作成を検討してください。このトポロジでは、第 1 レベルのスポークもハブとして機能します。</span><span class="sxs-lookup"><span data-stu-id="c4a34-170">If you decide you need more spokes than the limit will allow, consider creating a hub-spoke-hub-spoke topology, where the first level of spokes also act as hubs.</span></span> <span data-ttu-id="c4a34-171">この手法を次の図に示します。</span><span class="sxs-lookup"><span data-stu-id="c4a34-171">The following diagram shows this approach.</span></span>
+
+<span data-ttu-id="c4a34-172">![[3]][3]</span><span class="sxs-lookup"><span data-stu-id="c4a34-172">![[3]][3]</span></span>
+
+<span data-ttu-id="c4a34-173">また、多数のスポークに合わせてハブを拡張するために、ハブで共有するサービスも検討してください。</span><span class="sxs-lookup"><span data-stu-id="c4a34-173">Also consider what services are shared in the hub, to ensure the hub scales for a larger number of spokes.</span></span> <span data-ttu-id="c4a34-174">たとえば、ハブがファイアウォール サービスを提供する場合は、複数のスポークを追加するときにファイアウォール ソリューションの帯域幅の制限を検討します。</span><span class="sxs-lookup"><span data-stu-id="c4a34-174">For instance, if your hub provides firewall services, consider the bandwidth limits of your firewall solution when adding multiple spokes.</span></span> <span data-ttu-id="c4a34-175">このような一部の共有サービスを第 2 レベルのハブに移動することをお勧めします。</span><span class="sxs-lookup"><span data-stu-id="c4a34-175">You might want to move some of these shared services to a second level of hubs.</span></span>
+
+## <a name="deploy-the-solution"></a><span data-ttu-id="c4a34-176">ソリューションのデプロイ方法</span><span class="sxs-lookup"><span data-stu-id="c4a34-176">Deploy the solution</span></span>
+
+<span data-ttu-id="c4a34-177">このアーキテクチャのデプロイについては、[GitHub][ref-arch-repo] を参照してください。</span><span class="sxs-lookup"><span data-stu-id="c4a34-177">A deployment for this architecture is available on [GitHub][ref-arch-repo].</span></span> <span data-ttu-id="c4a34-178">デプロイによってサブスクリプション内に作成されるリソース グループは、次のとおりです。</span><span class="sxs-lookup"><span data-stu-id="c4a34-178">The deployment creates the following resource groups in your subscription:</span></span>
+
+- <span data-ttu-id="c4a34-179">hub-adds-rg</span><span class="sxs-lookup"><span data-stu-id="c4a34-179">hub-adds-rg</span></span>
+- <span data-ttu-id="c4a34-180">hub-nva-rg</span><span class="sxs-lookup"><span data-stu-id="c4a34-180">hub-nva-rg</span></span>
+- <span data-ttu-id="c4a34-181">hub-vnet-rg</span><span class="sxs-lookup"><span data-stu-id="c4a34-181">hub-vnet-rg</span></span>
+- <span data-ttu-id="c4a34-182">onprem-vnet-rg</span><span class="sxs-lookup"><span data-stu-id="c4a34-182">onprem-vnet-rg</span></span>
+- <span data-ttu-id="c4a34-183">spoke1-vnet-rg</span><span class="sxs-lookup"><span data-stu-id="c4a34-183">spoke1-vnet-rg</span></span>
+- <span data-ttu-id="c4a34-184">spoke2-vent-rg</span><span class="sxs-lookup"><span data-stu-id="c4a34-184">spoke2-vent-rg</span></span>
+
+<span data-ttu-id="c4a34-185">テンプレート パラメーター ファイルは、これらの名前を参照します。したがって、名前を変更する場合は、それに合わせてパラメーター ファイルも更新します。</span><span class="sxs-lookup"><span data-stu-id="c4a34-185">The template parameter files refer to these names, so if you change them, update the parameter files to match.</span></span>
+
+### <a name="prerequisites"></a><span data-ttu-id="c4a34-186">前提条件</span><span class="sxs-lookup"><span data-stu-id="c4a34-186">Prerequisites</span></span>
 
 [!INCLUDE [ref-arch-prerequisites.md](../../../includes/ref-arch-prerequisites.md)]
 
-### <a name="deploy-the-simulated-on-premises-datacenter-using-azbb"></a><span data-ttu-id="a155f-187">シミュレートされたオンプレミスのデータセンターを azbb を使用してデプロイする</span><span class="sxs-lookup"><span data-stu-id="a155f-187">Deploy the simulated on-premises datacenter using azbb</span></span>
+### <a name="deploy-the-simulated-on-premises-datacenter-using-azbb"></a><span data-ttu-id="c4a34-187">シミュレートされたオンプレミスのデータセンターを azbb を使用してデプロイする</span><span class="sxs-lookup"><span data-stu-id="c4a34-187">Deploy the simulated on-premises datacenter using azbb</span></span>
 
-<span data-ttu-id="a155f-188">この手順では、シミュレートされたオンプレミスのデータセンターを Azure VNet としてデプロイします。</span><span class="sxs-lookup"><span data-stu-id="a155f-188">This step deploys the simulated on-premises datacenter as an Azure VNet.</span></span>
+<span data-ttu-id="c4a34-188">この手順では、シミュレートされたオンプレミスのデータセンターを Azure VNet としてデプロイします。</span><span class="sxs-lookup"><span data-stu-id="c4a34-188">This step deploys the simulated on-premises datacenter as an Azure VNet.</span></span>
 
-1. <span data-ttu-id="a155f-189">GitHub リポジトリの `hybrid-networking\shared-services-stack\` フォルダーに移動します。</span><span class="sxs-lookup"><span data-stu-id="a155f-189">Navigate to the `hybrid-networking\shared-services-stack\` folder of the GitHub repository.</span></span>
+1. <span data-ttu-id="c4a34-189">GitHub リポジトリの `hybrid-networking\shared-services-stack\` フォルダーに移動します。</span><span class="sxs-lookup"><span data-stu-id="c4a34-189">Navigate to the `hybrid-networking\shared-services-stack\` folder of the GitHub repository.</span></span>
 
-2. <span data-ttu-id="a155f-190">`onprem.json` ファイルを開きます。</span><span class="sxs-lookup"><span data-stu-id="a155f-190">Open the `onprem.json` file.</span></span> 
+2. <span data-ttu-id="c4a34-190">`onprem.json` ファイルを開きます。</span><span class="sxs-lookup"><span data-stu-id="c4a34-190">Open the `onprem.json` file.</span></span> 
 
-3. <span data-ttu-id="a155f-191">`Password` および `adminPassword` のすべてのインスタンスを検索します。</span><span class="sxs-lookup"><span data-stu-id="a155f-191">Search for all instances of `Password` and `adminPassword`.</span></span> <span data-ttu-id="a155f-192">パラメーターにユーザー名とパスワードの値を入力し、ファイルを保存します。</span><span class="sxs-lookup"><span data-stu-id="a155f-192">Enter values for the user name and password in the parameters and save the file.</span></span> 
+3. <span data-ttu-id="c4a34-191">`Password` および `adminPassword` のすべてのインスタンスを検索します。</span><span class="sxs-lookup"><span data-stu-id="c4a34-191">Search for all instances of `Password` and `adminPassword`.</span></span> <span data-ttu-id="c4a34-192">パラメーターにユーザー名とパスワードの値を入力し、ファイルを保存します。</span><span class="sxs-lookup"><span data-stu-id="c4a34-192">Enter values for the user name and password in the parameters and save the file.</span></span> 
 
-4. <span data-ttu-id="a155f-193">次のコマンドを実行します。</span><span class="sxs-lookup"><span data-stu-id="a155f-193">Run the following command:</span></span>
+4. <span data-ttu-id="c4a34-193">次のコマンドを実行します。</span><span class="sxs-lookup"><span data-stu-id="c4a34-193">Run the following command:</span></span>
 
    ```bash
    azbb -s <subscription_id> -g onprem-vnet-rg -l <location> -p onprem.json --deploy
    ```
-5. <span data-ttu-id="a155f-194">デプロイが完了するのを待機します。</span><span class="sxs-lookup"><span data-stu-id="a155f-194">Wait for the deployment to finish.</span></span> <span data-ttu-id="a155f-195">このデプロイでは、仮想ネットワーク、Windows を実行する仮想マシン、および VPN ゲートウェイを作成します。</span><span class="sxs-lookup"><span data-stu-id="a155f-195">This deployment creates a virtual network, a virtual machine running Windows, and a VPN gateway.</span></span> <span data-ttu-id="a155f-196">VPN ゲートウェイの作成の完了には 40 分以上かかる場合があります。</span><span class="sxs-lookup"><span data-stu-id="a155f-196">The VPN gateway creation can take more than 40 minutes to complete.</span></span>
+5. <span data-ttu-id="c4a34-194">デプロイが完了するのを待機します。</span><span class="sxs-lookup"><span data-stu-id="c4a34-194">Wait for the deployment to finish.</span></span> <span data-ttu-id="c4a34-195">このデプロイでは、仮想ネットワーク、Windows を実行する仮想マシン、および VPN ゲートウェイを作成します。</span><span class="sxs-lookup"><span data-stu-id="c4a34-195">This deployment creates a virtual network, a virtual machine running Windows, and a VPN gateway.</span></span> <span data-ttu-id="c4a34-196">VPN ゲートウェイの作成の完了には 40 分以上かかる場合があります。</span><span class="sxs-lookup"><span data-stu-id="c4a34-196">The VPN gateway creation can take more than 40 minutes to complete.</span></span>
 
-### <a name="deploy-the-hub-vnet"></a><span data-ttu-id="a155f-197">ハブ VNet をデプロイする</span><span class="sxs-lookup"><span data-stu-id="a155f-197">Deploy the hub VNet</span></span>
+### <a name="deploy-the-hub-vnet"></a><span data-ttu-id="c4a34-197">ハブ VNet をデプロイする</span><span class="sxs-lookup"><span data-stu-id="c4a34-197">Deploy the hub VNet</span></span>
 
-<span data-ttu-id="a155f-198">この手順では、ハブ VNet をデプロイして、シミュレートされたオンプレミス VNet に接続します。</span><span class="sxs-lookup"><span data-stu-id="a155f-198">This step deploys the hub VNet and connects it to the simulated on-premises VNet.</span></span>
+<span data-ttu-id="c4a34-198">この手順では、ハブ VNet をデプロイして、シミュレートされたオンプレミス VNet に接続します。</span><span class="sxs-lookup"><span data-stu-id="c4a34-198">This step deploys the hub VNet and connects it to the simulated on-premises VNet.</span></span>
 
-1. <span data-ttu-id="a155f-199">`hub-vnet.json` ファイルを開きます。</span><span class="sxs-lookup"><span data-stu-id="a155f-199">Open the `hub-vnet.json` file.</span></span> 
+1. <span data-ttu-id="c4a34-199">`hub-vnet.json` ファイルを開きます。</span><span class="sxs-lookup"><span data-stu-id="c4a34-199">Open the `hub-vnet.json` file.</span></span> 
 
-2. <span data-ttu-id="a155f-200">`adminPassword` を検索し、パラメーターにユーザー名とパスワードを入力します。</span><span class="sxs-lookup"><span data-stu-id="a155f-200">Search for `adminPassword` and enter a user name and password in the parameters.</span></span> 
+2. <span data-ttu-id="c4a34-200">`adminPassword` を検索し、パラメーターにユーザー名とパスワードを入力します。</span><span class="sxs-lookup"><span data-stu-id="c4a34-200">Search for `adminPassword` and enter a user name and password in the parameters.</span></span> 
 
-3. <span data-ttu-id="a155f-201">`sharedKey` のすべてのインスタンスを検索し、共有キーの値を入力します。</span><span class="sxs-lookup"><span data-stu-id="a155f-201">Search for all instances of `sharedKey` and enter a value for a shared key.</span></span> <span data-ttu-id="a155f-202">ファイルを保存します。</span><span class="sxs-lookup"><span data-stu-id="a155f-202">Save the file.</span></span>
+3. <span data-ttu-id="c4a34-201">`sharedKey` のすべてのインスタンスを検索し、共有キーの値を入力します。</span><span class="sxs-lookup"><span data-stu-id="c4a34-201">Search for all instances of `sharedKey` and enter a value for a shared key.</span></span> <span data-ttu-id="c4a34-202">ファイルを保存します。</span><span class="sxs-lookup"><span data-stu-id="c4a34-202">Save the file.</span></span>
 
    ```bash
    "sharedKey": "abc123",
    ```
 
-4. <span data-ttu-id="a155f-203">次のコマンドを実行します。</span><span class="sxs-lookup"><span data-stu-id="a155f-203">Run the following command:</span></span>
+4. <span data-ttu-id="c4a34-203">次のコマンドを実行します。</span><span class="sxs-lookup"><span data-stu-id="c4a34-203">Run the following command:</span></span>
 
    ```bash
    azbb -s <subscription_id> -g hub-vnet-rg -l <location> -p hub-vnet.json --deploy
    ```
 
-5. <span data-ttu-id="a155f-204">デプロイが完了するのを待機します。</span><span class="sxs-lookup"><span data-stu-id="a155f-204">Wait for the deployment to finish.</span></span> <span data-ttu-id="a155f-205">このデプロイでは、仮想ネットワーク、仮想マシン、VPN ゲートウェイ、および前のセクションで作成したゲートウェイへの接続を作成します。</span><span class="sxs-lookup"><span data-stu-id="a155f-205">This deployment creates a virtual network, a virtual machine, a VPN gateway, and a connection to the gateway created in the previous section.</span></span> <span data-ttu-id="a155f-206">VPN ゲートウェイの完了には 40 分以上かかる場合があります。</span><span class="sxs-lookup"><span data-stu-id="a155f-206">The VPN gateway can take more than 40 minutes to complete.</span></span>
+5. <span data-ttu-id="c4a34-204">デプロイが完了するのを待機します。</span><span class="sxs-lookup"><span data-stu-id="c4a34-204">Wait for the deployment to finish.</span></span> <span data-ttu-id="c4a34-205">このデプロイでは、仮想ネットワーク、仮想マシン、VPN ゲートウェイ、および前のセクションで作成したゲートウェイへの接続を作成します。</span><span class="sxs-lookup"><span data-stu-id="c4a34-205">This deployment creates a virtual network, a virtual machine, a VPN gateway, and a connection to the gateway created in the previous section.</span></span> <span data-ttu-id="c4a34-206">VPN ゲートウェイの完了には 40 分以上かかる場合があります。</span><span class="sxs-lookup"><span data-stu-id="c4a34-206">The VPN gateway can take more than 40 minutes to complete.</span></span>
 
-### <a name="deploy-ad-ds-in-azure"></a><span data-ttu-id="a155f-207">Azure に AD DS をデプロイする</span><span class="sxs-lookup"><span data-stu-id="a155f-207">Deploy AD DS in Azure</span></span>
+### <a name="deploy-ad-ds-in-azure"></a><span data-ttu-id="c4a34-207">Azure に AD DS をデプロイする</span><span class="sxs-lookup"><span data-stu-id="c4a34-207">Deploy AD DS in Azure</span></span>
 
-<span data-ttu-id="a155f-208">この手順では、Azure に AD DS ドメイン コントローラーをデプロイします。</span><span class="sxs-lookup"><span data-stu-id="a155f-208">This step deploys AD DS domain controllers in Azure.</span></span>
+<span data-ttu-id="c4a34-208">この手順では、Azure に AD DS ドメイン コントローラーをデプロイします。</span><span class="sxs-lookup"><span data-stu-id="c4a34-208">This step deploys AD DS domain controllers in Azure.</span></span>
 
-1. <span data-ttu-id="a155f-209">`hub-adds.json` ファイルを開きます。</span><span class="sxs-lookup"><span data-stu-id="a155f-209">Open the `hub-adds.json` file.</span></span>
+1. <span data-ttu-id="c4a34-209">`hub-adds.json` ファイルを開きます。</span><span class="sxs-lookup"><span data-stu-id="c4a34-209">Open the `hub-adds.json` file.</span></span>
 
-2. <span data-ttu-id="a155f-210">`Password` および `adminPassword` のすべてのインスタンスを検索します。</span><span class="sxs-lookup"><span data-stu-id="a155f-210">Search for all instances of `Password` and `adminPassword`.</span></span> <span data-ttu-id="a155f-211">パラメーターにユーザー名とパスワードの値を入力し、ファイルを保存します。</span><span class="sxs-lookup"><span data-stu-id="a155f-211">Enter values for the user name and password in the parameters and save the file.</span></span> 
+2. <span data-ttu-id="c4a34-210">`Password` および `adminPassword` のすべてのインスタンスを検索します。</span><span class="sxs-lookup"><span data-stu-id="c4a34-210">Search for all instances of `Password` and `adminPassword`.</span></span> <span data-ttu-id="c4a34-211">パラメーターにユーザー名とパスワードの値を入力し、ファイルを保存します。</span><span class="sxs-lookup"><span data-stu-id="c4a34-211">Enter values for the user name and password in the parameters and save the file.</span></span> 
 
-3. <span data-ttu-id="a155f-212">次のコマンドを実行します。</span><span class="sxs-lookup"><span data-stu-id="a155f-212">Run the following command:</span></span>
+3. <span data-ttu-id="c4a34-212">次のコマンドを実行します。</span><span class="sxs-lookup"><span data-stu-id="c4a34-212">Run the following command:</span></span>
 
    ```bash
    azbb -s <subscription_id> -g hub-adds-rg -l <location> -p hub-adds.json --deploy
    ```
   
-<span data-ttu-id="a155f-213">シミュレートされたオンプレミスのデータセンターでホストされているドメインに 2 つの VM を参加させて、その VM に AD DS をインストールするため、このデプロイ手順は数分かかる可能性があります。</span><span class="sxs-lookup"><span data-stu-id="a155f-213">This deployment step may take several minutes, because it joins the two VMs to the domain hosted in the simulated on-premises datacenter, and installs AD DS on them.</span></span>
+<span data-ttu-id="c4a34-213">シミュレートされたオンプレミスのデータセンターでホストされているドメインに 2 つの VM を参加させて、その VM に AD DS をインストールするため、このデプロイ手順は数分かかる可能性があります。</span><span class="sxs-lookup"><span data-stu-id="c4a34-213">This deployment step may take several minutes, because it joins the two VMs to the domain hosted in the simulated on-premises datacenter, and installs AD DS on them.</span></span>
 
-### <a name="deploy-the-spoke-vnets"></a><span data-ttu-id="a155f-214">スポーク VNet をデプロイする</span><span class="sxs-lookup"><span data-stu-id="a155f-214">Deploy the spoke VNets</span></span>
+### <a name="deploy-the-spoke-vnets"></a><span data-ttu-id="c4a34-214">スポーク VNet をデプロイする</span><span class="sxs-lookup"><span data-stu-id="c4a34-214">Deploy the spoke VNets</span></span>
 
-<span data-ttu-id="a155f-215">この手順では、スポーク VNet をデプロイします。</span><span class="sxs-lookup"><span data-stu-id="a155f-215">This step deploys the spoke VNets.</span></span>
+<span data-ttu-id="c4a34-215">この手順では、スポーク VNet をデプロイします。</span><span class="sxs-lookup"><span data-stu-id="c4a34-215">This step deploys the spoke VNets.</span></span>
 
-1. <span data-ttu-id="a155f-216">`spoke1.json` ファイルを開きます。</span><span class="sxs-lookup"><span data-stu-id="a155f-216">Open the `spoke1.json` file.</span></span>
+1. <span data-ttu-id="c4a34-216">`spoke1.json` ファイルを開きます。</span><span class="sxs-lookup"><span data-stu-id="c4a34-216">Open the `spoke1.json` file.</span></span>
 
-2. <span data-ttu-id="a155f-217">`adminPassword` を検索し、パラメーターにユーザー名とパスワードを入力します。</span><span class="sxs-lookup"><span data-stu-id="a155f-217">Search for `adminPassword` and enter a user name and password in the parameters.</span></span> 
+2. <span data-ttu-id="c4a34-217">`adminPassword` を検索し、パラメーターにユーザー名とパスワードを入力します。</span><span class="sxs-lookup"><span data-stu-id="c4a34-217">Search for `adminPassword` and enter a user name and password in the parameters.</span></span> 
 
-3. <span data-ttu-id="a155f-218">次のコマンドを実行します。</span><span class="sxs-lookup"><span data-stu-id="a155f-218">Run the following command:</span></span>
+3. <span data-ttu-id="c4a34-218">次のコマンドを実行します。</span><span class="sxs-lookup"><span data-stu-id="c4a34-218">Run the following command:</span></span>
 
    ```bash
    azbb -s <subscription_id> -g spoke1-vnet-rg -l <location> -p spoke1.json --deploy
    ```
   
-4. <span data-ttu-id="a155f-219">`spoke2.json` ファイルに対して手順 1. から 2. を繰り返します。</span><span class="sxs-lookup"><span data-stu-id="a155f-219">Repeat steps 1 and 2 for the file `spoke2.json`.</span></span>
+4. <span data-ttu-id="c4a34-219">`spoke2.json` ファイルに対して手順 1. から 2. を繰り返します。</span><span class="sxs-lookup"><span data-stu-id="c4a34-219">Repeat steps 1 and 2 for the file `spoke2.json`.</span></span>
 
-5. <span data-ttu-id="a155f-220">次のコマンドを実行します。</span><span class="sxs-lookup"><span data-stu-id="a155f-220">Run the following command:</span></span>
+5. <span data-ttu-id="c4a34-220">次のコマンドを実行します。</span><span class="sxs-lookup"><span data-stu-id="c4a34-220">Run the following command:</span></span>
 
    ```bash
    azbb -s <subscription_id> -g spoke2-vnet-rg -l <location> -p spoke2.json --deploy
    ```
 
-### <a name="peer-the-hub-vnet-to-the-spoke-vnets"></a><span data-ttu-id="a155f-221">ハブ VNet をスポーク VNet にピアリングする</span><span class="sxs-lookup"><span data-stu-id="a155f-221">Peer the hub VNet to the spoke VNets</span></span>
+### <a name="peer-the-hub-vnet-to-the-spoke-vnets"></a><span data-ttu-id="c4a34-221">ハブ VNet をスポーク VNet にピアリングする</span><span class="sxs-lookup"><span data-stu-id="c4a34-221">Peer the hub VNet to the spoke VNets</span></span>
 
-<span data-ttu-id="a155f-222">ハブ VNet からスポーク VNet へのピアリング接続を作成するには、次のコマンドを実行します。</span><span class="sxs-lookup"><span data-stu-id="a155f-222">To create a peering connection from the hub VNet to the spoke VNets, run the following command:</span></span>
+<span data-ttu-id="c4a34-222">ハブ VNet からスポーク VNet へのピアリング接続を作成するには、次のコマンドを実行します。</span><span class="sxs-lookup"><span data-stu-id="c4a34-222">To create a peering connection from the hub VNet to the spoke VNets, run the following command:</span></span>
 
 ```bash
 azbb -s <subscription_id> -g hub-vnet-rg -l <location> -p hub-vnet-peering.json --deploy
 ```
 
-### <a name="deploy-the-nva"></a><span data-ttu-id="a155f-223">NVA をデプロイする</span><span class="sxs-lookup"><span data-stu-id="a155f-223">Deploy the NVA</span></span>
+### <a name="deploy-the-nva"></a><span data-ttu-id="c4a34-223">NVA をデプロイする</span><span class="sxs-lookup"><span data-stu-id="c4a34-223">Deploy the NVA</span></span>
 
-<span data-ttu-id="a155f-224">この手順では、NVA を `dmz` サブネットにデプロイします。</span><span class="sxs-lookup"><span data-stu-id="a155f-224">This step deploys an NVA in the `dmz` subnet.</span></span>
+<span data-ttu-id="c4a34-224">この手順では、NVA を `dmz` サブネットにデプロイします。</span><span class="sxs-lookup"><span data-stu-id="c4a34-224">This step deploys an NVA in the `dmz` subnet.</span></span>
 
-1. <span data-ttu-id="a155f-225">`hub-nva.json` ファイルを開きます。</span><span class="sxs-lookup"><span data-stu-id="a155f-225">Open the `hub-nva.json` file.</span></span>
+1. <span data-ttu-id="c4a34-225">`hub-nva.json` ファイルを開きます。</span><span class="sxs-lookup"><span data-stu-id="c4a34-225">Open the `hub-nva.json` file.</span></span>
 
-2. <span data-ttu-id="a155f-226">`adminPassword` を検索し、パラメーターにユーザー名とパスワードを入力します。</span><span class="sxs-lookup"><span data-stu-id="a155f-226">Search for `adminPassword` and enter a user name and password in the parameters.</span></span> 
+2. <span data-ttu-id="c4a34-226">`adminPassword` を検索し、パラメーターにユーザー名とパスワードを入力します。</span><span class="sxs-lookup"><span data-stu-id="c4a34-226">Search for `adminPassword` and enter a user name and password in the parameters.</span></span> 
 
-3. <span data-ttu-id="a155f-227">次のコマンドを実行します。</span><span class="sxs-lookup"><span data-stu-id="a155f-227">Run the following command:</span></span>
+3. <span data-ttu-id="c4a34-227">次のコマンドを実行します。</span><span class="sxs-lookup"><span data-stu-id="c4a34-227">Run the following command:</span></span>
 
    ```bash
    azbb -s <subscription_id> -g hub-nva-rg -l <location> -p hub-nva.json --deploy
    ```
 
-### <a name="test-connectivity"></a><span data-ttu-id="a155f-228">接続をテストする</span><span class="sxs-lookup"><span data-stu-id="a155f-228">Test connectivity</span></span> 
+### <a name="test-connectivity"></a><span data-ttu-id="c4a34-228">接続をテストする</span><span class="sxs-lookup"><span data-stu-id="c4a34-228">Test connectivity</span></span> 
 
-<span data-ttu-id="a155f-229">シミュレートされたオンプレミスの環境からハブ VNet への接続をテストします。</span><span class="sxs-lookup"><span data-stu-id="a155f-229">Test conectivity from the simulated on-premises environment to the hub VNet.</span></span>
+<span data-ttu-id="c4a34-229">シミュレートされたオンプレミスの環境からハブ VNet への接続をテストします。</span><span class="sxs-lookup"><span data-stu-id="c4a34-229">Test conectivity from the simulated on-premises environment to the hub VNet.</span></span>
 
-1. <span data-ttu-id="a155f-230">Azure Portal を使用して、`onprem-jb-rg` リソース グループで `jb-vm1` という名前の VM を見つけます。</span><span class="sxs-lookup"><span data-stu-id="a155f-230">Use the Azure portal to find the VM named `jb-vm1` in the `onprem-jb-rg` resource group.</span></span>
+1. <span data-ttu-id="c4a34-230">Azure Portal を使用して、`onprem-jb-rg` リソース グループで `jb-vm1` という名前の VM を見つけます。</span><span class="sxs-lookup"><span data-stu-id="c4a34-230">Use the Azure portal to find the VM named `jb-vm1` in the `onprem-jb-rg` resource group.</span></span>
 
-2. <span data-ttu-id="a155f-231">`Connect` をクリックして、VM に対するリモート デスクトップ セッションを開きます。</span><span class="sxs-lookup"><span data-stu-id="a155f-231">Click `Connect` to open a remote desktop session to the VM.</span></span> <span data-ttu-id="a155f-232">`onprem.json` パラメーター ファイルで指定したパスワードを使用します。</span><span class="sxs-lookup"><span data-stu-id="a155f-232">Use the password that you specified in the `onprem.json` parameter file.</span></span>
+2. <span data-ttu-id="c4a34-231">`Connect` をクリックして、VM に対するリモート デスクトップ セッションを開きます。</span><span class="sxs-lookup"><span data-stu-id="c4a34-231">Click `Connect` to open a remote desktop session to the VM.</span></span> <span data-ttu-id="c4a34-232">`onprem.json` パラメーター ファイルで指定したパスワードを使用します。</span><span class="sxs-lookup"><span data-stu-id="c4a34-232">Use the password that you specified in the `onprem.json` parameter file.</span></span>
 
-3. <span data-ttu-id="a155f-233">VM で PowerShell コンソールを開き、`Test-NetConnection` コマンドレットを使用して、ハブ VNet の ジャンプボックス VM に接続できることを確認します。</span><span class="sxs-lookup"><span data-stu-id="a155f-233">Open a PowerShell console in the VM, and use the `Test-NetConnection` cmdlet to verify that you can connect to the jumpbox VM in the hub VNet.</span></span>
+3. <span data-ttu-id="c4a34-233">VM で PowerShell コンソールを開き、`Test-NetConnection` コマンドレットを使用して、ハブ VNet の ジャンプボックス VM に接続できることを確認します。</span><span class="sxs-lookup"><span data-stu-id="c4a34-233">Open a PowerShell console in the VM, and use the `Test-NetConnection` cmdlet to verify that you can connect to the jumpbox VM in the hub VNet.</span></span>
 
    ```powershell
    Test-NetConnection 10.0.0.68 -CommonTCPPort RDP
    ```
-<span data-ttu-id="a155f-234">出力は次のようになります。</span><span class="sxs-lookup"><span data-stu-id="a155f-234">The output should look similar to the following:</span></span>
+<span data-ttu-id="c4a34-234">出力は次のようになります。</span><span class="sxs-lookup"><span data-stu-id="c4a34-234">The output should look similar to the following:</span></span>
 
 ```powershell
 ComputerName     : 10.0.0.68
@@ -232,9 +232,9 @@ TcpTestSucceeded : True
 ```
 
 > [!NOTE]
-> <span data-ttu-id="a155f-235">既定で、Windows Server VM では Azure の ICMP 応答が許可されていません。</span><span class="sxs-lookup"><span data-stu-id="a155f-235">By default, Windows Server VMs do not allow ICMP responses in Azure.</span></span> <span data-ttu-id="a155f-236">接続のテストに `ping` を使用する場合は、VM ごとに Windows の高度なファイアウォールで ICMP トラフィックを有効にする必要があります。</span><span class="sxs-lookup"><span data-stu-id="a155f-236">If you want to use `ping` to test connectivity, you need to enable ICMP traffic in the Windows Advanced Firewall for each VM.</span></span>
+> <span data-ttu-id="c4a34-235">既定で、Windows Server VM では Azure の ICMP 応答が許可されていません。</span><span class="sxs-lookup"><span data-stu-id="c4a34-235">By default, Windows Server VMs do not allow ICMP responses in Azure.</span></span> <span data-ttu-id="c4a34-236">接続のテストに `ping` を使用する場合は、VM ごとに Windows の高度なファイアウォールで ICMP トラフィックを有効にする必要があります。</span><span class="sxs-lookup"><span data-stu-id="c4a34-236">If you want to use `ping` to test connectivity, you need to enable ICMP traffic in the Windows Advanced Firewall for each VM.</span></span>
 
-<span data-ttu-id="a155f-237">スポーク VNet への接続をテストするには、同じ手順を繰り返します。</span><span class="sxs-lookup"><span data-stu-id="a155f-237">Repeat the sames steps to test connectivity to the spoke VNets:</span></span>
+<span data-ttu-id="c4a34-237">スポーク VNet への接続をテストするには、同じ手順を繰り返します。</span><span class="sxs-lookup"><span data-stu-id="c4a34-237">Repeat the sames steps to test connectivity to the spoke VNets:</span></span>
 
 ```powershell
 Test-NetConnection 10.1.0.68 -CommonTCPPort RDP
