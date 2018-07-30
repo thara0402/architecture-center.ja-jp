@@ -1,20 +1,16 @@
 ---
 layout: LandingPage
 ms.topic: landing-page
-ms.openlocfilehash: 80cb7fde0694257a5c413b702505e27f18aed8d3
-ms.sourcegitcommit: d702b4d27e96e7a5a248dc4f2f0e25cf6e82c134
+ms.openlocfilehash: 3a667334be682e7e96c6dd30bd401a7e4c608108
+ms.sourcegitcommit: 8b5fc0d0d735793b87677610b747f54301dcb014
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31771688"
+ms.lasthandoff: 07/29/2018
+ms.locfileid: "39334268"
 ---
 # <a name="azure-application-architecture-guide"></a>Azure アプリケーション アーキテクチャ ガイド
 
 このガイドは、Azure においてスケーラブルで回復力がある高可用性のアプリケーションを設計するための体系化された方法を示します。 顧客エンゲージメントから学んだ実証済みのプラクティスに基づいています。
-
-<br/>
-
-<img src="./images/guide-steps.svg" style="max-width:800px;"/>
 
 ## <a name="introduction"></a>はじめに
 
@@ -62,8 +58,7 @@ Azure アプリケーション アーキテクチャ ガイドは、アーキテ
 
 詳細情報:
 
-- [アーキテクチャ スタイル][arch-styles]
-- [Azure の参照アーキテクチャ][ref-archs]
+- [アーキテクチャ スタイル](./architecture-styles/index.md)
 
 ### <a name="technology-choices"></a>テクノロジの選択
 
@@ -80,36 +75,14 @@ Microsoft では、アプリケーションの拡張性、回復性、および�
 
 詳細情報:
 
-- [Azure アプリケーションの設計原則][design-principles]
-- [クラウド構築時のベスト プラクティス][best-practices]
+- [設計原則](./design-principles/index.md)
+
 
 ### <a name="quality-pillars"></a>品質の重要な要素
 
 成功するクラウド アプリケーションでは、ソフトウェア品質の 5 つの重要な要素、すなわち拡張性、可用性、回復性、管理性、セキュリティに重点が置かれています。 設計レビューのチェックリストを使用し、品質に関するこれらの要点に基づいてアーキテクチャをレビューします。
 
-詳細情報:
-
-- [ソフトウェア品質の重要な要素][pillars]
-- [設計レビューのチェックリスト][checklists] 
-
-### <a name="cloud-design-patterns"></a>クラウド設計パターン
-
-設計パターンは、ソフトウェア設計に関する一般的問題への全般的な解決策となります。 Microsoft では、クラウド用の分散アプリケーションを設計する際に特に役立つ一連の設計パターンを特定しました。
-
-詳細情報:
-
-- [クラウド設計パターンのカタログ](../patterns/index.md)
+- [品質の重要な要素](./pillars.md)
 
 
-[arch-styles]: ./architecture-styles/index.md
-[best-practices]: ../best-practices/index.md
-[checklists]: ../checklist/index.md
-[compute-options]: ./technology-choices/compute-comparison.md
-[design-principles]: ./design-principles/index.md
 [ebook]: https://azure.microsoft.com/campaigns/cloud-application-architecture-guide/
-[patterns]: ../patterns/index.md?toc=/azure/architecture/guide/toc.json
-[pillars]: ./pillars.md
-[ref-archs]: ../reference-architectures/index.md
-[storage-options]: ./technology-choices/data-store-comparison.md
-[technology-choices]: ./technology-choices/index.md
-
