@@ -3,12 +3,12 @@ title: Surveys アプリケーションの実行
 description: Surveys サンプル アプリケーションをローカルで実行する方法
 author: MikeWasson
 ms:date: 07/21/2017
-ms.openlocfilehash: 28d976374e5d6dbad434873eef149704f26a1f3f
-ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
+ms.openlocfilehash: d4fa8122794740e6935293147d999b26d9485d90
+ms.sourcegitcommit: c704d5d51c8f9bbab26465941ddcf267040a8459
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30848684"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39229101"
 ---
 # <a name="run-the-surveys-application"></a>Surveys アプリケーションの実行
 
@@ -35,7 +35,7 @@ Tailspin は、Surveys アプリケーションをホストする架空の会社
 
 1. [Azure Portal][portal] にサインインします。
 
-2. **[新規]** > **[セキュリティ + ID]** > **[Azure Active Directory]** の順にクリックします。
+2. **[+ リソースの作成]** > **[Identity]** > **[Azure Active Directory]** の順にクリックします。
 
 3. 組織名に `Tailspin` を入力し、ドメイン名を入力します。 ドメイン名は `xxxx.onmicrosoft.com` の形式で指定し、グローバルで一意にする必要があります。 
 
@@ -67,7 +67,7 @@ Tailspin は、Surveys アプリケーションをホストする架空の会社
 
 6. **[アプリの登録]** ブレードで、新しい **Surveys Web API** アプリケーションを選択します。
  
-7. **[プロパティ]** をクリックします。
+7. **[設定]** > **[プロパティ]** の順にクリックします。
 
 8. **[アプリケーション ID/URI]** 編集ボックスに `https://<domain>/surveys.webapi` を入力します。`<domain>` はディレクトリのドメイン名です。 次に例を示します。`https://tailspin.onmicrosoft.com/surveys.webapi`
 
@@ -188,7 +188,7 @@ Tailspin は、Surveys アプリケーションをホストする架空の会社
 
 Surveys アプリケーションは Redis を使用して、OAuth 2 アクセス トークンをキャッシュします。 キャッシュを作成するには、以下のようにします。
 
-1.  [Azure Portal](https://portal.azure.com) に移動して **[新規]** > **[データベース]** > **[Redis Cache]** の順にクリックします。
+1.  [Azure Portal](https://portal.azure.com) に移動して **[+ リソースの作成]** > **[データベース]** > **[Redis Cache]** の順にクリックします。
 
 2.  DNS 名、リソース グループ、場所、価格レベルなどの必要な情報を入力します。 新しいリソース グループを作成するか、既存のリソース グループを使用できます。
 

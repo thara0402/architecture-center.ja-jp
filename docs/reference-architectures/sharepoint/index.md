@@ -3,12 +3,12 @@ title: 高可用性 SharePoint Server 2016 ファームの Azure での実行
 description: 高可用性 SharePoint Server 2016 ファームを Azure で設定するための実証済みプラクティス。
 author: njray
 ms.date: 07/14/2018
-ms.openlocfilehash: ff690300cb5f4af301bcfac58ac10b9b3c47f96d
-ms.sourcegitcommit: 71cbef121c40ef36e2d6e3a088cb85c4260599b9
+ms.openlocfilehash: 04c69309e9f96e3bf7cd7faabeedd9b6d9da1ebd
+ms.sourcegitcommit: 8b5fc0d0d735793b87677610b747f54301dcb014
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39060899"
+ms.lasthandoff: 07/29/2018
+ms.locfileid: "39334132"
 ---
 # <a name="run-a-high-availability-sharepoint-server-2016-farm-in-azure"></a>高可用性 SharePoint Server 2016 ファームの Azure での実行
 
@@ -66,17 +66,19 @@ SharePoint ロールごとに 1 つのサブネット、ゲートウェイに 1 
 
 ### <a name="vm-recommendations"></a>VM の推奨事項
 
-Standard DSv2 仮想マシン サイズに基づくと、このアーキテクチャでは最小で 38 コアが必要です。
+このアーキテクチャでは最小で 44 コアが必要です。
 
 - Standard_DS3_v2 上に 8 つの SharePoint サーバー (それぞれ 4 コア) = 32 コア
 - Standard_DS1_v2 上に 2 つの Active Directory ドメイン コントローラー (それぞれ 1 コア) = 2 コア
-- Standard_DS1_v2 上に 2 つの SQL Server VM = 2 コア
+- Standard_DS3_v2 上に 2 つの SQL Server VM = 8 コア
 - Standard_DS1_v2 上に 1 つのマジョリティ ノード = 1 コア
 - Standard_DS1_v2 上に 1 つの管理サーバー = 1 コア
 
-コアの合計数は、選択する VM のサイズによって異なります。 詳しくは、以下の「[SharePoint Server の推奨事項](#sharepoint-server-recommendations)」をご覧ください。
-
 デプロイについて Azure サブスクリプションに十分な VM コア クォータがあることを確認してください。不足している場合はデプロイで障害が発生します。 「[Azure サブスクリプションとサービスの制限、クォータ、制約][quotas]」をご覧ください。 
+
+Search インデクサーを除くすべての SharePoint ロールについて、[Standard_DS3_v2][vm-sizes-general] VM サイズの使用を推奨します。 Search インデクサーは少なくとも [Standard_DS13_v2][vm-sizes-memory] のサイズにする必要があります。 テストの場合、この参照アーキテクチャのパラメーター ファイルでは、Search インデクサー ロールに対して小さな DS3_v2 のサイズを指定しています。 運用環境のデプロイでは、パラメーター ファイルを更新して DS13 以上のサイズを使用してください。 詳細については、「[SharePoint Server 2016 のハードウェア要件およびソフトウェア要件][sharepoint-reqs]」を参照してください。 
+
+SQL Server VM については、少なくとも 4 つのコアと 8 GB の RAM を推奨します。 この参照アーキテクチャのパラメーター ファイルでは、DS3_v2 のサイズを指定しています。 運用環境のデプロイでは、より大きな VM サイズを指定する必要があります。 詳細については、「[ストレージおよび SQL Server の容量計画と構成 (SharePoint Server)](/sharepoint/administration/storage-and-sql-server-capacity-planning-and-configuration#estimate-memory-requirements)」を参照してください。 
  
 ### <a name="nsg-recommendations"></a>NSG の推奨事項
 
@@ -88,12 +90,12 @@ VM を含むサブネットごとに 1 つの NSG を用意して、サブネッ
 
 ファームの VM の記憶域構成は、オンプレミス デプロイで使用される適切なベスト プラクティスと一致する必要があります。 SharePoint サーバーではログ用に別のディスクが必要です。 検索インデックス ロールをホストする SharePoint サーバーでは、検索インデックスを格納するために追加のディスク領域が必要です。 SQL Server の場合、標準プラクティスではデータとログを分離します。 データベース バックアップ ストレージにディスクをさらに追加し、[tempdb][tempdb] 用に別のディスクを使用します。
 
-最高の信頼性を得るには、[Azure Managed Disks][managed-disks] の使用を推奨します。 管理対象ディスクでは可用性セット内の VM のディスクが必ず分離されるため、単一障害点を回避できます。 
+最高の信頼性を得るには、[Azure Managed Disks][managed-disks] の使用を推奨します。 マネージド ディスクでは可用性セット内の VM のディスクが必ず分離されるため、単一障害点を回避できます。 
 
 > [!NOTE]
-> 現在、この参照用アーキテクチャの Resource Manager テンプレートでは管理対象ディスクは使用されていません。 管理対象ディスクを使用するようにテンプレートを更新する予定です。
+> 現在、この参照用アーキテクチャの Resource Manager テンプレートではマネージド ディスクは使用されていません。 マネージド ディスクを使用するようにテンプレートを更新する予定です。
 
-SharePoint および SQL Server のすべての VM で Premium 管理対象ディスクを使用してください。 マジョリティ ノード サーバー、ドメイン コントローラー、および管理サーバでは、Standard 管理対象ディスクを使用できます。 
+SharePoint および SQL Server のすべての VM で Premium マネージド ディスクを使用してください。 マジョリティ ノード サーバー、ドメイン コントローラー、および管理サーバでは、Standard マネージド ディスクを使用できます。 
 
 ### <a name="sharepoint-server-recommendations"></a>SharePoint Server の推奨事項
 
@@ -109,18 +111,12 @@ SharePoint ファームを構成する前に、サービスごとに 1 つの Wi
 - キャッシュ スーパー ユーザー アカウント
 - キャッシュ スーパー リーダー アカウント
 
-Search インデクサーを除くすべてのロールについて、[Standard_DS3_v2][vm-sizes-general] VM サイズの使用を推奨します。 Search インデクサーは少なくとも [Standard_DS13_v2][vm-sizes-memory] のサイズにする必要があります。 
-
-> [!NOTE]
-> この参照用アーキテクチャの Resource Manager テンプレートでは、デプロイをテストするという目的に合わせて Search インデクサーについて小さな DS3 のサイズを使用しています。 実稼働デプロイでは DS13 以上のサイズを使用してください。 
-
-実稼働ワークロードについて詳しくは、「[SharePoint Server 2016 のハードウェア要件およびソフトウェア要件][sharepoint-reqs]」を参照してください。 
-
 最小 200 MB/s のディスク スループットのサポート要件を満たすには、必ず検索アーキテクチャを計画してください。 「[SharePoint Server 2013 でエンタープライズ検索アーキテクチャを計画する][sharepoint-search]」をご覧ください。 また、「[Best practices for crawling in SharePoint Server 2016][sharepoint-crawling](SharePoint Server 2016 のクロールのベスト プラクティス)」のガイドラインに従います。
 
 さらに、検索コンポーネント データを、パフォーマンスに優れている別の記憶域ボリュームまたはパーティションに格納します。 負荷を減らしてスループットを向上するには、オブジェクト キャッシュ ユーザー アカウントを構成します。これはこのアーキテクチャで必要です。 Windows Server オペレーティング システム ファイル、SharePoint Server 2016 プログラム ファイル、および診断ログは、通常のパフォーマンスの 3 つの記憶域ボリュームまたはパーティションに分割します。 
 
 これらの推奨事項について詳しくは、「[SharePoint Server 2016 での初期展開の管理およびサービス アカウント][sharepoint-accounts]」をご覧ください。
+
 
 ### <a name="hybrid-workloads"></a>ハイブリッド ワークロード
 

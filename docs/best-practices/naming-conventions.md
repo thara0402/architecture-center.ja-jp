@@ -4,12 +4,12 @@ description: Azure リソースの名前付け規則。 仮想マシン、スト
 author: telmosampaio
 ms.date: 05/18/2017
 pnp.series.title: Best Practices
-ms.openlocfilehash: 09bcfa3c0a0c46605f0025adad06f8049f109f1b
-ms.sourcegitcommit: 776b8c1efc662d42273a33de3b82ec69e3cd80c5
+ms.openlocfilehash: 6ad71a5ee39b8f1863c51dae0120dbdc7baf1f76
+ms.sourcegitcommit: c704d5d51c8f9bbab26465941ddcf267040a8459
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38987735"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39229152"
 ---
 # <a name="naming-conventions"></a>名前付け規則
 
@@ -119,6 +119,13 @@ Azure のリソースまたはサービスの種類ごとに、名前付けに�
 |負荷分散規則の構成 |Load Balancer |1 ～ 80 |大文字と小文字は区別されない |英数字、ハイフン、アンダースコア、ピリオド |`<descriptive context>` |`http` |
 |Azure Application Gateway |リソース グループ |1 ～ 80 |大文字と小文字は区別されない |英数字、ハイフン、アンダースコア、ピリオド |`<service or role>-agw` |`profx-agw` |
 |Traffic Manager プロファイル |リソース グループ |1 ～ 63 |大文字と小文字は区別されない |英数字、ハイフン、ピリオド |`<descriptive context>` |`app1` |
+
+### <a name="containers"></a>Containers
+
+| エンティティ | Scope (スコープ) | Length | 大文字小文字の区別 | 有効な文字 | 推奨パターン | 例 |
+| --- | --- | --- | --- | --- | --- | --- |
+|Container Registry | グローバル |5 ～ 50 |大文字と小文字は区別されない | 英数字 |`<service short name>registry` |`app1registry` |
+
 
 ## <a name="organize-resources-with-tags"></a>タグによるリソースの整理
 
