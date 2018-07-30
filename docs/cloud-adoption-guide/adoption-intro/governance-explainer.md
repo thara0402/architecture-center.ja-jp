@@ -1,17 +1,17 @@
 ---
-title: '説明: クラウド ガバナンスとは'
-description: Azure とクラウドのリソース ガバナンスの概念を説明します
+title: クラウド ガバナンスとは
+description: Azure でのリソース アクセス ガバナンスの概念についての説明
 author: petertay
-ms.openlocfilehash: 3404beaa719177ee7638feed8a8442b5c3b455c6
-ms.sourcegitcommit: 26b04f138a860979aea5d253ba7fecffc654841e
+ms.openlocfilehash: 3338ed5652296c5cd01277a51be1cb5893320b65
+ms.sourcegitcommit: c704d5d51c8f9bbab26465941ddcf267040a8459
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36206482"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39229203"
 ---
-# <a name="explainer-what-is-cloud-resource-governance"></a>説明: クラウド リソース ガバナンスとは
+# <a name="what-is-cloud-resource-governance"></a>クラウド リソース ガバナンスとは
 
-[Azure のしくみ](azure-explainer.md)の説明では、Azure は、ユーザーの代わりに視覚化されたハードウェアおよびソフトウェアを実行する、サーバーとネットワークのコレクションであることを説明しました。 Azure を使用すると、必要に応じてリソースを容易に作成、読み取り、更新、および削除できるようにすることで、組織の開発および IT 部門の俊敏性を高めることが可能です。
+[Azure のしくみ](azure-explainer.md)に関するページでは、Azure は、仮想化されたハードウェアとソフトウェアをユーザーの代わりに実行する、サーバーとネットワーク ハードウェアのコレクションであることを説明しました。 Azure を使用すると、必要に応じてリソースを容易に作成、読み取り、更新、および削除できるようにすることで、組織の開発および IT 部門の俊敏性を高めることが可能です。
 
 ただし、開発者が無制限にリソースにアクセスできるようにすると、俊敏性は高まりますが、意図しないコストが発生する場合があります。 たとえば、テスト用に一連のリソースのデプロイを承認された開発チームが、テスト完了後に、そのリソースを削除し忘れることがあります。 これらのリソースのコストは、承認が無効になったり不要になったりしても発生し続けます。 
 
@@ -29,8 +29,4 @@ RBAC ではロールが定義され、そのロールによって、ロールに
 
 ## <a name="next-steps"></a>次の手順
 
-Azure 導入プロセスにおける次の手順は、[Azure のデジタル ID を理解](tenant-explainer.md)し、[Azure AD で最初のユーザーを作成][docs-add-users-to-aad]することです。
-
-<!-- Links -->
-
-[docs-add-users-to-aad]: /azure/active-directory/add-users-azure-active-directory?toc=/azure/architecture/cloud-adoption-guide/toc.json
+クラウド リソース ガバナンスの概念を理解したので、Azure での[リソース アクセスの管理方法](azure-resource-access.md)の詳細の説明に進み、[ガバナンス モデルの設計方法](governance-how-to.md)の学習に備えます。

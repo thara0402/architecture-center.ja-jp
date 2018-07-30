@@ -2,13 +2,13 @@
 title: SQL Server を使用した n 層アプリケーション
 description: 可用性、セキュリティ、スケーラビリティ、および管理容易性のために Azure で多層アーキテクチャを実装する方法について説明します。
 author: MikeWasson
-ms.date: 06/23/2018
-ms.openlocfilehash: 7c8184d25cf6b3bd358adc2728329fd3bd08503a
-ms.sourcegitcommit: 58d93e7ac9a6d44d5668a187a6827d7cd4f5a34d
+ms.date: 07/19/2018
+ms.openlocfilehash: 42ba18e9ffef32c6990fbb888cc41e980fb4abea
+ms.sourcegitcommit: c704d5d51c8f9bbab26465941ddcf267040a8459
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37142303"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39229135"
 ---
 # <a name="n-tier-application-with-sql-server"></a>SQL Server を使用した n 層アプリケーション
 
@@ -22,9 +22,12 @@ ms.locfileid: "37142303"
 
 アーキテクチャには次のコンポーネントがあります。
 
-* **リソース グループ。** [リソース グループ][resource-manager-overview]は、リソースをグループ化して、有効期間、所有者、またはその他の条件別に管理できるようにするために使用されます。
+* **リソース グループ。** 
+  [リソース グループ][resource-manager-overview]は、リソースをグループ化して、有効期間、所有者、またはその他の条件別に管理できるようにするために使用されます。
 
 * **仮想ネットワーク (VNet) とサブネット。** どの Azure VM も、複数のサブネットにセグメント化できる VNet にデプロイされます。 階層ごとに個別のサブネットを作成します。 
+
+* **Application Gateway**。 [Azure Application Gateway](/azure/application-gateway/) はレイヤー 7 のロード バランサーです。 このアーキテクチャでは、これによって HTTP 要求が Web フロント エンドにルーティングされます。 Application Gateway には、一般的な脆弱性やその悪用からアプリケーションを保護する [Web アプリケーション ファイアウォール](/azure/application-gateway/waf-overview) (WAF) も用意されています。 
 
 * **NSG。** [ネットワーク セキュリティ グループ][nsg] (NSG) を使用して、VNet 内のネットワーク トラフィックを制限します。 たとえば、ここに示されている 3 層アーキテクチャでは、データベース層は Web フロントエンドからのトラフィックを受信せず、ビジネス層と管理サブネットからのトラフィックのみ受信します。
 
@@ -34,9 +37,9 @@ ms.locfileid: "37142303"
 
 * **VM スケール セット** (ここでは示されていません)。 [VM スケール セット][vmss]は可用性セットの代わりに使用します。 スケール セットを使用すると、層内の VM を簡単にスケールアウトできます。スケールアウトは、手動で実行することも、定義済みの規則に基づいて自動的に実行することもできます。
 
-* **Azure Load Balancer。** [ロード バランサー][load-balancer]は、受信インターネット要求を各 VM インスタンスに分散します。 [パブリック ロード バランサー][load-balancer-external]を使用して受信インターネット トラフィックを Web 層に分散し、[内部ロード バランサー][load-balancer-internal]を使用して Web 層からのネットワーク トラフィックをビジネス層に分散します。
+* **ロード バランサー**。 [Azure Load Balancer][load-balancer] は、Web 層からビジネス層へ、ビジネス層から SQL Server へとネットワーク トラフィックを分散するために使用します。
 
-* **パブリック IP アドレス**。 パブリック IP アドレスは、パブリック ロード バランサーがインターネット トラフィックを受信するために必要です。
+* **パブリック IP アドレス**。 パブリック IP アドレスは、アプリケーションがインターネット トラフィックを受信するために必要です。
 
 * **ジャンプボックス。** [要塞ホスト]とも呼ばれます。 管理者が他の VM に接続するために使用するネットワーク上のセキュアな VM です。 ジャンプボックスの NSG は、セーフ リストにあるパブリック IP アドレスからのリモート トラフィックのみを許可します。 NSG は、リモート デスクトップ (RDP) トラフィックを許可する必要があります。
 
@@ -62,7 +65,7 @@ VNet を作成するときに、各サブネット内のリソースが要求す
 
 ### <a name="load-balancers"></a>ロード バランサー
 
-VM を直接インターネットに公開せず、代わりに各 VM にプライベート IP アドレスを付与します。 クライアントは、パブリック ロード バランサーの IP アドレスを使用して接続します。
+VM を直接インターネットに公開せず、代わりに各 VM にプライベート IP アドレスを付与します。 クライアントは、Application Gateway に関連付けられているパブリック IP アドレスを使用して接続します。
 
 ロード バランサー規則を定義して、ネットワーク トラフィックを VM に転送します。 たとえば、HTTP トラフィックを有効にするには、フロントエンド構成からのポート 80 をバックエンド アドレス プールのポート 80 にマッピングする規則を作成します。 クライアントがポート 80 に HTTP 要求を送信するときに、ロード バランサーは、発信元 IP アドレスを含む[ハッシュ アルゴリズム][load-balancer-hashing]を使用して、バックエンド IP アドレスを選択します。 この方法で、クライアント要求がすべての VM に配布されます。
 
@@ -120,7 +123,7 @@ SQL クライアントが接続を試みると、ロード バランサーがプ
 
 - 拡張機能を使用してプロビジョニングされた後に VM を構成します。 この方法では、新しい VM インスタンスは、拡張機能なしの VM よりも起動に時間がかかる場合があります。
 
-- カスタム ディスク イメージと共に [Managed Disk](/azure/storage/storage-managed-disks-overview) をデプロイします。 このオプションの方が早くデプロイできる場合があります。 ただし、イメージを最新の状態に保つ必要があります。
+- カスタム ディスク イメージと共に[マネージド ディスク](/azure/storage/storage-managed-disks-overview)をデプロイします。 このオプションの方が早くデプロイできる場合があります。 ただし、イメージを最新の状態に保つ必要があります。
 
 詳しい考慮事項については、「[スケール セットの設計上の考慮事項][vmss-design]」を参照してください。
 
@@ -147,8 +150,6 @@ VM スケール セットを使用していない場合は、同じ層の VM を
 ## <a name="security-considerations"></a>セキュリティに関する考慮事項
 
 仮想ネットワークは、Azure のトラフィックの分離境界です。 ある VNet 内の VM が別の VNet 内の VM と直接通信することはできません。 トラフィックを制限する[ネットワーク セキュリティ グループ][nsg] (NSG) を作成していないかぎり、同じ VNet 内の VM 同士は通信可能です。 詳細については、「[Microsoft クラウド サービスとネットワーク セキュリティ][network-security]」をご覧ください。
-
-インターネット トラフィックを受信する場合、ロード バランサーの規則でバック エンドに到達できるトラフィックを定義しています。 しかし、ロード バランサーの規則では IP の安全な一覧をサポートしていないため、特定のパブリック IP アドレスを安全な一覧に追加したい場合は、NSG をサブネットに追加してください。
 
 ネットワーク仮想アプライアンス (NVA) を追加してインターネットと Azure Virtual Network の間の DMZ を作成することを検討してください。 NVA とは、ネットワーク関連のタスク (ファイアウォール、パケット インスペクション、監査、カスタム ルーティングなど) を実行できる仮想アプライアンスの総称です。 詳細については、[Azure とインターネットの間の DMZ の実装][dmz]に関する記事を参照してください。
 
@@ -248,10 +249,6 @@ Azure の構成要素を使用してこのサンプルの参照アーキテク�
 [chef]: https://www.chef.io/solutions/azure/
 [git]: https://github.com/mspnp/template-building-blocks
 [github-folder]: https://github.com/mspnp/reference-architectures/tree/master/virtual-machines/n-tier-windows
-[lb-external-create]: /azure/load-balancer/load-balancer-get-started-internet-portal
-[lb-internal-create]: /azure/load-balancer/load-balancer-get-started-ilb-arm-portal
-[load-balancer-external]: /azure/load-balancer/load-balancer-internet-overview
-[load-balancer-internal]: /azure/load-balancer/load-balancer-internal-overview
 [nsg]: /azure/virtual-network/virtual-networks-nsg
 [operations-management-suite]: https://www.microsoft.com/server-cloud/operations-management-suite/overview.aspx
 [plan-network]: /azure/virtual-network/virtual-network-vnet-plan-design-arm
@@ -275,7 +272,7 @@ Azure の構成要素を使用してこのサンプルの参照アーキテク�
 [0]: ./images/n-tier-sql-server.png "Microsoft Azure を使用した N 層アーキテクチャ"
 [resource-manager-overview]: /azure/azure-resource-manager/resource-group-overview 
 [vmss]: /azure/virtual-machine-scale-sets/virtual-machine-scale-sets-overview
-[load-balancer]: /azure/load-balancer/load-balancer-get-started-internet-arm-cli
+[load-balancer]: /azure/load-balancer/
 [load-balancer-hashing]: /azure/load-balancer/load-balancer-overview#load-balancer-features
 [vmss-design]: /azure/virtual-machine-scale-sets/virtual-machine-scale-sets-design-overview
 [subscription-limits]: /azure/azure-subscription-service-limits

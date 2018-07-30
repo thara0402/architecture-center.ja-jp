@@ -1,15 +1,15 @@
 ---
-title: '説明: Azure のしくみ'
-description: Azure の内部機能について説明します。
+title: Azure のしくみ
+description: Azure の内部機能の説明
 author: petertay
-ms.openlocfilehash: 88514ba01efabe38a1b92d135321c2e44cef004e
-ms.sourcegitcommit: 26b04f138a860979aea5d253ba7fecffc654841e
+ms.openlocfilehash: bf301a05d69ed66aa03727dde3968477c2337790
+ms.sourcegitcommit: c704d5d51c8f9bbab26465941ddcf267040a8459
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36206465"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39228968"
 ---
-# <a name="explainer-how-does-azure-work"></a>説明: Azure のしくみ
+# <a name="how-does-azure-work"></a>Azure のしくみ
 
 Azure は、Microsoft のパブリック クラウド プラットフォームです。 Azure では、サービスとしてのプラットフォーム (PaaS)、サービスとしてのインフラストラクチャ (IaaS)、サービスとしてのデータベース (DBaaS) をはじめ、他の多くのサービスを含む、大規模なサービス コレクションを提供しています。 しかし、そもそも Azure とはどんなもので、どのように動作するのでしょう。
 
@@ -31,7 +31,7 @@ Azure は、Microsoft のパブリック クラウド プラットフォーム�
 
 ## <a name="next-steps"></a>次の手順
 
-* Azure の内部機能については理解できました。次は、[リソース アクセス ガバナンス](governance-explainer.md)について説明します。 その後、Azure 導入の最初の手順に進みます。ここでは、[Azure のデジタル ID について解説](tenant-explainer.md)します。 その手順が完了したら、いつでも [Azure AD で最初のユーザーを作成する][docs-add-users-to-aad]ことができます。
+* Azure の内部機能については理解できました。次は、[リソース アクセス ガバナンス](governance-explainer.md)について説明します。 
 
 <!-- Links -->
 

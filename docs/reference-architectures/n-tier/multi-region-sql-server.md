@@ -2,15 +2,15 @@
 title: 高可用性のためのマルチリージョン n 層アプリケーション
 description: 高可用性と回復性を得るために Azure の複数のリージョンに VM をデプロイする方法。
 author: MikeWasson
-ms.date: 05/03/2018
+ms.date: 07/19/2018
 pnp.series.title: Windows VM workloads
 pnp.series.prev: n-tier
-ms.openlocfilehash: 48943094e7847e39b9fdc4c3f71e27f2e6e41293
-ms.sourcegitcommit: a5e549c15a948f6fb5cec786dbddc8578af3be66
+ms.openlocfilehash: a8dafab9ce8312004e99f0f19d06d6b47b6b19d8
+ms.sourcegitcommit: c704d5d51c8f9bbab26465941ddcf267040a8459
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2018
-ms.locfileid: "33673574"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39229254"
 ---
 # <a name="multi-region-n-tier-application-for-high-availability"></a>高可用性のためのマルチリージョン n 層アプリケーション
 
@@ -80,18 +80,18 @@ Traffic Manager でフェールオーバーを実行する場合は、自動フ�
 
 Traffic Manager は、既定では自動的にフェールバックすることに注意してください。 これが起こらないようにするには、フェールオーバー イベントの後、手動でプライマリ リージョンの優先度を下げます。 たとえば、プライマリ リージョンの優先度は 1、セカンダリ リージョンの優先度は 2 であるとします。 フェールオーバーした後、プライマリ リージョンの優先度を 3 に設定して、自動フェールバックが起こらないにします。 元に戻す準備ができたら、優先度を 1 に更新します。
 
-次の [Azure CLI][install-azure-cli] コマンドは、優先度を更新します。
+次の [Azure CLI][azure-cli] コマンドは、優先度を更新します。
 
 ```bat
-azure network traffic-manager  endpoint set --resource-group <resource-group> --profile-name <profile>
-    --name <traffic-manager-name> --type AzureEndpoints --priority 3
+az network traffic-manager endpoint update --resource-group <resource-group> --profile-name <profile>
+    --name <endpoint-name> --type azureEndpoints --priority 3
 ```    
 
 別の方法は、フェールバックの準備ができるまで、エンドポイントを一時的に無効にすることです。
 
 ```bat
-azure network traffic-manager  endpoint set --resource-group <resource-group> --profile-name <profile>
-    --name <traffic-manager-name> --type AzureEndpoints --status Disabled
+az network traffic-manager endpoint update --resource-group <resource-group> --profile-name <profile>
+    --name <endpoint-name> --type azureEndpoints --endpoint-status Disabled
 ```
 
 フェールオーバーの原因によっては、リソースをリージョン内に再デプロイする必要があります。 フェールバックする前に、運用準備テストを実行します。 このテストでは、以下のような点を検証する必要があります。
@@ -109,10 +109,10 @@ Windows Server 2016 より前に、SQL Server Always On 可用性グループで
 * 各リージョンに少なくとも 2 つのドメイン コントローラーを配置します。
 * 各ドメイン コントローラーに静的 IP アドレスを指定します。
 * VNet 間接続を作成して、VNet 間の通信を可能にします。
-* 各 VNet で、DNS サーバーの一覧に (両方のリージョンの) ドメイン コントローラーの IP アドレスを追加します。 次の CLI コマンドを使用できます。 詳細については、[仮想ネットワーク (VNet) で使用される DNS サーバーの管理][vnet-dns]に関する記事を参照してください。
+* 各 VNet で、DNS サーバーの一覧に (両方のリージョンの) ドメイン コントローラーの IP アドレスを追加します。 次の CLI コマンドを使用できます。 詳細については、「[DNS サーバーの変更][vnet-dns]」を参照してください。
 
     ```bat
-    azure network vnet set --resource-group dc01-rg --name dc01-vnet --dns-servers "10.0.0.4,10.0.0.6,172.16.0.4,172.16.0.6"
+    az network vnet update --resource-group <resource-group> --name <vnet-name> --dns-servers "10.0.0.4,10.0.0.6,172.16.0.4,172.16.0.6"
     ```
 
 * 両方のリージョンの SQL Server インスタンスを含む [Windows Server フェールオーバー クラスタリング][wsfc] (WSFC) クラスターを作成します。 
@@ -171,7 +171,7 @@ SQL Server クラスターでは、2 つのフェールオーバー シナリオ
 [azure-sla]: https://azure.microsoft.com/support/legal/sla/
 [azure-sql-db]: https://azure.microsoft.com/documentation/services/sql-database/
 [health-endpoint-monitoring-pattern]: https://msdn.microsoft.com/library/dn589789.aspx
-[install-azure-cli]: /azure/xplat-cli-install
+[azure-cli]: /cli/azure/
 [regional-pairs]: /azure/best-practices-availability-paired-regions
 [resource groups]: /azure/azure-resource-manager/resource-group-overview
 [resource-group-links]: /azure/resource-group-link-resources
@@ -185,7 +185,7 @@ SQL Server クラスターでは、2 つのフェールオーバー シナリオ
 [tm-sla]: https://azure.microsoft.com/support/legal/sla/traffic-manager/v1_0/
 [traffic-manager]: https://azure.microsoft.com/services/traffic-manager/
 [visio-download]: https://archcenter.blob.core.windows.net/cdn/vm-reference-architectures.vsdx
-[vnet-dns]: /azure/virtual-network/virtual-networks-manage-dns-in-vnet
+[vnet-dns]: /azure/virtual-network/manage-virtual-network#change-dns-servers
 [vnet-to-vnet]: /azure/vpn-gateway/vpn-gateway-vnet-vnet-rm-ps
 [vpn-gateway]: /azure/vpn-gateway/vpn-gateway-about-vpngateways
 [wsfc]: https://msdn.microsoft.com/library/hh270278.aspx
