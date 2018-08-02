@@ -4,12 +4,12 @@ description: 設計時の回復性に関する問題のガイダンスを提供�
 author: petertaylor9999
 ms.date: 01/10/2018
 ms.custom: resiliency, checklist
-ms.openlocfilehash: ca4bf77c9348f6c656348d9cd61d3a1241d69ba8
-ms.sourcegitcommit: 2123c25b1a0b5501ff1887f98030787191cf6994
+ms.openlocfilehash: 883424d5d3535f822cdba61ecb9520ce05f75ec7
+ms.sourcegitcommit: 2154e93a0a075e1f7425a6eb11fc3f03c1300c23
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
-ms.locfileid: "29782616"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39352646"
 ---
 # <a name="resiliency-checklist"></a>回復性のチェックリスト
 
@@ -17,7 +17,7 @@ ms.locfileid: "29782616"
 
 ## <a name="requirements"></a>必要条件
 
-**顧客の可用性の要件を定義します。** 顧客にはアプリケーションのコンポーネントに対する可用性の要件があり、それがアプリケーションの設計に影響します。 アプリケーションの各部分の可用性のターゲットについて、顧客の同意を得てください。そうしないと、設計が顧客の期待に添わないものになる可能性があります。 詳細については、「[回復性の要件を定義する](../resiliency/index.md#defining-your-resiliency-requirements)」をご覧ください。
+**顧客の可用性の要件を定義します。** 顧客にはアプリケーションのコンポーネントに対する可用性の要件があり、それがアプリケーションの設計に影響します。 アプリケーションの各部分の可用性のターゲットについて、顧客の同意を得てください。そうしないと、設計が顧客の期待に添わないものになる可能性があります。 詳細については、「[回復性に優れた Azure 用アプリケーションの設計](../resiliency/index.md)」を参照してください。
 
 ## <a name="application-design"></a>アプリケーションの設計
 
@@ -28,7 +28,8 @@ ms.locfileid: "29782616"
 * 復旧戦略を特定する。
   
 
-**複数のインスタンスのサービスをデプロイします。** アプリケーションがサービスの 1 つのインスタンスに依存する場合は、単一障害点が発生します。 複数のインスタンスをプロビジョニングすると、回復性とスケーラビリティの両方が改善されます。 [Azure App Service](/azure/app-service/app-service-value-prop-what-is/) の場合は、複数のインスタンスを提供する [App Service プラン](/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview/)を選択してください。 Azure Cloud Services の場合は、[複数インスタンス](/azure/cloud-services/cloud-services-choose-me/#scaling-and-management)を使用するように各ロールを構成してください。 [Azure Virtual Machines (VM)](/azure/virtual-machines/virtual-machines-windows-about/?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) の場合は、VM アーキテクチャに 1 つ以上の VM が含まれていることと、[可用性セット][availability-sets]に各 VM が含まれていることを確認してください。   
+**複数のインスタンスのサービスをデプロイします。** アプリケーションがサービスの 1 つのインスタンスに依存する場合は、単一障害点が発生します。 複数のインスタンスをプロビジョニングすると、回復性とスケーラビリティの両方が改善されます。 
+  [Azure App Service](/azure/app-service/app-service-value-prop-what-is/) の場合は、複数のインスタンスを提供する [App Service プラン](/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview/)を選択してください。 Azure Cloud Services の場合は、[複数インスタンス](/azure/cloud-services/cloud-services-choose-me/#scaling-and-management)を使用するように各ロールを構成してください。 [Azure Virtual Machines (VM)](/azure/virtual-machines/virtual-machines-windows-about/?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) の場合は、VM アーキテクチャに 1 つ以上の VM が含まれていることと、[可用性セット][availability-sets]に各 VM が含まれていることを確認してください。   
 
 **自動スケールを使用して、負荷の増加に対応します。** 負荷が増したとき自動的にスケールアウトするようにアプリケーションが構成されていない場合は、ユーザーの要求で飽和状態になるとアプリケーションのサービスが失敗する可能性があります。 詳細については、次をご覧ください。
 
@@ -58,7 +59,7 @@ ms.locfileid: "29782616"
 
 **使用するサード パーティーのサービスが SLA が提供することを確認します。** アプリケーションがサード パーティーのサービスに依存していても、サード パーティーが SLA の形式での可用性を保証していない場合は、アプリケーションの可用性も保証できません。 SLA はアプリケーションの最小限使用可能なコンポーネントと同程度しかありません。
 
-**必要に応じてリモート操作用の回復性のパターンを実装します。** アプリケーションがリモート サービス間の通信に依存する場合は、[再試行パターン][retry-pattern]や[サーキット ブレーカー パターン][circuit-breaker]などの一時的な障害に対処する設計パターンに従ってください。 詳細については、「[回復性戦略](../resiliency/index.md#resiliency-strategies)」をご覧ください。
+**必要に応じてリモート操作用の回復性のパターンを実装します。** アプリケーションがリモート サービス間の通信に依存する場合は、[再試行パターン][retry-pattern]や[サーキット ブレーカー パターン][circuit-breaker]などの一時的な障害に対処する[設計パターン](../patterns/category/resiliency.md)に従ってください。 
 
 **可能な限り、非同期操作を実装します。** 同期操作は、呼び出し元がプロセスの完了を待機している間はリソースを独占でき、その他の操作をブロックすることができます。 アプリケーションの各部分を、可能な限り非同期操作を許可するよう設計してください。 C# での非同期プログラミングの実装方法の詳細については、「[Async および Await を使用した非同期プログラミング][asynchronous-c-sharp]」をご覧ください。
 
@@ -93,7 +94,7 @@ ms.locfileid: "29782616"
 
 **人工的なユーザー データと実際のユーザー データの両方を使用して、運用環境でテストを実行します。** テストと運用はほとんど同じですので、Blue/Green またはカナリヤ デプロイを使用し、運用環境でアプリケーションをテストすることが重要です。 これにより、実際の負荷がかかった運用環境でアプリケーションをテストでき、完全にデプロイしたときに期待どおりに機能することを確認できます。
 
-## <a name="deployment"></a>デプロイ
+## <a name="deployment"></a>Deployment
 
 **アプリケーションのリリース プロセスを文書化します。** 詳細なリリース プロセスのドキュメントがなければ、オペレーターが不適切な更新プログラムやアプリケーションに不適切な構成設定をデプロイする可能性があります。 リリース プロセスを明確に定義して文書化し、オペレーション チーム全体が確実に利用できるようにしてください。 
 
