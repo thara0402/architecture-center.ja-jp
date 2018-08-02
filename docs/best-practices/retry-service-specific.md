@@ -4,12 +4,12 @@ description: 再試行メカニズムを設定するためのサービス固有�
 author: dragon119
 ms.date: 07/13/2016
 pnp.series.title: Best Practices
-ms.openlocfilehash: 39d342dc96e3d0d923ce159c392d9427359a4639
-ms.sourcegitcommit: f7fa67e3bdbc57d368edb67bac0e1fdec63695d2
+ms.openlocfilehash: 72dfb59c3357c5f14806a33ef5f6cdd3e7937915
+ms.sourcegitcommit: 8b5fc0d0d735793b87677610b747f54301dcb014
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37843628"
+ms.lasthandoff: 07/29/2018
+ms.locfileid: "39334166"
 ---
 # <a name="retry-guidance-for-specific-services"></a>特定のサービスの再試行ガイダンス
 
@@ -23,7 +23,7 @@ ms.locfileid: "37843628"
 | --- | --- | --- | --- | --- |
 | **[Azure Active Directory](#azure-active-directory)** |ADAL ライブラリのネイティブ |ADAL ライブラリに埋め込み済み |内部 |なし |
 | **[Cosmos DB](#cosmos-db)** |サービスでネイティブ |構成不可 |グローバル |TraceSource |
-| **[Event Hubs](#azure-event-hubs)** |クライアントでネイティブ |プログラムによる |クライアント |なし |
+| **[Event Hubs](#event-hubs)** |クライアントでネイティブ |プログラムによる |クライアント |なし |
 | **[Redis Cache](#azure-redis-cache)** |クライアントでネイティブ |プログラムによる |クライアント |TextWriter |
 | **[Search](#azure-search)** |クライアントでネイティブ |プログラムによる |クライアント |ETW またはカスタム |
 | **[Service Bus](#service-bus)** |クライアントでネイティブ |プログラムによる |名前空間マネージャー、メッセージング ファクトリ、およびクライアント |ETW |

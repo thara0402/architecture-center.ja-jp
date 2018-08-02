@@ -3,12 +3,12 @@ title: コンテナー ベースのワークロード用の CI/CD パイプラ�
 description: Jenkins、Azure Container Registry、Azure Kubernetes Service、Cosmos DB、Grafana を使用する、Node.js Web アプリの DevOps パイプラインを構築するための実証済みのシナリオ。
 author: iainfoulds
 ms.date: 07/05/2018
-ms.openlocfilehash: d9f6571234a0c3e67a233cfda1a37f6fb32929a3
-ms.sourcegitcommit: 71cbef121c40ef36e2d6e3a088cb85c4260599b9
+ms.openlocfilehash: dceb4ad3c34ec43a54d802772f5817cacdd3929c
+ms.sourcegitcommit: 8b5fc0d0d735793b87677610b747f54301dcb014
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39060763"
+ms.lasthandoff: 07/29/2018
+ms.locfileid: "39334217"
 ---
 # <a name="cicd-pipeline-for-container-based-workloads"></a>コンテナー ベースのワークロード用の CI/CD パイプライン
 
@@ -87,11 +87,11 @@ Azure Kubernetes Service を使用すると、アプリケーションの要求�
 
 このシナリオでは、アプリケーションに Azure Kubernetes Service を使用します。 Kubernetes には、コンテナー (ポッド) を監視し、問題が発生した場合に再起動する回復性コンポーネントが組み込まれています。 実行中の複数の Kubernetes ノードと組み合わせることで、アプリケーションは使用できなくなっているポッドやノードを許容できます。
 
-回復性に優れたソリューションの設計に関する一般的なガイダンスについては、「[回復性に優れた Azure 用アプリケーションの設計][resiliency]」をご覧ください。
+回復性に優れたソリューションの設計に関する一般的なガイダンスについては、「[回復性に優れた Azure 用アプリケーションの設計][resiliency]」を参照してください。
 
 ## <a name="deploy-the-scenario"></a>シナリオのデプロイ
 
-**前提条件:** 
+**前提条件。**
 
 * 既存の Azure アカウントが必要です。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 * SSH 公開キー ペアが必要です。 公開キー ペアの作成手順については、[Linux VM 用の SSH キー ペアの作成と使用][sshkeydocs]に関する記事をご覧ください。
@@ -119,7 +119,7 @@ Azure Resource Manager テンプレートを使用してこのシナリオをデ
 
 ## <a name="pricing"></a>価格
 
-このシナリオの実行コストを調べることができるように、すべてのサービスがコスト計算ツールで事前構成されています。 特定のユース ケースについて価格の変化を確認するには、予想されるトラフィックに合わせて該当する変数を変更します。 予想されるトラフィックに合わせて
+このシナリオの実行コストを調べることができるように、すべてのサービスがコスト計算ツールで事前構成されています。 特定のユース ケースについて価格の変化を確認するには、予想されるトラフィックに合わせて該当する変数を変更します。
 
 保存するコンテナー イメージの数とアプリケーションを実行する Kubernetes ノードの数に基づいて、3 つのサンプル コスト プロファイルが用意されています。
 

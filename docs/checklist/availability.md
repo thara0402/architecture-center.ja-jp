@@ -4,12 +4,12 @@ description: 設計時の可用性に関する問題のガイダンスを提供�
 author: dragon119
 ms.date: 01/10/2018
 ms.custom: checklist
-ms.openlocfilehash: 324d8200d822eb1a7dce95ba4b2a7f29b00fb291
-ms.sourcegitcommit: 441185360db49cfb3cf39527b68f318d17d4cb3d
+ms.openlocfilehash: cea5baf8c37bf793c5de60f6c2be809629df072b
+ms.sourcegitcommit: 2154e93a0a075e1f7425a6eb11fc3f03c1300c23
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
-ms.locfileid: "27973112"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39352629"
 ---
 # <a name="availability-checklist"></a>可用性のチェックリスト
 
@@ -21,7 +21,7 @@ ms.locfileid: "27973112"
 
 **サービス レベル目標に基づいてワークロードを分解します。** サービスが重要なワークロードとあまり重要ではないワークロードで構成されている場合は、それらを異なる方法で管理し、それぞれの可用性の要件を満たすようにサービスの機能とインスタンスの数を指定します。
 
-**サービスの依存関係を最少化し、把握します。** 可能な限り、使用するサービスの数を最小化し、システムに存在するすべての機能とサービスの依存関係を把握しておきます。 これには、それぞれの依存関係の性質、および各アプリケーションのエラーまたはパフォーマンス低下が全体に与える影響が含まれます。 「[回復性の要件を定義する](../resiliency/index.md#defining-your-resiliency-requirements)」をご覧ください。
+**サービスの依存関係を最少化し、把握します。** 可能な限り、使用するサービスの数を最小化し、システムに存在するすべての機能とサービスの依存関係を把握しておきます。 これには、それぞれの依存関係の性質、および各アプリケーションのエラーまたはパフォーマンス低下が全体に与える影響が含まれます。
 
 **可能な限り、タスクとメッセージがべき等になるように設計します。** 操作を複数回繰り返し、同じ結果を生成できる場合、その操作はべき等です。 べき等では、重複した要求による問題の発生を防ぐことができます。 前に実行された操作を繰り返すことで結果が無効にならないように、メッセージ コンシューマーとコンシューマーが実行する操作がべき等である必要があります。 これは、重複したメッセージの検出、または競合処理のためのオプティミスティックな方法を使用した一貫性の確認を意味する場合があります。
 
@@ -33,13 +33,14 @@ ms.locfileid: "27973112"
 
 ## <a name="deployment-and-maintenance"></a>展開と保守
 
-**複数のインスタンスのサービスをデプロイします。** アプリケーションがサービスの 1 つのインスタンスに依存する場合は、単一障害点が発生します。 複数のインスタンスをプロビジョニングすると、回復性とスケーラビリティの両方が改善されます。 [Azure App Service](/azure/app-service/app-service-value-prop-what-is/) の場合は、複数のインスタンスを提供する [App Service プラン](/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview/)を選択してください。 Azure Cloud Services の場合は、[複数インスタンス](/azure/cloud-services/cloud-services-choose-me/#scaling-and-management)を使用するように各ロールを構成してください。 [Azure Virtual Machines (VM)](/azure/virtual-machines/virtual-machines-windows-about/?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) の場合は、VM アーキテクチャに 1 つ以上の VM が含まれていることと、[可用性セット][availability-sets]に各 VM が含まれていることを確認してください。
+**複数のインスタンスのサービスをデプロイします。** アプリケーションがサービスの 1 つのインスタンスに依存する場合は、単一障害点が発生します。 複数のインスタンスをプロビジョニングすると、回復性とスケーラビリティの両方が改善されます。 
+  [Azure App Service](/azure/app-service/app-service-value-prop-what-is/) の場合は、複数のインスタンスを提供する [App Service プラン](/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview/)を選択してください。 Azure Cloud Services の場合は、[複数インスタンス](/azure/cloud-services/cloud-services-choose-me/#scaling-and-management)を使用するように各ロールを構成してください。 [Azure Virtual Machines (VM)](/azure/virtual-machines/virtual-machines-windows-about/?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) の場合は、VM アーキテクチャに 1 つ以上の VM が含まれていることと、[可用性セット][availability-sets]に各 VM が含まれていることを確認してください。
 
 **アプリケーションを複数のリージョンにデプロイすることを検討します。** アプリケーションが 1 つのリージョンにデプロイされている場合は、まれにリージョン全体が使用できなくなった場合に、アプリケーションも使用できなくなります。 これは、アプリケーションの SLA の条件の下では許容できないことがあります。 その場合は、アプリケーションとそのサービスを複数のリージョンにデプロイすることを検討してください。
 
 **デプロイおよび保守のタスクを自動化してテストします。** 分散アプリケーションは、連携して動作する必要がある、複数の部分で構成されます。 スクリプトなどのテスト済みおよび実証済みのメカニズムを使用して、デプロイを自動化する必要があります。 これらのメカニズムでは、構成を更新および検証し、デプロイ プロセスを自動化することができます。 [Azure Resource Manager テンプレート](/azure/azure-resource-manager/resource-group-authoring-templates)を使用して Azure リソースをプロビジョニングします。 また、アプリケーションの更新を実行する自動化された手法も使用します。 エラーによってさらにダウンタイムが発生しないように、このすべてのプロセスを完全にテストすることが不可欠です。 すべての展開ツールには展開されたアプリケーションを保護するための、適切なセキュリティ制限が必要です。展開ポリシーは慎重に定義して適用し、人間の介入は最小限に抑えてください。
 
-**プラットフォームのステージングおよび運用機能を使用します。** たとえば、Azure App Service では、デプロイを運用環境に切り替える前のステージングに使用できる[展開スロット](/azure/app-service/web-sites-staged-publishing)をサポートします。 Azure Service Fabric では、アプリケーション サービスの[ローリング アップグレード](/azure/service-fabric/service-fabric-application-upgrade)をサポートします。
+**プラットフォームのステージングおよび運用機能を使用します。** たとえば、Azure App Service では、デプロイを運用環境に切り替える前のステージングに使用できる[デプロイ スロット](/azure/app-service/web-sites-staged-publishing)をサポートします。 Azure Service Fabric では、アプリケーション サービスの[ローリング アップグレード](/azure/service-fabric/service-fabric-application-upgrade)をサポートします。
 
 **仮想マシン (VM) を可用性セットに配置します。** 可用性を最大限にするには、各 VM ロールの複数のインスタンスを作成し、それらのインスタンスを同じ可用性セットに配置します。 異なるアプリケーション層など、さまざまなロールが適用された複数の VM がある場合は、VM ロールごとに可用性セットを作成します。 たとえば、Web 層の可用性セットを作成し、データ層には別の可用性セットを作成します。
 
