@@ -2,12 +2,12 @@
 title: Azure ガバナンス設計ガイド
 description: Azure ガバナンス管理を構成してユーザーがシンプルなワークロードをデプロイできるようにするためのガイダンス
 author: petertay
-ms.openlocfilehash: 78545400fc0b09262dce3d0e577442443468b2ed
-ms.sourcegitcommit: c704d5d51c8f9bbab26465941ddcf267040a8459
+ms.openlocfilehash: 88cd24a46a6bdaca4e0dd18706af1f7e3fe3bce2
+ms.sourcegitcommit: c4106b58ad08f490e170e461009a4693578294ea
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39229575"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "43016111"
 ---
 # <a name="azure-governance-design-guide"></a>Azure ガバナンス設計ガイド
 
@@ -24,7 +24,7 @@ ms.locfileid: "39229575"
 ガバナンス モデルの設計を開始する前に、Azure のライセンスの取得方法を理解することが重要です。 ご自身の Azure ライセンスに関連付けられている管理者アカウントには、ご使用の Azure リソースすべてに対する最高レベルのアクセス権が付与されているためです。 これらの管理者アカウントにより、ご自身のガバナンス モデルの基礎が形成されます。  
 
 > [!NOTE]
-> お客様の組織の既存の[マイクロソフトエンタープライズ契約](https://www.microsoft.com/licensing/licensing-programs/enterprise.aspx)に Azure が含まれていない場合は、前払いによる年額コミットメントを行うことで Azure を追加できます。 詳細については、「[Azure のエンタープライズ向けライセンス](https://azure.microsoft.com/pricing/enterprise-agreement/)」を参照してください。 
+> お客様の組織の既存の[マイクロソフトエンタープライズ契約](https://www.microsoft.com/en-us/licensing/licensing-programs/enterprise.aspx)に Azure が含まれていない場合は、前払いによる年額コミットメントを行うことで Azure を追加できます。 詳細については、「[Azure のエンタープライズ向けライセンス](https://azure.microsoft.com/pricing/enterprise-agreement/)」を参照してください。 
 
 Azure がご自身の組織のエンタープライズ契約に追加されたとき、組織は **Azure アカウント**を作成するよう求められました。 アカウントの作成プロセス中に、**Azure アカウント所有者**が、Azure Active Directory (Azure AD) テナントおよび**グローバル管理者**アカウントと共に作成されています。 Azure AD テナントとは、Azure AD の安全な専用インスタンスを表す論理コンストラクトです。
 
