@@ -3,12 +3,13 @@ title: Azure の参照アーキテクチャ
 description: Azure での一般的なワークロードに対応する、参照アーキテクチャ、計画、および規範的実装ガイダンス。
 layout: LandingPage
 ms.topic: landing-page
-ms.openlocfilehash: 374ca51d70e4999fbb1bacf47547040db6f0071f
-ms.sourcegitcommit: 776b8c1efc662d42273a33de3b82ec69e3cd80c5
+ms.date: 08/30/2018
+ms.openlocfilehash: e9b3a65c48c759f9fc07da9f2c4195fc2db4c782
+ms.sourcegitcommit: ae8a1de6f4af7a89a66a8339879843d945201f85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38987626"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43325573"
 ---
 # <a name="azure-reference-architectures"></a>Azure の参照アーキテクチャ
 
@@ -52,6 +53,26 @@ ms.locfileid: "38987626"
                     <div class="cardText">
                         <h3>Azure Data Factory を使用したエンタープライズ BI の自動化</h3>
                         <p>ELT パイプラインを自動化し、オンプレミス データベースから増分を読み込みます。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</li>
+<!-- Stream Analytics -->
+<li style="display: flex; flex-direction: column;">
+    <a href="./data/stream-processing-stream-analytics.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="./_images/azure-analysis-service.svg" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Azure Stream Analytics によるストリーム処理</h3>
+                        <p>2 つのデータ ストリームからのレコードを関連付けてローリング平均を計算する、エンド ツー エンドのストリーム処理パイプライン。</p>
                     </div>
                 </div>
             </div>
@@ -102,7 +123,7 @@ ms.locfileid: "38987626"
     </a>
 </li>
 <li style="display: flex; flex-direction: column;">
-    <a href="./app-service-web-app/scalable-web-app.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+    <a href="./app-service-web-app/multi-region.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
         <div class="cardSize" style="flex: 1 0 auto; display: flex;">
             <div class="cardPadding" style="display: flex;">
                 <div class="card">
