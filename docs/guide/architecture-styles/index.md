@@ -2,12 +2,13 @@
 title: アーキテクチャ スタイル
 description: クラウド アプリケーションの一般的なアーキテクチャ スタイル
 layout: LandingPage
-ms.openlocfilehash: e647d1a0f3305e7754859e5ab8a9a3b46c3d4fb6
-ms.sourcegitcommit: d08f6ee27e1e8a623aeee32d298e616bc9bb87ff
+ms.date: 08/30/2018
+ms.openlocfilehash: b192cfc4168cc6f73e191a4ec8a5a83f1986aee7
+ms.sourcegitcommit: ae8a1de6f4af7a89a66a8339879843d945201f85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33810433"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43326274"
 ---
 # <a name="architecture-styles"></a>アーキテクチャ スタイル
 
@@ -69,7 +70,7 @@ CQRS は、大規模アーキテクチャのサブシステムへの適用が適
 
 ### <a name="big-data-big-compute"></a>ビッグ データ、ビッグ コンピューティング
 
-**[ビッグ データ](./big-data.md)** および **[ビッグ コンピューティング](./big-compute.md)** は、特定のプロファイルと一致するワークロードに特化したアーキテクチャ スタイルです。 ビッグ データでは、きわめて大きなデータセットをチャンクに分割して、分析やレポート作成のためにセット全体に並列処理を実行します。 ビッグ コンピューティングはハイ パフォーマンス コンピューティング (HPC) とも呼ばれ、多数 (数千単位) のコアに対して並列コンピューティングを行います。 ドメインには、シミュレーション、モデリング、および 3-D レンダリングが含まれます。
+**[ビッグ データ](./big-data.md)** および**[ビッグ コンピューティング](./big-compute.md)** は、特定のプロファイルと一致するワークロードに特化したアーキテクチャ スタイルです。 ビッグ データでは、きわめて大きなデータセットをチャンクに分割して、分析やレポート作成のためにセット全体に並列処理を実行します。 ビッグ コンピューティングはハイ パフォーマンス コンピューティング (HPC) とも呼ばれ、多数 (数千単位) のコアに対して並列コンピューティングを行います。 ドメインには、シミュレーション、モデリング、および 3-D レンダリングが含まれます。
 
 ## <a name="architecture-styles-as-constraints"></a>制約としてのアーキテクチャ スタイル
 
