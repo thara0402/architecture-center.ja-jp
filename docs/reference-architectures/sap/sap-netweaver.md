@@ -3,12 +3,12 @@ title: AnyDB 向けの SAP NetWeaver (Windows) を Azure Virtual Machines にデ
 description: 高可用性を備えた Azure の Linux環境で SAP S/4HANA を実行するための実証済みプラクティス。
 author: lbrader
 ms.date: 05/11/2018
-ms.openlocfilehash: 90334e4872bdd15d59aa16286a031d07f3d1bb2f
-ms.sourcegitcommit: 86d86d71e392550fd65c4f76320d7ecf0b72e1f6
+ms.openlocfilehash: f4a33e7a3f30bdd6d8bdd41599a5e3b47501b874
+ms.sourcegitcommit: c4106b58ad08f490e170e461009a4693578294ea
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37864540"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "43016026"
 ---
 # <a name="deploy-sap-netweaver-windows-for-anydb-on-azure-virtual-machines"></a>AnyDB 向けの SAP NetWeaver (Windows) を Azure Virtual Machines にデプロイする
 
@@ -35,7 +35,7 @@ ms.locfileid: "37864540"
 - **Jumpbox**。 要塞ホストとも呼ばれます。 これは、他の仮想マシンに接続するために管理者が使用するネットワークの安全な仮想マシンです。
 - **Windows Server Active Directory ドメイン コントローラー**。 ドメイン コントローラーは、ドメイン内のすべての VM とユーザーで使用されます。
 
-**ロード バランサー**。 組み込みの SAP ロード バランサーと [Azure Load Balancer](/azure/load-balancer/load-balancer-overview) の両方が、HA を実現するために使用されます。 Azure Load Balancer インスタンスは、アプリケーション層サブネット内の仮想マシンにトラフィックを分散させるときに使用されます。
+**ロード バランサー**。 [Azure Load Balancer](/azure/load-balancer/load-balancer-overview) インスタンスは、アプリケーション層サブネット内の仮想マシンにトラフィックを分散させるときに使用されます。 データ層では、DBMS に応じて、組み込みの SAP ロード バランサー、Azure Load Balancer、またはその他のメカニズムを使用して高可用性を実現できます。 詳細については、「[SAP NetWeaver のための Azure Virtual Machines DBMS のデプロイ](/azure/virtual-machines/workloads/sap/dbms-guide)」を参照してください。 
 
 **可用性セット**。 SAP Web Dispatcher、SAP アプリケーション サーバー、および (A) SCS ロールの仮想マシンが個別の[可用性セット](/azure/virtual-machines/windows/tutorial-availability-sets)にグループ化され、ロールごとに少なくとも 2 つの仮想マシンがプロビジョニングされます。 これにより、仮想マシンが、より高度な[サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/virtual-machines) (SLA) に対応できるようになります。
 

@@ -4,12 +4,12 @@ description: 再試行メカニズムを設定するためのサービス固有�
 author: dragon119
 ms.date: 07/13/2016
 pnp.series.title: Best Practices
-ms.openlocfilehash: 72dfb59c3357c5f14806a33ef5f6cdd3e7937915
-ms.sourcegitcommit: 8b5fc0d0d735793b87677610b747f54301dcb014
+ms.openlocfilehash: 790c933458717f2cb4cde0741b1d22f6ae89cc39
+ms.sourcegitcommit: 8ec48a0e2c080c9e2e0abbfdbc463622b28de2f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2018
-ms.locfileid: "39334166"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "43016097"
 ---
 # <a name="retry-guidance-for-specific-services"></a>特定のサービスの再試行ガイダンス
 
@@ -23,7 +23,9 @@ ms.locfileid: "39334166"
 | --- | --- | --- | --- | --- |
 | **[Azure Active Directory](#azure-active-directory)** |ADAL ライブラリのネイティブ |ADAL ライブラリに埋め込み済み |内部 |なし |
 | **[Cosmos DB](#cosmos-db)** |サービスでネイティブ |構成不可 |グローバル |TraceSource |
+| **Data Lake Store** |クライアントでネイティブ |構成不可 |個々の操作 |なし |
 | **[Event Hubs](#event-hubs)** |クライアントでネイティブ |プログラムによる |クライアント |なし |
+| **[IoT Hub](#iot-hub)** |クライアント SDK でネイティブ |プログラムによる |クライアント |なし |
 | **[Redis Cache](#azure-redis-cache)** |クライアントでネイティブ |プログラムによる |クライアント |TextWriter |
 | **[Search](#azure-search)** |クライアントでネイティブ |プログラムによる |クライアント |ETW またはカスタム |
 | **[Service Bus](#service-bus)** |クライアントでネイティブ |プログラムによる |名前空間マネージャー、メッセージング ファクトリ、およびクライアント |ETW |
@@ -124,6 +126,25 @@ client.RetryPolicy = RetryPolicy.Default;
 
 ### <a name="more-information"></a>詳細情報
 [Azure Event Hubs の .NET Standard クライアント ライブラリ](https://github.com/Azure/azure-event-hubs-dotnet)
+
+## <a name="iot-hub"></a>IoT Hub
+
+Azure IoT Hub は、デバイスを接続、監視、および管理して、モノのインターネット (IoT) アプリケーションを開発するためのサービスです。
+
+### <a name="retry-mechanism"></a>再試行メカニズム
+
+Azure IoT device SDK では、ネットワーク、プロトコル、またはアプリケーションのエラーを検出できます。 エラーの種類に基づき、SDK によって、再試行する必要があるかどうかが判断されます。 "*回復可能*" なエラーの場合、SDK により、構成済み再試行ポリシーを使用して再試行が開始されます。
+
+既定の再試行ポリシーは "*指数バックオフとランダム ジッター*" ですが、これは構成することができます。
+
+### <a name="policy-configuration"></a>ポリシーの構成
+
+ポリシーの構成は言語によって異なります。 詳細については、[IoT Hub 再試行ポリシーの構成](/azure/iot-hub/iot-hub-reliability-features-in-sdks#retry-policy-apis)に関するページをご覧ください。
+
+### <a name="more-information"></a>詳細情報
+
+* [IoT Hub 再試行ポリシー](/azure/iot-hub/iot-hub-reliability-features-in-sdks)
+* [IoT Hub デバイス切断のトラブルシューティング](/azure/iot-hub/iot-hub-troubleshoot-connectivity)
 
 ## <a name="azure-redis-cache"></a>Azure Redis Cache
 Azure Redis Cache は、一般的なオープン ソース Redis Cache に基づく、高速データ アクセスと低待機時間のキャッシュ サービスです。 これは安全で、Microsoft により管理されており、Azure の任意のアプリケーションからアクセスできます。

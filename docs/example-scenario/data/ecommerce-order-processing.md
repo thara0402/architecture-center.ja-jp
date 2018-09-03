@@ -3,12 +3,12 @@ title: Azure でのスケーラブルな注文処理
 description: Azure Cosmos DB を使用した拡張性の高い注文処理パイプラインを構築するためのサンプル シナリオ。
 author: alexbuckgit
 ms.date: 07/10/2018
-ms.openlocfilehash: 541b5e9f523c64bc55526e4e2dffc57a5212e67f
-ms.sourcegitcommit: 71cbef121c40ef36e2d6e3a088cb85c4260599b9
+ms.openlocfilehash: 9fa0dc7c564270ee811b56169e05f7e743664838
+ms.sourcegitcommit: c4106b58ad08f490e170e461009a4693578294ea
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39060983"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "43016063"
 ---
 # <a name="scalable-order-processing-on-azure"></a>Azure でのスケーラブルな注文処理
 
@@ -41,7 +41,7 @@ Cosmos DB、HDInsight などのマネージド Azure サービスを使用して
 
 ### <a name="components"></a>コンポーネント
 
-* [Cosmos DB][docs-cosmos-db] は Microsoft のグローバル分散マルチモデル データベースです。これにより、ご自身のソリューションが、スループットとストレージを、任意の数の geography 型リージョンで柔軟かつ個別にスケーリングできるようになります。 このサービスは包括的なサービス レベル アグリーメント (SLA) により、スループット、待機時間、可用性、一貫性が保証されています。 このシナリオでは、イベント ストリーム ストレージおよびスナップショット ストレージに Cosmos DB を使用し、Cosmos DB の Change Feed 機能を利用して、データの一貫性と障害からの復旧を実現します。 
+* [Cosmos DB][docs-cosmos-db] は Microsoft のグローバル分散マルチモデル データベースです。これにより、ご自身のソリューションが、スループットとストレージを、任意の数の geography 型リージョンで柔軟かつ個別にスケーリングできるようになります。 このサービスは包括的なサービス レベル アグリーメント (SLA) により、スループット、待機時間、可用性、一貫性が保証されています。 このシナリオでは、イベント ストリーム ストレージおよびスナップショット ストレージに Cosmos DB を使用し、[Cosmos DB の Change Feed][docs-cosmos-db-change-feed] 機能を利用して、データの一貫性と障害からの復旧を実現します。 
 * [HDInsight の Apache Kafka][docs-kafka] は、リアルタイムのストリーミング データ パイプラインとアプリケーションを構築するための、オープン ソースの分散ストリーム プラットフォームである Apache Kafka のマネージド サービス実装です。 Kafka は、名前付きデータ ストリームへの公開とサブスクライブのために、メッセージ キューと同様のメッセージ ブローカー機能も提供しています。 このシナリオでは、Kafka を使用して、注文処理パイプラインの受信およびダウンストリーム イベントを処理します。 
 
 ## <a name="considerations"></a>考慮事項
@@ -107,6 +107,7 @@ Azure Cosmos DB の通貨は要求ユニット (RU) です。 要求ユニット
 [architecture-diagram]: ./images/architecture-diagram-cosmos-db.png
 [docs-cosmos-db]: /azure/cosmos-db
 [docs-cosmos-db-change-feed]: /azure/cosmos-db/change-feed
+[docs-cosmos-db-online-backup-and-restore]: /azure/cosmos-db/online-backup-and-restore
 [docs-cosmos-db-regional-failover]: /azure/cosmos-db/regional-failover
 [docs-cosmos-db-guarantees]: /azure/cosmos-db/distribute-data-globally#AvailabilityGuarantees
 [docs-cosmos-db-use-cases]: /azure/cosmos-db/use-cases

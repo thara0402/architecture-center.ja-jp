@@ -4,12 +4,12 @@ description: 適切に設計された Web API を作成する方法に関する�
 author: dragon119
 ms.date: 01/12/2018
 pnp.series.title: Best Practices
-ms.openlocfilehash: db9784f454e0b52b335d6dff3a054c2c59124c9f
-ms.sourcegitcommit: f7418f8bdabc8f5ec33ae3551e3fbb466782caa5
+ms.openlocfilehash: 68ed3f59e1fd63ae754ceabf27a182daa0de0e5d
+ms.sourcegitcommit: c4106b58ad08f490e170e461009a4693578294ea
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36209612"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "43016052"
 ---
 # <a name="api-design"></a>API 設計
 
@@ -122,7 +122,7 @@ HTTP プロトコルにより、要求にセマンティックな意味を割り
 | **リソース** | **POST** | **GET** | **PUT** | **DELETE** |
 | --- | --- | --- | --- | --- |
 | /customers |新しい顧客を作成 |すべての顧客を取得 |顧客を一括更新 |すべての顧客を削除 |
-| /customers/1 |エラー |顧客 1 の詳細を取得 |顧客 1 の詳細を更新 (顧客 1 が存在する場合) |顧客 1 を削除 |
+| /customers/1 |Error |顧客 1 の詳細を取得 |顧客 1 の詳細を更新 (顧客 1 が存在する場合) |顧客 1 を削除 |
 | /customers/1/orders |顧客 1 の新しい注文を作成 |顧客 1 のすべての注文を取得 |顧客 1 の注文を一括更新 |顧客 1 のすべての注文を削除 |
 
 POST、PUT、PATCH の違いがわかりにくい可能性があります。
