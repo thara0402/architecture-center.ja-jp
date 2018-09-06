@@ -2,12 +2,13 @@
 title: Web キュー ワーカーのアーキテクチャ スタイル
 description: Azure の Web ワーカー キュー ワーカーのアーキテクチャのメリット、課題、ベスト プラクティスについて説明します。
 author: MikeWasson
-ms.openlocfilehash: 545472e71ffcd43717ad24af0dc9218a221ca910
-ms.sourcegitcommit: 5d99b195388b7cabba383c49a81390ac48f86e8a
+ms.date: 08/30/2018
+ms.openlocfilehash: 0ebcf49c08c74cec3f1820da2d6f30ba95256e81
+ms.sourcegitcommit: ae8a1de6f4af7a89a66a8339879843d945201f85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37958791"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43325353"
 ---
 # <a name="web-queue-worker-architecture-style"></a>Web キュー ワーカーのアーキテクチャ スタイル
 
@@ -29,13 +30,13 @@ Web とワーカーはいずれもステートレスです。 セッション状
 
 ## <a name="when-to-use-this-architecture"></a>このアーキテクチャを使用する状況
 
-Web キュー ワーカーのアーキテクチャは、通常、マネージ コンピューティング サービス、Azure App Service または Azure Cloud Services のいずれかを使用して実装されます。 
+Web キュー ワーカーのアーキテクチャは、通常、マネージド コンピューティング サービス、Azure App Service または Azure Cloud Services のいずれかを使用して実装されます。 
 
 次の場合に、このアーキテクチャ スタイルを検討してください。
 
 - 比較的単純なドメインのアプリケーション。
 - 実行時間の長いワークフローやバッチ操作があるアプリケーション。
-- サービスとしてのインフラストラクチャ (IaaS) ではなく、マネージ サービスを使用する場合。
+- サービスとしてのインフラストラクチャ (IaaS) ではなく、マネージド サービスを使用する場合。
 
 ## <a name="benefits"></a>メリット
 

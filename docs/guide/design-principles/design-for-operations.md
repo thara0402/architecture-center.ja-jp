@@ -2,12 +2,13 @@
 title: 操作に合わせた設計
 description: 運用チームが必要なツールを得られるようにアプリケーションを設計します
 author: MikeWasson
-ms.openlocfilehash: 5b9f76c27656e5154fb039ca41976f7209395cd8
-ms.sourcegitcommit: 26b04f138a860979aea5d253ba7fecffc654841e
+ms.date: 08/30/2018
+ms.openlocfilehash: a73479a7661c042d05db61907d1f993fc04ac11d
+ms.sourcegitcommit: ae8a1de6f4af7a89a66a8339879843d945201f85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36206617"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43326240"
 ---
 # <a name="design-for-operations"></a>操作に合わせた設計
 
@@ -15,7 +16,7 @@ ms.locfileid: "36206617"
 
 クラウドによって、運用チームの役割は大きく変わりました。 アプリケーションをホストするハードウェアやインフラストラクチャの管理は、彼らの担当業務ではなくなったのです。  とは言え、クラウド アプリケーションを効果的に実行するうえで、運用チームは今でも重要な役割を担っています。 運用チームの重要な役割としては、次のことが挙げられます。
 
-- デプロイ
+- Deployment
 - 監視
 - エスカレーション
 - インシデント対応

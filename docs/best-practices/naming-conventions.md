@@ -4,12 +4,12 @@ description: Azure リソースの名前付け規則。 仮想マシン、スト
 author: telmosampaio
 ms.date: 05/18/2017
 pnp.series.title: Best Practices
-ms.openlocfilehash: 6ad71a5ee39b8f1863c51dae0120dbdc7baf1f76
-ms.sourcegitcommit: c704d5d51c8f9bbab26465941ddcf267040a8459
+ms.openlocfilehash: 8aa0b46d9f43107cfa4ae4be3160900249365702
+ms.sourcegitcommit: ae8a1de6f4af7a89a66a8339879843d945201f85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39229152"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43326322"
 ---
 # <a name="naming-conventions"></a>名前付け規則
 
@@ -111,10 +111,10 @@ Azure のリソースまたはサービスの種類ごとに、名前付けに�
 | --- | --- | --- | --- | --- | --- | --- |
 |Virtual Network (VNet) |リソース グループ |2 ～ 64 |大文字と小文字は区別されない |英数字、ハイフン、アンダースコア、ピリオド |`<service short name>-vnet` |`profx-vnet` |
 |サブネット |親 VNet |2 ～ 80 |大文字と小文字は区別されない |英数字、ハイフン、アンダースコア、ピリオド |`<descriptive context>` |`web` |
-|ネットワーク インターフェイス |リソース グループ |1 ～ 80 |大文字と小文字は区別されない |英数字、ハイフン、アンダースコア、ピリオド |`<vmname>-nic<num>` |`profx-sql1-nic1` |
+|ネットワーク インターフェイス |リソース グループ |1 ～ 80 |大文字と小文字は区別されない |英数字、ハイフン、アンダースコア、ピリオド |`<vmname>-nic<num>` |`profx-sql1-vm1-nic1` |
 |ネットワーク セキュリティ グループ |リソース グループ |1 ～ 80 |大文字と小文字は区別されない |英数字、ハイフン、アンダースコア、ピリオド |`<service short name>-<context>-nsg` |`profx-app-nsg` |
 |ネットワーク セキュリティ グループの規則 |リソース グループ |1 ～ 80 |大文字と小文字は区別されない |英数字、ハイフン、アンダースコア、ピリオド |`<descriptive context>` |`sql-allow` |
-|パブリック IP アドレス |リソース グループ |1 ～ 80 |大文字と小文字は区別されない |英数字、ハイフン、アンダースコア、ピリオド |`<vm or service name>-pip` |`profx-sql1-pip` |
+|パブリック IP アドレス |リソース グループ |1 ～ 80 |大文字と小文字は区別されない |英数字、ハイフン、アンダースコア、ピリオド |`<vm or service name>-pip` |`profx-sql1-vm1-pip` |
 |Load Balancer |リソース グループ |1 ～ 80 |大文字と小文字は区別されない |英数字、ハイフン、アンダースコア、ピリオド |`<service or role>-lb` |`profx-lb` |
 |負荷分散規則の構成 |Load Balancer |1 ～ 80 |大文字と小文字は区別されない |英数字、ハイフン、アンダースコア、ピリオド |`<descriptive context>` |`http` |
 |Azure Application Gateway |リソース グループ |1 ～ 80 |大文字と小文字は区別されない |英数字、ハイフン、アンダースコア、ピリオド |`<service or role>-agw` |`profx-agw` |
@@ -195,4 +195,4 @@ BLOB 名には任意の文字の組み合わせを含めることができます
 
 <!-- links -->
 
-[scaffold]: /azure/azure-resource-manager/resource-manager-subscription-governance
+[scaffold]: /azure/azure-resource-manager/resource-manager-azure-scaffold

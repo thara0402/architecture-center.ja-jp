@@ -2,12 +2,13 @@
 title: ビッグ コンピューティング アーキテクチャ スタイル
 description: Azure のビッグ コンピューティング アーキテクチャのメリット、課題、ベスト プラクティスを説明します。　
 author: MikeWasson
-ms.openlocfilehash: b16be4133143d7d73062eeb280b44779c390f387
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.date: 08/30/2018
+ms.openlocfilehash: aca2221faf1fbf47de2fd81c8909dfe8aef46bea
+ms.sourcegitcommit: ae8a1de6f4af7a89a66a8339879843d945201f85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
-ms.locfileid: "24539787"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43326175"
 ---
 # <a name="big-compute-architecture-style"></a>ビッグ コンピューティング アーキテクチャ スタイル
 
@@ -47,7 +48,7 @@ ms.locfileid: "24539787"
 
 ## <a name="big-compute-using-azure-batch"></a>Azure Batch を使用したビッグ コンピューティング
 
-[Azure Batc][batch] は、大規模な高パフォーマンス コンピューティング (HPC) のアプリケーションを実行するためのマネージ サービスです。
+[Azure Batc][batch] は、大規模な高パフォーマンス コンピューティング (HPC) のアプリケーションを実行するためのマネージド サービスです。
 
 Azure Batch を使用して、VM プールを構成し、アプリケーションとデータ ファイルをアップロードします。 バッチ サービスにより VM がプロビジョニングされ、VM にタスクが割り当てられ、タスクが実行され、進行状況が監視されます。 バッチは、ワークロードに応じて VM を自動的にスケール アウトできます。 また、バッチは、ジョブのスケジューリングも提供します。
 

@@ -7,12 +7,12 @@ tags: azure-resource-manager
 ms.service: virtual-network
 ms.date: 04/3/2018
 ms.author: jonor
-ms.openlocfilehash: 8df02bbb6d926f0ab5402fab4eb2b25fdc2057cd
-ms.sourcegitcommit: 8ec48a0e2c080c9e2e0abbfdbc463622b28de2f2
+ms.openlocfilehash: 34fab47cef6d5a9c0130f0864e9fdef33357ba25
+ms.sourcegitcommit: ae8a1de6f4af7a89a66a8339879843d945201f85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "40211621"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43325480"
 ---
 # <a name="azure-virtual-datacenter-a-network-perspective"></a>Azure 仮想データセンター: ネットワークの観点
 
@@ -217,9 +217,7 @@ IT インフラストラクチャ チームの主要なタスクの 1 つは、�
 
 [![8]][8]
 
-
-  [
-  **ネットワーク仮想アプライアンス**][NVA] ハブでは、インターネットにアクセスできる境界ネットワークは、ファイアウォールや Web アプリケーション ファイアウォール (WAF) のファームによって管理されるのが普通です。
+[**ネットワーク仮想アプライアンス**][NVA] ハブでは、インターネットにアクセスできる境界ネットワークは、ファイアウォールや Web アプリケーション ファイアウォール (WAF) のファームによって管理されるのが普通です。
 
 異なる LOB は一般的に多くの Web アプリケーションを使い、これらのアプリケーションをさまざまな脆弱性および悪用の可能性によって損なわれる傾向があります。 Web アプリケーション ファイアウォールは、一般的なファイアウォールより詳しく Web アプリケーション (HTTP/HTTPS) に対する攻撃を検出するために使われる特殊な種類の製品です。 従来のファイアウォール テクノロジと比較すると、WAF は脅威から内部 Web サーバーを保護するための特定の機能セットを備えています。
 
@@ -229,15 +227,11 @@ IT インフラストラクチャ チームの主要なタスクの 1 つは、�
 
 ほとんどの大企業は、複数のドメインを管理しています。 Azure DNS を使って、特定のドメインの DNS レコードをホストできます。 たとえば、Azure 外部ロード バランサー (または WAF) の仮想 IP アドレス (VIP) を、Azure DNS レコードの A レコードに登録できます。
 
-
-  [
-  **Azure Load Balancer**][ALB] Azure Load Balancer が提供する高可用性レイヤー 4 (TCP、UDP) サービスは、負荷分散セットで定義されているサービス インスタンス間に受信トラフィックを分散できます。 フロントエンド エンドポイント (パブリック IP エンドポイントまたはプライベート IP エンドポイント) からロード バランサーに送信されたトラフィックは、アドレス変換をして、またはしないで、バックエンド IP アドレス プール (例: ネットワーク仮想アプライアンスまたは VM) のセットに再配信できます。
+[**Azure Load Balancer**][ALB] Azure Load Balancer が提供する高可用性レイヤー 4 (TCP、UDP) サービスは、負荷分散セットで定義されているサービス インスタンス間に受信トラフィックを分散できます。 フロントエンド エンドポイント (パブリック IP エンドポイントまたはプライベート IP エンドポイント) からロード バランサーに送信されたトラフィックは、アドレス変換をして、またはしないで、バックエンド IP アドレス プール (例: ネットワーク仮想アプライアンスまたは VM) のセットに再配信できます。
 
 Azure Load Balancer は、さまざまなサーバー インスタンスの正常性をプローブすることもでき、プローブが応答に失敗した場合、ロード バランサーは異常なインスタンスへのトラフィック送信を停止します。 VDC では、外部ロード バランサーがハブ (たとえば、NVA へのトラフィックの分散) とスポーク (多層アプリケーションの異なる VM 間へのトラフィックの分散などのタスクを実行するため) に存在します。
 
-
-  [
-  **Application Gateway**][AppGW] Microsoft Azure Application Gateway は、アプリケーション配信コントローラー (ADC) をサービスとして提供する専用仮想アプライアンスで、さまざまなレイヤー 7 負荷分散機能をアプリケーションで利用できるようにします。 これにより、CPU を集中的に使用する SSL 終了を Application Gateway にオフロードし、Web ファームの生産性を最適化できます。 また、着信トラフィックのラウンド ロビン分散、Cookie ベースのセッション アフィニティ、URL パス ベースのルーティング、単一の Application Gateway の背後で複数の Web サイトをホストする機能など、その他のレイヤー 7 ルーティング機能も用意されています。 アプリケーション ゲートウェイの WAF SKU の一部として、Web アプリケーション ファイアウォール (WAF) も提供されます。 この SKU は、一般的な Web の脆弱性や悪用から Web アプリケーションを保護します。 Application Gateway は、インターネット接続ゲートウェイ、または内部的にのみ使用されるゲートウェイのいずれかとして構成できるほか、この両方を組み合わせて使用することも可能です。 
+[**Application Gateway**][AppGW] Microsoft Azure Application Gateway は、アプリケーション配信コントローラー (ADC) をサービスとして提供する専用仮想アプライアンスで、さまざまなレイヤー 7 負荷分散機能をアプリケーションで利用できるようにします。 これにより、CPU を集中的に使用する SSL 終了を Application Gateway にオフロードし、Web ファームの生産性を最適化できます。 また、着信トラフィックのラウンド ロビン分散、Cookie ベースのセッション アフィニティ、URL パス ベースのルーティング、単一の Application Gateway の背後で複数の Web サイトをホストする機能など、その他のレイヤー 7 ルーティング機能も用意されています。 アプリケーション ゲートウェイの WAF SKU の一部として、Web アプリケーション ファイアウォール (WAF) も提供されます。 この SKU は、一般的な Web の脆弱性や悪用から Web アプリケーションを保護します。 Application Gateway は、インターネット接続ゲートウェイ、または内部的にのみ使用されるゲートウェイのいずれかとして構成できるほか、この両方を組み合わせて使用することも可能です。 
 
 [**パブリック IP**][PIP] Azure の一部の機能を使うと、サービス エンドポイントをパブリック IP アドレスに関連付けて、インターネットからリソースにアクセスできるようにすることができます。 このエンドポイントでは、ネットワーク アドレス変換 (NAT) を使って、トラフィックを Azure 仮想ネットワークの内部アドレスとポートにルーティングします。 これは、外部トラフィックが仮想ネットワークに到達するための主な経路です。 パブリック IP アドレスは、仮想ネットワークに渡されるトラフィックと、そのトラフィックが仮想ネットワークのどこでどのように変換されるかを決定するために構成できます。
 
@@ -375,7 +369,7 @@ Traffic Manager は、Azure のパブリック エンドポイントで動作し
 [VPN]: /azure/vpn-gateway/vpn-gateway-about-vpngateways 
 [ExR]: /azure/expressroute/expressroute-introduction 
 [NVA]: /azure/architecture/reference-architectures/dmz/nva-ha
-[SubMgmt]: /azure/azure-resource-manager/resource-manager-subscription-governance 
+[SubMgmt]: /azure/azure-resource-manager/resource-manager-azure-scaffold 
 [RGMgmt]: /azure/azure-resource-manager/resource-group-overview
 [DMZ]: /azure/best-practices-network-security
 [ALB]: /azure/load-balancer/load-balancer-overview

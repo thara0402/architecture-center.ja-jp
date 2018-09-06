@@ -2,12 +2,13 @@
 title: n 層アーキテクチャのスタイル
 description: Azure でのn 層アーキテクチャのメリット、課題、ベスト プラクティスを説明します
 author: MikeWasson
-ms.openlocfilehash: 8333b789e03a9da2b021abe7d7c193cd2af8d6bf
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.date: 08/30/2018
+ms.openlocfilehash: 2a113cefec8bd1c6c524030fbc459851094c09d6
+ms.sourcegitcommit: ae8a1de6f4af7a89a66a8339879843d945201f85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
-ms.locfileid: "24540379"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43325752"
 ---
 # <a name="n-tier-architecture-style"></a>n 層アーキテクチャのスタイル
 
