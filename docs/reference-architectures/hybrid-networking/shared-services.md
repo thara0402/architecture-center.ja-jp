@@ -265,5 +265,5 @@ Test-NetConnection 10.2.0.68 -CommonTCPPort RDP
 [visio-download]: https://archcenter.blob.core.windows.net/cdn/hybrid-network-hub-spoke.vsdx
 [ref-arch-repo]: https://github.com/mspnp/reference-architectures
 [0]: ./images/shared-services.png "Azure での共有サービス トポロジ"
-[3]: ./images/hub-spokehub-spoke.svg "Hub-spoke-hub-spoke topology in Azure" (Azure のハブスポークハブスポーク トポロジ)
+[3]: ./images/hub-spokehub-spoke.svg "Hub-spoke-hub-spoke topology in Azure (Azure のハブスポークハブスポーク トポロジ)"
 [ARM-Templates]: https://azure.microsoft.com/documentation/articles/resource-group-authoring-templates/
