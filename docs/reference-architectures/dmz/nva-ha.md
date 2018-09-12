@@ -6,12 +6,12 @@ ms.date: 12/06/2016
 pnp.series.title: Network DMZ
 pnp.series.prev: secure-vnet-dmz
 cardTitle: Deploy highly available network virtual appliances
-ms.openlocfilehash: fe279eea3f9cb024d6c6c14943013b9b9a87bc9c
-ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
+ms.openlocfilehash: 556ec1e78960d64cce3bf803fc46c9146ce2584d
+ms.sourcegitcommit: f4069cf68456b5c74acb1b890dc4e45e11f12b59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30847749"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43675833"
 ---
 # <a name="deploy-highly-available-network-virtual-appliances"></a>高可用性のネットワーク仮想アプライアンスをデプロイする
 
@@ -92,6 +92,7 @@ NVA に高可用性を持たせるには、複数の NVA を可用性セット�
 ## <a name="next-steps"></a>次の手順
 * 第 7 層の NVA を使用して [Azure とオンプレミスのデータセンターの間に DMZ を実装する][dmz-on-prem]方法を確認します。
 * 第 7 層の NVA を使用して [Azure とインターネットの間に DMZ を実装する][dmz-internet]方法を確認します。
+* [Azure でのネットワーク仮想アプライアンスに関する問題のトラブルシューティング](/azure/virtual-network/virtual-network-troubleshoot-nva)
 
 <!-- links -->
 [cloud-security]: /azure/best-practices-network-security

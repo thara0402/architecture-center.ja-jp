@@ -3,12 +3,12 @@ title: SQL Server を使用した n 層アプリケーション
 description: 可用性、セキュリティ、スケーラビリティ、および管理容易性のために Azure で多層アーキテクチャを実装する方法について説明します。
 author: MikeWasson
 ms.date: 07/19/2018
-ms.openlocfilehash: 42ba18e9ffef32c6990fbb888cc41e980fb4abea
-ms.sourcegitcommit: c704d5d51c8f9bbab26465941ddcf267040a8459
+ms.openlocfilehash: fc761e940a25c4667146db9598d944bac2c32496
+ms.sourcegitcommit: ae8a1de6f4af7a89a66a8339879843d945201f85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39229135"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43326058"
 ---
 # <a name="n-tier-application-with-sql-server"></a>SQL Server を使用した n 層アプリケーション
 
@@ -22,8 +22,7 @@ ms.locfileid: "39229135"
 
 アーキテクチャには次のコンポーネントがあります。
 
-* **リソース グループ。** 
-  [リソース グループ][resource-manager-overview]は、リソースをグループ化して、有効期間、所有者、またはその他の条件別に管理できるようにするために使用されます。
+* **リソース グループ。** [リソース グループ][resource-manager-overview]は、リソースをグループ化して、有効期間、所有者、またはその他の条件別に管理できるようにするために使用されます。
 
 * **仮想ネットワーク (VNet) とサブネット。** どの Azure VM も、複数のサブネットにセグメント化できる VNet にデプロイされます。 階層ごとに個別のサブネットを作成します。 
 
@@ -221,7 +220,7 @@ VM スケール セットを使用していない場合は、同じ層の VM を
     "witnessStorageAccountKey": "[replace-with-storagekey]"
     ```
 
-8. `n-tier-windows.json` ファイルで、インスタンス `testPassw0rd!23`、`test$!Passw0rd111`、および `AweS0me@SQLServicePW` をすべて検索します。 これらをご自身のパスワードで置き換えて、ファイルを保存します。
+8. `n-tier-windows.json` ファイルで、`[replace-with-password]` のすべてのインスタンスを検索し、そのインスタンスを強力なパスワードに置き換えます。 ファイルを保存します。
 
     > [!NOTE]
     > 管理者ユーザー名を変更する場合は、JSON ファイルの `extensions` ブロックも更新する必要があります。 

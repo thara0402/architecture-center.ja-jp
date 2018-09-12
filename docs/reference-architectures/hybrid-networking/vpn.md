@@ -7,12 +7,12 @@ pnp.series.title: Connect an on-premises network to Azure
 pnp.series.next: expressroute
 pnp.series.prev: ./index
 cardTitle: VPN
-ms.openlocfilehash: dafcee6607d9cc7c56c332f9ed5d9568ff70f0e7
-ms.sourcegitcommit: c441fd165e6bebbbbbc19854ec6f3676be9c3b25
+ms.openlocfilehash: ef89cdd3e2a175f82929b613159a99557560cc7a
+ms.sourcegitcommit: ae8a1de6f4af7a89a66a8339879843d945201f85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
-ms.locfileid: "30270695"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43325390"
 ---
 # <a name="connect-an-on-premises-network-to-azure-using-a-vpn-gateway"></a>VPN ゲートウェイを使用した Azure へのオンプレミス ネットワークの接続
 
@@ -45,7 +45,7 @@ ms.locfileid: "30270695"
 
 ## <a name="recommendations"></a>Recommendations
 
-ほとんどのシナリオには、次の推奨事項が適用されます。 これらの推奨事項には、優先される特定の要件がない限り、従ってください。
+ほとんどのシナリオには、次の推奨事項が適用されます。 これらの推奨事項には、オーバーライドする特定の要件がない限り、従ってください。
 
 ### <a name="vnet-and-gateway-subnet"></a>VNet とゲートウェイ サブネット
 
@@ -80,13 +80,7 @@ ms.locfileid: "30270695"
 > 
 > 
 
-ご自分のスループット要件に最も合致する Azure VPN ゲートウェイ SKU を選択します。 Azure VPN ゲートウェイは、次の表に示すように 3 つの SKU からご利用いただけます。 
-
-| SKU | VPN スループット | IPSec トンネルの最大数 |
-| --- | --- | --- |
-| Basic |100 Mbps |10 |
-| 標準 |100 Mbps |10 |
-| 高性能 |200 Mbps |30 |
+ご自分のスループット要件に最も合致する Azure VPN ゲートウェイ SKU を選択します。 詳細については、「[ゲートウェイの SKU][azure-gateway-skus]」を参照してください
 
 > [!NOTE]
 > Basic SKU は、Azure ExpressRoute と互換性がありません。 ゲートウェイの作成後、[SKU を変更][changing-SKUs]できます。
@@ -467,6 +461,7 @@ VNet のアプリケーションがインターネットにデータを送信す
 [vpn-appliance]: /azure/vpn-gateway/vpn-gateway-about-vpn-devices
 [azure-vpn-gateway]: https://azure.microsoft.com/services/vpn-gateway/
 [azure-gateway-charges]: https://azure.microsoft.com/pricing/details/vpn-gateway/
+[azure-gateway-skus]: /azure/vpn-gateway/vpn-gateway-about-vpngateways#gwsku
 [connect-to-an-Azure-vnet]: https://technet.microsoft.com/library/dn786406.aspx
 [vpn-gateway-multi-site]: /azure/vpn-gateway/vpn-gateway-multi-site
 [policy-based-routing]: https://en.wikipedia.org/wiki/Policy-based_routing
@@ -494,9 +489,4 @@ VNet のアプリケーションがインターネットにデータを送信す
 <!--[solution-script]: https://github.com/mspnp/reference-architectures/tree/master/guidance-hybrid-network-vpn/Deploy-ReferenceArchitecture.ps1-->
 <!--[solution-script-bash]: https://github.com/mspnp/reference-architectures/tree/master/guidance-hybrid-network-vpn/deploy-reference-architecture.sh-->
 <!--[virtualNetworkGateway-parameters]: https://github.com/mspnp/reference-architectures/tree/master/guidance-hybrid-network-vpn/parameters/virtualNetworkGateway.parameters.json-->
-[azure-cli]: https://azure.microsoft.com/documentation/articles/xplat-cli-install/
-[CIDR]: https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing
-[0]: ./images/vpn.png "オンプレミスと Azure インフラストラクチャにまたがるハイブリッド ネットワーク"
-[2]: ../_images/guidance-hybrid-network-vpn/audit-logs.png "Azure Portal の監査ログ"
-[3]: ../_images/guidance-hybrid-network-vpn/RRAS-perf-counters.png "VPN ネットワーク トラフィックを監視するパフォーマンス カウンター"
-[4]: ../_images/guidance-hybrid-network-vpn/RRAS-perf-graph.png "VPN ネットワーク パフォーマンス グラフの例"
+[azure-cli]: https://azure.microsoft.com/documentation/articles/xplat-cli-install/ [CIDR]: https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing [0]: ./images/vpn.png "オンプレミスと Azure インフラストラクチャにまたがるハイブリッド ネットワーク" [2]: ../_images/guidance-hybrid-network-vpn/audit-logs.png "Azure portal の監査ログ" [3]: ../_images/guidance-hybrid-network-vpn/RRAS-perf-counters.png "VPN ネットワーク トラフィックを監視するパフォーマンス カウンター" [4]: ../_images/guidance-hybrid-network-vpn/RRAS-perf-graph.png "VPN ネットワーク パフォーマンス グラフの例""

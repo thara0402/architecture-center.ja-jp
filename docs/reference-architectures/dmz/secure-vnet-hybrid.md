@@ -7,12 +7,12 @@ pnp.series.title: Network DMZ
 pnp.series.prev: ./index
 pnp.series.next: secure-vnet-dmz
 cardTitle: DMZ between Azure and on-premises
-ms.openlocfilehash: 45583473ef297b2c7a5b0c4baff52485286dd051
-ms.sourcegitcommit: 9b459f75254d97617e16eddd0d411d1f80b7fe90
+ms.openlocfilehash: e397a8691a1b7b37cc0129d914dc85d92c876139
+ms.sourcegitcommit: f4069cf68456b5c74acb1b890dc4e45e11f12b59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37403166"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43675809"
 ---
 # <a name="dmz-between-azure-and-your-on-premises-datacenter"></a>Azure とオンプレミス データセンター間の DMZ
 
@@ -78,8 +78,7 @@ VM、VNet、ロード バランサーなどの Azure リソースは、リソー
 
 ### <a name="nva-recommendations"></a>NVA の推奨事項
 
-NVA は、ネットワーク トラフィックの管理と監視のためのさまざまなサービスを提供します。 
-  [Azure Marketplace][azure-marketplace-nva] では、使用できる複数のサード パーティー ベンダー製 NVA が提供されています。 これらのサード パーティー製 NVA に要件を満たしているものがない場合は、VM を使用してカスタム NVA を作成できます。 
+NVA は、ネットワーク トラフィックの管理と監視のためのさまざまなサービスを提供します。 [Azure Marketplace][azure-marketplace-nva] では、使用できる複数のサード パーティー ベンダー製 NVA が提供されています。 これらのサード パーティー製 NVA に要件を満たしているものがない場合は、VM を使用してカスタム NVA を作成できます。 
 
 たとえば、この参照アーキテクチャのソリューションのデプロイでは、VM 上に次の機能を備えた NVA を実装します。
 
@@ -227,6 +226,7 @@ NVA の前のロード バランサーも、負荷分散規則で開いていな
 * Azure でのネットワーク セキュリティの管理の詳細については、「[Microsoft クラウド サービスとネットワーク セキュリティ][cloud-services-network-security]」をご覧ください。
 * Azure のリソース保護の詳細については、「[Microsoft Azure セキュリティの概要][getting-started-with-azure-security]」をご覧ください。 
 * Azure ゲートウェイ接続の全体にわたるセキュリティ上の問題に対処することの詳細については、「[Azure とオンプレミスの VPN を使ってハイブリッド ネットワーク アーキテクチャを実装する][guidance-vpn-gateway-security]」と「[Azure ExpressRoute を使ってハイブリッド ネットワーク アーキテクチャを実装する][guidance-expressroute-security]」をご覧ください。
+* [Azure でのネットワーク仮想アプライアンスに関する問題のトラブルシューティング](/azure/virtual-network/virtual-network-troubleshoot-nva)
   > 
 
 <!-- links -->
