@@ -4,12 +4,12 @@ description: 高可用性とディザスター リカバリーのために Azure
 author: MikeWasson
 ms.date: 05/26/2017
 ms.custom: resiliency
-ms.openlocfilehash: c32f093da4c47ef655dfca89b0410f063e9fe212
-ms.sourcegitcommit: 2154e93a0a075e1f7425a6eb11fc3f03c1300c23
+ms.openlocfilehash: b92a26323b4329f3dbe4f941b98da0080e730d65
+ms.sourcegitcommit: c49aeef818d7dfe271bc4128b230cfc676f05230
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39352588"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44389436"
 ---
 # <a name="designing-resilient-applications-for-azure"></a>回復性に優れた Azure 用アプリケーションの設計
 
@@ -259,7 +259,7 @@ Azure には、個別の VM からリージョン全体まで、あらゆる障�
 
 これが、設計フェーズで潜在的な障害点を分析することが重要なもう 1 つの理由です。 この分析結果をテスト計画に反映させることをお勧めします。
 
-**ロード テスト**。 [Visual Studio Team Services][vsts] や [Apache JMeter][jmeter] などのツールを使用してアプリケーションのロード テストを行います。 ロード テストは、過負荷状態またはサービスの調整が行われているバックエンド データベースなど、負荷がかかった状態でのみ発生する障害を特定するために重要です。 運用データまたは運用データに可能な限り近い総合的なデータを使用して、ピーク負荷の場合をテストします。 目標は、実際の条件下でアプリケーションがどのように動作するかを確認することです。   
+**ロード テスト**。 ロード テストは、過負荷状態またはサービスの調整が行われているバックエンド データベースなど、負荷がかかった状態でのみ発生する障害を特定するために重要です。 運用データまたは運用データに可能な限り近い総合的なデータを使用して、ピーク負荷の場合をテストします。 目標は、実際の条件下でアプリケーションがどのように動作するかを確認することです。   
 
 ## <a name="deploy-using-reliable-processes"></a>信頼性の高いプロセスを使用してデプロイする
 アプリケーションを運用環境にデプロイした場合、更新プログラムがエラーの原因になることがあります。 最悪の場合には、更新プログラムの不良でダウンタイムが発生することがあります。 この問題を回避するために、デプロイ プロセスを予測可能で反復的にする必要があります。 デプロイには、Azure リソースのプロビジョニング、アプリケーション コードのデプロイ、構成設定の適用が含まれます。 1 つの更新プログラムで、この 3 つすべて、または一部が行われることがあります。 
@@ -355,4 +355,3 @@ Azure には、個別の VM からリージョン全体まで、あらゆる障�
 [tm]: https://azure.microsoft.com/services/traffic-manager/
 [tm-failover]: /azure/traffic-manager/traffic-manager-monitoring
 [tm-sla]: https://azure.microsoft.com/support/legal/sla/traffic-manager/v1_0/
-[vsts]: https://www.visualstudio.com/features/vso-cloud-load-testing-vs.aspx
