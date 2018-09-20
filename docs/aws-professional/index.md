@@ -5,12 +5,12 @@ keywords: AWS エキスパート, Azure との比較, AWS との比較, Azure �
 author: lbrader
 ms.date: 03/24/2017
 pnp.series.title: Azure for AWS Professionals
-ms.openlocfilehash: 0af0890d383d22db0ed9d3b445cdd5b561b498ae
-ms.sourcegitcommit: f665226cec96ec818ca06ac6c2d83edb23c9f29c
+ms.openlocfilehash: f90186ba36f035871ec918c65b05eebe44190ffa
+ms.sourcegitcommit: f1dcc388c8b4fc983549c36d7e6b009fa1f072ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31012622"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46329897"
 ---
 # <a name="azure-for-aws-professionals"></a>AWS プロフェッショナルのための Azure
 
@@ -63,7 +63,7 @@ AWS アカウントと同じように、サブスクリプションには既定�
 
 Azure では、"リソース" という用語を AWS と同じように使用しています。つまり、すべてのコンピューティング インスタンス、ストレージ オブジェクト、ネットワーク デバイス、プラットフォームで作成または構成できるその他のエンティティを意味します。
 
-Azure リソースは、2 つのモデル ([Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview) と従来の Azure [クラシック デプロイメント モデル](/azure/azure-resource-manager/resource-manager-deployment-model)) のどちらかでデプロイして管理されます。
+Azure リソースは、2 つのモデル ([Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview) と従来の Azure [クラシック デプロイ モデル](/azure/azure-resource-manager/resource-manager-deployment-model)) のどちらかでデプロイして管理されます。
 すべての新しいリソースは、Resource Manager モデルを使用して作成されます。
 
 ### <a name="resource-groups"></a>リソース グループ
@@ -156,7 +156,7 @@ Azure の [geo 冗長ストレージ](https://azure.microsoft.com/documentation/
 
 ## <a name="services"></a>サービス
 
-プラットフォーム間のすべてのサービスの対応の一覧については、[AWS と Azure のサービスの完全比較マトリックス](https://aka.ms/azure4aws-services)を参照してください。
+プラットフォーム間でのサービスの対応関係の一覧については、「[AWS サービスと Azure サービスの比較](./services.md)」を参照してください。
 
 すべての Azure 製品とサービスがすべてのリージョンで使用できるわけではありません。 [リージョン別の製品](https://azure.microsoft.com/regions/services/)に関するページを参照してください。 Azure の各製品またはサービスのアップタイム保証とダウンタイム クレジット ポリシーについては、「[サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/)」ページで確認できます。
 
@@ -175,8 +175,6 @@ AWS インスタンスのタイプと Azure 仮想マシンのサイズは、似
 -   [Azure の仮想マシンのサイズ (Linux)](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
 
 AWS の秒単位の課金とは異なり、Azure のオンデマンド VM は分単位で課金されます。
-
-Azure には EC2 スポット インスタンスと専用ホストに相当するものはありません。
 
 #### <a name="ebs-and-azure-storage-for-vm-disks"></a>EBS と VM ディスク用の Azure Storage
 
@@ -394,7 +392,7 @@ AWS Device Farm は、デバイス間のテスト サービスを提供します
 
 -   [Azure Data Lake と Azure の HDInsight ブログ](https://blogs.msdn.microsoft.com/azuredatalake/)
 
-### <a name="internet-of-things"></a>モノのインターネット
+### <a name="internet-of-things"></a>モノのインターネット (IoT)
 
 #### <a name="see-also"></a>関連項目
 
@@ -428,8 +426,6 @@ Notification Hubs は SMS または電子メール メッセージの送信を�
 
 ## <a name="next-steps"></a>次の手順
 
--   [AWS と Azure のサービスの完全比較マトリックス](https://aka.ms/azure4aws-services)
-
 -   [対話型 Azure プラットフォームの全体像](http://azureplatform.azurewebsites.net/)
 
 -   [Azure を使ってみる](https://azure.microsoft.com/get-started/)
@@ -437,8 +433,6 @@ Notification Hubs は SMS または電子メール メッセージの送信を�
 -   [Azure ソリューション アーキテクチャ](https://azure.microsoft.com/solutions/architecture/)
 
 -   [Azure リファレンス アーキテクチャ](https://azure.microsoft.com/documentation/articles/guidance-architecture/)
-
--   [パターンとプラクティス: Azure のガイダンス](https://azure.microsoft.com/documentation/articles/guidance/)
 
 -   [無料オンライン コース: AWS エキスパート向け Microsoft Azure](http://aka.ms/azureforaws)
 
