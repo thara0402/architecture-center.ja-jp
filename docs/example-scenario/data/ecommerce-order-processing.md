@@ -3,12 +3,12 @@ title: Azure でのスケーラブルな注文処理
 description: Azure Cosmos DB を使用した拡張性の高い注文処理パイプラインを構築するためのサンプル シナリオ。
 author: alexbuckgit
 ms.date: 07/10/2018
-ms.openlocfilehash: 9fa0dc7c564270ee811b56169e05f7e743664838
-ms.sourcegitcommit: c4106b58ad08f490e170e461009a4693578294ea
+ms.openlocfilehash: aa7281263db7cc72781b740941f3b86dad025baa
+ms.sourcegitcommit: c49aeef818d7dfe271bc4128b230cfc676f05230
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "43016063"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44389113"
 ---
 # <a name="scalable-order-processing-on-azure"></a>Azure でのスケーラブルな注文処理
 
@@ -41,7 +41,7 @@ Cosmos DB、HDInsight などのマネージド Azure サービスを使用して
 
 ### <a name="components"></a>コンポーネント
 
-* [Cosmos DB][docs-cosmos-db] は Microsoft のグローバル分散マルチモデル データベースです。これにより、ご自身のソリューションが、スループットとストレージを、任意の数の geography 型リージョンで柔軟かつ個別にスケーリングできるようになります。 このサービスは包括的なサービス レベル アグリーメント (SLA) により、スループット、待機時間、可用性、一貫性が保証されています。 このシナリオでは、イベント ストリーム ストレージおよびスナップショット ストレージに Cosmos DB を使用し、[Cosmos DB の Change Feed][docs-cosmos-db-change-feed] 機能を利用して、データの一貫性と障害からの復旧を実現します。 
+* [Cosmos DB][docs-cosmos-db] は Microsoft のグローバル分散マルチモデル データベースです。これにより、ご自身のソリューションが、スループットとストレージを、任意の数の geography 型リージョンで柔軟かつ個別にスケーリングできるようになります。 このサービスは包括的なサービス レベル アグリーメント (SLA) により、スループット、待機時間、可用性、一貫性が保証されています。 このシナリオでは、イベント ストリーム ストレージおよびスナップショット ストレージに Cosmos DB を使用し、[Cosmos DB の Change Feed][docs-cosmos-db-change-feed] 機能を利用して、データの一貫性と障害からの復旧を実現します。
 * [HDInsight の Apache Kafka][docs-kafka] は、リアルタイムのストリーミング データ パイプラインとアプリケーションを構築するための、オープン ソースの分散ストリーム プラットフォームである Apache Kafka のマネージド サービス実装です。 Kafka は、名前付きデータ ストリームへの公開とサブスクライブのために、メッセージ キューと同様のメッセージ ブローカー機能も提供しています。 このシナリオでは、Kafka を使用して、注文処理パイプラインの受信およびダウンストリーム イベントを処理します。 
 
 ## <a name="considerations"></a>考慮事項
@@ -83,13 +83,13 @@ Azure Cosmos DB の通貨は要求ユニット (RU) です。 要求ユニット
 
 想定するアクティビティの量に基づいて、次の 3 つのサンプル コスト プロファイルが用意されています。
 
-* [Small][small-pricing]: Cosmos DB と小規模 (D3 v2) Kafka クラスターの 1 TB のデータ ストアで予約された 5 RU に対応します。
-* [Medium][medium-pricing]: Cosmos DB と中規模 (D4 v2) Kafka クラスターの 10 TB のデータ ストアで予約された 50 RU に対応します。
-* [Large][large-pricing]: Cosmos DB と大規模 (D5 v2) Kafka クラスターの 30 TB のデータ ストアで予約された 500 RU に対応します。
+* [Small][small-pricing]: この価格例は、Cosmos DB と小規模 (D3 v2) Kafka クラスターの 1 TB のデータ ストアで予約された 5 RU に対応します。
+* [Medium][medium-pricing]: この価格例は、Cosmos DB と中規模 (D4 v2) Kafka クラスターの 10 TB のデータ ストアで予約された 50 RU に対応します。
+* [Large][large-pricing]: この価格例は、Cosmos DB と大規模 (D5 v2) Kafka クラスターの 30 TB のデータ ストアで予約された 500 RU に対応します。
 
 ## <a name="related-resources"></a>関連リソース
 
-このサンプル シナリオは、[jet.com 社](https://jet.com)が、そのエンド ツー エンド注文処理パイプライン用に構築した、このアーキテクチャの大規模バージョンに基づいています。 詳細については、[Jet.com 社のテクニカル カスタマー プロファイル][source-document]と、[Build 2018 での Jet.com 社のプレゼンテーション][source-presentation]を参照してください。 
+このサンプル シナリオは、[jet.com 社](https://jet.com)が、そのエンド ツー エンド注文処理パイプライン用に構築した、このアーキテクチャの大規模バージョンに基づいています。 詳細については、[Jet.com 社のテクニカル カスタマー プロファイル][source-document]と、[Build 2018 での Jet.com 社のプレゼンテーション][source-presentation]を参照してください。
 
 その他の関連リソースには次のものがあります。
 * _[データ量の多いアプリケーションの設計](https://dataintensive.net/)_ Martin Kleppmann (O'Reilly Media、2017)。
@@ -104,10 +104,9 @@ Azure Cosmos DB の通貨は要求ユニット (RU) です。 要求ユニット
 [small-pricing]: https://azure.com/e/3d43949ffbb945a88cc0a126dc3a0e6e
 [medium-pricing]: https://azure.com/e/1f1e7bf2a6ad4f7799581211f4369b9b
 [large-pricing]: https://azure.com/e/75207172ece94cf6b5fb354a2252b333
-[architecture-diagram]: ./images/architecture-diagram-cosmos-db.png
+[architecture-diagram]: ./media/architecture-diagram-cosmos-db.png
 [docs-cosmos-db]: /azure/cosmos-db
 [docs-cosmos-db-change-feed]: /azure/cosmos-db/change-feed
-[docs-cosmos-db-online-backup-and-restore]: /azure/cosmos-db/online-backup-and-restore
 [docs-cosmos-db-regional-failover]: /azure/cosmos-db/regional-failover
 [docs-cosmos-db-guarantees]: /azure/cosmos-db/distribute-data-globally#AvailabilityGuarantees
 [docs-cosmos-db-use-cases]: /azure/cosmos-db/use-cases

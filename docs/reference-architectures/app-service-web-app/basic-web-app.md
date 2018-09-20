@@ -4,12 +4,12 @@ description: Microsoft Azure で実行する基本的な Web アプリケーシ�
 author: MikeWasson
 ms.date: 12/12/2017
 cardTitle: Basic web application
-ms.openlocfilehash: bc8cf9b5c66fc451d097cbc992ecb9a249645dce
-ms.sourcegitcommit: 5d99b195388b7cabba383c49a81390ac48f86e8a
+ms.openlocfilehash: e4992564bc4e8a7b71fc7c5f0bf1662f5e13d5c1
+ms.sourcegitcommit: c49aeef818d7dfe271bc4128b230cfc676f05230
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37958842"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44389402"
 ---
 # <a name="basic-web-application"></a>基本的な Web アプリケーション
 [!INCLUDE [header](../../_includes/header.md)]
@@ -31,7 +31,7 @@ ms.locfileid: "37958842"
 
 * **リソース グループ**。 [リソース グループ](/azure/azure-resource-manager/resource-group-overview)は、Azure リソースの論理コンテナーです。
 
-* **App Service アプリ**。 [Azure App Service][app-service] は、クラウド アプリケーションを作成およびデプロイするための完全に管理されたプラットフォームです。     
+* **App Service アプリ**。 [Azure App Service][app-service] は、クラウド アプリケーションを作成およびデプロイするためのフル マネージドのプラットフォームです。     
 
 * **App Service プラン**。 [App Service プラン][app-service-plans]は、アプリをホストする管理された仮想マシン (VM) を提供します。 プランに関連付けられているすべてのアプリが同じ VM インスタンスで実行されます。
 
@@ -41,7 +41,7 @@ ms.locfileid: "37958842"
 
 * **Azure DNS**。 [Azure DNS][azure-dns] は、DNS ドメインのホスティング サービスであり、Microsoft Azure インフラストラクチャを使用した名前解決を提供します。 Azure でドメインをホストすることで、その他の Azure サービスと同じ資格情報、API、ツール、課金情報を使用して DNS レコードを管理できます。 カスタム ドメイン名 (`contoso.com` など) を使用するには、カスタム ドメイン名を IP アドレスにマップする DNS レコードを作成します。 詳細については、[Azure App Service でのカスタム ドメイン名の構成][custom-domain-name]に関するページをご覧ください。  
 
-* **Azure SQL データベース**。 [SQL Database][sql-db] は、クラウドのサービスとしてのリレーショナル データベースです。 SQL Database は、そのコード ベースを Microsoft SQL Server データベース エンジンと共有しています。 アプリケーションの要件に応じて、[Azure Database for MySQL](/azure/mysql) または [Azure Database for PostgreSQL](/azure/postgresql) を使用することもできます。 これらは、それぞれオープン ソースの MySQL Server および Postgres データベース エンジンに基づく、完全に管理されたデータベース サービスです。
+* **Azure SQL データベース**。 [SQL Database][sql-db] は、クラウドのサービスとしてのリレーショナル データベースです。 SQL Database は、そのコード ベースを Microsoft SQL Server データベース エンジンと共有しています。 アプリケーションの要件に応じて、[Azure Database for MySQL](/azure/mysql) または [Azure Database for PostgreSQL](/azure/postgresql) を使用することもできます。 これらは、それぞれオープン ソースの MySQL Server および Postgres データベース エンジンに基づく、フル マネージドのデータベース サービスです。
 
 * **論理サーバー**。 Azure SQL Database では、論理サーバーがデータベースをホストします。 論理サーバーごとに複数のデータベースを作成できます。
 
@@ -152,7 +152,7 @@ App Service アプリには、`production` という名前のデプロイ スロ
 
 [New Relic][new-relic]、[Application Insights][app-insights] などのサービスを使用して、負荷がかかった状態のアプリケーションのパフォーマンスと動作を監視してください。 Application Insights の[データ速度の制限][app-insights-data-rate]に気を付けてください。
 
-[Visual Studio Team Services][vsts] などのツールを使用して、ロード テストを行います。 クラウド アプリケーションのパフォーマンス分析の概要については、「[Performance Analysis Primer (パフォーマンス分析の手引き)][perf-analysis]」を参照してください。
+[Azure DevOps][azure-devops] や [Visual Studio Team Foundation Server][tfs] などのツールを使用して、ロード テストを行います。 クラウド アプリケーションのパフォーマンス分析の概要については、「[Performance Analysis Primer (パフォーマンス分析の手引き)][perf-analysis]」を参照してください。
 
 アプリケーションのトラブルシューティングのヒント:
 
@@ -178,7 +178,7 @@ App Service アプリには、追加コストなしで、`azurewebsites.net` の
 
 セキュリティのベスト プラクティスとして、アプリは HTTP 要求をリダイレクトすることで HTTPS を強制する必要があります。 これをアプリケーション内で実装するか、[Azure App Service でのアプリの HTTPS の有効化][ssl-redirect]に関するページの説明に従って、URL 書き換え規則を使用できます。
 
-### <a name="authentication"></a>認証
+### <a name="authentication"></a>Authentication
 Azure AD、Facebook、Google、Twitter などの ID プロバイダー (IDP) を使用して認証することをお勧めします。 認証フローには OAuth 2 または OpenID Connect (OIDC) を使用してください。 Azure AD には、ユーザーとグループの管理、アプリケーション ロールの作成、オンプレミス ID の統合、およびバックエンド サービス (Office 365、Skype for Business など) の使用に関する機能が用意されています。
 
 ユーザーのログインおよび資格情報をアプリケーションで直接管理するのは避けてください。これにより、攻撃対象領域が発生する可能性があるからです。  少なくとも、メール確認、パスワード復元、および多要素認証が必要です。また、パスワードの強度を検証し、パスワード ハッシュを安全に格納する必要があります。 大規模な ID プロバイダーはこれをすべて処理し、セキュリティ プラクティスを常に監視し、強化しています。
@@ -224,6 +224,7 @@ New-AzureRmResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <r
 [app-service-security]: /azure/app-service-web/web-sites-security
 [app-settings]: /azure/app-service-web/web-sites-configure
 [arm-template]: /azure/azure-resource-manager/resource-group-overview#resource-groups
+[azure-devops]: /azure/devops/
 [azure-dns]: /azure/dns/dns-overview
 [custom-domain-name]: /azure/app-service-web/web-sites-custom-domain-name
 [deploy]: /azure/app-service-web/web-sites-deploy
@@ -252,9 +253,9 @@ New-AzureRmResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <r
 [sql-resource-limits]: /azure/sql-database/sql-database-resource-limits
 [ssl-cert]: /azure/app-service-web/web-sites-purchase-ssl-web-site
 [troubleshoot-blade]: https://azure.microsoft.com/updates/self-service-troubleshooting-for-app-service-web-apps-customers/
+[tfs]: /tfs/index
 [troubleshoot-web-app]: /azure/app-service-web/web-sites-dotnet-troubleshoot-visual-studio
 [visio-download]: https://archcenter.blob.core.windows.net/cdn/app-service-reference-architectures.vsdx
-[vsts]: https://www.visualstudio.com/features/vso-cloud-load-testing-vs.aspx
 [web-app-autoscale]: /azure/app-service-web/web-sites-scale
 [web-app-backup]: /azure/app-service-web/web-sites-backup
 [web-app-log-stream]: /azure/app-service-web/web-sites-enable-diagnostic-log#streamlogs

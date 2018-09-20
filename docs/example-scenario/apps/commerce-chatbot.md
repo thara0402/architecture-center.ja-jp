@@ -3,12 +3,12 @@ title: Azure でのホテル予約用の会話型チャットボット
 description: Azure Bot Service、Cognitive Services と LUIS、Azure SQL Database、Application Insights を使用して、商取引アプリケーション用の会話型チャットボットを構築するための実証済みのシナリオ。
 author: iainfoulds
 ms.date: 07/05/2018
-ms.openlocfilehash: b664faf20d806824c2581346aaa592b0d74207da
-ms.sourcegitcommit: 71cbef121c40ef36e2d6e3a088cb85c4260599b9
+ms.openlocfilehash: 95a0fd77a99a348704a1d916de534a98d0b03448
+ms.sourcegitcommit: c49aeef818d7dfe271bc4128b230cfc676f05230
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39060865"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44389334"
 ---
 # <a name="conversational-chatbot-for-hotel-reservations-on-azure"></a>Azure でのホテル予約用の会話型チャットボット
 
@@ -64,7 +64,7 @@ Bot Service と Language Understanding Service や Speech API サービスなど
 
 ### <a name="scalability"></a>スケーラビリティ
 
-このシナリオでは、Azure App Service を使用します。 App Service により、ボットを実行するインスタンスの数を自動的にスケーリングできます。 この機能を使用することで、Web アプリケーションやチャットボットに対する顧客の要求に対応できます。 自動スケールの詳細については、アーキテクチャ センターの[自動スケールのベスト プラクティス][autoscaling]に関する記事をご覧ください。
+このシナリオでは、Azure App Service を使用します。 App Service により、ボットを実行するインスタンスの数を自動的にスケーリングできます。 この機能を使用することで、Web アプリケーションやチャットボットに対する顧客の要求に対応できます。 自動スケールの詳細については、Azureアーキテクチャ センターの[自動スケールのベスト プラクティス][autoscaling]に関する記事をご覧ください。
 
 スケーラビリティに関する他のトピックについては、Azure アーキテクチャ センターの「[スケーラビリティのチェックリスト][scalability]」をご覧ください。
 
@@ -82,7 +82,7 @@ Azure SQL Database に格納される情報は、Transparent Data Encryption (TD
 
 アプリケーションの正常性を監視するために、このシナリオでは Application Insights を使用します。 Application Insights により、チャットボットのカスタマー エクスペリエンスや可用性に影響を及ぼすパフォーマンスの問題についてアラートを生成し、対応できます。 詳細については、「[Application Insights とは何か?][appinsights-docs]」をご覧ください。
 
-回復性に優れたソリューションの設計に関する一般的なガイダンスについては、「[回復性に優れた Azure 用アプリケーションの設計][resiliency]」をご覧ください。
+回復性に優れたソリューションの設計に関する一般的なガイダンスについては、「[回復性に優れた Azure 用アプリケーションの設計][resiliency]」を参照してください。
 
 ## <a name="deploy-the-scenario"></a>シナリオのデプロイ
 
@@ -143,9 +143,9 @@ az bot create \
 
 チャットボットが処理すると予想されるメッセージの量に基づいて、次の 3 つのサンプル コスト プロファイルが用意されています。
 
-* [Small][small-pricing]: 1 か月あたり 1 万件未満のメッセージの処理に対応します。
-* [Medium][medium-pricing]: 1 か月あたり 50 万件未満のメッセージの処理に対応します。
-* [Large][large-pricing]: 1 か月あたり 1,000 万件未満のメッセージの処理に対応します。
+* [Small][small-pricing]: この価格例は、1 か月あたり 10,000 未満のメッセージの処理に対応します。
+* [Medium][medium-pricing]: この価格例は、1 か月あたり 500,000 未満のメッセージの処理に対応します。
+* [Large][large-pricing]: この価格例は、1 か月あたり 10,000,000 未満のメッセージの処理に対応します。
 
 ## <a name="related-resources"></a>関連リソース
 

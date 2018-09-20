@@ -3,12 +3,12 @@ title: Azure におけるリアルタイムでの不正検出
 description: Azure Event Hubs と Stream Analytics を使用して、不正行為をリアルタイムで検出する実証済みのシナリオ。
 author: alexbuckgit
 ms.date: 07/05/2018
-ms.openlocfilehash: e22322133adf40d033ac5af98069cb00765d14ca
-ms.sourcegitcommit: 71cbef121c40ef36e2d6e3a088cb85c4260599b9
+ms.openlocfilehash: d80fab460938cceeb84f3ed2ecd97e9e149f8e2d
+ms.sourcegitcommit: c49aeef818d7dfe271bc4128b230cfc676f05230
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39060814"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44389130"
 ---
 # <a name="real-time-fraud-detection-on-azure"></a>Azure におけるリアルタイムでの不正検出
 
@@ -73,7 +73,7 @@ Azure Event Hubs では、Shared Access Signature (SAS) トークンとイベン
 
 ### <a name="resiliency"></a>回復性
 
-回復性に優れたソリューションの設計に関する一般的なガイダンスについては、「[回復性に優れた Azure 用アプリケーションの設計][resiliency]」をご覧ください。
+回復性に優れたソリューションの設計に関する一般的なガイダンスについては、「[回復性に優れた Azure 用アプリケーションの設計][resiliency]」を参照してください。
 
 ## <a name="deploy-the-scenario"></a>シナリオのデプロイ
 
@@ -99,7 +99,7 @@ Azure Event Hubs では、Shared Access Signature (SAS) トークンとイベン
 [small-pricing]: https://azure.com/e/74149ec312c049ccba79bfb3cfa67606
 [medium-pricing]: https://azure.com/e/4fc94f7376de484d8ae67a6958cae60a
 [large-pricing]: https://azure.com/e/7da8804396f9428a984578700003ba42
-[architecture-diagram]: ./images/architecture-diagram-fraud-detection.png
+[architecture-diagram]: ./media/architecture-diagram-fraud-detection.png
 [docs-event-hubs]: /azure/event-hubs/event-hubs-what-is-event-hubs
 [docs-event-hubs-security-model]: /azure/event-hubs/event-hubs-authentication-and-security-model-overview
 [docs-stream-analytics]: /azure/stream-analytics/stream-analytics-introduction

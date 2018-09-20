@@ -3,12 +3,12 @@ title: コンテナー ベースのワークロード用の CI/CD パイプラ�
 description: Jenkins、Azure Container Registry、Azure Kubernetes Service、Cosmos DB、Grafana を使用する、Node.js Web アプリの DevOps パイプラインを構築するための実証済みのシナリオ。
 author: iainfoulds
 ms.date: 07/05/2018
-ms.openlocfilehash: dceb4ad3c34ec43a54d802772f5817cacdd3929c
-ms.sourcegitcommit: 8b5fc0d0d735793b87677610b747f54301dcb014
+ms.openlocfilehash: d659916e3af0caa2128db25faab441a2af8f3f6a
+ms.sourcegitcommit: c49aeef818d7dfe271bc4128b230cfc676f05230
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2018
-ms.locfileid: "39334217"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44389385"
 ---
 # <a name="cicd-pipeline-for-container-based-workloads"></a>コンテナー ベースのワークロード用の CI/CD パイプライン
 
@@ -44,7 +44,7 @@ Azure Kubernetes Service、Container Registry、Cosmos DB などの Azure サー
 ### <a name="components"></a>コンポーネント
 
 * [Jenkins][jenkins]: オープンソースのオートメーション サーバーです。Azure サービスと統合することで、継続的インテグレーション (CI) と継続的配置 (CD) が可能になります。 このシナリオでは、Jenkins によって、ソース管理へのコミットに基づいて新しいコンテナー イメージの作成が調整され、それらのイメージが Azure Container Registry にプッシュされた後、Azure Kubernetes Service 内でアプリケーション インスタンスが更新されます。
-* [Azure Linux Virtual Machines][azurevm-docs]: Jenkins インスタンスと Grafana インスタンスを実行するために使用されます。
+* [Azure Linux Virtual Machines][azurevm-docs]: Jenkins インスタンスと Grafana インスタンスを実行するために使用される IaaS プラットフォームです。
 * [Azure Container Registry][azureacr-docs]: Azure Kubernetes Service クラスターで使用されるコンテナー イメージを保存し、管理します。 イメージは安全に保存されています。Azure プラットフォームによって他のリージョンにレプリケートすることで、デプロイ時間を短縮できます。
 * [Azure Kubernetes Service][azureaks-docs]: コンテナー オーケストレーションの専門知識がなくても、コンテナー化されたアプリケーションをデプロイし、管理できるマネージド Kubernetes プラットフォームです。 ホストされた Kubernetes サービスとして、Azure は正常性監視やメンテナンスなどの重要なタスクを自動的に処理します。
 * [Azure Cosmos DB][azurecosmosdb-docs]: ニーズに合わせて、さまざまなデータベースや整合性モデルの中から選択できる、グローバル分散型のマルチモデル データベースです。 Cosmos DB を使用すると、データをグローバルにレプリケートできます。デプロイして構成するクラスター管理コンポーネントやレプリケーション コンポーネントはありません。
@@ -53,7 +53,7 @@ Azure Kubernetes Service、Container Registry、Cosmos DB などの Azure サー
 
 ### <a name="alternatives"></a>代替手段
 
-* [Visual Studio Team Services][vsts] と Team Foundation Server を使用して、アプリの継続的インテグレーション (CI)、テスト、および継続的配置 (CD) のパイプラインを実装できます。
+* [Azure Pipelines][azure-pipelines] を使用して、アプリの継続的インテグレーション (CI)、テスト、および継続的配置 (CD) のパイプラインを実装できます。
 * クラスターをより細かく制御する必要がある場合は、マネージド サービスを介してではなく、Azure VM 上で [Kubernetes][kubernetes] を直接実行できます。
 * [Service Fabric][service-fabric] は、AKS の代わりに使用できる別の代替コンテナー オーケストレーターです。
 
@@ -65,7 +65,7 @@ Azure Kubernetes Service、Container Registry、Cosmos DB などの Azure サー
 
 Azure Kubernetes Service クラスターに含まれるロード バランサーは、アプリケーションを実行する 1 つ以上のコンテナー (ポッド) にアプリケーション トラフィックを分散します。 コンテナー化されたアプリケーションを Kubernetes で実行するこのアプローチにより、可用性の高いインフラストラクチャが顧客に提供されます。
 
-可用性に関する他のトピックについては、アーキテクチャ センターで入手できる[可用性のチェックリスト][availability]を参照してください。
+可用性に関する他のトピックについては、Azure アーキテクチャ センターの[可用性のチェックリスト][availability]を参照してください。
 
 ### <a name="scalability"></a>スケーラビリティ
 
@@ -73,7 +73,7 @@ Azure Kubernetes Service を使用すると、アプリケーションの要求�
 
 アプリケーション データは、グローバルにスケーリングできるグローバル分散型のマルチモデル データベースである Azure Cosmos DB に格納されます。 Cosmos DB は、従来のデータベース コンポーネントと同様に、インフラストラクチャをスケーリングする必要性を排除します。また、顧客の要求に応じて Cosmos DB をグローバルにレプリケートすることもできます。
 
-スケーラビリティに関する他のトピックについては、アーキテクチャ センターで提供される[スケーラビリティのチェックリスト][scalability]をご覧ください。
+スケーラビリティに関する他のトピックについては、Azure アーキテクチャ センターの[スケーラビリティのチェックリスト][scalability]を参照してください。
 
 ### <a name="security"></a>セキュリティ
 
@@ -123,9 +123,9 @@ Azure Resource Manager テンプレートを使用してこのシナリオをデ
 
 保存するコンテナー イメージの数とアプリケーションを実行する Kubernetes ノードの数に基づいて、3 つのサンプル コスト プロファイルが用意されています。
 
-* [Small][small-pricing]: 1 か月あたり 1000 個のコンテナー ビルドに対応します。
-* [Medium][medium-pricing]: 1 か月あたり 10 万個のコンテナー ビルドに対応します。
-* [Large][large-pricing]: 1 か月あたり 100 万個のコンテナー ビルドに対応します。
+* [Small][small-pricing]: この価格例は、1 か月あたり 1,000 個のコンテナー ビルドに対応します。
+* [Medium][medium-pricing]: この価格例は、1 か月あたり 100,000 個のコンテナー ビルドに対応します。
+* [Large][large-pricing]: この価格例は、1 か月あたり 1,000,000 個のコンテナー ビルドに対応します。
 
 ## <a name="related-resources"></a>関連リソース
 
@@ -149,7 +149,7 @@ Azure Resource Manager テンプレートを使用してこのシナリオをデ
 [security]: /azure/security/
 [scalability]: ../../checklist/scalability.md
 [sshkeydocs]: /azure/virtual-machines/linux/mac-create-ssh-keys
-[vsts]: /vsts/?view=vsts
+[azure-pipelines]: /azure/devops/pipelines
 [kubernetes]: https://kubernetes.io/
 [service-fabric]: /azure/service-fabric/
 

@@ -3,12 +3,12 @@ title: 規制対象業界向けのセキュリティで保護された Windows W
 description: スケール セット、Application Gateway、ロード バランサーを使用する、セキュリティで保護された多層 Web アプリケーションを、Azure 上の Windows Server を使用して構築するための実証済みのシナリオ。
 author: iainfoulds
 ms.date: 07/11/2018
-ms.openlocfilehash: aba714fc1955341645d0faa400768bc09fb8e50b
-ms.sourcegitcommit: 71cbef121c40ef36e2d6e3a088cb85c4260599b9
+ms.openlocfilehash: 3572f215d9134a6650d76e1b14458226334c6f42
+ms.sourcegitcommit: c49aeef818d7dfe271bc4128b230cfc676f05230
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39060993"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44389287"
 ---
 # <a name="secure-windows-web-application-for-regulated-industries"></a>規制対象業界向けのセキュリティで保護された Windows Web アプリケーション
 
@@ -32,7 +32,7 @@ ms.locfileid: "39060993"
 
 1. ユーザーが Azure Application Gateway 経由で、フロントエンドの規制対象業界向け ASP.NET アプリケーションにアクセスします。
 2. Application Gateway は、Azure 仮想マシン スケール セット内でトラフィックを VM インスタンスに分散します。
-3. ASP.NET アプリケーションは、Azure Load Balancer を使用して、バックエンド層の Microsoft SQL Server クラスターに接続します。 これらのバックエンド SQL Server インスタンスは別個の Azure 仮想ネットワークにあり、トラフィック フローを制限するネットワーク セキュリティ グループの規則によってセキュリティで保護されています。
+3. ASP.NET アプリケーションは、Azure ロード バランサーを使用して、バックエンド層の Microsoft SQL Server クラスターに接続します。 これらのバックエンド SQL Server インスタンスは別個の Azure 仮想ネットワークにあり、トラフィック フローを制限するネットワーク セキュリティ グループの規則によってセキュリティで保護されています。
 4. ロード バランサーは、SQL Server のトラフィックを、別の仮想マシン スケール セット内の VM インスタンスに分散します。
 5. Azure Blob Storage は、バックエンド層の SQL Server クラスター用のクラウド監視として機能します。  VNet 内からの接続は、Azure Storage の VNet サービス エンドポイントで有効にされます。
 
@@ -47,7 +47,7 @@ ms.locfileid: "39060993"
 
 ### <a name="alternatives"></a>代替手段
 
-* インフラストラクチャには OS に依存しているものがないため、*nix、Windows は、他のさまざまな OS で置き換えることができます。
+* インフラストラクチャにはオペレーティング システム に依存しているものがないため、*nix、Windows は、他のさまざまなオペレーティング システムに置き換えることができます。
 
 * バックエンド データ ストアの代わりに、[Linux 用 SQL Server][sql-linux] を使用できます。
 
@@ -67,7 +67,7 @@ ms.locfileid: "39060993"
 
 このシナリオでは、フロントエンド コンポーネントとバックエンド コンポーネントに対して、仮想マシン スケール セットを使用します。 スケール セットにより、顧客の要求に応じて、または定義されているスケジュールに基づいて、フロントエンド アプリケーション層を実行する VM インスタンスの数を自動的にスケーリングできます。 詳細については、[仮想マシン スケール セットでの自動スケールの概要][vmssautoscale-docs]に関するページをご覧ください。
 
-スケーラビリティに関する他のトピックについては、Azure アーキテクチャ センターの[スケーラビリティのチェックリスト][scalability]を参照してください。
+スケーラビリティに関する他のトピックについては、Azure アーキテクチャ センターの「[スケーラビリティのチェックリスト][scalability]」をご覧ください。
 
 ### <a name="security"></a>セキュリティ
 
@@ -86,7 +86,7 @@ Payment Card Industry Data Security Standards (PCI DSS 3.2) の展開のガイ�
 **前提条件。**
 
 * 既存の Azure アカウントが必要です。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
-* バックエンド スケール セットに SQL Server クラスターをデプロイするには、Active Directory ディレクトリ サービス ドメインが必要です。
+* バックエンド スケール セットに SQL Server クラスターをデプロイするには、Azure Active Directory (AD) Domain Services 内のドメインが必要です。
 
 Azure Resource Manager テンプレートを使用して、このシナリオのコア インフラストラクチャをデプロイするには、次の手順を実行します。
 
@@ -106,9 +106,9 @@ Azure Resource Manager テンプレートを使用して、このシナリオの
 
 ご自身のアプリケーションを実行するスケール セット VM インスタンスの数に基づいて、3 つのサンプル コスト プロファイルが用意されています。
 
-* [Small][small-pricing]: 2 つのフロントエンドおよび 2 つのバックエンド VM インスタンスに対応します。
-* [Medium][medium-pricing]: 20 のフロントエンドおよび 5 つのバックエンド VM インスタンスに対応します。
-* [Large][large-pricing]: 100 のフロントエンドおよび 10 つのバックエンド VM インスタンスに対応します。
+* [Small][small-pricing]: この価格例は、2 つのフロントエンドおよび 2 つのバックエンド VM インスタンスに対応します。
+* [Medium][medium-pricing]: この価格例は、20 つのフロントエンドおよび 5 つのバックエンド VM インスタンスに対応します。
+* [Large][large-pricing]: この価格例は、100 つのフロントエンドおよび 10 つのバックエンド VM インスタンスに対応します。
 
 ## <a name="related-resources"></a>関連リソース
 

@@ -3,12 +3,12 @@ title: Azure アプリケーションのディザスター リカバリー
 description: Microsoft Azure でのディザスター リカバリーに対応したアプリケーションを設計するための方法に関する技術的概要と詳細。
 author: adamglick
 ms.date: 05/26/2017
-ms.openlocfilehash: 2d890e479e008e03dcfce9b7240f8bcbaf270372
-ms.sourcegitcommit: e8f4786b187697b1bea374e5f35f217c65d2dfe0
+ms.openlocfilehash: faae658d91ec0cb2dd5dc436e67aa9b494fd4b49
+ms.sourcegitcommit: 46ed67297e6247f9a80027cfe891a5e51ee024b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37343381"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45556684"
 ---
 # <a name="disaster-recovery-for-azure-applications"></a>Azure アプリケーションのディザスター リカバリー
 
@@ -299,7 +299,10 @@ Azure Site Recovery を使っている場合、Azure へのテスト フェー�
 
 | サービス | トピック |
 |---------|-------|
+| Azure Database for MySQL | [Azure Database for MySQL でのビジネス継続性の概要](/azure/mysql/concepts-business-continuity) |
+| Azure Database for PostgreSQL | [Azure Database for PostgreSQL でのビジネス継続性の概要](/azure/postgresql/concepts-business-continuity)
 | Cloud Services | [Azure Cloud Services に影響を与える Azure サービスの中断が発生した場合の対処方法](/azure/cloud-services/cloud-services-disaster-recovery-guidance) |
+| Cosmos DB | [Azure Cosmos DB でのビジネス継続性のためのリージョン内自動フェールオーバー](/azure/cosmos-db/regional-failover)
 | Key Vault | [Azure Key Vault の可用性と冗長性](/azure/key-vault/key-vault-disaster-recovery-guidance) |
 |ストレージ | [Azure Storage の停止が発生した場合の対処方法](/azure/storage/storage-disaster-recovery-guidance) |
 | SQL Database | [Azure SQL Database を復元する、またはセカンダリにフェールオーバーする](/azure/sql-database/sql-database-disaster-recovery) |

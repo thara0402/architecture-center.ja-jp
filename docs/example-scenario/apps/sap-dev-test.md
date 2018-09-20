@@ -3,12 +3,12 @@ title: 開発/テスト ワークロード用の SAP
 description: 開発/テスト環境の SAP シナリオ
 author: AndrewDibbins
 ms.date: 7/11/18
-ms.openlocfilehash: 675a5cb4b1ee4001ca50d24c145ce1a177f90da4
-ms.sourcegitcommit: 71cbef121c40ef36e2d6e3a088cb85c4260599b9
+ms.openlocfilehash: d0f266e40969cf4782e69041889a686387499722
+ms.sourcegitcommit: c49aeef818d7dfe271bc4128b230cfc676f05230
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39060963"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44389181"
 ---
 # <a name="sap-for-devtest-workloads"></a>開発/テスト ワークロード用の SAP
 
@@ -34,7 +34,7 @@ ms.locfileid: "39060963"
 このシナリオでは、1 つの仮想マシンにおける 1 つの SAP システム データベースと SAP アプリケーション サーバーのプロビジョニングに対応できます。シナリオのデータ フローを次に示します。
 
 1. プレゼンテーション層の顧客が、SAP GUI、またはオンプレミスの他のユーザー インターフェイス (Internet Explorer、Excel、または他の Web アプリケーション) を使用して、Azure ベースの SAP システムにアクセスします。
-2. 確立された Express Route を使用して接続が提供されます。 Express Route は、Azure の Express Route ゲートウェイで終了します。 ネットワーク トラフィックが、Express Route ゲートウェイを介してゲートウェイ サブネット、アプリケーション層スポーク サブネットの順にルーティングされ ([ハブ スポーク][hub-spoke] パターンを参照)、さらにネットワーク セキュリティ ゲートウェイ経由で SAP アプリケーションの仮想マシンにルーティングされます。
+2. 確立された Express Route を使用して接続が提供されます。 Express Route 接続は、Azure の Express Route ゲートウェイで終了します。 ネットワーク トラフィックが、Express Route ゲートウェイを介してゲートウェイ サブネット、アプリケーション層スポーク サブネットの順にルーティングされ ([ハブ スポーク][hub-spoke] パターンを参照)、さらにネットワーク セキュリティ ゲートウェイ経由で SAP アプリケーションの仮想マシンにルーティングされます。
 3. ID 管理サーバーは、認証サービスを提供します。
 4. ジャンプ ボックスは、ローカル管理機能を提供します。
 
@@ -70,7 +70,7 @@ ms.locfileid: "39060963"
 
 取得するトラフィックの量に基づいて、次の 4 つのサンプル コスト プロファイルが用意されています。
 
-|サイズ|SAP|VM の種類|Storage|Azure 料金計算ツール|
+|サイズ|SAP|VM の種類|ストレージ|Azure 料金計算ツール|
 |----|----|-------|-------|---------------|
 |Small|8000|D8s_v3|P20 x 2、P10 x 1|[Small](https://azure.com/e/9d26b9612da9466bb7a800eab56e71d1)|
 |Medium|16000|D16s_v3|P20 x 3、P10 x 1|[Medium](https://azure.com/e/465bd07047d148baab032b2f461550cd)|
@@ -80,9 +80,9 @@ Extra Large|64000|M64s|P20 x 4、P10 x 1|[Extra Large](https://azure.com/e/975fb
 注: 価格はガイドであり、VM とストレージのコストのみを示しています (ネットワーク、バックアップ ストレージ、データの受信/送信料金は含まれません)。
 
 * [Small](https://azure.com/e/9d26b9612da9466bb7a800eab56e71d1): 小規模なシステムは、VM の種類 D8s_v3 (8 個の vCPU)、32 GB の RAM、200 GB の一時ストレージ、および 2 つの 512 GB と 1 つの 128 GB Premium Storage ディスクで構成されています。
-* [Medium](https://azure.com/e/465bd07047d148baab032b2f461550cd): 中規模なシステムは、VM の種類は D16s_v3 (16 個の vCPU)、64 GB の RAM、400 GB の一時ストレージ、および 3 つの 512 GB と 1 つの 128 GB Premium Storage ディスクで構成されています。
+* [Medium](https://azure.com/e/465bd07047d148baab032b2f461550cd): 中規模なシステムは、VM の種類 D16s_v3 (16 個の vCPU)、64 GB の RAM、400 GB の一時ストレージ、および 3 つの 512 GB と 1 つの 128 GB Premium Storage ディスクで構成されています。
 * [Large](https://azure.com/e/ada2e849d68b41c3839cc976000c6931): 大規模なシステムは、VM の種類 E32s_v3 (32 個の vCPU)、256 GB の RAM、512 GB の一時ストレージ、および 3 つの 512 GB と 1 つの 128 GB Premium Storage ディスクで構成されています。
-* [Extra Large](https://azure.com/e/975fb58a965c4fbbb54c5c9179c61cef): 非常に大規模なシステムは、VM の種類 M64s (64 個の vCPU)、1024 GB の RAM、2000 GB の一時ストレージ、および 4 つの 512 GB と 1 つの 128 GB Premium Storage ディスクで構成されています。
+* [Extra Large](https://azure.com/e/975fb58a965c4fbbb54c5c9179c61cef): 超大規模なシステムは、VM の種類 M64s (64 個の vCPU)、1,024 GB の RAM、2,000 GB の一時ストレージ、および 4 つの 512 GB と 1 つの 128 GB Premium Storage ディスクで構成されています。
 
 ## <a name="deployment"></a>Deployment
 
@@ -92,7 +92,7 @@ Extra Large|64000|M64s|P20 x 4、P10 x 1|[Extra Large](https://azure.com/e/975fb
     <img src="http://azuredeploy.net/deploybutton.png"/>
 </a>
 
-\* SAP はインストールされないため、インフラストラクチャを手動で構築した後、インストールする必要があります。
+\* SAP は自動的にインストールされません。インフラストラクチャの構築後に手動でインストールしてください。
 
 <!-- links -->
 [reference architecture]:  /azure/architecture/reference-architectures/sap
