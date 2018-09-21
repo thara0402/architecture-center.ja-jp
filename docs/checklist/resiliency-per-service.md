@@ -4,12 +4,12 @@ description: さまざまな Azure サービスの回復性のガイダンスを
 author: petertaylor9999
 ms.date: 03/02/2018
 ms.custom: resiliency, checklist
-ms.openlocfilehash: 25d961d6bb753b1f515fc073e51bbb912cc59db7
-ms.sourcegitcommit: 2123c25b1a0b5501ff1887f98030787191cf6994
+ms.openlocfilehash: 735d4466f53ff03b67063b49b86f4184bbf1af41
+ms.sourcegitcommit: 25bf02e89ab4609ae1b2eb4867767678a9480402
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
-ms.locfileid: "29783511"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45584767"
 ---
 # <a name="resiliency-checklist-for-specific-azure-services"></a>特定の Azure サービスの回復性のチェックリスト
 
@@ -100,11 +100,15 @@ ms.locfileid: "29783511"
 
 **サービスの停止から復旧するには、geo リストアを使用します。** geo リストアは geo 冗長バックアップからデータベースを復元します。  詳細については、「[データベースの自動バックアップを使用した Azure SQL Database の復旧][sql-restore]」をご覧ください。
 
+## <a name="sql-data-warehouse"></a>SQL Data Warehouse
+
+**geo バックアップを無効にしないでください。** 既定では、SQL Data Warehouse により、ディザスター リカバリー用にデータの完全バックアップが 24 時間ごとに作成されます。 この機能を無効にすることはお勧めしません。 詳細については、「[geo バックアップ](/azure/sql-data-warehouse/backup-and-restore#geo-backups)」を参照してください。
+
 ## <a name="sql-server-running-in-a-vm"></a>VM で実行されている SQL Server
 
 **データベースをレプリケートします。** データベースをレプリケートするには、SQL Server Always On 可用性グループを使用します。 1 つの SQL Server インスタンスが失敗した場合は、高可用性を提供してください。 詳細については、「[n 層アプリケーションの Windows VM を実行する](../reference-architectures/virtual-machines-windows/n-tier.md)」をご覧ください。
 
-**データベースをバックアップします。** 既に [Azure Backup](https://azure.microsoft.com/documentation/services/backup/) を使用して VM をバックアップしている場合は、[DPM を使用した SQL Server ワークロード用 Azure Backup](/azure/backup/backup-azure-backup-sql/) を使用することを検討してください。 このアプローチでは、組織用の 1 つのバックアップ管理者の役割と、VM および SQL Server 用の 1 つにまとめられた復旧手順があります。 それ以外の場合は、[Microsoft Azure への SQL Server マネージ バックアップ](https://msdn.microsoft.com/library/dn449496.aspx)を使用してください。
+**データベースをバックアップします。** 既に [Azure Backup](https://azure.microsoft.com/documentation/services/backup/) を使用して VM をバックアップしている場合は、[DPM を使用した SQL Server ワークロード用 Azure Backup](/azure/backup/backup-azure-backup-sql/) を使用することを検討してください。 このアプローチでは、組織用の 1 つのバックアップ管理者の役割と、VM および SQL Server 用の 1 つにまとめられた復旧手順があります。 それ以外の場合は、[Microsoft Azure への SQL Server マネージド バックアップ](https://msdn.microsoft.com/library/dn449496.aspx)を使用してください。
 
 ## <a name="traffic-manager"></a>Traffic Manager
 
@@ -132,7 +136,7 @@ ms.locfileid: "29783511"
 
 **AzureLogCollector 拡張機能を使用します。** (Windows VM のみ)この拡張機能は、オペレーターがリモートで VM にログを記録しなくても、Azure プラットフォームのログを集計し、それを Azure ストレージにアップロードします。 詳細については、「[AzureLogCollector 拡張機能](/azure/virtual-machines/virtual-machines-windows-log-collector-extension/?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。
 
-## <a name="virtual-network"></a>仮想ネットワーク
+## <a name="virtual-network"></a>Virtual Network
 
 **パブリック IP アドレスをホワイトリストに登録したりブロックしたりするには、サブネットに NSG を追加します。** 悪意のあるユーザーからのアクセスをブロックしたり、アプリケーションにアクセスする権限を持つユーザーからのアクセスのみを許可したりしてください。  
 

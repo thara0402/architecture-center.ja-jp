@@ -4,12 +4,12 @@ description: Azure リソースの名前付け規則。 仮想マシン、スト
 author: telmosampaio
 ms.date: 05/18/2017
 pnp.series.title: Best Practices
-ms.openlocfilehash: 8aa0b46d9f43107cfa4ae4be3160900249365702
-ms.sourcegitcommit: ae8a1de6f4af7a89a66a8339879843d945201f85
+ms.openlocfilehash: 625f672c80b0256e93932b72367768f37c1e72f4
+ms.sourcegitcommit: f1dcc388c8b4fc983549c36d7e6b009fa1f072ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43326322"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46329880"
 ---
 # <a name="naming-conventions"></a>名前付け規則
 
@@ -45,7 +45,7 @@ Azure サブスクリプションに名前を付ける際、詳細な名前に�
 | Contoso |IT |InternalApps |Production |Contoso IT InternalApps Production |
 | Contoso |IT |InternalApps |Dev |Contoso IT InternalApps Dev |
 
-大企業のサブスクリプションを整理する方法の詳細については、[サブスクリプションの規範的なガバナンスのガイダンス][scaffold]に関するページをご覧ください。
+より大規模な企業でサブスクリプションを整理する方法の詳細については、「[Azure エンタープライズ スキャフォールディング - 規範的なサブスクリプション ガバナンス][scaffold]」を参照してください。
 
 ## <a name="use-affixes-to-avoid-ambiguity"></a>接辞による明確化
 
@@ -195,4 +195,4 @@ BLOB 名には任意の文字の組み合わせを含めることができます
 
 <!-- links -->
 
-[scaffold]: /azure/azure-resource-manager/resource-manager-azure-scaffold
+[scaffold]: /azure/architecture/cloud-adoption/appendix/azure-scaffold

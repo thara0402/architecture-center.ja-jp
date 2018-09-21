@@ -3,12 +3,12 @@ title: Apache Cassandra を使用する N 層アプリケーション
 description: Microsoft Azure で N 層アーキテクチャの Linux VM を実行する方法について説明します。
 author: MikeWasson
 ms.date: 05/03/2018
-ms.openlocfilehash: 7ee14088a2fae3cfc5c1119daf717236c75ecc6a
-ms.sourcegitcommit: 58d93e7ac9a6d44d5668a187a6827d7cd4f5a34d
+ms.openlocfilehash: fa5faeda4ef1dcae46181c0a3be8f4e139dc27d0
+ms.sourcegitcommit: 25bf02e89ab4609ae1b2eb4867767678a9480402
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37142235"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45584716"
 ---
 # <a name="n-tier-application-with-apache-cassandra"></a>Apache Cassandra を使用する N 層アプリケーション
 
@@ -104,7 +104,7 @@ Cassandra クラスター用の VM を可用性セット内に配置して、Cas
 
 - 拡張機能を使用してプロビジョニングされた後に VM を構成します。 この方法では、新しい VM インスタンスは、拡張機能なしの VM よりも起動に時間がかかる場合があります。
 
-- カスタム ディスク イメージと共に [Managed Disk](/azure/storage/storage-managed-disks-overview) をデプロイします。 このオプションの方が早くデプロイできる場合があります。 ただし、イメージを最新の状態に保つ必要があります。
+- カスタム ディスク イメージと共に[マネージド ディスク](/azure/storage/storage-managed-disks-overview)をデプロイします。 このオプションの方が早くデプロイできる場合があります。 ただし、イメージを最新の状態に保つ必要があります。
 
 詳しい考慮事項については、「[スケール セットの設計上の考慮事項][vmss-design]」を参照してください。
 
@@ -137,6 +137,8 @@ Cassandra クラスターのために検討するフェールオーバー シナ
 ネットワーク仮想アプライアンス (NVA) を追加してインターネットと Azure Virtual Network の間の DMZ を作成することを検討してください。 NVA とは、ネットワーク関連のタスク (ファイアウォール、パケット インスペクション、監査、カスタム ルーティングなど) を実行できる仮想アプライアンスの総称です。 詳細については、[Azure とインターネットの間の DMZ の実装][dmz]に関する記事を参照してください。
 
 機密の保存データを暗号化し、[Azure Key Vault][azure-key-vault] を使用してデータベース暗号化キーを管理します。 Key Vault では、ハードウェア セキュリティ モジュール (HSM) に暗号化キーを格納することができます。 データベース接続文字列などのアプリケーション シークレットも Key Vault に格納することをお勧めします。
+
+[DDoS Protection Standard](/azure/virtual-network/ddos-protection-overview) を有効にすることをお勧めします。これにより、VNet 内のリソースに対して DDoS の軽減策が追加されます。 Azure プラットフォームの一部として基本な DDoS 保護が自動的に有効になりますが、DDoS Protection Standard により、特に Azure Virtual Network リソース向けにチューニングされた軽減機能が提供されます。  
 
 ## <a name="deploy-the-solution"></a>ソリューションのデプロイ方法
 

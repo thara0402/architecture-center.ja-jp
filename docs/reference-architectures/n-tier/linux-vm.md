@@ -3,12 +3,12 @@ title: Azure での Linux VM の実行
 description: 拡張性、回復性、管理容易性、セキュリティに注目しながら、Azure で Linux VM を実行する方法。
 author: telmosampaio
 ms.date: 04/03/2018
-ms.openlocfilehash: 3d0492d05280e8c296cdfc4157aa0387a70337bf
-ms.sourcegitcommit: 58d93e7ac9a6d44d5668a187a6827d7cd4f5a34d
+ms.openlocfilehash: b53db016a594bace880aaac4e16f0586fe3057b1
+ms.sourcegitcommit: 25bf02e89ab4609ae1b2eb4867767678a9480402
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37142320"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45584733"
 ---
 # <a name="run-a-linux-vm-on-azure"></a>Azure での Linux VM の実行
 
@@ -58,7 +58,7 @@ az vm list-sizes --location <location>
 
 最適なディスク I/O パフォーマンスを得るには、データがソリッド ステート ドライブ (SSD) に格納される [Premium Storage][premium-storage] をお勧めします。 コストは、プロビジョニングされたディスクの容量に基づきます。 また、IOPS とスループット (つまり、データ転送速度) もディスク サイズによって異なるため、ディスクをプロビジョニングする場合は、3 つの要素 (容量、IOPS、スループット) すべてを考慮してください。 
 
-[Managed Disks][managed-disks] を使用することもお勧めします。 管理ディスクでは、ストレージ アカウントは必要ありません。 単にディスクのサイズと種類を指定するだけで、可用性の高いリソースとしてデプロイされます。
+[Managed Disks][managed-disks] を使用することもお勧めします。 マネージド ディスクでは、ストレージ アカウントは必要ありません。 単にディスクのサイズと種類を指定するだけで、可用性の高いリソースとしてデプロイされます。
 
 1 つ以上のデータ ディスクを追加します。 作成した VHD は、フォーマットされていません。 その VM にログインしてディスクをフォーマットしてください。 Linux のシェルでは、データ ディスクは `/dev/sdc`、`/dev/sdd` などのように表示されます。 `lsblk` を実行すると、ディスクなどのブロック デバイスの一覧を表示できます。 データ ディスクを使用するには、パーティションとファイル システムを作成し、ディスクをマウントします。 例: 
 
@@ -132,6 +132,8 @@ VM は、[計画的メンテナンス][planned-maintenance]または[計画外�
 プロビジョニング操作や他の VM イベントを確認するには、[監査ログ][audit-logs]を使用します。
 
 **データの暗号化。** OS ディスクとデータ ディスクを暗号化する必要がある場合は、[Azure Disk Encryption][disk-encryption] を検討します。 
+
+**DDoS 保護**。 [DDoS Protection Standard](/azure/virtual-network/ddos-protection-overview) を有効にすることをお勧めします。これにより、VNet 内のリソースに対して DDoS の軽減策が追加されます。 Azure プラットフォームの一部として基本な DDoS 保護が自動的に有効になりますが、DDoS Protection Standard により、特に Azure Virtual Network リソース向けにチューニングされた軽減機能が提供されます。  
 
 ## <a name="deploy-the-solution"></a>ソリューションのデプロイ方法
 

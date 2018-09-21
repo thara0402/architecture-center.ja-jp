@@ -3,12 +3,12 @@ title: SQL Server を使用した n 層アプリケーション
 description: 可用性、セキュリティ、スケーラビリティ、および管理容易性のために Azure で多層アーキテクチャを実装する方法について説明します。
 author: MikeWasson
 ms.date: 07/19/2018
-ms.openlocfilehash: fc761e940a25c4667146db9598d944bac2c32496
-ms.sourcegitcommit: ae8a1de6f4af7a89a66a8339879843d945201f85
+ms.openlocfilehash: 3a291b9492c94450a42de96bea2135190c163fe7
+ms.sourcegitcommit: 25bf02e89ab4609ae1b2eb4867767678a9480402
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43326058"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45584750"
 ---
 # <a name="n-tier-application-with-sql-server"></a>SQL Server を使用した n 層アプリケーション
 
@@ -154,6 +154,8 @@ VM スケール セットを使用していない場合は、同じ層の VM を
 
 機密の保存データを暗号化し、[Azure Key Vault][azure-key-vault] を使用してデータベース暗号化キーを管理します。 Key Vault では、ハードウェア セキュリティ モジュール (HSM) に暗号化キーを格納することができます。 詳細については、[Azure VM 上の SQL Server 向け Azure Key Vault 統合の構成][sql-keyvault]に関するページを参照してください。 データベース接続文字列などのアプリケーション シークレットも Key Vault に格納することをお勧めします。
 
+[DDoS Protection Standard](/azure/virtual-network/ddos-protection-overview) を有効にすることをお勧めします。これにより、VNet 内のリソースに対して DDoS の軽減策が追加されます。 Azure プラットフォームの一部として基本な DDoS 保護が自動的に有効になりますが、DDoS Protection Standard により、特に Azure Virtual Network リソース向けにチューニングされた軽減機能が提供されます。  
+
 ## <a name="deploy-the-solution"></a>ソリューションのデプロイ方法
 
 このリファレンス アーキテクチャのデプロイについては、[GitHub][github-folder] を参照してください。 デプロイ全体を完了するには最大 2 時間かかる場合があります。これには、AD DS、Windows Server フェールオーバー クラスター、および SQL Server 可用性グループを構成するスクリプトの実行時間が含まれます。
@@ -220,7 +222,7 @@ VM スケール セットを使用していない場合は、同じ層の VM を
     "witnessStorageAccountKey": "[replace-with-storagekey]"
     ```
 
-8. `n-tier-windows.json` ファイルで、`[replace-with-password]` のすべてのインスタンスを検索し、そのインスタンスを強力なパスワードに置き換えます。 ファイルを保存します。
+8. `n-tier-windows.json` ファイルで、`[replace-with-password]` と `[replace-with-sql-password]` のすべてのインスタンスを検索し、そのインスタンスを強力なパスワードに置き換えます。 ファイルを保存します。
 
     > [!NOTE]
     > 管理者ユーザー名を変更する場合は、JSON ファイルの `extensions` ブロックも更新する必要があります。 
