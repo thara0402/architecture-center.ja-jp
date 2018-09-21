@@ -2,13 +2,13 @@
 title: Azure アプリケーションのディザスター リカバリー
 description: Microsoft Azure でのディザスター リカバリーに対応したアプリケーションを設計するための方法に関する技術的概要と詳細。
 author: adamglick
-ms.date: 05/26/2017
-ms.openlocfilehash: faae658d91ec0cb2dd5dc436e67aa9b494fd4b49
-ms.sourcegitcommit: 46ed67297e6247f9a80027cfe891a5e51ee024b4
+ms.date: 09/12/2018
+ms.openlocfilehash: 4f879445154e37502bbeeeb90939737b6072e6ec
+ms.sourcegitcommit: 25bf02e89ab4609ae1b2eb4867767678a9480402
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45556684"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45584801"
 ---
 # <a name="disaster-recovery-for-azure-applications"></a>Azure アプリケーションのディザスター リカバリー
 
@@ -118,7 +118,10 @@ Basic、Standard、および Premium の SQL Database 階層の場合、デー�
 
 Azure Storage に組み込まれている冗長性により、バックアップ ファイルの 2 個のレプリカが同じリージョンに作成されます。 ただし、バックアップ プロセスを実行する頻度により、障害シナリオで失われる可能性があるデータ量を表す RPO が決まります。 たとえば、毎正時にバックアップを実行していて、正時の 2 分前に障害が発生したとしましょう。 最後のバックアップが実行されてからの 58 分間に記録されたデータは失われます。 また、リージョン全体のサービス中断を防ぐには、BACPAC ファイルを代替リージョンにコピーする必要があります。 その場合、代替リージョンのバックアップを復元することができます。 詳細については、「[概要: SQL Database を使用したクラウド ビジネス継続性とデータベース ディザスター リカバリー](/azure/sql-database/sql-database-business-continuity/)」をご覧ください。
 
-#### <a name="azure-storage"></a>Azure Storage (Azure Storage)
+#### <a name="sql-data-warehouse"></a>SQL Data Warehouse
+SQL Data Warehouse については、[geo バックアップ](/azure/sql-data-warehouse/backup-and-restore#geo-backups)を使用して、ディザスター リカバリー用のペア リージョンに復元します。 これらのバックアップは、24 時間ごとに作成され、20 分以内にペア リージョンに復元できます。 この機能は、既定ですべての SQL データ ウェアハウスで有効になっています。 ご使用のデータ ウェアハウスを復元する方法の詳細については、「[PowerShell を使用して Azure 地理的リージョンから復元する](/azure/sql-data-warehouse/sql-data-warehouse-restore#restore-from-an-azure-geographical-region-using-powershell)」を参照してください。
+
+#### <a name="azure-storage"></a>Azure Storage
 Azure Storage の場合、カスタム バックアップ プロセスを開発したり、多くのサード パーティ製バックアップ ツールのいずれかを使用したりすることができます。 ストレージ リソース間に相互参照があるほとんどのアプリケーション設計では、複雑さが増すことに注意してください。 たとえば、Azure Storage の BLOB にリンクしている列を含む SQL データベースがあるものとします。 バックアップが同時に実行されない場合、データベースには、障害発生前にバックアップされなかった BLOB へのポインターが含まれる可能性があります。 アプリケーションまたはディザスター リカバリー計画では、復旧後のこのような不整合を処理するプロセスを実装する必要があります。
 
 #### <a name="other-data-platforms"></a>他のデータ プラットフォーム
@@ -127,7 +130,7 @@ Elasticsearch や MongoDB など、サービスとしてのインフラストラ
 ### <a name="reference-data-pattern-for-disaster-recovery"></a>障害復旧のための参照データ パターン
 参照データはアプリケーションの機能をサポートする読み取り専用のデータです。 通常、頻繁に変更されることはありません。 バックアップと復元はリージョン全体にわたるサービス中断を処理する 1 つの方法ですが、RTO は比較的長くなります。 セカンダリ リージョンにアプリケーションをデプロイする場合、参照データの RTO を改善する方法がいくつかあります。
 
-参照データは頻繁に変化しないので、参照データの永続的なコピーをセカンダリ リージョンに保持することで、RTO を改善できます。 これにより、障害発生時にバックアップを復元するために必要な時間がなくなります。 複数リージョンのディザスター リカバリーの要件を満たすには、アプリケーションと参照データを一緒に複数のリージョンにデプロイする必要があります。 「 [高可用性の参照データ パターン](high-availability-azure-applications.md#reference-data-pattern-for-high-availability)」で説明されているように、ロール自体、外部ストレージ、または両方の組み合わせに、参照データをデプロイできます。
+参照データは頻繁に変化しないので、参照データの永続的なコピーをセカンダリ リージョンに保持することで、RTO を改善できます。 これにより、障害発生時にバックアップを復元するために必要な時間がなくなります。 複数リージョンのディザスター リカバリーの要件を満たすには、アプリケーションと参照データを一緒に複数のリージョンにデプロイする必要があります。 参照データは、ロール自体、外部ストレージ、またはその両方の組み合わせにデプロイできます。
 
 コンピューティング ノード内の参照データ デプロイ モデルは、ディザスター リカバリーの要件を暗黙的に満たします。 SQL Database への参照データのデプロイでは、各リージョンに参照データのコピーをデプロイする必要があります。 Azure Storage にも同じ方法が当てはまります。 Azure Storage に格納されている参照データのコピーを、プライマリ リージョンとセカンダリ リージョンにデプロイする必要があります。
 
@@ -153,7 +156,7 @@ Azure Storage キューを使用してトランザクション データを保�
 
 > [!NOTE]
 > このドキュメントの大部分では、サービスとしてのプラットフォーム (PaaS) について説明します。 ただし、ハイブリッド アプリケーションのための追加のレプリケーション オプションおよび可用性オプションでは、Azure Virtual Machines を使用します。 これらのハイブリッド アプリケーションは、サービスとしてのインフラストラクチャ (IaaS) を使用して、Azure の仮想マシンで SQL Server をホストします。 これにより、AlwaysOn 可用性グループやログ配布などの SQL Server の従来の可用性アプローチを使用できます。 AlwaysOn などの一部のテクニックは、オンプレミスの SQL Server インスタンスと Azure Virtual Machines の間でのみ機能します。 詳細については、「[Azure 仮想マシンにおける SQL Server の高可用性とディザスター リカバリー](/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-high-availability-dr/)」を参照してください。
-> 
+>
 > 
 
 #### <a name="reduced-application-functionality-for-transaction-capture"></a>トランザクション キャプチャに対するアプリケーション機能の制限
@@ -308,5 +311,4 @@ Azure Site Recovery を使っている場合、Azure へのテスト フェー�
 | SQL Database | [Azure SQL Database を復元する、またはセカンダリにフェールオーバーする](/azure/sql-database/sql-database-disaster-recovery) |
 | 仮想マシン | [Azure サービスの中断が Azure 仮想マシンに影響を与える場合の対処方法](/azure/virtual-machines/virtual-machines-disaster-recovery-guidance) |
 | 仮想ネットワーク | [Virtual Network – ビジネス継続性](/azure/virtual-network/virtual-network-disaster-recovery-guidance) |
-
 
