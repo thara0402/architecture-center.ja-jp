@@ -337,24 +337,50 @@ items:
       href: example-scenario/ai/intelligent-apps-image-processing.md
   - name: アプリケーション
     items:
+    - name: コンピューター支援エンジニアリング SaaS
+      href: example-scenario/apps/hpc-saas.md
+    - name: 銀行間での分散型信頼
+      href: example-scenario/apps/decentralized-trust.md
+    - name: Web アプリケーションの監視
+      href: example-scenario/apps/app-monitoring.md
     - name: ホテル予約チャットボット
       href: example-scenario/apps/commerce-chatbot.md
-    - name: コンテナー付きの DevOps
+    - name: コンテナーを使用した DevOps
       href: example-scenario/apps/devops-with-aks.md
-    - name: VSTS 付きの DevOps
+    - name: Azure DevOps を使用した DevOps
       href: example-scenario/apps/devops-dotnet-webapp.md
-    - name: 開発/テスト用 SAP
+    - name: 開発/テスト環境用の SAP
       href: example-scenario/apps/sap-dev-test.md
+    - name: 運用環境用の SAP
+      href: example-scenario/apps/sap-production.md
     - name: eコマース フロントエンド
       href: example-scenario/apps/ecommerce-scenario.md
+    - name: eコマース API 管理
+      href: example-scenario/apps/apim-api-scenario.md
+    - name: eコマース製品検索
+      href: example-scenario/apps/ecommerce-search.md
   - name: データと分析
     items:
+    - name: 建設業向け IoT
+      href: example-scenario/data/big-data-with-iot.md
+    - name: データ ウェアハウスと分析
+      href: example-scenario/data/data-warehouse.md
+    - name: 自動車の IoT データ
+      href: example-scenario/data/realtime-analytics-vehicle-iot.md
     - name: リアルタイムでの不正検出
       href: example-scenario/data/fraud-detection.md
     - name: スケーラブルな注文処理
       href: example-scenario/data/ecommerce-order-processing.md
   - name: インフラストラクチャ
     items:
+    - name: 計算流体力学 (CFD)
+      href: example-scenario/infrastructure/hpc-cfd.md
+    - name: Linux 仮想デスクトップ
+      href: example-scenario/infrastructure/linux-vdi-citrix.md
+    - name: モノリシック アプリケーションの分会
+      href: example-scenario/infrastructure/ServiceFabricMicroservices.md
+    - name: スケーラビリティに優れた WordPress
+      href: example-scenario/infrastructure/wordpress.md
     - name: 多層 Windows
       href: example-scenario/infrastructure/regulated-multitier-app.md
     - name: HPC ビデオのレンダリング
@@ -479,6 +505,12 @@ items:
     items:
     - name: 基本的なワークロードのデプロイ
       href: cloud-adoption/infrastructure/basic-workload.md
+  - name: '[操作]'
+    items:
+    - name: 概要
+      href: cloud-adoption/operations/overview.md
+    - name: 運用適合性レビューの確立
+      href: cloud-adoption/operations/operational-fitness-review.md
   - name: 付録
     items:
     - name: Azure エンタープライズ スキャフォールディング
@@ -493,9 +525,9 @@ items:
     href: aws-professional/index.md
   - name: サービスの比較
     href: aws-professional/services.md
-ms.openlocfilehash: f82d3e29047cfca1a6a0d3e2e213b074094cc363
-ms.sourcegitcommit: ae8a1de6f4af7a89a66a8339879843d945201f85
+ms.openlocfilehash: 804207bfa17a0ef1ef61d5f0729c8e5df6af2089
+ms.sourcegitcommit: b7e521ba317f4fcd3253c80ac0c0a355eaaa56c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43324842"
+ms.lasthandoff: 09/21/2018
+ms.locfileid: "46533951"
