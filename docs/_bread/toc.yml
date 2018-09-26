@@ -8,28 +8,25 @@ items:
     topicHref: /azure/architecture
     items:
     - name: ベスト プラクティス
-      tocHref: /azure/architecture/best-practices
+      tocHref: /azure/architecture/best-practices/
       topicHref: /azure/architecture/best-practices
     - name: AWS プロフェッショナルのための Azure
-      tocHref: /azure/architecture/aws-professional
+      tocHref: /azure/architecture/aws-professional/
       topicHref: /azure/architecture/aws-professional
     - name: 回復性の設計
-      tocHref: /azure/architecture/resiliency
+      tocHref: /azure/architecture/resiliency/
       topicHref: /azure/architecture/resiliency
     - name: 設計レビューのチェックリスト
-      tocHref: /azure/architecture/checklist
+      tocHref: /azure/architecture/checklist/
       topicHref: /azure/architecture/checklist
     - name: マルチテナント アプリケーションでの ID 管理
       tocHref: /azure/architecture/multitenant-identity
     - name: 参照アーキテクチャ
-      tocHref: /azure/architecture/reference-architectures
+      tocHref: /azure/architecture/reference-architectures/
       topicHref: /azure/architecture/reference-architectures
     - name: クラウド設計パターン
-      tocHref: /azure/architecture/patterns
+      tocHref: /azure/architecture/patterns/
       topicHref: /azure/architecture/patterns
-    - name: リソース
-      tocHref: /azure/architecture/resources
-      topicHref: /azure/architecture/resources
     - name: エンタープライズ クラウドの導入
       tocHref: /azure/architecture/cloud-adoption/
       topicHref: /azure/architecture/cloud-adoption
@@ -49,21 +46,24 @@ items:
       - name: 付録
         tocHref: /azure/architecture/cloud-adoption/appendix/
         topicHref: /azure/architecture/cloud-adoption/appendix
-    - name: ガイド
-      tocHref: /azure/architecture/guide
+    - name: シナリオ例
+      tocHref: /azure/architecture/example-scenario/
+      topicHref: /azure/architecture/example-scenario
+    - name: アプリケーション アーキテクチャ ガイド
+      tocHref: /azure/architecture/guide/
       topicHref: /azure/architecture/guide
     - name: データ アーキテクチャ ガイド
-      tocHref: /azure/architecture/data-guide
+      tocHref: /azure/architecture/data-guide/
       topicHref: /azure/architecture/data-guide
     - name: マイクロサービスの設計
-      tocHref: /azure/architecture/microservices
+      tocHref: /azure/architecture/microservices/
       topicHref: /azure/architecture/microservices
     - name: パフォーマンスのアンチパターン
-      tocHref: /azure/architecture/antipatterns
-      topicHref: /azure/architecture/
-ms.openlocfilehash: d7dc8f62b4b3325c30c1cbb5cf4ec5676b78fac8
-ms.sourcegitcommit: b7e521ba317f4fcd3253c80ac0c0a355eaaa56c5
+      tocHref: /azure/architecture/antipatterns/
+      topicHref: /azure/architecture/antipatterns
+ms.openlocfilehash: 52d99c7c5945ed3653b17172b6cb7691fc0a02d9
+ms.sourcegitcommit: 36398937420b9a6a2c45759b90847a1819df4451
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/21/2018
-ms.locfileid: "46533900"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47175592"
