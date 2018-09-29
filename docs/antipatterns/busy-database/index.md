@@ -3,12 +3,12 @@ title: ビジー状態のデータベースのアンチパターン
 description: 処理をデータベース サーバーにオフロードすると、パフォーマンスおよびスケーラビリティの問題が発生する可能性があります。
 author: dragon119
 ms.date: 06/05/2017
-ms.openlocfilehash: 9fdbde0731a1be570ef611894a9d23a1be87f4e7
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: a14a350aefc1801ae08cb4a8d0eb3d5b248c92bf
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
-ms.locfileid: "24538795"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47428909"
 ---
 # <a name="busy-database-antipattern"></a>ビジー状態のデータベースのアンチパターン
 
@@ -266,7 +266,7 @@ CPU と DTU の使用率からは、スループットが高くなっている�
 - [余分なフェッチのアンチパターン][ExtraneousFetching]
 
 
-[dtu]: /sql-database/sql-database-what-is-a-dtu
+[dtu]: /azure/sql-database/sql-database-service-tiers-dtu
 [ExtraneousFetching]: ../extraneous-fetching/index.md
 [sample-app]: https://github.com/mspnp/performance-optimization/tree/master/BusyDatabase
 

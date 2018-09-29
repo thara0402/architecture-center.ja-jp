@@ -5,12 +5,12 @@ author: MikeWasson
 ms:date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications
 pnp.series.next: tailspin
-ms.openlocfilehash: c363ac01e798b522fa95f39586e28fe3af5fae4a
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 9c2efe9aea9da53177478161b90406d0c2021550
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
-ms.locfileid: "24541675"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47429436"
 ---
 # <a name="manage-identity-in-multitenant-applications"></a>マルチテナント アプリケーションでの ID 管理
 
@@ -18,7 +18,7 @@ ms.locfileid: "24541675"
 
 [![GitHub](../_images/github.png) サンプル コード][sample application]
 
-マルチテナント アプリケーションを構築する場合、最初の課題の 1 つは、すべてのユーザーがテナントに属しているようになるために、ユーザー ID を管理することです。 次に例を示します。
+マルチテナント アプリケーションを構築する場合、最初の課題の 1 つは、すべてのユーザーがテナントに属しているようになるために、ユーザー ID を管理することです。 例: 
 
 * ユーザーは、その組織の資格情報でサインインします。
 * ユーザーは、その組織のデータへのアクセス権を持つ必要がありますが、他のテナントに属しているデータは必要ありません。
@@ -93,7 +93,7 @@ Azure Active Directory (Azure AD) には、これらのシナリオのすべて�
 
 
 <!-- Links -->
-[ADConnect]: /azure/active-directory/active-directory-aadconnect
+[ADConnect]: /azure/active-directory/hybrid/whatis-hybrid-identity
 [AzureAD]: /azure/active-directory
 
 [顧客の AD FS とのフェデレーション]: adfs.md

@@ -5,12 +5,12 @@ keywords: AWS エキスパート, Azure との比較, AWS との比較, Azure �
 author: lbrader
 ms.date: 03/24/2017
 pnp.series.title: Azure for AWS Professionals
-ms.openlocfilehash: f90186ba36f035871ec918c65b05eebe44190ffa
-ms.sourcegitcommit: f1dcc388c8b4fc983549c36d7e6b009fa1f072ba
+ms.openlocfilehash: 04157b9a647779ae47ad0aff8132289a30544acf
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46329897"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47429640"
 ---
 # <a name="azure-for-aws-professionals"></a>AWS プロフェッショナルのための Azure
 
@@ -96,7 +96,7 @@ Azure では、さまざまな方法でリソースを管理できます。
 
 どのインターフェイスでも、Azure でリソースの作成、デプロイ、または変更を行うための中心はリソース グループです。 これは、CloudFormation のデプロイ時に AWS リソースをグループ化するために "スタック" が果たす役割に似ています。
 
-これらのインターフェイスの構文と構造は AWS とは異なっていますが、同等の機能を備えています。 さらに、AWS で使用される多数のサード パーティ製の管理ツール ([Hashicorp の Terraform](https://www.terraform.io/docs/providers/azurerm/) や [Netflix Spinnaker](http://www.spinnaker.io/) など) を Azure でも使用できます。
+これらのインターフェイスの構文と構造は AWS とは異なっていますが、同等の機能を備えています。 さらに、AWS で使用される多数のサード パーティ製の管理ツール ([Hashicorp の Terraform](https://www.terraform.io/docs/providers/azurerm/) や [Netflix Spinnaker](https://www.spinnaker.io/) など) を Azure でも使用できます。
 
 ### <a name="see-also"></a>関連項目
 
@@ -426,15 +426,11 @@ Notification Hubs は SMS または電子メール メッセージの送信を�
 
 ## <a name="next-steps"></a>次の手順
 
--   [対話型 Azure プラットフォームの全体像](http://azureplatform.azurewebsites.net/)
-
 -   [Azure を使ってみる](https://azure.microsoft.com/get-started/)
 
 -   [Azure ソリューション アーキテクチャ](https://azure.microsoft.com/solutions/architecture/)
 
 -   [Azure リファレンス アーキテクチャ](https://azure.microsoft.com/documentation/articles/guidance-architecture/)
-
--   [無料オンライン コース: AWS エキスパート向け Microsoft Azure](http://aka.ms/azureforaws)
 
 
 <!-- links -->

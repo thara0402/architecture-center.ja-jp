@@ -3,12 +3,12 @@ title: ビジー状態のフロントエンドのアンチパターン
 description: 多数のバックグラウンド スレッドで非同期処理が実行されることによって、フォアグラウンドで実行される他のタスクのリソースが逼迫する場合があります。
 author: dragon119
 ms.date: 06/05/2017
-ms.openlocfilehash: cedb80ddac5ceb1eb901455df3165993fd28a138
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 89a2d6c41af1e19ca1b9b6a0a5dceac615afd60a
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
-ms.locfileid: "24538731"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47428297"
 ---
 # <a name="busy-front-end-antipattern"></a>ビジー状態のフロントエンドのアンチパターン
 
@@ -209,7 +209,7 @@ CPU 使用率とネットワーク使用率にも、パフォーマンスの改�
 [sync-io]: ../synchronous-io/index.md
 [web-queue-worker]: /azure/architecture/guide/architecture-styles/web-queue-worker
 
-[WebJobs]: http://www.hanselman.com/blog/IntroducingWindowsAzureWebJobs.aspx
+[WebJobs]: https://www.hanselman.com/blog/IntroducingWindowsAzureWebJobs.aspx
 [ComputePartitioning]: https://msdn.microsoft.com/library/dn589773.aspx
 [ServiceBusQueues]: https://msdn.microsoft.com/library/azure/hh367516.aspx
 [AppDynamics-Transactions-Front-End-Requests]: ./_images/AppDynamicsPerformanceStats.jpg

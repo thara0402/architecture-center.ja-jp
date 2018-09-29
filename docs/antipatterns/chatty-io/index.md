@@ -3,12 +3,12 @@ title: 頻度の高い I/O のアンチパターン
 description: 大量の I/O 要求によってパフォーマンスと応答性が損なわれる場合があります。
 author: dragon119
 ms.date: 06/05/2017
-ms.openlocfilehash: daa0c581d31c9389e2853f84075dc44d1e5ba78b
-ms.sourcegitcommit: ae8a1de6f4af7a89a66a8339879843d945201f85
+ms.openlocfilehash: 17193198918cc742b2e3f30e77dfc5c3f2726ebf
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43325878"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47428569"
 ---
 # <a name="chatty-io-antipattern"></a>頻度の高い I/O のアンチパターン
 
@@ -217,7 +217,7 @@ await SaveCustomerListToFileAsync(customers);
 
 - データを書き込むとき、リソースを必要以上に長い時間ロックすることを避け、時間のかかる操作の実行中に生じる競合のリスクを抑えるようにしてください。 書き込み操作が、複数のデータ ストアや複数のファイル、または複数のサービスにまたがる場合は、結果整合性のアプローチを採用します。 [データ整合性のガイダンス][data-consistency-guidance]に関するページを参照してください。
 
-- データをメモリにバッファー処理した後で書き込む場合、そのデータはプロセスのクラッシュに対して脆弱になります。 通常のデータ転送に連続性がある場合やさほど混雑しない場合は、持続性のある外部キュー ([Event Hubs](http://azure.microsoft.com/services/event-hubs/) など) にデータをバッファー処理した方が安全です。
+- データをメモリにバッファー処理した後で書き込む場合、そのデータはプロセスのクラッシュに対して脆弱になります。 通常のデータ転送に連続性がある場合やさほど混雑しない場合は、持続性のある外部キュー ([Event Hubs](https://azure.microsoft.com/services/event-hubs/) など) にデータをバッファー処理した方が安全です。
 
 - サービスまたはデータベースから取得したデータをキャッシュすることを検討してください。 同じデータの要求を繰り返す必要がないので、I/O の量を減らすことにつながります。 詳細については、[キャッシュのベスト プラクティス][caching-guidance]に関するページを参照してください。
 
@@ -308,7 +308,7 @@ SQL ステートメントのトレース結果は、すべてのデータが 1 �
 [api-design]: ../../best-practices/api-design.md
 [caching-guidance]: ../../best-practices/caching.md
 [code-sample]:  https://github.com/mspnp/performance-optimization/tree/master/ChattyIO
-[data-consistency-guidance]: http://https://msdn.microsoft.com/library/dn589800.aspx
+[data-consistency-guidance]: https://msdn.microsoft.com/library/dn589800.aspx
 [ef]: /ef/
 [extraneous-fetching]: ../extraneous-fetching/index.md
 [new-relic]: https://newrelic.com/application-monitoring
