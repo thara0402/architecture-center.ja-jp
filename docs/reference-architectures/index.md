@@ -4,18 +4,43 @@ description: Azure での一般的なワークロードに対応する、参照�
 layout: LandingPage
 ms.topic: landing-page
 ms.date: 08/30/2018
-ms.openlocfilehash: bd04a866258fb2f6ff849a4f29492610d3545e1f
-ms.sourcegitcommit: 20953a7bed708713e4c972d390a2910505e80f08
+ms.openlocfilehash: c96fc08aca97beb886fa96807d6f9cc5c09d0555
+ms.sourcegitcommit: 9eecff565392273d11b8702f1fcecb4d75e27a15
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44040453"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48243633"
 ---
 # <a name="azure-reference-architectures"></a>Azure の参照アーキテクチャ
 
 これらの参照アーキテクチャは、関連するアーキテクチャをまとめてシナリオごとに配置されています。 各アーキテクチャの説明には、推奨プラクティスが、スケーラビリティ、可用性、管理性、およびセキュリティに関する考慮事項と共に含まれます。 また、ほとんどにはデプロイ可能なソリューションも含まれています。
 
-ジャンプ先: [ビッグ データ](#big-data-solutions) | [Web アプリケーション](#web-applications) | [n 層アプリケーション](#n-tier-applications) | [仮想ネットワーク](#virtual-networks) | [Active Directory](#extending-on-premises-active-directory-to-azure) | [VM ワークロード](#vm-workloads)
+ジャンプ先: [AI](#ai-and-machine-learning) | [ビッグ データ](#big-data-solutions) | [n 層アプリケーション](#n-tier-applications) | [仮想ネットワーク](#virtual-networks) | [Active Directory](#extending-on-premises-active-directory-to-azure) | [VM ワークロード](#vm-workloads) | [Web アプリケーション](#web-applications)
+
+## <a name="ai-and-machine-learning"></a>AI と機械学習
+
+<ul  class="panelContent cardsF">
+<!-- SQL Data Warehouse -->
+<li style="display: flex; flex-direction: column;">
+    <a href="./ai/batch-scoring-deep-learning.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="../_images/icons/batch-ai.svg" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>ディープ ラーニング モデル用のバッチ スコアリング</h3>
+                        <p>ビデオにニューラル スタイルの転送を適用するバッチ ジョブの実行を自動化します。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</li>
+</ul>
 
 ## <a name="big-data-solutions"></a>ビッグ データ ソリューション
 
@@ -73,68 +98,6 @@ ms.locfileid: "44040453"
                     <div class="cardText">
                         <h3>Azure Stream Analytics によるストリーム処理</h3>
                         <p>2 つのデータ ストリームからのレコードを関連付けてローリング平均を計算する、エンド ツー エンドのストリーム処理パイプライン。</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </a>
-</li>
-</ul>
-
-## <a name="web-applications"></a>Web アプリケーション
-
-<ul  class="panelContent cardsF">
-<li style="display: flex; flex-direction: column;">
-    <a href="./app-service-web-app/basic-web-app.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
-        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
-            <div class="cardPadding" style="display: flex;">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="../_images/icons/app-service.svg" height="140px" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>基本的な Web アプリケーション</h3>
-                        <p>Azure App Service と Azure SQL Database を使用する Web アプリケーション。</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </a>
-</li>
-<li style="display: flex; flex-direction: column;">
-    <a href="./app-service-web-app/scalable-web-app.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
-        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
-            <div class="cardPadding" style="display: flex;">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="../_images/icons/app-service.svg" height="140px" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>拡張性の高い Web アプリケーション</h3>
-                        <p>Web アプリケーションの拡張性を向上させる証明済みの手法。</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </a>
-</li>
-<li style="display: flex; flex-direction: column;">
-    <a href="./app-service-web-app/multi-region.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
-        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
-            <div class="cardPadding" style="display: flex;">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="../_images/icons/app-service.svg" height="140px" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>可用性の高い Web アプリケーション</h3>
-                        <p>App Service Web アプリを複数のリージョンで実行し、高可用性を実現します。</p>
                     </div>
                 </div>
             </div>
@@ -541,3 +504,65 @@ ms.locfileid: "44040453"
 </li>
 </ul>
 
+
+## <a name="web-applications"></a>Web アプリケーション
+
+<ul  class="panelContent cardsF">
+<li style="display: flex; flex-direction: column;">
+    <a href="./app-service-web-app/basic-web-app.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="../_images/icons/app-service.svg" height="140px" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>基本的な Web アプリケーション</h3>
+                        <p>Azure App Service と Azure SQL Database を使用する Web アプリケーション。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</li>
+<li style="display: flex; flex-direction: column;">
+    <a href="./app-service-web-app/scalable-web-app.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="../_images/icons/app-service.svg" height="140px" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>拡張性の高い Web アプリケーション</h3>
+                        <p>Web アプリケーションの拡張性を向上させる証明済みの手法。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</li>
+<li style="display: flex; flex-direction: column;">
+    <a href="./app-service-web-app/multi-region.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="../_images/icons/app-service.svg" height="140px" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>可用性の高い Web アプリケーション</h3>
+                        <p>App Service Web アプリを複数のリージョンで実行し、高可用性を実現します。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</li>
+</ul>
