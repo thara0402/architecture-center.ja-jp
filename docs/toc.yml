@@ -339,6 +339,10 @@ items:
   items:
   - name: 概要
     href: reference-architectures/index.md
+  - name: AI
+    items:
+    - name: ディープ ラーニング モデル用のバッチ スコアリング
+      href: reference-architectures/ai/batch-scoring-deep-learning.md
   - name: ビッグ データ
     items:
     - name: SQL Data Warehouse を使用したエンタープライズ向け BI
@@ -527,9 +531,9 @@ items:
       href: cloud-adoption/appendix/azure-scaffold.md
     - name: Azure エンタープライズ スキャフォールディングの実装
       href: cloud-adoption/appendix/azure-scaffold-examples.md
-ms.openlocfilehash: 87c781aabb78f339487dea41885a5e562be9df3e
-ms.sourcegitcommit: 36398937420b9a6a2c45759b90847a1819df4451
+ms.openlocfilehash: 2b5c74f9ce94b238c8787e0c684248ecae0467af
+ms.sourcegitcommit: 9eecff565392273d11b8702f1fcecb4d75e27a15
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47175626"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48243684"
