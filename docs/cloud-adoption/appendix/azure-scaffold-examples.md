@@ -3,13 +3,13 @@ title: サブスクリプション ガバナンスのシナリオと例
 description: 一般的なシナリオでの Azure サブスクリプション ガバナンスの実装方法の例を紹介します。
 author: rdendtler
 ms.date: 01/03/2017
-ms.author: rodend;karlku;tomfitz
-ms.openlocfilehash: 2c10b9a61be0cd7dadff6bfb327d938cc498c935
-ms.sourcegitcommit: ae8a1de6f4af7a89a66a8339879843d945201f85
+ms.author: rodend
+ms.openlocfilehash: 51be0e1cdbcb3258102c9e4a4790764cada98d1e
+ms.sourcegitcommit: 9eecff565392273d11b8702f1fcecb4d75e27a15
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43327410"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48243667"
 ---
 # <a name="examples-of-implementing-azure-enterprise-scaffold"></a>Azure エンタープライズ スキャフォールディングの実装例
 この記事では、企業が [Azure エンタープライズ スキャフォールディング](azure-scaffold.md)の推奨事項を実装する方法の例を紹介します。 Contoso という架空の会社を使って一般的なシナリオのベスト プラクティスを示します。
@@ -34,7 +34,7 @@ Contoso 社では、世界中の開発者が使用するソース コード管�
 ### <a name="naming-standards--resource-groups"></a>命名規則とリソース グループ
 Dave は、すべての部署に共通する開発者ツールをサポートするサブスクリプションを作成することにしました。 Dave は、サブスクリプションと (アプリケーションおよびネットワークの) リソース グループにわかりやすい名前を付ける必要があります。 Dave は次のサブスクリプションとリソース グループを作成しました。
 
-| 項目 | Name | 説明 |
+| Item | Name | 説明 |
 | --- | --- | --- |
 | サブスクリプション |Contoso ETS DeveloperTools Production |共通の開発ツールをサポートします。 |
 | リソース グループ |bitbucket-prod-rg |アプリケーションの Web サーバーとデータベース サーバーが含まれます。 |

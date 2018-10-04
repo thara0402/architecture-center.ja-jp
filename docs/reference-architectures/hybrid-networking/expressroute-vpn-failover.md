@@ -6,12 +6,12 @@ ms.date: 11/28/2016
 pnp.series.title: Connect an on-premises network to Azure
 pnp.series.prev: expressroute
 cardTitle: Improving availability
-ms.openlocfilehash: 81298215c814cee805eff57fdc28f7c127148b5f
-ms.sourcegitcommit: c441fd165e6bebbbbbc19854ec6f3676be9c3b25
+ms.openlocfilehash: 31ed1dbf59c4fa2b7fa86b9ceb2fed7b36e75c8c
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
-ms.locfileid: "30270440"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47428824"
 ---
 # <a name="connect-an-on-premises-network-to-azure-using-expressroute-with-vpn-failover"></a>VPN フェールオーバー付きの ExpressRoute を使用してオンプレミス ネットワークを Azure に接続する
 
@@ -47,7 +47,7 @@ ExpressRoute 回線を使用できない場合、VPN ルートではプライベ
 
 ## <a name="recommendations"></a>Recommendations
 
-ほとんどのシナリオには、次の推奨事項が適用されます。 これらの推奨事項には、優先される特定の要件がない限り、従ってください。
+ほとんどのシナリオには、次の推奨事項が適用されます。 これらの推奨事項には、オーバーライドする特定の要件がない限り、従ってください。
 
 ### <a name="vnet-and-gatewaysubnet"></a>VNet と GatewaySubnet
 
@@ -103,7 +103,7 @@ Azure のセキュリティに関する全般的な考慮事項については�
 
 ソリューションをデプロイするには、次の手順を実行します。
 
-1. 下記のボタンをクリックします。<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmspnp%2Freference-architectures%2Fmaster%2Fhybrid-networking%2Fexpressroute-vpn-failover%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
+1. 下記のボタンをクリックします。<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmspnp%2Freference-architectures%2Fmaster%2Fhybrid-networking%2Fexpressroute-vpn-failover%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 2. Azure ポータルでリンクが開くのを待った後、次の手順に従います。   
    * **リソース グループ**の名前はパラメーター ファイルで既に定義されているため、**[新規作成]** を選択し、テキスト ボックスに「`ra-hybrid-vpn-er-rg`」と入力します。
    * **[場所]** ボックスの一覧でリージョンを選択します。
@@ -111,7 +111,7 @@ Azure のセキュリティに関する全般的な考慮事項については�
    * 使用条件を確認し、**[上記の使用条件に同意する]** チェック ボックスをオンにします。
    * **[購入]** ボタンをクリックします。
 3. デプロイが完了するまで待ちます。
-4. 下のボタンをクリックしてください。<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmspnp%2Freference-architectures%2Fmaster%2Fhybrid-networking%2Fexpressroute-vpn-failover%2Fazuredeploy-expressRouteCircuit.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
+4. 下のボタンをクリックしてください。<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmspnp%2Freference-architectures%2Fmaster%2Fhybrid-networking%2Fexpressroute-vpn-failover%2Fazuredeploy-expressRouteCircuit.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 5. Azure ポータルでリンクが開くのを待った後、次の手順に従います。
    * **[リソース グループ]** セクションで **[既存のものを使用]** を選択し、テキスト ボックスに「`ra-hybrid-vpn-er-rg`」と入力します。
    * **[場所]** ボックスの一覧でリージョンを選択します。

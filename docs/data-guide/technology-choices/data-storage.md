@@ -3,12 +3,12 @@ title: データ ストレージ テクノロジの選択
 description: ''
 author: zoinerTejada
 ms:date: 02/12/2018
-ms.openlocfilehash: b14611a2dc34bcb145cf420441795d4124e7baeb
-ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
+ms.openlocfilehash: 496df68024aef0dcf030bb7e0138639610aa8a79
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30847211"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47429351"
 ---
 # <a name="choosing-a-big-data-storage-technology-in-azure"></a>Azure でのビッグ データ ストレージ テクノロジの選択
 
@@ -26,7 +26,7 @@ ms.locfileid: "30847211"
 **NoSQL データベース**
 
 - [Azure Cosmos DB](/azure/cosmos-db/)
-- [HDInsight での HBase](http://hbase.apache.org/)
+- [HDInsight での HBase](https://hbase.apache.org/)
 
 ## <a name="azure-storage-blobs"></a>Azure Storage BLOB
 
@@ -69,7 +69,7 @@ Azure Cosmos DB の機能:
 
 ## <a name="hbase-on-hdinsight"></a>HDInsight での HBase
 
-[Apache HBase](http://hbase.apache.org/) は、オープン ソースの NoSQL データベースであり、Hadoop 上に構築され、Google BigTable をモデルにしています。 HBase は、大量の非構造化データと半構造化データに対するランダム アクセスと強力な一貫性を、列ファミリで整理されたスキーマなしのデータベースで実現します。
+[Apache HBase](https://hbase.apache.org/) は、オープン ソースの NoSQL データベースであり、Hadoop 上に構築され、Google BigTable をモデルにしています。 HBase は、大量の非構造化データと半構造化データに対するランダム アクセスと強力な一貫性を、列ファミリで整理されたスキーマなしのデータベースで実現します。
 
 データはテーブルの行内に格納され、行内のデータは列ファミリによってグループ化されます。 HBase は、列や列内に格納されるデータの型を使用前に定義する必要がないという意味で、スキーマレスです。 オープン ソース コードは、直線的な拡張により何千ものノード上でペタバイト級のデータを扱うことができます。 また、Hadoop エコシステムの分散アプリケーションの利点であるデータの冗長性、バッチ処理などの機能を利用できます。
 
@@ -98,9 +98,9 @@ Azure Cosmos DB の機能:
 | 目的 | ビッグ データ分析ワークロードに最適化されたストレージ |さまざまなストレージ シナリオに対応する汎用オブジェクト ストア |
 | ユース ケース | バッチ、ストリーミング分析、および機械学習データ (ログ ファイル、IoT データ、クリック ストリーム、大規模なデータセットなど) | あらゆる種類のテキスト データまたはバイナリ データ (アプリケーション バックエンド、バックアップ データ、ストリーミング用メディア ストレージ、汎用データなど) |
 | Structure | 階層型ファイル システム | フラットな名前空間を使用するオブジェクト ストア |
-| 認証 | [Azure Active Directory ID](/azure/active-directory/active-directory-authentication-scenarios) | 共有シークレット ([アカウント アクセス キー](/azure/storage/common/storage-create-storage-account#manage-your-storage-account)と [Shared Access Signature キー)](/azure/storage/common/storage-dotnet-shared-access-signature-part-1)、および[ロールベースのアクセス制御 (RBAC)](/azure/security/security-storage-overview) に基づく |
+| Authentication | [Azure Active Directory ID](/azure/active-directory/active-directory-authentication-scenarios) | 共有シークレット ([アカウント アクセス キー](/azure/storage/common/storage-create-storage-account#manage-your-storage-account)と [Shared Access Signature キー)](/azure/storage/common/storage-dotnet-shared-access-signature-part-1)、および[ロールベースのアクセス制御 (RBAC)](/azure/security/security-storage-overview) に基づく |
 | 認証プロトコル | OAuth 2.0。 呼び出しには、Azure Active Directory によって発行された有効な JWT (JSON Web トークン) が含まれている必要があります。 | ハッシュベース メッセージ認証コード (HMAC)。 呼び出しには、HTTP 要求の一部に対する Base64 でエンコードされた SHA-256 ハッシュが含まれている必要があります。 |
-| 承認 | POSIX アクセス制御リスト (ACL)。 Azure Active Directory ID に基づく ACL は、ファイルおよびフォルダー レベルで設定できます。 | アカウントレベルの承認には、[アカウント アクセス キー](/azure/storage/common/storage-create-storage-account#manage-your-storage-account)を使用します。 アカウント、コンテナー、または BLOB の承認には、[Shared Access Signature キー](/azure/storage/common/storage-dotnet-shared-access-signature-part-1)を使用します。 |
+| Authorization | POSIX アクセス制御リスト (ACL)。 Azure Active Directory ID に基づく ACL は、ファイルおよびフォルダー レベルで設定できます。 | アカウントレベルの承認には、[アカウント アクセス キー](/azure/storage/common/storage-create-storage-account#manage-your-storage-account)を使用します。 アカウント、コンテナー、または BLOB の承認には、[Shared Access Signature キー](/azure/storage/common/storage-dotnet-shared-access-signature-part-1)を使用します。 |
 | 監査 | 使用可能。  |使用可能 |
 | 保存時の暗号化 | 透過的、サーバー側 | 透過、サーバー側。クライアント側の暗号化 |
 | Developer SDK | .NET、Java、Python、Node.js | .Net、Java、Python、Node.js、C++、Ruby |
@@ -114,7 +114,7 @@ Azure Cosmos DB の機能:
 |------------------------------------|-----------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
 |       プライマリ データベース モデル       |                      ドキュメント ストア、グラフ、キー値ストア、ワイド カラム ストア                      |                                                             ワイド カラム ストア                                                              |
 |         セカンダリ インデックス          |                                                 [はい]                                                 |                                                                     いいえ                                                                      |
-|        SQL 言語のサポート        |                                                 [はい]                                                 |                                     はい ([Phoenix](http://phoenix.apache.org/) JDBC ドライバーを使用)                                      |
+|        SQL 言語のサポート        |                                                 [はい]                                                 |                                     はい ([Phoenix](https://phoenix.apache.org/) JDBC ドライバーを使用)                                      |
 |            整合性             |                   強固、有界整合性制約、セッション、一貫性のあるプレフィックス、最終的                   |                                                                   Strong                                                                   |
 | Azure Functions のネイティブ統合 |                        [はい](/azure/cosmos-db/serverless-computing-database)                        |                                                                     いいえ                                                                      |
 |   自動的なグローバル分散    |                          [はい](/azure/cosmos-db/distribute-data-globally)                           | いいえ。最終的な整合性を指定して、リージョン間で[HBase クラスターのレプリケーションを構成可能](/azure/hdinsight/hbase/apache-hbase-replication) |

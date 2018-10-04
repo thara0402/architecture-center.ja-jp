@@ -3,12 +3,12 @@ title: データ分析とレポート テクノロジの選択
 description: ''
 author: zoinerTejada
 ms:date: 02/12/2018
-ms.openlocfilehash: 830c61bba64a6971c815330887e5cdcc4f2b5f56
-ms.sourcegitcommit: 90cf2de795e50571d597cfcb9b302e48933e7f18
+ms.openlocfilehash: 05e33a3da0933036a604d2bc4cc5a20ae70fe772
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2018
-ms.locfileid: "29288914"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47428317"
 ---
 # <a name="choosing-a-data-analytics-technology-in-azure"></a>Azure でのデータ分析とテクノロジの選択
 
@@ -79,7 +79,7 @@ Jupyter Notebook では、Power BI などの BI/レポート ツールでより�
 
 | | Power BI | Jupyter Notebooks | Zeppelin Notebook | Microsoft Azure Notebooks |
 | --- | --- | --- | --- | --- |
-| 高度な処理のためのビッグ データ クラスターへの接続 | [はい] | [はい] | [はい] | いいえ  |
+| 高度な処理のためのビッグ データ クラスターへの接続 | [はい] | はい | [はい] | いいえ  |
 | 管理されたサービス | [はい] | はい <sup>1</sup> | はい <sup>1</sup> | [はい] |
 | 数百のデータ ソースへの接続 | [はい] | いいえ  | いいえ  | いいえ  |
 | オフライン機能 | はい <sup>2</sup> | いいえ  | いいえ  | いいえ  |
@@ -94,7 +94,7 @@ Jupyter Notebook では、Power BI などの BI/レポート ツールでより�
 
 [2] Power BI Desktop を使用する場合。
 
-[2] コミュニティから提供されたパッケージは [Maven リポジトリ](http://search.maven.org/)で検索できます。
+[2] コミュニティから提供されたパッケージは [Maven リポジトリ](https://search.maven.org/)で検索できます。
 
 [3] pip または conda を使用して Python パッケージをインストールできます。 R パッケージは CRAN または GitHub からインストールできます。 F# のパッケージは、[パケット依存関係マネージャー](https://fsprojects.github.io/Paket/)を使用して Nuget.org 経由でインストールできます。
 

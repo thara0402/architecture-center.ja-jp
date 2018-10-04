@@ -9,12 +9,12 @@ ms.date: 11/28/2016
 pnp.series.title: Identity management
 pnp.series.prev: adds-forest
 cardTitle: Extend AD FS to Azure
-ms.openlocfilehash: 37edae209334da96aa9c121b1ac68c5e1d363323
-ms.sourcegitcommit: 85334ab0ccb072dac80de78aa82bcfa0f0044d3f
+ms.openlocfilehash: f48f8e41b6b90931e7393808cf41ae01d7187416
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35252731"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47429266"
 ---
 # <a name="extend-active-directory-federation-services-ad-fs-to-azure"></a>Active Directory フェデレーション サービス (AD FS) を Azure に拡張する
 
@@ -110,7 +110,7 @@ AD FS VM にパブリック IP アドレスを指定しないでください。 
 サービスの可用性を向上させるには、少なくとも 2 台のサーバーを含む AD FS ファームを作成します。 ファーム内の AD FS VM ごとに異なるストレージ アカウントを使用します。 この手法により、1 つのストレージ アカウントのエラーによってファーム全体にアクセスできなくなることを回避します。
 
 > [!IMPORTANT]
-> [管理ディスク](/azure/storage/storage-managed-disks-overview)を使用することをお勧めします。 管理ディスクでは、ストレージ アカウントは必要ありません。 ディスクのサイズと種類を指定するだけで、可用性の高い方法でデプロイされます。 Microsoft の[参照用アーキテクチャ](/azure/architecture/reference-architectures/)では、現在、管理ディスクがデプロイされていませんが、[テンプレートの構成要素](https://github.com/mspnp/template-building-blocks/wiki)は、バージョン 2 で管理ディスクをデプロイするように更新される予定です。
+> [マネージド ディスク](/azure/storage/storage-managed-disks-overview)を使用することをお勧めします。 マネージド ディスクでは、ストレージ アカウントは必要ありません。 ディスクのサイズと種類を指定するだけで、可用性の高い方法でデプロイされます。 Microsoft の[参照用アーキテクチャ](/azure/architecture/reference-architectures/)では、現在、マネージド ディスクがデプロイされていませんが、[テンプレートの構成要素](https://github.com/mspnp/template-building-blocks/wiki)は、バージョン 2 でマネージド ディスクをデプロイするように更新される予定です。
 
 AD FS VM と WAP VM に個別の Azure 可用性セットを作成します。 各セットに少なくとも 2 つの VM があることを確認します。 各可用性セットには、少なくとも 2 つの更新ドメインと 2 つの障害ドメインが必要です。
 
@@ -311,7 +311,7 @@ AD FS は HTTPS プロトコルを使用するため、Web 層 VM が含まれ�
 [recommendations]: #recommendations
 [active-directory-federation-services-overview]: https://technet.microsoft.com/library/hh831502(v=ws.11).aspx
 [establishing-federation-trust]: https://blogs.msdn.microsoft.com/alextch/2011/06/27/establishing-federation-trust/
-[Deploying_a_federation_server_farm]:  https://azure.microsoft.com/documentation/articles/active-directory-aadconnect-azure-adfs/
+[Deploying_a_federation_server_farm]:  /windows-server/identity/ad-fs/deployment/deploying-a-federation-server-farm
 [install_and_configure_the_web_application_proxy_server]: https://technet.microsoft.com/library/dn383662.aspx
 [publish_applications_using_AD_FS_preauthentication]: https://technet.microsoft.com/library/dn383640.aspx
 [managing-adfs-components]: https://technet.microsoft.com/library/cc759026.aspx
@@ -319,7 +319,7 @@ AD FS は HTTPS プロトコルを使用するため、Web 層 VM が含まれ�
 [azure-powershell-download]: https://azure.microsoft.com/documentation/articles/powershell-install-configure/
 [aad]: https://azure.microsoft.com/documentation/services/active-directory/
 [aadb2c]: https://azure.microsoft.com/documentation/services/active-directory-b2c/
-[adfs-intro]: /azure/active-directory/active-directory-aadconnect-azure-adfs
+[adfs-intro]: /azure/active-directory/hybrid/whatis-hybrid-identity
 [github]: https://github.com/mspnp/reference-architectures/tree/master/identity/adfs
 [adfs_certificates]: https://technet.microsoft.com/library/dn781428(v=ws.11).aspx
 [considerations]: ./considerations.md

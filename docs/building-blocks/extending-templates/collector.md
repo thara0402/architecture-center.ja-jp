@@ -3,12 +3,12 @@ title: Azure Resource Manager テンプレートでプロパティのトラン�
 description: Azure Resource Manager テンプレートでプロパティのトランスフォーマーとコレクターを実装する方法について説明します
 author: petertay
 ms.date: 06/09/2017
-ms.openlocfilehash: 893779e652b845b3d936d11936dc767ef632fa43
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 2c2fd93c977b82bed05ebe0ae68233a700df0f4f
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
-ms.locfileid: "24538667"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47428586"
 ---
 # <a name="implement-a-property-transformer-and-collector-in-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートでプロパティのトランスフォーマーとコレクターを実装する
 
@@ -88,7 +88,7 @@ ms.locfileid: "24538667"
 
 ```json
 {
-  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "source": { "type": "object" },
@@ -180,7 +180,7 @@ ms.locfileid: "24538667"
         "mode": "Incremental",
         "parameters": { },
         "template": {
-          "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
           "contentVersion": "1.0.0.0",
           "parameters": { },
           "variables": { },
@@ -301,7 +301,7 @@ ms.locfileid: "24538667"
   }
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * この手法は、[テンプレート構成ブロックのプロジェクト](https://github.com/mspnp/template-building-blocks)と [Azure 参照アーキテクチャ](/azure/architecture/reference-architectures/)で実装されています。 これらを使用して、独自のアーキテクチャを作成したり、この参照アーキテクチャのいずれかをデプロイしたりできます。
 

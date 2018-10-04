@@ -8,12 +8,12 @@ pnp.series.title: Cloud Design Patterns
 pnp.pattern.categories:
 - messaging
 - performance-scalability
-ms.openlocfilehash: ecfbb38304bb95587e9ca15523ad9594898d9b32
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 400bfbc03cf5640ff32a551636b01d60e6c0ec50
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
-ms.locfileid: "24543147"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47428501"
 ---
 # <a name="priority-queue-pattern"></a>Priority Queue パターン
 
@@ -176,5 +176,5 @@ this.queueManager.SendBatchAsync(highMessages).Wait();
 
 - [自動スケール ガイダンス](https://msdn.microsoft.com/library/dn589774.aspx)。 キューの長さに応じてキューを処理するコンシューマー プロセスのプールのサイズは、スケールを変更できる場合があります。 この方法は、特に優先度の高いメッセージを処理するプールにおいて、パフォーマンスを向上するのに役立ちます。
 
-- Abhishek Lal のブログにある「[Service Bus を使用したEnterprise Integration パターン](http://abhishekrlal.com/2013/01/11/enterprise-integration-patterns-with-service-bus-part-2/)」。
+- Abhishek Lal のブログにある「[Service Bus を使用したEnterprise Integration パターン](https://abhishekrlal.com/2013/01/11/enterprise-integration-patterns-with-service-bus-part-2/)」。
 

@@ -7,12 +7,12 @@ ms.date: 06/23/2017
 pnp.series.title: Cloud Design Patterns
 pnp.pattern.categories:
 - resiliency
-ms.openlocfilehash: a822de990d6ce933024207073b110e98f8da40bf
-ms.sourcegitcommit: 8ab30776e0c4cdc16ca0dcc881960e3108ad3e94
+ms.openlocfilehash: 3d58537d9c77b97332bcabf762b9af7ed2f20421
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
-ms.locfileid: "26359403"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47428144"
 ---
 # <a name="compensating-transaction-pattern"></a>補正トランザクション パターン
 
@@ -38,9 +38,9 @@ ms.locfileid: "26359403"
 
 一般的な方法は、補正を必要とする最終的に整合性がある操作を実装するワークフローを使用することです。 元の操作が進行するときに、システムは、各ステップに関する情報と、そのステップで実行された作業を元に戻す方法を記録します。 ある時点で操作が失敗した場合、ワークフローは、完了したステップを巻き戻して各ステップを逆転させる作業を実行します。 場合によっては、補正トランザクションは、元の操作と正反対の順序で作業を元に戻す必要がなく、一部の元に戻す操作は並列で実行できます。
 
-> この方法は、[Clemens Vasters のブログ](http://vasters.com/clemensv/2012/09/01/Sagas.aspx)で説明されている Sagas 戦略に似ています。
+> この方法は、[Clemens Vasters のブログ](https://vasters.com/clemensv/2012/09/01/Sagas.aspx)で説明されている Sagas 戦略に似ています。
 
-補正トランザクションも最終的に整合性がある操作であるため、失敗する可能性があります。 システムは、失敗した時点で補正トランザクションを再開して続行できる必要があります。 場合によっては、失敗したステップを繰り返して、補正トランザクション内のステップをべき等コマンドとして定義する必要があります。 詳細については、[べき等パターン](http://blog.jonathanoliver.com/idempotency-patterns/)に関する Jonathan Oliver のブログを参照してください。
+補正トランザクションも最終的に整合性がある操作であるため、失敗する可能性があります。 システムは、失敗した時点で補正トランザクションを再開して続行できる必要があります。 場合によっては、失敗したステップを繰り返して、補正トランザクション内のステップをべき等コマンドとして定義する必要があります。 詳細については、[べき等パターン](https://blog.jonathanoliver.com/idempotency-patterns/)に関する Jonathan Oliver のブログを参照してください。
 
 失敗したステップからの回復が、手動による介入以外では実行できないことがあります。 この場合、システムはアラートを発生させ、失敗の理由についてできるだけ多くの情報を提供する必要があります。
 

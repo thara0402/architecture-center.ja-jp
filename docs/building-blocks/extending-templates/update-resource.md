@@ -3,12 +3,12 @@ title: Azure Resource Manager テンプレートのリソースを更新する
 description: Azure Resource Manager テンプレートの機能を拡張して、リソースを更新する方法について説明します
 author: petertay
 ms.date: 06/09/2017
-ms.openlocfilehash: fc2565819c66ee7695224ef5793e7276e6e552e0
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: f235f0b4d54d65ccc2fa67876916e922d75f6d07
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
-ms.locfileid: "24538475"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47429040"
 ---
 # <a name="update-a-resource-in-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートのリソースを更新する
 
@@ -80,7 +80,7 @@ ms.locfileid: "24538475"
         "mode": "Incremental",
         "parameters": {},
         "template": {
-          "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
           "contentVersion": "1.0.0.0",
           "parameters": {},
           "variables": {},
@@ -143,6 +143,6 @@ ms.locfileid: "24538475"
 
 元の `firstVNet` が、再作成ではなく更新されています。 `firstVNet` が再作成されているとしたら、`nic1` は `firstVNet` に関連付けられていません。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * この手法は、[テンプレート構成ブロックのプロジェクト](https://github.com/mspnp/template-building-blocks)と [Azure 参照アーキテクチャ](/azure/architecture/reference-architectures/)で実装されています。 これらを使用して、独自のアーキテクチャを作成したり、この参照アーキテクチャのいずれかをデプロイしたりできます。

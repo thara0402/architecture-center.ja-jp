@@ -8,12 +8,12 @@ pnp.series.title: Cloud Design Patterns
 pnp.pattern.categories:
 - design-implementation
 - resiliency
-ms.openlocfilehash: 8c8efa0846550557bb53ea81f85ac0e303a77b19
-ms.sourcegitcommit: f19314f18cd794ebe380fa722ca92066b8735b56
+ms.openlocfilehash: 6cc4b19e889cc9fc692e388498cc16ea56b1c981
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37348271"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47429198"
 ---
 # <a name="leader-election-pattern"></a>リーダー選定パターン
 
@@ -43,7 +43,7 @@ ms.locfileid: "37348271"
 分散した環境にある一連のタスクからリーダーを選定するには、いくつかの戦略があります。
 - 最低ランクのインスタンス ID またはプロセス ID のタスク インスタンスを選択する。
 - 共有されている分散ミューテックスを獲得するために競わせる。 ミューテックスを獲得した最初のタスク インスタンスがリーダーになります。 ただし、システムは、リーダーが終了したりシステムの他の部分から切り離されたりした場合に、別のタスク インスタンスがリーダーになれるようにミューテックスが解放されることを保証する必要があります。
-- [Bully Algorithm (ブリー アルゴリズム) ](http://www.cs.colostate.edu/~cs551/CourseNotes/Synchronization/BullyExample.html) や [Ring Algorithm (リング アルゴリズム) ](http://www.cs.colostate.edu/~cs551/CourseNotes/Synchronization/RingElectExample.html)など、一般的なリーダー選定のアルゴリズムの 1 つを実装する。 これらのアルゴリズムでは、選定の各候補が一意の ID を保持し、他の候補と確実に通信できることを前提としています。
+- [Bully Algorithm (ブリー アルゴリズム) ](https://www.cs.colostate.edu/~cs551/CourseNotes/Synchronization/BullyExample.html) や [Ring Algorithm (リング アルゴリズム) ](https://www.cs.colostate.edu/~cs551/CourseNotes/Synchronization/RingElectExample.html)など、一般的なリーダー選定のアルゴリズムの 1 つを実装する。 これらのアルゴリズムでは、選定の各候補が一意の ID を保持し、他の候補と確実に通信できることを前提としています。
 
 ## <a name="issues-and-considerations"></a>問題と注意事項
 
@@ -198,7 +198,7 @@ private static async Task MyLeaderCoordinatorTask(CancellationToken token)
 - [自動スケール ガイダンス](https://msdn.microsoft.com/library/dn589774.aspx)。 アプリケーションの負荷は変化するため、タスク ホストのインスタンスを開始および停止することが可能です。 自動スケーリングは、ピーク時の処理中のスループットとパフォーマンスの維持に役立ちます。
 - [計算分割ガイダンス](https://msdn.microsoft.com/library/dn589773.aspx)。 このガイダンスでは、サービスのスケーラビリティ、パフォーマンス、可用性、およびセキュリティを維持しながら実行中のコストを最小限に抑える 1 つの方法として、クラウド サービスのホストにタスクを割り当てる方法について説明します。
 - [タスク ベースの非同期パターン](https://msdn.microsoft.com/library/hh873175.aspx)。
-- [Bully Algorithm (ブリー アルゴリズム) ](http://www.cs.colostate.edu/~cs551/CourseNotes/Synchronization/BullyExample.html)を示したサンプル。
-- [Ring Algorithm (リング アルゴリズム) ](http://www.cs.colostate.edu/~cs551/CourseNotes/Synchronization/RingElectExample.html)を示したサンプル。
-- Apache ZooKeeper の [Apache Curator](http://curator.apache.org/) クライアント ライブラリ。
+- [Bully Algorithm (ブリー アルゴリズム) ](https://www.cs.colostate.edu/~cs551/CourseNotes/Synchronization/BullyExample.html)を示したサンプル。
+- [Ring Algorithm (リング アルゴリズム) ](https://www.cs.colostate.edu/~cs551/CourseNotes/Synchronization/RingElectExample.html)を示したサンプル。
+- Apache ZooKeeper の [Apache Curator](https://curator.apache.org/) クライアント ライブラリ。
 - MSDN の記事「[Lease Blob (REST API) (Blob のリース (REST API))](https://msdn.microsoft.com/library/azure/ee691972.aspx)」。

@@ -3,12 +3,12 @@ title: マイクロサービスのログ記録と監視
 description: マイクロサービスのログ記録と監視
 author: MikeWasson
 ms.date: 12/08/2017
-ms.openlocfilehash: 1da67047daa9ae87cda5dd7dd581d6081183c428
-ms.sourcegitcommit: 786bafefc731245414c3c1510fc21027afe303dc
+ms.openlocfilehash: b7206e2f35b9f227ff298f077ddafef1c6015b15
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2017
-ms.locfileid: "26652996"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47428773"
 ---
 # <a name="designing-microservices-logging-and-monitoring"></a>マイクロサービスの設計: ログ記録と監視
 
@@ -64,7 +64,7 @@ ms.locfileid: "26652996"
 
 ## <a name="distributed-tracing"></a>分散トレース
 
-前述したように、マイクロサービスの課題の 1 つは、サービス間のイベントの流れを把握することです。 1 つの操作またはトランザクションで複数のサービスへの呼び出しが実行される場合もあります。 一連の手順全体を再構成するには、各サービスがその操作の一意の識別子として機能する*相関 ID* を伝達する必要があります。 相関 ID で、サービス全体の[分散トレース](http://microservices.io/patterns/observability/distributed-tracing.html)が可能になります。
+前述したように、マイクロサービスの課題の 1 つは、サービス間のイベントの流れを把握することです。 1 つの操作またはトランザクションで複数のサービスへの呼び出しが実行される場合もあります。 一連の手順全体を再構成するには、各サービスがその操作の一意の識別子として機能する*相関 ID* を伝達する必要があります。 相関 ID で、サービス全体の[分散トレース](https://microservices.io/patterns/observability/distributed-tracing.html)が可能になります。
 
 クライアント要求を受信する最初のサービスで、相関 ID を生成する必要があります。 そのサービスが別のサービスに HTTP 呼び出しを行う場合、要求ヘッダーに相関 ID を挿入します。 同様に、サービスが非同期メッセージを送信する場合も、相関 ID をメッセージに挿入します。 システム全体に流れるように、ダウンストリームのサービスは相関 ID を伝達し続けます。 さらに、アプリケーション メトリックまたはログ イベントを書き込むすべてのコードにも相関 ID を含めるようにします。
 
@@ -114,7 +114,7 @@ Application Insights がお客様の要件を満たしていない場合は、�
 
 ## <a name="example-logging-with-correlation-ids"></a>例: 相関 ID を使用したログ記録
 
-この章で取り上げるいくつかの点を説明するために、パッケージ サービスがログ記録を実装する方法の拡張例を紹介します。 パッケージ サービスは TypeScript で記述され、Node.js 用の [Koa](http://koajs.com/) Web フレームワークを使用します。 いくつかの Node.js ログ記録ライブラリから選択できます。 ここでは [Winston](https://github.com/winstonjs/winston) を選びました。Winston は、私たちが行ったテストのパフォーマンス要件を満たした人気のあるログ記録ライブラリです。
+この章で取り上げるいくつかの点を説明するために、パッケージ サービスがログ記録を実装する方法の拡張例を紹介します。 パッケージ サービスは TypeScript で記述され、Node.js 用の [Koa](https://koajs.com/) Web フレームワークを使用します。 いくつかの Node.js ログ記録ライブラリから選択できます。 ここでは [Winston](https://github.com/winstonjs/winston) を選びました。Winston は、私たちが行ったテストのパフォーマンス要件を満たした人気のあるログ記録ライブラリです。
 
 この例では、実装の詳細をカプセル化するために、抽象 `ILogger` インターフェイスを定義しました。
 

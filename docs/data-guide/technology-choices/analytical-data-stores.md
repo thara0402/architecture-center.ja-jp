@@ -3,12 +3,12 @@ title: 分析データ ストアの選択
 description: ''
 author: zoinerTejada
 ms:date: 02/12/2018
-ms.openlocfilehash: cdc32c16e30aec5e1c0cb6959182215f99d56b56
-ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
+ms.openlocfilehash: 3cf7dc533cc6ae3e6d7e2326852b585da8613e18
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30846884"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47428875"
 ---
 # <a name="choosing-an-analytical-data-store-in-azure"></a>Azure で使用する分析データ ストアの選択
 
@@ -57,7 +57,7 @@ Azure にはデータ サービス ストレージのオプションがいくつ
 | --- | --- | --- | --- | --- | --- | --- |
 | マネージド サービスか | [はい] | [はい] | はい <sup>1</sup> | はい <sup>1</sup> | [はい] | [はい] |
 | プライマリ データベース モデル | リレーショナル (列ストア インデックスを使用する場合の列の形式) | 単票形式ストレージのリレーショナル テーブル | ワイド カラム ストア | Hive/In-Memory | 表形式/MOLAP セマンティック モデル | ドキュメント ストア、グラフ、キー値ストア、ワイド カラム ストア |
-| SQL 言語のサポート | [はい] | [はい] | はい ([Phoenix](http://phoenix.apache.org/) JDBC ドライバーを使用) | [はい] | いいえ  | [はい] |
+| SQL 言語のサポート | [はい] | [はい] | はい ([Phoenix](https://phoenix.apache.org/) JDBC ドライバーを使用) | [はい] | いいえ  | [はい] |
 | スピード サービス レイヤーに合わせて最適化 | はい <sup>2</sup> | いいえ  | 可能  | [はい] | いいえ  | [はい] |
 
 [1] 手動構成とスケーリングを使用。
@@ -77,7 +77,7 @@ Azure にはデータ サービス ストレージのオプションがいくつ
 
 | | SQL Database | SQL Data Warehouse | HDInsight 上の HBase/Phoenix | HDInsight 上の Hive LLAP | Azure Analysis Services | Cosmos DB |
 | --- | --- | --- | --- | --- | --- | --- |
-| 認証  | SQL / Azure Active Directory (Azure AD) | SQL / Azure AD | ローカル / Azure AD <sup>1</sup> | ローカル / Azure AD <sup>1</sup> | Azure AD | アクセスの制御 (IAM) によるデータベース ユーザー/Azure AD |
+| Authentication  | SQL / Azure Active Directory (Azure AD) | SQL / Azure AD | ローカル / Azure AD <sup>1</sup> | ローカル / Azure AD <sup>1</sup> | Azure AD | アクセスの制御 (IAM) によるデータベース ユーザー/Azure AD |
 | 保存データの暗号化 | はい <sup>2</sup> | はい <sup>2</sup> | はい <sup>1</sup> | はい <sup>1</sup> | [はい] | [はい] |
 | 行レベルのセキュリティ | [はい] | いいえ  | はい <sup>1</sup> | はい <sup>1</sup> | はい (モデル内のオブジェクトレベルのセキュリティを使用) | いいえ  |
 | ファイアウォールをサポート | [はい] | [はい] | はい <sup>3</sup> | はい <sup>3</sup> | [はい] | [はい] |

@@ -3,12 +3,12 @@ title: 'エンタープライズ クラウドの導入: Azure でのリソース
 description: 'Azure のリソース アクセス管理コンストラクトの説明: Azure Resource Manager、サブスクリプション、リソース グループ、およびリソース'
 author: petertaylor9999
 ms.date: 09/10/2018
-ms.openlocfilehash: 2e64d8828574ebe216da1e76b19ec3ce5aeda993
-ms.sourcegitcommit: c49aeef818d7dfe271bc4128b230cfc676f05230
+ms.openlocfilehash: c26b01d207bc4eb100653a826a053b394d03d1e6
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44389079"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47428705"
 ---
 # <a name="enterprise-cloud-adoption-resource-access-management-in-azure"></a>エンタープライズ クラウドの導入: Azure でのリソース アクセス管理
 
@@ -84,7 +84,7 @@ Azure AD では、ユーザーが**テナント**にセグメント化されて�
 
 RBAC ロールでは、特定のリソースに対してユーザーが適用できる一連のアクセス許可が指定されます。 ロールがユーザーに割り当てられると、これらのアクセス許可が適用されます。 たとえば、[組み込み**所有者**ロール](/azure/role-based-access-control/built-in-roles#owner)を使用すると、ユーザーはリソースに対して任意のアクションを実行できます。
 
-次の制御は、[Azure リソース ポリシー](/azure/azure-policy/)に適うように指定されている設定で、要求が許可されることのチェックです。 Azure リソース ポリシーでは、特定のリソースに対して許可される操作が指定されます。 たとえば、Azure リソース ポリシーを使用して、ユーザーが特定の種類の仮想マシンのみデプロイできるように指定できます。
+次の制御は、[Azure リソース ポリシー](/azure/governance/policy/)に適うように指定されている設定で、要求が許可されることのチェックです。 Azure リソース ポリシーでは、特定のリソースに対して許可される操作が指定されます。 たとえば、Azure リソース ポリシーを使用して、ユーザーが特定の種類の仮想マシンのみデプロイできるように指定できます。
 
 ![](../_images/governance-1-19.png)   
 *図 11: Azure リソース ポリシー。*

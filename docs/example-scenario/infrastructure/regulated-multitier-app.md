@@ -3,12 +3,12 @@ title: 規制対象業界向けのセキュリティで保護された Windows W
 description: スケール セット、Application Gateway、ロード バランサーを使用する、セキュリティで保護された多層 Web アプリケーションを、Azure 上の Windows Server を使用して構築するための実証済みのシナリオ。
 author: iainfoulds
 ms.date: 07/11/2018
-ms.openlocfilehash: 3572f215d9134a6650d76e1b14458226334c6f42
-ms.sourcegitcommit: c49aeef818d7dfe271bc4128b230cfc676f05230
+ms.openlocfilehash: 780b82791510b6ca06ef918b66d2547794dfcf87
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44389287"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47428756"
 ---
 # <a name="secure-windows-web-application-for-regulated-industries"></a>規制対象業界向けのセキュリティで保護された Windows Web アプリケーション
 
@@ -90,7 +90,7 @@ Payment Card Industry Data Security Standards (PCI DSS 3.2) の展開のガイ�
 
 Azure Resource Manager テンプレートを使用して、このシナリオのコア インフラストラクチャをデプロイするには、次の手順を実行します。
 
-1. **[Deploy to Azure]\(Azure にデプロイ\)** を選択します。<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmspnp%2Fsolution-architectures%2Fmaster%2Finfrastructure%2Fregulated-multitier-app%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
+1. **[Deploy to Azure]\(Azure にデプロイ\)** を選択します。<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmspnp%2Fsolution-architectures%2Fmaster%2Finfrastructure%2Fregulated-multitier-app%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 2. Azure portal でテンプレートのデプロイが開くまで待ってから、次の手順を実行します。
    * リソース グループの **[新規作成]** を選択し、テキスト ボックスに名前 (例: *myWindowsscenario*) を入力します。
    * **[場所]** ドロップダウン ボックスでリージョンを選択します。
@@ -120,7 +120,7 @@ Azure Resource Manager テンプレートを使用して、このシナリオの
 [appgateway-docs]: /azure/application-gateway/overview
 [architecture]: ./media/regulated-multitier-app/architecture-regulated-multitier-app.png
 [autoscaling]: /azure/architecture/best-practices/auto-scaling
-[availability]: /architecture/checklist/availability
+[availability]: ../../checklist/availability.md
 [azureaz-docs]: /azure/availability-zones/az-overview
 [azurecosmosdb-docs]: /azure/cosmos-db/introduction
 [cloudwitness-docs]: /windows-server/failover-clustering/deploy-cloud-witness

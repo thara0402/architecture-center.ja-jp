@@ -4,12 +4,12 @@ description: API の実装方法に関するガイダンス。
 author: dragon119
 ms.date: 07/13/2016
 pnp.series.title: Best Practices
-ms.openlocfilehash: cc28864de36afdeed2f8a7155a307e312c3a398e
-ms.sourcegitcommit: c93f1b210b3deff17cc969fb66133bc6399cfd10
+ms.openlocfilehash: fff377d347ce93e9fb83fff1f5a44fe1c7b4dbea
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2018
-ms.locfileid: "27596021"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47429402"
 ---
 # <a name="api-implementation"></a>API 実装
 
@@ -24,7 +24,7 @@ ms.locfileid: "27596021"
 これらの要求を実装するコードが副次的な影響を及ぼさないようにしてください。 同じリソースに対して繰り返される同じ要求は、同じ状態になる必要があります。 たとえば、応答メッセージの HTTP ステータス コードが異なる場合でも、同じ URI に複数の DELETE 要求を送信したときの結果は同じである必要があります。 最初の DELETE 要求はステータス コード 204 (No Content) を返す場合があり、その次の DELETE 要求はステータス コード 404 (Not Found) を返す可能性があります。
 
 > [!NOTE]
-> べき等の概要とデータ管理操作との関連性については、Jonathan Oliver のブログ記事「 [Idempotency Patterns (べき等のパターン)](http://blog.jonathanoliver.com/idempotency-patterns/) 」をご覧ください。
+> べき等の概要とデータ管理操作との関連性については、Jonathan Oliver のブログ記事「 [Idempotency Patterns (べき等のパターン)](https://blog.jonathanoliver.com/idempotency-patterns/) 」をご覧ください。
 >
 
 ### <a name="post-actions-that-create-new-resources-should-not-have-unrelated-side-effects"></a>新しいリソースを作成する POST 操作が、関連のない副次的な影響を与えない
@@ -35,7 +35,7 @@ POST 要求が新しいリソースを作成することを目的としている
 
 リソース コレクションに対する POST、PUT、DELETE の各要求をサポートします。 POST 要求には複数の新しいリソースの詳細を含めることができ、それらをすべて同じコレクションに追加できます。PUT 要求では、コレクション内のリソース全体を置き換えることができ、DELETE 要求ではコレクション全体を削除できます。
 
-ASP.NET Web API 2 に含まれる OData サポートにより、要求をバッチ処理できます。 クライアント アプリケーションは、複数の Web API 要求をパッケージ化して、それらを 1 つの HTTP 要求でサーバーに送信し、各要求への応答が含まれた 1 つの HTTP 応答を受信できます。 詳細については、「[Introducing Batch Support in Web API and Web API OData (Web API と Web API OData でのバッチ処理のサポートの概要)](http://blogs.msdn.com/b/webdev/archive/2013/11/01/introducing-batch-support-in-web-api-and-web-api-odata.aspx)」をご覧ください。
+ASP.NET Web API 2 に含まれる OData サポートにより、要求をバッチ処理できます。 クライアント アプリケーションは、複数の Web API 要求をパッケージ化して、それらを 1 つの HTTP 要求でサーバーに送信し、各要求への応答が含まれた 1 つの HTTP 応答を受信できます。 詳細については、「[Introducing Batch Support in Web API and Web API OData (Web API と Web API OData でのバッチ処理のサポートの概要)](https://blogs.msdn.microsoft.com/webdev/2013/11/01/introducing-batch-support-in-web-api-and-web-api-odata/)」をご覧ください。
 
 ### <a name="follow-the-http-specification-when-sending-a-response"></a>応答を送信する場合は、HTTP の仕様に準拠します。 
 
@@ -56,7 +56,7 @@ HATEOAS の手法に従うことによって、クライアントは、はじめ
 現在、HATEOAS の実装を管理する標準はありませんが、次の例は考えられる 1 つの方法を示しています。 この例では、顧客の詳細を検索する HTTP GET 要求は、その顧客の注文を参照する HATEOAS リンクを含む応答を返します。
 
 ```HTTP
-GET http://adventure-works.com/customers/2 HTTP/1.1
+GET https://adventure-works.com/customers/2 HTTP/1.1
 Accept: text/json
 ...
 ```
@@ -69,23 +69,23 @@ Content-Type: application/json; charset=utf-8
 Content-Length: ...
 {"CustomerID":2,"CustomerName":"Bert","Links":[
     {"rel":"self",
-    "href":"http://adventure-works.com/customers/2",
+    "href":"https://adventure-works.com/customers/2",
     "action":"GET",
     "types":["text/xml","application/json"]},
     {"rel":"self",
-    "href":"http://adventure-works.com/customers/2",
+    "href":"https://adventure-works.com/customers/2",
     "action":"PUT",
     "types":["application/x-www-form-urlencoded"]},
     {"rel":"self",
-    "href":"http://adventure-works.com/customers/2",
+    "href":"https://adventure-works.com/customers/2",
     "action":"DELETE",
     "types":[]},
     {"rel":"orders",
-    "href":"http://adventure-works.com/customers/2/orders",
+    "href":"https://adventure-works.com/customers/2/orders",
     "action":"GET",
     "types":["text/xml","application/json"]},
     {"rel":"orders",
-    "href":"http://adventure-works.com/customers/2/orders",
+    "href":"https://adventure-works.com/customers/2/orders",
     "action":"POST",
     "types":["application/x-www-form-urlencoded"]}
 ]}
@@ -120,11 +120,11 @@ HTTP GET 操作では、ストレージから顧客データを取得して `Cus
 
 HTTP 応答の例に示す HATEOAS リンクは、クライアント アプリケーションが次の操作を実行できることを示しています。
 
-* 顧客の詳細を (再度) 取得するための URI `http://adventure-works.com/customers/2` への HTTP GET 要求。 データは、XML または JSON として返すことができます。
-* 顧客の詳細を変更するための URI `http://adventure-works.com/customers/2` への HTTP PUT 要求。 新しいデータは、要求メッセージで x-www-form-urlencoded 形式で提供する必要があります。
-* 顧客を削除するための URI `http://adventure-works.com/customers/2` への HTTP DELETE 要求。 この要求は、追加情報を求めることも、応答メッセージの本文でデータを返すこともありません。
-* 顧客のすべての注文を検索するために URI `http://adventure-works.com/customers/2/orders` に HTTP GET 要求を送信します。 データは、XML または JSON として返すことができます。
-* この顧客の新規の注文を作成するために URI `http://adventure-works.com/customers/2/orders` に HTTP PUT 要求を送信します。 データは、要求メッセージで x-www-form-urlencoded 形式で提供する必要があります。
+* 顧客の詳細を (再度) 取得するための URI `https://adventure-works.com/customers/2` への HTTP GET 要求。 データは、XML または JSON として返すことができます。
+* 顧客の詳細を変更するための URI `https://adventure-works.com/customers/2` への HTTP PUT 要求。 新しいデータは、要求メッセージで x-www-form-urlencoded 形式で提供する必要があります。
+* 顧客を削除するための URI `https://adventure-works.com/customers/2` への HTTP DELETE 要求。 この要求は、追加情報を求めることも、応答メッセージの本文でデータを返すこともありません。
+* 顧客のすべての注文を検索するために URI `https://adventure-works.com/customers/2/orders` に HTTP GET 要求を送信します。 データは、XML または JSON として返すことができます。
+* この顧客の新規の注文を作成するために URI `https://adventure-works.com/customers/2/orders` に HTTP PUT 要求を送信します。 データは、要求メッセージで x-www-form-urlencoded 形式で提供する必要があります。
 
 ## <a name="handling-exceptions"></a>例外の処理
 
@@ -132,7 +132,7 @@ HTTP 応答の例に示す HATEOAS リンクは、クライアント アプリ�
 
 ### <a name="capture-exceptions-and-return-a-meaningful-response-to-clients"></a>例外をキャプチャし、クライアントに意味のある応答を返す
 
-HTTP 操作を実装するコードでは、キャッチされない例外をフレームワークに伝達するのではなく、包括的な例外処理を提供する必要があります。 例外によって操作を正常に完了することができない場合、その例外を応答メッセージで返すことができますが、例外の原因となったエラーのわかりやすい説明が含まれている必要があります。 また、あらゆる状況で状態コード 500 を単に返すのではなく、例外に適切な HTTP 状態コードが含まれている必要があります。 たとえば、ユーザー要求によって制約に違反するデータベースの更新 (未処理の注文がある顧客の削除など) が行われる場合は、状態コード 409 (Conflict) と、競合の原因を示すメッセージ本文を返します。 他の条件によって要求を達成できない状態になった場合は、状態コード 400 (Bad Request) を返すことができます。 HTTP 状態コードの全一覧については、W3C の Web サイトの「 [Status Code Definitions (状態コードの定義)](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html) 」をご覧ください。
+HTTP 操作を実装するコードでは、キャッチされない例外をフレームワークに伝達するのではなく、包括的な例外処理を提供する必要があります。 例外によって操作を正常に完了することができない場合、その例外を応答メッセージで返すことができますが、例外の原因となったエラーのわかりやすい説明が含まれている必要があります。 また、あらゆる状況で状態コード 500 を単に返すのではなく、例外に適切な HTTP 状態コードが含まれている必要があります。 たとえば、ユーザー要求によって制約に違反するデータベースの更新 (未処理の注文がある顧客の削除など) が行われる場合は、状態コード 409 (Conflict) と、競合の原因を示すメッセージ本文を返します。 他の条件によって要求を達成できない状態になった場合は、状態コード 400 (Bad Request) を返すことができます。 HTTP 状態コードの全一覧については、W3C の Web サイトの「 [Status Code Definitions (状態コードの定義)](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html) 」をご覧ください。
 
 次のコードは、さまざまな条件をトラップし、適切な応答を返す例を示しています。
 
@@ -198,7 +198,7 @@ Web サーバーとクライアント アプリケーションが関与する環
 HTTP 1.1 プロトコルでは、Cache-Control ヘッダーを使用することで、クライアントと要求のルーティングで経由する中間サーバーでのキャッシュをサポートしています。 クライアント アプリケーションが Web API に HTTP GET 要求を送信したときは、クライアントまたは要求のルーティングで経由した中間サーバーで応答の本文のデータを安全にキャッシュできるかどうかと、データを期限切れにして古いデータと見なすまでの時間を示す Cache-Control ヘッダーを応答に含めることができます。 次の例は、HTTP GET 要求と、Cache-Control ヘッダーが含まれた対応する応答を示しています。
 
 ```HTTP
-GET http://adventure-works.com/orders/2 HTTP/1.1
+GET https://adventure-works.com/orders/2 HTTP/1.1
 ```
 
 ```HTTP
@@ -339,7 +339,7 @@ Content-Length: ...
 * クライアントは、If-None-Match HTTP ヘッダーで参照されるリソースの現在キャッシュされているバージョンの ETag を含む GET 要求を作成します。
 
     ```HTTP
-    GET http://adventure-works.com/orders/2 HTTP/1.1
+    GET https://adventure-works.com/orders/2 HTTP/1.1
     If-None-Match: "2147483648"
     ```
 * Web API の GET 操作で、要求されたデータ (前の例では order 2) の現在の ETag を取得し、If-None-Match ヘッダーの値と比較します。
@@ -452,7 +452,7 @@ public class EmptyResultWithCaching : IHttpActionResult
 * クライアントは、リソースの新しい詳細と、If-Match HTTP ヘッダーで参照されるリソースの現在キャッシュされているバージョンの ETag を含む PUT 要求を作成します。 次の例は、注文を更新する PUT 要求を示しています。
 
     ```HTTP
-    PUT http://adventure-works.com/orders/1 HTTP/1.1
+    PUT https://adventure-works.com/orders/1 HTTP/1.1
     If-Match: "2282343857"
     Content-Type: application/x-www-form-urlencoded
     Content-Length: ...
@@ -571,7 +571,7 @@ IIS を使用してサービスをホストしている場合は、Web アプリ
 .NET Framework を使用してクライアント アプリケーションを構築している場合は、すべての POST メッセージと PUT メッセージで、Expect: 100-Continue ヘッダーを既定で含むメッセージが最初に送信されます。 サーバー側と同様に、このプロセスは .NET Framework によって透過的に処理されます。 ただし、このプロセスでは、要求のサイズが小さい場合でも、各 POST 要求と PUT 要求でサーバーへのラウンド トリップが 2 回発生することになります。 アプリケーションが大量のデータを含む要求を送信しない場合は、クライアント アプリケーションで `ServicePointManager` クラスを使用して `ServicePoint` オブジェクトを作成することで、この機能を無効にすることができます。 `ServicePoint` オブジェクトは、サーバー上のリソースを特定する URI のスキームとホスト フラグメントに基づいて、クライアントが行うサーバーへの接続を処理します。 その後、`ServicePoint` オブジェクトの `Expect100Continue` プロパティを false に設定できます。 `ServicePoint` オブジェクトのスキームおよびホスト フラグメントと一致する URI を使用してクライアントで行われる後続の POST 要求と PUT 要求は、すべて Expect: 100-Continue ヘッダーなしで送信されます。 次のコードは、スキームが `http` で、ホストが `www.contoso.com` である URI に送信されるすべての要求を構成する `ServicePoint` オブジェクトを構成する方法を示しています。
 
 ```csharp
-Uri uri = new Uri("http://www.contoso.com/");
+Uri uri = new Uri("https://www.contoso.com/");
 ServicePoint sp = ServicePointManager.FindServicePoint(uri);
 sp.Expect100Continue = false;
 ```
@@ -601,7 +601,7 @@ public class OrdersController : ApiController
 }
 ```
 
-クライアント アプリケーションは、URI `http://www.adventure-works.com/api/orders?limit=30&offset=50` を使用して、オフセット 50 で始まる 30 個の注文を取得する要求を発行できます。
+クライアント アプリケーションは、URI `https://www.adventure-works.com/api/orders?limit=30&offset=50` を使用して、オフセット 50 で始まる 30 個の注文を取得する要求を発行できます。
 
 > [!TIP]
 > URI が 2000 文字を超える長さになるクエリ文字列をクライアント アプリケーションが指定できないようにします。 多くの Web クライアントとサーバーは、この長さの URI を処理できません。
@@ -631,7 +631,7 @@ Web API では、処理の結果をクライアント アプリケーション�
 
 - Azure Notification Hubs を使用して、非同期応答をクライアント アプリケーションにプッシュする。 詳細については、「[Azure Notification Hubs によるユーザーへの通知](/azure/notification-hubs/notification-hubs-aspnet-backend-windows-dotnet-wns-notification/)」を参照してください。
 - Comet モデルを使用して、クライアントと Web API をホストするサーバー間の永続的なネットワーク接続を保持し、この接続を使用してサーバーからのメッセージをクライアントにプッシュする。 ソリューションの例については、MSDN マガジンの記事「 [Microsoft .NET Framework でシンプルな Comet アプリケーションをビルドする](https://msdn.microsoft.com/magazine/jj891053.aspx) 」をご覧ください。
-- SignalR を使用して、永続的なネットワーク接続経由で Web サーバーからクライアントにリアルタイムでデータをプッシュする。 SignalR は、NuGet パッケージとして ASP.NET Web アプリケーションで使用できます。 詳細については、 [ASP.NET SignalR](http://signalr.net/) の Web サイトをご覧ください。
+- SignalR を使用して、永続的なネットワーク接続経由で Web サーバーからクライアントにリアルタイムでデータをプッシュする。 SignalR は、NuGet パッケージとして ASP.NET Web アプリケーションで使用できます。 詳細については、 [ASP.NET SignalR](https://www.asp.net/signalr) の Web サイトをご覧ください。
 
 ### <a name="ensure-that-each-request-is-stateless"></a>各要求がステートレスであることを確認する
 
@@ -662,7 +662,7 @@ Web API をクライアント アプリケーションで使用できるよう�
 * 規制の要件により、すべての要求と応答のログと監査が義務付けられる場合があります。
 * 可用性を確保するために、Web API をホストするサーバーの正常性を監視し、必要に応じてサーバーを再起動することが必要な場合があります。
 
-これらの問題を、Web API の実装に関する技術的な問題から切り離すことができると便利です。 そのため、別のプロセスとして実行され、要求を Web API にルーティングする [ファサード](http://en.wikipedia.org/wiki/Facade_pattern)を作成することを検討してください。 ファサードで管理操作を提供し、検証済みの要求を Web API に転送できます。 また、ファサードを使用すると、次のような機能面での多くの利点がもたらされます。
+これらの問題を、Web API の実装に関する技術的な問題から切り離すことができると便利です。 そのため、別のプロセスとして実行され、要求を Web API にルーティングする [ファサード](https://en.wikipedia.org/wiki/Facade_pattern)を作成することを検討してください。 ファサードで管理操作を提供し、検証済みの要求を Web API に転送できます。 また、ファサードを使用すると、次のような機能面での多くの利点がもたらされます。
 
 * 複数の Web API の統合ポイントとして機能する。
 * さまざまなテクノロジを使用して構築されたクライアントに対応するために、メッセージと通信プロトコルを変換する。
@@ -784,10 +784,10 @@ API Management サービスを使用して Web API を公開した場合、Micro
 >
 
 ## <a name="more-information"></a>詳細情報
-* ASP.NET を使用した OData Web API の実装の例と詳細については、[ASP.NET Web API OData](http://www.asp.net/web-api/overview/odata-support-in-aspnet-web-api) に関するページをご覧ください。
-* OData を使用して Web API でバッチ操作を実装する方法については、「[Introducing Batch Support in Web API and Web API OData (Web API と Web API OData でのバッチ処理のサポートの概要)](http://blogs.msdn.com/b/webdev/archive/2013/11/01/introducing-batch-support-in-web-api-and-web-api-odata.aspx)」をご覧ください。
-* べき等の概要とデータ管理操作との関連性については、Jonathan Oliver のブログ記事「[Idempotency Patterns (べき等のパターン)](http://blog.jonathanoliver.com/idempotency-patterns/)」をご覧ください。
-* HTTP 状態コードの全一覧と説明については、W3C の Web サイトの「[Status Code Definitions (状態コードの定義)](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html)」をご覧ください。
+* ASP.NET を使用した OData Web API の実装の例と詳細については、[ASP.NET Web API OData](https://www.asp.net/web-api/overview/odata-support-in-aspnet-web-api) に関するページをご覧ください。
+* OData を使用して Web API でバッチ操作を実装する方法については、「[Introducing Batch Support in Web API and Web API OData (Web API と Web API OData でのバッチ処理のサポートの概要)](https://blogs.msdn.microsoft.com/webdev/2013/11/01/introducing-batch-support-in-web-api-and-web-api-odata/)」をご覧ください。
+* べき等の概要とデータ管理操作との関連性については、Jonathan Oliver のブログ記事「[Idempotency Patterns (べき等のパターン)](https://blog.jonathanoliver.com/idempotency-patterns/)」をご覧ください。
+* HTTP 状態コードの全一覧と説明については、W3C の Web サイトの「[Status Code Definitions (状態コードの定義)](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html)」をご覧ください。
 * Web ジョブを使用してバックグラウンド操作を実行する方法と例については、Microsoft Web サイト「[Web ジョブでバックグラウンド タスクを実行する](/azure/app-service-web/web-sites-create-web-jobs/)」をご覧ください。
 * Azure Notification Hubs を使用して非同期応答をクライアント アプリケーションにプッシュする方法については、「[Azure Notification Hubs によるユーザーへの通知](/azure/notification-hubs/notification-hubs-aspnet-backend-windows-dotnet-wns-notification/)」をご覧ください。
 * Web API への制御された安全なアクセスを提供する成果物を発行する方法については、「[API Management](https://azure.microsoft.com/services/api-management/)」をご覧ください。

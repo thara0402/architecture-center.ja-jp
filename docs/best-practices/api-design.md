@@ -4,12 +4,12 @@ description: 適切に設計された Web API を作成する方法に関する�
 author: dragon119
 ms.date: 01/12/2018
 pnp.series.title: Best Practices
-ms.openlocfilehash: 68ed3f59e1fd63ae754ceabf27a182daa0de0e5d
-ms.sourcegitcommit: c4106b58ad08f490e170e461009a4693578294ea
+ms.openlocfilehash: 1bd53a7ccc54d086978891f1df5fdc2e25a5d638
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "43016052"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47429382"
 ---
 # <a name="api-design"></a>API 設計
 
@@ -34,7 +34,7 @@ HTTP を使用した RESTful API の主な設計原則を次に示します。
 - リソースには "*識別子*" があります。識別子は、そのリソースを一意に識別する URI です。 たとえば、特定の顧客注文の URI は次のようになります。 
  
     ```http
-    http://adventure-works.com/orders/1
+    https://adventure-works.com/orders/1
     ```
  
 - クライアントは、リソースの "*表現*" を交換することでサービスと対話します。 多くの Web API では、交換形式として JSON を使用します。 たとえば、上記の URI に対する GET 要求では、次の応答本文が返されます。
@@ -56,8 +56,8 @@ HTTP を使用した RESTful API の主な設計原則を次に示します。
         "quantity":4,
         "orderValue":16.60,
         "links": [
-            {"rel":"product","href":"http://adventure-works.com/customers/3", "action":"GET" },
-            {"rel":"product","href":"http://adventure-works.com/customers/3", "action":"PUT" } 
+            {"rel":"product","href":"https://adventure-works.com/customers/3", "action":"GET" },
+            {"rel":"product","href":"https://adventure-works.com/customers/3", "action":"PUT" } 
         ]
     } 
     ```
@@ -77,9 +77,9 @@ HTTP を使用した RESTful API の主な設計原則を次に示します。
 Web API が公開するビジネス エンティティに注目して説明します。 たとえば、電子商取引システムでは、主エンティティは顧客と注文です。 注文の作成は、注文情報が含まれた HTTP POST 要求を送信することで実現できます。 HTTP 応答では、注文が正常に行われたかどうかを示します。 可能であれば、リソース URI は動詞 (リソースに対する操作) ではなく、名詞 (リソース) に基づくようにします。 
 
 ```HTTP
-http://adventure-works.com/orders // Good
+https://adventure-works.com/orders // Good
 
-http://adventure-works.com/create-order // Avoid
+https://adventure-works.com/create-order // Avoid
 ```
 
 リソースは、単一の物理データ項目に基づく必要はありません。 たとえば、注文リソースをリレーショナル データベースの複数のテーブルとして内部的に実装しながら、クライアントには単一のエンティティとして表示することができます。 データベースの内部構造を単にミラー化する API は作成しないようにします。 REST の目的は、エンティティと、アプリケーションがそれらのエンティティに対して実行できる操作をモデル化することです。 クライアントを内部実装に公開しないでください。
@@ -87,7 +87,7 @@ http://adventure-works.com/create-order // Avoid
 多くの場合、エンティティはコレクション (orders、customers) にグループ化されます。 コレクションはコレクションの項目とは別のリソースであり、独自の URI が必要です。 たとえば、次の URI は注文のコレクションを表しています。 
 
 ```HTTP
-http://adventure-works.com/orders
+https://adventure-works.com/orders
 ```
 
 コレクション URI に HTTP GET 要求を送信することで、コレクションの項目の一覧を取得します。 コレクションの各項目にも、それぞれ一意の URI があります。 項目の URI に対する HTTP GET 要求では、その項目の詳細が返されます。 
@@ -148,7 +148,7 @@ HTTP プロトコルでは、"*メディアの種類*" (MIME の種類とも呼�
 要求または応答の Content-Type ヘッダーでは、表現の形式を指定します。 JSON データを含む POST 要求の例を次に示します。
 
 ```HTTP
-POST http://adventure-works.com/orders HTTP/1.1
+POST https://adventure-works.com/orders HTTP/1.1
 Content-Type: application/json; charset=utf-8
 Content-Length: 57
 
@@ -160,7 +160,7 @@ Content-Length: 57
 クライアント要求には、クライアントが応答メッセージでサーバーから受け入れるメディアの種類の一覧を含む Accept ヘッダーを含めることができます。 例: 
 
 ```HTTP
-GET http://adventure-works.com/orders/2 HTTP/1.1
+GET https://adventure-works.com/orders/2 HTTP/1.1
 Accept: application/json
 ```
 
@@ -273,7 +273,7 @@ Location: /api/orders/12345
 /orders?limit=25&offset=50
 ```
 
-サービス拒否攻撃を防ぐために、返される項目の数に上限を課すことも検討してください。 クライアント アプリケーションを支援するには、改ページ調整されたデータを返す GET 要求に、コレクションで利用できるリソースの合計を示す何らかの形式のメタデータも含まれるようにします。 また、他のインテリジェントなページング方法を検討することもできます。詳細については、「[API Design Notes: Smart Paging (API の設計に関する注記: スマート ページング)](http://bizcoder.com/api-design-notes-smart-paging)」を参照してください。
+サービス拒否攻撃を防ぐために、返される項目の数に上限を課すことも検討してください。 クライアント アプリケーションを支援するには、改ページ調整されたデータを返す GET 要求に、コレクションで利用できるリソースの合計を示す何らかの形式のメタデータも含まれるようにします。 
 
 同様の方法を使用して、フェッチされたデータを並べ替えることができます。*/orders?sort=ProductID* のように、フィールド名を値として取得する並べ替えパラメーターを指定します。 ただし、クエリ文字列パラメーターは、キャッシュ データのキーとして多くのキャッシュ実装で使用されるリソース識別子の一部となるため、この方法はキャッシュに悪影響を与える可能性があります。
 
@@ -288,7 +288,7 @@ Location: /api/orders/12345
 これらのリソースの HTTP HEAD 要求を実装することも検討してください。 HEAD 要求は GET 要求に似ていますが、空のメッセージ本文と共に、リソースを示す HTTP ヘッダーだけを返す点が異なります。 クライアント アプリケーションは HEAD 要求を発行し、部分的 GET 要求を使用して、リソースを取得するかどうかを判断します。 例: 
 
 ```HTTP
-HEAD http://adventure-works.com/products/10?fields=productImage HTTP/1.1
+HEAD https://adventure-works.com/products/10?fields=productImage HTTP/1.1
 ```
 
 応答メッセージの例を次に示します。 
@@ -304,7 +304,7 @@ Content-Length: 4580
 Content-Length ヘッダーはリソースの合計サイズを示し、Accept-Ranges ヘッダーは対応する GET 操作が部分的な結果をサポートすることを示します。 クライアント アプリケーションは、この情報を使用して画像を小さなチャンクで取得できます。 最初の要求では、Range ヘッダーを使用して最初の 2,500 バイトを取得します。
 
 ```HTTP
-GET http://adventure-works.com/products/10?fields=productImage HTTP/1.1
+GET https://adventure-works.com/products/10?fields=productImage HTTP/1.1
 Range: bytes=0-2499
 ```
 
@@ -343,44 +343,44 @@ REST の背後にある主な動機の 1 つは、URI スキームの事前知�
   "links":[
     {
       "rel":"customer",
-      "href":"http://adventure-works.com/customers/3", 
+      "href":"https://adventure-works.com/customers/3", 
       "action":"GET",
       "types":["text/xml","application/json"] 
     },
     {
       "rel":"customer",
-      "href":"http://adventure-works.com/customers/3", 
+      "href":"https://adventure-works.com/customers/3", 
       "action":"PUT",
       "types":["application/x-www-form-urlencoded"]
     },
     {
       "rel":"customer",
-      "href":"http://adventure-works.com/customers/3",
+      "href":"https://adventure-works.com/customers/3",
       "action":"DELETE",
       "types":[]
     },
     {
       "rel":"self",
-      "href":"http://adventure-works.com/orders/3", 
+      "href":"https://adventure-works.com/orders/3", 
       "action":"GET",
       "types":["text/xml","application/json"]
     },
     {
       "rel":"self",
-      "href":"http://adventure-works.com/orders/3", 
+      "href":"https://adventure-works.com/orders/3", 
       "action":"PUT",
       "types":["application/x-www-form-urlencoded"]
     },
     {
       "rel":"self",
-      "href":"http://adventure-works.com/orders/3", 
+      "href":"https://adventure-works.com/orders/3", 
       "action":"DELETE",
       "types":[]
     }]
 }
 ```
 
-この例では、`links` 配列に一連のリンクが含まれています。 各リンクは、関連エンティティに対する操作を表しています。 各リンクのデータには、関係 ("customer")、URI (`http://adventure-works.com/customers/3`)、HTTP メソッド、サポートされる MIME の種類が含まれています。 クライアント アプリケーションが操作を呼び出すことができるようにするために必要な情報はこれですべてです。 
+この例では、`links` 配列に一連のリンクが含まれています。 各リンクは、関連エンティティに対する操作を表しています。 各リンクのデータには、関係 ("customer")、URI (`https://adventure-works.com/customers/3`)、HTTP メソッド、サポートされる MIME の種類が含まれています。 クライアント アプリケーションが操作を呼び出すことができるようにするために必要な情報はこれですべてです。 
 
 `links` 配列には、取得したリソース自体に関する自己参照型の情報も含まれています。 これらの情報の関係は *self* です。
 
@@ -395,7 +395,7 @@ Web API が更新されないことはありえません。 ビジネスの要�
 ### <a name="no-versioning"></a>バージョン管理なし
 これは最も単純な方法で、一部の内部 API で許容されます。 大きな変更は新しいリソースまたは新しいリンクとして示されます。  既存のリソースにコンテンツを追加しても、このコンテンツの表示を想定していないクライアント アプリケーションはそれを無視するだけであるため、重大な変更はありません。
 
-たとえば、URI *http://adventure-works.com/customers/3* への要求により、次のクライアント アプリケーションにより期待される `id`、`name`、および `address` フィールドを含む単一の顧客に関する詳細が返されます。
+たとえば、URI *https://adventure-works.com/customers/3* への要求により、次のクライアント アプリケーションにより期待される `id`、`name`、および `address` フィールドを含む単一の顧客に関する詳細が返されます。
 
 ```HTTP
 HTTP/1.1 200 OK
@@ -423,7 +423,7 @@ Content-Type: application/json; charset=utf-8
 ### <a name="uri-versioning"></a>URI のバージョン管理
 Web API を変更するか、リソースのスキーマを変更するたびに、バージョン番号を各リソースの URI に追加します。 既存の URI はこれまでと同様に動作を続け、元のスキーマに準拠するリソースを返します。
 
-前の例を拡張し、`address` フィールドをアドレスの各構成部分 (`streetAddress`、`city`、`state`、`zipCode` など) を含むサブフィールドに再構築する場合、このバージョンのリソースはバージョン番号を含む http://adventure-works.com/v2/customers/3: などの URI より公開できます
+前の例を拡張し、`address` フィールドをアドレスの各構成部分 (`streetAddress`、`city`、`state`、`zipCode` など) を含むサブフィールドに再構築する場合、このバージョンのリソースはバージョン番号を含む https://adventure-works.com/v2/customers/3: などの URI より公開できます
 
 ```HTTP
 HTTP/1.1 200 OK
@@ -435,7 +435,7 @@ Content-Type: application/json; charset=utf-8
 このバージョン管理メカニズムは非常に単純ですが、適切なエンドポイントに要求をルーティングするサーバーにより変わります。 とはいえ、Web API は何度も繰り返すことで成熟し、サーバーは多くの異なるバージョンをサポートする必要があるため、扱いにくくなる可能性があります。 また、純正主義者の観点からすると、すべての場合でクライアント アプリケーションは同じデータを取得しているため (顧客 3)、URI はバージョンによってそれほど異なるべきではありません。 すべてのリンクで URI にバージョン番号が含まれる必要があるため、このスキームによっても HATEOAS の実装が複雑になります。
 
 ### <a name="query-string-versioning"></a>クエリ文字列のバージョン管理
-複数の URI を提供するのではなく、*http://adventure-works.com/customers/3?version=2* など、HTTP 要求に追加されたクエリ文字列内のパラメーターを使用してリソースのバージョンを指定できます。 バージョン パラメーターがより古いクライアント アプリケーションで省略される場合、1 などの有効な値を既定にします。
+複数の URI を提供するのではなく、*https://adventure-works.com/customers/3?version=2* など、HTTP 要求に追加されたクエリ文字列内のパラメーターを使用してリソースのバージョンを指定できます。 バージョン パラメーターがより古いクライアント アプリケーションで省略される場合、1 などの有効な値を既定にします。
 
 この方法には同じリソースからは常に同じ URI が取得されるというセマンティックな利点がありますが、クエリ文字列を解析し、適切な HTTP 応答を返送する要求を処理するコードにより異なります。 この方法は、URI のバージョン管理メカニズムとして HATEOAS を実装する同様の複雑さによっても影響されます。
 
@@ -450,7 +450,7 @@ Content-Type: application/json; charset=utf-8
 バージョン 1: 
 
 ```HTTP
-GET http://adventure-works.com/customers/3 HTTP/1.1
+GET https://adventure-works.com/customers/3 HTTP/1.1
 Custom-Header: api-version=1
 ```
 
@@ -464,7 +464,7 @@ Content-Type: application/json; charset=utf-8
 バージョン 2: 
 
 ```HTTP
-GET http://adventure-works.com/customers/3 HTTP/1.1
+GET https://adventure-works.com/customers/3 HTTP/1.1
 Custom-Header: api-version=2
 ```
 
@@ -481,7 +481,7 @@ Content-Type: application/json; charset=utf-8
 クライアント アプリケーションが Web サーバーに HTTP GET 要求を送信する場合、このガイダンスで既に説明したように、Accept ヘッダーを使用して処理できるコンテンツの書式を指定する必要があります。 多くの場合、*Accept* ヘッダーの目的は、応答の本文が XML、JSON、またはクライアントが解析可能な他の一般的な形式であるかどうかをクライアント アプリケーションが指定できるようにすることです。 とはいえ、想定しているリソースのバージョンをクライアント アプリケーションが示すことができるようにする情報を含むカスタム メディアの種類を定義できます。 次の例は、*application/vnd.adventure-works.v1+json* の値を含む *Accept* ヘッダーを指定する要求を示します。 *vnd.adventure-works.v1* 要素は Web サーバーに対し、バージョン 1 のリソースを返すように指示しますが、*json* 要素は応答本文の形式が JSON であるように指定します。
 
 ```HTTP
-GET http://adventure-works.com/customers/3 HTTP/1.1
+GET https://adventure-works.com/customers/3 HTTP/1.1
 Accept: application/vnd.adventure-works.v1+json
 ```
 
@@ -516,6 +516,5 @@ Web API に OpenAPI を採用することもできます。 考慮すべき点:
 
 ## <a name="more-information"></a>詳細情報
 * [Microsoft REST API のガイドライン](https://github.com/Microsoft/api-guidelines/blob/master/Guidelines.md):  パブリック REST API の設計に関する詳細な推奨事項。
-* [REST Cookbook](http://restcookbook.com/):  RESTful API の構築の概要。
 * [Web API Checklist](https://mathieu.fenniak.net/the-api-checklist/):  Web API を設計および実装するときに検討すべき項目の便利な一覧。
 * [Open API イニシアチブ](https://www.openapis.org/):  Open API に関するドキュメントと実装の詳細。

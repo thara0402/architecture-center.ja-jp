@@ -3,12 +3,12 @@ title: フロント エンド用バックエンドのパターン
 description: 特定のフロント エンド アプリケーションやインターフェイスによって使用される個別のバックエンド サービスを作成します。
 author: dragon119
 ms.date: 06/23/2017
-ms.openlocfilehash: 2991d7a3e05b3ce6cd5148a552bae6d4ba8f7c4c
-ms.sourcegitcommit: c441fd165e6bebbbbbc19854ec6f3676be9c3b25
+ms.openlocfilehash: a0dbc9ab58aa218f6faf40b70dad1bdc22d71458
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
-ms.locfileid: "30270021"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47428790"
 ---
 # <a name="backends-for-frontends-pattern"></a>フロント エンド用バックエンドのパターン
 
@@ -34,7 +34,7 @@ ms.locfileid: "30270021"
 
 各バックエンドが 1 つのインターフェイスに対応するので、バックエンドをそのインターフェイス用に最適化できます。 その結果、すべてのインターフェイスの要件を満たそうとする汎用バックエンドよりも、サイズが小さくなり、複雑さが軽減され、多くの場合は処理速度も速くなります。 各インターフェイス チームは、専用のバックエンドを自律的に制御できるようになり、中央のバックエンド開発チームに依存しなくて済むようになります。 その結果インターフェイス チームは、言語の選択、リリース間隔、ワークロードの優先度、およびバックエンドでの機能統合を、柔軟に決められるようになります。
 
-詳細については、「[Pattern: Backends For Frontends (パターン: フロントエンド用バックエンド)](http://samnewman.io/patterns/architectural/bff/)」をご覧ください。
+詳細については、「[Pattern: Backends For Frontends (パターン: フロントエンド用バックエンド)](https://samnewman.io/patterns/architectural/bff/)」をご覧ください。
 
 ## <a name="issues-and-considerations"></a>問題と注意事項
 

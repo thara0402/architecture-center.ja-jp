@@ -4,12 +4,12 @@ description: 設計時の回復性に関する問題のガイダンスを提供�
 author: petertaylor9999
 ms.date: 01/10/2018
 ms.custom: resiliency, checklist
-ms.openlocfilehash: 883424d5d3535f822cdba61ecb9520ce05f75ec7
-ms.sourcegitcommit: 2154e93a0a075e1f7425a6eb11fc3f03c1300c23
+ms.openlocfilehash: 17612ee08e2329ea648fd21d6764e7bae1ca20e2
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39352646"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47429096"
 ---
 # <a name="resiliency-checklist"></a>回復性のチェックリスト
 
@@ -28,8 +28,7 @@ ms.locfileid: "39352646"
 * 復旧戦略を特定する。
   
 
-**複数のインスタンスのサービスをデプロイします。** アプリケーションがサービスの 1 つのインスタンスに依存する場合は、単一障害点が発生します。 複数のインスタンスをプロビジョニングすると、回復性とスケーラビリティの両方が改善されます。 
-  [Azure App Service](/azure/app-service/app-service-value-prop-what-is/) の場合は、複数のインスタンスを提供する [App Service プラン](/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview/)を選択してください。 Azure Cloud Services の場合は、[複数インスタンス](/azure/cloud-services/cloud-services-choose-me/#scaling-and-management)を使用するように各ロールを構成してください。 [Azure Virtual Machines (VM)](/azure/virtual-machines/virtual-machines-windows-about/?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) の場合は、VM アーキテクチャに 1 つ以上の VM が含まれていることと、[可用性セット][availability-sets]に各 VM が含まれていることを確認してください。   
+**複数のインスタンスのサービスをデプロイします。** アプリケーションがサービスの 1 つのインスタンスに依存する場合は、単一障害点が発生します。 複数のインスタンスをプロビジョニングすると、回復性とスケーラビリティの両方が改善されます。 [Azure App Service](/azure/app-service/app-service-value-prop-what-is/) の場合は、複数のインスタンスを提供する [App Service プラン](/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview/)を選択してください。 Azure Cloud Services の場合は、[複数インスタンス](/azure/cloud-services/cloud-services-choose-me/#scaling-and-management)を使用するように各ロールを構成してください。 [Azure Virtual Machines (VM)](/azure/virtual-machines/virtual-machines-windows-about/?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) の場合は、VM アーキテクチャに 1 つ以上の VM が含まれていることと、[可用性セット][availability-sets]に各 VM が含まれていることを確認してください。   
 
 **自動スケールを使用して、負荷の増加に対応します。** 負荷が増したとき自動的にスケールアウトするようにアプリケーションが構成されていない場合は、ユーザーの要求で飽和状態になるとアプリケーションのサービスが失敗する可能性があります。 詳細については、次をご覧ください。
 
@@ -82,7 +81,7 @@ ms.locfileid: "39352646"
 
 ## <a name="security"></a>セキュリティ
 
-**分散型サービス拒否 (DDoS) 攻撃に対するアプリケーション レベルの保護を実装します。** Azure サービスは、ネットワーク層で DDos 攻撃から保護されます。 ただし、悪意のあるユーザーの要求と本当のユーザーの要求を区別するのは難しいため、Azure ではアプリケーション層の攻撃から保護することができません。 アプリケーション層の DDoS 攻撃から保護する方法の詳細については、「[Microsoft Azure のネットワーク セキュリティ](http://download.microsoft.com/download/C/A/3/CA3FC5C0-ECE0-4F87-BF4B-D74064A00846/AzureNetworkSecurity_v3_Feb2015.pdf)」の「DDoS からの保護」のセクション(PDF のダウンロード) をご覧ください。
+**分散型サービス拒否 (DDoS) 攻撃に対するアプリケーション レベルの保護を実装します。** Azure サービスは、ネットワーク層で DDos 攻撃から保護されます。 ただし、悪意のあるユーザーの要求と本当のユーザーの要求を区別するのは難しいため、Azure ではアプリケーション層の攻撃から保護することができません。 アプリケーション層の DDoS 攻撃から保護する方法の詳細については、「[Microsoft Azure のネットワーク セキュリティ](https://download.microsoft.com/download/C/A/3/CA3FC5C0-ECE0-4F87-BF4B-D74064A00846/AzureNetworkSecurity_v3_Feb2015.pdf)」の「DDoS からの保護」のセクション(PDF のダウンロード) をご覧ください。
 
 **アプリケーションのリソースへのアクセスに対する最小限の権限の原則を実装します。** アプリケーションのリソースへのアクセスの既定値は、可能な限り制限する必要があります。 承認によって付与する権限のレベルを上げてください。 アプリケーションのリソースに既定で過度なアクセス権を付与すると、意図的であれ意図せずであれリソースが削除されてしまう可能性があります。 Azure はユーザーのアクセス許可を管理する[ロールベースのアクセス制御](/azure/active-directory/role-based-access-built-in-roles/)を備えていますが、SQL Server などの独自のアクセス許可システムを持つ他のリソースの最小特権のアクセス許可を確認することが重要です。
 
@@ -100,7 +99,7 @@ ms.locfileid: "39352646"
 
 **アプリケーションのデプロイ プロセスを自動化します。** 運用スタッフがアプリケーションを手動でデプロイする必要がある場合は、人的ミスによってデプロイに失敗する可能性があります。 
 
-**アプリケーションの可用性を最大限にするリリース プロセスを設計します。** リリース プロセスでデプロイ中にサービスをオフラインにする必要がある場合、オンラインに戻るまでアプリケーションは使用できなくなります。 アプリケーションを運用環境にデプロイするには、[Blue/Green](http://martinfowler.com/bliki/BlueGreenDeployment.html) または[カナリヤ リリース](http://martinfowler.com/bliki/CanaryRelease.html)のデプロイ手法を使用してください。 これらの手法のどちらにも、障害発生時にリリース コードのユーザーが運用環境のコードにリダイレクトできるように、運用環境のコードと共にリリース コードをデプロイすることが含まれます。
+**アプリケーションの可用性を最大限にするリリース プロセスを設計します。** リリース プロセスでデプロイ中にサービスをオフラインにする必要がある場合、オンラインに戻るまでアプリケーションは使用できなくなります。 アプリケーションを運用環境にデプロイするには、[Blue/Green](https://martinfowler.com/bliki/BlueGreenDeployment.html) または[カナリヤ リリース](https://martinfowler.com/bliki/CanaryRelease.html)のデプロイ手法を使用してください。 これらの手法のどちらにも、障害発生時にリリース コードのユーザーが運用環境のコードにリダイレクトできるように、運用環境のコードと共にリリース コードをデプロイすることが含まれます。
 
 **アプリケーションのデプロイを記録し、監査します。** Blue/Green やカナリヤ リリースなどのステージング デプロイ手法を使用する場合、運用環境では複数のバージョンのアプリケーションが実行されることになります。 万一問題が発生した場合は、アプリケーションのどのバージョンが問題の原因かを判別することが重要です。 できるだけ多くのバージョン固有の情報を把握するため、確実なログ記録の方法を実装してください。
 

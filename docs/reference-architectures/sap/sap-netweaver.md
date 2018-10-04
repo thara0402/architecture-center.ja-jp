@@ -3,12 +3,12 @@ title: AnyDB 向けの SAP NetWeaver (Windows) を Azure Virtual Machines にデ
 description: 高可用性を備えた Azure の Linux環境で SAP S/4HANA を実行するための実証済みプラクティス。
 author: lbrader
 ms.date: 05/11/2018
-ms.openlocfilehash: f4a33e7a3f30bdd6d8bdd41599a5e3b47501b874
-ms.sourcegitcommit: c4106b58ad08f490e170e461009a4693578294ea
+ms.openlocfilehash: b4a254980dd9aac2847bb194f22f99f3f05376de
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "43016026"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47428807"
 ---
 # <a name="deploy-sap-netweaver-windows-for-anydb-on-azure-virtual-machines"></a>AnyDB 向けの SAP NetWeaver (Windows) を Azure Virtual Machines にデプロイする
 
@@ -145,7 +145,7 @@ SAP アプリケーション サーバーの高可用性は、アプリケーシ
 
 - **アプリケーション サーバー層**。 SAP アプリケーション サーバーには、ビジネス データが含まれていません。 Azure での単純な DR 戦略は、セカンダリ リージョンで SAP アプリケーション サーバーを作成し、そのサーバーをシャットダウンすることです。 プライマリ アプリケーション サーバーで構成変更やカーネル更新を行った場合、同じ変更がセカンダリ リージョンの仮想マシンにコピーされなければなりません。 たとえば、カーネルの実行可能ファイルが DR 仮想マシンにコピーされます。 アプリケーション サーバーをセカンダリ リージョンに自動的にレプリケートするためのソリューションとしては、[Azure Site Recovery](/azure/site-recovery/site-recovery-overview) をお勧めします。
 
-- **セントラル サービス**。 SAP アプリケーション スタックのこのコンポーネントにも、ビジネス データが保持されません。 ディザスター リカバリー リージョンで VM を作成すると、セントラル サービス ロールを実行できます。 プライマリ セントラル サービス ノードから同期されるコンテンツは、/sapmnt 共有コンテンツだけです。 また、構成の変更やカーネルの更新がプライマリ セントラル サービス サーバーで発生した場合、その変更や更新は、セントラル サービスが実行されているディザスター リカバリー リージョンの VM でもう一度行われなければなりません。 2 つのサーバーを同期するには、Azure Site Recovery を使用してクラスター ノードをレプリケートするか、単純に、定期的にコピーするようにスケジュール設定されたコピー ジョブを使用して、/sapmnt をディザスター リカバリー リージョンにコピーします。 このシンプルなレプリケーション方法の作成、コピー、およびテスト フェールオーバー プロセスの詳細については、「[SAP NetWeaver: Building a Hyper-V and Microsoft Azure–based Disaster Recovery Solution (SAP NetWeaver: Hyper-V および Microsoft Azure ベースのディザスター リカバリー ソリューション)](http://download.microsoft.com/download/9/5/6/956FEDC3-702D-4EFB-A7D3-2DB7505566B6/SAP%20NetWeaver%20-%20Building%20an%20Azure%20based%20Disaster%20Recovery%20Solution%20V1_5%20.docx)」をダウンロードして、「4.3. SAP SPOF layer (ASCS) (4.3 SAP SPOF レイヤー (ASCS))」を参照してください。
+- **セントラル サービス**。 SAP アプリケーション スタックのこのコンポーネントにも、ビジネス データが保持されません。 ディザスター リカバリー リージョンで VM を作成すると、セントラル サービス ロールを実行できます。 プライマリ セントラル サービス ノードから同期されるコンテンツは、/sapmnt 共有コンテンツだけです。 また、構成の変更やカーネルの更新がプライマリ セントラル サービス サーバーで発生した場合、その変更や更新は、セントラル サービスが実行されているディザスター リカバリー リージョンの VM でもう一度行われなければなりません。 2 つのサーバーを同期するには、Azure Site Recovery を使用してクラスター ノードをレプリケートするか、単純に、定期的にコピーするようにスケジュール設定されたコピー ジョブを使用して、/sapmnt をディザスター リカバリー リージョンにコピーします。 このシンプルなレプリケーション方法の作成、コピー、およびテスト フェールオーバー プロセスの詳細については、「[SAP NetWeaver: Building a Hyper-V and Microsoft Azure–based Disaster Recovery Solution (SAP NetWeaver: Hyper-V および Microsoft Azure ベースのディザスター リカバリー ソリューション)](https://download.microsoft.com/download/9/5/6/956FEDC3-702D-4EFB-A7D3-2DB7505566B6/SAP%20NetWeaver%20-%20Building%20an%20Azure%20based%20Disaster%20Recovery%20Solution%20V1_5%20.docx)」をダウンロードして、「4.3. SAP SPOF layer (ASCS) (4.3 SAP SPOF レイヤー (ASCS))」を参照してください。
 
 - **データベース層**。 DR の実装には、データベース独自の統合レプリケーション テクノロジを使用するのが最適です。 たとえば、SQL Server の場合は、AlwaysOn 可用性グループを使用して、リモート リージョンにレプリカを作成し、手動フェールオーバーで非同期的にトランザクションをレプリケートすることをお勧めします。 非同期レプリケーションにより、プライマリ サイトにおけるインタラクティブ ワークロードのパフォーマンスへの影響を回避できます。 手動フェールオーバーにより、ユーザーが、DR の影響を評価し、DR サイトからの操作が正当かどうかを判断できるようになります。
 

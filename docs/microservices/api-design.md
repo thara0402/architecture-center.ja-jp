@@ -3,12 +3,12 @@ title: API 設計
 description: マイクロサービス用の API の設計
 author: MikeWasson
 ms.date: 12/08/2017
-ms.openlocfilehash: d85407f3092ddb5f77aacfea8def2784c4741eb9
-ms.sourcegitcommit: 786bafefc731245414c3c1510fc21027afe303dc
+ms.openlocfilehash: e3524fca177d8c15b280d0f8a706539369c1773a
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2017
-ms.locfileid: "26653200"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47429130"
 ---
 # <a name="designing-microservices-api-design"></a>マイクロサービスの設計: API の設計
 
@@ -124,10 +124,10 @@ API を設計する場合は、モデル内のデータだけでなく、ビジ�
 | DDD の概念 | 同等の REST | 例 | 
 |-------------|-----------------|---------|
 | 集計 | リソース | `{ "1":1234, "status":"pending"... }` | 
-| ID | URL | `http://delivery-service/deliveries/1` |
+| ID | URL | `https://delivery-service/deliveries/1` |
 | 子エンティティ | リンク | `{ "href": "/deliveries/1/confirmation" }` |
-| 値オブジェクトの更新 | PUT または PATCH | `PUT http://delivery-service/deliveries/1/dropoff` |
-| リポジトリ | コレクション | `http://delivery-service/deliveries?status=pending` |
+| 値オブジェクトの更新 | PUT または PATCH | `PUT https://delivery-service/deliveries/1/dropoff` |
+| リポジトリ | コレクション | `https://delivery-service/deliveries?status=pending` |
 
 
 ## <a name="api-versioning"></a>API のバージョン管理

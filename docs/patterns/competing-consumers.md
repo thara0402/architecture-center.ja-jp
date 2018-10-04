@@ -7,12 +7,12 @@ ms.date: 06/23/2017
 pnp.series.title: Cloud Design Patterns
 pnp.pattern.categories:
 - messaging
-ms.openlocfilehash: d72a09ef7613bebe3701634e4eac0716400e471d
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: aea172dcdb33c0d8513fb69715f1549b4a20f5e6
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
-ms.locfileid: "24542411"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47428379"
 ---
 # <a name="competing-consumers-pattern"></a>競合コンシューマー パターン
 
@@ -48,7 +48,7 @@ ms.locfileid: "24542411"
 
 このパターンの実装方法を決めるときには、以下の点に注意してください。
 
-- **メッセージの順序付け**。 コンシューマー サービス インスタンスでメッセージを受け取る順序は保証されていません。また、メッセージが作成された順序を反映しているとは限りません。 メッセージが処理される順序への依存を排除できるので、メッセージ処理がべき等になるようにシステムを設計します。 詳細については、Jonathan Oliver のブログ「[Idempotency Patterns](http://blog.jonathanoliver.com/idempotency-patterns/)」(べき等パターン) を参照してください。
+- **メッセージの順序付け**。 コンシューマー サービス インスタンスでメッセージを受け取る順序は保証されていません。また、メッセージが作成された順序を反映しているとは限りません。 メッセージが処理される順序への依存を排除できるので、メッセージ処理がべき等になるようにシステムを設計します。 詳細については、Jonathan Oliver のブログ「[Idempotency Patterns](https://blog.jonathanoliver.com/idempotency-patterns/)」(べき等パターン) を参照してください。
 
     > Microsoft Azure Service Bus Queues は、メッセージ セッションを使用して、保証された先入れ先出しの順序を実装することができます。 詳細については、「[セッションを使用するメッセージング パターン](https://msdn.microsoft.com/magazine/jj863132.aspx)」を参照してください。
 

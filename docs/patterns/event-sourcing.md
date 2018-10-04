@@ -8,12 +8,12 @@ pnp.series.title: Cloud Design Patterns
 pnp.pattern.categories:
 - data-management
 - performance-scalability
-ms.openlocfilehash: 9a0bf170c9b54c3b2ee9cc91d6dcb5c55a13b96a
-ms.sourcegitcommit: ea7108f71dab09175ff69322874d1bcba800a37a
+ms.openlocfilehash: 1cb63b61f5eb97726e266f797dfe13011907c95f
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
-ms.locfileid: "29963212"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47429334"
 ---
 # <a name="event-sourcing-pattern"></a>イベント ソーシング パターン
 
@@ -82,7 +82,7 @@ CRUD アプローチにはいくつかの制限があります。
 
 イベントを読み取って情報を取得するための標準のアプローチや SQL クエリのような既存のメカニズムはありません。 抽出できる唯一のデータは、条件としてイベント識別子を使用するイベントのストリームです。 イベント ID は一般に個別のエンティティにマップします。 エンティティの現在の状態は、そのエンティティの元の状態に照らして、それに関連するすべてのイベントを再生することによってのみ判断できます。
 
-各イベント ストリームの長さは、システムの管理と更新に影響します。 ストリームが大きい場合、指定した数のイベントなどの特定の間隔でスナップショットを作成することを検討してください。 エンティティの現在の状態は、スナップショットから、および特定の時点以降に発生したイベントを再生することにより、取得できます。 データのスナップショットの作成の詳細については、[Martin Fowler のエンタープライズ アプリケーション アーキテクチャのスナップショット Web サイト](http://martinfowler.com/eaaDev/Snapshot.html)と「[Master-Subordinate Snapshot Replication](https://msdn.microsoft.com/library/ff650012.aspx)」 (マスター/従属スナップショット レプリケーション) をご覧ください。
+各イベント ストリームの長さは、システムの管理と更新に影響します。 ストリームが大きい場合、指定した数のイベントなどの特定の間隔でスナップショットを作成することを検討してください。 エンティティの現在の状態は、スナップショットから、および特定の時点以降に発生したイベントを再生することにより、取得できます。 データのスナップショットの作成の詳細については、[Martin Fowler のエンタープライズ アプリケーション アーキテクチャのスナップショット Web サイト](https://martinfowler.com/eaaDev/Snapshot.html)と「[Master-Subordinate Snapshot Replication](https://msdn.microsoft.com/library/ff650012.aspx)」 (マスター/従属スナップショット レプリケーション) をご覧ください。
 
 イベント ソーシングは、データへの更新の競合の可能性を最小にしますが、それでもなおアプリケーションでは結果整合性とトランザクションの欠如の結果としての不整合を処理できる必要があります。 たとえば、その商品の注文が行われている間に、在庫ストックの減少を示すイベントがデータ ストアに到着したため、結果として顧客にアドバイスするか、取り寄せ注文を作成することによって、2 つの操作を調整する要件が発生することがあります。
 
@@ -162,5 +162,3 @@ CRUD アプローチにはいくつかの制限があります。
 - [Data consistency primer (データ整合性入門)](https://msdn.microsoft.com/library/dn589800.aspx)。 個別の読み取りストアまたは具体化されたビューでイベント ソーシングを使用すると、読み取られたデータはすぐに整合されるのではなく、最終的にのみ整合されます。 分散データの整合性の維持に関連する問題をまとめています。
 
 - [データのパーティション分割のガイダンス](https://msdn.microsoft.com/library/dn589795.aspx)。 イベント ソーシングを使用してスケーラビリティを向上させ、競合を少なくし、パフォーマンスを最適化する際に、データをパーティション分割することがあります。 データを個別のパーティションに分割する方法と発生する可能性がある問題について説明します。
-
-- Greg Young の投稿「[Why use Event Sourcing?](http://codebetter.com/gregyoung/2010/02/20/why-use-event-sourcing/)」 (イベント ソーシングを使用する理由)。

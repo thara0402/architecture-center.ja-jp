@@ -6,12 +6,12 @@ ms:date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications
 pnp.series.prev: tailspin
 pnp.series.next: claims
-ms.openlocfilehash: e85817626675cec4d126921c19a31a0983ecd62d
-ms.sourcegitcommit: 8ab30776e0c4cdc16ca0dcc881960e3108ad3e94
+ms.openlocfilehash: 70f4a96369c207740400b9dfe72e1e964507f729
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
-ms.locfileid: "26359257"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47428127"
 ---
 # <a name="authenticate-using-azure-ad-and-openid-connect"></a>Azure AD および OpenID Connect を使用して認証する
 
@@ -61,7 +61,7 @@ app.UseOpenIdConnectAuthentication(new OpenIdConnectOptions {
 設定の一部はランタイムの構成オプションから取られていることに注意してください。 ミドルウェア オプションの意味を次に示します。
 
 * **ClientId**です。 Azure AD でアプリケーションを登録したときに取得した、アプリケーションのクライアント ID。
-* **Authority**。 マルチテナント アプリケーションの場合、これを `https://login.microsoftonline.com/common/` に設定します。 これは、任意の Azure ADテナント からのユーザーがサインインできるようにする、Azure AD の共通 のエンドポイントの URL です。 共通のエンドポイントの詳細については、[このブログ記事](http://www.cloudidentity.com/blog/2014/08/26/the-common-endpoint-walks-like-a-tenant-talks-like-a-tenant-but-is-not-a-tenant/)をご覧ください。
+* **Authority**。 マルチテナント アプリケーションの場合、これを `https://login.microsoftonline.com/common/` に設定します。 これは、任意の Azure ADテナント からのユーザーがサインインできるようにする、Azure AD の共通 のエンドポイントの URL です。 共通のエンドポイントの詳細については、[このブログ記事](https://www.cloudidentity.com/blog/2014/08/26/the-common-endpoint-walks-like-a-tenant-talks-like-a-tenant-but-is-not-a-tenant/)をご覧ください。
 * **TokenValidationParameters** で、**ValidateIssuer** を false に設定します。 つまり、ID トークンにおける発行者の値の検証をアプリが担当します。 (トークン自体はミドルウェアが引き続き検証します。)発行者の検証に関する詳細については、「[Issuer validation (発行者の検証)](claims.md#issuer-validation)」をご覧ください。
 * **PostLogoutRedirectUri**。 サインアウトしたユーザーをリダイレクトする URL を指定します。これは、匿名の要求を許可するページ (通常はホーム ページ) です。
 * **SignInScheme**。 `CookieAuthenticationDefaults.AuthenticationScheme`に設定します。 この設定は、ユーザーが承認された後、ユーザー要求がローカルの Cookie に保存されることを意味します。 この Cookie により、ブラウザー セッションでユーザーがログインした状態が保たれます。
@@ -156,7 +156,7 @@ Azure AD では [OpenID Connect 検出](https://openid.net/specs/openid-connect-
 * アプリがユーザーをログアウトする "セッションの終了" エンドポイントの URL。
 * IDP から取得した OIDC トークンの検証にクライアントが使用する署名キーを取得する URL。
 
-既定では、OIDC ミドルウェアは、このメタデータを取り込む方法を認識しています。 ミドルウェアで **[機関]** オプションを設定すると、ミドルウェアはこのメタデータの URL を作成します。 (**MetadataAddress** オプションを設定して、メタデータ URL を上書きできます。)
+既定では、OIDC ミドルウェアは、このメタデータを取り込む方法を認識しています。 ミドルウェアで **[機関]** オプションを設定すると、ミドルウェアはこのメタデータの URL を作成します。 (**MetadataAddress** オプションを設定して、メタデータ URL をオーバーライドできます。)
 
 ### <a name="openid-connect-flows"></a>OpenID Connect のフロー
 OIDC ミドルウェアは、既定で、フォーム ポスト応答モードによるハイブリッド フローを使用します。

@@ -5,12 +5,12 @@ author: MikeWasson
 ms:date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications
 pnp.series.prev: client-assertion
-ms.openlocfilehash: d49129a38d0413f6006095f03b817885e1ce6c92
-ms.sourcegitcommit: f665226cec96ec818ca06ac6c2d83edb23c9f29c
+ms.openlocfilehash: b6d2e431da85f7c304747df2f804f1714596bfc6
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31012520"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47429181"
 ---
 # <a name="use-azure-key-vault-to-protect-application-secrets"></a>Azure Key Vault を使用したアプリケーション シークレットの保護
 
@@ -39,7 +39,7 @@ Surveys アプリケーションは、次の場所から構成設定を読み込
 * ホスティング環境 (Azure Web アプリのアプリ設定)
 * Key Vault (有効な場合)
 
-これらはそれぞれ、以前の設定を上書きするため、Key Vault に格納されているすべての設定が優先されます。
+これらはそれぞれ、以前の設定をオーバーライドするため、Key Vault に格納されているすべての設定が優先されます。
 
 > [!NOTE]
 > 既定では、Key Vault の構成プロバイダーは無効になっています。 これは、アプリケーションをローカルで実行する場合には必要ありません。 運用環境のデプロイで有効にします。
@@ -103,7 +103,7 @@ Surveys アプリケーションが登録されている Azure AD テナント�
 
 2. [[Azure Portal]][azure-portal] で、ポータルの右上隅にあるアカウントを選択して、Survey アプリケーションが登録されているディレクトリに移動します。
 
-3. **[Azure Active Directory]** > **[アプリの登録]** > Surveys の順に選択します。
+3. **[Azure Active Directory]** > **[アプリの登録]** > [Surveys] の順に選択します。
 
 4.  **[マニフェスト]** をクリックし、**[編集]** をクリックします。
 
@@ -299,5 +299,5 @@ Surveys アプリケーションが登録されている Azure AD テナント�
 [readme]: ./run-the-app.md
 [Setup-KeyVault]: https://github.com/mspnp/multitenant-saas-guidance/blob/master/scripts/Setup-KeyVault.ps1
 [Surveys]: tailspin.md
-[user-secrets]: http://go.microsoft.com/fwlink/?LinkID=532709
+[user-secrets]: /aspnet/core/security/app-secrets
 [sample application]: https://github.com/mspnp/multitenant-saas-guidance

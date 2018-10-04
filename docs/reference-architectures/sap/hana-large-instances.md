@@ -3,16 +3,16 @@ title: SAP HANA on Azure Large Instances を実行する
 description: Azure Large Instances の高可用性環境で SAP HANA を実行するための実証済みプラクティス。
 author: lbrader
 ms.date: 05/16/2018
-ms.openlocfilehash: 746161ac51335af5c48a559830d6e0345dcfb7b1
-ms.sourcegitcommit: 86d86d71e392550fd65c4f76320d7ecf0b72e1f6
+ms.openlocfilehash: d9d619dd7fb17c7cf0a66ce73c1e067ec97a2401
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37864523"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47429708"
 ---
 # <a name="run-sap-hana-on-azure-large-instances"></a>SAP HANA on Azure Large Instances を実行する
 
-この参照用アーキテクチャは、高可用性とディザスター リカバリー (DR) を備えた SAP HANA on Azure (Large Instances) を実行するための一連の実証済みプラクティスを示しています。 このサービスは、HANA Large Instances と呼ばれ、Azure リージョン内の物理サーバーに配置されます。 
+この参照用アーキテクチャは、高可用性とディザスター リカバリー (DR) を備えた SAP HANA on Azure (Large Instances) を実行するための一連の実証済みプラクティスを示しています。 この機能は HANA Large Instances と呼ばれ、Azure リージョン内の物理サーバーに配置されます。 
 
 ![0][0]
 
@@ -33,33 +33,33 @@ ms.locfileid: "37864523"
 
 - **高可用性ペア**。 HANA Large Instances ブレードのグループがひとまとまりで管理され、アプリケーションの冗長性と信頼性が実現します。 
 
-- **MSEE (Microsoft Enterprise Edge)**。 MSEE は、接続プロバイダーまたはネットワークのエッジからの ExpressRoute 回線経由のコネクション ポイントです。 
+- **MSEE (Microsoft Enterprise Edge)**。 MSEE は、接続プロバイダーまたはネットワークのエッジからの ExpressRoute 回線経由の接続ポイントです。 
 
 - **ネットワーク インターフェイス カード (NIC)**。 通信を有効にするために、HANA L インスタンス サーバーには 4 つの仮想 NIC が既定で用意されています。 このアーキテクチャでは、最初の NIC はクライアント通信、2 つ目の NIC は HSR に必要なノード間接続、3 つ目の NIC は HANA L インスタンス ストレージ、4 つ目の NIC は高可用性クラスタリングで使用される iSCSI にそれぞれ必要です。
     
 - **ネットワーク ファイル システム (NFS) ストレージ**。 [NFS][nfs] サーバーでは、セキュリティで保護されたデータ永続化を HANA L インスタンスに提供するネットワーク ファイル共有がサポートされます。
 
-- **ExpressRoute。** [ExpressRoute][expressroute] は、オンプレミス ネットワークと Azure 仮想ネットワークの間に、パブリック インターネットを経由しないプライベート接続を作成するための推奨 Azure ネットワーク サービスです。 Azure VM は、別の ExpressRoute 接続を使用して HANA Large Instances に接続されます。 Azure 仮想ネットワークと HANA Large Instances の間の ExpressRoute 接続は、Microsoft サービスの一環として設定されます。
+- **ExpressRoute。** [ExpressRoute][expressroute] は、オンプレミス ネットワークと Azure 仮想ネットワークの間に、パブリック インターネットを経由しないプライベート接続を作成するための推奨 Azure ネットワーク サービスです。 Azure VM は、別の ExpressRoute 接続を使用して HANA Large Instances に接続されます。 Azure 仮想ネットワークと HANA Large Instances の間の ExpressRoute 接続は、Microsoft が提供する機能の一環として設定されます。
 
 - **ゲートウェイ**。 ExpressRoute Gateway は、SAP アプリケーション レイヤーに使用される Azure 仮想ネットワークを、HANA L インスタンス ネットワークに接続するときに使用されます。 [High Performance または Ultra Performance][sku] SKU を使用してください。
 
-- **ディザスター リカバリー (DR)**。 必要に応じて、ストレージ レプリケーションがサポートされ、プライマリから別のリージョンの [DR サイト][DR-site]にレプリケートされるように構成されます。  
+- **ディザスター リカバリー (DR)**。 要求に応じて、ストレージ レプリケーションがサポートされ、プライマリから別のリージョンの [DR サイト][DR-site]にレプリケートされるように構成されます。  
  
 ## <a name="recommendations"></a>Recommendations
 要件は変わる場合があります。これらの推奨事項は原案として使用してください。
 
 ### <a name="hana-large-instances-compute"></a>HANA Large Instances のコンピューティング
-[Large Instances][physical] は Intel EX E7 CPU アーキテクチャに基づいた物理サーバーで、L インスタンス スタンプ、つまり一連の特定のサーバーまたはブレードで構成されます。 1 つのコンピューティング ユニットが 1 つのサーバーまたはブレードに相当し、スタンプは、複数のサーバーまたはブレードで構成されます。 L インスタンス スタンプ内では、サーバーは共有されず、お客様の 1 つの SAP HANA デプロイの実行専用になります。
+[Large Instances][physical] は Intel EX E7 CPU アーキテクチャに基づいた物理サーバーで、L インスタンス スタンプ、つまり一連の特定のサーバーまたはブレードで構成されます。 1 つのコンピューティング ユニットが 1 つのサーバーまたはブレードに相当し、スタンプは、複数のサーバーまたはブレードで構成されます。 L インスタンス スタンプ内では、サーバーは共有されず、お客様 1 人の SAP HANA デプロイの実行専用になります。
 
-さまざまな SKU を HANA Large Instances に使用でき、S/4HANA またはその他の SAP HANA ワークロードに対して、最大 20 TB の単一インスタンス (60 TB スケールアウト) のメモリがサポートされます。 また、[2 つのクラス][classes]のサーバーが提供されます。
+さまざまな SKU を HANA Large Instances に使用でき、S/4HANA またはその他の SAP HANA ワークロードに対して、最大 20 TB の単一インスタンス (60 TB スケールアウト) のメモリがサポートされます。 [2 つのクラス][classes]のサーバーが提供されます。
 
 - Type I クラス: S72、S72m、S144、S144m、S192、S192m
 
 - Type II クラス: S384、S384m、S384xm、S576m、S768m、S960m
 
-たとえば、S72 SKU は 768 GB の RAM、3 テラバイト (TB) のストレージ、2 つの Intel Xeon プロセッサ (E7-8890 v3) 36 コアを備えています。 アーキテクチャと設計のセッションで決めたサイズ要件を満たす SKU を選択してください。 サイズ設定が選んだ SKU に該当することを必ず確認してください。 機能とデプロイの要件は[種類によって異なります][type]。また、可用性は[リージョン][region]によって異なります。 ある SKU から大きな SKU にステップアップすることもできます。
+たとえば、S72 SKU は 768 GB の RAM、3 テラバイト (TB) のストレージ、2 つの Intel Xeon プロセッサ (E7-8890 v3) 36 コアを備えています。 アーキテクチャと設計のセッションで決めたサイズ要件を満たす SKU を選択してください。 サイズ設定が選んだ SKU に該当することを必ず確認してください。 機能とデプロイの要件は[種類によって異なります][type]。また、可用性は[リージョン][region]によって異なります。 ある SKU から、より大きな SKU にステップアップすることもできます。
 
-Microsoft では大規模なインスタンスのセットアップの確立をお手伝いしますが、オペレーティング システムの構成設定については、お客様の責任で検証する必要があります。 必ず最新の SAP Note でご自身の Linux リリースを確認してください。
+Microsoft では L インスタンスのセットアップの確立をお手伝いしますが、オペレーティング システムの構成設定については、お客様の責任で検証する必要があります。 必ず最新の SAP Notes でご自身の Linux リリースを確認してください。
 
 ### <a name="storage"></a>Storage
 ストレージ レイアウトは、SAP HANA 向け TDI の推奨事項に従って実装されます。 HANA Large Instances は、TDI 標準仕様に適合した固有のストレージ構成を備えています。 ただし、追加のストレージを 1 TB 単位で購入することができます。 
@@ -69,7 +69,7 @@ Microsoft では大規模なインスタンスのセットアップの確立を�
 プライマリ サイトで高可用性をサポートするために、さまざまなストレージ レイアウトを使用します。 たとえば、複数ホストのスケールアウトでは、ストレージは共有されます。 HSR など、アプリケーション ベースのレプリケーションによって、高可用性を実現することもできます。 ただし、DR については、スナップショット ベースのストレージ レプリケーションが使用されます。
 
 ### <a name="networking"></a>ネットワーク
-このアーキテクチャでは、仮想ネットワークと物理ネットワークの両方が使用されます。 仮想ネットワークは Azure IaaS に含まれており、[ExpressRoute][expressroute] 回線経由で個別の HANA Large Instances 物理ネットワークに接続されます。 Azure 仮想ネットワークのワークロードは、プレミス間のゲートウェイによって、お客様のオンプレミス サイトに接続されます。
+このアーキテクチャでは、仮想ネットワークと物理ネットワークの両方が使用されます。 仮想ネットワークは Azure IaaS に含まれており、[ExpressRoute][expressroute] 回線経由で個別の HANA Large Instances 物理ネットワークに接続されます。 Azure 仮想ネットワークのワークロードは、クロスプレミス  ゲートウェイによって、お客様のオンプレミス サイトに接続されます。
 
 HANA Large Instances ネットワークは、セキュリティを確保するために相互に分離されています。 専用ストレージ レプリケーションを除いて、異なるリージョンにあるインスタンスが相互に通信することはできません。 ただし、HSR を使用するには、リージョン間の通信が必要です。 [IP ルーティング テーブル][ip]またはプロキシを使用すると、リージョン間 HSR が可能です。
 
@@ -78,7 +78,7 @@ HANA Large Instances ネットワークは、セキュリティを確保する�
 プロビジョニング中、HANA Large Instances 用の ExpressRoute が既定で追加されます。 セットアップについては、必須の CIDR アドレス範囲およびドメイン ルーティングなど、特定のネットワーク レイアウトが必要です。 詳細については、「[Azure での SAP HANA on Azure (L インスタンス) のインフラストラクチャと接続][HLI-infrastructure]」を参照してください。
 
 ## <a name="scalability-considerations"></a>スケーラビリティに関する考慮事項
-スケールアップまたはスケールダウンするには、HANA Large Instances で使用できる多数のサーバー サイズから選択します。 サイズは[タイプ I とタイプ II][classes] に分類され、さまざまなワークロードに対応できます。 今後 3 年間のワークロードに合わせて拡張できるサイズを選択してください。 1 年のコミットメントを使用することもできます。
+スケールアップまたはスケールダウンするには、HANA Large Instances で使用できる多数のサーバー サイズから選択します。 サイズは[Type I と Type II][classes] に分類され、さまざまなワークロードに対応できます。 今後 3 年間のワークロードに合わせて拡張できるサイズを選択してください。 1 年のコミットメントを使用することもできます。
 
 複数ホストのスケールアウト配置は、通常、データベース パーティション分割戦略の 1 つとして BW/4HANA デプロイに使用されます。 スケールアウトするには、インストール前に HANA テーブルの配置を計画します。 インフラストラクチャの観点から考えると、複数のホストを共有ストレージ ボリュームに接続することで、HANA システムのコンピューティング worker ノードのいずれかで障害が発生したときに、スタンバイ ホストによる引き継ぎが迅速に行われます。
 
@@ -128,8 +128,6 @@ HANA Large Instances ネットワークは、セキュリティを確保する�
 | ストレージ スナップショット   | HANA L Large Instances に含まれる。 HANA Large Instances 用に最適化された DR。 ブート ボリューム バックアップのサポート。 | ボリュームあたり最大 254 スナップショット。                          |
 | ログ バックアップ         | 特定の時点への復旧に必要。                                                                   |                                                            |
 | その他のバックアップ ツール | 冗長バックアップの場所。                                                                             | 追加のライセンス コスト。                                |
-
-また、SapHanaTutorial.com の記事「[Comparison between HANA backup options (HANA バックアップ オプションの比較)][sap-hana-tutorial]」も役に立ちます。
 
 ## <a name="manageability-considerations"></a>管理容易性に関する考慮事項
 CPU、メモリ、ネットワーク帯域幅、記憶域スペースなどの HANA Large Instances リソースを、SAP HANA Studio、SAP HANA Cockpit、SAP Solution Manager、およびその他のネイティブの Linux ツールを使用して監視します。 HANA Large Instances には監視ツールは組み込まれていません。 Microsoft は、お客様の組織の要件に従って[トラブルシューティングおよび監視][hli-troubleshoot]を行うのに役立つリソースを提供しています。また、Microsoft サポート チームは、技術的な問題のトラブルシューティングをお手伝いいたします。 
@@ -183,7 +181,7 @@ CPU、メモリ、ネットワーク帯域幅、記憶域スペースなどの H
 [running-SAP]: https://blogs.msdn.microsoft.com/saponsqlserver/2016/06/07/sap-on-sql-general-update-for-customers-partners-june-2016/
 [region]: https://azure.microsoft.com/global-infrastructure/services/
 [running-sap-blog]: https://blogs.msdn.microsoft.com/saponsqlserver/2017/05/04/sap-on-azure-general-update-for-customers-partners-april-2017/
-[quick-sizer]: http://service.sap.com/quicksizing
+[quick-sizer]: https://service.sap.com/quicksizing
 [sap-1793345]: https://launchpad.support.sap.com/#/notes/1793345
 [sap-1872170]: https://launchpad.support.sap.com/#/notes/1872170
 [sap-2121330]: https://launchpad.support.sap.com/#/notes/2121330
@@ -191,12 +189,11 @@ CPU、メモリ、ネットワーク帯域幅、記憶域スペースなどの H
 [sap-1736976]: https://launchpad.support.sap.com/#/notes/1736976
 [sap-2296290]: https://launchpad.support.sap.com/#/notes/2296290
 [sap-community]: https://www.sap.com/community.html
-[sap-hana-tutorial]: http://saphanatutorial.com/comparison-between-hana-backup-options/
 [sap-security]: https://archive.sap.com/documents/docs/DOC-62943
 [scripts]: /azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery
 [sku]: /azure/expressroute/expressroute-about-virtual-network-gateways
 [sla]: https://azure.microsoft.com/support/legal/sla/virtual-machines
-[stack-overflow]: http://stackoverflow.com/tags/sap/info
+[stack-overflow]: https://stackoverflow.com/tags/sap/info
 [stonith]: /azure/virtual-machines/workloads/sap/ha-setup-with-stonith
 [subnet]: /azure/virtual-network/virtual-network-manage-subnet
 [swd]: https://help.sap.com/doc/saphelp_nw70ehp2/7.02.16/en-us/48/8fe37933114e6fe10000000a421937/frameset.htm

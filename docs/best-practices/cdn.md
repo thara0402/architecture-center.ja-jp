@@ -4,12 +4,12 @@ description: コンテンツ配信ネットワーク (CDN) で Azure でホス�
 author: dragon119
 ms.date: 02/02/2018
 pnp.series.title: Best Practices
-ms.openlocfilehash: 42b73db08ecef858f5279ea292cf8c0df77b847c
-ms.sourcegitcommit: 29fbcb1eec44802d2c01b6d3bcf7d7bd0bae65fc
+ms.openlocfilehash: 9805b1b6df8cedd7668eb9e85f741ee81c3dfa58
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2018
-ms.locfileid: "29563559"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47428892"
 ---
 # <a name="best-practices-for-using-content-delivery-networks-cdns"></a>コンテンツ配信ネットワーク (CDN) を使用するためのベスト プラクティス
 
@@ -56,7 +56,7 @@ CDN が適していないシナリオを次に示します。
 
 CDN の使用は、アプリケーションの負荷を最小限に抑え、可用性とパフォーマンスを最大限にするために有効な方法です。 アプリケーションで使用する適切なコンテンツとリソースのすべてに対して、この手法の採用を検討する必要があります。 CDN の使用戦略を立てるときは、次のセクションに示す項目を考慮してください。
 
-### <a name="deployment"></a>デプロイ
+### <a name="deployment"></a>Deployment
 アプリケーション デプロイメント パッケージまたはプロセスに静的コンテンツを含めない場合は、必要に応じて、アプリケーションとは別に静的コンテンツをプロビジョニングおよびデプロイします。 アプリケーション コンポーネントと静的リソース コンテンツの両方を管理するために使用するバージョン管理アプローチに対して、どのような影響があるかを考慮してください。
 
 バンドルと縮小の技術を使用して、クライアントの読み込み時間を短縮することを検討してください。 バンドルでは、複数のファイルを単一のファイルに連結します。 縮小では、機能を変更することなく、スクリプトおよび CSS ファイルから不要な文字を削除します。
@@ -91,7 +91,7 @@ CDN は、CDN から提供された証明書を使用して HTTPS (SSL) 上で�
 CDN を使用してフロント ファイルなどの静的アセットを配信する場合は、 *XMLHttpRequest* 呼び出しを使用して異なるドメインからこれらのリソースを要求すると、同じ配信元ポリシーの問題が起こる場合があります。 多くの Web ブラウザーは、適切な応答ヘッダーを設定するように Web サーバーが構成されていない場合、クロス オリジン リソース共有 (CORS) を回避します。 次のいずれかの方法を使用して、CORS をサポートする CDN を構成できます。
 
 * CDN を構成して、CORS ヘッダーを応答に追加します。 詳細については、[CORS を使用する Azure CDN](/azure/cdn/cdn-cors) に関するページを参照してください。 
-* 配信元が Azure Blob ストレージの場合は、ストレージ エンドポイントに CORS 規則を追加します。 詳細については、「 [Azure ストレージ サービスでのクロス オリジン リソース共有 (CORS) のサポート](http://msdn.microsoft.com/library/azure/dn535601.aspx)」を参照してください。
+* 配信元が Azure Blob ストレージの場合は、ストレージ エンドポイントに CORS 規則を追加します。 詳細については、「 [Azure ストレージ サービスでのクロス オリジン リソース共有 (CORS) のサポート](/rest/api/storageservices/Cross-Origin-Resource-Sharing--CORS--Support-for-the-Azure-Storage-Services)」を参照してください。
 * アプリケーションを構成して、CORS ヘッダーを設定します。 たとえば、ASP.NET Core ドキュメントの「[クロス オリジン要求 (CORS) を有効にします](/aspnet/core/security/cors)」をご覧ください。
 
 ### <a name="cdn-fallback"></a>CDN フォールバック

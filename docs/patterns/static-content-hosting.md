@@ -9,12 +9,12 @@ pnp.pattern.categories:
 - data-management
 - design-implementation
 - performance-scalability
-ms.openlocfilehash: deb15001bea2598d56a2793be78bbc3e7473bdf3
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 450d0c4c08098c1ba48e4c0dac3d058a46e3709b
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
-ms.locfileid: "24541691"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47428213"
 ---
 # <a name="static-content-hosting-pattern"></a>静的コンテンツ ホスティング パターン
 
@@ -74,7 +74,7 @@ Web サーバーは、効率的な動的ページ コード実行や出力キャ
 
 Azure Blob ストレージに配置された静的コンテンツは、Web ブラウザーから直接アクセスできます。 Azure では、クライアントにパブリックに公開できるストレージ上で、HTTP ベースのインターフェイスを提供しています。 たとえば、Azure Blob ストレージ コンテナー内のコンテンツは、次の形式の URL を使用して公開されます。
 
-`http://[ storage-account-name ].blob.core.windows.net/[ container-name ]/[ file-name ]`
+`https://[ storage-account-name ].blob.core.windows.net/[ container-name ]/[ file-name ]`
 
 
 コンテンツをアップロードする際には、ファイルやドキュメントを保持するための、1 つ以上の BLOB コンテナーを作成する必要があります。 新しいコンテナーの既定のアクセス許可はプライベートです。クライアントがコンテンツにアクセスできるようにするには、これをパブリックに変更する必要があります。 コンテンツを匿名アクセスから保護する必要がある場合は、[バレット キー パターン](valet-key.md)を実装できます。これによりユーザーは、有効なトークンを提示しないとリソースをダウンロードできなくなります。
@@ -89,7 +89,7 @@ Azure Blob ストレージに配置された静的コンテンツは、Web ブ�
 クライアントに配信されるページ内のリンクでは、BLOB コンテナーやリソースの完全 URL を指定する必要があります。 たとえば、パブリック コンテナー内の画像へのリンクを含んだページには、次の HTML コードが含まれる可能性があります。
 
 ```html
-<img src="http://mystorageaccount.blob.core.windows.net/myresources/image1.png"
+<img src="https://mystorageaccount.blob.core.windows.net/myresources/image1.png"
      alt="My image" />
 ```
 
@@ -169,5 +169,4 @@ Views\Home フォルダー内の Index.cshtml ファイルには、`StaticConten
 
 - このパターンを示すサンプルは [GitHub](https://github.com/mspnp/cloud-design-patterns/tree/master/static-content-hosting) から入手できます。
 - 「[Valet Key pattern](valet-key.md)」(バレット キー パターン)。 ターゲット リソースの利用を匿名ユーザーに許可しない場合は、静的コンテンツを保持するストアに対してセキュリティを実装する必要があります。 トークンやキーを使用して、特定のリソースやサービス (クラウド ホスト型ストレージ サービスなど) に対するクライアントの直接アクセスを制限する方法について説明しています。
-- Infosys ブログ内の「[An efficient way of deploying a static web site on Azure](http://www.infosysblogs.com/microsoft/2010/06/an_efficient_way_of_deploying.html)」(静的 Web サイトを Azure 上にデプロイするための効率的な方法)。
 - [Blob Service Concepts](https://msdn.microsoft.com/library/azure/dd179376.aspx)(Blob サービスの概念)

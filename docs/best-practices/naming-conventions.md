@@ -4,12 +4,12 @@ description: Azure リソースの名前付け規則。 仮想マシン、スト
 author: telmosampaio
 ms.date: 05/18/2017
 pnp.series.title: Best Practices
-ms.openlocfilehash: 625f672c80b0256e93932b72367768f37c1e72f4
-ms.sourcegitcommit: f1dcc388c8b4fc983549c36d7e6b009fa1f072ba
+ms.openlocfilehash: 96402b86b9dc0c57599aae585b41d0d03581c333
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46329880"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47429657"
 ---
 # <a name="naming-conventions"></a>名前付け規則
 
@@ -176,7 +176,7 @@ Azure Resource Manager では、コンテキストを識別し、自動化を合
 
 Azure ストレージ アカウントの BLOB データにアクセスするためのカスタム ドメイン名を構成できます。 Blob service の既定のエンドポイントは https://\<name\>.blob.core.windows.net です。
 
-ただし、カスタム ドメイン (www.contoso.com など) をストレージ アカウントの BLOB エンドポイントにマップしている場合、ユーザーはそのドメインを使って、ストレージ アカウントの BLOB データにもアクセスできます。 たとえば、カスタム ドメイン名を使用すると、`http://mystorage.blob.core.windows.net/mycontainer/myblob` に、`http://www.contoso.com/mycontainer/myblob` としてアクセスできます。
+ただし、カスタム ドメイン (www.contoso.com など) をストレージ アカウントの BLOB エンドポイントにマップしている場合、ユーザーはそのドメインを使って、ストレージ アカウントの BLOB データにもアクセスできます。 たとえば、カスタム ドメイン名を使用すると、`https://mystorage.blob.core.windows.net/mycontainer/myblob` に、`https://www.contoso.com/mycontainer/myblob` としてアクセスできます。
 
 この機能の構成の詳細については、「[BLOB ストレージ エンドポイントのカスタム ドメイン名の構成](/azure/storage/storage-custom-domain-name/)」を参照してください。
 

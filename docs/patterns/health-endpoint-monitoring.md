@@ -9,12 +9,12 @@ pnp.pattern.categories:
 - availability
 - management-monitoring
 - resiliency
-ms.openlocfilehash: 3b3bce46b460148af17bfe6064cd052a5f9a6458
-ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
+ms.openlocfilehash: 22a4e47c4dd8dd3dd11a4238e859acbea49f9d1b
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30847851"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47428977"
 ---
 # <a name="health-endpoint-monitoring-pattern"></a>正常性エンドポイントの監視パターン
 
@@ -89,7 +89,7 @@ Web アプリケーションを監視するサービスとツールを利用で�
 
      >  アプリケーションの操作が損なわれることなく基本的な機能テストが実行される別個のエンドポイントへの影響は、多くの場合、DoS 攻撃の及ぼす影響が少なくなります。 機密情報の漏洩につながる可能性のあるテストの使用は避けるのが理想的です。 攻撃者にとって有益な情報を返す必要がある場合は、エンドポイントとデータを未承認のアクセスから防ぐ方法を検討してください。 この場合、不明瞭さに依存するだけでは不十分です。 サーバーの負荷を増加させることになりますが、HTTPS 接続の使用と機密データの暗号化も検討する必要があります。
 
-- 認証を使用してセキュリティで保護されているエンドポイントにアクセスする方法。 正常性確認要求での資格情報の追加は、すべてのツールとフレームワークで構成できるわけではありません。 たとえば、Microsoft Azure の組み込みの正常性確認機能では、認証資格情報を指定できません。 サードパーティの選択肢には、[Pingdom](https://www.pingdom.com/)、[Panopta](http://www.panopta.com/)、[NewRelic](https://newrelic.com/)、[Statuscake](https://www.statuscake.com/) があります。
+- 認証を使用してセキュリティで保護されているエンドポイントにアクセスする方法。 正常性確認要求での資格情報の追加は、すべてのツールとフレームワークで構成できるわけではありません。 たとえば、Microsoft Azure の組み込みの正常性確認機能では、認証資格情報を指定できません。 サードパーティの選択肢には、[Pingdom](https://www.pingdom.com/)、[Panopta](https://www.panopta.com/)、[NewRelic](https://newrelic.com/)、[Statuscake](https://www.statuscake.com/) があります。
 
 - 監視エージェントが正しく実行されるようにする方法。 1 つの手法として、アプリケーション構成からの値、またはエージェントのテストに使用できるランダムな値を返すだけのエンドポイントを公開します。
 

@@ -8,12 +8,12 @@ pnp.series.title: Cloud Design Patterns
 pnp.pattern.categories:
 - data-management
 - performance-scalability
-ms.openlocfilehash: a4e35a19851f4742b5c154197c22bb1fe13de108
-ms.sourcegitcommit: e9d9e214529edd0dc78df5bda29615b8fafd0e56
+ms.openlocfilehash: bc2b6aeb6966d14327a21849adbbfe635eae59df
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37091106"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47428858"
 ---
 # <a name="sharding-pattern"></a>シャーディング パターン
 
@@ -219,6 +219,3 @@ Trace.TraceInformation("Fanout query complete - Record Count: {0}",
 - [データのパーティション分割のガイダンス](https://msdn.microsoft.com/library/dn589795.aspx)。 データ ストアのシャーディングでは、新しい問題が発生する場合があります。 スケーラビリティの向上、競合の削減、パフォーマンスの最適化のため、クラウドのデータ ストアのパーティション分割に関する問題について説明します。
 - [Index Table Pattern (インデックス テーブル パターン)](index-table.md)。 場合によっては、シャード キーの設計だけでクエリを完全にサポートできないことがあります。 シャード キー以外のキーを指定して、アプリケーションが大規模なデータ ストアからデータを簡単に取得できるようにします。
 - [Materialized View Pattern (具体化されたビュー パターン)](materialized-view.md) クエリ操作のパフォーマンスを維持するには、特に、サマリー データがシャード全体に分散された情報に基づいている場合は、データを集計、要約する具体化されたビューを作成すると便利です。 これらのビューの生成、作成方法について説明します。
-- [シャード レッスン](http://www.addsimplicity.com/adding_simplicity_an_engi/2008/08/shard-lessons.html): Adding Simplicity ブログ。
-- [データベースのシャーディング](http://dbshards.com/database-sharding/): CodeFutures web サイト。
-- [スケーラブルなデータベースの構築: データベース シャーディング スキームの長所と短所](http://www.25hoursaday.com/weblog/2009/01/16/BuildingScalableDatabasesProsAndConsOfVariousDatabaseShardingSchemes.aspx): Dare Obasanjo のブログ。

@@ -7,12 +7,12 @@ ms.date: 06/23/2017
 pnp.series.title: Cloud Design Patterns
 pnp.pattern.categories:
 - design-implementation
-ms.openlocfilehash: 6e05a30245fbf5183a4e50a54650505f5a5f2aa8
-ms.sourcegitcommit: 85334ab0ccb072dac80de78aa82bcfa0f0044d3f
+ms.openlocfilehash: bd212b8b4406a08058f811db030843f732e08cdc
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35252926"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47428841"
 ---
 # <a name="compute-resource-consolidation-pattern"></a>コンピューティング リソース統合パターン
 
@@ -85,7 +85,7 @@ Azure では、この問題は Cloud Service、App Services、および仮想マ
 
 Azure でクラウド サービスを作成するときに、複数のタスクで実行される処理を 1 つのロールに統合することが可能です。 通常これは、バック グラウンド タスクまたは非同期処理タスクを実行する worker ロールです。
 
-> 場合によっては、Web ロールにバック グラウンド タスクまたは非同期処理タスクを含めることができます。 この手法は、Web ロールで提供される、公開されたインターフェイスのスケーラビリティと応答性に影響を及ぼす場合がありますが、コストを削減し、デプロイを簡略化するのに役立ちます。 「[Combining Multiple Azure Worker Roles into an Azure Web Role (複数の Azure ワーカー ロールを 1 つの Azure Web ロールに集約)](http://www.31a2ba2a-b718-11dc-8314-0800200c9a66.com/2012/02/combining-multiple-azure-worker-roles.html)」という記事には、Web ロールにバック グラウンド タスクまたは非同期処理タスクを実装することの詳細な説明が含まれています。
+> 場合によっては、Web ロールにバック グラウンド タスクまたは非同期処理タスクを含めることができます。 この手法は、Web ロールで提供される、公開されたインターフェイスのスケーラビリティと応答性に影響を及ぼす場合がありますが、コストを削減し、デプロイを簡略化するのに役立ちます。 
 
 このロールが、タスクの開始と停止を行います。 Azure ファブリック コント ローラーがロールを読み込むと、そのロールの `Start` イベントが発生します。 `WebRole` または `WorkerRole` クラスの `OnStart` メソッドデータをオーバーライドし、このイベントを処理できます。このメソッド内のタスクが依存するデータおよびその他のリソースを初期化するなどです。
 
