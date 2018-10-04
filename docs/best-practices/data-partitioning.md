@@ -4,12 +4,12 @@ description: パーティションを個別に管理およびアクセスする�
 author: dragon119
 ms.date: 07/13/2016
 pnp.series.title: Best Practices
-ms.openlocfilehash: d1d9c1b3cf07f724eb010fc260d86ceb84b789ca
-ms.sourcegitcommit: c49aeef818d7dfe271bc4128b230cfc676f05230
+ms.openlocfilehash: 579f78004a662fe412cb8dcc25b9ad1db9782125
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "29059974"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47429504"
 ---
 # <a name="data-partitioning"></a>データのパーティション分割
 
@@ -551,37 +551,37 @@ Event Hubs でのパーティションの使用の詳細については、「[Ev
 [Event Hubs における可用性と一貫性]: /azure/event-hubs/event-hubs-availability-and-consistency
 [azure-limits]: /azure/azure-subscription-service-limits
 [Azure Content Delivery Network]: /azure/cdn/cdn-overview
-[Azure Redis Cache]: http://azure.microsoft.com/services/cache/
+[Azure Redis Cache]: https://azure.microsoft.com/services/cache/
 [Azure Storage Scalability and Performance Targets]: /azure/storage/storage-scalability-targets
 [Azure Storage Table Design Guide]: /azure/storage/storage-table-design-guide
 [Building a Polyglot Solution (多言語ソリューションの構築)]: https://msdn.microsoft.com/library/dn313279.aspx
 [cosmos-db-ru]: /azure/cosmos-db/request-units
 [Data Access for Highly-Scalable Solutions: Using SQL, NoSQL, and Polyglot Persistence (拡張性の高いソリューション用のデータ アクセス: SQL、NoSQL、および Polyglot の永続化機能の使用)]: https://msdn.microsoft.com/library/dn271399.aspx
-[Data consistency primer (データ整合性入門) (データ整合性入門)]: http://aka.ms/Data-Consistency-Primer
+[Data consistency primer (データ整合性入門) (データ整合性入門)]: https://aka.ms/Data-Consistency-Primer
 [Data Partitioning Guidance]: https://msdn.microsoft.com/library/dn589795.aspx
-[Data Types]: http://redis.io/topics/data-types
+[Data Types]: https://redis.io/topics/data-types
 [cosmosdb-sql-api]: /azure/cosmos-db/sql-api-introduction
 [Elastic Database 機能の概要]: /azure/sql-database/sql-database-elastic-scale-introduction
 [event-hubs]: /azure/event-hubs
 [Federations Migration Utility]: https://code.msdn.microsoft.com/vstudio/Federations-Migration-ce61e9c1
 [Azure Service Fabric の Reliable Collections のガイドラインと推奨事項]: /azure/service-fabric/service-fabric-reliable-services-reliable-collections-guidelines
-[Index Table Pattern]: http://aka.ms/Index-Table-Pattern
-[Materialized View Pattern]: http://aka.ms/Materialized-View-Pattern
+[Index Table Pattern]: ../patterns/index-table.md
+[Materialized View Pattern]: ../patterns/materialized-view.md
 [マルチシャード クエリ実行]: /azure/sql-database/sql-database-elastic-scale-multishard-querying
 [Azure Service Fabric の概要]: /azure/service-fabric/service-fabric-overview
 [Service Fabric Reliable Services のパーティション分割]: /azure/service-fabric/service-fabric-concepts-partitioning
-[Partitioning: how to split data among multiple Redis instances (パーティション分割: 複数の Redis インスタンス間でデータを分割する方法) (パーティション分割: 複数の Redis インスタンス間でデータを分割する方法)]: http://redis.io/topics/partitioning
+[Partitioning: how to split data among multiple Redis instances (パーティション分割: 複数の Redis インスタンス間でデータを分割する方法) (パーティション分割: 複数の Redis インスタンス間でデータを分割する方法)]: https://redis.io/topics/partitioning
 [Performing Entity Group Transactions (エンティティ グループ トランザクションの実行)]: https://msdn.microsoft.com/library/azure/dd894038.aspx
-[Redis cluster tutorial (Redis クラスターのチュートリアル)]: http://redis.io/topics/cluster-tutorial
-[Running Redis on a CentOS Linux VM in Microsoft Azure (Microsoft Azure の CentOS Linux VM 上での Redis の実行)]: http://blogs.msdn.com/b/tconte/archive/2012/06/08/running-redis-on-a-centos-linux-vm-in-windows-azure.aspx
+[Redis cluster tutorial (Redis クラスターのチュートリアル)]: https://redis.io/topics/cluster-tutorial
+[Running Redis on a CentOS Linux VM in Microsoft Azure (Microsoft Azure の CentOS Linux VM 上での Redis の実行)]: https://blogs.msdn.microsoft.com/tconte/2012/06/08/running-redis-on-a-centos-linux-vm-in-windows-azure/
 [Elastic Database 分割/マージ ツールを使用したスケーリング]: /azure/sql-database/sql-database-elastic-scale-overview-split-and-merge
 [Azure Content Delivery Network の使用]: /azure/cdn/cdn-create-new-endpoint
 [Service Bus のクォータ]: /azure/service-bus-messaging/service-bus-quotas
 [service-fabric-reliable-collections]: /azure/service-fabric/service-fabric-reliable-services-reliable-collections
 [Azure Search サービスの制限]:  /azure/search/search-limits-quotas-capacity
-[Sharding Pattern (シャーディング パターン)]: http://aka.ms/Sharding-Pattern
+[Sharding Pattern (シャーディング パターン)]: ../patterns/sharding.md
 [Supported data types (Azure Search) (サポートされるデータ型 (Azure Search))]:  https://msdn.microsoft.com/library/azure/dn798938.aspx
-[Transactions (トランザクション)]: http://redis.io/topics/transactions
+[Transactions (トランザクション)]: https://redis.io/topics/transactions
 [Event Hubs とは]: /azure/event-hubs/event-hubs-what-is-event-hubs
 [Azure Search とは]: /azure/search/search-what-is-azure-search
 [SQL Database とは SQL Database の概要、技術の詳細、DTU の説明]: /azure/sql-database/sql-database-technical-overview

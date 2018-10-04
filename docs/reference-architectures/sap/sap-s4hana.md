@@ -3,12 +3,12 @@ title: Azure における Linux Virtual Machines の SAP S/4HANA
 description: 高可用性を備えた Azure の Linux環境で SAP S/4HANA を実行するための実証済みプラクティス。
 author: lbrader
 ms.date: 05/11/2018
-ms.openlocfilehash: 9635de73ec431e0ac678e4008e0c4835796d47ad
-ms.sourcegitcommit: 86d86d71e392550fd65c4f76320d7ecf0b72e1f6
+ms.openlocfilehash: ab056a01f05bde9e9dc7a4439baed367ee663f93
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37864506"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47429589"
 ---
 # <a name="sap-s4hana-for-linux-virtual-machines-on-azure"></a>Azure における Linux Virtual Machines の SAP S/4HANA
 
@@ -151,7 +151,7 @@ SAP アプリケーション レイヤーでは、Azure は、スケールアッ
 
 - **アプリケーション サーバー層**。 SAP アプリケーション サーバーには、ビジネス データが含まれていません。 Azure での単純な DR 戦略は、セカンダリ リージョンで SAP アプリケーション サーバーを作成し、そのサーバーをシャットダウンすることです。 プライマリ アプリケーション サーバーで任意の構成変更やカーネル更新を行った場合、同じ変更がセカンダリ リージョンの仮想マシンに適用されなければなりません。 たとえば、SAP カーネルの実行可能ファイルを DR 仮想マシンにコピーします。 アプリケーション サーバーをセカンダリ リージョンに自動的にレプリケートするためのソリューションとしては、[Azure Site Recovery](/azure/site-recovery/site-recovery-overview) をお勧めします。 このドキュメントの作成時点では、ASR では、Azure VM における高速ネットワーク構成設定のレプリケーションがまだサポートされていません。
 
-- **セントラル サービス**。 SAP アプリケーション スタックのこのコンポーネントにも、ビジネス データが保持されません。 セカンダリ リージョンで VM を作成すると、セントラル サービス ロールを実行できます。 プライマリ セントラル サービス ノードから同期されるコンテンツは、/sapmnt 共有コンテンツだけです。 また、構成の変更やカーネルの更新がプライマリ セントラル サービス サーバーで発生した場合、その変更や更新は、セントラル サービスが実行されているセカンダリ リージョンの VM でもう一度行われなければなりません。 2 つのサーバーを同期するには、Azure Site Recovery を使用してクラスター ノードをレプリケートするか、単純に、定期的にコピーするようにスケジュール設定されたコピー ジョブを使用して、/sapmnt を DR 側にコピーします。 作成、コピー、およびテスト フェールオーバー プロセスの詳細については、「[SAP NetWeaver: Building a Hyper-V and Microsoft Azure–based Disaster Recovery Solution (SAP NetWeaver: Hyper-V および Microsoft Azure ベースのディザスター リカバリー ソリューション)](http://download.microsoft.com/download/9/5/6/956FEDC3-702D-4EFB-A7D3-2DB7505566B6/SAP%20NetWeaver%20-%20Building%20an%20Azure%20based%20Disaster%20Recovery%20Solution%20V1_5%20.docx)」をダウンロードして、「4.3. SAP SPOF layer (ASCS) (4.3 SAP SPOF レイヤー (ASCS))」を参照してください。 このドキュメントは、Windows で実行されている NetWeaver に適用されますが、Linux 用の同等の構成を作成することもできます。 セントラル サービスについては、[Azure Site Recovery](/en-us/azure/site-recovery/site-recovery-overview) を使用して、クラスター ノードとストレージをレプリケートします。 Linux については、High Availability Extension を使用して、3 つのノード geo クラスターを作成します。 
+- **セントラル サービス**。 SAP アプリケーション スタックのこのコンポーネントにも、ビジネス データが保持されません。 セカンダリ リージョンで VM を作成すると、セントラル サービス ロールを実行できます。 プライマリ セントラル サービス ノードから同期されるコンテンツは、/sapmnt 共有コンテンツだけです。 また、構成の変更やカーネルの更新がプライマリ セントラル サービス サーバーで発生した場合、その変更や更新は、セントラル サービスが実行されているセカンダリ リージョンの VM でもう一度行われなければなりません。 2 つのサーバーを同期するには、Azure Site Recovery を使用してクラスター ノードをレプリケートするか、単純に、定期的にコピーするようにスケジュール設定されたコピー ジョブを使用して、/sapmnt を DR 側にコピーします。 作成、コピー、およびテスト フェールオーバー プロセスの詳細については、「[SAP NetWeaver: Building a Hyper-V and Microsoft Azure–based Disaster Recovery Solution (SAP NetWeaver: Hyper-V および Microsoft Azure ベースのディザスター リカバリー ソリューション)](https://download.microsoft.com/download/9/5/6/956FEDC3-702D-4EFB-A7D3-2DB7505566B6/SAP%20NetWeaver%20-%20Building%20an%20Azure%20based%20Disaster%20Recovery%20Solution%20V1_5%20.docx)」をダウンロードして、「4.3. SAP SPOF layer (ASCS) (4.3 SAP SPOF レイヤー (ASCS))」を参照してください。 このドキュメントは、Windows で実行されている NetWeaver に適用されますが、Linux 用の同等の構成を作成することもできます。 セントラル サービスについては、[Azure Site Recovery](/en-us/azure/site-recovery/site-recovery-overview) を使用して、クラスター ノードとストレージをレプリケートします。 Linux については、High Availability Extension を使用して、3 つのノード geo クラスターを作成します。 
 
 - **SAP データベース層**。 HANA でサポートされているレプリケーションに対して HSR を使用します。 2 ノードのローカル高可用性セットアップのほかに、HSR では多層レプリケーションがサポートされます。このレプリケーションで、切り離された Azure リージョンの 3 つ目のノードは、クラスターの一部としてではなく、外部エンティティとして動作し、そのレプリケーション ターゲットとして、クラスター化された HSR ペアのセカンダリ レプリカに登録します。 これにより、レプリケーション デイジー チェーンが形成されます。 DR ノードへのフェールオーバーは、手動プロセスです。
 

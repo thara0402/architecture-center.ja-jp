@@ -6,12 +6,12 @@ ms:date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications
 pnp.series.prev: token-cache
 pnp.series.next: client-assertion
-ms.openlocfilehash: 08bf567085a940287de310f61b9f447d0ce5d5ec
-ms.sourcegitcommit: 3d9ee03e2dda23753661a80c7106d1789f5223bb
+ms.openlocfilehash: 4b54f031d13449e4d87075af5606967da8b5d3df
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2018
-ms.locfileid: "29477446"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47428926"
 ---
 # <a name="federate-with-a-customers-ad-fs"></a>顧客の AD FS とのフェデレーション
 
@@ -56,7 +56,7 @@ ASP.NET 4 による WS-Federation の使用例については、[active-director
 ## <a name="limitations"></a>制限事項
 証明書利用者アプリケーションは、次の表に示すように、既定では id_token で利用可能な要求の固定セットだけを受け取ります。 AD FS 2016 では、OpenID Connect のシナリオで id_token をカスタマイズできます。 詳細については、「[Custom ID Tokens in AD FS (AD FS でのカスタム ID トークン)](/windows-server/identity/ad-fs/development/customize-id-token-ad-fs-2016)」をご覧ください。
 
-| 要求 | [説明] |
+| 要求 | 説明 |
 | --- | --- |
 | aud |対象。 要求の発行先のアプリケーション。 |
 | authenticationinstant |[認証インスタント]。 認証が発生した時刻。 |
@@ -180,15 +180,15 @@ Set-ADFSClaimsProviderTrust -TargetName "name" -OrganizationalAccountSuffix @("s
 
 
 <!-- Links -->
-[Azure AD Connect]: /azure/active-directory/active-directory-aadconnect/
+[Azure AD Connect]: /azure/active-directory/hybrid/whatis-hybrid-identity
 [フェデレーションの信頼]: https://technet.microsoft.com/library/cc770993(v=ws.11).aspx
 [アカウント パートナー]: https://technet.microsoft.com/library/cc731141(v=ws.11).aspx
 [リソース パートナー]: https://technet.microsoft.com/library/cc731141(v=ws.11).aspx
 [認証インスタント]: https://msdn.microsoft.com/library/system.security.claims.claimtypes.authenticationinstant%28v=vs.110%29.aspx
-[期限切れ日時]: http://tools.ietf.org/html/draft-ietf-oauth-json-web-token-25#section-4.1.
+[期限切れ日時]: https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-25#section-4.1.
 [名前の識別子]: https://msdn.microsoft.com/library/system.security.claims.claimtypes.nameidentifier(v=vs.110).aspx
 [active-directory-on-azure]: https://msdn.microsoft.com/library/azure/jj156090.aspx
-[ブログ記事]: http://www.cloudidentity.com/blog/2015/08/21/OPENID-CONNECT-WEB-SIGN-ON-WITH-ADFS-IN-WINDOWS-SERVER-2016-TP3/
+[ブログ記事]: https://www.cloudidentity.com/blog/2015/08/21/OPENID-CONNECT-WEB-SIGN-ON-WITH-ADFS-IN-WINDOWS-SERVER-2016-TP3/
 [AD FS サインイン ページのカスタマイズ]: https://technet.microsoft.com/library/dn280950.aspx
 [sample application]: https://github.com/mspnp/multitenant-saas-guidance
 [client assertion]: client-assertion.md
