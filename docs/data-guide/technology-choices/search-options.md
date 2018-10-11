@@ -3,12 +3,12 @@ title: 検索データ ストアの選択
 description: ''
 author: zoinerTejada
 ms:date: 02/12/2018
-ms.openlocfilehash: ead07e307e96696faa5ddf48505eee378027523c
-ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
+ms.openlocfilehash: 9576bbba9609a04ccc7851d55dd28853ffc6b701
+ms.sourcegitcommit: f6be2825bf2d37dfe25cfab92b9e3973a6b51e16
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30848616"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48858182"
 ---
 # <a name="choosing-a-search-data-store-in-azure"></a>Azure での検索データ ストアの選択
 
@@ -49,7 +49,7 @@ Azure では、次のデータ ストアのすべてが、検索インデック�
 | マネージド サービスか | [はい] | いいえ  | 可能  | [はい] |  
 | REST API | [はい] | はい | [はい] | いいえ  |
 | プログラミング | .NET | Java | Java | T-SQL | 
-| 一般的なファイルの種類 (PDF、DOCX、TXT、およびなど) 向けのドキュメント インデクサー | [はい] | いいえ  | [はい] | いいえ  |
+| 一般的なファイルの種類 (PDF、DOCX、TXT、およびなど) 向けのドキュメント インデクサー | [はい] | いいえ  | はい | いいえ  |
 
 ### <a name="manageability-capabilities"></a>管理容易性機能
 
@@ -60,15 +60,15 @@ Azure では、次のデータ ストアのすべてが、検索インデック�
 
 ### <a name="analytic-workload-capabilities"></a>分析ワークロード機能
 
-| | Azure Search | Elasticsearch | Solr を使用する HDInsight | SQL Databash | 
+| | Azure Search | Elasticsearch | Solr を使用する HDInsight | SQL Database | 
 | --- | --- | --- | --- | --- | 
 | フルテキスト検索を上回る分析のサポート | いいえ  | 可能  | はい | [はい] |
 | ログ分析スタックの一部 | いいえ  | はい (ELK) |  いいえ  | いいえ  |
-| セマンティック検索のサポート | はい (類似のドキュメントのみ検索) | [はい] | はい | [はい] | 
+| セマンティック検索のサポート | はい (類似のドキュメントのみ検索) | [はい] | はい | はい | 
 
 ### <a name="security-capabilities"></a>セキュリティ機能
 
-| | Azure Search | Elasticsearch | Solr を使用する HDInsight | SQL Databash | 
+| | Azure Search | Elasticsearch | Solr を使用する HDInsight | SQL Database | 
 | --- | --- | --- | --- | --- | 
 | 行レベルのセキュリティ | 一部 (グループ ID でフィルター処理するアプリケーション クエリが必要) | 一部 (グループ ID でフィルター処理するアプリケーション クエリが必要) | [はい] | [はい] | 
 | 透過的なデータ暗号化 | いいえ  | いいえ  | いいえ  | [はい] |  
