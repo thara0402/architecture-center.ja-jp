@@ -4,12 +4,12 @@ description: 設計時の回復性に関する問題のガイダンスを提供�
 author: petertaylor9999
 ms.date: 01/10/2018
 ms.custom: resiliency, checklist
-ms.openlocfilehash: 17612ee08e2329ea648fd21d6764e7bae1ca20e2
-ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
+ms.openlocfilehash: 15ad749c12dc8a45c9e7e08376452685d8ad7c9b
+ms.sourcegitcommit: b2a4eb132857afa70201e28d662f18458865a48e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47429096"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48819025"
 ---
 # <a name="resiliency-checklist"></a>回復性のチェックリスト
 
@@ -39,7 +39,7 @@ ms.locfileid: "47429096"
 
 **負荷分散を使用して要求を分散します。** 負荷分散は、正常でないインスタンスをローテーションから除去することで、アプリケーションの要求を正常なサービス インスタンスに分散します。 サービスが Azure App Service または Azure Cloud Services を使用している場合は、既に負荷が分散されています。 ただし、アプリケーションが Azure VM を使用している場合は、ロード バランサーをプロビジョニングする必要があります。 詳細については、「[Azure Load Balancer ](/azure/load-balancer/load-balancer-overview/)の概要」をご覧ください。
 
-**複数のインスタンスを使用するように Azure Application Gateway を構成します。** アプリケーションの要件によっては、アプリケーションのサービスに対する要求の分散には、[Azure Application Gateway](/azure/application-gateway/application-gateway-introduction/) のほうが適している場合があります。 ただし、Application Gateway サービスの単一インスタンスは SLA によって保証されないため、Application Gateway のインスタンスが失敗した場合はアプリケーションが失敗する可能性があります。 [SLA](https://azure.microsoft.com/support/legal/sla/application-gateway/v1_0/) の条件に基づいてサービスの可用性を保証するには、複数の中規模または大規模の Application Gateway インスタンスをプロビジョニングしてください。
+**複数のインスタンスを使用するように Azure Application Gateway を構成します。** アプリケーションの要件によっては、アプリケーションのサービスに対する要求の分散には、[Azure Application Gateway](/azure/application-gateway/application-gateway-introduction/) のほうが適している場合があります。 ただし、Application Gateway サービスの単一インスタンスは SLA によって保証されないため、Application Gateway のインスタンスが失敗した場合はアプリケーションが失敗する可能性があります。 [SLA](https://azure.microsoft.com/support/legal/sla/application-gateway/) の条件に基づいてサービスの可用性を保証するには、複数の中規模または大規模の Application Gateway インスタンスをプロビジョニングしてください。
 
 **アプリケーション層ごとの可用性セットを使用します。** [可用性セット][availability-sets]にインスタンスを配置すると、[SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) がより高くなります。 
 
