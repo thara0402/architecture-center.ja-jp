@@ -5,228 +5,79 @@ author: david-stanford
 ms:date: 08/01/2018
 layout: LandingPage
 ms.topic: landing-page
-ms.openlocfilehash: 8783a49b8b93a117563e5507ef41e5ad100ca5a6
-ms.sourcegitcommit: 20953a7bed708713e4c972d390a2910505e80f08
+ms.openlocfilehash: 63a566126168dba382792967b3625bd6e085c054
+ms.sourcegitcommit: b2a4eb132857afa70201e28d662f18458865a48e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44040402"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48818838"
 ---
 # <a name="azure-example-scenarios"></a>Azure シナリオ例
 
-これらのシナリオ例は、実際の顧客事例に基づいています。 独自のユース ケースの構築の高速化や簡易化を目的としたものではありません。 各ソリューションはアーキテクチャの図を含み、独自のビジネス ニーズやソリューションの大まかな価格を満たすために代用できる一部の代替候補を探します。  また、ほぼすべてに Azure アカウントでソリューションを簡単にデプロイするための方法も含まれています。
+シナリオの例では、Azure でのアーキテクチャ上およびビジネス上の具体的な問題を解決するためのプロセスについて説明します。  各シナリオは、お客様の実例に基づいており、独自の実装を促進できるように、すばやく簡単に読むことができるガイダンスを提供することを目的としています。
 
-ジャンプ先: [AI シナリオ](#ai-scenarios) | [アプリケーション シナリオ](#application-scenarios) | [データ シナリオ](#data-scenarios) | [インフラストラクチャシナリオ](#infrastructure-scenarios) 
+各シナリオ内には、アーキテクチャの図、データ フロー、およびすべてのコンポーネントの詳細情報が記載されています。  お客様のビジネス ニーズに、より適合する可能性のある代替テクノロジ、ソリューションの大まかな価格、および運用環境でソリューションを実行する際の考慮事項についても説明します。  また、多くのシナリオには、ご自身の Azure アカウントでソリューションを簡単にデプロイする方法も含まれています。
 
-## <a name="ai-scenarios"></a>AI シナリオ
+ジャンプ先: [AI シナリオ](#ai-scenarios) | [アプリケーション シナリオ](#application-scenarios) | [データ シナリオ](#data-scenarios) | [インフラストラクチャシナリオ](#infrastructure-scenarios)
 
-<ul  class="panelContent cardsF">
-<!-- SQL Data Warehouse -->
-<li style="display: flex; flex-direction: column;">
-    <a href="./ai/intelligent-apps-image-processing.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
-        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
-            <div class="cardPadding" style="display: flex;">
+<ul class="panelContent cardsL">
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
                 <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="../_images/icons/cognitive.png" />
-                        </div>
-                    </div>
                     <div class="cardText">
-                        <h3>画像処理</h3>
-                        <p>保険業界に重点を置き、Cognitive Services を使用して画像を分析します。</p>
+                        <h3>新しいシナリオ</h3>
+                        <a class="barLink" href="/azure/architecture/example-scenario/apps/decentralized-trust" data-linktype="absolute-path">Azure での銀行間で分散された信頼</a>
+                        <a class="barLink" href="/azure/architecture/example-scenario/infrastructure/wordpress" data-linktype="absolute-path">高度にスケーラブルで安全な WordPress Web サイト</a>
+                        <a class="barLink" href="/azure/architecture/example-scenario/data/data-warehouse" data-linktype="absolute-path">売上とマーケティングのためのデータ ウェアハウスおよび分析</a>
                     </div>
                 </div>
             </div>
         </div>
-    </a>
-</li>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>上位のシナリオ</h3>
+                        <a class="barLink" href="/azure/architecture/example-scenario/ai/intelligent-apps-image-processing" data-linktype="absolute-path">保険金請求イメージの分類</a>
+                        <a class="barLink" href="/azure/architecture/example-scenario/apps/commerce-chatbot" data-linktype="absolute-path">ホテル予約用の会話型チャットボット</a>
+                        <a class="barLink" href="/azure/architecture/example-scenario/infrastructure/regulated-multitier-app" data-linktype="absolute-path">規制対象業界向けのセキュリティで保護された Windows Web アプリケーション</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRy0ZnoKOXdVBqaBz653YPElUNjlNMEpPMDNSSU1aWEIxMFNFNlY2T0E3NC4u" data-linktype="external">
+                            <div class="cardSize cardsF">
+                                <div class="cardPadding">
+                                    <div class="card">
+                                        <div class="cardImageOuter">
+                                            <div class="cardImage">
+                                                <img src="https://docs.microsoft.com/en-us/media/common/i_feedback.svg" alt="" data-linktype="external">
+                                            </div>
+                                        </div>
+                                        <div class="cardText">
+                                            <h3 class="x-hidden-focus">新しいシナリオのアイデアをお寄せください</h3>
+                                            <p>作成を依頼したいシナリオはありませんか。</p>
+                                            <p>また、ご自身で作成してみたいシナリオはありませんか。</p>
+                                            <p>ここからアイデアをお送りください。</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
 </ul>
 
-## <a name="application-scenarios"></a>アプリケーションのシナリオ
-
-<ul  class="panelContent cardsF">
-<li style="display: flex; flex-direction: column;">
-    <a href="./apps/commerce-chatbot.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
-        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
-            <div class="cardPadding" style="display: flex;">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="../_images/icons/app-service.svg" height="140px" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>商用チャットボット</h3>
-                        <p>ホテルのコンシェルジュとして機能する会話型チャットボット。</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </a>
-</li>
-<li style="display: flex; flex-direction: column;">
-    <a href="./apps/devops-dotnet-webapp.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
-        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
-            <div class="cardPadding" style="display: flex;">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="../_images/icons/app-service.svg" height="140px" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>VSTS 付きの DevOps</h3>
-                        <p>VSTS を活用した DevOps パイプライン。 </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </a>
-</li>
-<li style="display: flex; flex-direction: column;">
-    <a href="./apps/devops-with-aks.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
-        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
-            <div class="cardPadding" style="display: flex;">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="../_images/icons/jenkins.svg" height="140px" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>AKS による DevOps</h3>
-                        <p>コンテナーと Jenkins を活用した DevOps パイプライン。</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </a>
-</li>
-<li style="display: flex; flex-direction: column;">
-    <a href="./apps/ecommerce-scenario.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
-        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
-            <div class="cardPadding" style="display: flex;">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="../_images/icons/app-service.svg" height="140px" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>eコマース フロントエンド</h3>
-                        <p>チケットを購入するための eコマース フロントエンド。</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </a>
-</li>
-<li style="display: flex; flex-direction: column;">
-    <a href="./apps/sap-dev-test.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
-        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
-            <div class="cardPadding" style="display: flex;">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="../_images/icons/sap.svg" height="140px" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>開発/テスト環境向けの SAP</h3>
-                        <p>開発/テスト環境向けの SAP デプロイ。</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </a>
-</li>
-</ul>
-
-## <a name="data-scenarios"></a>データ シナリオ
-
-<ul  class="panelContent cardsF">
-<li style="display: flex; flex-direction: column;">
-    <a href="./data/ecommerce-order-processing.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
-        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
-            <div class="cardPadding" style="display: flex;">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="../_images/icons/data-guide.svg" height="140px" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>eコマースの注文処理</h3>
-                        <p>スケーラブルな注文処理パイプライン。</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </a>
-</li>
-<!-- ExpressRoute -->
-<li style="display: flex; flex-direction: column;">
-    <a href="./data/fraud-detection.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
-        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
-            <div class="cardPadding" style="display: flex;">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="../_images/icons/data-guide.svg" height="140px" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>不正行為の検出</h3>
-                        <p>携帯電話のメタデータを分析する、リアルタイムでの不正行為検出。</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </a>
-</li>
-</ul>
-
-## <a name="infrastructure-scenarios"></a>インフラストラクチャ シナリオ
-
-<ul class="panelContent cardsF">
-<!-- Azure AD -->
-<li style="display: flex; flex-direction: column;">
-    <a href="./infrastructure/regulated-multitier-app.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
-        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
-            <div class="cardPadding" style="display: flex;">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="../_images/icons/windows.svg" height="140px" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>規制対象の多層アプリケーション</h3>
-                        <p>規制対象業界向け多層アプリケーションの保護。</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </a>
-</li>
-<li style="display: flex; flex-direction: column;">
-    <a href="./infrastructure/video-rendering.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
-        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
-            <div class="cardPadding" style="display: flex;">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="../_images/icons/linux-penguin.svg" height="140px" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>HPC ビデオのレンダリング</h3>
-                        <p>HPC ソリューションを使用した 3D レンダリング。</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </a>
-</li>
-</ul>
+[!INCLUDE [notes](./articles.md)]
