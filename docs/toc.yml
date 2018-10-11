@@ -283,18 +283,18 @@ items:
     href: example-scenario/index.md
   - name: AI
     items:
+    - name: ホテル予約チャットボット
+      href: example-scenario/ai/commerce-chatbot.md
     - name: 画像の分類
       href: example-scenario/ai/intelligent-apps-image-processing.md
   - name: アプリケーション
     items:
-    - name: コンピューター支援エンジニアリング SaaS
+    - name: コンピューター支援エンジニアリング
       href: example-scenario/apps/hpc-saas.md
     - name: 銀行間での分散型信頼
       href: example-scenario/apps/decentralized-trust.md
     - name: Web アプリケーションの監視
       href: example-scenario/apps/app-monitoring.md
-    - name: ホテル予約チャットボット
-      href: example-scenario/apps/commerce-chatbot.md
     - name: コンテナーを使用した DevOps
       href: example-scenario/apps/devops-with-aks.md
     - name: Azure DevOps を使用した DevOps
@@ -328,7 +328,7 @@ items:
     - name: Linux 仮想デスクトップ
       href: example-scenario/infrastructure/linux-vdi-citrix.md
     - name: モノリシック アプリケーションの分会
-      href: example-scenario/infrastructure/ServiceFabricMicroservices.md
+      href: example-scenario/infrastructure/service-fabric-microservices.md
     - name: スケーラビリティに優れた WordPress
       href: example-scenario/infrastructure/wordpress.md
     - name: 多層 Windows
@@ -531,9 +531,9 @@ items:
       href: cloud-adoption/appendix/azure-scaffold.md
     - name: Azure エンタープライズ スキャフォールディングの実装
       href: cloud-adoption/appendix/azure-scaffold-examples.md
-ms.openlocfilehash: 2b5c74f9ce94b238c8787e0c684248ecae0467af
-ms.sourcegitcommit: 9eecff565392273d11b8702f1fcecb4d75e27a15
+ms.openlocfilehash: 9f2dcd31b5d3a36badf9db6ce5f64fae6085ff96
+ms.sourcegitcommit: b2a4eb132857afa70201e28d662f18458865a48e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48243684"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48819110"
