@@ -6,19 +6,19 @@ ms:date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications
 pnp.series.prev: authenticate
 pnp.series.next: signup
-ms.openlocfilehash: 61788d9759715b21ef1bdda59c5b54d923fd8f62
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 46c43c9bfa4514f206b5e7eabd9223ad4c61628b
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
-ms.locfileid: "24541915"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47429374"
 ---
 # <a name="work-with-claims-based-identities"></a>要求ベースの ID を操作する
 
 [![GitHub](../_images/github.png) サンプル コード][sample application]
 
 ## <a name="claims-in-azure-ad"></a>Azure AD の要求
-ユーザーがサインインすると、Azure AD は、ユーザーに関する要求セットを含む ID トークンを送信します。 要求は、キーと値のペアで表される 1 つの情報です。 たとえば、`email`=`bob@contoso.com` です。  要求には、ユーザーを認証し、要求を作成するエンティティである発行者があります (ここでは Azure AD)。 発行者を信頼していれば、要求も信頼することになります  (逆に、信頼できない発行者の場合は、要求も信頼しないでください)。
+ユーザーがサインインすると、Azure AD は、ユーザーに関する要求セットを含む ID トークンを送信します。 要求は、キーと値のペアで表される 1 つの情報です。 たとえば、`email`=`bob@contoso.com` です。  要求には、ユーザーを認証し、要求を作成するエンティティである発行者があります (ここでは Azure AD)。 発行者は、ユーザーを認証し、要求を作成するエンティティです。 発行者を信頼していれば、要求も信頼することになります(逆に、信頼できない発行者の場合は、要求も信頼しないでください)。
 
 概要:
 
@@ -117,9 +117,9 @@ Azure AD で発行者値は AD テナントごとに一意です (`https://sts.w
 
 <!-- Links -->
 
-[スコープ パラメーター]: http://nat.sakimura.org/2012/01/26/scopes-and-claims-in-openid-connect/
+[スコープ パラメーター]: https://nat.sakimura.org/2012/01/26/scopes-and-claims-in-openid-connect/
 [サポートされているトークンとクレームの種類]: /azure/active-directory/active-directory-token-and-claims/
-[発行者]: http://openid.net/specs/openid-connect-core-1_0.html#IDToken
+[発行者]: https://openid.net/specs/openid-connect-core-1_0.html#IDToken
 [認証イベント]: authenticate.md#authentication-events
 [signup]: signup.md
 [Claims-Based Authorization]: /aspnet/core/security/authorization/claims
