@@ -4,12 +4,12 @@ description: 自動スケールによってアプリケーションに必要な�
 author: dragon119
 ms.date: 05/17/2017
 pnp.series.title: Best Practices
-ms.openlocfilehash: a8489aaabab2b8523fbc9f026f4f435bb6d1ad29
-ms.sourcegitcommit: 3d9ee03e2dda23753661a80c7106d1789f5223bb
+ms.openlocfilehash: 1afbb7d48329d84979aa72b7e0707442cacfa45e
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2018
-ms.locfileid: "29478461"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47429419"
 ---
 # <a name="autoscaling"></a>自動スケール
 [!INCLUDE [header](../_includes/header.md)]
@@ -70,14 +70,14 @@ Azure には、ほぼすべてのコンピューティング オプションに�
 
 組み込まれているメトリックの一覧については、「[Azure Monitor の自動スケールの一般的なメトリック][autoscale-metrics]」を参照してください。 Application Insights を使用してカスタム メトリックを実装することもできます。 
 
-自動スケールは、PowerShell、Azure CLI、Azure Resource Manager テンプレートの場合、または Azure ポータルを使用して構成できます。 より詳細な制御は、[Azure Resource Manager REST API](https://msdn.microsoft.com//library/azure/dn790568.aspx) を使用して構成できます。 [Azure Monitoring Service 管理ライブラリ](http://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring)と [Microsoft Insights ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.Insights/) (プレビュー) は SDK です。REST API を利用して、さまざまなリソースからメトリックを収集し、自動スケールを実行することができます。 Azure Resource Manager にリソースが対応していない場合や、Azure Cloud Services を使用している場合は、Service Management REST API を自動スケールに使用できます。 それ以外のすべてのケースでは、Azure Resource Manager を使用してください。
+自動スケールは、PowerShell、Azure CLI、Azure Resource Manager テンプレートの場合、または Azure ポータルを使用して構成できます。 より詳細な制御は、[Azure Resource Manager REST API](https://msdn.microsoft.com//library/azure/dn790568.aspx) を使用して構成できます。 [Azure Monitoring Service 管理ライブラリ](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring)と [Microsoft Insights ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.Insights/) (プレビュー) は SDK です。REST API を利用して、さまざまなリソースからメトリックを収集し、自動スケールを実行することができます。 Azure Resource Manager にリソースが対応していない場合や、Azure Cloud Services を使用している場合は、Service Management REST API を自動スケールに使用できます。 それ以外のすべてのケースでは、Azure Resource Manager を使用してください。
 
 Azure 自動スケールを使用する場合は、次の点を考慮してください。
 
 * スケジュールされた自動スケールを使用し、予測される需要ピーク時に対応するためにインスタンスを追加および削除することにより、十分な精度でアプリケーションの負荷を予測できるかどうかを検討します。 これが不可能な場合は、実行時に収集されたメトリックに基づくリアクティブ自動スケールを使用して、予測不可能な需要の変化にアプリケーションが対応できるようにします。 通常は、これらの手法を組み合わせることができます。 たとえば、アプリケーションが最もビジー状態になることがわかっている時間のスケジュールに基づいてリソースを追加する戦略を作成します。 これにより、新しいインスタンスの開始時に遅延することなく、必要なときに容量を確保できます。 また、スケジュールされたルールごとに、その期間のリアクティブ自動スケールを有効にし、持続的だが予測不可能な需要ピークをアプリケーションが処理できるメトリックを定義します。
 * 特にアプリケーションが初めてデプロイされたときは、メトリックと容量要件の関係を理解しにくいことがよくあります。 最初は容量を少し余分に追加し、その後自動スケール ルールを監視および調整して、実際の負荷に容量を近づけることをお勧めします。
 * 自動スケール ルールを構成し、一定期間、アプリケーションのパフォーマンスを監視します。 この監視結果を使用して、必要に応じてシステムをスケールする方法を調整します。 ただし、自動スケールは即時に結果を得られるプロセスではありません。 指定したしきい値を超過する (または下回る) 平均 CPU 使用率など、何らかのメトリックに反応するには一定の時間を要します。
-* 測定されたトリガー属性 (CPU 使用率やキューの長さなど) に基づく検出メカニズムを使用する自動スケール ルールでは、瞬間的な値ではなく、長期にわたって集計された値を使用して自動スケール アクションがトリガーされます。 既定では、集計は値の平均になります。 これにより、システムの反応が早すぎたり、急激な変動が生じたりすることが回避されます。 また、自動的に開始された新しいインスタンスが実行モードになるまでの時間を確保し、新しいインスタンスの開始中に追加の自動スケール アクションが実行されないようにすることもできます。 Azure Cloud Services や Azure Virtual Machines については、既定の集計期間は 45 分であるため、需要の急増に反応して自動スケールをトリガーするメトリックに、この長さまでの時間を設定できます。 SDK を使用してこの集計期間を変更できますが、25 分未満に設定すると予期しない結果を招く可能性があります (詳細については、「 [Auto Scaling Cloud Services on CPU Percentage with the Azure Monitoring Services Management Library (Azure Monitoring Services 管理ライブラリを使用した CPU 使用率に基づく Cloud Services の自動スケール)](http://rickrainey.com/2013/12/15/auto-scaling-cloud-services-on-cpu-percentage-with-the-windows-azure-monitoring-services-management-library/)」を参照してください)。 Web Apps では、平均の期間はかなり短く、平均のトリガー測定への変更後、約 5 分間で新しいインスタンスを使用できるようになります。
+* 測定されたトリガー属性 (CPU 使用率やキューの長さなど) に基づく検出メカニズムを使用する自動スケール ルールでは、瞬間的な値ではなく、長期にわたって集計された値を使用して自動スケール アクションがトリガーされます。 既定では、集計は値の平均になります。 これにより、システムの反応が早すぎたり、急激な変動が生じたりすることが回避されます。 また、自動的に開始された新しいインスタンスが実行モードになるまでの時間を確保し、新しいインスタンスの開始中に追加の自動スケール アクションが実行されないようにすることもできます。 Azure Cloud Services や Azure Virtual Machines については、既定の集計期間は 45 分であるため、需要の急増に反応して自動スケールをトリガーするメトリックに、この長さまでの時間を設定できます。 SDK を使って集計期間を変更できますが、25 分未満の期間を設定すると、予期しない結果が生じる場合があります。 Web Apps では、平均の期間はかなり短く、平均のトリガー測定への変更後、約 5 分間で新しいインスタンスを使用できるようになります。
 * ポータルではなく SDK を使用して自動スケールを構成する場合は、ルールが有効な期間の、より詳細なスケジュールを指定できます。 独自のメトリックを作成し、自動スケール ルールで既存のメトリックと共に使用したり、単独で使用したりすることもできます。 たとえば、1 秒あたりの要求数や使用可能なメモリ平均量などの代替カウンターを使用することも、特定のビジネス プロセスを測定するカスタム カウンターを使用することもできます。
 * Service Fabric を自動スケールする場合、クラスター内のノードの種類は、バックエンドでは VM Scale Sets で構成されるため、ノードの種類ごとに自動スケール ルールを設定する必要があります。 自動スケールを設定する前に、必要なノードの数を考慮します。 ノードの種類がプライマリである場合に必要なノードの最小数は、選択した信頼性のレベルによって決まります。 詳細については、「[自動スケール ルールを使用した Service Fabric クラスターのスケールインとスケールアウト](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-scale-up-down)」を参照してください。
 * ポータルを使用して、SQL Database のインスタンスやキューなどのリンク リソースを Cloud Service インスタンスにリンクできます。 これにより、リンクされたリソースごとに、より簡単に別個の手動および自動スケーリング構成オプションにアクセスできます。 詳細については、「[方法: クラウド サービスに対するリソースのリンク](/azure/cloud-services/cloud-services-how-to-manage)」を参照してください。

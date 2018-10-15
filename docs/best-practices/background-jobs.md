@@ -4,12 +4,12 @@ description: ユーザー インターフェイスとは無関係に実行され
 author: dragon119
 ms.date: 05/24/2017
 pnp.series.title: Best Practices
-ms.openlocfilehash: 781d616dfcf24775525e2489e7e463174ec9bfa3
-ms.sourcegitcommit: e9d9e214529edd0dc78df5bda29615b8fafd0e56
+ms.openlocfilehash: fa5c6352da289591d92b9427c44b8ba9f01245aa
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37091089"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47429623"
 ---
 # <a name="background-jobs"></a>バックグラウンド ジョブ
 [!INCLUDE [header](../_includes/header.md)]
@@ -27,7 +27,7 @@ ms.locfileid: "37091089"
 * 入出力の多いジョブ (一連のストレージ トランザクションの実行、ファイルのインデックス作成など)。
 * バッチ ジョブ (夜間のデータ更新、スケジュール設定された処理など)。
 * 長時間実行されるワークフロー (受注処理、サービスやシステムのプロビジョニングなど)。
-* 機密データ処理 (より安全な場所にタスクが引き渡されて処理される)。 たとえば、機密データは、Web アプリ内で処理するより、 [Gatekeeper](http://msdn.microsoft.com/library/dn589793.aspx) などのパターンに従い、保護された記憶域にアクセスできる分離されたバックグラウンド プロセスにデータを転送した方が賢明です。
+* 機密データ処理 (より安全な場所にタスクが引き渡されて処理される)。 たとえば、機密データは、Web アプリ内で処理するより、 [Gatekeeper](https://msdn.microsoft.com/library/dn589793.aspx) などのパターンに従い、保護された記憶域にアクセスできる分離されたバックグラウンド プロセスにデータを転送した方が賢明です。
 
 ## <a name="triggers"></a>トリガー
 バックグラウンド ジョブは、さまざまな方法で開始することができます。 大きく次の 2 つのカテゴリに分けられます。
@@ -64,7 +64,7 @@ ms.locfileid: "37091089"
 バックグラウンド タスクが呼び出し元のタスクと情報をやり取りし、進行状況や完了を伝えることができるようにするには、そのための機構を実装する必要があります。 次に例をいくつか示します。
 
 * UI や呼び出し元のタスクからアクセスできる記憶域にステータス インジケーターの値を書き込み、呼び出し元が必要に応じてその値を監視、確認できるようにする。 その他、バックグラウンド タスクから呼び出し元に返す必要のあるデータも同じ記憶域に格納することができます。
-* 応答キューを設定し、そこで UI または呼び出し元を待機させる。 バックグラウンド タスクは、このキューにメッセージを送ることでステータスや完了を知らせることができます。 バックグラウンド タスクから呼び出し元に返す必要のあるデータもそのメッセージに格納することができます。 Azure Service Bus を使っている場合、**ReplyTo** プロパティと **CorrelationId** プロパティを使ってこの機能を実装できます。 詳細については、 [Service Bus ブローカー メッセージングにおける相関](http://www.cloudcasts.net/devguide/Default.aspx?id=13029)に関するページを参照してください。
+* 応答キューを設定し、そこで UI または呼び出し元を待機させる。 バックグラウンド タスクは、このキューにメッセージを送ることでステータスや完了を知らせることができます。 バックグラウンド タスクから呼び出し元に返す必要のあるデータもそのメッセージに格納することができます。 Azure Service Bus を使っている場合、**ReplyTo** プロパティと **CorrelationId** プロパティを使ってこの機能を実装できます。
 * UI や呼び出し元がステータス情報を取得する目的でアクセスできる API またはエンドポイントをバックグラウンド タスク側で公開する。 その応答に、バックグラウンド タスクから呼び出し元に返す必要のあるデータを格納することができます。
 * バックグラウンド タスクから API を介して UI や呼び出し元をコールバックし、定義済みのポイントや完了時点でステータスを通知する。 コールバックのタイミングとしては、ローカルで発生するイベントや、パブリッシュとサブスクライブのメカニズムを利用することができます。 バックグラウンド タスクから呼び出し元に返す必要のあるデータは、要求またはイベントのペイロードに格納することができます。
 
@@ -95,7 +95,7 @@ Azure の Web ジョブの特徴を次に示します。
 
 * **セキュリティ**: Web ジョブの保護には、Web アプリのデプロイ資格情報が使用されます。
 * **サポートされるファイルの種類**: Web ジョブは、コマンド スクリプト (.cmd)、バッチ ファイル (.bat)、PowerShell スクリプト (.ps1)、bash シェル スクリプト (.sh)、PHP スクリプト (.php)、Python スクリプト (.py)、JavaScript コード (.js)、実行可能プログラム (.exe、.jar など) を使って定義することができます。
-* **デプロイ**: スクリプトと実行可能ファイルは、Azure ポータル、Visual Studio の [WebJobsVs](/azure/app-service-web/web-sites-create-web-jobs) アドインまたは [Visual Studio 2013 Update 4](/azure/app-service-web/websites-dotnet-deploy-webjobs) (作成からデプロイまで)、または [Azure WebJobs SDK](/azure/azure-webjobs-sdk) を使ってデプロイできます。スクリプトと実行可能ファイルを次の場所に直接コピーしてデプロイすることもできます。
+* **デプロイ**: スクリプトと実行可能ファイルは、Azure ポータル、Visual Studio の [WebJobsVs](/azure/app-service-web/web-sites-create-web-jobs) アドインまたは [Visual Studio 2013 Update 4](/azure/app-service-web/websites-dotnet-deploy-webjobs) (作成からデプロイまで)、または [Azure WebJobs SDK](/azure/app-service/webjobs-sdk-get-started) を使ってデプロイできます。スクリプトと実行可能ファイルを次の場所に直接コピーしてデプロイすることもできます。
   * トリガーによって実行する場合: site/wwwroot/app_data/jobs/triggered/{job name}
   * 連続実行の場合: site/wwwroot/app_data/jobs/continuous/{job name}
 * **ログ**: Console.Out は INFO として処理 (マーク) されます。 Console.Error は ERROR として処理 (マーク) されます。 監視情報と診断情報には、Azure ポータルからアクセスできます。 ログ ファイルは、サイトから直接ダウンロードすることができます。 これらの情報は次の場所に保存されます。
@@ -116,7 +116,7 @@ Azure の Web ジョブの特徴を次に示します。
 ### <a name="azure-virtual-machines"></a>Azure Virtual Machines
 バックグラウンド タスクの実装形態によっては、Azure Web Apps や Cloud Services にデプロイできなかったり、便利ではなかったりすることもあります。 Windows のサービスや、サード パーティのユーティリティ、サード パーティの実行可能プログラムがその代表的な例です。 また、アプリケーションのホスティング環境とは異なる実行環境向けに作成されたプログラムも同様です。 たとえば、Unix や Linux のプログラムを Windows アプリケーションまたは .NET アプリケーションから実行するケースなどが該当します。 Azure Virtual Machines には、さまざまなオペレーティング システムが用意されているので、そこから目的のオペレーティング システムを選んで、仮想マシン上で必要なサービスまたは実行可能ファイルを運用することができます。
 
-どのようなときに Virtual Machines を使うかについては、 [Azure App Services、Cloud Services、Virtual Machines の比較](/azure/app-service-web/choose-web-site-cloud-service-vm/)に関するページを参照してください。 Virtual Machines の選択肢については、 [Azure の仮想マシンとクラウド サービスのサイズ](http://msdn.microsoft.com/library/azure/dn197896.aspx)に関するページを参照してください。 Virtual Machines で利用できるオペレーティング システムと既製イメージの詳細については、 [Azure Virtual Machines Marketplace](https://azure.microsoft.com/gallery/virtual-machines/)を参照してください。
+どのようなときに Virtual Machines を使うかについては、 [Azure App Services、Cloud Services、Virtual Machines の比較](/azure/app-service-web/choose-web-site-cloud-service-vm/)に関するページを参照してください。 Virtual Machines の選択肢については、[Azure の Windows 仮想マシンのサイズ](/azure/virtual-machines/windows/sizes)に関するページを参照してください。 Virtual Machines で利用できるオペレーティング システムと既製イメージの詳細については、 [Azure Virtual Machines Marketplace](https://azure.microsoft.com/gallery/virtual-machines/)を参照してください。
 
 バックグラウンド タスクを別の仮想マシンで開始するには、いくつかの方法があります。
 
@@ -131,7 +131,7 @@ Azure 仮想マシンにバックグラウンド タスクをデプロイする�
 
 * 独立した Azure 仮想マシンでバックグラウンド タスクをホスティングすれば、運用の幅が広がり、開始と実行、スケジューリング、リソース割り当てを細かく制御することができます。 ただし、バックグラウンド タスクを実行するためだけに仮想マシンをデプロイしなければならない場合、ランタイム コストが大きくなります。
 * [Azure Resource Manager コマンドレット](https://msdn.microsoft.com/library/mt125356.aspx)を使って仮想マシンを管理したり、仮想マシンの基本的なステータスを監視したりすることはできますが、バックグラウンド タスクを監視する機構は Azure ポータルにはなく、また、障害の発生したタスクを自動的に再起動する機能もありません。 コンピューティング ノード内のプロセスやスレッドを制御する機構も存在しません。 通常、仮想マシンを使うためには、タスクのインストルメンテーションや仮想マシン内のオペレーティング システムからデータを収集するメカニズムを別途導入する必要があります。 1 つの方法として、 [Azure 用の System Center 管理パック](https://www.microsoft.com/download/details.aspx?id=50013)を使うことが解決策として考えられます。
-* HTTP エンドポイントを介して公開される監視プローブの作成を検討してください。 正常性チェックの実行、運用情報や統計情報の収集、エラー情報の照合を監視プローブのコードから実行して管理アプリケーションに返すようにします。 詳細については、 [Health Endpoint Monitoring パターン](http://msdn.microsoft.com/library/dn589789.aspx)に関するページを参照してください。
+* HTTP エンドポイントを介して公開される監視プローブの作成を検討してください。 正常性チェックの実行、運用情報や統計情報の収集、エラー情報の照合を監視プローブのコードから実行して管理アプリケーションに返すようにします。 詳細については、 [Health Endpoint Monitoring パターン](../patterns/health-endpoint-monitoring.md)に関するページを参照してください。
 
 #### <a name="more-information"></a>詳細
 * [Virtual Machines](https://azure.microsoft.com/services/virtual-machines/) 
@@ -177,7 +177,7 @@ Azure Container Service を使用すると、コンテナー化されたアプ�
 * [プライベート Docker コンテナー レジストリの概要](/azure/container-registry/container-registry-intro) 
 
 ### <a name="azure-cloud-services"></a>Azure クラウド サービス 
-バックグラウンド タスクは、Web ロール内で実行することも、独立した worker ロールで実行することもできます。 worker ロールを用いるかどうかは、スケーラビリティと弾力性の要件、タスクの有効期間、リリースの頻度、セキュリティ、フォールト トレランス、リソースの奪い合い、複雑性、論理アーキテクチャなどを考慮して判断します。 詳細については、 [Compute Resource Consolidation パターン](http://msdn.microsoft.com/library/dn589778.aspx)に関するページを参照してください。
+バックグラウンド タスクは、Web ロール内で実行することも、独立した worker ロールで実行することもできます。 worker ロールを用いるかどうかは、スケーラビリティと弾力性の要件、タスクの有効期間、リリースの頻度、セキュリティ、フォールト トレランス、リソースの奪い合い、複雑性、論理アーキテクチャなどを考慮して判断します。 詳細については、 [Compute Resource Consolidation パターン](../patterns/compute-resource-consolidation.md)に関するページを参照してください。
 
 Cloud Services ロールには、さまざまな方法でバックグラウンド タスクを実装することができます。
 
@@ -193,7 +193,7 @@ Cloud Services ロールには、さまざまな方法でバックグラウン�
 * ロールの種類ごとに切り離してスケーリングを管理できる。 たとえば現状の負荷に対応するために Web ロールのインスタンス数を増やす必要がある一方で、バックグラウンド タスクを実行する worker ロールのインスタンス数はもっと少なくできるという状況が考えられます。 バックグラウンド タスクのコンピューティング インスタンスを UI のロールとは独立にスケーリングすることで、十分なパフォーマンスを維持しながら、ホスティングのコストを削減することができます。
 * バックグラウンド タスクの処理オーバーヘッドを Web ロールから取り除くことができる。 UI として機能する Web ロールの応答性を保つことができるため、ユーザーからの特定の量の要求を処理するために必要なインスタンス数が相対的に少なくて済みます。
 * 処理内容の独立性を高めることができる。 ロールの種類ごとに明確な特徴を持った関連するタスクを集めて実装することができます。 他のロールのコードや機能への依存度が下がるため、コードの設計と管理がしやすくなります。
-* 機密を要するプロセスやデータが分離しやすくなる。 たとえば、UI の機能を実装する Web ロールが、worker ロールの管理下にあるデータにアクセスできる必要はありません。 これは、特に [Gatekeeper パターン](http://msdn.microsoft.com/library/dn589793.aspx)のようなパターンを使用してセキュリティを強化する場合に便利です。  
+* 機密を要するプロセスやデータが分離しやすくなる。 たとえば、UI の機能を実装する Web ロールが、worker ロールの管理下にあるデータにアクセスできる必要はありません。 これは、特に [Gatekeeper パターン](../patterns/gatekeeper.md)のようなパターンを使用してセキュリティを強化する場合に便利です。  
 
 #### <a name="considerations"></a>考慮事項
 Cloud Services の Web ロールと worker ロールを使っているときに、バックグラウンド タスクをどこにどのようにデプロイするかは、次の点を考慮して判断してください。
@@ -218,7 +218,7 @@ Web ロールと worker ロールが開始、実行、停止される過程に�
 * Run メソッドが終了すると、Azure はまずアプリケーションの Global ファイル (存在する場合) 内の **Application_End()** を呼び出し、その後、**RoleEntryPoint.OnStop()** を呼び出します。 バックグラウンド タスクの停止、リソースのクリーンアップ、オブジェクトの破棄、タスクで使われていた接続の終了処理は、この **OnStop** メソッドをオーバーライドして行います。
 * Azure worker ロールのホスト プロセスが停止します。 この時点で、ロールがリサイクルされて再起動します。
 
-**RoleEntryPoint** クラスのメソッドの詳細と使用例については、 [Compute Resource Consolidation パターン](http://msdn.microsoft.com/library/dn589778.aspx)に関するページを参照してください。
+**RoleEntryPoint** クラスのメソッドの詳細と使用例については、 [Compute Resource Consolidation パターン](../patterns/compute-resource-consolidation.md)に関するページを参照してください。
 
 #### <a name="implementation-considerations"></a>実装時の注意事項
 
@@ -248,7 +248,7 @@ Web またはワーカー ロールでバックグラウンド タスクを実�
   * ロールの ServiceDefinition.csdef ファイルと ServiceConfiguration.\*.cscfg ファイルに **Freeze** 設定の定義を Boolean 値として追加し、**false** に設定します。 ロールが再起動を繰り返す状態になった場合は、この設定を **true** に変更してロールの実行を凍結 (Freeze) させれば、それまでの環境とスワップできる状態になります。
 
 #### <a name="more-information"></a>詳細情報
-* [Compute Resource Consolidation パターン](http://msdn.microsoft.com/library/dn589778.aspx)
+* [Compute Resource Consolidation パターン](../patterns/compute-resource-consolidation.md)
 * [Azure Web ジョブ SDK の使用](/azure/app-service-web/websites-dotnet-webjobs-sdk-get-started/)
 
 
@@ -263,7 +263,7 @@ Web またはワーカー ロールでバックグラウンド タスクを実�
 * **管理性**: バックグラウンド タスクは、開発とデプロイの頻度が、アプリケーションのメイン コードや UI とは異なる場合があります。 独立したコンピューティング インスタンスにデプロイすることで、更新とバージョン管理を単純化することができます。
 * **コスト**: バックグラウンド タスクを実行するためのコンピューティング インスタンスを追加した場合、ホスティングにかかるコストが増えます。 処理能力の向上とコストの増大のトレードオフを慎重に検討する必要があります。
 
-詳細については、[Leader Election](http://msdn.microsoft.com/library/dn568104.aspx) パターンと [Competing Consumers](http://msdn.microsoft.com/library/dn568101.aspx) パターンに関するページを参照してください。
+詳細については、[Leader Election](../patterns/leader-election.md) パターンと [Competing Consumers](../patterns/competing-consumers.md) パターンに関するページを参照してください。
 
 ## <a name="conflicts"></a>競合
 バックグラウンド ジョブのインスタンスが複数存在する場合、データベースや記憶域などのリソースやサービスを奪い合う状況が生じる可能性があります。 このとき同時アクセスによってリソースの競合が生じ、サービスの稼働状態や記憶域におけるデータの整合性に矛盾が生じる場合があります。 リソースの競合は、排他的ロックを使って解決できます。 排他的ロックは、リソースを奪い合っている複数のタスクのインスタンスが同時にサービスにアクセスできないように (データを破損させないように) する手法です。
@@ -277,22 +277,22 @@ Web またはワーカー ロールでバックグラウンド タスクを実�
 
 複数のタスクやステップを調整するのは容易ではありませんが、その解決策として 3 つのパターンがよく知られているので、実装するうえでの参考にしてください。
 
-* **再利用可能な複数のステップにタスクを分解する**。 アプリケーションは、その処理の対象となる情報に対し、複雑度の異なる多様なタスクを実行しなければならない場合があります。 その処理を一体型のモジュールとして実行するのが、柔軟性は低いものの実装方法としては簡単です。 しかしそのアプリケーション内のどこか他の箇所で同じ処理の一部分が必要になったとき、この方法では、コードのリファクタリングや最適化、再利用の可能性が制限されます。 詳細については、 [Pipes and Filters パターン](http://msdn.microsoft.com/library/dn568100.aspx)に関するページを参照してください。
-* **タスクのステップの実行を管理する**。 アプリケーションで実行するタスクが、多数のステップから成り立っていて、その中でリモート サービスを呼び出したり、リモート リソースにアクセスしたりする場合があります。 それぞれのステップは互いに独立しているかもしれませんが、それらを指揮するのは、タスクを実装するアプリケーションのロジックです。 詳細については、 [Scheduler Agent Supervisor パターン](http://msdn.microsoft.com/library/dn589780.aspx)に関するページを参照してください。
-* **タスクのステップの障害復旧を管理する**。 一連のステップによって実行される作業は、最終的にそれらが集まって整合の取れた操作となるものであり、そのいずれかのステップで障害が発生した場合は、アプリケーション側で元に戻す必要があります。 詳細については、 [Compensating Transaction パターン](http://msdn.microsoft.com/library/dn589804.aspx)に関するページを参照してください。
+* **再利用可能な複数のステップにタスクを分解する**。 アプリケーションは、その処理の対象となる情報に対し、複雑度の異なる多様なタスクを実行しなければならない場合があります。 その処理を一体型のモジュールとして実行するのが、柔軟性は低いものの実装方法としては簡単です。 しかしそのアプリケーション内のどこか他の箇所で同じ処理の一部分が必要になったとき、この方法では、コードのリファクタリングや最適化、再利用の可能性が制限されます。 詳細については、 [Pipes and Filters パターン](../patterns/pipes-and-filters.md)に関するページを参照してください。
+* **タスクのステップの実行を管理する**。 アプリケーションで実行するタスクが、多数のステップから成り立っていて、その中でリモート サービスを呼び出したり、リモート リソースにアクセスしたりする場合があります。 それぞれのステップは互いに独立しているかもしれませんが、それらを指揮するのは、タスクを実装するアプリケーションのロジックです。 詳細については、 [Scheduler Agent Supervisor パターン](../patterns/scheduler-agent-supervisor.md)に関するページを参照してください。
+* **タスクのステップの障害復旧を管理する**。 一連のステップによって実行される作業は、最終的にそれらが集まって整合の取れた操作となるものであり、そのいずれかのステップで障害が発生した場合は、アプリケーション側で元に戻す必要があります。 詳細については、 [Compensating Transaction パターン](../patterns/compensating-transaction.md)に関するページを参照してください。
 
 
 ## <a name="resiliency-considerations"></a>回復性に関する考慮事項
 バックグラウンド タスクが Reliable Services をアプリケーションに提供するためには、その回復力が重要となります。 バックグラウンド タスクを計画、設計する際は、次の点を考慮してください。
 
-* バックグラウンド タスクは、ロールやサービスの再起動を正規の手順で処理できることが必要です。データが破損したり、アプリケーションに不整合をもたらしたりすることは許されません。 長時間実行されるタスクや複数のステップから成るタスクでは、"*チェック ポイント*" の使用を検討してください。ジョブの状態を永続的ストレージに保存するか、または (妥当である場合) メッセージとしてキューに保存します。 たとえば、状態情報をメッセージとしてキューに永続化し、タスクの進行状況に合わせてその状態情報を漸増的に更新します。そうすれば、良好な状態であることが確認できている最新のチェックポイントからタスクを処理することができ、最初からやり直す必要はありません。 Azure Service Bus キューを使っている場合は、メッセージ セッションを使って同じシナリオを実現できます。 [SetState](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.messagesession.setstate?view=azureservicebus-4.0.0) メソッドと [GetState](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.messagesession.getstate?view=azureservicebus-4.0.0) メソッドを使って、アプリケーションの処理状態を保存したり取得したりすることが可能です。 信頼性のあるマルチステップのプロセスとワークフローを設計する方法の詳細については、「[Scheduler Agent Supervisor Pattern (Scheduler Agent Supervisor パターン)](http://msdn.microsoft.com/library/dn589780.aspx)」を参照してください。
+* バックグラウンド タスクは、ロールやサービスの再起動を正規の手順で処理できることが必要です。データが破損したり、アプリケーションに不整合をもたらしたりすることは許されません。 長時間実行されるタスクや複数のステップから成るタスクでは、"*チェック ポイント*" の使用を検討してください。ジョブの状態を永続的ストレージに保存するか、または (妥当である場合) メッセージとしてキューに保存します。 たとえば、状態情報をメッセージとしてキューに永続化し、タスクの進行状況に合わせてその状態情報を漸増的に更新します。そうすれば、良好な状態であることが確認できている最新のチェックポイントからタスクを処理することができ、最初からやり直す必要はありません。 Azure Service Bus キューを使っている場合は、メッセージ セッションを使って同じシナリオを実現できます。 [SetState](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.messagesession.setstate?view=azureservicebus-4.0.0) メソッドと [GetState](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.messagesession.getstate?view=azureservicebus-4.0.0) メソッドを使って、アプリケーションの処理状態を保存したり取得したりすることが可能です。 信頼性のあるマルチステップのプロセスとワークフローを設計する方法の詳細については、「[Scheduler Agent Supervisor Pattern (Scheduler Agent Supervisor パターン)](../patterns/scheduler-agent-supervisor.md)」を参照してください。
 * Web ロールまたは worker ロールを使って複数のバックグラウンド タスクをホストするときは、失敗したタスクや停止したタスクがないか監視し、それらを再起動するように **Run** メソッドのオーバーライドを設計してください。 それが難しい状況で worker ロールを使っている場合は、 **Run** メソッドを終了することによって強制的に worker ロールを再起動してください。
-* バックグラウンド タスクとのやり取りにキューを使っている場合、普段よりも高い負荷がアプリケーションにかかっているときにはキューがバッファーとして働き、タスクに送られた要求を溜めておくことができます。 負荷が低くなったときにタスクの処理が UI に追い付くことができます。 このことはまた、ロールをリサイクルしても UI がブロックされないことを意味します。 詳細については、 [Queue-Based Load Leveling パターン](http://msdn.microsoft.com/library/dn589783.aspx)に関するページを参照してください。 タスクによって重要度に差がある場合は、 [Priority Queue パターン](http://msdn.microsoft.com/library/dn589794.aspx) を用い、重要度の高いタスクが低いタスクよりも先に実行されるようにすることをお勧めします。
+* バックグラウンド タスクとのやり取りにキューを使っている場合、普段よりも高い負荷がアプリケーションにかかっているときにはキューがバッファーとして働き、タスクに送られた要求を溜めておくことができます。 負荷が低くなったときにタスクの処理が UI に追い付くことができます。 このことはまた、ロールをリサイクルしても UI がブロックされないことを意味します。 詳細については、 [Queue-Based Load Leveling パターン](../patterns/queue-based-load-leveling.md)に関するページを参照してください。 タスクによって重要度に差がある場合は、 [Priority Queue パターン](../patterns/priority-queue.md) を用い、重要度の高いタスクが低いタスクよりも先に実行されるようにすることをお勧めします。
 * メッセージによって開始されるバックグラウンド タスクまたはメッセージを処理するバックグラウンド タスクは、さまざまな不整合、たとえば不適切な順序で到着するメッセージ、頻繁にエラーが起こるメッセージ (" *有害なメッセージ*")、複数回配信されるメッセージに対処できるように設計する必要があります。 以下、具体例に沿って説明します。
   * 既存のデータ値に基づいてデータを変更する (たとえば既存の値に加算する) など、特定の順序で処理する必要のあるメッセージが、送信されたときと同じ順序で到着するとは限りません。 また、バックグラウンド タスクの各インスタンスにかかる負荷の変動によって、メッセージを処理するインスタンスが変わったり、メッセージの処理の順番が入れ替わったりする可能性もあります。 特定の順序で処理する必要のあるメッセージは、バックグラウンド タスクが常に正しい順序で処理できるように、シーケンス番号やキーなど、何らかのインジケーターを含んでいる必要があります。 Azure Service Bus を使っている場合、メッセージ セッションを使って配信の順序を保証することができます。 ただし通常は、メッセージの順序が問題とならないようにプロセスを設計した方が効率的です。
   * バックグラウンド タスクは通常、キュー内のメッセージを読み出し (このとき、対象のメッセージは、一時的に他のメッセージ コンシューマーからは見えなくなります)、 正常に処理した後でそのメッセージを削除します。 メッセージの処理中にバックグラウンド タスクで障害が発生した場合、読み出しのタイムアウト期間が経過するとそのメッセージが再びキューに現れ、 別のタスク インスタンスによって (または同じインスタンスの次回の処理サイクルで) 処理されることになります。 同じメッセージに起因するエラーが繰り返しコンシューマーで発生すると、やがてキューがいっぱいになり、タスクやキュー、最終的にはアプリケーションそのものまでブロックされてしまいます。 そのため、有害なメッセージを検出してキューから除去することが不可欠となります。 Azure Service Bus を使っている場合、エラーの原因となるメッセージを自動的に、または手動で、対応する配信不能キューに移動することができます。
   * キューは *Least Once* のメカニズムで配信が保証されますが、同じメッセージが複数回配信される可能性もあります。 また、メッセージの処理後、キューから削除される前にバックグラウンド タスクで障害が発生した場合、そのメッセージは再び処理の対象となります。 バックグラウンド タスクは、1 と 1 のかけ算のように、同じメッセージを繰り返し処理しても、エラーを招いたり、アプリケーションのデータに不整合を来さないことが必要です。 中には、自然にそのような性質を備えている操作もあります (格納された値を特定の新しい値に設定するなど)。 ただし、格納されている既存の値に対して値を加算する際、格納されている値が、メッセージ送信時と同じであることをチェックしなかった場合は、不整合の原因となります。 Azure Service Bus のキューは、重複するメッセージを自動的に削除するように構成できます。
-  * Azure ストレージ キューや Azure Service Bus キューなど、一部のメッセージング システムは、メッセージがキューから読み出された回数を示すデキュー カウント プロパティをサポートしています。 反復するメッセージや有害なメッセージの処理には、このプロパティを利用できます。 詳細については、[非同期メッセージングの基本](http://msdn.microsoft.com/library/dn589781.aspx)と [Idempotency パターン](http://blog.jonathanoliver.com/idempotency-patterns/)に関するページを参照してください。
+  * Azure ストレージ キューや Azure Service Bus キューなど、一部のメッセージング システムは、メッセージがキューから読み出された回数を示すデキュー カウント プロパティをサポートしています。 反復するメッセージや有害なメッセージの処理には、このプロパティを利用できます。 詳細については、[非同期メッセージングの基本](https://msdn.microsoft.com/library/dn589781.aspx)と [Idempotency パターン](https://blog.jonathanoliver.com/idempotency-patterns/)に関するページを参照してください。
 
 ## <a name="scaling-and-performance-considerations"></a>スケーリングとパフォーマンスの考慮事項
 バックグラウンド タスクは、システムに負荷がかかっている状況下で、アプリケーションをブロックしないこと、また操作に遅延が生じることによる不整合を起こさないことが重要です。そのような事態を引き起こさないだけのパフォーマンスをバックグラウンド タスクには確保する必要があります。 通常、バックグラウンド タスクをホストするコンピューティング インスタンスをスケーリングすることによってパフォーマンスは向上します。 バックグラウンド タスクを計画、設計する際は、スケーラビリティとパフォーマンスに関して次の点を考慮してください。
@@ -304,24 +304,22 @@ Web またはワーカー ロールでバックグラウンド タスクを実�
 * 既定では、Web ジョブは、それが関連付けられている Azure Web Apps インスタンスに合わせてスケーリングされます。 ただし、Web ジョブを単一のインスタンスとしてのみ実行する必要がある場合は、**{ "is_singleton": true }** という JSON データを含んだ Settings.job ファイルを作成してください。 これで、関連付けられている Web アプリのインスタンスが複数存在していても、Web ジョブ インスタンスを強制的に 1 つだけ実行させることができます。 スケジュール設定されたジョブで、常に単一インスタンスとして実行する必要がある場合などにこの手法を活用できます。
 
 ## <a name="related-patterns"></a>関連するパターン
-* [非同期メッセージングの基本](http://msdn.microsoft.com/library/dn589781.aspx)
-* [自動スケール ガイダンス](http://msdn.microsoft.com/library/dn589774.aspx)
-* [Compensating Transaction パターン](http://msdn.microsoft.com/library/dn589804.aspx)
-* [Competing Consumers パターン](http://msdn.microsoft.com/library/dn568101.aspx)
-* [計算分割ガイダンス](http://msdn.microsoft.com/library/dn589773.aspx)
-* [Compute Resource Consolidation パターン](http://msdn.microsoft.com/library/dn589778.aspx)
-* [Gatekeeper パターン](http://msdn.microsoft.com/library/dn589793.aspx)
-* [Leader Election パターン](http://msdn.microsoft.com/library/dn568104.aspx)
-* [Pipes and Filters パターン](http://msdn.microsoft.com/library/dn568100.aspx)
-* [Priority Queue パターン](http://msdn.microsoft.com/library/dn589794.aspx)
-* [Queue-Based Load Leveling パターン](http://msdn.microsoft.com/library/dn589783.aspx)
-* [Scheduler Agent Supervisor パターン](http://msdn.microsoft.com/library/dn589780.aspx)
+* [非同期メッセージングの基本](https://msdn.microsoft.com/library/dn589781.aspx)
+* [自動スケール ガイダンス](https://msdn.microsoft.com/library/dn589774.aspx)
+* [Compensating Transaction パターン](../patterns/compensating-transaction.md)
+* [Competing Consumers パターン](../patterns/competing-consumers.md)
+* [計算分割ガイダンス](https://msdn.microsoft.com/library/dn589773.aspx)
+* [Compute Resource Consolidation パターン](https://msdn.microsoft.com/library/dn589778.aspx)
+* [Gatekeeper パターン](../patterns/gatekeeper.md)
+* [Leader Election パターン](../patterns/leader-election.md)
+* [Pipes and Filters パターン](../patterns/pipes-and-filters.md)
+* [Priority Queue パターン](../patterns/priority-queue.md)
+* [Queue-Based Load Leveling パターン](../patterns/queue-based-load-leveling.md)
+* [Scheduler Agent Supervisor パターン](../patterns/scheduler-agent-supervisor.md)
 
 ## <a name="more-information"></a>詳細情報
-* [worker ロールを使用した Azure アプリケーションのスケーリング](http://msdn.microsoft.com/library/hh534484.aspx#sec8)
-* [バックグラウンド タスクの実行](http://msdn.microsoft.com/library/ff803365.aspx)
-* [Azure ロールのスタートアップ ライフサイクル](http://blog.syntaxc4.net/post/2011/04/13/windows-azure-role-startup-life-cycle.aspx) (ブログ記事)
-* [Azure Cloud Services ロールのライフサイクル](http://channel9.msdn.com/Series/Windows-Azure-Cloud-Services-Tutorials/Windows-Azure-Cloud-Services-Role-Lifecycle) (ビデオ)
+* [バックグラウンド タスクの実行](https://msdn.microsoft.com/library/ff803365.aspx)
+* [Azure Cloud Services ロールのライフサイクル](https://channel9.msdn.com/Series/Windows-Azure-Cloud-Services-Tutorials/Windows-Azure-Cloud-Services-Role-Lifecycle) (ビデオ)
 * [Azure Web ジョブ SDK とは](https://docs.microsoft.com/azure/app-service-web/websites-dotnet-webjobs-sdk)
 * [Web ジョブでバックグラウンド タスクを実行する](https://docs.microsoft.com/azure/app-service-web/web-sites-create-web-jobs)
 * [Azure キューと Service Bus キューの比較](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted)

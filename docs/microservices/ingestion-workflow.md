@@ -3,12 +3,12 @@ title: マイクロサービスでのインジェストとワークフロー
 description: マイクロサービスでのインジェストとワークフロー
 author: MikeWasson
 ms.date: 12/08/2017
-ms.openlocfilehash: 6477c3f2b0cc6d37dcd4637dc0dde4f7a6e3cc74
-ms.sourcegitcommit: 94c769abc3d37d4922135ec348b5da1f4bbcaa0a
+ms.openlocfilehash: 1851d979ed23b35046474f299128064d1abb375e
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2017
-ms.locfileid: "26678732"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47429487"
 ---
 # <a name="designing-microservices-ingestion-and-workflow"></a>マイクロサービスの設計: インジェストとワークフロー
 
@@ -83,7 +83,7 @@ Event Hubs は、競合コンシューマー用に設計されていません。
 
 ### <a name="iothub-react"></a>IotHub React 
 
-[IotHub React](https://github.com/Azure/toketi-iothubreact) は、Event Hub からイベントを読み取るための Akka Streams ライブラリです。 Akka Streams は、[Reactive Streams](http://www.reactive-streams.org/) 仕様を実装するストリーム ベースのプログラミング フレームワークです。 すべてのストリーミング操作が非同期的に実行され、パイプラインが背圧を適切に処理する効率的なストリーミング パイプラインを構築する方法を提供します。 背圧は、ダウンストリームのコンシューマーが受信できる速度よりも高速にイベント ソースがイベントを生成する場合に発生します。これはまさに、ドローン配信システムにトラフィックの急増がある状況です。 バックエンド サービスの速度が低下すると、IoTHub React の速度が低下します。 容量を増やすと、IoTHub React はパイプラインを通じてより多くのメッセージをプッシュします。
+[IotHub React](https://github.com/Azure/toketi-iothubreact) は、Event Hub からイベントを読み取るための Akka Streams ライブラリです。 Akka Streams は、[Reactive Streams](https://www.reactive-streams.org/) 仕様を実装するストリーム ベースのプログラミング フレームワークです。 すべてのストリーミング操作が非同期的に実行され、パイプラインが背圧を適切に処理する効率的なストリーミング パイプラインを構築する方法を提供します。 背圧は、ダウンストリームのコンシューマーが受信できる速度よりも高速にイベント ソースがイベントを生成する場合に発生します。これはまさに、ドローン配信システムにトラフィックの急増がある状況です。 バックエンド サービスの速度が低下すると、IoTHub React の速度が低下します。 容量を増やすと、IoTHub React はパイプラインを通じてより多くのメッセージをプッシュします。
 
 Akka Streams も、Event Hubs からのイベントのストリーミング用のとても自然なプログラミング モデルです。 イベントのバッチをループする代わりに、各イベントに適用される操作のセットを定義し、Akka Streams でストリーミングを処理します。 Akka Streams は、"*ソース*"、"*フロー*"、"*シンク*" の観点でストリーミング パイプラインを定義します。 ソースは出力ストリームを生成し、フローは入力ストリームを処理して出力ストリームを生成します。シンクは出力を生成せずにストリームを消費します。
 
