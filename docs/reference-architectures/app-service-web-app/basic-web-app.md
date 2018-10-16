@@ -158,7 +158,7 @@ App Service アプリには、`production` という名前のデプロイ スロ
 
 * Azure Portal の[トラブルシューティング ブレード][troubleshoot-blade]を使用して、一般的な問題の解決策を見つけます。
 * [ログ ストリーミング][web-app-log-stream]を有効にして、ほぼリアルタイムでログ情報を監視します。
-* [Kudu ダッシュボード][kudu]には、アプリケーションを監視およびデバッグするためのツールがいくつか用意されています。 詳細については、[知っておくべき Azure Websites のオンライン ツール][kudu]に関するページ (ブログ記事) を参照してください。 Kudu ダッシュボードには Azure Portal からアクセスできます。 アプリのブレードを開き、<strong>[ツール]</strong>、<strong>[Kudu]</strong> の順にクリックします。
+* [Kudu ダッシュボード][kudu]には、アプリケーションを監視およびデバッグするためのツールがいくつか用意されています。 詳細については、[知っておくべき Azure Websites のオンライン ツール][kudu]に関するページ (ブログ記事) を参照してください。 Kudu ダッシュボードには Azure Portal からアクセスできます。 アプリのブレードを開き、<strong>[ツール]</strong>、<strong>Kudu</strong> の順にクリックします。
 * Visual Studio を使用する場合、デバッグとトラブルシューティングのヒントについては、「[Visual Studio を使用した Azure App Service のトラブルシューティング][troubleshoot-web-app]」を参照してください。
 
 ## <a name="security-considerations"></a>セキュリティに関する考慮事項
