@@ -3,12 +3,12 @@ title: Azure コンピューティング オプションの概要
 description: Azure コンピューティング オプションの概要
 author: MikeWasson
 ms.date: 06/13/2018
-ms.openlocfilehash: ceb70f8eeff42e6cadb8a63c2f36986f26322201
-ms.sourcegitcommit: 26b04f138a860979aea5d253ba7fecffc654841e
+ms.openlocfilehash: cb59c4472b183d9a14031497f0b6db673938c9a9
+ms.sourcegitcommit: b2a4eb132857afa70201e28d662f18458865a48e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36206625"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48818821"
 ---
 # <a name="overview-of-azure-compute-options"></a>Azure コンピューティング オプションの概要
 
@@ -18,7 +18,7 @@ ms.locfileid: "36206625"
 
 その 1 つが**サービスとしてのインフラストラクチャ** (IaaS) です。 IaaS を使用して、関連付けられているネットワークおよびストレージ コンポーネントと共に、必要な VM をプロビジョニングします。 その後、必要なソフトウェアとアプリケーションを、こうした VM にデプロイします。 このモデルは従来のオンプレミス環境に最も近いものですが、Microsoft がインフラストラクチャを管理する点が異なります。 個々の VM は、ご自身で引き続き管理します。  
 
-**サービスとしてのプラットフォーム** (PaaS) は、管理されたホスティング環境を提供します。この環境では、VM やネットワーク リソースを管理せずにアプリケーションをデプロイできます。 たとえば、個々の VM を作成するのではなく、インスタンス数を指定すると、サービスによって、必要なリソースがプロビジョニング、構成、および管理されます。 Azure App Service は PaaS サービスの例です。
+**サービスとしてのプラットフォーム (PaaS)** では、マネージド ホスティング環境が提供されます。この環境では、VM やネットワーク リソースを管理せずにアプリケーションをデプロイできます。 たとえば、個々の VM を作成するのではなく、インスタンス数を指定すると、サービスによって、必要なリソースがプロビジョニング、構成、および管理されます。 Azure App Service は PaaS サービスの例です。
 
 IaaS から純粋な PaaS への中間領域もあります。 たとえば、Azure VM は、VM Scale Sets を使用して自動スケールできます。 この自動スケール機能は厳密には PaaS ではありませんが、PaaS サービスで見つかる可能性がある管理機能の種類です。
 

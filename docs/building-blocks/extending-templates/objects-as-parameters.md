@@ -3,12 +3,12 @@ title: Azure Resource Manager テンプレートのパラメーターとして�
 description: Azure Resource Manager テンプレートの機能を拡張して、オブジェクトをパラメーターとして使用する方法について説明します
 author: petertay
 ms.date: 06/09/2017
-ms.openlocfilehash: 27bc4be02f202ae5d6a3c28553a8c8afe435f743
-ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
+ms.openlocfilehash: dd53c55a26b2452c375d8d1e1a98886b15febaeb
+ms.sourcegitcommit: 62945777e519d650159f0f963a2489b6bb6ce094
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47429317"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48876760"
 ---
 # <a name="use-an-object-as-a-parameter-in-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートのパラメーターとしてオブジェクトを使用する
 
@@ -27,7 +27,7 @@ ms.locfileid: "47429317"
 次に、`VNetSettings` オブジェクトに値を指定してみましょう。
 
 > [!NOTE]
-> デプロイ時にパラメーター値を指定する方法については、「[Azure Resource Manager テンプレートの構造と構文の詳細][azure-resource-manager-authoring-templates]」の**パラメーター**のセクションをご覧ください。 
+> デプロイ時にパラメーター値を指定する方法については、「[Azure Resource Manager テンプレートの構造と構文の詳細][azure-resource-manager-authoring-templates]」の**パラメーター**のセクションを参照してください。 
 
 ```json
 "parameters":{

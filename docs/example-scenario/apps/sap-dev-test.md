@@ -1,50 +1,50 @@
 ---
-title: 開発/テスト ワークロード用の SAP
-description: 開発/テスト環境の SAP シナリオ
+title: Azure での SAP ワークロード向けの開発/テスト環境
+description: SAP ワークロード向けの開発/テスト環境を構築します。
 author: AndrewDibbins
 ms.date: 7/11/18
-ms.openlocfilehash: d0f266e40969cf4782e69041889a686387499722
-ms.sourcegitcommit: c49aeef818d7dfe271bc4128b230cfc676f05230
+ms.openlocfilehash: b47e4cb527d3e4ecd74bee7bcf08f2794da56d6c
+ms.sourcegitcommit: 62945777e519d650159f0f963a2489b6bb6ce094
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44389181"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48876801"
 ---
-# <a name="sap-for-devtest-workloads"></a>開発/テスト ワークロード用の SAP
+# <a name="devtest-environments-for-sap-workloads-on-azure"></a>Azure での SAP ワークロード向けの開発/テスト環境
 
-この例では、Azure で Windows または Linux 環境の SAP NetWeaver の開発/テスト実装を実行する方法に関するガイダンスを提供します。 使用するデータベースは AnyDB で、これはサポートされている任意の DBMS を表す SAP 用語 (SAP HANA 以外) です。 このアーキテクチャは、運用環境以外を対象に設計されているため、単一の仮想マシン (VM) のみでデプロイされ、サイズは組織のニーズに合わせて変更できます。
+この例は、Windows または Linux 環境の SAP NetWeaver の開発/テスト環境を Azure 上に構築する方法を示しています。 使用するデータベースは AnyDB で、これはサポートされている任意の DBMS を表す SAP 用語 (SAP HANA 以外) です。 このアーキテクチャは、運用環境以外を対象に設計されているため、単一の仮想マシン (VM) のみでデプロイされ、サイズは組織のニーズに合わせて変更できます。
 
 運用ユース ケースについては、以下で使用できる SAP リファレンス アーキテクチャを確認してください。
 
 * [AnyDB 向けの SAP NetWeaver][sap-netweaver]
-* [SAP S/4Hana][sap-hana]
+* [SAP S/4HANA][sap-hana]
 * [SAP on Azure L インスタンス][sap-large]
 
-## <a name="related-use-cases"></a>関連するユース ケース
+## <a name="relevant-use-cases"></a>関連するユース ケース
 
 次のユース ケースについて、このシナリオを検討してください。
 
 * 重要度、生産性が低い SAP ワークロード (サンドボックス、開発、テスト、品質保証)
-* 重要度が低い SAP Business One ワークロード
+* 重要度が低い SAP ビジネス ワークロード
 
 ## <a name="architecture"></a>アーキテクチャ
 
-![ダイアグラム](media/sap-2tier/SAP-Infra-2Tier_finalversion.png)
+![SAP ワークロードの開発/テスト環境のアーキテクチャ図](media/architecture-sap-dev-test.png)
 
-このシナリオでは、1 つの仮想マシンにおける 1 つの SAP システム データベースと SAP アプリケーション サーバーのプロビジョニングに対応できます。シナリオのデータ フローを次に示します。
+このシナリオは、単一の仮想マシンに単一の SAP システム データベースと SAP アプリケーション サーバーをプロビジョニングする方法を示しています。 このシナリオのデータ フローは次のとおりです。
 
-1. プレゼンテーション層の顧客が、SAP GUI、またはオンプレミスの他のユーザー インターフェイス (Internet Explorer、Excel、または他の Web アプリケーション) を使用して、Azure ベースの SAP システムにアクセスします。
-2. 確立された Express Route を使用して接続が提供されます。 Express Route 接続は、Azure の Express Route ゲートウェイで終了します。 ネットワーク トラフィックが、Express Route ゲートウェイを介してゲートウェイ サブネット、アプリケーション層スポーク サブネットの順にルーティングされ ([ハブ スポーク][hub-spoke] パターンを参照)、さらにネットワーク セキュリティ ゲートウェイ経由で SAP アプリケーションの仮想マシンにルーティングされます。
+1. お客様は、SAP ユーザー インターフェイスまたは他のクライアント ツール (Excel、Web ブラウザー、またはその他の Web アプリケーション) を使用して、Azure ベースの SAP システムにアクセスします。
+2. 確立された ExpressRoute を使用して接続が提供されます。 ExpressRoute 接続は、Azure の ExpressRoute ゲートウェイが終端です。 ネットワーク トラフィックが、ExpressRoute ゲートウェイを介してゲートウェイ サブネット、アプリケーション層スポーク サブネットの順にルーティングされ ([ハブスポーク][hub-spoke] パターンを参照)、さらにネットワーク セキュリティ ゲートウェイ経由で SAP アプリケーションの仮想マシンにルーティングされます。
 3. ID 管理サーバーは、認証サービスを提供します。
 4. ジャンプ ボックスは、ローカル管理機能を提供します。
 
 ### <a name="components"></a>コンポーネント
 
-* [リソース グループ](/azure/azure-resource-manager/resource-group-overview#resource-groups)は、Azure リソースの論理コンテナーです。
 * [仮想ネットワーク](/azure/virtual-network/virtual-networks-overview)は、Azure 内のネットワーク通信の基盤です
-* [仮想マシン](/azure/virtual-machines/windows/overview)である Azure Virtual Machines では、Windows または Linux サーバーを使用して、セキュリティで保護された高スケールな仮想化インフラストラクチャをオンデマンドで構築できます
-* [Express Route](/azure/expressroute/expressroute-introduction) を利用すると、接続プロバイダーが提供するプライベート接続を介して、オンプレミスのネットワークを Microsoft クラウドに拡張できます。
+* [仮想マシン](/azure/virtual-machines/windows/overview)である Azure Virtual Machines では、Windows または Linux サーバーを使用して、セキュリティで保護された高スケールな仮想化インフラストラクチャをオンデマンドで構築できます。
+* [ExpressRoute](/azure/expressroute/expressroute-introduction) を利用すると、接続プロバイダーが提供するプライベート接続を介して、オンプレミスのネットワークを Microsoft クラウドに拡張できます。
 * [ネットワーク セキュリティ グループ](/azure/virtual-network/security-overview)を使用すると、仮想ネットワーク内のリソースへのネットワーク トラフィックを制限できます。 ネットワーク セキュリティ グループには、ソースまたはターゲット IP アドレス、ポート、およびプロトコルを基に、受信/送信ネットワーク トラフィックを許可または拒否するセキュリティ規則の一覧が含まれています。 
+* [リソース グループ](/azure/azure-resource-manager/resource-group-overview#resource-groups)は、Azure リソースの論理コンテナーとして機能します。
 
 ## <a name="considerations"></a>考慮事項
 
@@ -66,18 +66,19 @@ ms.locfileid: "44389181"
 
 ## <a name="pricing"></a>価格
 
-このシナリオの実行コストを調べてください。すべてのサービスがコスト計算ツールで事前構成されています。  特定のユース ケースについて価格の変化を確認するには、予想されるトラフィックに合わせて該当する変数を変更します。
+このシナリオの実行コストを調べることができるよう、すべてのサービスが料金計算ツールで事前構成されています。以下に例を示します。 特定のユース ケースについて価格の変化を確認するには、予想されるトラフィックに合わせて該当する変数を変更します。
 
-取得するトラフィックの量に基づいて、次の 4 つのサンプル コスト プロファイルが用意されています。
+受信するトラフィックの量に基づいて、次の 4 つのサンプル コスト プロファイルが用意されています。
 
-|サイズ|SAP|VM の種類|ストレージ|Azure 料金計算ツール|
+|サイズ|SAP|VM の種類|Storage|Azure 料金計算ツール|
 |----|----|-------|-------|---------------|
 |Small|8000|D8s_v3|P20 x 2、P10 x 1|[Small](https://azure.com/e/9d26b9612da9466bb7a800eab56e71d1)|
 |Medium|16000|D16s_v3|P20 x 3、P10 x 1|[Medium](https://azure.com/e/465bd07047d148baab032b2f461550cd)|
 Large|32000|E32s_v3|P20 x 3、P10 x 1|[Large](https://azure.com/e/ada2e849d68b41c3839cc976000c6931)|
 Extra Large|64000|M64s|P20 x 4、P10 x 1|[Extra Large](https://azure.com/e/975fb58a965c4fbbb54c5c9179c61cef)|
 
-注: 価格はガイドであり、VM とストレージのコストのみを示しています (ネットワーク、バックアップ ストレージ、データの受信/送信料金は含まれません)。
+> [!NOTE]
+> この価格は、単に VM とストレージの料金を示す目安です。 ネットワーク、バックアップ ストレージ、データ イングレス/エグレスの料金は含まれていません。
 
 * [Small](https://azure.com/e/9d26b9612da9466bb7a800eab56e71d1): 小規模なシステムは、VM の種類 D8s_v3 (8 個の vCPU)、32 GB の RAM、200 GB の一時ストレージ、および 2 つの 512 GB と 1 つの 128 GB Premium Storage ディスクで構成されています。
 * [Medium](https://azure.com/e/465bd07047d148baab032b2f461550cd): 中規模なシステムは、VM の種類 D16s_v3 (16 個の vCPU)、64 GB の RAM、400 GB の一時ストレージ、および 3 つの 512 GB と 1 つの 128 GB Premium Storage ディスクで構成されています。
@@ -86,16 +87,16 @@ Extra Large|64000|M64s|P20 x 4、P10 x 1|[Extra Large](https://azure.com/e/975fb
 
 ## <a name="deployment"></a>Deployment
 
-上記のシナリオに似た基盤インフラストラクチャをデプロイするには、デプロイ ボタンを使用してください
+次をクリックして、このシナリオの基盤となるインフラストラクチャをデプロイします。
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmspnp%2Fsolution-architectures%2Fmaster%2Fapps%2Fsap-2tier%2Fazuredeploy.json" target="_blank">
-    <img src="http://azuredeploy.net/deploybutton.png"/>
+    <img src="https://azuredeploy.net/deploybutton.png"/>
 </a>
 
-\* SAP は自動的にインストールされません。インフラストラクチャの構築後に手動でインストールしてください。
+> [!NOTE]
+> このデプロイでは、SAP と Oracle はインストールされません。 それらのコンポーネントは、個別にデプロイする必要があります。
 
 <!-- links -->
-[reference architecture]:  /azure/architecture/reference-architectures/sap
 [resiliency]: /azure/architecture/resiliency/
 [security]: /azure/security/
 [scalability]: /azure/architecture/checklist/scalability

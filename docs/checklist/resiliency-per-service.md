@@ -4,12 +4,12 @@ description: さまざまな Azure サービスの回復性のガイダンスを
 author: petertaylor9999
 ms.date: 03/02/2018
 ms.custom: resiliency, checklist
-ms.openlocfilehash: 735d4466f53ff03b67063b49b86f4184bbf1af41
-ms.sourcegitcommit: 25bf02e89ab4609ae1b2eb4867767678a9480402
+ms.openlocfilehash: 50808a837132e905cc89c3c43d40852a04f4885c
+ms.sourcegitcommit: b2a4eb132857afa70201e28d662f18458865a48e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45584767"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48819195"
 ---
 # <a name="resiliency-checklist-for-specific-azure-services"></a>特定の Azure サービスの回復性のチェックリスト
 
@@ -39,11 +39,11 @@ ms.locfileid: "45584767"
 
 **ログ用の別のストレージ アカウントを作成します。** ログとアプリケーション データに同じストレージ アカウントを使用しないでください。 これは、ログ記録によってアプリケーションのパフォーマンスが低下するのを防ぐのに役立ちます。
 
-**パフォーマンスを監視します。** [New Relic](http://newrelic.com/) や[Application Insights](/azure/application-insights/app-insights-overview/) などのパフォーマンス監視サービスを使用して、負荷がかかった状態のアプリケーションのパフォーマンスと動作を監視してください。  パフォーマンスの監視により、アプリケーションをリアルタイムで理解できます。 これにより、問題を診断し、障害の根本原因分析を行うことができます。
+**パフォーマンスを監視します。** [New Relic](https://newrelic.com/) や[Application Insights](/azure/application-insights/app-insights-overview/) などのパフォーマンス監視サービスを使用して、負荷がかかった状態のアプリケーションのパフォーマンスと動作を監視してください。  パフォーマンスの監視により、アプリケーションをリアルタイムで理解できます。 これにより、問題を診断し、障害の根本原因分析を行うことができます。
 
 ## <a name="application-gateway"></a>Application Gateway
 
-**少なくとも 2 つのインスタンスをプロビジョニングします。** 少なくとも 2 つのインスタンスのある Application Gateway をデプロイしてください。 単一のインスタンスは、単一障害点です。 冗長性とスケーラビリティのために、2 つ以上のインスタンスを使用してください。 [SLA](https://azure.microsoft.com/support/legal/sla/application-gateway/v1_0/) に適合するためには、2 つ以上のメディアまたは大きめのインスタンスをプロビジョニングする必要があります。
+**少なくとも 2 つのインスタンスをプロビジョニングします。** 少なくとも 2 つのインスタンスのある Application Gateway をデプロイしてください。 単一のインスタンスは、単一障害点です。 冗長性とスケーラビリティのために、2 つ以上のインスタンスを使用してください。 [SLA](https://azure.microsoft.com/support/legal/sla/application-gateway) に適合するためには、2 つ以上のメディアまたは大きめのインスタンスをプロビジョニングする必要があります。
 
 ## <a name="cosmos-db"></a>Cosmos DB
 
@@ -77,6 +77,21 @@ ms.locfileid: "45584767"
 
   * データ ソースが geo レプリケーションされている場合は、一般に、各リージョンの Azure Search サービスのそれぞれのインデクサーをそのローカル データ ソース レプリカにポイントする必要があります。 ただし、このアプローチは、Azure SQL データベースに格納されている大規模なデータセットは推奨されません。 その理由は、Azure Search がセカンダリ SQL Database レプリカからは増分インデックス作成を実行できず、プライマリ レプリカからしか実行できないためです。 代わりに、すべてのインデクサーをプライマリ レプリカにポイントしてください。 フェールオーバー後は、新しいプライマリ レプリカで Azure Search インデクサーをポイントします。  
   * データ ソースが geo レプリケートされていない場合は、同じデータ ソースにある複数のインデクサーをポイントして、複数のリージョン内の Azure Search サービスがデータ ソースからのインデックス作成を継続的に単独で行うようにしてください。 詳細については、「[Azure Search のパフォーマンスと最適化に関する考慮事項][search-optimization]」をご覧ください。
+
+## <a name="service-bus"></a>Service Bus
+
+**運用ワークロードには Premium レベルを使用します**。 [Service Bus の Premium メッセージング](/azure/service-bus-messaging/service-bus-premium-messaging)では、専用の予約済み処理リソースと、予測可能なパフォーマンスとスループットをサポートするためのメモリ容量が提供されます。 また、Premium メッセージング レベルでは、Premium のお客様だけがいち早く利用できる新機能にもアクセスできます。 予想されるワークロードに基づいて、メッセージング ユニットの数を決定できます。
+
+**重複メッセージを処理します**。 メッセージ送信後すぐにパブリッシャーで障害が発生した場合、またはネットワークやシステムで問題が発生した場合は、メッセージが配信されたことをエラーのため記録できないことがあり、同じメッセージがシステムに 2 回送信される可能性があります。 Service Bus では、重複の検出を有効にすることで、この問題を処理できます。 詳しくは、「[重複検出](/azure/service-bus-messaging/duplicate-detection)」をご覧ください。
+
+**例外を処理します**。 メッセージング API では、ユーザー エラー、構成エラー、その他のエラーが発生すると、例外が生成されます。 クライアント コード (送信側と受信側) では、コード内でこれらの例外を処理する必要があります。 バッチ処理では、例外処理を使用してメッセージのバッチ全体が失われるのを防ぐことができるので、特に重要です。 詳しくは、「[Service Bus メッセージングの例外](/azure/service-bus-messaging/service-bus-messaging-exceptions)」をご覧ください。
+
+**再試行ポリシー**。 Service Bus を使用すると、アプリケーションに最適な再試行ポリシーを選択できます。 既定のポリシーでは、最大 9 回の再試行が許され、待機時間は 30 秒ですが、これをさらに調整できます。 詳しくは、[Service Bus の再試行ポリシー](/azure/architecture/best-practices/retry-service-specific#service-bus)に関するページをご覧ください。
+
+**配信不能キューを使用します**。 複数回再試行しても、メッセージを処理できないか、またはどの受信者にも配信できない場合、メッセージは配信不能キューに移動されます。 配信不能キューからメッセージを読み取り、検査して、問題を修復するプロセスを実装します。 シナリオに応じて、そのままのメッセージで再試行したり、メッセージを変更して再試行したり、メッセージを破棄したりします。 詳しくは、「[Service Bus の配信不能キューの概要](/azure/service-bus-messaging/service-bus-dead-letter-queues)」をご覧ください。
+
+**geo ディザスター リカバリーを使用します**。 geo ディザスター リカバリーを使用すると、Azure リージョン全体またはデータセンターが災害により使用できなくなった場合でも、別のリージョンまたはデータセンターでデータの処理が続けられることが保証されます。 詳細については、「[Azure Service Bus の geo ディザスター リカバリー](/azure/service-bus-messaging/service-bus-geo-dr)」を参照してください。
+
 
 ## <a name="storage"></a>Storage
 

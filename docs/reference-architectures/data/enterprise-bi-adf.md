@@ -3,12 +3,12 @@ title: SQL Data Warehouse と Azure Data Factory を使用したエンタープ�
 description: Azure Data Factory を使用した Azure 上の ELT ワークフローの自動化
 author: MikeWasson
 ms.date: 07/01/2018
-ms.openlocfilehash: ffd75ba8c57a9afbc6abad61f21f738c644c9bc8
-ms.sourcegitcommit: 58d93e7ac9a6d44d5668a187a6827d7cd4f5a34d
+ms.openlocfilehash: f004c02da93335e74b07b9720236832ad7f744db
+ms.sourcegitcommit: 62945777e519d650159f0f963a2489b6bb6ce094
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37142283"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48876904"
 ---
 # <a name="automated-enterprise-bi-with-sql-data-warehouse-and-azure-data-factory"></a>SQL Data Warehouse と Azure Data Factory を使用したエンタープライズ BI の自動化
 
@@ -43,11 +43,11 @@ ms.locfileid: "37142283"
 
 ### <a name="analysis-and-reporting"></a>分析とレポート
 
-**Azure Analysis Services**。 [Analysis Services](/azure/analysis-services/) は、データ モデリング機能を提供する完全なマネージド サービスです。 セマンティック モデルは Analysis Services に読み込まれます。
+**Azure Analysis Services**。 [Analysis Services](/azure/analysis-services/) は、データ モデリング機能を提供するフル マネージド サービスです。 セマンティック モデルは Analysis Services に読み込まれます。
 
-**Power BI**。 Power BI は、データを分析してビジネスの洞察を得る一連のビジネス分析ツールです。 このアーキテクチャでは、Analysis Services に格納されたセマンティック モデルに対してクエリが実行されます。
+**Power BI**。 Power BI は、データを分析してビジネスの分析情報を得る一連のビジネス分析ツールです。 このアーキテクチャでは、Analysis Services に格納されたセマンティック モデルに対してクエリが実行されます。
 
-### <a name="authentication"></a>認証
+### <a name="authentication"></a>Authentication
 
 **Azure Active Directory** (Azure AD)。Power BI から Analysis Services サーバーに接続するユーザーを認証します。
 
@@ -204,7 +204,7 @@ SET [Integration].[Sale_Staging].[WWI Customer ID] =  CustomerHolder.[WWI Custom
 
 - `<data_factory_name>` データ ファクトリ名。
 - `<analysis_server_name>` Analysis Services サーバー名。
-- `<active_directory_upn>` Azure Active Directory ユーザー プリンシパル名 (UPN)。 たとえば、「`user@contoso.com`」のように入力します。
+- `<active_directory_upn>` Azure Active Directory ユーザー プリンシパル名 (UPN)。 たとえば、「 `user@contoso.com` 」のように入力します。
 - `<data_warehouse_server_name>` SQL Data Warehouse サーバー名。
 - `<data_warehouse_password>` SQL Data Warehouse 管理者パスワード。
 - `<resource_group_name>` リソース グループの名前。

@@ -1,22 +1,22 @@
 ---
 title: Azure の eコマース フロントエンド
-description: Azure での eコマース サイトの実証済みホスト シナリオ
+description: Azure で eコマース サイトをホストします。
 author: masonch
 ms.date: 7/13/18
-ms.openlocfilehash: 340f60628bf932489a9fbd11ac3ff1be723a685c
-ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
+ms.openlocfilehash: 6ca85665a5bf63bf71f5badc16406db5df2a34c2
+ms.sourcegitcommit: b2a4eb132857afa70201e28d662f18458865a48e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47428076"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48819093"
 ---
-# <a name="e-commerce-frontend-on-azure"></a>Azure の eコマース フロントエンド
+# <a name="an-e-commerce-front-end-on-azure"></a>Azure の eコマース フロントエンド
 
 このサンプル シナリオでは、Azure の提供するサービスとしてのプラットフォーム (PaaS) ツールを使用した eコマース フロントエンドの実装について説明します。 eコマース Web サイトの多くが、季節性および時期的なトラフィックの変動に直面します。 PaaS ツールを利用すれば、予想通りでも、予想外であっても、商品やサービスの需要が急増したときに、顧客や取引の増加に自動的に対処できます。 また、このシナリオでは、使用した容量分だけ支払うため、経済的にもクラウドの恩恵を受けられます。
 
 このドキュメントは、サンプル eコマース アプリケーションしての、*Relecloud Concerts* というオンライン コンサート発券プラットフォームをデプロイする際にまとめて使用されるさまざまな Azure PaaS コンポーネントと考慮事項について説明します。
 
-## <a name="potential-use-cases"></a>考えられるユース ケース
+## <a name="relevant-use-cases"></a>関連するユース ケース
 
 次のユース ケースについて、このシナリオを検討してください。
 
@@ -25,7 +25,7 @@ ms.locfileid: "47428076"
 
 ## <a name="architecture"></a>アーキテクチャ
 
-![eコマース アプリケーションのサンプル シナリオ アーキテクチャ][architecture-diagram]
+![eコマース アプリケーションのサンプル シナリオ アーキテクチャ][architecture]
 
 このシナリオでは、eコマース サイトからのチケット購入に対応します。シナリオのデータ フローを次に示します。
 
@@ -69,7 +69,7 @@ Web 層と機能に関するその他のオプションは次のとおりです�
 
 データ層の他のオプションを次に示します。
 
-* [Cosmos DB][docs-cosmosdb] は、Microsoft のグローバル分散型マルチモデル データベースです。 このサービスは、Mongo DB、Cassandra、Graph データ、シンプルなテーブル ストレージなど、他のデータ モデルを実行するためのプラットフォームを提供します。
+* [Cosmos DB](/azure/cosmos-db/introduction): Microsoft のグローバル分散型マルチモデル データベースです。 このサービスは、Mongo DB、Cassandra、Graph データ、シンプルなテーブル ストレージなど、他のデータ モデルを実行するためのプラットフォームを提供します。
 
 ## <a name="considerations"></a>考慮事項
 
@@ -120,11 +120,11 @@ Web 層と機能に関するその他のオプションは次のとおりです�
 * [eShopOnContainers の参照用の例][microservices-ecommerce]
 
 <!-- links -->
+[architecture]: ./media/architecture-ecommerce-scenario.png
 [small-pricing]: https://azure.com/e/90fbb6a661a04888a57322985f9b34ac
 [medium-pricing]: https://azure.com/e/38d5d387e3234537b6859660db1c9973
 [large-pricing]: https://azure.com/e/f07f99b6c3134803a14c9b43fcba3e2f
 [app-service-reference-architecture]: ../../reference-architectures/app-service-web-app/basic-web-app.md
-[architecture-diagram]: ./media/architecture-diagram-ecommerce-solution.png
 [availability]: /azure/architecture/checklist/availability
 [circuit-breaker]: /azure/architecture/patterns/circuit-breaker
 [design-patterns-availability]: /azure/architecture/patterns/category/availability
@@ -136,7 +136,6 @@ Web 層と機能に関するその他のオプションは次のとおりです�
 [docs-cdn]: /azure/cdn/cdn-overview
 [docs-container-instances]: /azure/container-instances/
 [docs-kubernetes-service]: /azure/aks/
-[docs-cosmosdb]: /azure/cosmos-db/
 [docs-functions]: /azure/azure-functions/functions-overview
 [docs-redis-cache]: /azure/redis-cache/cache-overview
 [docs-search]: /azure/search/search-what-is-azure-search
@@ -154,6 +153,6 @@ Web 層と機能に関するその他のオプションは次のとおりです�
 [resiliency-app-service]: /azure/architecture/checklist/resiliency-per-service#app-service
 [resiliency]: /azure/architecture/checklist/resiliency
 [scalability]: /azure/architecture/checklist/scalability
-[secure-development]: https://www.microsoft.com/en-us/SDL/process/design.aspx
+[secure-development]: https://www.microsoft.com/SDL/process/design.aspx
 [sql-geo-replication]: /azure/sql-database/sql-database-geo-replication-overview
 [storage-geo-redudancy]: /azure/storage/common/storage-redundancy-grs

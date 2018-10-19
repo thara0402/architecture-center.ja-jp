@@ -3,12 +3,12 @@ title: Azure Cloud Services から移行した Azure Service Fabric アプリケ
 description: Azure Cloud Services から移行した既存の Azure Service Fabric アプリケーションをリファクタリングする方法
 author: petertay
 ms.date: 01/30/2018
-ms.openlocfilehash: 08ef3af68b8eaba36a5b871449f0aba764fe5a04
-ms.sourcegitcommit: 2123c25b1a0b5501ff1887f98030787191cf6994
+ms.openlocfilehash: 7b5c115acdbfca0c105e2b861af9a8049b890dca
+ms.sourcegitcommit: b2a4eb132857afa70201e28d662f18458865a48e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
-ms.locfileid: "29782548"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48819076"
 ---
 # <a name="refactor-an-azure-service-fabric-application-migrated-from-azure-cloud-services"></a>Azure Cloud Services から移行した Azure Service Fabric アプリケーションをリファクタリングする
 
@@ -44,7 +44,7 @@ ms.locfileid: "29782548"
 **Tailspin.AnswerAnalysisService** サービスは、元の *Tailspin.Workers.Survey* worker ロールから移植されます。
 
 > [!NOTE] 
-> 各 Web ロールと worker ロールに行われたコード変更は必要最小限のものでしたが、**Tailspin.Web** と **Tailspin.Web.Survey.Public** は、[Kestrel] Web サーバーをセルフホストするように変更されました。 前の Surveys アプリケーションは、インターネット インフォメーション サービス (IIS) を使用してホストされた ASP.Net アプリケーションですが、Service Fabric では IIS をサービスとして実行できません。 したがって、すべての Web サーバーが、[Kestrel] のように、セルフホストできなければなりません。 状況によっては、IIS を Service Fabric のコンテナーで実行することができます。 詳細については、[コンテナー使用のシナリオ][container-scenarios]に関するページをご覧ください。  
+> 各 Web ロールと worker ロールに行われたコード変更は必要最小限のものでしたが、**Tailspin.Web** と **Tailspin.Web.Survey.Public** は、[Kestrel] Web サーバーをセルフホストするように変更されました。 前の Surveys アプリケーションは、インターネット インフォメーション サービス (IIS) を使用してホストされた ASP.NET アプリケーションですが、Service Fabric では IIS をサービスとして実行できません。 したがって、すべての Web サーバーが、[Kestrel] のように、セルフホストできなければなりません。 状況によっては、IIS を Service Fabric のコンテナーで実行することができます。 詳細については、[コンテナー使用のシナリオ][container-scenarios]に関するページをご覧ください。  
 
 ここで、Tailspin は、Surveys アプリケーションを、よりきめ細かなアーキテクチャにリファクタリングします。 Tailspin がリファクタリングを行う動機は、Surveys アプリケーションの開発、ビルド、およびデプロイを行いやすくすることです。 Tailspin は、既存の Web および worker ロールをきめ細かなアーキテクチャに分解することで、こうしたロール間で密接に結合された既存の通信とデータの依存関係を削除したいと考えています。
 
@@ -90,7 +90,7 @@ ReliableConcurrentQueue からデキューされる項目を保持する操作�
 ## <a name="communication-framework"></a>通信フレームワーク
 
 Surveys アプリケーションの各サービスが、RESTful Web API を使用して通信します。 RESTful API には次の利点があります。
-* 使いやすい: 各サービスが ASP.Net Core MVC を使用して構築されています。これは Web API の作成をネイティブでサポートしています。
+* 使いやすい: 各サービスが ASP.NET Core MVC を使用して構築されています。これは Web API の作成をネイティブでサポートしています。
 * セキュリティ: 各サービスに SSL は必要ありませんが、Tailspin は各サービスで SSL 接続を使用することを必須にすることもできます。 
 * バージョン管理: 特定バージョンの Web API に対して、クライアントの書き込みおよびテストを行うことができます。
 
@@ -142,8 +142,8 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerF
 Tailspin では、Azure Portal を使用してクラスターをデプロイします。 Service Fabric クラスター リソースの種類により、VM スケール セット、ロード バランサーなど、必要なインフラストラクチャすべてがデプロイされます。 推奨される VM のサイズは、Service Fabric クラスターのプロビジョニング プロセス中に Azure Portal に表示されます。 VM は VM スケール セットにデプロイされるため、ユーザーの負荷が増えたときにスケールアップおよびスケールアウトの両方が可能であることに注意してください。
 
 > [!NOTE]
-> 前に説明したように、移行済みバージョンの Surveys アプリケーションでは、ASP.Net Core と Web サーバーとしての Kestrel を使用して 2 つの Web フロントエンドがセルフホストされました。 移行済みバージョンの Surveys アプリケーションではリバース プロキシを使用していませんが、IIS、Nginx、Apache などのリバース プロキシを使用することを強くお勧めします。 詳細については、[ASP.NET Core への Kestrel Web サーバーの実装の概要][kestrel-intro]に関するページをご覧ください。
-> リファクタリングされた Surveys アプリケーションでは、2 つの Web フロントエンドが、ASP.Net Core と Web サーバーとしての [WebListener][weblistener] を使用してセルフホストされるため、リバース プロキシは必要ありません。
+> 前に説明したように、移行済みバージョンの Surveys アプリケーションでは、ASP.NET Core と Web サーバーとしての Kestrel を使用して 2 つの Web フロントエンドがセルフホストされました。 移行済みバージョンの Surveys アプリケーションではリバース プロキシを使用していませんが、IIS、Nginx、Apache などのリバース プロキシを使用することを強くお勧めします。 詳細については、[ASP.NET Core への Kestrel Web サーバーの実装の概要][kestrel-intro]に関するページをご覧ください。
+> リファクタリングされた Surveys アプリケーションでは、2 つの Web フロントエンドが、ASP.NET Core と Web サーバーとしての [WebListener][weblistener] を使用してセルフホストされるため、リバース プロキシは必要ありません。
 
 ## <a name="next-steps"></a>次の手順
 
