@@ -3,12 +3,12 @@ title: Azure での Web アプリケーションの監視
 description: Azure App Service でホストされる Web アプリケーションを監視します。
 author: adamboeglin
 ms.date: 09/12/2018
-ms.openlocfilehash: b1beb5cf5e29ab1ceb760bf95eab85d819b69342
-ms.sourcegitcommit: 62945777e519d650159f0f963a2489b6bb6ce094
+ms.openlocfilehash: ea57ba50f4e9390d5527587752c3bebad01b6139
+ms.sourcegitcommit: 42797fffb82bbbf86f6deb1da52c61d456be631e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48876853"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49313218"
 ---
 # <a name="web-application-monitoring-on-azure"></a>Azure での Web アプリケーションの監視
 
@@ -99,7 +99,7 @@ Application Insights のテレメトリは、デバッグ中やアプリの公�
 
 デプロイ後に、パフォーマンス インジケーターの [Live Metrics Stream][Live Metrics Stream] を確認することができます。 このデータは保存されません (リアルタイムのメトリックは表示されます) が、テレメトリを収集して後で分析することができます。 Live Stream データの料金は発生しません。
 
-Log Analytics では、サービスに取り込まれたデータがギガバイト (GB) 単位で課金されます。 毎月、Azure Log Analytics サービスにインジェストされる最初の 5 GB のデータは無料で提供されます。また、Log Analytics ワークスペース内のデータは、最初の 31 日間無料で保持されます。
+Log Analytics では、サービスに取り込まれたデータがギガバイト (GB) 単位で課金されます。 毎月、Azure Log Analytics サービスにインジェストされる最初の 5 GB のデータは無料で提供されます。また、Log Analytics ワークスペース内のデータは、最初の 31 日間無料で保持されます。 
 
 ## <a name="next-steps"></a>次の手順
 
