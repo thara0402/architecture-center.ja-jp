@@ -1,22 +1,22 @@
 ---
 title: Azure での 3D ビデオのレンダリング
-description: Azure Batch サービスを使用した、Azure でのネイティブ HPC ワークロードの実行
+description: Azure Batch サービスを使用して、Azure でネイティブ HPC ワークロードを実行します。
 author: adamboeglin
 ms.date: 07/13/2018
-ms.openlocfilehash: 67dc8496656a75eab8f5d0ce45d00f8b1f4ea03f
-ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
+ms.openlocfilehash: 1206fa7d931fca635118929d433abe232ec5ca9a
+ms.sourcegitcommit: b2a4eb132857afa70201e28d662f18458865a48e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47428059"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48818631"
 ---
 # <a name="3d-video-rendering-on-azure"></a>Azure での 3D ビデオのレンダリング
 
-3D レンダリングは時間がかかるプロセスで、完了までにかなりの CPU 時間が必要です。  1 台のコンピューターで静的なアセットからビデオ ファイルを生成している場合、作成しているビデオの長さと複雑さよっては、そのプロセスに数時間から、数日かかる場合もあります。  多くの企業は、これらのタスクを実行するために高価なハイエンド デスクトップ コンピューターを購入するか、ジョブを送信できる大規模なレンダリング ファームに投資しています。  しかし、Azure Batch を使用すれば、その能力を必要なときだけ使用して、不要なときはシャットダウンできます。資本投資は必要ありません。
+3D ビデオのレンダリングは時間がかかるプロセスで、完了までにかなりの CPU 時間が必要です。 1 台のコンピューターで静的なアセットからビデオ ファイルを生成している場合、作成しているビデオの長さと複雑さよっては、そのプロセスに数時間から、数日かかる場合もあります。 多くの企業は、これらのタスクを実行するために高価なハイエンド デスクトップ コンピューターを購入するか、ジョブを送信できる大規模なレンダリング ファームに投資しています。 しかし、Azure Batch を使用すれば、その能力を必要なときだけ使用して、不要なときはシャットダウンできます。資本投資は必要ありません。
 
 Windows Server と Linux コンピューティングのどちらのノードを選択しても、Batch によって一貫したジョブの管理やスケジュール設定を実行できます。 Batch を使用すると、AutoDesk Maya、Blender など、既存の Windows または Linux アプリケーションを使用して、Azure で大規模なレンダリング ジョブを実行することができます。
 
-## <a name="related-use-cases"></a>関連するユース ケース
+## <a name="relevant-use-cases"></a>関連するユース ケース
 
 次のようなユース ケースについて、このシナリオを検討してください。
 
@@ -29,14 +29,14 @@ Windows Server と Linux コンピューティングのどちらのノードを�
 
 ![Azure Batch を使用したクラウド ネイティブ HPC ソリューションに関与するコンポーネントのアーキテクチャの概要][architecture]
 
-このサンプル シナリオでは、Azure Batch を使用するときのワークフローに対応します。データ フローは次のとおりです。
+このシナリオでは、Azure Batch を使用するワークフローを示します。 データ フローは次のとおりです。
 
-1. 入力ファイルとそのファイルを処理するアプリケーションを Azure Storage アカウントにアップロードする
+1. 入力ファイルとそのファイルを処理するアプリケーションを Azure Storage アカウントにアップロードする。
 2. Batch アカウント内のコンピューティング ノードの Batch プール、プールでワークロードを実行するジョブ、およびジョブ内のタスクを作成する。
-3. 入力ファイルとアプリケーションを Batch にダウンロードする
-4. タスクの実行を監視する
-5. タスク出力をアップロードする
-6. 出力ファイルをダウンロードする
+3. 入力ファイルとアプリケーションを Batch にダウンロードする。
+4. タスクの実行を監視する。
+5. タスク出力をアップロードする。
+6. 出力ファイルをダウンロードする。
 
 このプロセスを簡略化するために、[Maya および 3ds Max 用の Batch プラグイン][batch-plugins]を使用することもできます
 
@@ -44,10 +44,9 @@ Windows Server と Linux コンピューティングのどちらのノードを�
 
 Azure Batch は、次の Azure テクノロジに基づいています。
 
-* [リソース グループ][resource-groups]は、Azure リソースの論理コンテナーです。
-* [仮想ネットワーク][vnet]は、ヘッド ノードとコンピューティング リソースの両方に使用されます
-* [ストレージ][storage] アカウントは、同期とデータ保有に使用されます
-* [仮想マシン スケール セット][vmss]は、CycleCloud によってコンピューティング リソース用に使用されます
+* [仮想ネットワーク](/azure/virtual-network/virtual-networks-overview)は、ヘッド ノードとコンピューティング リソースの両方に使用されます。
+* [Azure Storage アカウント](/azure/storage/common/storage-introduction)は、同期とデータ保持に使用されます。
+* [仮想マシン スケール セット][vmss]は、CycleCloud によってコンピューティング リソース用に使用されます。
 
 ## <a name="considerations"></a>考慮事項
 
@@ -58,11 +57,11 @@ Azure Batch は、次の Azure テクノロジに基づいています。
 * バインドされたメモリでアプリケーションが実行されているか。
 * アプリケーションが GPU を使用する必要があるか。 
 * ジョブの種類が驚異的並列か、または密に結合されたジョブに対する InfiniBand 接続が必要か。
-* コンピューティング ノードでストレージへの高速の I/O が必要か
+* コンピューティング ノードでストレージにアクセスするには、高速の I/O が必要です。
 
 Azure では、上記のアプリケーション要件のそれぞれに対処できる広範な VM サイズが必要で、その一部は HPC に固有ですが、最小のサイズを使用して、効果的なグリッド実装を提供することもできます。
 
-* [HPC VM サイズ][compute-hpc]: CPU バインド型レンダリングの性質があるため、Microsoft では、通常、Azure H シリーズの VM を提案しています。  この種類の VM は、特にハイエンド コンピューティング ニーズ用に構築され、8 および 16 コア vCPU サイズが使用可能で、DDR4 メモリ、SSD 一時ストレージ、および Haswell E5 Intel テクノロジを備えています。
+* [HPC VM サイズ][compute-hpc]: CPU バインド型レンダリングの性質があるため、Microsoft では、通常、Azure H シリーズの VM を提案しています。 この種類の VM は、特にハイエンド コンピューティング ニーズ用に構築され、8 および 16 コア vCPU サイズが使用可能で、DDR4 メモリ、SSD 一時ストレージ、および Haswell E5 Intel テクノロジを備えています。
 * [GPU VM サイズ][compute-gpu]: GPU 最適化済み VM サイズは、1 つまたは複数の NVIDIA GPU を備えた、特殊な用途に特化した仮想マシンです。 これらのサイズは、コンピューティング処理やグラフィック処理の負荷が高い視覚化ワークロードを意図して設計されています。
 * NC、NCv2、NCv3、ND の各サイズは、CUDA および OpenCL ベースのアプリケーションやシミュレーション、AI、ディープ ラーニングなどの、コンピューティング集中型およびネットワーク集中型のアプリケーション、アルゴリズム用に最適化されています。 NV サイズは、リモートの視覚化、ストリーミング、ゲーム、エンコーディング、および OpenGL や DirectX などのフレームワークを使用する VDI シナリオ用に最適化されています。
 * [メモリ最適化 VM サイズ][compute-memory]: さらに多くのメモリが必要な場合は、より高いメモリ対 CPU 比率を提供するメモリ最適化 VM サイズを使用します。
@@ -99,11 +98,11 @@ Azure Batch アカウント内のプールをスケーリングするには、�
 
 ### <a name="creating-an-azure-batch-account-and-pools-manually"></a>Azure Batch アカウントとプールを手動で作成する
 
-このサンプル シナリオでは、ご自身の顧客向けに開発できる Azure Batch ラボを SaaS ソリューションの例として紹介しながら、Azure Batch のしくみを学習するうえで役立ちます。
+このシナリオでは、ご自身の顧客向けに開発できる Azure Batch ラボを SaaS ソリューションの例として紹介しながら、Azure Batch のしくみを示します。
 
 [Azure Batch Masterclass][batch-labs-masterclass]
 
-### <a name="deploying-the-sample-scenario-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用してサンプル シナリオをデプロイする
+### <a name="deploying-the-example-scenario-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用してシナリオ例をデプロイする
 
 テンプレートによってデプロイされるもの:
 
@@ -134,14 +133,15 @@ Azure Batch の使用コストは、プールに使用されている VM のサ�
   50 x H16m (16 コア、225 GB RAM、Premium Storage 512 GB)、2 TB Blob Storage、1 TB 送信
 
 * 10 台の高パフォーマンス CPU VM: [コストの見積もり][hpc-est-low]
-  
+
   10 x H16m (16 コア、225 GB RAM、Premium Storage 512 GB)、2 TB Blob Storage、1 TB 送信
 
-### <a name="low-priority-vm-pricing"></a>低優先度 VM の価格
+### <a name="pricing-for-low-priority-vms"></a>優先順位の低い VM の価格
 
-Azure Batch では、ノード プールでの低優先度 VM* の使用もサポートされます。これにより、大幅にコストを削減できる可能性があります。 標準 VM と低優先度 VM の価格の比較と、低優先度 VM の詳細については、「[Batch の価格][batch-pricing]」を参照してください。
+Azure Batch では、ノード プールでの低優先度 VM の使用もサポートされます。これにより、大幅にコストを削減できる可能性があります。 Standard VM と低優先度 VM の価格の比較など詳しくは、「[Azure Batch の価格][batch-pricing]」をごらんく。
 
-\*低優先度 VM での実行に適しているのは、特定のアプリケーションとワークロードだけであることに注意してください。
+> [!NOTE] 
+> 低優先度 VM は、特定のアプリケーションとワークロードにのみ適します。
 
 ## <a name="related-resources"></a>関連リソース
 
@@ -152,13 +152,12 @@ Azure Batch では、ノード プールでの低優先度 VM* の使用もサ�
 [Azure Batch でのコンテナーの使用][batch-containers]
 
 <!-- links -->
-[architecture]: ./media/native-hpc-ref-arch.png
+[architecture]: ./media/architecture-video-rendering.png
 [resource-groups]: /azure/azure-resource-manager/resource-group-overview
 [security]: /azure/security/
 [resiliency]: /azure/architecture/resiliency/
 [scalability]: /azure/architecture/checklist/scalability
 [vmss]: /azure/virtual-machine-scale-sets/overview
-[vnet]: /azure/virtual-network/virtual-networks-overview
 [storage]: https://azure.microsoft.com/services/storage/
 [batch]: https://azure.microsoft.com/services/batch/
 [batch-arch]: https://azure.microsoft.com/solutions/architecture/big-compute-with-azure-batch/
@@ -177,7 +176,7 @@ Azure Batch では、ノード プールでの低優先度 VM* の使用もサ�
 [batch-scaling]: /azure/batch/batch-automatic-scaling
 [hpc-alt-solutions]: /azure/virtual-machines/linux/high-performance-computing?toc=%2fazure%2fbatch%2ftoc.json
 [batch-monitor]: /azure/batch/monitoring-overview
-[batch-pricing]: https://azure.microsoft.com/en-gb/pricing/details/batch/
+[batch-pricing]: https://azure.microsoft.com/pricing/details/batch/
 [batch-doc]: /azure/batch/
 [batch-overview]: https://azure.microsoft.com/services/batch/
 [batch-containers]: https://github.com/Azure/batch-shipyard
