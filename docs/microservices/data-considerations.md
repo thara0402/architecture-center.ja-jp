@@ -2,13 +2,13 @@
 title: マイクロサービスのデータに関する考慮事項
 description: マイクロサービスのデータに関する考慮事項
 author: MikeWasson
-ms.date: 12/08/2017
-ms.openlocfilehash: 9bd7a8424309b5753b42cfb70559836288a3ce9d
-ms.sourcegitcommit: c7f46b14ad7d55cf553b2d0b01045c9c25aefcdb
+ms.date: 10/23/2018
+ms.openlocfilehash: 5ef2578820c3e02ac2293a5fcb5581bdccf96966
+ms.sourcegitcommit: fdcacbfdc77370532a4dde776c5d9b82227dff2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2017
-ms.locfileid: "26587758"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49962842"
 ---
 # <a name="designing-microservices-data-considerations"></a>マイクロサービスの設計: データに関する考慮事項
 

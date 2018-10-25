@@ -2,13 +2,13 @@
 title: マイクロサービスでのサービス間通信
 description: マイクロサービスでのサービス間通信
 author: MikeWasson
-ms.date: 12/08/2017
-ms.openlocfilehash: aff2fb7b2be25ca32d6224cee15363880cfb1488
-ms.sourcegitcommit: a8453c4bc7c870fa1a12bb3c02e3b310db87530c
+ms.date: 10/23/2018
+ms.openlocfilehash: 19a54ffc362a1fc88c3255c9346bd697a319b143
+ms.sourcegitcommit: fdcacbfdc77370532a4dde776c5d9b82227dff2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/29/2017
-ms.locfileid: "27549129"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49962961"
 ---
 # <a name="designing-microservices-interservice-communication"></a>マイクロサービスの設計: サービス間通信
 
@@ -99,7 +99,7 @@ ms.locfileid: "27549129"
 > [!NOTE]
 > サービス メッシュは[アンバサダー パターン](../patterns/ambassador.md)の例であり、アプリケーションに代わってネットワーク要求を送信するヘルパー サービスです。 
 
-現在、Kubernetes でのサービス メッシュの主なオプションは、[linkerd](https://linkerd.io/) と [Istio](https://istio.io/) です。 どちらのテクノロジも急速に発展しています。 このガイドを書いた時点での Istio の最新リリースは 0.2 であり、まだ非常に新しいものです。 ただし、linkerd と Istio のどちらにも次のような機能が共通して含まれます。 
+現在、Kubernetes でのサービス メッシュの主なオプションは、[linkerd](https://linkerd.io/) と [Istio](https://istio.io/) です。 どちらのテクノロジも急速に発展しています。 ただし、linkerd と Istio のどちらにも次のような機能が共通して含まれます。 
 
 - 検出された待機時間または未処理の要求の数に基づく、セッション レベルでの負荷分散。 これにより、Kubernetes によって提供されるレイヤー 4 の負荷分散のパフォーマンスが向上します。 
 

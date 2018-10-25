@@ -3,12 +3,12 @@ title: ストリーム処理テクノロジの選択
 description: ''
 author: zoinerTejada
 ms:date: 02/12/2018
-ms.openlocfilehash: fd93418c62b584e79f229e9f42703d148aeb0eca
-ms.sourcegitcommit: e9d9e214529edd0dc78df5bda29615b8fafd0e56
+ms.openlocfilehash: b78ebe253e927eece38930ba7f6186f485a956f7
+ms.sourcegitcommit: fdcacbfdc77370532a4dde776c5d9b82227dff2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37091065"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49962917"
 ---
 # <a name="choosing-a-stream-processing-technology-in-azure"></a>Azure でのストリーム処理テクノロジの選択
 
@@ -68,5 +68,4 @@ Azure では、以下のすべてのデータ ストアがリアルタイム処�
 関連項目:
 
 - [リアルタイム メッセージ取り込みテクノロジの選択](./real-time-ingestion.md)
-- [Apache Storm と Azure Stream Analytics の比較](/azure/stream-analytics/stream-analytics-comparison-storm)
 - [リアルタイム処理](../big-data/real-time-processing.md)

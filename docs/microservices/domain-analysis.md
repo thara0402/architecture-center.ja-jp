@@ -2,13 +2,13 @@
 title: マイクロサービスのドメイン分析
 description: マイクロサービスのドメイン分析
 author: MikeWasson
-ms.date: 12/08/2017
-ms.openlocfilehash: c3c353a6b30507369357af4b520a51f8afc2fb8d
-ms.sourcegitcommit: 3d6dba524cc7661740bdbaf43870de7728d60a01
+ms.date: 10/23/2018
+ms.openlocfilehash: 22b6126218872ddd8757a8a85de7df2919179d5d
+ms.sourcegitcommit: fdcacbfdc77370532a4dde776c5d9b82227dff2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2018
-ms.locfileid: "27765988"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49962944"
 ---
 # <a name="designing-microservices-domain-analysis"></a>マイクロサービスの設計: ドメイン分析 
 
@@ -136,9 +136,9 @@ DDD の戦略フェーズでは、ビジネス用ドメインを策定し、ド�
 これらのシナリオから、開発チームは以下の**エンティティ**を識別しました。
 
 - 配送
-- パッケージ
+- Package
 - ドローン
-- アカウント
+- Account
 - 確認
 - 通知
 - タグ
