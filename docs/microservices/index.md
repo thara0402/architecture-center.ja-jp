@@ -2,13 +2,13 @@
 title: Azure での Kubernetes によるマイクロサービスの設計、構築、および操作
 description: Azure でのマイクロサービスの設計、構築、および操作
 author: MikeWasson
-ms.date: 12/08/2017
-ms.openlocfilehash: 857e91a8eeefec18b459f2e66fde9a4f8bbe7b21
-ms.sourcegitcommit: 744ad1381e01bbda6a1a7eff4b25e1a337385553
+ms.date: 10/23/2018
+ms.openlocfilehash: cac16c9212432c72aeaecac1a578828a00838431
+ms.sourcegitcommit: fdcacbfdc77370532a4dde776c5d9b82227dff2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2018
-ms.locfileid: "27701104"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49962774"
 ---
 # <a name="designing-building-and-operating-microservices-on-azure"></a>Azure でのマイクロサービスの設計、構築、および操作
 
@@ -85,7 +85,7 @@ Fabrikam, Inc. は、ドローン配送サービスを開始しようとして�
 > [!NOTE]
 > マイクロサービス アーキテクチャと他のアーキテクチャ スタイルのどちらを選択するかについては、「[Azure アプリケーション アーキテクチャ ガイド](../guide/index.md)」を参照してください。
 
-このリファレンス実装では、[Azure Container Service (ACS)](/azure/container-service/kubernetes/) で Kubernetes を使用しています。 ただし、高いレベルでのアーキテクチャの決定と課題の多くは、[Azure Service Fabric](/azure/service-fabric/) を含む、すべてのコンテナー オーケストレーターに当てはまります。 
+このリファレンス実装では、[Azure Kubernetes Service (AKS)](/azure/aks/) で Kubernetes を使用しています。 ただし、高いレベルでのアーキテクチャの決定と課題の多くは、[Azure Service Fabric](/azure/service-fabric/) を含む、すべてのコンテナー オーケストレーターに当てはまります。 
 
 > [!div class="nextstepaction"]
 > [ドメイン分析](./domain-analysis.md)
