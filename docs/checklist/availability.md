@@ -4,12 +4,12 @@ description: 設計時の可用性に関する問題のガイダンスを提供�
 author: dragon119
 ms.date: 01/10/2018
 ms.custom: checklist
-ms.openlocfilehash: cea5baf8c37bf793c5de60f6c2be809629df072b
-ms.sourcegitcommit: 2154e93a0a075e1f7425a6eb11fc3f03c1300c23
+ms.openlocfilehash: a09a8f77865bf127ae0a73e0da7e1d3fb8508826
+ms.sourcegitcommit: fdcacbfdc77370532a4dde776c5d9b82227dff2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39352629"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49962893"
 ---
 # <a name="availability-checklist"></a>可用性のチェックリスト
 
@@ -33,8 +33,7 @@ ms.locfileid: "39352629"
 
 ## <a name="deployment-and-maintenance"></a>展開と保守
 
-**複数のインスタンスのサービスをデプロイします。** アプリケーションがサービスの 1 つのインスタンスに依存する場合は、単一障害点が発生します。 複数のインスタンスをプロビジョニングすると、回復性とスケーラビリティの両方が改善されます。 
-  [Azure App Service](/azure/app-service/app-service-value-prop-what-is/) の場合は、複数のインスタンスを提供する [App Service プラン](/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview/)を選択してください。 Azure Cloud Services の場合は、[複数インスタンス](/azure/cloud-services/cloud-services-choose-me/#scaling-and-management)を使用するように各ロールを構成してください。 [Azure Virtual Machines (VM)](/azure/virtual-machines/virtual-machines-windows-about/?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) の場合は、VM アーキテクチャに 1 つ以上の VM が含まれていることと、[可用性セット][availability-sets]に各 VM が含まれていることを確認してください。
+**複数のインスタンスのサービスをデプロイします。** アプリケーションがサービスの 1 つのインスタンスに依存する場合は、単一障害点が発生します。 複数のインスタンスをプロビジョニングすると、回復性とスケーラビリティの両方が改善されます。 [Azure App Service](/azure/app-service/app-service-value-prop-what-is/) の場合は、複数のインスタンスを提供する [App Service プラン](/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview/)を選択してください。 Azure Cloud Services の場合は、[複数インスタンス](/azure/cloud-services/cloud-services-choose-me/#scaling-and-management)を使用するように各ロールを構成してください。 [Azure Virtual Machines (VM)](/azure/virtual-machines/virtual-machines-windows-about/?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) の場合は、VM アーキテクチャに 1 つ以上の VM が含まれていることと、[可用性セット][availability-sets]に各 VM が含まれていることを確認してください。
 
 **アプリケーションを複数のリージョンにデプロイすることを検討します。** アプリケーションが 1 つのリージョンにデプロイされている場合は、まれにリージョン全体が使用できなくなった場合に、アプリケーションも使用できなくなります。 これは、アプリケーションの SLA の条件の下では許容できないことがあります。 その場合は、アプリケーションとそのサービスを複数のリージョンにデプロイすることを検討してください。
 
@@ -50,7 +49,7 @@ ms.locfileid: "39352629"
 
 **データベースの geo レプリケーション**。 Azure SQL Database と Cosmos DB は、どちらも geo レプリケーションをサポートしており、他のリージョンでセカンダリ データベースのレプリカを構成できるようになっています。 セカンダリ データベースは、データ センターで障害が発生した場合やプライマリ データベースに接続できない場合のクエリとフェールオーバーに使用できます。 詳細については、[フェールオーバー グループとアクティブ geo レプリケーション](/azure/sql-database/sql-database-geo-replication-overview) (SQL Database) に関する記事、および「[Azure Cosmos DB を使用してデータをグローバルに分散させる方法](/azure/cosmos-db/distribute-data-globally)」をご覧ください。
 
-**オプティミスティック同時実行制御と最終的な整合性を使用します。** ロックによってリソースへのアクセスをブロックするトランザクション (ペシミスティック同時実行制御) では、パフォーマンスが低下し、可用性も大幅に低下する場合があります。 これらの問題は、分散システムで特に深刻になります。 多くの場合、パーティション分割などの入念な設計や技法によって、更新プログラムの競合が発生する可能性を最小限に抑えることができます。 データがレプリケートされたり、個別に更新されたスコアから読み取られたりすると、最終段階でのみ、データの一貫性が確保されます。 ただし、通常、その利点は、即座に一貫性を確保するトランザクションを使用できることに対する効果を大きく上回ります。
+**オプティミスティック コンカレンシーと最終的な整合性を使用します。** ロックによってリソースへのアクセスをブロックするトランザクション (ペシミスティック コンカレンシー制御) では、パフォーマンスが低下し、可用性も大幅に低下する場合があります。 これらの問題は、分散システムで特に深刻になります。 多くの場合、パーティション分割などの入念な設計や技法によって、更新プログラムの競合が発生する可能性を最小限に抑えることができます。 データがレプリケートされたり、個別に更新されたスコアから読み取られたりすると、最終段階でのみ、データの一貫性が確保されます。 ただし、通常、その利点は、即座に一貫性を確保するトランザクションを使用できることに対する効果を大きく上回ります。
 
 **定期的なバックアップとポイントインタイム リストアを使用します。** 他の場所には保存されないデータを定期的に自動でバックアップして、障害発生時でもデータとアプリケーション自体の両方を安全に復元できることを確認します。 バックアップが目標復旧時点 (RPO) を満たしていることを確認します。 データ レプリケーションはバックアップ機能ではありません。人為的なミスや悪意のある操作によって、すべてのレプリカでデータが破損する可能性があるためです。 バックアップ プロセスは、転送中のデータと格納中のデータを保護するため、セキュリティで保護する必要があります。 データベースまたはデータ ストアの一部は通常、トランザクション ログを使用して前の時点まで回復することができます。 詳細については、「[Recover from data corruption or accidental deletion (データの破損または偶発的な削除からの復旧)](../resiliency/recovery-data-corruption.md)」をご覧ください。
 

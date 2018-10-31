@@ -2,13 +2,13 @@
 title: マイクロサービス境界の識別
 description: マイクロサービス境界の識別
 author: MikeWasson
-ms.date: 12/08/2017
-ms.openlocfilehash: d35b92ffd97c4fda5d6599340925ce3dfea7f15b
-ms.sourcegitcommit: a5e549c15a948f6fb5cec786dbddc8578af3be66
+ms.date: 10/23/2018
+ms.openlocfilehash: 679696818d50b70a5116916bd9198a390abfd7fe
+ms.sourcegitcommit: fdcacbfdc77370532a4dde776c5d9b82227dff2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2018
-ms.locfileid: "33673404"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49962791"
 ---
 # <a name="designing-microservices-identifying-microservice-boundaries"></a>マイクロサービスの設計: マイクロサービス境界の識別
 
@@ -83,13 +83,18 @@ ms.locfileid: "33673404"
 
 ### <a name="service-orchestrators"></a>サービス オーケストレーター
 
-オーケストレーターは、一連のサービスのデプロイと管理に関連するタスクを処理します。 ノードへのサービスの配置、サービスの正常性の監視、サービス インスタンス間へのネットワーク トラフィックの負荷分散、サービスの検出、サービスのインスタンスの数のスケーリング、構成の更新の適用などのタスクがあります。 よく使われるオーケストレーターとしては、Kubernetes、DC/OS、Docker Swarm、Service Fabric などがあります。 
+オーケストレーターは、一連のサービスのデプロイと管理に関連するタスクを処理します。 ノードへのサービスの配置、サービスの正常性の監視、サービス インスタンス間へのネットワーク トラフィックの負荷分散、サービスの検出、サービスのインスタンスの数のスケーリング、構成の更新の適用などのタスクがあります。 よく使われるオーケストレーターとしては、Kubernetes、Service Fabric、DC/OS、Docker Swarm などがあります。
 
-- [Azure Container Service](/azure/container-service/) (ACS) は、運用環境に対応した Kubernetes、DC/OS、または Docker Swarm クラスターをデプロイできる Azure サービスです。
+Azure プラットフォームでは、以下のオプションを検討してください。
 
-- [AKS (Azure Container Service)](/azure/aks/) は、管理された Kubernetes サービスです。 AKS は、Kubernetes をプロビジョニングして Kubernetes API エンドポイントを公開しますが、Kubernetes 制御プレーンをホストして管理し、自動アップグレード、修正プログラムの自動適用、自動スケーリング、その他の管理タスクを実行します。 AKS は、"サービスとしての Kubernetes API" と考えることができます。 この記事の執筆時点では、AKS はまだプレビュー段階です。 ただし、AKS は Azure で Kubernetes を実行するための優先的な手段になるものと予想されます。 
+- [Azure Kubernetes Service](/azure/aks/) (AKS) は、マネージド Kubernetes サービスです。 AKS は、Kubernetes をプロビジョニングして Kubernetes API エンドポイントを公開しますが、Kubernetes 制御プレーンをホストして管理し、自動アップグレード、修正プログラムの自動適用、自動スケーリング、その他の管理タスクを実行します。 AKS は、"サービスとしての Kubernetes API" と考えることができます。 
 
 - [Service Fabric](/azure/service-fabric/) は、マイクロサービスのパッケージ化、デプロイ、管理を行うための分散システム プラットフォームです。 マイクロサービスは、コンテナー、バイナリ実行可能ファイル、または [Reliable Services](/azure/service-fabric/service-fabric-reliable-services-introduction) として Service Fabric にデプロイできます。 Reliable Services プログラミング モデルを使うと、サービスは Service Fabric プログラミング API を直接使って、システムのクエリ、正常性のレポート、構成とコードの変更に関する通知の受信、他のサービスの検出を行うことができます。 Service Fabric に関する重要な違いは、Service Fabric では [Reliable Collection](/azure/service-fabric/service-fabric-reliable-services-reliable-collections) を使うステートフル サービスの構築が重視されていることです。
+
+- [Azure Container Service](/azure/container-service/) (ACS) は、運用環境に対応した DC/OS、Docker Swarm、または Kubernetes クラスターをデプロイできる Azure サービスです。 
+
+  > [!NOTE]
+  > Kubernetes は ACS でサポートされていますが、Azure で Kubernetes を実行する場合は AKS をお勧めします。 AKS を使用すると、強化された管理機能とコスト面の利点を得ることができます。
 
 ### <a name="containers"></a>Containers
 
@@ -103,7 +108,7 @@ ms.locfileid: "33673404"
 
 ### <a name="serverless-functions-as-a-service"></a>サーバーレス (サービスとしての関数)
 
-サーバーレス アーキテクチャでは、ユーザーは仮想マシンまたは仮想ネットワーク インフラストラクチャを管理しません。 代わりに、ユーザーがコードをデプロイすると、ホスティング サービスがそのコードを VM 上に配置して実行します。 このアプローチには、イベント ベースのトリガーを使って調整される小さく細分化された関数が適しています。 たとえば、メッセージがキューに配置されると、メッセージをキューから読み取って処理する関数がトリガーされるような場合です。
+[サーバーレス](https://azure.microsoft.com/solutions/serverless/) アーキテクチャでは、ユーザーは VM や仮想ネットワーク インフラストラクチャを管理しません。 代わりに、ユーザーがコードをデプロイすると、ホスティング サービスがそのコードを VM 上に配置して実行します。 このアプローチには、イベント ベースのトリガーを使って調整される小さく細分化された関数が適しています。 たとえば、メッセージがキューに配置されると、メッセージをキューから読み取って処理する関数がトリガーされるような場合です。
 
 [Azure Functions][functions] はサーバーレスのコンピューティング サービスであり、HTTP 要求、Service Bus キュー、Event Hubs イベントなど、さまざまな関数トリガーをサポートします。 詳しくは、「[Azure Functions でのトリガーとバインドの概念][functions-triggers]」をご覧ください。 また、Azure の管理されたイベント ルーティング サービスである [Azure Event Grid][event-grid] も検討してください。
 

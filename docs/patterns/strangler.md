@@ -3,12 +3,12 @@ title: ストラングラー パターン
 description: 機能の特定の部分を新しいアプリケーションやサービスに徐々に置き換えることで、レガシ システムを段階的に移行します。
 author: dragon119
 ms.date: 06/23/2017
-ms.openlocfilehash: d03e8a1ef9077b6e00ea5a17423bf7e09b68111a
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 0bf0b76a69f947419da83edd894a04dbea02371b
+ms.sourcegitcommit: 2ae794de13c45cf24ad60d4f4dbb193c25944eff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
-ms.locfileid: "24540987"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50001883"
 ---
 # <a name="strangler-pattern"></a>ストラングラー パターン
 
@@ -40,13 +40,14 @@ ms.locfileid: "24540987"
 
 バックエンド アプリケーションを新しいアーキテクチャに段階的に移行する場合に、このパターンを使用します。
 
-このパターンは次の状況では適切でない可能性があります。
+このパターンは、次の場合には適切でない可能性があります。
 
 - バックエンド システムへの要求がインターセプトされない場合。
 - システム全体の置き換えの複雑さが少ない、小規模なシステムの場合。
 
 ## <a name="related-guidance"></a>関連するガイダンス
 
+- [StranglerApplication](https://www.martinfowler.com/bliki/StranglerApplication.html) に関する Martin Fowler のブログ記事
 - [破損対策レイヤー パターン](./anti-corruption-layer.md)
 - [ゲートウェイ ルーティング パターン](./gateway-routing.md)
 
