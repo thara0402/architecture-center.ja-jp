@@ -3,12 +3,12 @@ title: 自然言語処理技術の選択
 description: ''
 author: zoinerTejada
 ms:date: 02/12/2018
-ms.openlocfilehash: dacf7bf9cf3e9efed212f34da93c1470954965cf
-ms.sourcegitcommit: 90cf2de795e50571d597cfcb9b302e48933e7f18
+ms.openlocfilehash: bac0318a587a944c104360eb31223cc8755c1860
+ms.sourcegitcommit: e9eb2b895037da0633ef3ccebdea2fcce047620f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2018
-ms.locfileid: "29288854"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50251772"
 ---
 # <a name="choosing-a-natural-language-processing-technology-in-azure"></a>Azure での自然言語処理技術の選択
 
@@ -19,7 +19,8 @@ ms.locfileid: "29288854"
 Azure では、次のサービスに自然言語処理 (NLP) 機能があります。
 
 - [Spark および Spark MLlib を使用する Azure HDInsight](/azure/hdinsight/spark/apache-spark-overview)
-- [Microsoft Cognitive Services](/azure/#pivot=products&panel=cognitive)
+- [Azure Databricks](/azure/azure-databricks/what-is-azure-databricks)
+- [Microsoft Cognitive Services](/azure/cognitive-services/welcome)
 
 ## <a name="key-selection-criteria"></a>主要な選択条件
 
