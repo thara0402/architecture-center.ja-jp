@@ -2,13 +2,13 @@
 title: Azure で Jenkins サーバーを実行する
 description: このリファレンス アーキテクチャでは、シングル サインオン (SSO) で保護されたスケーラブルなエンタープライズ レベルの Jenkins サーバーを Azure にデプロイして運用する方法を示します。
 author: njray
-ms.date: 01/21/18
-ms.openlocfilehash: 5f9c54e71a8750e88de1ae633ccc1316f8375d3a
-ms.sourcegitcommit: 0de300b6570e9990e5c25efc060946cb9d079954
+ms.date: 04/30/2018
+ms.openlocfilehash: 89839b0f1c9624176a7b51dca53713070c88b154
+ms.sourcegitcommit: dbbf914757b03cdee7a274204f9579fa63d7eed2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32323926"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50916398"
 ---
 # <a name="run-a-jenkins-server-on-azure"></a>Azure で Jenkins サーバーを実行する
 
@@ -35,13 +35,13 @@ ms.locfileid: "32323926"
   > 
   > 
 
-- **仮想ネットワーク**。 [仮想ネットワーク][vnet]は Azure リソースを相互に接続し、論理的な分離を実現します。 このアーキテクチャでは、Jenkins サーバーは仮想ネットワークで実行されます。
+- **Virtual network**。 [仮想ネットワーク][vnet]は Azure リソースを相互に接続し、論理的な分離を実現します。 このアーキテクチャでは、Jenkins サーバーは仮想ネットワークで実行されます。
 
 - **サブネット**。 パフォーマンスに影響を与えずに、ネットワーク トラフィックを簡単に管理および分離できるように、Jenkins サーバーは[サブネット][subnet]に分離されています。
 
 - <strong>NSG</strong>。 [ネットワーク セキュリティ グループ][nsg] (NSG) を使用して、インターネットから仮想ネットワークのサブネットへのネットワーク トラフィックを制限します。
 
-- **Managed Disks**。 [管理ディスク][managed-disk]は、アプリケーション ストレージに使用される永続的な仮想ハード ディスク (VHD) です。また、Jenkins サーバーの状態を保持し、ディザスター リカバリーを提供します。 データ ディスクは、Azure Storage に格納されます。 高パフォーマンスを実現するために、[Premium Storage][premium] が推奨されます。
+- **マネージド ディスク**。 [マネージド ディスク][managed-disk]は、アプリケーション ストレージに使用される永続的な仮想ハード ディスク (VHD) です。また、Jenkins サーバーの状態を保持し、ディザスター リカバリーを提供します。 データ ディスクは、Azure Storage に格納されます。 高パフォーマンスを実現するために、[Premium Storage][premium] が推奨されます。
 
 - **Azure Blob Storage**。 [Windows Azure Storage プラグイン][configure-storage]では、Azure Blob Storage を使用して、他の Jenkins ビルドと共有する作成済みのビルド成果物を保存します。
 
@@ -53,7 +53,7 @@ ms.locfileid: "32323926"
 
 ## <a name="recommendations"></a>Recommendations
 
-ほとんどのシナリオには、次の推奨事項が適用されます。 これらの推奨事項には、優先される特定の要件がない限り、従ってください。
+ほとんどのシナリオには、次の推奨事項が適用されます。 これらの推奨事項には、オーバーライドする特定の要件がない限り、従ってください。
 
 ### <a name="azure-ad"></a>Azure AD
 
@@ -122,7 +122,7 @@ Jenkins サーバーのコンテキストにおける可用性とは、ワーク
 
 実際には、RTO と RPO は冗長性とバックアップを意味します。 可用性は、Azure の一部であるハードウェアの復旧の問題ではなく、Jenkins サーバーの状態を確実に維持することを表します。 Microsoft は 1 つの VM インスタンスに対して[サービス レベル アグリーメント][sla] (SLA) を提供します。 この SLA がアップタイムの要件を満たしていない場合は、ディザスター リカバリーを計画するか、[マルチマスター Jenkins サーバー][multi-master] デプロイ (このドキュメントでは取り上げていません) の使用を検討してください。
 
-デプロイの手順 7 のディザスター リカバリー [スクリプト][disaster]を使用して、Jenkins サーバーの状態を保存する管理ディスクを使用する Azure ストレージ アカウントを作成することを検討します。 Jenkins がダウンした場合、この別のストレージ アカウントに保存されている状態に復元できます。
+デプロイの手順 7 のディザスター リカバリー [スクリプト][disaster]を使用して、Jenkins サーバーの状態を保存するマネージド ディスクを使用する Azure ストレージ アカウントを作成することを検討します。 Jenkins がダウンした場合、この別のストレージ アカウントに保存されている状態に復元できます。
 
 ## <a name="security-considerations"></a>セキュリティに関する考慮事項
 
@@ -212,7 +212,7 @@ Jenkins サーバーの監視を設定するには、「[Azure Monitor での Az
 
 ### <a name="step-7-provision-jenkins-server-with-managed-disks-for-disaster-recovery"></a>手順 7: ディザスター リカバリー用の管理ディスクを使用して Jenkins サーバーをプロビジョニングする
 
-Microsoft Jenkins 製品グループは、Jenkins の状態を保存するために使用する管理ディスクを作成するディザスター リカバリー スクリプトを作成しました。 サーバーがダウンした場合、最新の状態に復元できます。
+Microsoft Jenkins 製品グループは、Jenkins の状態を保存するために使用するマネージド ディスクを作成するディザスター リカバリー スクリプトを作成しました。 サーバーがダウンした場合、最新の状態に復元できます。
 
 [GitHub][disaster] からディザスター リカバリー スクリプトをダウンロードして実行します。
 
