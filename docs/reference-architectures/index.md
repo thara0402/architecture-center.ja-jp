@@ -4,12 +4,12 @@ description: Azure での一般的なワークロードに対応する、参照�
 layout: LandingPage
 ms.topic: landing-page
 ms.date: 08/30/2018
-ms.openlocfilehash: c96fc08aca97beb886fa96807d6f9cc5c09d0555
-ms.sourcegitcommit: 9eecff565392273d11b8702f1fcecb4d75e27a15
+ms.openlocfilehash: c5abe208d5d294559681700b57332a33f0bd15d5
+ms.sourcegitcommit: ca5283af555189e830eed7884c83d058fa7ebaa0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48243633"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50757741"
 ---
 # <a name="azure-reference-architectures"></a>Azure の参照アーキテクチャ
 
@@ -256,7 +256,7 @@ ms.locfileid: "48243633"
 </li>
 <!-- Shared services -->
 <li style="display: flex; flex-direction: column;">
-    <a href="./hybrid-networking/hub-spoke.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+    <a href="./hybrid-networking/shared-services.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
         <div class="cardSize" style="flex: 1 0 auto; display: flex;">
             <div class="cardPadding" style="display: flex;">
                 <div class="card">
