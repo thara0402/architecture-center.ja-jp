@@ -3,14 +3,14 @@ title: AWS プロフェッショナルのための Azure
 description: Microsoft Azure アカウント、プラットフォーム、およびサービスの基本を理解します。 AWS プラットフォームと Azure プラットフォームの主要な類似点と相違点についても説明します。 AWS の経験を Azure でご活用ください。
 keywords: AWS エキスパート, Azure との比較, AWS との比較, Azure と AWS の違い, Azure と Aws
 author: lbrader
-ms.date: 03/24/2017
+ms.date: 09/19/2018
 pnp.series.title: Azure for AWS Professionals
-ms.openlocfilehash: 04157b9a647779ae47ad0aff8132289a30544acf
-ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
+ms.openlocfilehash: 0735d24b223a5e5cab6030774280c038c28f35e6
+ms.sourcegitcommit: dbbf914757b03cdee7a274204f9579fa63d7eed2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47429640"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50916687"
 ---
 # <a name="azure-for-aws-professionals"></a>AWS プロフェッショナルのための Azure
 
@@ -302,7 +302,7 @@ Azure には、AWS の Relational Database Service (RDS) に相当するリレ�
 
 [SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/)、[Oracle](https://azure.microsoft.com/campaigns/oracle/)、[MySQL](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-classic-mysql-2008r2/) などの他のデータベース エンジンは、Azure VM インスタンスを使用してデプロイできます。
 
-AWS RDS のコストは、インスタンスが使用するハードウェア リソース (CPU、RAM、ストレージ、ネットワーク帯域幅など) の量によって決まります。 Azure データベース サービスでは、コストは、データベースのサイズ、同時接続数、およびスループット レベルによって決まります。
+AWS RDS のコストは、インスタンスが使用するハードウェア リソース (CPU、RAM、ストレージ、ネットワーク帯域幅など) の量によって決まります。 Azure データベース サービスでは、コストは、データベースのサイズ、コンカレント接続数、およびスループット レベルによって決まります。
 
 #### <a name="see-also"></a>関連項目
 

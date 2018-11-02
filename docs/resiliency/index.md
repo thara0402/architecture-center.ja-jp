@@ -2,14 +2,14 @@
 title: 回復性に優れた Azure 用アプリケーションの設計
 description: 高可用性とディザスター リカバリーのために Azure で回復性に優れたアプリケーションを構築する方法。
 author: MikeWasson
-ms.date: 05/26/2017
+ms.date: 07/29/2018
 ms.custom: resiliency
-ms.openlocfilehash: 55e54347953dc9967ab8ccf67490757e1d58e143
-ms.sourcegitcommit: b2a4eb132857afa70201e28d662f18458865a48e
+ms.openlocfilehash: b925748e1d3d4a8d490bbd5d7cb76f3961ffcfb2
+ms.sourcegitcommit: dbbf914757b03cdee7a274204f9579fa63d7eed2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48819212"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50916602"
 ---
 # <a name="designing-resilient-applications-for-azure"></a>回復性に優れた Azure 用アプリケーションの設計
 
