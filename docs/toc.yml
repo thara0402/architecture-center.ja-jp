@@ -243,6 +243,8 @@ items:
       href: best-practices/cdn.md
     - name: データのパーティション分割
       href: best-practices/data-partitioning.md
+    - name: データのパーティション分割戦略 (サービスごと)
+      href: best-practices/data-partitioning-strategies.md
     - name: 監視と診断
       href: best-practices/monitoring.md
     - name: 名前付け規則
@@ -541,9 +543,9 @@ items:
       href: cloud-adoption/appendix/azure-scaffold.md
     - name: Azure エンタープライズ スキャフォールディングの実装
       href: cloud-adoption/appendix/azure-scaffold-examples.md
-ms.openlocfilehash: bb4f5188f3f85561a08331a15c797a15c375157f
-ms.sourcegitcommit: 2ae794de13c45cf24ad60d4f4dbb193c25944eff
+ms.openlocfilehash: 628f11c5b6e1cf91faaa35a3808529037f18764e
+ms.sourcegitcommit: 949b9d3e5a9cdee1051e6be700ed169113e914ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50001917"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "50983415"
