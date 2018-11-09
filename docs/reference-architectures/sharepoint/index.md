@@ -3,12 +3,12 @@ title: 高可用性 SharePoint Server 2016 ファームの Azure での実行
 description: 高可用性 SharePoint Server 2016 ファームを Azure で設定するための実証済みプラクティス。
 author: njray
 ms.date: 07/26/2018
-ms.openlocfilehash: 1e44c2817a02cda919bfa94e0b8f07b73b35531f
-ms.sourcegitcommit: dbbf914757b03cdee7a274204f9579fa63d7eed2
+ms.openlocfilehash: 5db146956134f9b297b520d666d8dabbc8793caf
+ms.sourcegitcommit: 77d62f966d910cd5a3d11ade7ae5a73234e093f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50916500"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51293266"
 ---
 # <a name="run-a-high-availability-sharepoint-server-2016-farm-in-azure"></a>高可用性 SharePoint Server 2016 ファームの Azure での実行
 
@@ -214,7 +214,7 @@ SharePoint Server 2016 の実行に使用されるドメインレベル サー�
     azbb -s <subscription_id> -g ra-onprem-sp2016-rg -l <location> -p azure3.json --deploy
     ```
 
-この時点では、SQL Server Always On 可用性グループ用の Web フロントエンドからロード バランサーへの TCP 接続を確立できることを確認してください。 そのためには、次の手順を実行します。
+この時点では、SQL Server Always On 可用性グループ用の、Web フロントエンドからロード バランサーへの TCP 接続を確立できることを確認してください。 そのためには、次の手順を実行します。
 
 1. Azure Portal を使用して、`ra-sp2016-network-rg` リソース グループで `ra-sp-jb-vm1` という名前の VM を見つけます。 これは、Jumpbox VM です。
 

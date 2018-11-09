@@ -5,20 +5,18 @@ keywords: クラウド サービスの比較、クラウド サービス、マ�
 author: lbrader
 ms.date: 11/30/2017
 pnp.series.title: Azure for AWS Professionals
-ms.openlocfilehash: d665adb946b9c93827fbc55243edc3a558668416
-ms.sourcegitcommit: b2a4eb132857afa70201e28d662f18458865a48e
+ms.openlocfilehash: 33b67f57c8c725cfb68c400b4e2b67102e5d4872
+ms.sourcegitcommit: e9eb2b895037da0633ef3ccebdea2fcce047620f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48819229"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50251959"
 ---
 # <a name="aws-to-azure-services-comparison"></a>AWS サービスと Azure サービスの比較
 
 この記事は、Microsoft Azure サービスと Amazon Web サービス (AWS) の比較を理解するのに役立ちます。 Azure と AWS によるマルチクラウド ソリューションを計画しているのか、または Azure に移行しているのかにかかわらず、Azure サービスと AWS サービスの IT 機能をすべてのカテゴリで比較できます。
 
 次の表には、一部の AWS サービスに対して一覧表示された複数の Azure サービスが存在します。 Azure サービスは互いに似ていますが、機能の深さや幅は異なります。
-
-[Azure および AWS クラウドのサービス マップの PDF のダウンロード](https://aka.ms/awsazureguide)
 
 ## <a name="azure-and-aws-for-multicloud-solutions"></a>マルチクラウド ソリューション用の Azure および AWS
 
@@ -102,7 +100,7 @@ AWS ユーザーのための Azure の概要については、[AWS プロフェ�
 | <strong>&nbsp;</strong> |          なし           |                                                                                       [Power BI Embedded](https://azure.microsoft.com/services/power-bi-embedded/)                                                                                       |                                                               視覚化およびデータ分析ツールをアプリケーション内に組み込めるようにします。                                                               |
 |         Search          |  Elasticsearch Service  |                                                                     [Marketplace - Elasticsearch](https://azuremarketplace.microsoft.com/marketplace/apps?page=1&search=Elasticsearch)                                                                     |                                                                             Apache Lucene に基づいたスケーラブルな検索サーバー。                                                                             |
 | <strong>&nbsp;</strong> |       CloudSearch       |                                                                                               [Azure Search](https://azure.microsoft.com/services/search/)                                                                                               |                                                                 フルテキスト検索とそれに関連する検索分析および機能を提供します。                                                                 |
-|    機械学習     |    Machine Learning     |                          [Azure Machine Learning Studio](https://azure.microsoft.com/services/machine-learning/) <br/><br/>[Azure Machine Learning Workbench](https://azure.microsoft.com/services/machine-learning-services/)                           |                    複雑なデータ セットから発生する可能性のある事項を理解するために使用できる予測モデルを作成、処理、改良、および発行するためのエンド ツー エンドのワークフローを生成します。                    |
+|    機械学習     |    Machine Learning     |                          [Azure Machine Learning Studio](https://azure.microsoft.com/services/machine-learning/) <br/><br/>[Azure Machine Learning サービス](https://azure.microsoft.com/services/machine-learning-services/)                           |                    複雑なデータ セットから発生する可能性のある事項を理解するために使用できる予測モデルを作成、処理、改良、および発行するためのエンド ツー エンドのワークフローを生成します。                    |
 |     データの検出      |          なし           |                                                                                            [Data Catalog](https://azure.microsoft.com/services/data-catalog/)                                                                                            |                                                     データ ソースをより適切に登録、強化、検出、理解、および消費するための機能を提供します。                                                     |
 | <strong>&nbsp;</strong> |      Amazon Athena      |                                                                                  [Azure Data Lake Analytics](https://azure.microsoft.com/services/data-lake-analytics/)                                                                                  |                                                     データベースの分析に標準の SQL を使用する、サーバーレスの対話型クエリ サービスを提供します。                                                      |
 

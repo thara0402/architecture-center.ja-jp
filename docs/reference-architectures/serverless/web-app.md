@@ -3,12 +3,12 @@ title: サーバーレス Web アプリケーション
 description: サーバーレス Web アプリケーションと Web API を示す参照アーキテクチャ
 author: MikeWasson
 ms.date: 10/16/2018
-ms.openlocfilehash: c2b46a60a57381ac3fd3f77cffe53b2dab2dacd6
-ms.sourcegitcommit: 113a7248b9793c670b0f2d4278d30ad8616abe6c
+ms.openlocfilehash: d1af03811bda6267fd40ee17823ac8357829f988
+ms.sourcegitcommit: 949b9d3e5a9cdee1051e6be700ed169113e914ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49349957"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "50983398"
 ---
 # <a name="serverless-web-application"></a>サーバーレス Web アプリケーション 
 
@@ -148,20 +148,13 @@ public static Task<IActionResult> Run(
 
 - Function App 内の Azure AD 認証を有効にします。 詳細については、「[Azure App Service での認証および承認][app-service-auth]」を参照してください。
 
-- API Management にポリシーを追加し、アクセス トークンを検証することで要求を事前承認できるようにします。
-
-    ```xml
-    <validate-jwt header-name="Authorization" failed-validation-httpcode="401" failed-validation-error-message="Unauthorized. Access token is missing or invalid.">
-        <openid-config url="https://login.microsoftonline.com/[Azure AD tenant ID]/.well-known/openid-configuration" />
-        <required-claims>
-            <claim name="aud">
-                <value>[Application ID]</value>
-            </claim>
-        </required-claims>
-    </validate-jwt>
-    ```
+- API Management に [validate-jwt ポリシー][apim-validate-jwt]を追加し、アクセス トークンを検証することで要求を事前承認できるようにします。
 
 詳細については、[GitHub の Readme][readme] を参照してください。
+
+クライアント アプリケーションとバックエンド API については、Azure AD で個別にアプリ登録を作成することをお勧めします。 API を呼び出すアクセス許可をクライアント アプリケーションに付与します。 このアプローチにより、複数の API とクライアントを定義して、それぞれのアクセス許可を柔軟に制御できるようになります。 
+
+API では、[スコープ][scopes]を使用して、アプリケーションがユーザーに要求するアクセス許可を細かく制御できるようにします。 たとえば、API に `Read` スコープと `Write` スコープを指定し、特定のクライアント アプリが、ユーザーに `Read` アクセス許可のみを承認するよう求めることができます。
 
 ### <a name="authorization"></a>Authorization
 
@@ -275,11 +268,21 @@ public static Task<IActionResult> Run(
 
 ## <a name="devops-considerations"></a>DevOps の考慮事項
 
+### <a name="deployment"></a>Deployment
+
+関数アプリをデプロイするには、[パッケージ ファイル][functions-run-from-package]を使用することをお勧めします ("パッケージから実行")。 このアプローチを使用して、ZIP ファイルを Blob Storage コンテナーにアップロードすると、ZIP ファイルは、Functions ランタイムによって読み取り専用ファイル システムとしてマウントされます。 これはアトミック操作で、デプロイの失敗によりアプリケーションが不整合な状態のままになる可能性が少なくなります。 また、すべてのファイルが一度にスワップされるため、特に Node.js アプリについては、コールド スタート時間を改善することができます。
+
 ### <a name="api-versioning"></a>API のバージョン管理
 
-API は、サービスとそのサービスのクライアントまたはコンシューマー間のコントラクトです。 API コントラクトのバージョン管理をサポートします。 API の重大な変更を導入する場合は、新しい API バージョンに変更してください。 新しいバージョンは、別の関数アプリで、元のバージョンと共にデプロイしてください。 これにより、クライアント アプリケーションを中断することなく、既存のクライアントを新しい API に移行できます。 最終的には、以前のバージョンを廃止できます。 API のバージョン管理の詳細については、「[RESTful Web API のバージョン管理][api-versioning]」を参照してください。
+API は、サービスとクライアントの間のコントラクトです。 このアーキテクチャでは、API コントラクトは、API Management レイヤーで定義されます。 API Management では、次に示すように、2 つの異なる (ただし補完的な) [バージョン管理の概念][apim-versioning]がサポートされています。
 
-API の破壊的変更とはならない更新プログラムの場合、新しいバージョンは、同じ関数アプリのステージング スロットにデプロイします。 デプロイが成功したことを確認したら、ステージング バージョンを運用バージョンと入れ替えます。
+- "*バージョン*" により、API のコンシューマーはニーズに基づいて API のバージョン (v1、v2 など) を選択できます。 
+
+- "*リビジョン*" により、API 管理者が API の非破壊的変更を行い、これらの変更をデプロイできるようになります。その際、API コンシューマーにこれらの変更を通知する変更ログもデプロイされます。
+
+API で破壊的変更を行う場合は、API Management で新しいバージョンを発行します。 新しいバージョンは、別の関数アプリで、元のバージョンと共にデプロイしてください。 これにより、クライアント アプリケーションを中断することなく、既存のクライアントを新しい API に移行できます。 最終的には、以前のバージョンを廃止できます。 API Management では、URL のパス、HTTP ヘッダー、クエリ文字列など、複数の[バージョン管理スキーム][apim-versioning-schemes]がサポートされています。 一般的な API のバージョン管理の詳細については、「[RESTful Web API のバージョン管理][api-versioning]」を参照してください。
+
+API の破壊的変更とはならない更新プログラムの場合、新しいバージョンは、同じ関数アプリのステージング スロットにデプロイします。 デプロイが成功したことを確認したら、ステージング バージョンを運用バージョンと入れ替えます。 API Management でリビジョンを発行します。
 
 ## <a name="deploy-the-solution"></a>ソリューションのデプロイ方法
 
@@ -292,6 +295,9 @@ API の破壊的変更とはならない更新プログラムの場合、新し�
 [apim-ip]: /azure/api-management/api-management-faq#is-the-api-management-gateway-ip-address-constant-can-i-use-it-in-firewall-rules
 [api-geo]: /azure/api-management/api-management-howto-deploy-multi-region
 [apim-scale]: /azure/api-management/api-management-howto-autoscale
+[apim-validate-jwt]: /azure/api-management/api-management-access-restriction-policies#ValidateJWT
+[apim-versioning]: /azure/api-management/api-management-get-started-publish-versions
+[apim-versioning-schemes]: /azure/api-management/api-management-get-started-publish-versions#choose-a-versioning-scheme
 [app-service-auth]: /azure/app-service/app-service-authentication-overview
 [app-service-ip-restrictions]: /azure/app-service/app-service-ip-restrictions
 [app-service-security]: /azure/app-service/app-service-security
@@ -310,9 +316,11 @@ API の破壊的変更とはならない更新プログラムの場合、新し�
 [functions-bindings]: /azure/azure-functions/functions-triggers-bindings
 [functions-cold-start]: https://blogs.msdn.microsoft.com/appserviceteam/2018/02/07/understanding-serverless-cold-start/
 [functions-https]: /azure/app-service/app-service-web-tutorial-custom-ssl#enforce-https
-[functions-proxy]: /azure-functions/functions-proxies
+[functions-proxy]: /azure/azure-functions/functions-proxies
+[functions-run-from-package]: /azure/azure-functions/run-functions-from-deployment-package
 [functions-scale]: /azure/azure-functions/functions-scale
 [functions-timeout]: /azure/azure-functions/functions-scale#consumption-plan
+[functions-zip-deploy]: /azure/azure-functions/deployment-zip-push
 [graph]: https://developer.microsoft.com/graph/docs/concepts/overview
 [key-vault-web-app]: /azure/key-vault/tutorial-web-application-keyvault
 [microservices-domain-analysis]: ../../microservices/domain-analysis.md
@@ -321,6 +329,7 @@ API の破壊的変更とはならない更新プログラムの場合、新し�
 [partition-key]: /azure/cosmos-db/partition-data
 [pipelines]: /azure/devops/pipelines/index
 [ru]: /azure/cosmos-db/request-units
+[scopes]: /azure/active-directory/develop/v2-permissions-and-consent
 [static-hosting]: /azure/storage/blobs/storage-blob-static-website
 [static-hosting-preview]: https://azure.microsoft.com/blog/azure-storage-static-web-hosting-public-preview/
 [storage-https]: /azure/storage/common/storage-require-secure-transfer

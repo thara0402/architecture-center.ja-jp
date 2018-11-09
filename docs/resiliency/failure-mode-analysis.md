@@ -2,15 +2,15 @@
 title: 障害モード分析
 description: Azure に基づくクラウド ソリューションの障害モード分析を実行するためのガイドラインです。
 author: MikeWasson
-ms.date: 03/24/2017
+ms.date: 05/07/2018
 ms.custom: resiliency
 pnp.series.title: Design for Resiliency
-ms.openlocfilehash: 6598644828dffb68f01c2d0a2ce9fbdda932168a
-ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
+ms.openlocfilehash: c9a875de7807b50ee1efcd4b1c0b16357cd87f11
+ms.sourcegitcommit: dbbf914757b03cdee7a274204f9579fa63d7eed2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47429544"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50916636"
 ---
 # <a name="failure-mode-analysis"></a>障害モード分析
 [!INCLUDE [header](../_includes/header.md)]
@@ -176,7 +176,7 @@ Application_End ログは、アプリ ドメインのシャットダウン (ソ�
 
 **診断** Elasticsearch 用の監視ツールを使用するか、クライアント側でペイロードを含むすべてのエラーをログに記録することができます。 「[Running Elasticsearch on Azure][elasticsearch-azure]」(Azure で Elasticsearch を実行する) の「Monitoring」(監視) セクションを参照してください。
 
-## <a name="queue-storage"></a>Queue Storage
+## <a name="queue-storage"></a>ストレージ
 ### <a name="writing-a-message-to-azure-queue-storage-fails-consistently"></a>Azure Queue Storage へのメッセージの書き込みが常に失敗する。
 **検出**。 *N* 回再試行を試みた後も、書き込み操作がまだ失敗します。
 

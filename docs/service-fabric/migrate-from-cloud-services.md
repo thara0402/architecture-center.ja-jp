@@ -2,13 +2,13 @@
 title: Azure Cloud Services アプリケーションを Azure Service Fabric に移行する
 description: Azure Cloud Services アプリケーションを Azure Service Fabric に移行する方法。
 author: MikeWasson
-ms.date: 04/27/2017
-ms.openlocfilehash: b9ecbc88ae74da99a0ff3bb8814a9cb3422f79d5
-ms.sourcegitcommit: f665226cec96ec818ca06ac6c2d83edb23c9f29c
+ms.date: 04/11/2018
+ms.openlocfilehash: a1b4e005b2dab67d8107f4002468e1d7622ae342
+ms.sourcegitcommit: dbbf914757b03cdee7a274204f9579fa63d7eed2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31012690"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50916449"
 ---
 # <a name="migrate-an-azure-cloud-services-application-to-azure-service-fabric"></a>Azure Cloud Services アプリケーションを Azure Service Fabric に移行する 
 
@@ -177,7 +177,7 @@ Cloud Services では、[サービス定義ファイル][cloud-service-endpoints
 
  1 つのクラウド サービスには、次の構成とパッケージ ファイルが含まれます。
 
-| ファイル | [説明] |
+| ファイル | 説明 |
 |------|-------------|
 | サービス定義 (.csdef) | クラウド サービスを構成するために Azure によって使用される設定。 ロール、エンドポイント、スタートアップ タスク、および構成設定の名前を定義します。 |
 | サービス構成 (.cscfg) | ロール インスタンスの数、エンドポイントのポート番号、構成設定の値を含むデプロイごとの設定。 
@@ -199,7 +199,7 @@ Application package
 
 Service Fabric アプリケーションには以下の構成ファイルが含まれています。
 
-| ファイル | 場所 | [説明] |
+| ファイル | Location | 説明 |
 |------|----------|-------------|
 | ApplicationManifest.xml | アプリケーション パッケージ | アプリケーションを構成するサービスを定義します。 |
 | ServiceManifest.xml | サービス パッケージ| 1 つまたは複数のサービスについて記述します。 |
@@ -210,7 +210,7 @@ Service Fabric アプリケーションには以下の構成ファイルが含�
 複数の環境の異なる構成設定をサポートするには、「[複数の環境のアプリケーション パラメーターを管理する][sf-multiple-environments]」で説明されている次のアプローチを使用します。
 
 1. サービスの Setting.xml ファイルで設定を定義します。
-2. アプリケーション マニフェストで、設定の上書きを定義します。
+2. アプリケーション マニフェストで、設定のオーバーライドを定義します。
 3. アプリケーション パラメーター ファイルに環境固有の設定を記入します。
 
 

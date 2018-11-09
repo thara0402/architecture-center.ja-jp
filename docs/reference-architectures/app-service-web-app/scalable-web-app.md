@@ -5,14 +5,14 @@ author: MikeWasson
 pnp.series.title: Azure App Service
 pnp.series.prev: basic-web-app
 pnp.series.next: multi-region-web-app
-ms.date: 11/23/2016
+ms.date: 10/25/2018
 cardTitle: Improve scalability
-ms.openlocfilehash: 6459acebfa25491332e2118b9e8fe51d5fc79ff3
-ms.sourcegitcommit: 5d99b195388b7cabba383c49a81390ac48f86e8a
+ms.openlocfilehash: 208413a49fe4a3f9ca308fa1a939ba426e7fa636
+ms.sourcegitcommit: 065fa8ecb37c8be1827da861243ad6a33c75c99d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37958808"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50136694"
 ---
 # <a name="improve-scalability-in-a-web-application"></a>Web アプリケーションのスケーラビリティの向上
 
@@ -22,20 +22,20 @@ ms.locfileid: "37958808"
 
 "*このアーキテクチャの [Visio ファイル][visio-download]をダウンロードします。*"
 
-## <a name="architecture"></a>アーキテクチャ  
+## <a name="architecture"></a>アーキテクチャ
 
 このアーキテクチャは、「[Basic web application][basic-web-app]」(基本的な Web アプリケーション) で説明されているアーキテクチャに基づいて構築されています。 アーキテクチャに含まれるコンポーネントを次に示します。
 
 * **リソース グループ**。 [リソース グループ][resource-group]は、Azure リソースの論理コンテナーです。
-* **[Web アプリ][app-service-web-app]** と **[API アプリ][app-service-api-app]**。 最新の一般的なアプリケーションには、Web サイトと、1 つ以上の RESTful Web API の両方が含まれていることがあります。 Web API は、ブラウザー クライアント (AJAX 経由)、ネイティブ クライアント アプリケーション、およびサーバー側アプリケーションから使用できます。 Web API の考慮事項については、[API 設計のガイダンス][api-guidance]を参照してください。    
-* **Web ジョブ**。 実行時間が長いタスクをバックグラウンドで実行するには、[Azure WebJobs][webjobs] を使用します。 Web ジョブは、スケジュールを指定して、継続して、またはメッセージがキューに格納されるなどのトリガーに応答して実行できます。 Web ジョブは、App Service アプリのコンテキストでバックグラウンド プロセスとして実行されます。
-* **キュー**。 ここで示すアーキテクチャの場合、アプリケーションはメッセージを [Azure Queue Storage][queue-storage] キューに格納することで、バックグラウンド タスクをキューに格納します。 このメッセージによって、Web ジョブの機能がトリガーされます。 または、Service Bus キューを使用できます。 比較については、[Storage キューと Service Bus キューの比較][queues-compared]に関するページを参照してください。
+* **[Web アプリ][app-service-web-app]**。 最新の一般的なアプリケーションには、Web サイトと、1 つ以上の RESTful Web API の両方が含まれていることがあります。 Web API は、ブラウザー クライアント (AJAX 経由)、ネイティブ クライアント アプリケーション、およびサーバー側アプリケーションから使用できます。 Web API の考慮事項については、[API 設計のガイダンス][api-guidance]を参照してください。
+* **Function App**。 [Function App][functions] を使用してバックグラウンド タスクを実行します。 関数は、タイマー イベントや、キューに配置されているメッセージなどのトリガーによって呼び出されます。 実行時間の長いステートフル タスクについては、[Durable Functions][durable-functions] を使用します。
+* **キュー**。 ここで示すアーキテクチャの場合、アプリケーションはメッセージを [Azure Queue Storage][queue-storage] キューに格納することで、バックグラウンド タスクをキューに格納します。 このメッセージによって、関数アプリがトリガーされます。 または、Service Bus キューを使用できます。 比較については、[Storage キューと Service Bus キューの比較][queues-compared]に関するページを参照してください。
 * **キャッシュ**。 [Azure Redis Cache][azure-redis] に半静的データを格納します。  
 * <strong>CDN</strong>。 [Azure Content Delivery Network][azure-cdn] (CDN) を使用して、コンテンツの待機時間を短縮して高速に配信できるように、パブリックに使用できるコンテンツをキャッシュします。
-* **データ ストレージ**。 リレーショナル データには [Azure SQL Database][sql-db] を使用します。 リレーショナル データ以外については、[Cosmos DB][cosmosdb] などの NoSQL ストアを検討してください。
+* **データ ストレージ**。 リレーショナル データには [Azure SQL Database][sql-db] を使用します。 リレーショナル データ以外については、[Cosmos DB][cosmosdb] を検討してください。
 * **Azure Search**。 [Azure Search][azure-search] を使用して、検索候補、あいまい検索、言語固有の検索などの検索機能を追加します。 通常、Azure Search は別のデータ ストアと組み合わせて使用されます。プライマリ データ ストアに厳密な一貫性が必要な場合は特にそうです。 この方法では、信頼できるデータを他のデータ ストアに格納し、検索インデックスは Azure Search に格納します。 また、Azure Search は、複数のデータ ストアから単一の検索インデックスに統合する場合にも使用できます。  
-* **電子メール/SMS**。 電子メール SMS メッセージを送信する場合は、この機能をアプリケーションに直接組み込むのではなく、SendGrid、Twilio などのサード パーティのサービスを使用します。
 * **Azure DNS**。 [Azure DNS][azure-dns] は、DNS ドメインのホスティング サービスであり、Microsoft Azure インフラストラクチャを使用した名前解決を提供します。 Azure でドメインをホストすることで、その他の Azure サービスと同じ資格情報、API、ツール、課金情報を使用して DNS レコードを管理できます。
+* **Application Gateway**。 [Application Gateway](/azure/application-gateway/) はレイヤー 7 のロード バランサーです。 このアーキテクチャでは、これによって HTTP 要求が Web フロント エンドにルーティングされます。 Application Gateway には、一般的な脆弱性やその悪用からアプリケーションを保護する [Web アプリケーション ファイアウォール](/azure/application-gateway/waf-overview) (WAF) も用意されています。 
 
 ## <a name="recommendations"></a>Recommendations
 
@@ -48,11 +48,6 @@ Web アプリケーションと Web API は、別の App Service アプリとし
 > Basic、Standard、および Premium プランの場合、アプリごとではなく、そのプランの VM インスタンスに対して課金されます。 「[App Service の価格][app-service-pricing]」を参照してください。
 > 
 > 
-
-App Service Mobile Apps の *Easy Tables* または *Easy API* 機能を使用する予定の場合は、そのために別の App Service アプリを作成します。  これらの機能は、機能を有効にするための特定のアプリケーション フレームワークに依存しています。
-
-### <a name="webjobs"></a>WebJobs
-多くのリソースを消費する Web ジョブは、別の App Service プラン内の空の App Service アプリにデプロイすることを検討してください。 こうすることで、Web ジョブ専用のインスタンスを用意できます。 [バックグラウンド ジョブのガイダンス][webjobs-guidance]を参照してください。  
 
 ### <a name="cache"></a>キャッシュ
 パフォーマンスとスケーラビリティを改善するには、[Azure Redis Cache][azure-redis] を使用して一部のデータをキャッシュします。 以下の場合に Redis Cache の使用を検討してください。
@@ -86,6 +81,8 @@ App Service Mobile Apps の *Easy Tables* または *Easy API* 機能を使用�
 | 基本的なクエリ実行を必要とする柔軟なスキーマの非リレーショナル データ |製品カタログ |Azure Cosmos DB、MongoDB、Apache CouchDB などのドキュメント データベース |
 | より高度なクエリのサポート、厳格なスキーマ、強力な一貫性を必要とするリレーショナル データ |製品のインベントリ |Azure SQL Database |
 
+ 「[Choose the right data store (適切なデータ ストアの選択)][datastore]」をご覧ください。
+
 ## <a name="scalability-considerations"></a>スケーラビリティに関する考慮事項
 
 Azure App Service の主な利点は、負荷に応じてアプリケーションをスケーリングできることです。 アプリケーションのスケーリングを計画する場合の考慮事項を次に示します。
@@ -93,7 +90,7 @@ Azure App Service の主な利点は、負荷に応じてアプリケーショ�
 ### <a name="app-service-app"></a>App Service アプリ
 ソリューションに複数の App Service アプリが含まれる場合は、別の App Service プランにデプロイすることを検討してください。 この方法にすると、別インスタンス上で実行されるので、個別にスケーリングすることができます。 
 
-同様に、バックグラウンド タスクが HTTP 要求の処理と同じインスタンス上で実行されないように、Web ジョブを専用のプランにデプロイすることを検討します。  
+同様に、HTTP 要求を処理するのと同じインスタンス上でバックグラウンド タスクが実行されないように、関数アプリを専用のプランに配置することを検討します。 バックグラウンド タスクが断続的に実行される場合は、[従量課金プラン][functions-consumption-plan]の使用を検討します。このプランでは、時間単位ではなく、実行数に基づいて課金されます。 
 
 ### <a name="sql-database"></a>SQL Database
 データベースを*シャード化*することで、SQL Database のスケーラビリティを向上します。 シャード化とは、データベースを水平方向にパーティション分割することを指します。 シャード化すると、[Elastic Database ツール][sql-elastic]を使用してデータベースを水平方向にスケール アウトできます。 シャード化には、次のような利点があります。
@@ -133,7 +130,6 @@ App Services は CORS のサポートが組み込まれているため、アプ�
 [azure-redis]: https://azure.microsoft.com/services/cache/
 [azure-search]: https://azure.microsoft.com/documentation/services/search/
 [azure-search-scaling]: /azure/search/search-capacity-planning
-[background-jobs]: ../../best-practices/background-jobs.md
 [basic-web-app]: basic-web-app.md
 [basic-web-app-scalability]: basic-web-app.md#scalability-considerations
 [caching-guidance]: ../../best-practices/caching.md
@@ -142,6 +138,10 @@ App Services は CORS のサポートが組み込まれているため、アプ�
 [cdn-guidance]: ../../best-practices/cdn.md
 [cors]: /azure/app-service-api/app-service-api-cors-consume-javascript
 [cosmosdb]: /azure/cosmos-db/
+[datastore]: ../..//guide/technology-choices/data-store-overview.md
+[durable-functions]: /azure/azure-functions/durable-functions-overview
+[functions]: /azure/azure-functions/functions-overview
+[functions-consumption-plan]: /azure/azure-functions/functions-scale#consumption-plan
 [queue-storage]: /azure/storage/storage-dotnet-how-to-use-queues
 [queues-compared]: /azure/service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted
 [resource-group]: /azure/azure-resource-manager/resource-group-overview#resource-groups
@@ -151,6 +151,4 @@ App Services は CORS のサポートが組み込まれているため、アプ�
 [tm]: https://azure.microsoft.com/services/traffic-manager/
 [visio-download]: https://archcenter.blob.core.windows.net/cdn/app-service-reference-architectures.vsdx
 [web-app-multi-region]: ./multi-region.md
-[webjobs-guidance]: ../../best-practices/background-jobs.md
-[webjobs]: /azure/app-service/app-service-webjobs-readme
 [0]: ./images/scalable-web-app.png "スケーラビリティが改善された Azure の Web アプリケーション"

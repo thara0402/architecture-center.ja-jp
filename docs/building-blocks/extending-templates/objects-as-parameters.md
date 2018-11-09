@@ -2,13 +2,13 @@
 title: Azure Resource Manager テンプレートのパラメーターとしてオブジェクトを使用する
 description: Azure Resource Manager テンプレートの機能を拡張して、オブジェクトをパラメーターとして使用する方法について説明します
 author: petertay
-ms.date: 06/09/2017
-ms.openlocfilehash: dd53c55a26b2452c375d8d1e1a98886b15febaeb
-ms.sourcegitcommit: 62945777e519d650159f0f963a2489b6bb6ce094
+ms.date: 10/30/2018
+ms.openlocfilehash: c1955823b3474efa0abea1d9634add5f13d02eda
+ms.sourcegitcommit: e9eb2b895037da0633ef3ccebdea2fcce047620f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48876760"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50251891"
 ---
 # <a name="use-an-object-as-a-parameter-in-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートのパラメーターとしてオブジェクトを使用する
 
@@ -301,25 +301,21 @@ ms.locfileid: "48876760"
 
 ## <a name="try-the-template"></a>テンプレートを試行する
 
-このテンプレートを実験する場合は、次の手順に従います。 
+テンプレートの例は [GitHub][github] で入手できます。 テンプレートをデプロイするには、リポジトリを複製し、次の [Azure CLI][cli] コマンドを実行します。
 
-1.  Azure Portal に移動し、**+** アイコンを選択して、**[テンプレートのデプロイ]** のリソースの種類を検索しそれを選択します。
-2.  **[テンプレートのデプロイ]** ページに移動して、**[作成]** を選択します。 このボタンにより、**[カスタム デプロイ]** ブレードが開きます。
-3.  **[テンプレートの編集]** を選択します。
-4.  空のテンプレートを削除します。 
-5.  サンプル テンプレートをコピーして、右のウィンドウに貼り付けます。
-6.  **[保存]** を選択します。
-7.  **[カスタム デプロイ]** ウィンドウに戻り、**[パラメーターの編集]** を選択します。
-8.  **[パラメーターの編集]** ブレードで、既存のテンプレートを削除します。
-9.  上記のサンプル パラメーター テンプレートをコピーして、貼り付けます。
-10. **[保存]** を選択します。これにより、**[カスタム デプロイ]** ブレードに戻ります。
-11. **[カスタム デプロイ]** ブレードで、サブスクリプションを選択し、新しいリソース グループを作成するか、既存のリソース グループを使用して、場所を選択します。 使用条件を確認し、**[同意する]** チェックボックスをオンにします。
-12. **[購入]** を選択します。
+```bash
+git clone https://github.com/mspnp/template-examples.git
+cd template-examples/example3-object-param
+az group create --location <location> --name <resource-group-name>
+az group deployment create -g <resource-group-name> \
+    --template-uri https://raw.githubusercontent.com/mspnp/template-examples/master/example3-object-param/deploy.json \
+    --parameters deploy.parameters.json
+```
 
 ## <a name="next-steps"></a>次の手順
 
-* これらの手法を拡張して、[プロパティ オブジェクトのトランスフォーマーとコレクター ](./collector.md)を実装することができます。 トランスフォーマーとコレクターの手法はより一般的なもので、テンプレートからリンクすることができます。
-* この手法は、[テンプレート構成ブロックのプロジェクト](https://github.com/mspnp/template-building-blocks)と [Azure 参照アーキテクチャ](/azure/architecture/reference-architectures/)で実装することもできます。 ここでのテンプレートを確認して、この手法をどのように実装したか確認することができます。
+- オブジェクト配列を反復処理するテンプレートを作成し、これを JSON スキーマに変換する方法を確認します。 「[Azure Resource Manager テンプレートでプロパティのトランスフォーマーとコレクターを実装する](./collector.md)」を参照してください
+
 
 <!-- links -->
 [azure-resource-manager-authoring-templates]: /azure/azure-resource-manager/resource-group-authoring-templates
@@ -327,3 +323,5 @@ ms.locfileid: "48876760"
 [azure-resource-manager-create-multiple-instances]: /azure/azure-resource-manager/resource-group-create-multiple
 [azure-resource-manager-functions]: /azure/azure-resource-manager/resource-group-template-functions-resource
 [nsg]: /azure/virtual-network/virtual-networks-nsg
+[cli]: /cli/azure/?view=azure-cli-latest
+[github]: https://github.com/mspnp/template-examples

@@ -3,12 +3,12 @@ title: 対話型データ探索
 description: ''
 author: zoinerTejada
 ms:date: 02/12/2018
-ms.openlocfilehash: 2e3d61fa5e1903c7fee6ebc84db3fa7c28d515cb
-ms.sourcegitcommit: ae8a1de6f4af7a89a66a8339879843d945201f85
+ms.openlocfilehash: be27df79d445cf9949318e4483ce0f95c26b6e09
+ms.sourcegitcommit: e9eb2b895037da0633ef3ccebdea2fcce047620f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43325119"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50251874"
 ---
 # <a name="interactive-data-exploration"></a>対話型データ探索
 
@@ -82,7 +82,7 @@ ms.locfileid: "43325119"
 ### <a name="analytics-and-reporting"></a>分析とレポート
 
 - **Jupyter**。 Jupyter Notebook は、R、Python、Scala などの言語でコードを実行するためのブラウザー ベースのインターフェイスを提供しています。 Microsoft R Server または Spark を使用してデータをバッチ処理する場合、または Spark SQL を使用してクエリを実行するテーブルのスキーマを定義する場合は、Jupyter がデータのクエリに適した選択肢である可能性があります。 Spark を使用する場合は、標準の Spark データフレーム API または Spark SQL API に加え、組み込みの SQL ステートメントを使用して、データのクエリと視覚化の生成を行うことができます。
-- **Drill**。 アドホック データ探索を実行したい場合は、スキーマ フリーの SQL クエリ エンジン、[Apache Drill](https://drill.apache.org/) があります。 これはスキーマを必要としないため、ユーザーは、さまざまなデータ ソースからデータに対してクエリを実行できます。データの構造は、このエンジンによって自動的に解釈されます。
+- **Drill**。 アドホック データ探索を実行したい場合は、スキーマ フリーの SQL クエリ エンジン、[Apache Drill](https://drill.apache.org/) があります。 これはスキーマを必要としないため、ユーザーは、さまざまなデータ ソースからデータに対してクエリを実行できます。データの構造は、このエンジンによって自動的に解釈されます。  [Azure Blob Storage プラグイン](https://drill.apache.org/docs/azure-blob-storage-plugin/)を使って、Azure Blob Storage でドリルを使用できます。 これにより、データを移動せずに、Blob Storage でデータに対してクエリを実行できます。 
 - **対話型 Hive クライアント**。 対話型 Hive クラスターを使用してデータのクエリを実行する場合は、Ambari クラスター ダッシュボード、Beeline コマンド ライン ツール、または Microsoft Excel や Power BI などの ODBC ベースのツール (Hive ODBC ドライバーを使用) で Hive ビューを使用することができます。
 
 詳しくは、[データ分析とレポート テクノロジ](../technology-choices/analysis-visualizations-reporting.md)に関するページをご覧ください。

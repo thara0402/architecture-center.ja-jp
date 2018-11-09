@@ -2,17 +2,17 @@
 title: ExpressRoute を使用した Azure へのオンプレミス ネットワークの接続
 description: Azure ExpressRoute を使用して接続された Azure 仮想ネットワークとオンプレミス ネットワークにまたがる、セキュリティで保護されたサイト間ネットワーク アーキテクチャの実装方法。
 author: telmosampaio
-ms.date: 11/28/2016
+ms.date: 10/22/2017
 pnp.series.title: Connect an on-premises network to Azure
 pnp.series.next: expressroute-vpn-failover
 pnp.series.prev: vpn
 cardTitle: ExpressRoute
-ms.openlocfilehash: 754542b37988e0cd2694ae84eb6b03d68c147243
-ms.sourcegitcommit: b2a4eb132857afa70201e28d662f18458865a48e
+ms.openlocfilehash: 16711acb179c05152fc5ef8c7bf3eeb8d067a382
+ms.sourcegitcommit: dbbf914757b03cdee7a274204f9579fa63d7eed2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48819178"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50916619"
 ---
 # <a name="connect-an-on-premises-network-to-azure-using-expressroute"></a>ExpressRoute を使用した Azure へのオンプレミス ネットワークの接続
 

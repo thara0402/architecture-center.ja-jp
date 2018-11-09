@@ -2,17 +2,17 @@
 title: VPN を使用した Azure へのオンプレミス ネットワークの接続
 description: VPN を使用して接続された Azure 仮想ネットワークとオンプレミス ネットワークにまたがる、セキュリティで保護されたサイト間ネットワーク アーキテクチャの実装方法。
 author: RohitSharma-pnp
-ms.date: 11/28/2016
+ms.date: 10/22/2018
 pnp.series.title: Connect an on-premises network to Azure
 pnp.series.next: expressroute
 pnp.series.prev: ./index
 cardTitle: VPN
-ms.openlocfilehash: 283fbd340d9d37c9521715e9512cc67793983585
-ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
+ms.openlocfilehash: 6e705c40663eff421e79067f916a1ebad6e72822
+ms.sourcegitcommit: dbbf914757b03cdee7a274204f9579fa63d7eed2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47428956"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50916552"
 ---
 # <a name="connect-an-on-premises-network-to-azure-using-a-vpn-gateway"></a>VPN ゲートウェイを使用した Azure へのオンプレミス ネットワークの接続
 

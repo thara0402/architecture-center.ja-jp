@@ -2,14 +2,14 @@
 title: マルチリージョン Web アプリケーション
 description: Microsoft Azure で実行される高可用性を備えた Web アプリケーションの推奨アーキテクチャ。
 author: MikeWasson
-ms.date: 11/23/2016
+ms.date: 10/25/2018
 cardTitle: Run in multiple regions
-ms.openlocfilehash: 5493deea871f25fb6ea3531a22d92d83916930b1
-ms.sourcegitcommit: 62945777e519d650159f0f963a2489b6bb6ce094
+ms.openlocfilehash: 1ed69f4f7e79fe2025e2a10d50e851ac4c02f1a6
+ms.sourcegitcommit: 065fa8ecb37c8be1827da861243ad6a33c75c99d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48876819"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50136660"
 ---
 # <a name="run-a-web-application-in-multiple-regions"></a>Web アプリケーションを複数のリージョンで実行する
 [!INCLUDE [header](../../_includes/header.md)]
@@ -70,9 +70,7 @@ ms.locfileid: "48876819"
 [アクティブ geo レプリケーション][sql-replication]を使用して、異なるリージョンに読み取り可能なセカンダリ レプリカを作成します。 最大 4 つの読み取り可能なセカンダリ レプリカを作成できます。 プライマリ データベースで障害が発生するか、プライマリ データベースをオフラインにする必要がある場合は、セカンダリ データベースにフェールオーバーします。 任意のエラスティック データベース プールの任意のデータベースに対して、アクティブ geo レプリケーションを構成できます。
 
 ### <a name="cosmos-db"></a>Cosmos DB
-Cosmos DB は、リージョン間の geo レプリケーションをサポートします。 あるリージョンが書き込み可能として指定され、その他のリージョンが読み取り専用レプリカとして指定されます。
-
-地域的な停止が発生した場合は、書き込みリージョンにする別のリージョンを選択することで、フェールオーバーできます。 クライアント SDK が書き込み要求を現在の書き込みリージョンに自動的に送信するため、フェールオーバー後にクライアントの構成を更新する必要はありません。 詳細については、「[Azure Cosmos DB を使用してデータをグローバルに分散させる方法][cosmosdb-geo]」をご覧ください。
+Cosmos DB では、マルチマスターを使用してリージョンの枠を越えた geo レプリケーションがサポートされています (複数の書き込みリージョン)。 また、あるリージョンを書き込み可能リージョンとして指定し、別のリージョンを読み取り専用レプリカとして指定することもできます。 地域的な停止が発生した場合は、書き込みリージョンにする別のリージョンを選択することで、フェールオーバーできます。 クライアント SDK が書き込み要求を現在の書き込みリージョンに自動的に送信するため、フェールオーバー後にクライアントの構成を更新する必要はありません。 詳細については、「[Azure Cosmos DB でのグローバルなデータの分散][cosmosdb-geo]」を参照してください。
 
 > [!NOTE]
 > すべてのレプリカは、同じリソース グループに属します。
@@ -136,10 +134,11 @@ Set-AzureRmTrafficManagerEndpoint -TrafficManagerEndpoint $endpoint
 
 詳細については、[Azure Traffic Manager のコマンドレット][tm-ps]に関する記事を参照してください。
 
-**Azure コマンド ライン インターフェイス (CLI)**
+**Azure CLI**
 
 ```bat
-azure network traffic-manager endpoint set --name <endpoint> --profile-name <profile> --resource-group <resource-group> --type AzureEndpoints --priority 3
+az network traffic-manager endpoint update --resource-group <resource-group> --profile-name <profile> \
+    --name <endpoint-name> --type azureEndpoints --priority 3
 ```    
 
 ### <a name="sql-database"></a>SQL Database

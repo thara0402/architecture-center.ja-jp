@@ -2,13 +2,13 @@
 title: Azure での Windows VM の実行
 description: スケーラビリティ、回復性、管理容易性、およびセキュリティに注意しながら、Azure で Windows VM を実行する方法。
 author: telmosampaio
-ms.date: 04/03/2018
-ms.openlocfilehash: a20359f90e7b20486defce3110b2db6f7e0027ba
-ms.sourcegitcommit: 25bf02e89ab4609ae1b2eb4867767678a9480402
+ms.date: 09/13/2018
+ms.openlocfilehash: 59e7cf255fcc55c5124e7160d831217ba62a8b88
+ms.sourcegitcommit: dbbf914757b03cdee7a274204f9579fa63d7eed2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45584699"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50916313"
 ---
 # <a name="run-a-windows-vm-on-azure"></a>Azure での Windows VM の実行
 

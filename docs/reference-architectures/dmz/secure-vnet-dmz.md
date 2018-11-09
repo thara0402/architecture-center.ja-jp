@@ -2,17 +2,17 @@
 title: Azure とインターネットの間の DMZ の実装
 description: インターネットにアクセスするセキュリティ保護されたハイブリッド ネットワーク アーキテクチャを Azure に実装する方法。
 author: telmosampaio
-ms.date: 07/02/2018
+ms.date: 10/22/2018
 pnp.series.title: Network DMZ
 pnp.series.next: nva-ha
 pnp.series.prev: secure-vnet-hybrid
 cardTitle: DMZ between Azure and the Internet
-ms.openlocfilehash: 7a062d2394ae8b3bd1b17c19cbdf512327f9a766
-ms.sourcegitcommit: 9b459f75254d97617e16eddd0d411d1f80b7fe90
+ms.openlocfilehash: d12c76a08f028d54784de330c62311f294802cb9
+ms.sourcegitcommit: dbbf914757b03cdee7a274204f9579fa63d7eed2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37403149"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50916333"
 ---
 # <a name="dmz-between-azure-and-the-internet"></a>Azure とインターネットの間の DMZ
 
@@ -110,7 +110,7 @@ ms.locfileid: "37403149"
 
 1. Azure portal で、作成したリソース グループに移動します。 
 
-2. `ra-vpn-vgw-pip` という名前のリソースを見つけて、**[概要]** ブレードに表示されている IP アドレスをコピーします。
+2. `ra-vpn-vgw-pip` という名前のリソースを探し、**[概要]** ブレードに表示されている IP アドレスをコピーします。
 
 3. `onprem-vpn-lgw` という名前のリソースを探します。
 

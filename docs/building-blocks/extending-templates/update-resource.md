@@ -2,13 +2,13 @@
 title: Azure Resource Manager テンプレートのリソースを更新する
 description: Azure Resource Manager テンプレートの機能を拡張して、リソースを更新する方法について説明します
 author: petertay
-ms.date: 06/09/2017
-ms.openlocfilehash: f235f0b4d54d65ccc2fa67876916e922d75f6d07
-ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
+ms.date: 10/31/2018
+ms.openlocfilehash: dc97534e658c9728ac617b4e52031e2553600458
+ms.sourcegitcommit: e9eb2b895037da0633ef3ccebdea2fcce047620f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47429040"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50251823"
 ---
 # <a name="update-a-resource-in-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートのリソースを更新する
 
@@ -122,16 +122,13 @@ ms.locfileid: "47429040"
 
 ## <a name="try-the-template"></a>テンプレートを試行する
 
-このテンプレートを実験する場合は、次の手順に従います。
+テンプレートの例は [GitHub][github] で入手できます。 テンプレートをデプロイするには、次の [Azure CLI][cli] コマンドを実行します。
 
-1.  Azure Portal に移動し、**+** アイコンを選択して、**[テンプレートのデプロイ]** のリソースの種類を検索しそれを選択します。
-2.  **[テンプレートのデプロイ]** ページに移動して、**[作成]** を選択します。 このボタンにより、**[カスタム デプロイ]** ブレードが開きます。
-3.  **[編集]** アイコンを選択します。
-4.  空のテンプレートを削除します。
-5.  サンプル テンプレートをコピーして、右のウィンドウに貼り付けます。
-6.  **[保存]** を選択します。
-7.  **[カスタム デプロイ]** ウィンドウに戻りますが、今回はドロップダウン ボックスがいくつか表示されています。 サブスクリプションを選択し、新しいリソース グループを作成するか、既存のリソース グループを使用して、場所を選択します。 使用条件を確認し、**[同意する]** を選択します。
-8.  **[購入]** を選択します。
+```bash
+az group create --location <location> --name <resource-group-name>
+az group deployment create -g <resource-group-name> \
+    --template-uri https://raw.githubusercontent.com/mspnp/template-examples/master/example1-update/deploy.json
+```
 
 デプロイが完了したら、ポータルで指定したリソース グループを開きます。 `firstVNet` という名前の仮想ネットワークと、`nic1` という名前の NIC が表示されます。 `firstVNet`、`subnets` の順にクリックします。 最初に作成された `firstSubnet` のほか、`updateVNet` リソースで追加された `secondSubnet` が表示されます。 
 
@@ -145,4 +142,7 @@ ms.locfileid: "47429040"
 
 ## <a name="next-steps"></a>次の手順
 
-* この手法は、[テンプレート構成ブロックのプロジェクト](https://github.com/mspnp/template-building-blocks)と [Azure 参照アーキテクチャ](/azure/architecture/reference-architectures/)で実装されています。 これらを使用して、独自のアーキテクチャを作成したり、この参照アーキテクチャのいずれかをデプロイしたりできます。
+* パラメーター値の有無などの条件に基づいてリソースをデプロイする方法を確認します。 「[Azure Resource Manager テンプレートのリソースを条件付きでデプロイする](./conditional-deploy.md)」を参照してください。
+
+[cli]: /cli/azure/?view=azure-cli-latest
+[github]: https://github.com/mspnp/template-examples

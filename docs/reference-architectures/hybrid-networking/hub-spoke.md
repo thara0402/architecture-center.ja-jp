@@ -2,15 +2,15 @@
 title: Azure にハブスポーク ネットワーク トポロジを実装する
 description: Azure にハブスポーク ネットワーク トポロジを実装する方法。
 author: telmosampaio
-ms.date: 04/09/2018
+ms.date: 10/08/2018
 pnp.series.title: Implement a hub-spoke network topology in Azure
 pnp.series.prev: expressroute
-ms.openlocfilehash: fcdbb7ca8d02745d4d9ab82f0bce79ab378d843c
-ms.sourcegitcommit: f6be2825bf2d37dfe25cfab92b9e3973a6b51e16
+ms.openlocfilehash: e14abb5526b6ecd8637fb89c4ef7154d3b26f7a4
+ms.sourcegitcommit: dbbf914757b03cdee7a274204f9579fa63d7eed2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48858199"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50916347"
 ---
 # <a name="implement-a-hub-spoke-network-topology-in-azure"></a>Azure にハブスポーク ネットワーク トポロジを実装する
 

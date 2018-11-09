@@ -2,13 +2,13 @@
 title: データの破損または偶発的な削除から復旧する
 description: データの破損または偶発的なデータの削除から復旧する方法、回復力と高可用性を備えたフォールト トレラント アプリケーションを設計する方法、障害復旧を計画する方法に関する記事
 author: MikeWasson
-ms.date: 01/10/2018
-ms.openlocfilehash: b0716de39fe69d607b9a63e51356d28bbcdbfeae
-ms.sourcegitcommit: f665226cec96ec818ca06ac6c2d83edb23c9f29c
+ms.date: 11/11/2018
+ms.openlocfilehash: 1f3dd448ac6172727481c437fb8a113f25d83464
+ms.sourcegitcommit: dbbf914757b03cdee7a274204f9579fa63d7eed2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31012428"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50916284"
 ---
 # <a name="recover-from-data-corruption-or-accidental-deletion"></a>データの破損または偶発的な削除から復旧する 
 
@@ -28,7 +28,7 @@ Azure Storage は、自動レプリカによるデータ回復性を備えてい
 
 - **テーブル**:  AzCopy を使用して、他のリージョンの別のストレージ アカウントにテーブル データをエクスポートします。
 
-## <a name="database"></a>データベース
+## <a name="database"></a>Database
 
 ### <a name="azure-sql-database"></a>Azure SQL Database 
 
