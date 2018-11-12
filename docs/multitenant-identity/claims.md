@@ -110,7 +110,7 @@ Azure AD で発行者値は AD テナントごとに一意です (`https://sts.w
   IEnumerable<Claim> groups = User.FindAll("groups");
   ```
 
-詳細については、[ルチテナント アプリケーションでのロールベースおよびリソースベースの承認][authorization]に関する記事を参照してください。
+詳細については、[マルチテナント アプリケーションでのロールベースおよびリソースベースの承認][authorization]に関する記事を参照してください。
 
 [**次へ**][signup]
 
