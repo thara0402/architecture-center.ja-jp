@@ -6,12 +6,12 @@ ms.date: 05/02/2018
 pnp.series.title: Identity management
 pnp.series.prev: azure-ad
 pnp.series.next: adds-forest
-ms.openlocfilehash: 1e19d03998a18d997c2840f573e7bc79b24efbbc
-ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
+ms.openlocfilehash: a96f13f8c7f3e79c6e5d50f17e662176257fdab3
+ms.sourcegitcommit: 02ecd259a6e780d529c853bc1db320f4fcf919da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47427974"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51263714"
 ---
 # <a name="extend-active-directory-domain-services-ad-ds-to-azure"></a>Active Directory Domain Services (AD DS) を Azure に拡張する
 
@@ -46,7 +46,7 @@ UDR と NVA の設定について詳しくは、「[Implementing a secure hybrid
 
 認証要求に必要なボリュームに基づいて、[VM サイズ][vm-windows-sizes]の要件を決定します。 AD DS をオンプレミスでホストしているコンピューターの仕様を始点として使用し、それに合わせて Azure VM サイズを指定します。 デプロイ後は、使用率を監視し、VM における実際の負荷に基づいてスケールアップまたはスケールダウンします。 AD DS ドメイン コントローラーのサイジングついて詳しくは、「[Capacity Planning for Active Directory Domain Services][capacity-planning-for-adds]」(Active Directory Domain Services のキャパシティ プランニング) をご覧ください。
 
-Active Directory 用の データベース、ログ、および SYSVOL を格納するための個別の仮想データ ディスクを作成します。 オペレーティング システムと同じディスクにこれらの項目を格納しないでください。 既定では、VM に接続されたデータ ディスクにはライト スルー キャッシュが使用されています。 ただし、このキャッシュ形式は AD DS の要件と矛盾する可能性があります。 そのため、データ ディスクの *[ホスト キャッシュ設定]* を *[なし]* に設定します。 詳しくは、「[Windows Server AD DS データベースと SYSVOL の配置][adds-data-disks]」をご覧ください。
+Active Directory 用の データベース、ログ、および SYSVOL を格納するための個別の仮想データ ディスクを作成します。 オペレーティング システムと同じディスクにこれらの項目を格納しないでください。 既定では、VM に接続されたデータ ディスクにはライト スルー キャッシュが使用されています。 ただし、このキャッシュ形式は AD DS の要件と矛盾する可能性があります。 そのため、データ ディスクの *[ホスト キャッシュ設定]* を *[なし]* に設定します。 詳細については、「[Azure の仮想マシンでの Windows Server Active Directory のデプロイ ガイドライン][adds-data-disks]」を参照してください。
 
 ドメイン コントローラーとして、AD DS を実行する VM を少なくとも 2 つデプロイし、[可用性セット][availability-set]に追加します。
 
@@ -169,7 +169,7 @@ BitLocker または Azure Disk Encryption を使用して、AD DS データベ�
 [implementing-a-secure-hybrid-network-architecture]: ../dmz/secure-vnet-hybrid.md
 [implementing-a-secure-hybrid-network-architecture-with-internet-access]: ../dmz/secure-vnet-dmz.md
 
-[adds-data-disks]: https://msdn.microsoft.com/library/azure/jj156090.aspx#BKMK_PlaceDB
+[adds-data-disks]: https://msdn.microsoft.com/en-us/library/mt674703.aspx
 [ad-ds-operations-masters]: https://technet.microsoft.com/library/cc779716(v=ws.10).aspx
 [ad-ds-ports]: https://technet.microsoft.com/library/dd772723(v=ws.11).aspx
 [availability-set]: /azure/virtual-machines/virtual-machines-windows-create-availability-set

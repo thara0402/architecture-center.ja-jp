@@ -1,22 +1,22 @@
 ---
 title: Azure シナリオ例
-description: 具体的なビジネス ユース ケースを解決するシナリオ例
+description: 具体的なビジネス ユース ケースのシナリオ例
 author: david-stanford
-ms:date: 08/01/2018
+ms:date: 11/01/2018
 layout: LandingPage
 ms.topic: landing-page
-ms.openlocfilehash: 63a566126168dba382792967b3625bd6e085c054
-ms.sourcegitcommit: b2a4eb132857afa70201e28d662f18458865a48e
+ms.openlocfilehash: 01b2db150c66eaa7f8911361dd39786f53c39c07
+ms.sourcegitcommit: 0a31fad9b68d54e2858314ca5fe6cba6c6b95ae4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48818838"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51610500"
 ---
 # <a name="azure-example-scenarios"></a>Azure シナリオ例
 
-シナリオの例では、Azure でのアーキテクチャ上およびビジネス上の具体的な問題を解決するためのプロセスについて説明します。  各シナリオは、お客様の実例に基づいており、独自の実装を促進できるように、すばやく簡単に読むことができるガイダンスを提供することを目的としています。
+シナリオの例では、Azure を使用して具体的なビジネス上または技術上の課題を解決する方法を示します。 各シナリオは実例に基づいており、お客様独自の実装を促進できるようにすばやく簡単に読むことができるガイダンスが提供されています。
 
-各シナリオ内には、アーキテクチャの図、データ フロー、およびすべてのコンポーネントの詳細情報が記載されています。  お客様のビジネス ニーズに、より適合する可能性のある代替テクノロジ、ソリューションの大まかな価格、および運用環境でソリューションを実行する際の考慮事項についても説明します。  また、多くのシナリオには、ご自身の Azure アカウントでソリューションを簡単にデプロイする方法も含まれています。
+各シナリオ内には、アーキテクチャの図、データ フロー、および技術コンポーネントの詳細が記載されています。 また、運用環境でソリューションを実行する際の考慮事項、ソリューションのコスト要素、類似の問題を解決する際に使用できる他の選択肢についても知ることができます。 多くのシナリオには、ご自身の Azure サブスクリプションでソリューションを簡単にデプロイする方法も示されています。
 
 ジャンプ先: [AI シナリオ](#ai-scenarios) | [アプリケーション シナリオ](#application-scenarios) | [データ シナリオ](#data-scenarios) | [インフラストラクチャシナリオ](#infrastructure-scenarios)
 

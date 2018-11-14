@@ -2,17 +2,19 @@
 title: Azure Stream Analytics によるストリーム処理
 description: Azure でエンド ツー エンドのストリーム処理パイプラインを作成します。
 author: MikeWasson
-ms.date: 08/09/2018
-ms.openlocfilehash: 82887bdd45f811ac733ead18c1f256098e575253
-ms.sourcegitcommit: c4106b58ad08f490e170e461009a4693578294ea
+ms.date: 11/06/2018
+ms.openlocfilehash: e16547ccdcb81007e154e341f09be555ac82d1a1
+ms.sourcegitcommit: 02ecd259a6e780d529c853bc1db320f4fcf919da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40025510"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51263764"
 ---
 # <a name="stream-processing-with-azure-stream-analytics"></a>Azure Stream Analytics によるストリーム処理
 
-この参照アーキテクチャでは、エンド ツー エンドのストリーム処理パイプラインを示します。 このパイプラインでは、2 つのソースからデータを取り込み、2 つのストリームのレコードを関連付けて、時間枠全体の移動平均を計算します。 結果が保存され、さらに詳しい分析が行われます。 [**こちらのソリューションをデプロイしてください**。](#deploy-the-solution)
+この参照アーキテクチャでは、エンド ツー エンドのストリーム処理パイプラインを示します。 このパイプラインでは、2 つのソースからデータを取り込み、2 つのストリームのレコードを関連付けて、時間枠全体の移動平均を計算します。 結果が保存され、さらに詳しい分析が行われます。 
+
+このアーキテクチャのリファレンス実装は、[GitHub][github] で入手できます。 
 
 ![](./images/stream-processing-asa/stream-processing-asa.png)
 
@@ -37,6 +39,8 @@ ms.locfileid: "40025510"
 ## <a name="data-ingestion"></a>データの取り込み
 
 データ ソースをシミュレートするために、この参照アーキテクチャでは [New York City Taxi Data](https://uofi.app.box.com/v/NYCtaxidata/folder/2332218797) データセット<sup>[[1]](#note1)</sup> を使用します。 このデータセットには、ニューヨーク市の 4 年間 (2010 から 2013 年) のタクシー乗車に関するデータが含まれています。 乗車データと料金データの 2 種類のレコードがあります。 乗車データには、走行時間、乗車距離、乗車場所と降車場所が含まれます。 料金データには、料金、税、チップの金額が含まれます。 この 2 種類のレコードの共通フィールドには、営業許可番号、タクシー免許、ベンダー ID があります。 この 3 つのフィールドを組み合わせて、タクシーと運転手が一意に識別されます。 データは CSV 形式で保存されます。 
+
+[1] <span id="note1">Brian Donovan、Dan Work (2016 年): New York City Taxi Trip Data (2010-2013)。 イリノイ大学アーバナシャンペーン校。 https://doi.org/10.13012/J8PN93H8
 
 データ ジェネレーターは、レコードを読み取り、Azure Event Hubs に送信する .NET Core アプリケーションです。 ジェネレーターは、JSON 形式の乗車データと CSV 形式の料金データを送信します。 
 
@@ -209,162 +213,7 @@ Cosmos DB のスループット容量は、[要求ユニット](/azure/cosmos-db
 
 ## <a name="deploy-the-solution"></a>ソリューションのデプロイ方法
 
-この参照アーキテクチャのデプロイは、[GitHub](https://github.com/mspnp/reference-architectures/tree/master/data) で入手できます。 
+リファレンス実装をデプロイおよび実行するには、[GitHub readme][github] の手順に従ってください。 
 
-### <a name="prerequisites"></a>前提条件
 
-1. [参照アーキテクチャ](https://github.com/mspnp/reference-architectures) GitHub リポジトリに ZIP ファイルを複製、フォーク、またはダウンロードします。
-
-2. [Docker](https://www.docker.com/) をインストールして、データ ジェネレーターを実行します。
-
-3. [Azure CLI 2.0](/cli/azure/install-azure-cli?view=azure-cli-latest) をインストールします。
-
-4. コマンド プロンプト、bash プロンプト、または PowerShell プロンプトから、次のように Azure アカウントにサインインします。
-
-    ```
-    az login
-    ```
-
-### <a name="download-the-source-data-files"></a>ソース データ ファイルをダウンロードする
-
-1. GitHub リポジトリの `data/streaming_asa` ディレクトリに、`DataFile` という名前のディレクトリを作成します。
-
-2. Web ブラウザーを開き、https://uofi.app.box.com/v/NYCtaxidata/folder/2332219935 に移動します。
-
-3. このページの **[ダウンロード]** ボタンをクリックして、その年のすべてのタクシー データの ZIP ファイルをダウンロードします。
-
-4. ZIP ファイルを `DataFile` ディレクトリに抽出します。
-
-    > [!NOTE]
-    > この ZIP ファイルには、他の ZIP ファイルが含まれています。 子 ZIP ファイルは抽出しないでください。
-
-ディレクトリ構造は次のようになります。
-
-```
-/data
-    /streaming_asa
-        /DataFile
-            /FOIL2013
-                trip_data_1.zip
-                trip_data_2.zip
-                trip_data_3.zip
-                ...
-```
-
-### <a name="deploy-the-azure-resources"></a>Azure リソースをデプロイする
-
-1. シェルまたは Windows コマンド プロンプトから次のコマンドを実行し、サインインプロンプトに従います。
-
-    ```bash
-    az login
-    ```
-
-2. GitHub リポジトリの `data/streaming_asa` フォルダーに移動します。
-
-    ```bash
-    cd data/streaming_asa
-    ```
-
-2. 次のコマンドを実行して、Azure リソースをデプロイします。
-
-    ```bash
-    export resourceGroup='[Resource group name]'
-    export resourceLocation='[Location]'
-    export cosmosDatabaseAccount='[Cosmos DB account name]'
-    export cosmosDatabase='[Cosmod DB database name]'
-    export cosmosDataBaseCollection='[Cosmos DB collection name]'
-    export eventHubNamespace='[Event Hubs namespace name]'
-
-    # Create a resource group
-    az group create --name $resourceGroup --location $resourceLocation
-
-    # Deploy resources
-    az group deployment create --resource-group $resourceGroup \
-      --template-file ./azure/deployresources.json --parameters \
-      eventHubNamespace=$eventHubNamespace \
-      outputCosmosDatabaseAccount=$cosmosDatabaseAccount \
-      outputCosmosDatabase=$cosmosDatabase \
-      outputCosmosDatabaseCollection=$cosmosDataBaseCollection
-
-    # Create a database 
-    az cosmosdb database create --name $cosmosDatabaseAccount \
-        --db-name $cosmosDatabase --resource-group $resourceGroup
-
-    # Create a collection
-    az cosmosdb collection create --collection-name $cosmosDataBaseCollection \
-        --name $cosmosDatabaseAccount --db-name $cosmosDatabase \
-        --resource-group $resourceGroup
-    ```
-
-3. Azure portal で、作成済みのリソース グループに移動します。
-
-4. Stream Analytics ジョブのブレードを開きます。
-
-5. **[開始]** をクリックしてジョブを開始します。 出力開始時刻として **[Now]\(今すぐ\)** を選択します。 ジョブが開始されるまで待ちます。
-
-### <a name="run-the-data-generator"></a>データ ジェネレーターを実行する
-
-1. イベント ハブの接続文字列を取得します。 接続文字列は、Azure portal から取得することも、次の CLI コマンドを実行して取得することもできます。
-
-    ```bash
-    # RIDE_EVENT_HUB
-    az eventhubs eventhub authorization-rule keys list \
-        --eventhub-name taxi-ride \
-        --name taxi-ride-asa-access-policy \
-        --namespace-name $eventHubNamespace \
-        --resource-group $resourceGroup \
-        --query primaryConnectionString
-
-    # FARE_EVENT_HUB
-    az eventhubs eventhub authorization-rule keys list \
-        --eventhub-name taxi-fare \
-        --name taxi-fare-asa-access-policy \
-        --namespace-name $eventHubNamespace \
-        --resource-group $resourceGroup \
-        --query primaryConnectionString
-    ```
-
-2. GitHub リポジトリの `data/streaming_asa/onprem` ディレクトリに移動します。
-
-3. `main.env` ファイル内の値を次のように更新します。
-
-    ```
-    RIDE_EVENT_HUB=[Connection string for taxi-ride event hub]
-    FARE_EVENT_HUB=[Connection string for taxi-fare event hub]
-    RIDE_DATA_FILE_PATH=/DataFile/FOIL2013
-    MINUTES_TO_LEAD=0
-    PUSH_RIDE_DATA_FIRST=false
-    ```
-
-4. 次のコマンドを実行して、Docker イメージをビルドします。
-
-    ```bash
-    docker build --no-cache -t dataloader .
-    ```
-
-5. 親ディレクトリ `data/stream_asa` に戻ります。
-
-    ```bash
-    cd ..
-    ```
-
-6. 次のコマンドを実行して、Docker イメージを実行します。
-
-    ```bash
-    docker run -v `pwd`/DataFile:/DataFile --env-file=onprem/main.env dataloader:latest
-    ```
-
-出力は次のようになります。
-
-```
-Created 10000 records for TaxiFare
-Created 10000 records for TaxiRide
-Created 20000 records for TaxiFare
-Created 20000 records for TaxiRide
-Created 30000 records for TaxiFare
-...
-```
-
-プログラムを少なくとも 5 分間 (Stream Analyticsクエリで定義されているウィンドウ) 実行します。 Stream Analytics ジョブが正しく実行されていることを確認するには、Azure portal を開き、Cosmos DB データベースに移動します。 **データ エクスプローラー** ブレードを開き、ドキュメントを表示します。 
-
-[1] <span id="note1">Brian Donovan、Dan Work (2016 年): New York City Taxi Trip Data (2010-2013)。 イリノイ大学アーバナシャンペーン校。 https://doi.org/10.13012/J8PN93H8
+[github]: https://github.com/mspnp/reference-architectures/tree/master/data/streaming_asa
