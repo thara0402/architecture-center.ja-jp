@@ -3,12 +3,12 @@ title: Azure でのスケーラブルな注文処理
 description: Azure Cosmos DB を使用して高度にスケーラブルな注文処理パイプラインを構築します。
 author: alexbuckgit
 ms.date: 07/10/2018
-ms.openlocfilehash: fe642ffde733914389c36c5be50f35d242a22edf
-ms.sourcegitcommit: b2a4eb132857afa70201e28d662f18458865a48e
+ms.openlocfilehash: 1c3bb2cc33be74f5ff8ee0513de4c3f7df70aa37
+ms.sourcegitcommit: 0a31fad9b68d54e2858314ca5fe6cba6c6b95ae4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48818515"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51610857"
 ---
 # <a name="scalable-order-processing-on-azure"></a>Azure でのスケーラブルな注文処理
 
@@ -20,7 +20,7 @@ Cosmos DB、HDInsight などのマネージド Azure サービスを使用して
 
 ## <a name="relevant-use-cases"></a>関連するユース ケース
 
-次のユース ケースについて、このシナリオを検討してください。
+その他の関連するユース ケース:
 
 * eコマースまたは小売販売管理のバックエンド システム。
 * 在庫管理システム。
