@@ -3,12 +3,12 @@ title: Azure での計算流体力学 (CFD) シミュレーションの実行
 description: Azure で計算流体力学 (CFD) シミュレーションを実行します。
 author: mikewarr
 ms.date: 09/20/2018
-ms.openlocfilehash: 5734e6fe707e3beb5e23f2ad2b4344ba289803bb
-ms.sourcegitcommit: b2a4eb132857afa70201e28d662f18458865a48e
+ms.openlocfilehash: f32e055838d6c62584130f61a0d92b06cc46ec63
+ms.sourcegitcommit: 0a31fad9b68d54e2858314ca5fe6cba6c6b95ae4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48818579"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51610636"
 ---
 # <a name="running-computational-fluid-dynamics-cfd-simulations-on-azure"></a>Azure での計算流体力学 (CFD) シミュレーションの実行
 
@@ -20,7 +20,7 @@ HPC クラスターの作成、管理、最適化を簡略化するには、Azur
 
 ## <a name="relevant-use-cases"></a>関連するユース ケース
 
-以下の業界で CFD アプリケーションを使用できる場合はこのシナリオを検討します。
+CFD アプリケーションに関連するその他の業界:
 
 * 航空
 * 自動車

@@ -3,12 +3,12 @@ title: Citrix を使用した Linux 仮想デスクトップ
 description: Azure で Citrix を使用して Linux デスクトップ向けの VDI 環境を構築します。
 author: miguelangelopereira
 ms.date: 09/12/2018
-ms.openlocfilehash: 374d59f7a528bd89870baa601a49a30ea00a08f1
-ms.sourcegitcommit: b2a4eb132857afa70201e28d662f18458865a48e
+ms.openlocfilehash: 383642b05926c5a09abf0b2f95fef10539d95aec
+ms.sourcegitcommit: 0a31fad9b68d54e2858314ca5fe6cba6c6b95ae4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48819144"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51610653"
 ---
 # <a name="linux-virtual-desktops-with-citrix"></a>Citrix を使用した Linux 仮想デスクトップ
 
@@ -96,7 +96,7 @@ ms.locfileid: "48819144"
 
 ## <a name="pricing"></a>価格
 
-- Citrix XenDestop ライセンスは、Azure サービスの料金には含まれません。
+- Citrix XenDesktop ライセンスは、Azure サービスの料金には含まれません。
 - Citrix NetScaler ライセンスは、従量課金制のモデルに含まれます。
 - 予約インスタンスを使用すると、ソリューションの計算コストが大幅に削減されます。
 - ExpressRoute の料金は含まれません。

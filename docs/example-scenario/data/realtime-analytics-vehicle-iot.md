@@ -1,14 +1,14 @@
 ---
 title: 自動車のリアルタイム IoT データのインジェストと処理
 description: IoT を使用して、リアルタイムの車両データを取り込んで処理します。
-author: meeral
+author: msdpalam
 ms.date: 09/12/2018
-ms.openlocfilehash: 663332185f64987215384a1d4af4b7ed9b50847c
-ms.sourcegitcommit: 62945777e519d650159f0f963a2489b6bb6ce094
+ms.openlocfilehash: 6562e3277e6b6eb38993132284ad43542ef4c0d3
+ms.sourcegitcommit: 0a31fad9b68d54e2858314ca5fe6cba6c6b95ae4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48876887"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51610738"
 ---
 # <a name="ingestion-and-processing-of-real-time-automotive-iot-data"></a>自動車のリアルタイム IoT データのインジェストと処理
 
@@ -23,7 +23,7 @@ ms.locfileid: "48876887"
 
 ## <a name="relevant-use-cases"></a>関連するユース ケース
 
-テレマティクスのインジェストおよび処理システムを作成する際には、上記の目標とともに、以下のユース ケースでこのシナリオをご検討ください。
+その他の関連するユース ケース:
 
 * 車両メンテナンスのリマインダーとアラート。
 * 車両乗客用の位置情報に基づくサービス (つまり、SOS)。
@@ -65,7 +65,7 @@ IoT デバイスで生成されたイベント (データまたはメッセー�
 * 管理された [HDInsight Kafka](/azure/hdinsight/kafka/apache-kafka-introduction) には、Azure Managed Disks と統合された 99.9% の SLA が付属しています。
 * [Azure Databricks](/azure/azure-databricks/what-is-azure-databricks) は、クラウドのパフォーマンスとコスト効率が完全に最適化されています。 Databricks Runtime は、いくつかの重要な機能を Apache Spark ワークロードに加えて、Azure での実行時に 10 から 100 倍のパフォーマンス向上やコスト削減が可能です。これには以下が含まれます。
 * Azure Databricks は、[Azure SQL Data Warehouse](/azure/sql-data-warehouse)、[Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db)、[Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage)、[Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs) などの Azure のデータベースおよびストアと深いレベルで統合します。
-    * 自動スケーリングおよび自動終了により、Spark クラスターで自動的にコストを最小限に抑えられるようにすることができます。
+    * Spark クラスターの自動スケーリングと自動終了により、自動的にコストが最小限に抑えられます。
     * キャッシュ、インデックス作成、高度なクエリ最適化などのパフォーマンスの最適化により、クラウド環境やオンプレミスの環境での従来の Apache Spark のデプロイと比べてパフォーマンスを 10 倍から 100 倍向上させることができます。
     * Azure Active Directory との統合により、Azure Databricks を使って Azure ベースの完全なソリューションを実行することができます。
     * Azure Databricks のロール ベースのアクセスでは、ノートブック、クラスター、ジョブ、データに対してきめ細かいユーザー アクセス許可を設定できます。
@@ -83,8 +83,8 @@ Azure 料金計算ツールを使用して、[Azure Databricks の料金](https:
 * [Azure Databricks](https://azure.microsoft.com/services/databricks) では、データ分析のワークフローに合わせた 2 つの別々のワークロードを複数の [VM インスタンス](https://azure.microsoft.com/pricing/details/databricks/#instances)で使用できます。Data Engineering ワークロードを使用すると、データ エンジニアは、ジョブの作成と実行が簡単に行えます。また、Data Analytics ワークロードを使用すると、データ サイエンティストは、データや分析情報のインタラクティブな調査、視覚化、操作、共有が簡単に行えます。
 * [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db) では、世界中のあらゆる場所で待ち時間の 99 パーセンタイルが確実に 10 ミリ秒未満となります。また、[明確でわかりやすい複数の整合性モデル](/azure/cosmos-db/consistency-levels)でパフォーマンスを細かく調整することができ、マルチホーム機能により高可用性も保証されます。これらはすべて、業界トップ レベルの包括的な[サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/cosmos-db) (SLA) の対象となります。
 * [Azure SQL Data Warehouse](https://azure.microsoft.com/pricing/details/sql-data-warehouse/gen2) を使用すると、計算レベルとストレージ レベルを個別にスケーリングすることができます。 計算リソースは 1 時間単位で課金されるため、オンデマンドでそのリソースをスケーリングまたは一時停止できます。 ストレージ リソースはテラバイト単位で課金されるため、データを取り込んだ分だけコストが増加します。
-* [Analysis Services](https://azure.microsoft.com/pricing/details/analysis-services) は、Developer レベル、Basic レベル、Standard レベルでご利用いただけます。 インスタンスは、クエリ処理単位 (QPU) と使用可能なメモリに基づいて価格設定されます。 コストを抑えるには、実行するクエリの数、処理するデータの量、実行頻度をできるだけ少なくしてください。
-* [Power BI](https://powerbi.microsoft.com/pricing) には、要件に応じたさまざまな製品オプションがあります。 [Power BI Embedded](https://azure.microsoft.com/pricing/details/power-bi-embedded) は、Power BI の機能をアプリケーションに組み込むための Azure ベースのオプションを提供します。 Power BI Embedded インスタンスは上記の料金サンプルに含まれています。
+* [Analysis Services](https://azure.microsoft.com/pricing/details/analysis-services) は、Developer レベル、Basic レベル、Standard レベルでご利用いただけます。 インスタンスは、クエリ処理単位 (QPU) と使用可能なメモリに基づいて価格設定されます。 コストを抑えるには、実行するクエリの数、処理するデータの量、実行頻度をできるだけ少なくします。
+* [Power BI](https://powerbi.microsoft.com/pricing) には、要件に応じたさまざまな製品オプションがあります。 [Power BI Embedded](https://azure.microsoft.com/pricing/details/power-bi-embedded) では、Power BI の機能をアプリケーションに埋め込むための Azure ベースのオプションが提供されます。 Power BI Embedded インスタンスは上記の料金サンプルに含まれています。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -3,12 +3,12 @@ title: eコマースのインテリジェントな製品検索エンジン
 description: eコマース アプリケーションに世界水準の検索エクスペリエンスを提供します。
 author: jelledruyts
 ms.date: 09/14/2018
-ms.openlocfilehash: f18e9fd3705c24da71da747c46ab42f263fd06af
-ms.sourcegitcommit: b2a4eb132857afa70201e28d662f18458865a48e
+ms.openlocfilehash: a57477c26665b4560671550f6fdd81c2d9505e71
+ms.sourcegitcommit: 0a31fad9b68d54e2858314ca5fe6cba6c6b95ae4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48818755"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51610670"
 ---
 # <a name="intelligent-product-search-engine-for-e-commerce"></a>eコマースのインテリジェントな製品検索エンジン
 
@@ -20,13 +20,13 @@ SQL Server や Azure SQL Database などのリレーショナル データベー
 
 ## <a name="relevant-use-cases"></a>関連するユース ケース
 
-このような他のユース ケースには、同様の設計パターンがあります。
+その他の関連するユース ケース:
 
 * 物理的にユーザーの近くにある不動産一覧または店舗の検索。
 * "_最近_" の情報を優先した、ニュース サイトの記事やスポーツ結果の検索。
 * 政策立案者や公証人など、"_ドキュメント中心_" の組織向けの大規模なリポジトリの検索。
 
-最終的には、何らかの形式の検索機能を持つ "_すべての_" アプリケーションに、専用の検索サービスを持つメリットがあります。
+最終的には、何らかの形式の検索機能を持つ "_すべての_" アプリケーションが、専用検索サービスからメリットを得ることができます。
 
 ## <a name="architecture"></a>アーキテクチャ
 

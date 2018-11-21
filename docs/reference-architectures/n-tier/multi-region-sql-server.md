@@ -3,16 +3,14 @@ title: 高可用性のためのマルチリージョン n 層アプリケーシ�
 description: 高可用性と回復性を得るために Azure の複数のリージョンに VM をデプロイする方法。
 author: MikeWasson
 ms.date: 07/19/2018
-pnp.series.title: Windows VM workloads
-pnp.series.prev: n-tier
-ms.openlocfilehash: 34dd47175e7fd0002cba577ad6c1034968ed4098
-ms.sourcegitcommit: b2a4eb132857afa70201e28d662f18458865a48e
+ms.openlocfilehash: 3b1c419182322b2fa0b555230465f41562e8e6c1
+ms.sourcegitcommit: 877777094b554559dc9cb1f0d9214d6d38197439
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48819127"
+ms.lasthandoff: 11/11/2018
+ms.locfileid: "51527628"
 ---
-# <a name="multi-region-n-tier-application-for-high-availability"></a>高可用性のためのマルチリージョン n 層アプリケーション
+# <a name="n-tier-application-in-multiple-azure-regions-for-high-availability"></a>高可用性のための複数の Azure リージョンにおける N 層アプリケーション
 
 このリファレンス アーキテクチャは、可用性と堅牢な災害復旧インフラストラクチャを実現するために、複数の Azure リージョンで N 層アプリケーションを実行するための一連の実証済みのプラクティスを示しています。 
 

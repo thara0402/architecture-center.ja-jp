@@ -3,12 +3,12 @@ title: 大規模な Machine Learning
 description: ''
 author: zoinerTejada
 ms:date: 02/12/2018
-ms.openlocfilehash: 4e584da18893ac7405fa00863fe034e45b2e3903
-ms.sourcegitcommit: 7ced70ebc11aa0df0dc0104092d3cc6ad5c28bd6
+ms.openlocfilehash: a44785b61faec8a45160fa2895fbc03e2c580a77
+ms.sourcegitcommit: 9293350ab66fb5ed042ff363f7a76603bf68f568
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34062818"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51577142"
 ---
 # <a name="machine-learning-at-scale"></a>大規模な Machine Learning
 
@@ -59,7 +59,7 @@ Machine Learning (ML) は、数学的アルゴリズムに基づく予測モデ�
 - Cognitive Toolkit が提供する事前トレーニング済みのニューラル ネットワーク モデルを使用する。
 - iOS アプリ対応の Core ML が提供するシリアル化モデルを埋め込む。 
 
-事前構築済みのモデルがお使いのデータやシナリオに適合しない場合、Azure での選択肢には、Azure Machine Learning、Spark MLlib および MMLSpark 搭載の HDInsight、Cognitive Toolkit、および SQL Machine Learning Services が含まれます。 カスタム モデルを使用することに決めた場合、モデルのトレーニングと操作化を含むパイプラインを設計する必要があります。 
+事前構築済みのモデルがお使いのデータやシナリオに適合しない場合、Azure での選択肢には、Azure Machine Learning、Spark MLlib および MMLSpark 搭載の HDInsight、Azure Databricks、Cognitive Toolkit、SQL Machine Learning Services が含まれます。 カスタム モデルを使用することに決めた場合、モデルのトレーニングと操作化を含むパイプラインを設計する必要があります。 
 
 ![Azure でのモデル オプション](./images/machine-learning-model-training-and-deployment.png)
 

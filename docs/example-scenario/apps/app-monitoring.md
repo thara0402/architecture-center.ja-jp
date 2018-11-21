@@ -3,22 +3,22 @@ title: Azure での Web アプリケーションの監視
 description: Azure App Service でホストされる Web アプリケーションを監視します。
 author: adamboeglin
 ms.date: 09/12/2018
-ms.openlocfilehash: ea57ba50f4e9390d5527587752c3bebad01b6139
-ms.sourcegitcommit: 42797fffb82bbbf86f6deb1da52c61d456be631e
+ms.openlocfilehash: ba008035c37d1d4e2d2f823463344e4941c0b4c4
+ms.sourcegitcommit: 0a31fad9b68d54e2858314ca5fe6cba6c6b95ae4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49313218"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51610755"
 ---
 # <a name="web-application-monitoring-on-azure"></a>Azure での Web アプリケーションの監視
 
-Azure 上のサービスとしてのプラットフォーム (PaaS) オファリングでコンピューティング リソースを管理し、デプロイの監視方法をいくつか変更します。 Azure には、それぞれが特定の役割を果たす複数の監視サービスが含まれています。 また、これらのサービスが組み合わされた包括的なソリューションを使用すれば、アプリケーションやそれらを使用する Azure リソースからテレメトリを収集、分析し、それに基づいて対処できます。
+Azure のサービスとしてのプラットフォーム (PaaS) オファリングによって、コンピューティング リソースが自動的に管理されます。また、これによりデプロイの監視方法が変わります。 Azure には、それぞれが特定の役割を果たす複数の監視サービスが含まれています。 また、これらのサービスが組み合わされた包括的なソリューションを使用すれば、お使いのアプリケーションやそれらを使用する Azure リソースからテレメトリを収集、分析し、それに基づいて対処できます。
 
 このシナリオでは、使用できる監視サービスを扱い、複数のデータ ソースに使用できるデータフロー モデルについて説明します。 監視に関しては、多くのツールとサービスが Azure のデプロイメントで動作します。 このシナリオでは、使いやすいという理由のみで、そのまま利用できるサービスを選択します。 他の監視オプションについては、この記事で後述します。
 
 ## <a name="relevant-use-cases"></a>関連するユース ケース
 
-次のユース ケースについて、このシナリオを検討してください。
+その他の関連するユース ケース:
 
 - テレメトリを監視するための Web アプリケーションのインストルメント化。
 - Azure 上にデプロイされているアプリケーションのフロントエンドおよびバックエンド テレメトリの収集。
@@ -48,7 +48,7 @@ Azure 上のサービスとしてのプラットフォーム (PaaS) オファリ
 
 ## <a name="considerations"></a>考慮事項
 
-ベスト プラクティスは、開発時に [Application Insights SDK][Application Insights SDKs] を使用して Application Insights をコードに追加し、アプリケーションごとにカスタマイズすることです。 このようなオープン ソースの SDK は、ほとんどのアプリケーション フレームワークで使用できます。 収集するデータを充実させて制御するには、テスト環境用と運用環境用の SDK の使用を開発プロセスに組み込む必要があります。 主な要件は、インターネットに面したアドレスでホストされている Applications Insights のインジェスト エンドポイントへの直接的または間接的な視線をアプリが持つことです。 これで、テレメトリを追加したり、既存のテレメトリ コレクションを充実させたりすることができるようになります。
+推奨プラクティスは、開発中に [Application Insights SDK][Application Insights SDKs] を使用して Application Insights をご自身のコードに追加し、アプリケーションごとにカスタマイズすることです。 これらのオープンソースの SDK は、ほとんどのアプリケーション フレームワークで使用できます。 収集するデータを充実させて制御するには、テスト環境用と運用環境用の SDK の使用を開発プロセスに組み込む必要があります。 主な要件は、インターネットに面したアドレスでホストされている Applications Insights のインジェスト エンドポイントへの直接的または間接的な視線をアプリが持つことです。 これで、テレメトリを追加したり、既存のテレメトリ コレクションを充実させたりすることができるようになります。
 
 ランタイムの監視も簡単に始めることができます。 収集されるテレメトリは、構成ファイルで制御する必要があります。 たとえば、[Application Insights Status Monitor][Application Insights Status Monitor] などのツールを使用して SDK を正しいフォルダーに配置し、適切な構成を追加して監視を開始するランタイム メソッドを含めることができます。
 
@@ -60,7 +60,7 @@ Azure Monitor、Application Insights、Log Analytics のすべてから[アラ�
 
 ### <a name="alternatives"></a>代替手段
 
-この記事では、一般的な機能に便利に使用できる監視オプションについて説明しますが、独自のログ メカニズムを作成するオプションなど、多くの選択肢があります。 ベスト プラクティスは、ソリューションに階層を構築するときに監視サービスを追加することです。 ここでは、いくつかの拡張と代替案を紹介します。
+この記事では、一般的な機能に便利に使用できる監視オプションについて説明しますが、独自のログ メカニズムを作成するオプションなど、多くの選択肢があります。 推奨プラクティスは、ソリューションに階層を構築するときに監視サービスを追加することです。 ここでは、いくつかの拡張と代替案を紹介します。
 
 - [Grafana 用 Azure Monitor データ ソース][Azure Monitor Data Source For Grafana]を使用して、Grafana で Azure Monitor と Application Insights のメトリックを統合します。
 - [Data Dog][data-dog] は、Azure Monitor 用のコネクタを備えています
@@ -72,7 +72,7 @@ Azure Monitor、Application Insights、Log Analytics のすべてから[アラ�
 
 このシナリオでは、監視のための PaaS ソリューションに焦点を当てています。これは、主に可用性とスケーラビリティが適切に処理され、サービス レベル アグリーメント (SLA) に基づいているからです。 たとえば、App Services には、その可用性を保証する [SLA][SLA] があります。
 
-Application Insights は、1 秒あたりに処理できる要求の数について[制限][app-insights-limits]があります。 要求の制限を超えると、メッセージの調整が発生することがあります。 これを回避するには、[フィルター処理][message-filtering]または[サンプリング][message-sampling]を実装してデータ レートを減らします。
+Application Insights は、1 秒あたりに処理できる要求の数について[制限][app-insights-limits]があります。 要求の制限を超えると、メッセージの調整が発生することがあります。 調整を回避するには、[フィルター処理][message-filtering]または[サンプリング][message-sampling]を実装してデータ レートを減らします
 
 ただし、実行しているアプリの高可用性については、開発者が考慮する必要があります。 たとえば、スケールの詳細については、基本的な Web アプリケーションの参照アーキテクチャの[スケーラビリティに関する考慮事項](#scalability-considerations)のセクションを参照してください。 アプリをデプロイしたら、Application Insights を使用して[可用性を監視する][monitor its availability]テストを設定できます。
 
@@ -86,7 +86,7 @@ Application Insights は、1 秒あたりに処理できる要求の数につい
 - データのリテンション期間を考慮します。 たとえば、Application Insights はテレメトリ データを 90 日間保持します。 Microsoft Power BI、Continuous Export、または REST API を使用して、長期間アクセスするデータをアーカイブします。 ストレージ料金が適用されます。
 - Azure リソースへのアクセスを制限して、データへのアクセスと、特定のアプリケーションからテレメトリを表示できるユーザーを制御できます。 テレメトリの監視へのアクセスをロックする方法については、[Application Insights のリソース、ロール、およびアクセス制御][Resources, roles, and access control in Application Insights]に関するページを参照してください。
 - アプリケーション コードの読み取り/書き込みアクセスを制御して、アプリケーションからのデータ インジェストを制限するバージョンまたはタグ マーカーをユーザーが追加しないようにするかどうかを検討します。 Application Insights では、個々のデータ項目がリソースに送信された後に制御できないため、ユーザーが任意のデータに対してアクセス権を持っている場合、個々のリソース内のすべてのデータにアクセスできます。
-- 必要に応じて、Azure リソースに対してポリシーまたはコスト管理を適用するための[ガバナンス](/azure/security/governance-in-azure) メカニズムを追加します。 たとえば、ポリシーやロール ベースのアクセス制御などのセキュリティ関連の監視に Log Analytics を使用することや、ポリシー定義の作成、割り当て、管理に [Azure Policy](/azure/azure-policy/azure-policy-introduction) を使用することができます。
+- 必要に応じて、Azure リソースに対してポリシーまたはコスト管理を適用するための[ガバナンス](/azure/security/governance-in-azure) メカニズムを追加します。 たとえば、ポリシーやロールベースのアクセス制御などのセキュリティ関連の監視に Log Analytics を使用することや、ポリシー定義の作成、割り当て、管理に [Azure Policy](/azure/azure-policy/azure-policy-introduction) を使用することができます。
 - 潜在的なセキュリティの問題を監視し、Azure リソースのセキュリティ状態を一元的に確認するには、[Azure Security Center](/azure/security-center/security-center-intro) の使用を検討してください。
 
 ## <a name="pricing"></a>価格

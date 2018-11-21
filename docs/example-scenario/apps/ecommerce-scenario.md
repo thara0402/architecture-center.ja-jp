@@ -3,12 +3,12 @@ title: Azure の eコマース フロントエンド
 description: Azure で eコマース サイトをホストします。
 author: masonch
 ms.date: 7/13/18
-ms.openlocfilehash: 6ca85665a5bf63bf71f5badc16406db5df2a34c2
-ms.sourcegitcommit: b2a4eb132857afa70201e28d662f18458865a48e
+ms.openlocfilehash: 7baaf4d2986a00ab72b60a540bcd9d864893b109
+ms.sourcegitcommit: 0a31fad9b68d54e2858314ca5fe6cba6c6b95ae4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48819093"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51610823"
 ---
 # <a name="an-e-commerce-front-end-on-azure"></a>Azure の eコマース フロントエンド
 
@@ -18,7 +18,7 @@ ms.locfileid: "48819093"
 
 ## <a name="relevant-use-cases"></a>関連するユース ケース
 
-次のユース ケースについて、このシナリオを検討してください。
+その他の関連するユース ケース:
 
 * さまざまなタイミングでユーザーの急増に対処できるように弾力性のあるスケーリングを必要とするアプリケーションを構築する。
 * 世界中のさまざまな Azure リージョンで高い可用性で運用されるよう設計されたアプリケーションを構築する。

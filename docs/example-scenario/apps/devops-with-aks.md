@@ -3,12 +3,12 @@ title: コンテナー ベースのワークロード用の CI/CD パイプラ�
 description: Jenkins、Azure Container Registry、Azure Kubernetes Service、Cosmos DB、Grafana を使用して Node.js Web アプリの DevOps パイプラインを構築します。
 author: iainfoulds
 ms.date: 07/05/2018
-ms.openlocfilehash: 3212fae2c68eef3a5ed4963d28c0d97ac8f332e0
-ms.sourcegitcommit: b2a4eb132857afa70201e28d662f18458865a48e
+ms.openlocfilehash: db8de674ee2789c5b41cebebee5745ecc8544122
+ms.sourcegitcommit: 0a31fad9b68d54e2858314ca5fe6cba6c6b95ae4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48818737"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51610840"
 ---
 # <a name="cicd-pipeline-for-container-based-workloads"></a>コンテナー ベースのワークロード用の CI/CD パイプライン
 
@@ -20,7 +20,7 @@ Azure Kubernetes Service、Container Registry、Cosmos DB などの Azure サー
 
 ## <a name="relevant-use-cases"></a>関連するユース ケース
 
-次のユース ケースについて、このシナリオを検討してください。
+その他の関連するユース ケース:
 
 * アプリケーション開発プラクティスを、コンテナー ベースのマイクロサービス手法に最新化する。
 * アプリケーションの開発とデプロイのライフサイクルを加速化する。

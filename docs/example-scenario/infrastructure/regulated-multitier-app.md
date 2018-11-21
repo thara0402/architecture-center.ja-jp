@@ -3,12 +3,12 @@ title: 規制対象業界向けのセキュリティで保護された Windows W
 description: スケール セット、Application Gateway、ロード バランサーを使用して、セキュリティで保護された多層 Web アプリケーションを、Azure 上の Windows Server を使用して構築します。
 author: iainfoulds
 ms.date: 07/11/2018
-ms.openlocfilehash: 584b5891f9b3d8e174c3eb29835a525ae4a4f156
-ms.sourcegitcommit: b2a4eb132857afa70201e28d662f18458865a48e
+ms.openlocfilehash: c7137988bd9b5e26718b4fe0955a3dca3dc638b8
+ms.sourcegitcommit: 0a31fad9b68d54e2858314ca5fe6cba6c6b95ae4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48819008"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51610721"
 ---
 # <a name="secure-windows-web-application-for-regulated-industries"></a>規制対象業界向けのセキュリティで保護された Windows Web アプリケーション
 
@@ -18,7 +18,7 @@ ms.locfileid: "48819008"
 
 ## <a name="relevant-use-cases"></a>関連するユース ケース
 
-次のユース ケースについて、このシナリオを検討してください。
+その他の関連するユース ケース:
 
 * セキュリティで保護されたクラウド環境におけるアプリケーション デプロイの最新化。
 * 従来のオンプレミス アプリケーションとサービス管理の軽減。

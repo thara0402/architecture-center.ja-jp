@@ -3,13 +3,13 @@ title: Azure サービスと AWS サービスの比較 - マルチクラウド
 description: マルチクラウド ソリューションまたは Azure への移行に関して、Microsoft Azure クラウド サービスと Amazon Web サービス (AWS) の比較を確認してください。 各サービスの IT 機能について説明します。
 keywords: クラウド サービスの比較、クラウド サービス、マルチクラウドの比較、Azure AWS の比較、Azure と AWS の比較、AWS と Azure の比較、IT 機能
 author: lbrader
-ms.date: 11/06/2018
-ms.openlocfilehash: abf3d8afb21fbf6d49423c0759613eeae6b53849
-ms.sourcegitcommit: 02ecd259a6e780d529c853bc1db320f4fcf919da
+ms.date: 11/09/2018
+ms.openlocfilehash: ddfbf637ba820a9785e6698c8655dda4d971aaa0
+ms.sourcegitcommit: cc234a522b7fc35af3bcacdc044c2e2b529e54ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51263832"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51347629"
 ---
 # <a name="aws-to-azure-services-comparison"></a>AWS サービスと Azure サービスの比較
 
@@ -36,7 +36,7 @@ AWS ユーザーのための Azure の概要については、[AWS プロフェ�
 |                  領域                   |                  AWS サービス                   |                                                                                                                                                    Azure サービス                                                                                                                                                    |                                                                                              説明                                                                                              |
 |-----------------------------------------|------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |             仮想サーバー             |     Elastic Compute Cloud (EC2) インスタンス      |                                                                                                                  [Azure Virtual Machines](https://azure.microsoft.com/services/virtual-machines/)                                                                                                                   | 仮想サーバーにより、ユーザーは OS やサーバー ソフトウェアをデプロイ、管理、および保守できます。 インスタンスの種類によって、CPU/RAM の組み合わせが提供されます。 ユーザーは、サイズを変更する柔軟性により使用した分に対して支払います。 |
-|         <strong>&nbsp;</strong>         |                Amazon Lightsail                |                                                                                                              [Azure Virtual Machines およびイメージ](https://azure.microsoft.com/services/virtual-machines/)                                                                                                              |                                                    仮想マシンを構築するときに選択する仮想マシン テンプレートのコレクション。                                                     |
+|         <strong>&nbsp;</strong>         |                Amazon Lightsail                |                                                                                                              [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute)                                                                                                              |                                                    Azure Marketplace には、さまざまなアプリケーション向けに精選された事前構成済み VM イメージが含まれています。                                                     |
 |           コンテナー インスタンス           |          EC2 Container Service (ECS)           |                                                                                                                 [Azure Container Service](https://azure.microsoft.com/services/container-service/)                                                                                                                  |        Azure Container Instances では、Azure で最も高速かつ簡単にコンテナーを実行できます。仮想マシンをプロビジョニングしたり、より高度なオーケストレーション サービスを導入したりする必要はありません。         |
 |         <strong>&nbsp;</strong>         |             EC2 Container Registry             |                                                                                                                [Azure Container Registry](https://azure.microsoft.com/services/container-registry/)                                                                                                                 |                                            顧客が Docker で書式設定されたイメージを格納できるようにします。 Azure 上ですべての種類のコンテナー デプロイを作成するために使用されます。                                             |
 | マイクロサービス/コンテナー オーケストレーター | Kubernetes 向け Elastic Container Service (EKS) |                                                                                                              [Azure Kubernetes Service (AKS)](https://azure.microsoft.com/services/kubernetes-service/)                                                                                                               |                  Kubernetes で調整済みのコンテナー化されたアプリケーションをデプロイします。 自動アップグレードと組み込みのオペレーション コンソールによって監視とクラスター管理を簡素化します。                  |

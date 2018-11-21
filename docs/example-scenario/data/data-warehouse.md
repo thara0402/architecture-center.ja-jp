@@ -3,12 +3,12 @@ title: 販売およびマーケティング向けのデータ ウェアハウス
 description: 複数のソースのデータを統合し、データ分析を最適化します。
 author: alexbuckgit
 ms.date: 09/15/2018
-ms.openlocfilehash: f9ca9785b65f18098a91aedc1f3157f49456a6e1
-ms.sourcegitcommit: b2a4eb132857afa70201e28d662f18458865a48e
+ms.openlocfilehash: e4c0a37f61f3edfb1f29d26df546f02d31fd40f7
+ms.sourcegitcommit: 0a31fad9b68d54e2858314ca5fe6cba6c6b95ae4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48818651"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51610704"
 ---
 # <a name="data-warehousing-and-analytics-for-sales-and-marketing"></a>販売およびマーケティング向けのデータ ウェアハウスと分析
 
@@ -24,7 +24,7 @@ ms.locfileid: "48818651"
 
 ## <a name="relevant-use-cases"></a>関連するユース ケース
 
-このアプローチは、次のことを実現するためにも使用できます。
+このアプローチは、以下の目的に使うこともできます。
 
 * データ ウェアハウスをデータの信頼できる単一のソースとして確立する。
 * リレーショナル データ ソースを他の非構造化データセットと統合する。
@@ -54,8 +54,8 @@ ms.locfileid: "48818651"
 * [BLOB ストレージ](/azure/storage/blobs/storage-blobs-introduction) は、SQL Data Warehouse に読み込まれる前のソース データのステージングに使用されます。
 * [Data Factory](/azure/data-factory) は、SQL Data Warehouse 内の共通構造へのステージング データの変換を調整します。 Data Factory では、スループットを最大化するため、[SQL Data Warehouse にデータを読み込むときに Polybase を使用](/azure/data-factory/connector-azure-sql-data-warehouse#use-polybase-to-load-data-into-azure-sql-data-warehouse)します。 
 * [SQL Data Warehouse](/azure/sql-data-warehouse/sql-data-warehouse-overview-what-is) は、大規模なデータセットを格納および分析するための分散システムです。 超並列処理 (MPP) が使用されているので、ハイパフォーマンス分析の実行に適しています。 SQL Data Warehouse では、[PolyBase](/sql/relational-databases/polybase/polybase-guide) を使用して、BLOB ストレージからのデータの読み込みを高速化できます。
-* [Analysis Services](/azure/analysis-services) は、データのセマンティック モデルを提供します。 このコンポーネントの使用により、データの分析時のシステム パフォーマンスの向上にもつながります。 
-* [Power BI](/power-bi) は、データを分析し、洞察を共有する一連のビジネス分析ツールです。 Power BI は、Analysis Services に格納されているセマンティック モデルに対してクエリを実行することも、SQL Data Warehouse に直接照会することもできます。
+* [Analysis Services](/azure/analysis-services) は、データのセマンティック モデルを提供します。 これはデータの分析時のシステム パフォーマンスの向上にもつながります。 
+* [Power BI](/power-bi) は、データを分析し、洞察を共有する一連のビジネス分析ツールです。 Power BI は、Analysis Services に格納されているセマンティック モデルに対してクエリを実行することも、SQL Data Warehouse に対して直接クエリを実行することもできます。
 * [Azure Active Directory (Azure AD)](/azure/active-directory) では、Power BI から Analysis Services サーバーに接続するユーザーの認証が行われます。 Data Factory では、Azure AD を使用して、サービス プリンシパルまたは [Azure リソース用のマネージド ID](/azure/active-directory/managed-identities-azure-resources/overview) により、SQL Data Warehouse に対する認証を行うこともできます。
 
 ### <a name="alternatives"></a>代替手段

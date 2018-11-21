@@ -3,12 +3,12 @@ title: Azure 上の API ベースのアーキテクチャへの、従来の Web 
 description: Azure API Management を使用して、従来の Web アプリケーションを最新式にしています。
 author: begim
 ms.date: 09/13/2018
-ms.openlocfilehash: 1aa7ea6dc895146e13677dd9867fb2530f0a8f04
-ms.sourcegitcommit: 62945777e519d650159f0f963a2489b6bb6ce094
+ms.openlocfilehash: f468b3c6dc1c58e03555613b152882316ae2a017
+ms.sourcegitcommit: 0a31fad9b68d54e2858314ca5fe6cba6c6b95ae4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48876792"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51610585"
 ---
 # <a name="migrating-a-legacy-web-application-to-an-api-based-architecture-on-azure"></a>Azure 上の API ベースのアーキテクチャへの、従来の Web アプリケーションの移行
 
@@ -17,10 +17,10 @@ ms.locfileid: "48876792"
 このプロジェクトの目標は、技術的な負債に対処し、継続的なメンテナンスを改善し、回帰バグの少ない機能開発を加速することです。 このプロジェクトでは、反復プロセスを使用してリスクを回避し、いくつかの手順を並行して実行します。
 
 * 開発チームは、アプリケーション バック エンドを最新式にしています。これは、VM 上でホストされるリレーショナル データベースから構成されます。
-* 社内開発チームは、新しいビジネス機能を作成し、新しい HTTP API を介して公開します。
+* 社内開発チームは、新しい HTTP API を介して公開される新しいビジネス機能を作成します。
 * 契約開発チームは、Azure でホストされる新しいブラウザーベースの UI を構築します。
 
-新しいアプリケーション機能が段階的に提供されます。 現在の e コマース ビジネスを強化する既存のブラウザーベースのクライアント/サーバー UI 機能 (オンプレミスでホストされている機能) が*段階的に置き換え*られます。
+新しいアプリケーション機能が段階的に提供されます。 これらの機能により、現在の e コマース ビジネスを強化する既存のブラウザーベースのクライアント/サーバー UI 機能 (オンプレミスでホストされている機能) が段階的に置き換えられます。
 
 管理チームは、不要な最新化を望んでいません。 また、範囲とコストの管理を維持することを望んでいます。 この目的のために、既存の SOAP HTTP サービスを保持することに決めました。 また、既存の UI の変更を最小限に抑えるつもりです。 [Azure API 管理 (APIM)][apim] を利用すると、多くのプロジェクトの要件と制約に対処できます。
 
@@ -81,11 +81,12 @@ API Management は、Developer、Basic、Standard、Premium の 4 つのレベ�
 > [!NOTE]
 > Developer レベルは、API Management 機能の評価に使用できます。 Developer レベルは運用に使用しないでください。
 
-予想されるコストを表示し、デプロイのニーズに合わせてカスタマイズするには、[Azue 料金計算ツール][pricing-calculator]でスケール ユニットと App Service インスタンスの数を変更します。
+予想されるコストを表示し、デプロイのニーズに合わせてカスタマイズするには、[Azure 料金計算ツール][pricing-calculator]でスケール ユニットと App Service インスタンスの数を変更します。
 
 ## <a name="related-resources"></a>関連リソース
 
-さまざまな Azure API Management の[ドキュメントとリファレンスの記事][apim]を参照してください。
+さまざまな Azure API Management の[ドキュメントとリファレンスの記事][apim]を確認してください。
+
 
 <!-- links -->
 [architecture]: ./media/architecture-apim-api-scenario.png

@@ -3,12 +3,12 @@ title: Azure でのコンピューター支援エンジニアリング サービ
 description: Azure で、コンピューター支援エンジニアリング (CAE) に、サービスとしてのソフトウェア (SaaS) プラットフォームを提供します。
 author: alexbuckgit
 ms.date: 08/22/2018
-ms.openlocfilehash: d17ac218052c5b98e8790f1386be035618a2d957
-ms.sourcegitcommit: b2a4eb132857afa70201e28d662f18458865a48e
+ms.openlocfilehash: 8bdf7198223f7194d0cd717949699bb3a508674e
+ms.sourcegitcommit: 0a31fad9b68d54e2858314ca5fe6cba6c6b95ae4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48818685"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51610551"
 ---
 # <a name="a-computer-aided-engineering-service-on-azure"></a>Azure でのコンピューター支援エンジニアリング サービス
 
@@ -26,7 +26,7 @@ ms.locfileid: "48818685"
 
 ## <a name="relevant-use-cases"></a>関連するユース ケース
 
-このアーキテクチャを使用するシナリオとしては他に次のものがあります。
+その他の関連するユース ケース:
 
 * ゲノミクス研究
 * 天気シミュレーション
@@ -37,7 +37,7 @@ ms.locfileid: "48818685"
 ![HPC 機能を可能にする SaaS ソリューションのアーキテクチャ][architecture]
 
 * ユーザーは、[Apache Guacamole サービス](https://guacamole.apache.org/)を使用する HTML5 ベースの RDP 接続を備えたブラウザーを使用して、NV シリーズの仮想マシン (VM) にアクセスできます。 これらの VM インスタンスでは、レンダリングとコラボレーション タスクのための強力な GPU が提供されます。 ユーザーは、ハイエンドのモバイル コンピューティング デバイスまたはラップトップにアクセスしなくても、設計を編集し、その結果を表示できます。 スケジューラにより、ユーザー定義のヒューリスティックに基づいて追加の VM が起動されます。
-* デスクトップの CAD セッションから、ユーザーはワークロードを送信して使用可能な HPC クラスター ノードで実行できます。 これらのワークロードで応力解析や計算流体力学の計算などのタスクが実行されるので、オンプレミスに専用の計算クラスターを用意する必要がなくなります。 これらのクラスター ノードは、計算リソースに対するアクティブなユーザーの要求に基づく負荷やキューの深さに応じて自動スケールするように構成できます。
+* デスクトップの CAD セッションから、ユーザーはワークロードを送信して使用可能な HPC クラスター ノードで実行できます。 これらのワークロードで応力解析や計算流体力学の計算などのタスクが実行されるので、オンプレミスに専用の計算クラスターを用意する必要がなくなります。 これらのクラスター ノードは、計算リソースに対するアクティブなユーザーの要求に基づく負荷やキューの深さに応じて自動スケーリングするように構成できます。
 * エンド ユーザーが使用できる Web リソースをホストするには、Azure Kubernetes Service (AKS) が使用されます。
 
 ### <a name="components"></a>コンポーネント
@@ -54,7 +54,7 @@ ms.locfileid: "48818685"
 
 * [Azure CycleCloud](/azure/cyclecloud/overview) を使用すると、HPC クラスターの作成、管理、運用、最適化が簡単になります。 高度なポリシーとガバナンスの機能が提供されます。 CycleCloud では、任意のジョブ スケジューラまたはソフトウェア スタックがサポートされます。
 * [HPC Pack](/azure/virtual-machines/windows/hpcpack-cluster-options) では、Windows Server ベースのワークロード用の Azure HPC クラスターを作成して管理できます。 Linux ベースのワークロードには HPC Pack を使用できません。
-* [Azure Automation State Configuration](/azure/automation/automation-dsc-overview) では、展開する仮想マシンとソフトウェアの定義に対して、コードとしてのインフラストラクチャのアプローチが提供されます。 ジョブ キューに送信されたジョブの数に基づく計算ノードの自動スケール ルールを使用し、仮想マシン スケール セットの一部として仮想マシンを展開できます。 新しい仮想マシンが必要なときは、Azure イメージ ギャラリーから最新のパッチが適用されたイメージを使用して仮想マシンがプロビジョニングされた後、必要なソフトウェアがインストールされ、PowerShell DSC 構成スクリプトを使用して構成されます。
+* [Azure Automation State Configuration](/azure/automation/automation-dsc-overview) では、展開する仮想マシンとソフトウェアの定義に対して、コードとしてのインフラストラクチャのアプローチが提供されます。 ジョブ キューに送信されたジョブの数に基づく計算ノードの自動スケーリング ルールを使用し、仮想マシン スケール セットの一部として仮想マシンを展開できます。 新しい仮想マシンが必要なときは、Azure イメージ ギャラリーから最新のパッチが適用されたイメージを使用して仮想マシンがプロビジョニングされた後、必要なソフトウェアがインストールされ、PowerShell DSC 構成スクリプトを使用して構成されます。
 * [Azure Functions](/azure/azure-functions/functions-overview)
 
 ## <a name="considerations"></a>考慮事項

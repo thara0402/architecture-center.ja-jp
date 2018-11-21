@@ -3,12 +3,12 @@ title: Azure におけるリアルタイムでの不正検出
 description: Azure Event Hubs と Stream Analytics を使用して、リアルタイムで不正行為を検出します。
 author: alexbuckgit
 ms.date: 07/05/2018
-ms.openlocfilehash: 4de988731aa1c5b0e4c0ba06fa5aed59e2bb7d81
-ms.sourcegitcommit: b2a4eb132857afa70201e28d662f18458865a48e
+ms.openlocfilehash: bd9eb4d572651c4e57a0043226860623cd8d17e1
+ms.sourcegitcommit: 0a31fad9b68d54e2858314ca5fe6cba6c6b95ae4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48818668"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51610619"
 ---
 # <a name="real-time-fraud-detection-on-azure"></a>Azure におけるリアルタイムでの不正検出
 
@@ -22,7 +22,7 @@ Event Hubs、Stream Analytics などのフル マネージド Azure サービス
 
 ## <a name="relevant-use-cases"></a>関連するユース ケース
 
-次のユース ケースについて、このシナリオを検討してください。
+その他の関連するユース ケース:
 
 * 電気通信シナリオで不正な携帯電話呼び出しを検出する。
 * 金融機関向けに不正なクレジット カード トランザクションを特定する。
@@ -63,7 +63,7 @@ Azure Monitor には、さまざまな Azure サービスにわたって監視�
 
 このシナリオのコンポーネントは、ハイパースケール インジェストと超並列リアルタイム分析を実現するように設計されています。 Azure Event Hubs は高度にスケーラブルで、毎秒数百万のイベントを、短い待機時間で受け取って処理できます。 Event Hubs では、スループット ユニット数が、使用量のニーズに合わせて[自動的にスケールアップ](/azure/event-hubs/event-hubs-auto-inflate)できます。 Azure Stream Analytics では、多くのソースからの大量のストリーミング データを分析できます。 Stream Analytics をスケールアップするには、ご自身のストリーミング ジョブを実行するために割り当てられている[ストリーミング ユニット](/azure/stream-analytics/stream-analytics-streaming-unit-consumption)数を増やします。
 
-スケーラブルなシナリオの設計に関する一般的なガイダンスについては、Azure アーキテクチャ センターの[スケーラビリティのチェックリスト][scalability]を参照してください。
+スケーラブルなソリューションの設計に関する一般的なガイダンスについては、Azure アーキテクチャ センターの[スケーラビリティのチェックリスト][scalability]を参照してください。
 
 ### <a name="security"></a>セキュリティ
 

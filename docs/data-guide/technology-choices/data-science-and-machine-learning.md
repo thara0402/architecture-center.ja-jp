@@ -3,12 +3,12 @@ title: 機械学習テクノロジの選択
 description: ''
 author: zoinerTejada
 ms:date: 02/12/2018
-ms.openlocfilehash: 995349c795066ec3067b20ad2615e40b0fb152db
-ms.sourcegitcommit: 90cf2de795e50571d597cfcb9b302e48933e7f18
+ms.openlocfilehash: 50167bafa49f8e6016f6ec12680db016830e2b81
+ms.sourcegitcommit: 9293350ab66fb5ed042ff363f7a76603bf68f568
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2018
-ms.locfileid: "29288934"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51577159"
 ---
 # <a name="choosing-a-machine-learning-technology-in-azure"></a>Azure での機械学習テクノロジの選択
 
@@ -110,6 +110,10 @@ Apache Spark には、機械学習モデル用のフレームワークおよび�
 
 * Spark は、実行されている時間全体に対して料金が発生する HDinsght クラスターで実行されます。 機械学習サービスをときどき使用するだけの場合は、不要なコストが発生することがあります。
 
+### <a name="azure-databricks"></a>Azure Databricks
+
+[Azure Databricks](/azure/azure-databricks/) は、Apache Spark ベースの分析プラットフォームです。 "サービスとしての Spark" と考えることができます。 Azure プラットフォームで Spark を使用する最も簡単な方法です。 機械学習には、[MLFlow](https://www.mlflow.org/)、[Databricks Runtime ML](https://docs.azuredatabricks.net/user-guide/clusters/mlruntime.html)、Apache Spark MLlib などを使用できます。 詳細については、[Azure Databricks の Machine Learning](https://docs.azuredatabricks.net/spark/latest/mllib/index.html) に関するページをご覧ください。 
+
 ### <a name="web-service-in-a-container"></a>コンテナー内の Web サービス
 
 Docker コンテナーで機械学習モデルを Python Web サービスとしてデプロイできます。 Azure またはエッジ デバイスにモデルをデプロイでき、操作するデータをローカルに使用できます。
@@ -137,7 +141,7 @@ Microsoft Learning Server (旧称 Microsoft R Server) は、R と Python のコ�
 
 * 企業内で Machine Learning Server をデプロイし、管理する必要があります。
 
-### <a name="microsoft-sql-server"></a>の接続文字列
+### <a name="microsoft-sql-server"></a>Microsoft SQL Server
 
 Microsoft SQL Server では R と Python がネイティブにサポートされるため、これらの言語で作成された機械学習モデルをデータベースに Transact-SQL 関数としてカプセル化できます。
 

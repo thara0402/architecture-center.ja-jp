@@ -3,12 +3,12 @@ title: 建設業界での IoT とデータ分析
 description: IoT デバイスとデータ分析を使用して、建設プロジェクトを包括的に管理および運用します。
 author: alexbuckgit
 ms.date: 08/29/2018
-ms.openlocfilehash: 7ab0de50b0eba1ab420e450f3408fe5dc45f04ac
-ms.sourcegitcommit: b2a4eb132857afa70201e28d662f18458865a48e
+ms.openlocfilehash: 74868191687e63a54a69fdacb7276983d98faf74
+ms.sourcegitcommit: 0a31fad9b68d54e2858314ca5fe6cba6c6b95ae4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48818498"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51610925"
 ---
 # <a name="iot-and-data-analytics-in-the-construction-industry"></a>建設業界での IoT とデータ分析
 
@@ -29,7 +29,7 @@ IoT Hub や HDInsight などのマネージド Azure サービスを使用する
 
 ## <a name="relevant-use-cases"></a>関連するユース ケース
 
-次のユース ケースについて、このソリューションを検討してください。
+その他の関連するユース ケース:
 
 * 建設、鉱業、または機器製造のシナリオ
 * 保管と分析のためのデバイス データの大規模なコレクション
@@ -47,7 +47,7 @@ IoT Hub や HDInsight などのマネージド Azure サービスを使用する
 4. 収集された生データは、IoT Hub から Azure Blob Storage に直接送信されて、表示と分析にすぐに利用できます。
 5. IoT Hub 経由で収集されたデータは、Azure Stream Analytics ジョブによってほぼリアルタイムで処理され、Azure SQL Database に格納されます。
 6. アナリストとエンド ユーザーがセンサー データと画像を表示および分析するには、スマート建設クラウド Web アプリケーションを使用できます。 
-7. バッチ ジョブは、Web アプリケーションのユーザーによってオンデマンドで開始されます。 バッチ ジョブは、HDInsight 上の Apache Spark で実行されて、Cassandra クラスターに格納された新しいデータを分析します。 
+7. バッチ ジョブは、Web アプリケーションのユーザーによってオンデマンドで開始されます。 バッチ ジョブは、HDInsight 上の Apache Spark で実行されて、Cassandra クラスターに格納された新しいデータを分析します。 
 
 ### <a name="components"></a>コンポーネント
 

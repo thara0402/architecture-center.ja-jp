@@ -3,12 +3,12 @@ title: Azure でのホテル予約用の会話型チャットボット
 description: Azure Bot Service を使用して商取引アプリケーション用の会話型チャットボットを構築します。
 author: iainfoulds
 ms.date: 07/05/2018
-ms.openlocfilehash: 826aa36da5f30a871abd90fd8ab2b202ffdf93f0
-ms.sourcegitcommit: b2a4eb132857afa70201e28d662f18458865a48e
+ms.openlocfilehash: a922a75d621672fcac95296b1d99112d68c91107
+ms.sourcegitcommit: 0a31fad9b68d54e2858314ca5fe6cba6c6b95ae4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48819656"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51610772"
 ---
 # <a name="conversational-chatbot-for-hotel-reservations-on-azure"></a>Azure でのホテル予約用の会話型チャットボット
 
@@ -20,11 +20,11 @@ Bot Service と Language Understanding Service や Speech API サービスなど
 
 ## <a name="relevant-use-cases"></a>関連するユース ケース
 
-次のユース ケースについて、このシナリオを検討してください。
+その他の関連するユース ケース:
 
-* レストランのテイクアウト メニューを表示し、料理を注文する
-* ホテルの空室状況を確認し、部屋を予約する
-* 利用可能な写真を検索し、プリントを注文する
+* レストランのテイクアウト メニューの表示と料理の注文
+* ホテルの空室状況の確認と部屋の予約
+* 利用可能な写真の検索とプリントの注文
 
 ## <a name="architecture"></a>アーキテクチャ
 
@@ -96,7 +96,7 @@ Azure SQL Database に格納される情報は、Transparent Data Encryption (TD
 
 ### <a name="deploy-infrastructure-components"></a>インフラストラクチャ コンポーネントをデプロイする
 
-Azure Resource Manager テンプレートを使用してインフラストラクチャ コンポーネントをデプロイするには、次の手順を実行します。
+Resource Manager テンプレートを使用してインフラストラクチャ コンポーネントをデプロイするには、次の手順を実行します。
 
 1. **[Deploy to Azure]\(Azure にデプロイ\)** をクリックします。<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmspnp%2Fsolution-architectures%2Fmaster%2Fapps%2Fcommerce-chatbot.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 2. Azure portal でテンプレートのデプロイが開くまで待ってから、次の手順を実行します。
@@ -149,7 +149,8 @@ az bot create \
 
 ## <a name="related-resources"></a>関連リソース
 
-Azure Bot Service の活用方法に関する一連のガイド付きチュートリアルについては、ドキュメントの[チュートリアル ノード][botservice-docs]をご覧ください。
+Azure Bot Service に関する一連のガイド付きチュートリアルについては、ドキュメントの[チュートリアル セクション][botservice-docs]をご覧ください。
+
 
 <!-- links -->
 [aadb2c-docs]: /azure/active-directory-b2c/active-directory-b2c-overview

@@ -3,12 +3,12 @@ title: Azure での Oracle データベースを使用した SAP 運用環境ワ
 description: Oracle データベースを使用して Azure で SAP 運用環境デプロイを実行します。
 author: DharmeshBhagat
 ms.date: 9/12/2018
-ms.openlocfilehash: 4c0e054a9024cd50581acd5b472a09d6e98d2bed
-ms.sourcegitcommit: b2a4eb132857afa70201e28d662f18458865a48e
+ms.openlocfilehash: 75942b4d9b18b7bbe7a162826bcf4fe9ece22dce
+ms.sourcegitcommit: 0a31fad9b68d54e2858314ca5fe6cba6c6b95ae4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48818573"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51610908"
 ---
 # <a name="running-sap-production-workloads-using-an-oracle-database-on-azure"></a>Azure での Oracle データベースを使用した SAP 運用環境ワークロードの実行
 
@@ -20,7 +20,7 @@ SAP システムは、ミッション クリティカルなビジネス アプ�
 
 ## <a name="relevant-use-cases"></a>関連するユース ケース
 
-ここでは、次のシナリオを例に説明します。
+その他の関連するユース ケース:
 
 * SAP で実行されるミッション クリティカルなワークロード。
 * 非クリティカルな SAP ワークロード。

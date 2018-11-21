@@ -3,12 +3,12 @@ title: Azure での SAP ワークロード向けの開発/テスト環境
 description: SAP ワークロード向けの開発/テスト環境を構築します。
 author: AndrewDibbins
 ms.date: 7/11/18
-ms.openlocfilehash: b47e4cb527d3e4ecd74bee7bcf08f2794da56d6c
-ms.sourcegitcommit: 62945777e519d650159f0f963a2489b6bb6ce094
+ms.openlocfilehash: 1cfd15b0287a1979ae5ad60e41a0b1627a2e115c
+ms.sourcegitcommit: 0a31fad9b68d54e2858314ca5fe6cba6c6b95ae4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48876801"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51610806"
 ---
 # <a name="devtest-environments-for-sap-workloads-on-azure"></a>Azure での SAP ワークロード向けの開発/テスト環境
 
@@ -22,7 +22,7 @@ ms.locfileid: "48876801"
 
 ## <a name="relevant-use-cases"></a>関連するユース ケース
 
-次のユース ケースについて、このシナリオを検討してください。
+その他の関連するユース ケース:
 
 * 重要度、生産性が低い SAP ワークロード (サンドボックス、開発、テスト、品質保証)
 * 重要度が低い SAP ビジネス ワークロード

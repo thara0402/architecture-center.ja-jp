@@ -3,12 +3,12 @@ title: Azure での保険金請求イメージの分類
 description: ご使用の Azure アプリケーションに画像処理を組み込みます。
 author: david-stanford
 ms.date: 07/05/2018
-ms.openlocfilehash: 31d328f8e5e27ea255024b7f461f2bfaeffc3ca7
-ms.sourcegitcommit: b2a4eb132857afa70201e28d662f18458865a48e
+ms.openlocfilehash: 9640f8b5454891ed00f669bada9f7c9c69b89734
+ms.sourcegitcommit: 0a31fad9b68d54e2858314ca5fe6cba6c6b95ae4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48818538"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51610534"
 ---
 # <a name="image-classification-for-insurance-claims-on-azure"></a>Azure での保険金請求イメージの分類
 
@@ -20,10 +20,10 @@ Computer Vision API、Azure Functions などの Azure サービスを使用す�
 
 ## <a name="relevant-use-cases"></a>関連するユース ケース
 
-次のユース ケースについて、このシナリオを検討してください。
+その他の関連するユース ケース:
 
-* ファッション Web サイトのイメージを分類する。
-* ゲームのスクリーンショットの利用統計情報を分類する。
+* ファッション Web サイトの画像の分類。
+* ゲームのスクリーンショットの利用統計情報の分類。
 
 ## <a name="architecture"></a>アーキテクチャ
 
@@ -58,7 +58,7 @@ Computer Vision API、Azure Functions などの Azure サービスを使用す�
 
 Cosmos DB は、プロビジョニング済み要求ユニット (RU) の点からいうと、自動スケーリングされません。 ご自身の要件の推定に関するガイダンスについては、Microsoft ドキュメントの[要求ユニット](/azure/cosmos-db/request-units)に関するページをご覧ください。 Cosmos DB でスケーリングのメリットを十分に活用するには、Cosmos DB での[パーティション キー](/azure/cosmos-db/partition-data)のしくみを理解してください。
 
-NoSQL データベースでは、可用性、スケーラビリティ、および分断性と引き換えに、一貫性 (CAP 定理という意味で) が犠牲になることがよくあります。 ただし、このシナリオの例では、キーと値のデータ モデルが使用され、ほとんどの操作が本質的にアトミックであるため、トランザクションの一貫性が必要になることはほとんどありません。 追加のガイダンスについては、Azure アーキテクチャ センターの「[適切なデータ ストアの選択](../../guide/technology-choices/data-store-overview.md)」を参照してください。  実装で高い一貫性が必要な場合は、Cosmos DB で[整合性レベルを選択する](/azure/cosmos-db/consistency-levels)ことができます。
+NoSQL データベースでは、可用性、スケーラビリティ、および分断性と引き換えに、一貫性 (CAP 定理という意味で) が犠牲になることがよくあります。 ただし、このシナリオの例では、キーと値のデータ モデルが使用され、ほとんどの操作が本質的にアトミックであるため、トランザクションの一貫性が必要になることはほとんどありません。 追加のガイダンスについては、Azure アーキテクチャ センターの「[適切なデータ ストアの選択](../../guide/technology-choices/data-store-overview.md)」を参照してください。 実装で高い一貫性が必要な場合は、Cosmos DB で[整合性レベルを選択する](/azure/cosmos-db/consistency-levels)ことができます。
 
 スケーラブルなソリューションの設計に関する一般的なガイダンスについては、Azure アーキテクチャ センターの[スケーラビリティのチェックリスト][scalability]を参照してください。
 
@@ -86,9 +86,9 @@ NoSQL データベースでは、可用性、スケーラビリティ、およ�
 
 ## <a name="related-resources"></a>関連リソース
 
-このシナリオのガイド付きラーニング パスについては、「[Build a serverless web app in Azure (Azure でのサーバーレス Web アプリの構築)][serverless]」を参照してください。
+ガイド付きラーニング パスについては、「[Azure でサーバーレス Web アプリを作成する][serverless]」を参照してください。
 
-このシナリオの例を運用環境にデプロイする前に、Azure Functions の[ベスト プラクティス][functions-best-practices]に関するページをご確認ください。
+このシナリオの例を運用環境にデプロイする前に、[Azure Functions のパフォーマンスと信頼性を最適化する][functions-best-practices]ための推奨プラクティスをご確認ください。
 
 <!-- links -->
 [architecture]: ./media/architecture-intelligent-apps-image-processing.png

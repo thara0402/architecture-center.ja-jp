@@ -3,12 +3,12 @@ title: Azure DevOps を使用した CI/CD パイプライン
 description: Azure DevOps を使用して .NET アプリを構築し、Azure Web Apps にリリースします。
 author: christianreddington
 ms.date: 07/11/18
-ms.openlocfilehash: 80890784d4c97aac418cef4e49f9075dbef10b8a
-ms.sourcegitcommit: b2a4eb132857afa70201e28d662f18458865a48e
+ms.openlocfilehash: 97f16b2d3d9c15bc6f5db6fad4c9d8097243ad3d
+ms.sourcegitcommit: 0a31fad9b68d54e2858314ca5fe6cba6c6b95ae4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48818940"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51610789"
 ---
 # <a name="cicd-pipeline-with-azure-devops"></a>Azure DevOps を使用した CI/CD パイプライン
 
@@ -109,7 +109,7 @@ Azure Web Apps でのホスティングに代わる方法として以下を検�
 
 ### <a name="resiliency"></a>回復性
 
-[回復性のための標準的な設計パターン][design-patterns-resiliency]を確認し、必要に応じて、これらを実装することを検討します。
+必要に応じて、[回復性のための標準的な設計パターン][design-patterns-resiliency]を実装することを検討します。
 
 Azure アーキテクチャ センターでは、多数の [App Service に関する推奨プラクティス][resiliency-app-service]を確認できます。
 

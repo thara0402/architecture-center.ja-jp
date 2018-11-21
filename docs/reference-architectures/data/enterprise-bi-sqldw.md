@@ -3,14 +3,14 @@ title: SQL Data Warehouse を使用したエンタープライズ向け BI
 description: Azure を使用して、オンプレミスに保存されたリレーショナル データからビジネスの分析情報を獲得します。
 author: MikeWasson
 ms.date: 11/06/2018
-ms.openlocfilehash: d5b680346267a17b5016b8897dc03ddcf18a7fe9
-ms.sourcegitcommit: 02ecd259a6e780d529c853bc1db320f4fcf919da
+ms.openlocfilehash: 2822cf6d2a75d521f182c267f4bf2bac462d2b7f
+ms.sourcegitcommit: 877777094b554559dc9cb1f0d9214d6d38197439
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51263815"
+ms.lasthandoff: 11/11/2018
+ms.locfileid: "51527713"
 ---
-# <a name="enterprise-bi-with-sql-data-warehouse"></a>SQL Data Warehouse を使用したエンタープライズ向け BI
+# <a name="enterprise-bi-in-azure-with-sql-data-warehouse"></a>SQL Data Warehouse を使用した Azure のエンタープライズ向け BI
 
 この参照アーキテクチャでは、オンプレミスの SQL Server データベースから SQL Data Warehouse にデータを移動し、そのデータを分析用に変換する [ELT](../../data-guide/relational-data/etl.md#extract-load-and-transform-elt) (抽出-読み込み-変換) パイプラインを実装します。 
 
@@ -199,7 +199,7 @@ Azure Analysis Services では、Azure Active Directory (Azure AD) を使用し�
 
 ## <a name="next-steps"></a>次の手順
 
-- Azure Data Factory を使用して ELT パイプラインを自動化します。 「[SQL Data Warehouse と Azure Data Factory を使用したエンタープライズ BI の自動化][adf=ra]」を参照してください。
+- Azure Data Factory を使用して ELT パイプラインを自動化します。 「[SQL Data Warehouse と Azure Data Factory を使用したエンタープライズ BI の自動化][adf-ra]」を参照してください。
 
 <!-- links -->
 

@@ -3,12 +3,12 @@ title: Azure での高度にスケーラブルで安全な WordPress Web サイ�
 description: メディア イベント用の高度にスケーラブルで安全な WordPress Web サイトを構築します。
 author: david-stanford
 ms.date: 09/18/2018
-ms.openlocfilehash: f7dd73524b2b63cd7d38e8e03bfd4b8edac251a9
-ms.sourcegitcommit: b2a4eb132857afa70201e28d662f18458865a48e
+ms.openlocfilehash: 6ff39d09fa301c8c68ce2a644cc489c0e87a22fa
+ms.sourcegitcommit: 0a31fad9b68d54e2858314ca5fe6cba6c6b95ae4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48818481"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51610609"
 ---
 # <a name="highly-scalable-and-secure-wordpress-website"></a>高度にスケーラブルで安全な WordPress Web サイト
 
@@ -16,7 +16,7 @@ ms.locfileid: "48818481"
 
 ## <a name="relevant-use-cases"></a>関連するユース ケース
 
-次のユース ケースについて、このシナリオを検討してください。
+その他の関連するユース ケース:
 
 * トラフィックの急増を引き起こすメディア イベント。
 * コンテンツ管理システムとして WordPress を使用しているブログ。
