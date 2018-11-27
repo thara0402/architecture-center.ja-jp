@@ -28,7 +28,7 @@ ms.locfileid: "38987480"
 
 - オンプレミスの VPN デバイスが必要です。
 - Microsoft は各 VPN Gateway の 99.9% の可用性を保証していますが、この [SLA](https://azure.microsoft.com/support/legal/sla/vpn-gateway/) は、VPN Gateway のみが対象であり、ゲートウェイへのネットワーク接続は含まれていません。
-- 現在、Azure VPN Gateway 経由の VPN 接続では、最大で 200 Mbps の帯域幅がサポートされています。 このスループットを超えると予想される場合は、ご利用の Azure Virtual Network を複数の VPN 接続に分割する必要がある可能性があります。
+- 現在、Azure VPN Gateway 経由の VPN 接続では、最大で 1.25 Gbps の帯域幅がサポートされています。 このスループットを超えると予想される場合は、ご利用の Azure Virtual Network を複数の VPN 接続に分割する必要がある可能性があります。
 
 **参照アーキテクチャ**
 
