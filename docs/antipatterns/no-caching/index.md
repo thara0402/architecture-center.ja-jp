@@ -3,12 +3,12 @@ title: キャッシュ不使用のアンチパターン
 description: 同じデータを繰り返しフェッチすると、パフォーマンスとスケーラビリティが低下する可能性があります。
 author: dragon119
 ms.date: 06/05/2017
-ms.openlocfilehash: f94a9f3f9166e87949a0e60af818cd89796dc3e2
-ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
+ms.openlocfilehash: ec19cde567fb63248c121328322e834d99c841e8
+ms.sourcegitcommit: 19a517a2fb70768b3edb9a7c3c37197baa61d9b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47428950"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52295584"
 ---
 # <a name="no-caching-antipattern"></a>キャッシュ不使用のアンチパターン
 
@@ -59,7 +59,7 @@ public class PersonRepository : IPersonRepository
 - 読み取り時、アプリケーションはキャッシュからデータの読み取りを試みます。 データがキャッシュにない場合、アプリケーションはデータ ソースからデータを取得してキャッシュに追加します。
 - 書き込み時、アプリケーションは変更を直接データ ソースに書き込み、古い値をキャッシュから削除します。 次回必要になったときに、それが取得されてキャッシュに追加されます。
 
-この方法は、頻繁に変更されるデータに適しています。 以下に示したのは、[キャッシュ アサイド][cache-aside] パターンを使用するように先ほどの例を書き換えたものです。  
+この方法は、頻繁に変更されるデータに適しています。 以下に示したのは、[キャッシュ アサイド][cache-aside-pattern] パターンを使用するように先ほどの例を書き換えたものです。  
 
 ```csharp
 public class CachedPersonRepository : IPersonRepository

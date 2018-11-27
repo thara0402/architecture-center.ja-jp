@@ -4,18 +4,18 @@ description: Azure での一般的なワークロードに対応する、参照�
 layout: LandingPage
 ms.topic: landing-page
 ms.date: 08/30/2018
-ms.openlocfilehash: 43c780876e903f7d4f86d3877fb961b0dc0ba60b
-ms.sourcegitcommit: 877777094b554559dc9cb1f0d9214d6d38197439
+ms.openlocfilehash: e7bbd797ba4b8bfc193b146f080cedf299dd47b4
+ms.sourcegitcommit: 19a517a2fb70768b3edb9a7c3c37197baa61d9b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2018
-ms.locfileid: "51527594"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52295516"
 ---
 # <a name="azure-reference-architectures"></a>Azure の参照アーキテクチャ
 
 これらの参照アーキテクチャは、関連するアーキテクチャをまとめてシナリオごとに配置されています。 各アーキテクチャの説明には、推奨プラクティスが、スケーラビリティ、可用性、管理性、およびセキュリティに関する考慮事項と共に含まれます。 また、ほとんどにはデプロイ可能なソリューションも含まれています。
 
-ジャンプ先: [AI](#ai-and-machine-learning) | [ビッグ データ](#big-data-solutions) | [サーバーレス](##serverless-applications) | [仮想ネットワーク](#virtual-networks) | [VM ワークロード](#vm-workloads) | [SAP](#sap) | [Web アプリ](#web-applications) | [Active Directory](#extend-on-premises-active-directory-to-azure)
+ジャンプ先: [AI](#ai-and-machine-learning) | [ビッグ データ](#big-data-solutions) | [サーバーレス](#serverless-applications) | [仮想ネットワーク](#virtual-networks) | [VM ワークロード](#vm-workloads) | [SAP](#sap) | [Web アプリ](#web-applications) | [Active Directory](#extend-on-premises-active-directory-to-azure)
 
 ## <a name="ai-and-machine-learning"></a>AI と機械学習
 
@@ -98,6 +98,26 @@ ms.locfileid: "51527594"
                     <div class="cardText">
                         <h3>Azure Data Factory を使用したエンタープライズ BI の自動化</h3>
                         <p>ELT パイプラインを自動化し、オンプレミス データベースから増分を読み込みます。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</li>
+<!-- Databricks -->
+<li style="display: flex; flex-direction: column;">
+    <a href="./data/stream-processing-databricks.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="../_images/icons/databricks.png" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Azure Databricks によるストリーム処理</h3>
+                        <p>2 つのストリームからのレコードを結合するストリーム処理パイプラインによって、結果を充実させ、ローリング平均を計算します。</p>
                     </div>
                 </div>
             </div>

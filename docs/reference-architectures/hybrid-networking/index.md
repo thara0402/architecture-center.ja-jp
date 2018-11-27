@@ -3,12 +3,12 @@ title: オンプレミス ネットワークを Azure に接続するための�
 description: オンプレミス ネットワークを Azure に接続するための参照アーキテクチャを比較します。
 author: telmosampaio
 ms.date: 07/02/2018
-ms.openlocfilehash: 0cc07d3b7d45accf9f99ce32914b0ef065d62f32
-ms.sourcegitcommit: 776b8c1efc662d42273a33de3b82ec69e3cd80c5
+ms.openlocfilehash: a9e2a212d65530e714635bbfae3a57766e77c3a6
+ms.sourcegitcommit: 19a517a2fb70768b3edb9a7c3c37197baa61d9b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38987480"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52295490"
 ---
 # <a name="connect-an-on-premises-network-to-azure"></a>オンプレミス ネットワークの Azure への接続
 
@@ -28,7 +28,7 @@ ms.locfileid: "38987480"
 
 - オンプレミスの VPN デバイスが必要です。
 - Microsoft は各 VPN Gateway の 99.9% の可用性を保証していますが、この [SLA](https://azure.microsoft.com/support/legal/sla/vpn-gateway/) は、VPN Gateway のみが対象であり、ゲートウェイへのネットワーク接続は含まれていません。
-- 現在、Azure VPN Gateway 経由の VPN 接続では、最大で 200 Mbps の帯域幅がサポートされています。 このスループットを超えると予想される場合は、ご利用の Azure Virtual Network を複数の VPN 接続に分割する必要がある可能性があります。
+- 現在、Azure VPN Gateway 経由の VPN 接続では、最大で 1.25 Gbps の帯域幅がサポートされています。 このスループットを超えると予想される場合は、ご利用の Azure Virtual Network を複数の VPN 接続に分割する必要がある可能性があります。
 
 **参照アーキテクチャ**
 
