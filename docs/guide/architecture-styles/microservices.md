@@ -2,17 +2,17 @@
 title: マイクロサービス アーキテクチャ スタイル
 description: Azure のマイクロサービス アーキテクチャのメリット、課題、ベスト プラクティスを説明します
 author: MikeWasson
-ms.date: 08/30/2018
-ms.openlocfilehash: fb23ac3e408f3a202d925a1bf684bc30d423f218
-ms.sourcegitcommit: ae8a1de6f4af7a89a66a8339879843d945201f85
+ms.date: 11/13/2018
+ms.openlocfilehash: 4e5d50f829323829c953977257e690354566ebf6
+ms.sourcegitcommit: 19a517a2fb70768b3edb9a7c3c37197baa61d9b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43325445"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52295533"
 ---
 # <a name="microservices-architecture-style"></a>マイクロサービス アーキテクチャ スタイル
 
-マイクロサービス アーキテクチャは、小さな自律サービスのコレクションで構成されています。 各サービスは自己完結型であり、1 つのビジネス機能を実装している必要があります。 Azure でのマイクロサービス アーキテクチャの構築に関する詳細なガイダンスいついては、「[Azure でのマイクロサービスの設計、構築、および操作](../../microservices/index.md)」をご覧ください。
+マイクロサービス アーキテクチャは、小さな自律サービスのコレクションで構成されています。 各サービスは自己完結型であり、1 つのビジネス機能を実装している必要があります。 
 
 ![](./images/microservices-logical.svg)
  
@@ -111,39 +111,9 @@ API ゲートウェイを使用することには次のようなメリットが�
 
 - 障害を分離します。 回復性戦略を使用して、サービス内の障害が連鎖しないようにします。 「[Resiliency patterns (回復性パターン)][resiliency-patterns]」と「[Designing resilient applications (回復性に優れたアプリケーションの設計)][resiliency-overview]」をご覧ください。
 
-## <a name="microservices-using-azure-container-service"></a>Azure Container Service を使用したマイクロサービス 
+## <a name="next-steps"></a>次の手順
 
-[Azure Container Service](/azure/container-service/) を使用して、Docker クラスターを構成およびプロビジョニングできます。 Azure Container Service では、Kubernetes、DC/OS、Docker Swarm などのよく利用されているコンテナー オーケストレーターがサポートされています。
-
-![](./images/microservices-acs.png)
- 
-**公開ノード**。 公開ノードには、公開されたロード バランサーを使用してアクセスできます。 API ゲートウェイは公開ノードでホストされます。
-
-**バックエンド ノード**。 バックエンド ノードは、クライアントが API ゲートウェイを経由してアクセスするサービスを実行します。 バックエンド ノードは、インターネット トラフィックを直接は受信しません。 バックエンド ノードには、VM の 1 つ以上のプールが、それぞれ異なるハードウェア プロファイルとともに含まれる場合があります。 たとえば、一般的なコンピューティング ワークロード、高 CPU ワークロード、ハイ メモリ ワークロードについて個別のプールを作成できます。 
-
-**管理 VM**。 管理 VM は、コンテナー オーケストレーター用のマスター ノードを実行します。 
-
-**ネットワーク**。 公開ノード、バックエンド ノード、管理 VM は、同じ仮想ネットワーク (VNet) 内の別のサブネットに配置されます。 
-
-**ロード バランサー**。  外部に公開されたロード バランサーは、公開ノードの前に配置されます。 ロード バランサーは公開ノードにインターネット要求を配分します。 別のロード バランサーは管理 VM の前に配置され、NAT ルールを使用して管理 VM への Secure Shell (ssh) トラフィックを許可します。
-
-信頼性と拡張性を確保するため、各サービスは複数の VM 間でレプリケートされます。 ただし、サービスは (モノリシック アプリケーションと比較して) 比較的軽量でもあるため、複数のサービスは通常 1 つの VM にまとめられます。 密度が高いことで、リソース使用率が向上します。 特定のサービスが多くのリソースを使用しない場合、そのサービスの実行に VM 全体を専念させる必要はありません。
-
-次の図は、4 つの異なるサービスを実行する 3 つのノードを示しています (異なる形で示されています)。 各サービスは少なくとも 2 つのインスタンスを持っていることに注目してください。 
- 
-![](./images/microservices-node-density.png)
-
-## <a name="microservices-using-azure-service-fabric"></a>Azure Service Fabric を使用したマイクロサービス
-
-次の図は、[Azure Service Fabric](/azure/service-fabric/) を使用したマイクロサービス アーキテクチャを示しています。
-
-![](./images/service-fabric.png)
-
-Service Fabric クラスターは、1 つ以上の VM スケール セットにデプロイされます。 さまざまな VM の種類を混在させるために、クラスター内に 1 つ以上の VM スケール セットがある場合もあります。 API ゲートウェイは、クライアント要求を受信する外部のロード バランサーとともに、Service Fabric クラスターの前に配置されます。
-
-Service Fabric ランタイムは、サービスの配置、ノードのフェールオーバー、正常性の監視などのクラスター管理を実行します。 このランタイムは、クラスター ノード自体にデプロイされます。 個別のクラスター管理 VM のセットはありません。
-
-サービスは、Service Fabric に組み込まれているリバース プロキシを使用して、相互に通信します。 Service Fabric は、名前付きサービスのエンドポイントを解決できる探索サービスを提供します。
+Azure でのマイクロサービス アーキテクチャの構築に関する詳細なガイダンスいついては、「[Azure でのマイクロサービスの設計、構築、および操作](../../microservices/index.md)」をご覧ください。
 
 
 <!-- links -->
