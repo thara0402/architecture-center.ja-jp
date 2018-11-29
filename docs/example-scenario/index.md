@@ -5,12 +5,12 @@ author: david-stanford
 ms:date: 11/01/2018
 layout: LandingPage
 ms.topic: landing-page
-ms.openlocfilehash: 01b2db150c66eaa7f8911361dd39786f53c39c07
-ms.sourcegitcommit: 0a31fad9b68d54e2858314ca5fe6cba6c6b95ae4
+ms.openlocfilehash: 5fcfc1566256a54d9907c66dbb550616f0155a3f
+ms.sourcegitcommit: 16bc6a91b6b9565ca3bcc72d6eb27c2c4ae935e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51610500"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52550514"
 ---
 # <a name="azure-example-scenarios"></a>Azure シナリオ例
 
@@ -27,9 +27,9 @@ ms.locfileid: "51610500"
                 <div class="card">
                     <div class="cardText">
                         <h3>新しいシナリオ</h3>
-                        <a class="barLink" href="/azure/architecture/example-scenario/apps/decentralized-trust" data-linktype="absolute-path">Azure での銀行間で分散された信頼</a>
-                        <a class="barLink" href="/azure/architecture/example-scenario/infrastructure/wordpress" data-linktype="absolute-path">高度にスケーラブルで安全な WordPress Web サイト</a>
-                        <a class="barLink" href="/azure/architecture/example-scenario/data/data-warehouse" data-linktype="absolute-path">売上とマーケティングのためのデータ ウェアハウスおよび分析</a>
+                        <a class="barLink" href="/azure/architecture/example-scenario/infrastructure/multi-tier-app-disaster-recovery" data-linktype="absolute-path">HA と DR 用にビルドされた多層 Web アプリケーション</a>
+                        <a class="barLink" href="/azure/architecture/example-scenario/data/hybrid-etl-with-adf" data-linktype="absolute-path">オンプレミスの SSIS と Data Factory を使用したハイブリッド ETL</a>
+                        <a class="barLink" href="/azure/architecture/example-scenario/apps/decentralized-trust" data-linktype="absolute-path">Azure における銀行間での分散型信頼</a>
                     </div>
                 </div>
             </div>
@@ -41,9 +41,9 @@ ms.locfileid: "51610500"
                 <div class="card">
                     <div class="cardText">
                         <h3>上位のシナリオ</h3>
-                        <a class="barLink" href="/azure/architecture/example-scenario/ai/intelligent-apps-image-processing" data-linktype="absolute-path">保険金請求イメージの分類</a>
-                        <a class="barLink" href="/azure/architecture/example-scenario/apps/commerce-chatbot" data-linktype="absolute-path">ホテル予約用の会話型チャットボット</a>
                         <a class="barLink" href="/azure/architecture/example-scenario/infrastructure/regulated-multitier-app" data-linktype="absolute-path">規制対象業界向けのセキュリティで保護された Windows Web アプリケーション</a>
+                        <a class="barLink" href="/azure/architecture/example-scenario/apps/devops-dotnet-webapp" data-linktype="absolute-path">Azure DevOps を使用した CI/CD パイプライン</a>
+                        <a class="barLink" href="/azure/architecture/example-scenario/data/fraud-detection" data-linktype="absolute-path">Azure におけるリアルタイムでの不正検出</a>
                     </div>
                 </div>
             </div>
@@ -80,4 +80,4 @@ ms.locfileid: "51610500"
     </li>
 </ul>
 
-[!INCLUDE [notes](./articles.md)]
+[!INCLUDE [articles](../../includes/scenario_articles.md)]
