@@ -313,6 +313,8 @@ items:
       href: example-scenario/apps/ecommerce-search.md
   - name: データと分析
     items:
+    - name: Data Factory を使用したハイブリット ETL
+      href: example-scenario/data/hybrid-etl-with-adf.md
     - name: 建設業向け IoT
       href: example-scenario/data/big-data-with-iot.md
     - name: データ ウェアハウスと分析
@@ -333,6 +335,8 @@ items:
       href: example-scenario/infrastructure/service-fabric-microservices.md
     - name: スケーラビリティに優れた WordPress
       href: example-scenario/infrastructure/wordpress.md
+    - name: 可用性の高い Web アプリケーション
+      href: example-scenario/infrastructure/multi-tier-app-disaster-recovery.md
     - name: 多層 Windows
       href: example-scenario/infrastructure/regulated-multitier-app.md
     - name: HPC ビデオのレンダリング
@@ -545,9 +549,9 @@ items:
       href: cloud-adoption/appendix/azure-scaffold.md
     - name: Azure エンタープライズ スキャフォールディングの実装
       href: cloud-adoption/appendix/azure-scaffold-examples.md
-ms.openlocfilehash: e364c4df492186eb0ed75e2d3a0d4a5a2342b678
-ms.sourcegitcommit: 19a517a2fb70768b3edb9a7c3c37197baa61d9b5
+ms.openlocfilehash: c8893c9769bff3a9fbb0b7bcaffdf2746b58abf2
+ms.sourcegitcommit: 16bc6a91b6b9565ca3bcc72d6eb27c2c4ae935e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "51527679"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52550497"
