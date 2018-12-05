@@ -3,12 +3,12 @@ title: バッチ処理
 description: ''
 author: zoinerTejada
 ms:date: 02/12/2018
-ms.openlocfilehash: d6843bf4e20c3eb26e61cfa09300ad533e969c2e
-ms.sourcegitcommit: 51f49026ec46af0860de55f6c082490e46792794
+ms.openlocfilehash: eecee13e9b22b0382a0128e1c6ab8b960cbd4fea
+ms.sourcegitcommit: 16bc6a91b6b9565ca3bcc72d6eb27c2c4ae935e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30298660"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52550480"
 ---
 # <a name="batch-processing"></a>バッチ処理
 
@@ -75,7 +75,7 @@ ms.locfileid: "30298660"
 
 ### <a name="analytics-and-reporting"></a>分析とレポート
 
-- **Azure Analysis Services**。 多くのビッグ データ ソリューションでは、レポート、ダッシュボード、および対話型の "スライス アンド ダイス" 分析のベースにすることができる一元的なオンライン分析処理 (OLAP) データ モデル (しばしばキューブとも呼ばれます) を含めることによって、従来のエンタープライズ ビジネス インテリジェンス アーキテクチャをエミュレートします。 Azure Analysis Services では、このニーズを満たすために、多次元および表形式モデルの作成をサポートしています。
+- **Azure Analysis Services**。 多くのビッグ データ ソリューションでは、レポート、ダッシュボード、および対話型の "スライス アンド ダイス" 分析のベースにすることができる一元的なオンライン分析処理 (OLAP) データ モデル (しばしばキューブとも呼ばれます) を含めることによって、従来のエンタープライズ ビジネス インテリジェンス アーキテクチャをエミュレートします。 Azure Analysis Services では、このニーズを満たすために、表形式モデルの作成をサポートしています。
 - **Power BI**。 データ アナリストは、Power BI を使用して、OLAP モデル内のデータ モデルに基づいて、または分析データストアから直接、対話型のデータのビジュアル化を作成できます。
 - **Microsoft Excel**。 Microsoft Excel は、世界で最も広く使用されているソフトウェア アプリケーションの 1 つであり、豊富なデータ分析とビジュアル化の機能を備えています。 データ アナリストは、Excel を使用して、分析データ ストアからドキュメントのデータ モデルを構築したり、OLAP データ モデルから対話型のピボット テーブルとグラフにデータを取得したりできます。
 

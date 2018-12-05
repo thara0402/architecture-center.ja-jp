@@ -3,16 +3,16 @@ title: サーバーレス Web アプリケーション
 description: サーバーレス Web アプリケーションと Web API を示す参照アーキテクチャ
 author: MikeWasson
 ms.date: 10/16/2018
-ms.openlocfilehash: d1af03811bda6267fd40ee17823ac8357829f988
-ms.sourcegitcommit: 949b9d3e5a9cdee1051e6be700ed169113e914ae
+ms.openlocfilehash: 9263c8bec794e4b2bb9f397289b23307eb02f0c7
+ms.sourcegitcommit: 19a517a2fb70768b3edb9a7c3c37197baa61d9b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "50983398"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52295686"
 ---
 # <a name="serverless-web-application"></a>サーバーレス Web アプリケーション 
 
-この参照アーキテクチャは、サーバーレス Web アプリケーションを示しています。 このアプリケーションでは Azure Blob Storage から静的コンテンツを提供し、Azure Functions を使用して API が実装されます。 API は Cosmos DB からデータを読み取り、結果を Web アプリに返します。 このアーキテクチャのリファレンス実装は、[GitHub][github] で入手できます。
+この参照アーキテクチャは、[サーバーレス](https://azure.microsoft.com/solutions/serverless/) Web アプリケーションを示しています。 このアプリケーションでは Azure Blob Storage から静的コンテンツを提供し、Azure Functions を使用して API が実装されます。 API は Cosmos DB からデータを読み取り、結果を Web アプリに返します。 このアーキテクチャのリファレンス実装は、[GitHub][github] で入手できます。
 
 ![](./_images/serverless-web-app.png)
  

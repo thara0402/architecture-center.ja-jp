@@ -3,12 +3,12 @@ title: リアルタイム処理
 description: ''
 author: zoinerTejada
 ms:date: 02/12/2018
-ms.openlocfilehash: 4abb159924f902b5babe0673cc021e80b00c8529
-ms.sourcegitcommit: e9d9e214529edd0dc78df5bda29615b8fafd0e56
+ms.openlocfilehash: 1499fecc20dcbf51472b92bb588b91db0fb58a7f
+ms.sourcegitcommit: 19a517a2fb70768b3edb9a7c3c37197baa61d9b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37090987"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52295601"
 ---
 # <a name="real-time-processing"></a>リアルタイム処理
 
@@ -76,3 +76,8 @@ ms.locfileid: "37090987"
 
 純粋なリアルタイム ソリューションでは、処理オーケストレーションの大部分は、メッセージ取り込みコンポーネントとストリーム処理コンポーネントによって管理されます。 ただし、バッチ処理とリアルタイム処理を結合するラムダ アーキテクチャでは、Azure Data Factory や Apache Oozie および Sqoop などのオーケストレーション フレームワークを使用して、キャプチャされたリアルタイム データのバッチ ワークフローを管理する必要があります。
 
+## <a name="next-steps"></a>次の手順
+
+次の参照アーキテクチャでは、エンド ツー エンドのストリーム処理パイプラインを示します。
+
+- [Azure Stream Analytics によるストリーム処理](../../reference-architectures/data/stream-processing-stream-analytics.md)

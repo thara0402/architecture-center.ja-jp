@@ -4,12 +4,12 @@ description: 設計時の回復性に関する問題のガイダンスを提供�
 author: petertaylor9999
 ms.date: 01/10/2018
 ms.custom: resiliency, checklist
-ms.openlocfilehash: 15ad749c12dc8a45c9e7e08376452685d8ad7c9b
-ms.sourcegitcommit: b2a4eb132857afa70201e28d662f18458865a48e
+ms.openlocfilehash: ce538a0b234a5b120415980e983096f567f9cf86
+ms.sourcegitcommit: 1b5411f07d74f0a0680b33c266227d24014ba4d1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48819025"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52305946"
 ---
 # <a name="resiliency-checklist"></a>回復性のチェックリスト
 
@@ -43,6 +43,8 @@ ms.locfileid: "48819025"
 
 **アプリケーション層ごとの可用性セットを使用します。** [可用性セット][availability-sets]にインスタンスを配置すると、[SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) がより高くなります。 
 
+**Azure Site Recovery を使用して VM をレプリケートします。** [Site Recovery][site-recovery] を使用して Azure VM をレプリケートすると、すべての VM ディスクが、ターゲット リージョンに継続的かつ非同期的にレプリケートされます。 復旧ポイントは数分ごとに作成されます。 これにより目標復旧時点 (RPO) が数分単位で設定されます。
+
 **アプリケーションを複数のリージョンにデプロイすることを検討します。** アプリケーションが 1 つのリージョンにデプロイされている場合は、まれにリージョン全体が使用できなくなった場合に、アプリケーションも使用できなくなります。 これは、アプリケーションの SLA の条件の下では許容できないことがあります。 その場合は、アプリケーションとそのサービスを複数のリージョンにデプロイすることを検討してください。 複数のリージョンのデプロイでは、アクティブ/アクティブ パターン (複数のアクティブなインスタンスに要求を分散する) またはアクティブ/パッシブ パターン (プライマリ インスタンスが失敗した場合に備えて「ウォーム」インスタンスを保持する) を使用できます。 アプリケーションのサービスの複数のインスタンスを、リージョンのペアにデプロイすることをお勧めします。 詳しくは、「[ビジネス継続性とディザスター リカバリー (BCDR): Azure のペアになっているリージョン](/azure/best-practices-availability-paired-regions)」をご覧ください。
 
 **Azure Traffic Manager を使用して、アプリケーションのトラフィックをさまざまなリージョンにルーティングします。**  [Azure Traffic Manager][traffic-manager] は負荷分散を DNS レベルで実行し、指定した[トラフィック ルーティング][traffic-manager-routing]の方法とアプリケーションのエンドポイントの正常性に基づいてさまざまなリージョンにトラフィックをルーティングします。 Traffic Manager を使用しない場合、デプロイできるのは 1 つのリージョンに制限され、それによってスケールが制限され、一部のユーザーに待機時間が増加し、リージョン全体のサービスが停止した場合にアプリケーションのダウンタイムが発生します。
@@ -64,7 +66,7 @@ ms.locfileid: "48819025"
 
 ## <a name="data-management"></a>[データ管理]
 
-**アプリケーションのデータ ソースのレプリケーション方法を理解します。** アプリケーション データは、さまざまなデータ ソースに格納され、さまざまな可用性の要件を持ちます。 アプリケーションのデータ要件が確実に満たされるようにする [Azure Storage のレプリケーション](/azure/storage/storage-redundancy/)や [SQL Database のアクティブ geo レプリケーション](/azure/sql-database/sql-database-geo-replication-overview/)など、Azure のデータ ストレージの種類ごとにレプリケーションの方法を評価してください。
+**アプリケーションのデータ ソースのレプリケーション方法を理解します。** アプリケーション データは、さまざまなデータ ソースに格納され、さまざまな可用性の要件を持ちます。 アプリケーションのデータ要件が確実に満たされるようにする [Azure Storage のレプリケーション](/azure/storage/storage-redundancy/)や [SQL Database のアクティブ geo レプリケーション](/azure/sql-database/sql-database-geo-replication-overview/)など、Azure のデータ ストレージの種類ごとにレプリケーションの方法を評価してください。 [Site Recovery][site-recovery] を使用して Azure VM をレプリケートすると、すべての VM ディスクが、ターゲット リージョンに継続的かつ非同期的にレプリケートされます。 復旧ポイントは数分ごとに作成されます。 
 
 **1 つのユーザー アカウントで運用データとバックアップ データの両方にアクセスできることがないようにします。** 1 つのユーザー アカウントに運用とバックアップの両方のソースの両方に書き込みアクセス許可があると、データのバックアップが侵害されます。 悪意のあるユーザーはすべてのデータを意図的に削除する可能性があり、正規のユーザーは誤って削除する可能性があります。 各ユーザー アカウントのアクセス許可を制限して、書き込みアクセスを必要とするユーザーのみが書き込みアクセス権を持ち、それが運用環境とバックアップの両方ではなくどちらかに対するもののみになるように、アプリケーションを設計してください。
 
@@ -87,7 +89,7 @@ ms.locfileid: "48819025"
 
 ## <a name="testing"></a>テスト
 
-**アプリケーションに対してフェールオーバーとフェールバックのテストを実行します。** フェールオーバーとフェールバックを完全にテストしていない場合は、アプリケーション内の依存サービスが障害復旧時に同期的にバックアップされるとは確信できません。 アプリケーションの依存サービスのフェールオーバーとフェールバックが、確実に正しい順序で行われるようにしてください。
+**アプリケーションに対してフェールオーバーとフェールバックのテストを実行します。** フェールオーバーとフェールバックを完全にテストしていない場合は、アプリケーション内の依存サービスが障害復旧時に同期的にバックアップされるとは確信できません。 アプリケーションの依存サービスのフェールオーバーとフェールバックが、確実に正しい順序で行われるようにしてください。 [Azure Site Recovery][site-recovery] を使用して VM をレプリケートする場合は、テスト フェールオーバーを実行して、ディザスター リカバリー訓練を定期的に実行します。 詳細については、「[Azure へのディザスター リカバリー訓練を実行する][site-recovery-test]」を参照してください。
 
 **アプリケーションに対してフォールト挿入テストを実行します。** アプリケーションは、証明書の有効期限、VM のシステム リソースの枯渇、ストレージ障害など、多くのさまざまな理由で障害が発生することがあります。 運用環境にできるだけ近い環境で、実際の障害をシミュレートまたはトリガーして、アプリケーションをテストしてください。 たとえば、証明書を削除したり、システム リソースを人為的に消費したり、ストレージ ソースを削除したりします。 単独でも組み合わせでも、あらゆるタイプの障害からアプリケーションを復旧できることを確認してください。 障害がシステムを介して反映されたり連鎖したりしないことを確認してください。
 
@@ -176,6 +178,8 @@ ms.locfileid: "48819025"
 [resource-manager]: /azure/azure-resource-manager/resource-group-overview/
 [retry-pattern]: ../patterns/retry.md
 [retry-service-guidance]: ../best-practices/retry-service-specific.md
+[site-recovery]: /azure/site-recovery/
+[site-recovery-test]: /azure/site-recovery/site-recovery-test-failover-to-azure
 [traffic-manager]: /azure/traffic-manager/traffic-manager-overview/
 [traffic-manager-routing]: /azure/traffic-manager/traffic-manager-routing-methods/
 [vmss-autoscale]: /azure/virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview/

@@ -3,16 +3,16 @@ title: Azure Functions を使用したサーバーレスなイベント処理
 description: サーバーレスなイベント取り込みと処理を示す参照アーキテクチャ
 author: MikeWasson
 ms.date: 10/16/2018
-ms.openlocfilehash: 2bb7600fbed95e4b9368cf342c0bc6a75c5f8755
-ms.sourcegitcommit: 113a7248b9793c670b0f2d4278d30ad8616abe6c
+ms.openlocfilehash: 76c8b9c1244c987c96e38e50ecad7814cc49cd88
+ms.sourcegitcommit: 19a517a2fb70768b3edb9a7c3c37197baa61d9b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49349940"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52295652"
 ---
 # <a name="serverless-event-processing-using-azure-functions"></a>Azure Functions を使用したサーバーレスなイベント処理
 
-この参照アーキテクチャは、データ ストリームの取り込み、データ処理、およびバックエンド データベースへの結果の書き込みを行うサーバーレスなイベント ドリブン アーキテクチャを示しています。 このアーキテクチャのリファレンス実装は、[GitHub][github] で入手できます。
+この参照アーキテクチャは、データ ストリームの取り込み、データ処理、およびバックエンド データベースへの結果の書き込みを行う[サーバーレス](https://azure.microsoft.com/solutions/serverless/)なイベント ドリブン アーキテクチャを示しています。 このアーキテクチャのリファレンス実装は、[GitHub][github] で入手できます。
 
 ![](./_images/serverless-event-processing.png)
 

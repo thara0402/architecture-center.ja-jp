@@ -3,12 +3,12 @@ title: ビッグ データ アーキテクチャのスタイル
 description: Azure でのビッグ データ アーキテクチャのメリット、課題、ベスト プラクティスを説明します
 author: MikeWasson
 ms.date: 08/30/2018
-ms.openlocfilehash: 073a1a88f1aaca7f09bd1f47ba79216b0727ca24
-ms.sourcegitcommit: ae8a1de6f4af7a89a66a8339879843d945201f85
+ms.openlocfilehash: 107ea7ad4e97a891236596291b0cee41a72eb865
+ms.sourcegitcommit: 19a517a2fb70768b3edb9a7c3c37197baa61d9b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43325373"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52295567"
 ---
 # <a name="big-data-architecture-style"></a>ビッグ データ アーキテクチャのスタイル
 
@@ -124,6 +124,10 @@ Azure には、ビッグ データ アーキテクチャで使用できる数多
 - 一部の IoT ソリューションでは、**コマンドやコントロール メッセージ**をデバイスに送信できます。
 
 > このセクションでは IoT の概要について示しましたが、考慮すべき詳細や課題は多数あります。 さらに詳細な参照アーキテクチャやディスカッションについては、「[Microsoft Azure IoT Reference Architecture (Microsoft Azure IoT 参照アーキテクチャ)][iot-ref-arch]」 (PDF ダウンロード) をご覧ください。
+
+## <a name="next-steps"></a>次の手順
+
+- [ビッグ データ アーキテクチャ](../../data-guide/big-data/index.md)の詳細を確認します。
 
  <!-- links -->
 

@@ -7,12 +7,12 @@ pnp.series.title: Connect an on-premises network to Azure
 pnp.series.next: expressroute
 pnp.series.prev: ./index
 cardTitle: VPN
-ms.openlocfilehash: 6e705c40663eff421e79067f916a1ebad6e72822
-ms.sourcegitcommit: dbbf914757b03cdee7a274204f9579fa63d7eed2
+ms.openlocfilehash: a494ff952dd6c8be3b38c2ca7f6740a44b5b30e1
+ms.sourcegitcommit: 19a517a2fb70768b3edb9a7c3c37197baa61d9b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50916552"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52295669"
 ---
 # <a name="connect-an-on-premises-network-to-azure-using-a-vpn-gateway"></a>VPN ゲートウェイを使用した Azure へのオンプレミス ネットワークの接続
 
@@ -413,7 +413,7 @@ VNet のアプリケーションがインターネットにデータを送信す
 
     ![[3]][3]
 
-    結果を、VPN ゲートウェイで使用できる帯域幅 (Basic および Standard SKU の場合は 100 Mbps、High Performance SKU の場合は 200 Mbps) と比較します。
+    結果を、VPN ゲートウェイで使用できる帯域幅 (100 Mbps (Basic SKU の場合) から 1.25 Gbps (VpnGw3 SKU の場合)) と比較します。
 
     ![[4]][4]
 

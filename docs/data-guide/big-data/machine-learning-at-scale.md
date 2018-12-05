@@ -3,12 +3,12 @@ title: 大規模な Machine Learning
 description: ''
 author: zoinerTejada
 ms:date: 02/12/2018
-ms.openlocfilehash: a44785b61faec8a45160fa2895fbc03e2c580a77
-ms.sourcegitcommit: 9293350ab66fb5ed042ff363f7a76603bf68f568
+ms.openlocfilehash: f2d35f7344a1e760fc6d3ce2292f33b8d3dd7df7
+ms.sourcegitcommit: 19a517a2fb70768b3edb9a7c3c37197baa61d9b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51577142"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52295493"
 ---
 # <a name="machine-learning-at-scale"></a>大規模な Machine Learning
 
@@ -68,3 +68,10 @@ Azure の ML で選択可能な技術の一覧については、以下のトピ�
 - [認識サービス技術の選択](../technology-choices/cognitive-services.md)
 - [機械学習技術の選択](../technology-choices/data-science-and-machine-learning.md)
 - [自然言語処理技術の選択](../technology-choices/natural-language-processing.md)
+
+## <a name="next-steps"></a>次の手順
+
+次の参照アーキテクチャは、Azure での機械学習のシナリオを示します。
+
+- [ディープ ラーニング モデル用の Azure でのバッチ スコアリング](../../reference-architectures/ai/batch-scoring-deep-learning.md)
+- [Azure での Python scikit-learn モデルおよびディープ ラーニング モデルのリアルタイム スコアリング](../../reference-architectures/ai/realtime-scoring-python.md)
