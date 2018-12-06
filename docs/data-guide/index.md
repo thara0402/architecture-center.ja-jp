@@ -2,15 +2,15 @@
 title: Azure データ アーキテクチャ ガイド
 description: ''
 author: zoinerTejada
-ms:date: 02/12/2018
+ms.date: 02/12/2018
 layout: LandingPage
 ms.topic: landing-page
-ms.openlocfilehash: 63c1cca45fe9d99b5d0679360ef487c3a42da956
-ms.sourcegitcommit: bb348bd3a8a4e27ef61e8eee74b54b07b65dbf98
+ms.openlocfilehash: ace8b7d87d764287dced6863fd80e8c71c5e026a
+ms.sourcegitcommit: e7e0e0282fa93f0063da3b57128ade395a9c1ef9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2018
-ms.locfileid: "34422883"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52902027"
 ---
 # <a name="azure-data-architecture-guide"></a>Azure データ アーキテクチャ ガイド
 
