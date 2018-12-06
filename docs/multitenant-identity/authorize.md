@@ -2,16 +2,16 @@
 title: マルチテナント アプリケーションでの承認
 description: マルチテナント アプリケーションで承認を実行する方法
 author: MikeWasson
-ms:date: 07/21/2017
+ms.date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications
 pnp.series.prev: app-roles
 pnp.series.next: web-api
-ms.openlocfilehash: 321dc52a3e6f803a032288c2341e490cdba8c20a
-ms.sourcegitcommit: 9a2d56ac7927f0a2bbfee07198d43d9c5cb85755
+ms.openlocfilehash: bbf702fe6651625a1aeceff7e4e321dd08c38544
+ms.sourcegitcommit: e7e0e0282fa93f0063da3b57128ade395a9c1ef9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36327655"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52902495"
 ---
 # <a name="role-based-and-resource-based-authorization"></a>ロールベースおよびリソースベースの承認
 
@@ -22,7 +22,7 @@ Microsoft の[参照実装]は、ASP.NET Core アプリケーションです。 
 * **ロールベースの承認**。 ユーザーに割り当てられたロールに基づいてアクションを承認します。 たとえば、一部の操作に管理者ロールを必須にします。
 * **リソースベースの承認**。 特定のリソースに基づいてアクションを承認します。 たとえば、すべてのリソースには所有者がいます。 所有者はリソースを削除できますが、他のユーザーは削除できません。
 
-一般的なアプリは両方のアプローチを採用します。 たとえば、リソースを削除する場合、ユーザーはリソース所有者*または*管理者である必要があります。
+一般的なアプリは両方のアプローチを採用します。 たとえば、リソースを削除する場合、ユーザーはリソース所有者 *または* 管理者である必要があります。
 
 ## <a name="role-based-authorization"></a>ロールベースの承認
 [Tailspin Surveys][Tailspin] アプリケーションでは次のロールが定義されます。
@@ -31,7 +31,7 @@ Microsoft の[参照実装]は、ASP.NET Core アプリケーションです。 
 * 作成者。 新しいアンケートを作成できます。
 * 閲覧者。 そのテナントに属するすべてのアンケートを読み取ることができます。
 
-ロールは、アプリケーションの*ユーザー*に適用されます。 Surveys アプリケーションのユーザーは、管理者、作成者、または閲覧者です。
+ロールは、アプリケーションの *ユーザー* に適用されます。 Surveys アプリケーションのユーザーは、管理者、作成者、または閲覧者です。
 
 ロールを定義および管理する方法については、 [アプリケーション ロール]に関するページを参照してください。
 
@@ -59,7 +59,7 @@ public class SurveyCreatorRequirement : AuthorizationHandler<SurveyCreatorRequir
 
 このクラスは、新しいアンケートを作成するユーザーの要件を定義しています。 ユーザーには SurveyAdmin または SurveyCreator ロールが割り当てられている必要があります。
 
-startup クラスで、1 つ以上の要件を含む名前付きポリシーを定義します。 複数の要件がある場合、ユーザーが承認されるには、*すべて*の要件を満たす必要があります。 次のコードでは、2 つのポリシーを定義しています。
+startup クラスで、1 つ以上の要件を含む名前付きポリシーを定義します。 複数の要件がある場合、ユーザーが承認されるには、 *すべて* の要件を満たす必要があります。 次のコードでは、2 つのポリシーを定義しています。
 
 ```csharp
 services.AddAuthorization(options =>
@@ -84,7 +84,7 @@ services.AddAuthorization(options =>
 });
 ```
 
-このコードにより認証スキームも設定され、承認に失敗した場合は、どの認証ミドルウェアを実行すべきかを ASP.NET に伝えます。 ここでは、Cookie 認証ミドルウェアを指定しますが、その理由は Cookie 認証ミドルウェアがユーザーを "禁止された" ページにリダイレクトできるためです。 禁止されたページの場所は、Cookie ミドルウェアの `AccessDeniedPath` オプションで設定されます。詳しくは、「[Configuring the authentication middleware (認証ミドルウェアの構成) ]」をご覧ください。
+このコードにより認証スキームも設定され、承認に失敗した場合は、どの認証ミドルウェアを実行すべきかを ASP.NET に伝えます。 ここでは、Cookie 認証ミドルウェアを指定しますが、その理由は Cookie 認証ミドルウェアがユーザーを "禁止された" ページにリダイレクトできるためです。 禁止されたページの場所は、Cookie ミドルウェアの `AccessDeniedPath` オプションで設定されます。詳しくは、「[認証ミドルウェアの構成]」をご覧ください。
 
 ### <a name="authorize-controller-actions"></a>コントローラー アクションを承認する
 最後に、MVC コントローラーのアクションを承認するには、 `Authorize` 属性のポリシーを設定します。
@@ -112,7 +112,7 @@ public IActionResult Create()
 * ポリシーを使用すると、1 つのロール メンバーシップでは表現できない、より複雑な承認判断 (21 歳以上の年齢など) を実行できます。
 
 ## <a name="resource-based-authorization"></a>リソース ベースの承認
-*リソース ベースの承認*は、操作の影響を受ける特定のリソースに承認が依存している場合に常に発生します。 Tailspin Surveys アプリケーションでは、すべてのアンケートに 1 人の所有者がいて、0 対多の共同作成者がいます。
+*リソース ベースの承認* は、操作の影響を受ける特定のリソースに承認が依存している場合に常に発生します。 Tailspin Surveys アプリケーションでは、すべてのアンケートに 1 人の所有者がいて、0 対多の共同作成者がいます。
 
 * 所有者は、アンケートの読み取り、更新、削除、発行、発行の取り消しを行うことができます。
 * 所有者は、アンケートに共同作成者を割り当てることができます。
@@ -162,7 +162,7 @@ Surveys アプリの例を次に示します。 このアプリケーション�
 
 また、アンケートに対して実行できる操作のセットも定義されています。
 
-* [作成]
+* Create
 * 読み取り
 * 更新
 * 削除
@@ -253,6 +253,6 @@ static readonly Dictionary<OperationAuthorizationRequirement, Func<List<UserPerm
 [アプリケーション ロール]: app-roles.md
 [policies]: /aspnet/core/security/authorization/policies
 [参照実装]: tailspin.md
-[Configuring the authentication middleware (認証ミドルウェアの構成) ]: authenticate.md#configure-the-auth-middleware
+[認証ミドルウェアの構成]: authenticate.md#configure-the-auth-middleware
 [sample application]: https://github.com/mspnp/multitenant-saas-guidance
 [web-api]: web-api.md

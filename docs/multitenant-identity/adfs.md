@@ -2,16 +2,16 @@
 title: 顧客の AD FS とのフェデレーション
 description: マルチテナント アプリケーションで顧客の AD FS とのフェデレーションを行う方法
 author: MikeWasson
-ms:date: 07/21/2017
+ms.date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications
 pnp.series.prev: token-cache
 pnp.series.next: client-assertion
-ms.openlocfilehash: 4b54f031d13449e4d87075af5606967da8b5d3df
-ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
+ms.openlocfilehash: fec10ca0e067b3b51bf9dba70d66ceb12423787d
+ms.sourcegitcommit: e7e0e0282fa93f0063da3b57128ade395a9c1ef9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47428926"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52902699"
 ---
 # <a name="federate-with-a-customers-ad-fs"></a>顧客の AD FS とのフェデレーション
 
@@ -144,7 +144,7 @@ Set-ADFSClaimsProviderTrust -TargetName "name" -OrganizationalAccountSuffix @("s
 2. コンソール ツリーの **[AD FS]** で、**[証明書利用者信頼]** を右クリックします。 **[証明書利用者信頼の追加]** を選択します。
 3. **[要求に対応する]** を選択して、**[開始]** をクリックします。
 4. **[データ ソースの選択]** ページで、[オンラインまたはローカル ネットワーク上で発行された要求プロバイダーに関するデータをインポートする] オプションを選択します。 SaaS プロバイダーのフェデレーション メタデータ エンドポイントの URI を入力します。
-   ![証明書利用者信頼の追加ウィザード](./images/add-rp-trust.png)
+   ![Add Relying Party Trust Wizard](./images/add-rp-trust.png)
 5. **[表示名の指定]** ページで、任意の名前を入力します。
 6. **[アクセス制御ポリシーの選択]** で、ポリシーを選択します。 組織内のすべてのユーザーを許可することも、特定のセキュリティ グループを選択することもできます。
    ![証明書利用者信頼の追加ウィザード](./images/add-rp-trust2.png)

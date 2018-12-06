@@ -2,13 +2,13 @@
 title: データ ストレージ テクノロジの選択
 description: ''
 author: zoinerTejada
-ms:date: 02/12/2018
-ms.openlocfilehash: 496df68024aef0dcf030bb7e0138639610aa8a79
-ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
+ms.date: 02/12/2018
+ms.openlocfilehash: c97249228ca45a7a17822b6dd55acad6360c6f6b
+ms.sourcegitcommit: e7e0e0282fa93f0063da3b57128ade395a9c1ef9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47429351"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52902648"
 ---
 # <a name="choosing-a-big-data-storage-technology-in-azure"></a>Azure でのビッグ データ ストレージ テクノロジの選択
 
@@ -40,7 +40,7 @@ Azure Blob Storage は、Hadoop からアクセスできます (HDInsight から
 
 Azure Storage を適切な選択肢にするその他の機能を次に示します。
 
-- [複数の同時実行制御戦略](/azure/storage/common/storage-concurrency?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
+- [複数のコンカレンシー制御戦略](/azure/storage/common/storage-concurrency?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 - [ディザスター リカバリーと高可用性のオプション](/azure/storage/common/storage-disaster-recovery-guidance?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 - [保存時の暗号化](/azure/storage/common/storage-service-encryption?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 - [ロールベースのアクセス制御 (RBAC)](/azure/storage/common/storage-security-guide?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#management-plane-security)。Azure Active Directory のユーザーとグループを使用してアクセスを制御します。

@@ -2,13 +2,13 @@
 title: データ転送テクノロジの選択
 description: ''
 author: zoinerTejada
-ms:date: 02/12/2018
-ms.openlocfilehash: 53dcf8a69ad8ae100dbdbb230a9280efd419342a
-ms.sourcegitcommit: 85334ab0ccb072dac80de78aa82bcfa0f0044d3f
+ms.date: 02/12/2018
+ms.openlocfilehash: d5fbdc3a49ab16be2626b772ffd1af782963a2f0
+ms.sourcegitcommit: e7e0e0282fa93f0063da3b57128ade395a9c1ef9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35252755"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52902682"
 ---
 # <a name="transferring-data-to-and-from-azure"></a>Azure との間のデータ転送
 
@@ -35,7 +35,7 @@ Azure との間でデータを転送するオプションはいくつかあり�
 
 - **Azure CLI**。 [Azure CLI](/azure/hdinsight/hdinsight-upload-data#commandline) は、Azure サービスを管理し、Azure Storage にデータをアップロードすることができるクロスプラットフォーム ツールです。 
 
-- **AzCopy**。 [Windows](/azure/storage/common/storage-use-azcopy?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) または [Linux](/azure/storage/common/storage-use-azcopy-linux?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) のコマンドラインから AzCopy を使用すると、最適なパフォーマンスで Azure BLOB、File、および Table ストレージとの間で簡単にデータをコピーできます。 AzCopy は同時実行と並列処理をサポートし、中断された場合にコピー操作を再開することができます。 他のほとんどのオプションよりも高速です。 プログラムによるアクセスの場合、[Microsoft Azure Storage Data Movement Library](/azure/storage/common/storage-use-data-movement-library) は、AzCopy を強化するコア フレームワークです。 .NET Core ライブラリとして提供されています。 
+- **AzCopy**。 [Windows](/azure/storage/common/storage-use-azcopy?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) または [Linux](/azure/storage/common/storage-use-azcopy-linux?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) のコマンドラインから AzCopy を使用すると、最適なパフォーマンスで Azure BLOB、File、および Table ストレージとの間で簡単にデータをコピーできます。 AzCopy はコンカレンシーと並列処理をサポートし、中断された場合にコピー操作を再開することができます。 他のほとんどのオプションよりも高速です。 プログラムによるアクセスの場合、[Microsoft Azure Storage Data Movement Library](/azure/storage/common/storage-use-data-movement-library) は、AzCopy を強化するコア フレームワークです。 .NET Core ライブラリとして提供されています。 
 
 - **PowerShell**。 [`Start-AzureStorageBlobCopy` PowerShell コマンドレット](/powershell/module/azure.storage/start-azurestorageblobcopy?view=azurermps-5.0.0)は、PowerShell に慣れている Windows 管理者向けのオプションです。  
 

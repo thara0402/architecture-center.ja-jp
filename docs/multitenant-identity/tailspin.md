@@ -2,16 +2,16 @@
 title: Tailspin Surveys アプリケーションについて
 description: Tailspin Surveys アプリケーションの概要
 author: MikeWasson
-ms:date: 07/21/2017
+ms.date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications
 pnp.series.prev: index
 pnp.series.next: authenticate
-ms.openlocfilehash: 028f7940d2e3cd7e8e629554f8af290ec5fdd184
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: a1c357bd1b5306d1255c66aaea96d86be55e7b77
+ms.sourcegitcommit: e7e0e0282fa93f0063da3b57128ade395a9c1ef9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
-ms.locfileid: "24540059"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52902070"
 ---
 # <a name="the-tailspin-scenario"></a>Tailspin シナリオ
 
@@ -24,7 +24,7 @@ Tailspin は、Surveys という名前の SaaS アプリケーションを開発
 * ユーザーはアンケートを作成、編集、および発行することができます。
 
 > [!NOTE]
-> アプリケーションを開始するには、「[Run the Surveys application (Surveys アプリケーションの実行)]」を参照してください。
+> アプリケーションを開始するには、「[Surveys アプリケーションの実行]」を参照してください。
 > 
 > 
 
@@ -67,6 +67,6 @@ Web アプリケーションでは、Azure Active Directory (Azure AD) を使用
 
 [authentication]: authenticate.md
 
-[Run the Surveys application (Surveys アプリケーションの実行)]: ./run-the-app.md
+[Surveys アプリケーションの実行]: ./run-the-app.md
 [ASP.NET Core]: /aspnet/core
 [sample application]: https://github.com/mspnp/multitenant-saas-guidance
