@@ -2,13 +2,13 @@
 title: オンライン トランザクション処理 (OLTP)
 description: ''
 author: zoinerTejada
-ms:date: 02/12/2018
-ms.openlocfilehash: 8650b919fc1a59240343015493a1fe41c8729a72
-ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
+ms.date: 02/12/2018
+ms.openlocfilehash: be24bc173359539785385de4a188e7536f6d2ffe
+ms.sourcegitcommit: e7e0e0282fa93f0063da3b57128ade395a9c1ef9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30848701"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52902767"
 ---
 # <a name="online-transaction-processing-oltp"></a>オンライン トランザクション処理 (OLTP)
 
@@ -98,7 +98,7 @@ Azure では、次のすべてのデータ ストアが OLTP とトランザク�
 
 |                              | Azure SQL Database | Azure の仮想マシン内の SQL Server | Azure Database for MySQL | Azure Database for PostgreSQL |
 |------------------------------|--------------------|----------------------------------------|--------------------------|-------------------------------|
-|      マネージド サービス      |        はい         |                   いいえ                    |           はい            |              はい              |
+|      マネージド サービス      |        はい         |                   いいえ                    |           可能             |              はい              |
 |       実行するプラットフォーム       |        該当なし         |         Windows、Linux、Docker         |           該当なし            |              該当なし              |
 | プログラミング <sup>1</sup> |   T-SQL、.NET、R   |         T-SQL、.NET、R、Python         |  T-SQL、.NET、R、Python  |              SQL              |
 
@@ -109,25 +109,25 @@ Azure では、次のすべてのデータ ストアが OLTP とトランザク�
 | | Azure SQL Database | Azure の仮想マシン内の SQL Server| Azure Database for MySQL | Azure Database for PostgreSQL|
 | --- | --- | --- | --- | --- | --- |
 | データベース インスタンスの最大サイズ | [4 TB](/azure/sql-database/sql-database-resource-limits) | 256 TB | [1 TB](/azure/mysql/concepts-limits) | [1 TB](/azure/postgresql/concepts-limits) |
-| 容量プールをサポート  | はい | はい | いいえ  | いいえ  |
+| 容量プールをサポート  | はい | [はい] | いいえ  | いいえ  |
 | クラスターのスケールアウトをサポート  | いいえ  | はい | いいえ  | いいえ  |
-| 動的スケーラビリティ (スケールアップ)  | はい | いいえ  | はい | はい |
+| 動的スケーラビリティ (スケールアップ)  | [はい] | いいえ  | 可能  | はい |
 
 ### <a name="analytic-workload-capabilities"></a>分析ワークロード機能
 
 | | Azure SQL Database | Azure の仮想マシン内の SQL Server| Azure Database for MySQL | Azure Database for PostgreSQL|
 | --- | --- | --- | --- | --- | --- | 
-| テンポラル テーブル | はい | はい | いいえ  | いいえ  |
-| インメモリ (メモリ最適化) テーブル | はい | はい | いいえ  | いいえ  |
-| 列ストアをサポート | はい | はい | いいえ  | いいえ  |
-| アダプティブ クエリ処理 | はい | はい | いいえ  | いいえ  |
+| テンポラル テーブル | はい | [はい] | いいえ  | いいえ  |
+| インメモリ (メモリ最適化) テーブル | はい | [はい] | いいえ  | いいえ  |
+| 列ストアをサポート | はい | [はい] | いいえ  | いいえ  |
+| アダプティブ クエリ処理 | はい | [はい] | いいえ  | いいえ  |
 
 ### <a name="availability-capabilities"></a>可用性に関する機能
 
 | | Azure SQL Database | Azure の仮想マシン内の SQL Server| Azure Database for MySQL | Azure Database for PostgreSQL|
 | --- | --- | --- | --- | --- | --- | 
-| 読み取り可能なセカンダリ | はい | はい | いいえ  | いいえ  | 
-| 地理的なレプリケーション | はい | はい | いいえ  | いいえ  | 
+| 読み取り可能なセカンダリ | はい | [はい] | いいえ  | いいえ  | 
+| 地理的なレプリケーション | はい | [はい] | いいえ  | いいえ  | 
 | セカンダリへの自動フェールオーバー | はい | いいえ  | いいえ  | いいえ |
 | ポイントインタイム リストア | はい | はい | はい | はい |
 
@@ -136,13 +136,13 @@ Azure では、次のすべてのデータ ストアが OLTP とトランザク�
 |                                                                                                             | Azure SQL Database | Azure の仮想マシン内の SQL Server | Azure Database for MySQL | Azure Database for PostgreSQL |
 |-------------------------------------------------------------------------------------------------------------|--------------------|----------------------------------------|--------------------------|-------------------------------|
 |                                             行レベルのセキュリティ                                              |        はい         |                  はい                   |           はい            |              はい              |
-|                                                データ マスク                                                 |        はい         |                  はい                   |            いいえ             |              いいえ                |
+|                                                データ マスク                                                 |        はい         |                  [はい]                   |            いいえ             |              いいえ                |
 |                                         透過的なデータ暗号化                                         |        はい         |                  はい                   |           はい            |              はい              |
 |                                  特定の IP アドレスへのアクセスを制限                                   |        はい         |                  はい                   |           はい            |              はい              |
-|                                  VNET アクセスのみを許可するようにアクセスを制限                                  |        はい         |                  はい                   |            いいえ             |              いいえ                |
-|                                    Azure Active Directory 認証                                    |        はい         |                  はい                   |            いいえ             |              いいえ                |
+|                                  VNET アクセスのみを許可するようにアクセスを制限                                  |        はい         |                  [はい]                   |            いいえ             |              いいえ                |
+|                                    Azure Active Directory 認証                                    |        はい         |                  [はい]                   |            いいえ             |              いいえ                |
 |                                       Active Directory 認証                                       |         いいえ          |                  はい                   |            いいえ             |              いいえ                |
-|                                         多要素認証                                         |        はい         |                  はい                   |            いいえ             |              いいえ                |
-| [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) をサポート |        はい         |                  はい                   |           はい            |              いいえ                |
-|                                                 プライベート IP                                                  |         いいえ          |                  はい                   |           はい            |              いいえ                |
+|                                         多要素認証                                         |        はい         |                  [はい]                   |            いいえ             |              いいえ                |
+| [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) をサポート |        はい         |                  はい                   |           [はい]            |              いいえ                |
+|                                                 プライベート IP                                                  |         いいえ          |                  可能                    |           [はい]            |              いいえ                |
 

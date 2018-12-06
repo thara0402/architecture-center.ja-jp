@@ -2,13 +2,13 @@
 title: データ ウェアハウスとデータ マート
 description: ''
 author: zoinerTejada
-ms:date: 02/12/2018
-ms.openlocfilehash: 9b90d77ce1a81cd4a7532f5d4230ada8b4991d13
-ms.sourcegitcommit: 85334ab0ccb072dac80de78aa82bcfa0f0044d3f
+ms.date: 02/12/2018
+ms.openlocfilehash: 92f8ab8d828dd4b30c43a07e15959e5670852195
+ms.sourcegitcommit: e7e0e0282fa93f0063da3b57128ade395a9c1ef9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35252807"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52902784"
 ---
 # <a name="data-warehousing-and-data-marts"></a>データ ウェアハウスとデータ マート
 
@@ -108,7 +108,7 @@ Azure SQL Data Warehouse は、ワークロードがコンピューティング�
     
     - SQL Server は、最大 32,767 ユーザーの接続に対応しています。 VM 上で実行する場合、パフォーマンスは VM のサイズやその他の要因によって変わります。 
     
-    - SQL Data Warehouse には、同時クエリと同時接続の制限があります。 詳細については、「[SQL Data Warehouse での同時実行とワークロード管理](/azure/sql-data-warehouse/sql-data-warehouse-develop-concurrency)」を参照してください。 SQL Data Warehouse の制限を克服するには、[Azure Analysis Services](/azure/analysis-services/analysis-services-overview) などの補完的なサービスを使用することを検討してください。
+    - SQL Data Warehouse には、コンカレント クエリとコンカレント接続の制限があります。 詳細については、「[SQL Data Warehouse でのコンカレンシーとワークロード管理](/azure/sql-data-warehouse/sql-data-warehouse-develop-concurrency)」を参照してください。 SQL Data Warehouse の制限を克服するには、[Azure Analysis Services](/azure/analysis-services/analysis-services-overview) などの補完的なサービスを使用することを検討してください。
 
 - どのような種類のワークロードがありますか。 一般に、MPP ベースのウェアハウス ソリューションは、分析のバッチ指向ワークロードに最適です。 ワークロードの性質がトランザクショナルで、小規模な読み取り/書き込み操作が多数ある場合、または行ごとの操作が複数ある場合は、SMP のオプションのいずれかを使用することを検討してください。 このガイドラインの 1 つの例外は、HDInsight クラスター上で Spark Streaming などのストリーム処理を使用し、Hive テーブルにデータを格納する場合です。
 

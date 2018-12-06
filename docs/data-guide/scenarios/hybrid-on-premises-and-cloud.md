@@ -2,13 +2,13 @@
 title: オンプレミス データ ソリューションのクラウドへの拡張
 description: ''
 author: zoinerTejada
-ms:date: 02/12/2018
-ms.openlocfilehash: 66fc225dc123202ba587d82f15ea0883e1bbf3b5
-ms.sourcegitcommit: 90cf2de795e50571d597cfcb9b302e48933e7f18
+ms.date: 02/12/2018
+ms.openlocfilehash: 410162ff318846cbe695168abbcc2ae363f47e24
+ms.sourcegitcommit: e7e0e0282fa93f0063da3b57128ade395a9c1ef9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2018
-ms.locfileid: "29289688"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52901730"
 ---
 # <a name="extending-on-premises-data-solutions-to-the-cloud"></a>オンプレミス データ ソリューションのクラウドへの拡張
 
@@ -82,7 +82,7 @@ SQL Server をオンプレミスで実行している場合は、バックアッ
 
 [Azure StorSimple](/azure/storsimple/) は、オンプレミス デバイスと Azure クラウド ストレージ間のストレージ タスクを管理できる機能がそろった統合ストレージ ソリューションを提供しています。 StorSimple は、企業のストレージとデータ保護に伴う多くの問題を解消し、費用を削減する、効率と経済性、管理性に優れた記憶域ネットワーク (SAN) ソリューションです。 StorSimple は独自開発の StorSimple 8000 シリーズ デバイスを使用し、クラウド サービスと統合して、一連の統合管理ツールを提供しています。
 
-クラウドベースのファイル ストレージと共にオンプレミスのネットワーク共有を使用するもう 1 つの方法は [Azure Files](/azure/storage/files/storage-files-introduction) です。 Azure Files は、標準の[サーバー メッセージ ブロック](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx?f=255&MSPPError=-2147217396) (SMB) プロトコル (CIFS とも呼ばれます) でアクセスできる、完全管理のファイル共有を提供します。 Azure Files は、ローカル コンピューターにファイル共有としてマウントするか、ローカルまたはネットワーク共有ファイルにアクセスする既存のアプリケーションで使用することができます。
+クラウドベースのファイル ストレージと共にオンプレミスのネットワーク共有を使用するもう 1 つの方法は [Azure Files](/azure/storage/files/storage-files-introduction) です。 Azure Files は、標準の[サーバー メッセージ ブロック](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx?f=255&MSPPError=-2147217396) (SMB) プロトコル (CIFS とも呼ばれます) でアクセスできる、フル マネージドのファイル共有を提供します。 Azure Files は、ローカル コンピューターにファイル共有としてマウントするか、ローカルまたはネットワーク共有ファイルにアクセスする既存のアプリケーションで使用することができます。
 
 Azure Files のファイル共有をオンプレミスの Windows Server と同期するには、[Azure File Sync](/azure/storage/files/storage-sync-files-planning) を使用します。Azure File Sync の主な利点の 1 つは、オンプレミスのファイル サーバーと Azure Files 間でファイルを階層化できることです。 この機能で、最新のファイルと最近アクセスしたファイルのみをローカルに保存できます。 
 

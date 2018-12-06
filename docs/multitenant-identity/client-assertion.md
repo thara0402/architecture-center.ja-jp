@@ -2,16 +2,16 @@
 title: クライアント アサーションを使用した Azure AD からのアクセス トークンの取得
 description: クライアント アサーションを使用して Azure AD からのアクセス トークンを取得する方法について説明します。
 author: MikeWasson
-ms:date: 07/21/2017
+ms.date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications
 pnp.series.prev: adfs
 pnp.series.next: key-vault
-ms.openlocfilehash: 9fe1ee2ec5a540edc41c3a310476507f8d862f0c
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 58eed82c982fe1c6cba0f04b237d92d117a26fd4
+ms.sourcegitcommit: e7e0e0282fa93f0063da3b57128ade395a9c1ef9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
-ms.locfileid: "24540283"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52902273"
 ---
 # <a name="use-client-assertion-to-get-access-tokens-from-azure-ad"></a>クライアント アサーションを使用した Azure AD からのアクセス トークンの取得
 
@@ -41,7 +41,7 @@ resource=https://tailspin.onmicrosoft.com/surveys.webapi
 
 ただし、Azure サブスクリプションにアクセス権を持つ全員がアプリ設定を表示できます。 さらに、シークレットをソース制御 (たとえばデプロイ スクリプトなど) に組み入れたり、電子メールで共有したりするなどの誘惑は常にあります。
 
-セキュリティを強化するために、クライアント シークレットではなく、[クライアント アサーション]をご利用いただけます。 クライアント アサーションの場合、クライアントは X.509 証明書を使用して、クライアントから送信されたトークン要求を証明します。 クライアント証明書は Web サーバーにインストールされています。 一般的に、クライアント シークレットが誤って暴露されないようにするよりも、証明書に対するアクセス権を制限する方が簡単です。 Web アプリで証明書を構成する方法の詳細については、「[Using Certificates in Azure Websites Applications (Azure Websites アプリケーションでの証明書の使用)][using-certs-in-websites]」をご覧ください。
+セキュリティを強化するには、クライアント シークレットではなく、 [クライアント アサーション] を使用できます。 クライアント アサーションの場合、クライアントは X.509 証明書を使用して、クライアントから送信されたトークン要求を証明します。 クライアント証明書は Web サーバーにインストールされています。 一般的に、クライアント シークレットが誤って暴露されないようにするよりも、証明書に対するアクセス権を制限する方が簡単です。 Web アプリで証明書を構成する方法の詳細については、「[Using Certificates in Azure Websites Applications (Azure Websites アプリケーションでの証明書の使用)][using-certs-in-websites]」をご覧ください。
 
 クライアント アサーションを使用したトークン要求を次に示します。
 

@@ -2,13 +2,13 @@
 title: 検索データ ストアの選択
 description: ''
 author: zoinerTejada
-ms:date: 02/12/2018
-ms.openlocfilehash: 9576bbba9609a04ccc7851d55dd28853ffc6b701
-ms.sourcegitcommit: f6be2825bf2d37dfe25cfab92b9e3973a6b51e16
+ms.date: 02/12/2018
+ms.openlocfilehash: b5943cd1410777b974a8cefcd77c7c2f1f2bfe67
+ms.sourcegitcommit: e7e0e0282fa93f0063da3b57128ade395a9c1ef9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48858182"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52902331"
 ---
 # <a name="choosing-a-search-data-store-in-azure"></a>Azure での検索データ ストアの選択
 

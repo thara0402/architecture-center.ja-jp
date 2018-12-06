@@ -2,13 +2,13 @@
 title: 分析データ ストアの選択
 description: ''
 author: zoinerTejada
-ms:date: 02/12/2018
-ms.openlocfilehash: 3cf7dc533cc6ae3e6d7e2326852b585da8613e18
-ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
+ms.date: 02/12/2018
+ms.openlocfilehash: 166361c73a3a9c812e07445f6b039e843e5e32f8
+ms.sourcegitcommit: e7e0e0282fa93f0063da3b57128ade395a9c1ef9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47428875"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52902342"
 ---
 # <a name="choosing-an-analytical-data-store-in-azure"></a>Azure で使用する分析データ ストアの選択
 

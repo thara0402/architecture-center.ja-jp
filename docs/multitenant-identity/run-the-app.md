@@ -2,13 +2,13 @@
 title: Surveys アプリケーションの実行
 description: Surveys サンプル アプリケーションをローカルで実行する方法
 author: MikeWasson
-ms:date: 07/21/2017
-ms.openlocfilehash: d4fa8122794740e6935293147d999b26d9485d90
-ms.sourcegitcommit: c704d5d51c8f9bbab26465941ddcf267040a8459
+ms.date: 07/21/2017
+ms.openlocfilehash: cc43f713886692167550336dbdcecdfbfc835bc3
+ms.sourcegitcommit: e7e0e0282fa93f0063da3b57128ade395a9c1ef9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39229101"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52902670"
 ---
 # <a name="run-the-surveys-application"></a>Surveys アプリケーションの実行
 

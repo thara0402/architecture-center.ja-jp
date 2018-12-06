@@ -2,13 +2,13 @@
 title: 非リレーショナル データと NoSQL
 description: ''
 author: zoinerTejada
-ms:date: 02/12/2018
-ms.openlocfilehash: 2c284099bd7e8bbb85f1252a24d699d9fca09eae
-ms.sourcegitcommit: 51f49026ec46af0860de55f6c082490e46792794
+ms.date: 02/12/2018
+ms.openlocfilehash: f5655f7245b7150941969b1bc7917d540ab84343
+ms.sourcegitcommit: e7e0e0282fa93f0063da3b57128ade395a9c1ef9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30298670"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52902758"
 ---
 # <a name="non-relational-data-and-nosql"></a>非リレーショナル データと NoSQL
 

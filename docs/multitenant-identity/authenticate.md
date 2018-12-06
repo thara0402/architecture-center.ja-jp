@@ -2,16 +2,16 @@
 title: マルチテナント アプリケーションでの認証
 description: マルチテナント アプリケーションで Azure AD のユーザーを認証する方法
 author: MikeWasson
-ms:date: 07/21/2017
+ms.date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications
 pnp.series.prev: tailspin
 pnp.series.next: claims
-ms.openlocfilehash: 70f4a96369c207740400b9dfe72e1e964507f729
-ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
+ms.openlocfilehash: 58ccf75cd34f8efec17898c85295587da282cf45
+ms.sourcegitcommit: e7e0e0282fa93f0063da3b57128ade395a9c1ef9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47428127"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52902716"
 ---
 # <a name="authenticate-using-azure-ad-and-openid-connect"></a>Azure AD および OpenID Connect を使用して認証する
 
@@ -117,7 +117,7 @@ ASP.NET の OpenID Connect ミドルウェアは、プロトコルの詳細の�
 
 次に、認証プロセスを示します。
 
-1. ユーザーが [サインイン] ボタンをクリックすると、ブラウザーが GET 要求を送信します。 たとえば、「 `GET /Account/SignIn/`」のように入力します。
+1. ユーザーが [サインイン] ボタンをクリックすると、ブラウザーが GET 要求を送信します。 (例: `GET /Account/SignIn/`)。
 2. Account コントローラーが `ChallengeResult`を返します。
 3. OIDC ミドルウェアが、Azure AD にリダイレクトする HTTP 302 応答を返します。
 4. ブラウザーが Azure AD に認証要求を送信します。
@@ -142,7 +142,7 @@ ASP.NET の OpenID Connect ミドルウェアは、プロトコルの詳細の�
 * **RedirectToIdentityProvider**。 ミドルウェアが認証エンドポイントにリダイレクトされる直前に呼び出されます。 このイベントを使用すると、(たとえば、要求パラメーターを追加するために) リダイレクト URL を変更できます。 例については、「[Adding the admin consent prompt (管理者の同意プロンプトを追加する)](signup.md#adding-the-admin-consent-prompt)」をご覧ください。
 * **AuthorizationCodeReceived**。 承認コードで呼び出されます。
 * **TokenResponseReceived**。 ミドルウェアが IDP からアクセス トークンを取得した後、アクセス トークンが検証される前に呼び出されます。 承認コード フローにのみ当てはまります。
-* **TokenValidated**。 ミドルウェアが ID トークンを検証した後に呼び出されます。 この時点で、アプリケーションには、ユーザーに関する一連の検証済みの要求があります。 このイベントを使用すると、要求に対する追加の検証を実行したり、要求を変換したりできます。 [要求の操作](claims.md)に関する記事をご覧ください。
+* **TokenValidated**。 ミドルウェアが ID トークンを検証した後に呼び出されます。 この時点で、アプリケーションには、ユーザーに関する一連の検証済みの要求があります。 このイベントを使用すると、要求に対する追加の検証を実行したり、要求を変換したりできます。 「 [マルチテナント アプリケーションでの要求ベース ID の操作](claims.md)」を参照してください。
 * **UserInformationReceived**。 ミドルウェアがユーザー情報エンドポイントからユーザー プロファイルを取得する場合に呼び出されます。 承認コード フローのみ、およびミドルウェア オプションが `GetClaimsFromUserInfoEndpoint = true` の場合にのみ当てはまります。
 * **TicketReceived**。 認証が完了したときに呼び出されます。 これは、認証が成功したことを想定した最後のイベントです。 このイベントが処理された後、ユーザーがアプリケーションにサインインします。
 * **AuthenticationFailed**。 認証が失敗した場合に呼び出されます。 このイベントを使用して、エラー ページへのリダイレクトなどによって認証エラーを処理します。

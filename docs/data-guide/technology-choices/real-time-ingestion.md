@@ -2,13 +2,13 @@
 title: リアルタイム メッセージ取り込みテクノロジの選択
 description: ''
 author: zoinerTejada
-ms:date: 02/12/2018
-ms.openlocfilehash: 5eaac023e28fc502e5a4e6ebc17e32832f7557c0
-ms.sourcegitcommit: bb348bd3a8a4e27ef61e8eee74b54b07b65dbf98
+ms.date: 02/12/2018
+ms.openlocfilehash: 64d6fca0a8ffac45f605e90a11cd2b3e53db287f
+ms.sourcegitcommit: e7e0e0282fa93f0063da3b57128ade395a9c1ef9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2018
-ms.locfileid: "34422985"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52901628"
 ---
 # <a name="choosing-a-real-time-message-ingestion-technology-in-azure"></a>Azure でのリアルタイム メッセージ取り込みテクノロジの選択
 

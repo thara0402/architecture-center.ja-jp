@@ -2,16 +2,16 @@
 title: マルチテナント アプリケーションでアクセス トークンをキャッシュする
 description: バックエンド Web API を呼び出すために使用されるアクセス トークンのキャッシュ
 author: MikeWasson
-ms:date: 07/21/2017
+ms.date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications
 pnp.series.prev: web-api
 pnp.series.next: adfs
-ms.openlocfilehash: cffc15686ef9d77fafb40982efdbcd4a79f5aaf2
-ms.sourcegitcommit: 8ab30776e0c4cdc16ca0dcc881960e3108ad3e94
+ms.openlocfilehash: 950b638e629ad97e24b05e781da844bc110bad91
+ms.sourcegitcommit: e7e0e0282fa93f0063da3b57128ade395a9c1ef9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
-ms.locfileid: "26359241"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52901713"
 ---
 # <a name="cache-access-tokens"></a>アクセス トークンのキャッシュ
 
@@ -19,7 +19,7 @@ ms.locfileid: "26359241"
 
 トークン エンドポイントに対する HTTP 要求が必要なので、OAuth アクセス トークンの取得は比較的コストが高い処理です。 そのため、可能な限りトークンをキャッシュすることをお勧めします。 [Azure AD Authentication Library][ADAL] (ADAL) が Azure AD から取得したトークンを自動的にキャッシュします。トークンには更新トークンも含まれます。
 
-ADAL には、既定のトークン キャッシュ機能が実装されています。 ただし、このトークン キャッシュは、ネイティブ クライアント アプリ用なので、Web アプリには **適していません**。
+ADAL には、既定のトークン キャッシュ機能が実装されています。 ただし、このトークン キャッシュは、ネイティブ クライアント アプリ用なので、Web アプリには **適していません** 。
 
 * また、静的インスタンスなので、スレッド セーフではありません。
 * すべてのユーザーのトークンは同じディレクトリに保存されるので、多数のユーザーに合わせて拡張されません。
@@ -128,12 +128,12 @@ public void AfterAccessNotification(TokenCacheNotificationArgs args)
 
 TokenCache からは、他にも 2 つのイベントが送信されます。
 
-* `BeforeWrite` ADAL がキャッシュに書き込む直前の呼び出し。 これを使用して、同時実行戦略を実装できます。
+* `BeforeWrite` ADAL がキャッシュに書き込む直前の呼び出し。 これを使用して、コンカレンシー戦略を実装できます。
 * `BeforeAccess` ADAL がキャッシュから読み取る直前の呼び出し。 ここで、最新バージョンを取得するキャッシュを再読み込みできます。
 
 この例では、これら 2 つのイベントを処理していません。
 
-* 同時実行の場合、最後の書き込みが有効になりますが、問題ありません。 ユーザー + クライアントごとにトークンは独立して保存されるので、同一ユーザーが同時にログイン セッションを実行した場合にのみ、競合が発生します。
+* コンカレンシーの場合、最後の書き込みが有効になりますが、問題ありません。 ユーザー + クライアントごとにトークンは独立して保存されるので、同一ユーザーが同時にログイン セッションを実行した場合にのみ、競合が発生します。
 * 読み取りについては、要求ごとにキャッシュを読み込みます。 要求の存続期間は短期です。 存続期間内にキャッシュが変更された場合、次の要求は新しい値を選択します。
 
 [**次へ**][client-assertion]

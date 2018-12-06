@@ -2,13 +2,13 @@
 title: Cognitive Services テクノロジの選択
 description: ''
 author: zoinerTejada
-ms:date: 02/12/2018
-ms.openlocfilehash: 055769188fbd6742b94094ee18766293812849fa
-ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
+ms.date: 02/12/2018
+ms.openlocfilehash: 0551bf05cb47cb3972b0d5f2e5226e23cbdacc68
+ms.sourcegitcommit: e7e0e0282fa93f0063da3b57128ade395a9c1ef9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30847783"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52902552"
 ---
 # <a name="choosing-a-microsoft-cognitive-services-technology"></a>Microsoft Cognitive Services テクノロジの選択
 
@@ -58,18 +58,18 @@ Azure には数十種類の Cognitive Services があります。 最新の一�
 
 |                                                   |             入力の種類              |                                                                                主な長所                                                                                |
 |---------------------------------------------------|-------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|                Text Analytics API                 |                テキスト                 |                                                       センチメントとトピックを評価して、ユーザーが求めるものを理解できます。                                                        |
-|                Entity Linking API                 |                テキスト                 |                                               固有表現認識とあいまいさ排除でアプリのデータ リンクを強化します。                                               |
-| Language Understanding Intelligent Service (LUIS) |                テキスト                 |                                                          ユーザーが入力したコマンドをアプリが理解できるようにします。                                                          |
-|                 QnA Maker Service                 |                テキスト                 |                                             FAQ 形式の情報から会話形式のナビゲーションしやすい回答を抽出します。                                              |
-|              Linguistic Analysis API              |                テキスト                 |                                                            複雑な言語の概念を単純化し、テキストを解析します。                                                             |
-|           Knowledge Exploration Service           |                テキスト                 |                                          自然言語入力による構造化データの対話型検索を可能にします。                                          |
-|              Web Language Model API               |                テキスト                 |                                                         Web 規模のデータで学習した予測言語モデルを使用します。                                                         |
-|              Academic Knowledge API               |                テキスト                 |                                        Bing によって設定されている Microsoft Academic Graph の豊富な学術コンテンツを利用します。                                         |
-|               Bing Autosuggest API                |                テキスト                 |                                                        アプリにインテリジェントな自動提案機能を追加します。                                                        |
-|               Bing Spell Check API                |                テキスト                 |                                                             アプリでのスペル ミスを検出して修正します。                                                             |
-|                Translator Text API                |                テキスト                 |                                                                           機械翻訳。                                                                            |
-|                Recommendations API                |                テキスト                 |                                                             顧客が欲しい品物を予測して推奨します。                                                              |
+|                Text Analytics API                 |                Text                 |                                                       センチメントとトピックを評価して、ユーザーが求めるものを理解できます。                                                        |
+|                Entity Linking API                 |                Text                 |                                               固有表現認識とあいまいさ排除でアプリのデータ リンクを強化します。                                               |
+| Language Understanding Intelligent Service (LUIS) |                Text                 |                                                          ユーザーが入力したコマンドをアプリが理解できるようにします。                                                          |
+|                 QnA Maker Service                 |                Text                 |                                             FAQ 形式の情報から会話形式のナビゲーションしやすい回答を抽出します。                                              |
+|              Linguistic Analysis API              |                Text                 |                                                            複雑な言語の概念を単純化し、テキストを解析します。                                                             |
+|           Knowledge Exploration Service           |                Text                 |                                          自然言語入力による構造化データの対話型検索を可能にします。                                          |
+|              Web Language Model API               |                Text                 |                                                         Web 規模のデータで学習した予測言語モデルを使用します。                                                         |
+|              Academic Knowledge API               |                Text                 |                                        Bing によって設定されている Microsoft Academic Graph の豊富な学術コンテンツを利用します。                                         |
+|               Bing Autosuggest API                |                Text                 |                                                        アプリにインテリジェントな自動提案機能を追加します。                                                        |
+|               Bing Spell Check API                |                Text                 |                                                             アプリでのスペル ミスを検出して修正します。                                                             |
+|                Translator Text API                |                Text                 |                                                                           機械翻訳。                                                                            |
+|                Recommendations API                |                Text                 |                                                             顧客が欲しい品物を予測して推奨します。                                                              |
 |              Bing Entity Search API               |       テキスト (Web 検索クエリ)       |                                                           Web からエンティティ情報を特定して拡張します。                                                           |
 |               Bing Image Search API               |       テキスト (Web 検索クエリ)       |                                                                            画像を検索します。                                                                             |
 |               Bing News Search API                |       テキスト (Web 検索クエリ)       |                                                                             ニュースを検索します。                                                                              |

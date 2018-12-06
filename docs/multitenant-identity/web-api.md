@@ -2,16 +2,16 @@
 title: マルチテナント アプリケーションにおけるバックエンド Web API のセキュリティ保護
 description: バックエンド web API をセキュリティで保護する方法
 author: MikeWasson
-ms:date: 07/21/2017
+ms.date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications
 pnp.series.prev: authorize
 pnp.series.next: token-cache
-ms.openlocfilehash: 2d02ff7be04c6ebec888039453fe1ac7e957b301
-ms.sourcegitcommit: f7fa67e3bdbc57d368edb67bac0e1fdec63695d2
+ms.openlocfilehash: e738eb94b5978efa4e7a4bebcc72daa7968ac904
+ms.sourcegitcommit: e7e0e0282fa93f0063da3b57128ade395a9c1ef9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37843676"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52901594"
 ---
 # <a name="secure-a-backend-web-api"></a>バックエンド Web API をセキュリティで保護する
 
@@ -220,7 +220,7 @@ public override async Task TokenValidated(TokenValidatedContext context)
 
 この例に示すように、**TokenValidated** イベントを使用して要求を変更することもできます。 要求は Azure AD から直接送信されることに注意してください。 Web アプリケーションが取得した要求を変更する場合、それらの変更は Web API が受信するベアラー トークンでは表示されません。 詳細については、「[Claims transformations (要求の変換)][claims-transformation]」をご覧ください。
 
-## <a name="authorization"></a>承認
+## <a name="authorization"></a>Authorization
 承認の一般的な説明については、「[Role-based and resource-based authorization (ロールベースおよびリソースベースの承認)][Authorization]」をご覧ください。 
 
 JwtBearer ミドルウェアは、承認応答を処理します。 たとえば、認証されたユーザーに対するコントローラーのアクションを制御するには、**[承認]** 属性を使用して、認証スキームに **JwtBearerDefaults.AuthenticationScheme** を指定します。

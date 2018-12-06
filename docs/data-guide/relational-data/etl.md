@@ -2,13 +2,13 @@
 title: 抽出、変換、読み込み (ETL)
 description: ''
 author: zoinerTejada
-ms:date: 02/12/2018
-ms.openlocfilehash: b10b0cb3cbc98ff9fadda6915b01b6f6564c4d00
-ms.sourcegitcommit: 19a517a2fb70768b3edb9a7c3c37197baa61d9b5
+ms.date: 02/12/2018
+ms.openlocfilehash: 6f56da72bd7a93ecd40b0be2a19e93d9062038fb
+ms.sourcegitcommit: e7e0e0282fa93f0063da3b57128ade395a9c1ef9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52295550"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52901543"
 ---
 # <a name="extract-transform-and-load-etl"></a>抽出、変換、読み込み (ETL)
 

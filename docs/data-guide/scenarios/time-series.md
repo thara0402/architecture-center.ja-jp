@@ -2,13 +2,13 @@
 title: 時系列データ
 description: ''
 author: zoinerTejada
-ms:date: 02/12/2018
-ms.openlocfilehash: 80ff6c45988062afcb0eb92cc79e640d39dbb21f
-ms.sourcegitcommit: 51f49026ec46af0860de55f6c082490e46792794
+ms.date: 02/12/2018
+ms.openlocfilehash: 9664940729430b08d7be52564e4971ec5e2b94d8
+ms.sourcegitcommit: e7e0e0282fa93f0063da3b57128ade395a9c1ef9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30298109"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52901968"
 ---
 # <a name="time-series-solutions"></a>時系列ソリューション
 
@@ -62,7 +62,7 @@ IoT などの時系列データが関連する多くのシナリオでは、デ�
 
 1 つ以上のデータ ソースからのデータは、[IoT Hub](/azure/iot-hub/)、[Event Hubs](/azure/event-hubs/)、または [HDInsight 上の Kafka](/azure/hdinsight/kafka/apache-kafka-introduction) によって、ストリーム バッファリング レイヤーに取り込まれます。 次に、データは、ストリーム処理レイヤーで処理されます。処理されたデータは、必要に応じて、予測分析を行うために機械学習サービスに渡すことができます。 処理されたデータは、[HBase](/azure/hdinsight/hbase/apache-hbase-overview)、[Azure Cosmos DB](/azure/cosmos-db/)、Azure Data Lake、Blob ストレージなどの分析データ ストアに格納されます。 Power BI や OpenTSDB (HBase に格納される場合) などの分析とレポート作成を行うアプリケーションまたはサービスを使用して、時系列データを表示して分析できます。
 
-別のオプションとして、[Azure Time Series Insights](/azure/time-series-insights/) の使用があります。 Time Series Insights は、時系列データ用の完全に管理されたサービスです。 このアーキテクチャでは、Time Series Insights がストリーム処理、データ ストア、分析およびレポート作成のロールを実行します。 IoT Hub または Event Hubs ストアからストリーミング データを受け取り、ほぼリアルタイムでデータを処理、解析、および表示します。 データの事前集計は行いませんが、生のイベントを格納します。
+別のオプションとして、[Azure Time Series Insights](/azure/time-series-insights/) の使用があります。 Time Series Insights は、時系列データ用のフル マネージドのサービスです。 このアーキテクチャでは、Time Series Insights がストリーム処理、データ ストア、分析およびレポート作成のロールを実行します。 IoT Hub または Event Hubs ストアからストリーミング データを受け取り、ほぼリアルタイムでデータを処理、解析、および表示します。 データの事前集計は行いませんが、生のイベントを格納します。
 
 Time Series Insights はスキーマ適用型です。つまり、洞察を開始するためにデータの準備を行う必要はありません。 これにより、さまざまなデータ ソースの調査、比較、および関連付けをシームレスに行うことができます。 SQL に似たフィルターと集計、さまざまな時系列パターンの構成、ビジュアル化、比較、およびオーバーレイを行う機能、ヒート マップ、クエリの保存と共有を行う機能も備えています。 
 

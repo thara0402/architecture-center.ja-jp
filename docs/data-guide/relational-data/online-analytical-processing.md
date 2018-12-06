@@ -2,13 +2,13 @@
 title: オンライン分析処理 (OLAP)
 description: ''
 author: zoinerTejada
-ms:date: 02/12/2018
-ms.openlocfilehash: 92b71934f2081e95c3c9b0d4dc9edeb3885b12e8
-ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
+ms.date: 02/12/2018
+ms.openlocfilehash: beed0d642e85096efc0b6fe492181b8dcd771d2d
+ms.sourcegitcommit: e7e0e0282fa93f0063da3b57128ade395a9c1ef9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30846809"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52902600"
 ---
 # <a name="online-analytical-processing-olap"></a>オンライン分析処理 (OLAP)
 
@@ -53,7 +53,7 @@ ms.locfileid: "30846809"
 
 セマンティック モデリングと分析処理は、次の特徴があります。
 
-| 要件 | [説明] |
+| 要件 | 説明 |
 | --- | --- |
 | スキーマ | 書き込み時のスキーマ。厳密に適用|
 | トランザクションの使用 | いいえ  |
@@ -97,7 +97,7 @@ Azure では、以下のすべてのデータ ストアが OLAP のコア要件�
 - [Azure Analysis Services](/azure/analysis-services/analysis-services-overview)
 - [SQL Server Analysis Services (SSAS)](/sql/analysis-services/analysis-services)
 
-SQL Server Analysis Services (SSAS) は、ビジネス インテリジェンス アプリケーション向けに OLAP およびデータ マイニング機能を提供しています。 ローカル サーバーに SSAS をインストールするか、Azure の仮想マシン内でホストすることができます。 Azure Analysis Services は、SSAS と同じ主要機能を提供する完全管理のサービスです。 Azure Analysis Services では、組織のクラウドおよびオンプレミスにある[多様なデータ ソース](/azure/analysis-services/analysis-services-datasource)への接続がサポートされます。
+SQL Server Analysis Services (SSAS) は、ビジネス インテリジェンス アプリケーション向けに OLAP およびデータ マイニング機能を提供しています。 ローカル サーバーに SSAS をインストールするか、Azure の仮想マシン内でホストすることができます。 Azure Analysis Services は、SSAS と同じ主要機能を提供するフル マネージドのサービスです。 Azure Analysis Services では、組織のクラウドおよびオンプレミスにある[多様なデータ ソース](/azure/analysis-services/analysis-services-datasource)への接続がサポートされます。
 
 クラスター化された列ストア インデックスは、SQL Server 2014 以降と Azure SQL Database で使用できます。OLAP ワークロードに最適です。 ただし、SQL Server 2016 (Azure SQL Database を含む) 以降は、更新可能な非クラスター化列ストア インデックスを使用して、ハイブリッド トランザクション/分析処理 (HTAP) を利用できます。 HTAP を使用すると、同じプラットフォーム上で OLTP と OLAP の処理を実行できます。そのため、データの複数のコピーを格納したり、OLTP システムと OLAP システムを別に用意したりする必要がなくなります。 詳細については、「[列ストアを使用したリアルタイム運用分析の概要](/sql/relational-databases/indexes/get-started-with-columnstore-for-real-time-operational-analytics)」を参照してください。
 
@@ -128,7 +128,7 @@ SQL Server Analysis Services (SSAS) は、ビジネス インテリジェンス 
 | | Azure Analysis Services | SQL Server Analysis Services | 列ストア インデックスを使用する SQL Server | 列ストア インデックスを使用する Azure SQL Database |
 | --- | --- | --- | --- | --- |
 | マネージド サービスか | [はい] | いいえ  | いいえ  | [はい] |
-| 多次元キューブをサポート | いいえ  | [はい] | いいえ  | いいえ  |
+| 多次元キューブをサポート | いいえ  | はい | いいえ  | いいえ  |
 | 表形式のセマンティック モデルをサポート | [はい] | [はい] | いいえ  | いいえ  |
 | 複数のデータ ソースを簡単に統合 | [はい] | [はい] | なし <sup>1</sup> | なし <sup>1</sup> |
 | リアルタイムの分析をサポート | いいえ  | いいえ  | 可能  | [はい] |
@@ -144,6 +144,6 @@ SQL Server Analysis Services (SSAS) は、ビジネス インテリジェンス 
 |                                                  | Azure Analysis Services | SQL Server Analysis Services | 列ストア インデックスを使用する SQL Server | 列ストア インデックスを使用する Azure SQL Database |
 |--------------------------------------------------|-------------------------|------------------------------|-------------------------------------|---------------------------------------------|
 | 高可用性のための冗長リージョン サーバー |           [はい]           |              いいえ               |                 可能                  |                     [はい]                     |
-|             クエリのスケールアウトをサポート             |           [はい]           |              いいえ               |                 [はい]                 |                     いいえ                       |
-|          動的スケーラビリティ (スケールアップ)          |           [はい]           |              いいえ               |                 [はい]                 |                     いいえ                       |
+|             クエリのスケールアウトをサポート             |           [はい]           |              いいえ               |                 はい                 |                     いいえ                       |
+|          動的スケーラビリティ (スケールアップ)          |           [はい]           |              いいえ               |                 はい                 |                     いいえ                       |
 
