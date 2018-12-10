@@ -1,20 +1,22 @@
 ---
-title: 高可用性 SharePoint Server 2016 ファームの Azure での実行
-description: 高可用性 SharePoint Server 2016 ファームを Azure で設定するための実証済みプラクティス。
+title: Azure での高可用性 SharePoint Server 2016 ファームの実行
+titleSuffix: Azure Reference Architectures
+description: Azure に高可用性 SharePoint Server 2016 ファームをデプロイする際の推奨アーキテクチャ。
 author: njray
 ms.date: 07/26/2018
-ms.openlocfilehash: 5db146956134f9b297b520d666d8dabbc8793caf
-ms.sourcegitcommit: 77d62f966d910cd5a3d11ade7ae5a73234e093f2
+ms.custom: seodec18
+ms.openlocfilehash: 6cc8255f95cb4944ff3ef138ad5edf2e5bbea4b4
+ms.sourcegitcommit: 88a68c7e9b6b772172b7faa4b9fd9c061a9f7e9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51293266"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53120103"
 ---
-# <a name="run-a-high-availability-sharepoint-server-2016-farm-in-azure"></a>高可用性 SharePoint Server 2016 ファームの Azure での実行
+# <a name="run-a-highly-available-sharepoint-server-2016-farm-in-azure"></a>Azure での高可用性 SharePoint Server 2016 ファームの実行
 
-この参照用アーキテクチャは、高可用性 SharePoint Server 2016 ファームを Azure で設定し、MinRole トポロジおよび SQL Server Always On 可用性グループを使用するための一連の実証済みプラクティスを示します。 SharePoint ファームは、インターネットに接続するエンドポイントまたはプレゼンスがない、セキュアな仮想ネットワークにデプロイされます。 [**こちらのソリューションをデプロイしてください**。](#deploy-the-solution) 
+この参照アーキテクチャでは、MinRole トポロジおよび SQL Server Always On 可用性グループを使用して、高可用性 SharePoint Server 2016 ファームを Azure にデプロイするための実証済みプラクティスを示します。 SharePoint ファームは、インターネットに接続するエンドポイントまたはプレゼンスがない、セキュアな仮想ネットワークにデプロイされます。 [**このソリューションをデプロイします**](#deploy-the-solution)。
 
-![](./images/sharepoint-ha.png)
+![Azure における高可用性 SharePoint Server 2016 ファームの参照アーキテクチャ](./images/sharepoint-ha.png)
 
 "*このアーキテクチャの [Visio ファイル][visio-download]をダウンロードします。*"
 
@@ -26,15 +28,15 @@ ms.locfileid: "51293266"
 
 - **リソース グループ**。 [リソース グループ][resource-group]は、Azure の関連リソースを保持するコンテナーです。 1 つのリソース グループが SharePoint サーバーで使用され、もう 1 つのリソース グループが VM とは独立しているインフラストラクチャ コンポーネント (仮想ネットワークやロード バランサーなど) で使用されます。
 
-- **仮想ネットワーク (VNet)**。 VM は一意のイントラネット アドレス空間を使用して VNet にデプロイされます。 VNet はさらにサブネットに分割されます。 
+- **仮想ネットワーク (VNet)**。 VM は一意のイントラネット アドレス空間を使用して VNet にデプロイされます。 VNet はさらにサブネットに分割されます。
 
 - **仮想マシン (VM)**。 VM は VNet にデプロイされ、プライベート静的 IP アドレスがすべての VM に割り当てられます。 静的 IP アドレスは、IP アドレスのキャッシュや再起動後のアドレスの変更に伴う問題を回避するため、SQL Server と SharePoint Server 2016 を実行する VM に推奨されます。
 
-- **可用性セット**。 各 SharePoint ロールの VM を別の[可用性セット][availability-set]に配置し、ロールごとに少なくとも 2 つの仮想マシン (VM) をプロビジョニングします。 こうすると VM が高度なサービス レベル アグリーメント (SLA) に対応できるようになります。 
+- **可用性セット**。 各 SharePoint ロールの VM を別の[可用性セット][availability-set]に配置し、ロールごとに少なくとも 2 つの仮想マシン (VM) をプロビジョニングします。 こうすると VM が高度なサービス レベル アグリーメント (SLA) に対応できるようになります。
 
-- **内部ロード バランサー**:  [ロード バランサー][load-balancer]は、SharePoint の要求トラフィックをオンプレミス ネットワークから SharePoint ファームのフロントエンド Web サーバーに均等配置します。 
+- **内部ロード バランサー**:  [ロード バランサー][load-balancer]は、SharePoint の要求トラフィックをオンプレミス ネットワークから SharePoint ファームのフロントエンド Web サーバーに均等配置します。
 
-- **ネットワーク セキュリティ グループ (NSG)**。 仮想マシンを含むサブネットごとに、[ネットワーク セキュリティ グループ][nsg]が作成されます。 NSG を使用して、サブネットを分離するために VNet 内のネットワーク トラフィックを制限します。 
+- **ネットワーク セキュリティ グループ (NSG)**。 仮想マシンを含むサブネットごとに、[ネットワーク セキュリティ グループ][nsg]が作成されます。 NSG を使用して、サブネットを分離するために VNet 内のネットワーク トラフィックを制限します。
 
 - **ゲートウェイ**。 ゲートウェイによって、オンプレミス ネットワークと Azure 仮想ネットワークの間に接続が提供されます。 この接続は ExpressRoute またはサイト間 VPN を使用できます。 詳しくは、「[オンプレミス ネットワークの Azure への接続][hybrid-ra]」をご覧ください。
 
@@ -42,11 +44,11 @@ ms.locfileid: "51293266"
 
   SharePoint Server 2016 でも、[Azure Active Directory Domain Services](/azure/active-directory-domain-services/) を利用できます。 Azure AD Domain Services はマネージド ドメイン サービスを提供するので、Azure にドメイン コントローラーをデプロイし、管理する必要はありません。
 
-- **SQL Server Always On 可用性グループ**。 SQL Server データベースの高可用性を実現するには、[SQL Server Always On 可用性グループ][sql-always-on]を推奨します。 2 つの仮想マシンが SQL Server で使用されます。 1 つにはプライマリ データベース レプリカが含まれ、もう 1 つにはセカンダリ レプリカが含まれます。 
+- **SQL Server Always On 可用性グループ**。 SQL Server データベースの高可用性を実現するには、[SQL Server Always On 可用性グループ][sql-always-on]を推奨します。 2 つの仮想マシンが SQL Server で使用されます。 1 つにはプライマリ データベース レプリカが含まれ、もう 1 つにはセカンダリ レプリカが含まれます。
 
 - **マジョリティ ノード VM**。 この VM を使用すると、フェールオーバー クラスターがクォーラムを確立できます。 詳しくは、「[フェールオーバー クラスターのクォーラム構成について][sql-quorum]」をご覧ください。
 
-- **SharePoint サーバー**。 SharePoint サーバーは、Web フロントエンド、キャッシュ、アプリケーション、およびロールの検索を実行します。 
+- **SharePoint サーバー**。 SharePoint サーバーは、Web フロントエンド、キャッシュ、アプリケーション、およびロールの検索を実行します。
 
 - **Jumpbox**。 [要塞ホスト][bastion-host]とも呼ばれます。 これは、管理者が他の VM に接続するために使用するネットワーク上のセキュアな VM です。 jumpbox の NSG は、セーフ リストにあるパブリック IP アドレスからのリモート トラフィックのみを許可します。 NSG は、リモート デスクトップ (RDP) トラフィックを許可する必要があります。
 
@@ -60,7 +62,7 @@ ms.locfileid: "51293266"
 
 ### <a name="virtual-network-and-subnet-recommendations"></a>仮想ネットワークとサブネットの推奨事項
 
-SharePoint ロールごとに 1 つのサブネット、ゲートウェイに 1 つのサブネット、および jumpbox に 1 つのサブネットを使用します。 
+SharePoint ロールごとに 1 つのサブネット、ゲートウェイに 1 つのサブネット、および jumpbox に 1 つのサブネットを使用します。
 
 ゲートウェイ サブネット名は、*GatewaySubnet* にする必要があります。 ゲートウェイ サブネットのアドレス空間には、仮想ネットワーク アドレス空間の最後の部分を割り当てます。 詳しくは、「[Connect an on-premises network to Azure using a VPN gateway][hybrid-vpn-ra]」(VPN ゲートウェイを使用したオンプレミス ネットワークの Azure への接続) をご覧ください。
 
@@ -74,28 +76,28 @@ SharePoint ロールごとに 1 つのサブネット、ゲートウェイに 1 
 - Standard_DS1_v2 上に 1 つのマジョリティ ノード = 1 コア
 - Standard_DS1_v2 上に 1 つの管理サーバー = 1 コア
 
-デプロイについて Azure サブスクリプションに十分な VM コア クォータがあることを確認してください。不足している場合はデプロイで障害が発生します。 「[Azure サブスクリプションとサービスの制限、クォータ、制約][quotas]」をご覧ください。 
+デプロイについて Azure サブスクリプションに十分な VM コア クォータがあることを確認してください。不足している場合はデプロイで障害が発生します。 「[Azure サブスクリプションとサービスの制限、クォータ、制約][quotas]」をご覧ください。
 
-Search インデクサーを除くすべての SharePoint ロールについて、[Standard_DS3_v2][vm-sizes-general] VM サイズの使用を推奨します。 Search インデクサーは少なくとも [Standard_DS13_v2][vm-sizes-memory] のサイズにする必要があります。 テストの場合、この参照アーキテクチャのパラメーター ファイルでは、Search インデクサー ロールに対して小さな DS3_v2 のサイズを指定しています。 運用環境のデプロイでは、パラメーター ファイルを更新して DS13 以上のサイズを使用してください。 詳細については、「[SharePoint Server 2016 のハードウェア要件およびソフトウェア要件][sharepoint-reqs]」を参照してください。 
+Search インデクサーを除くすべての SharePoint ロールについて、[Standard_DS3_v2][vm-sizes-general] VM サイズの使用を推奨します。 Search インデクサーは少なくとも [Standard_DS13_v2][vm-sizes-memory] のサイズにする必要があります。 テストの場合、この参照アーキテクチャのパラメーター ファイルでは、Search インデクサー ロールに対して小さな DS3_v2 のサイズを指定しています。 運用環境のデプロイでは、パラメーター ファイルを更新して DS13 以上のサイズを使用してください。 詳細については、「[SharePoint Server 2016 のハードウェア要件およびソフトウェア要件][sharepoint-reqs]」を参照してください。
 
-SQL Server VM については、少なくとも 4 つのコアと 8 GB の RAM を推奨します。 この参照アーキテクチャのパラメーター ファイルでは、DS3_v2 のサイズを指定しています。 運用環境のデプロイでは、より大きな VM サイズを指定する必要があります。 詳細については、「[ストレージおよび SQL Server の容量計画と構成 (SharePoint Server)](/sharepoint/administration/storage-and-sql-server-capacity-planning-and-configuration#estimate-memory-requirements)」を参照してください。 
- 
+SQL Server VM については、少なくとも 4 つのコアと 8 GB の RAM を推奨します。 この参照アーキテクチャのパラメーター ファイルでは、DS3_v2 のサイズを指定しています。 運用環境のデプロイでは、より大きな VM サイズを指定する必要があります。 詳細については、「[ストレージおよび SQL Server の容量計画と構成 (SharePoint Server)](/sharepoint/administration/storage-and-sql-server-capacity-planning-and-configuration#estimate-memory-requirements)」を参照してください。
+
 ### <a name="nsg-recommendations"></a>NSG の推奨事項
 
-VM を含むサブネットごとに 1 つの NSG を用意して、サブネットを分離できるようにすることを推奨します。 サブネットの分離を構成する場合は、各サブネットについて許可または拒否するインバウンド トラフィックまたはアウトバウンド トラフィックを定義する NSG ルールを追加します。 詳しくは、「[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルタリング][virtual-networks-nsg]」をご覧ください。 
+VM を含むサブネットごとに 1 つの NSG を用意して、サブネットを分離できるようにすることを推奨します。 サブネットの分離を構成する場合は、各サブネットについて許可または拒否するインバウンド トラフィックまたはアウトバウンド トラフィックを定義する NSG ルールを追加します。 詳しくは、「[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルタリング][virtual-networks-nsg]」をご覧ください。
 
-ゲートウェイには NSG を割り当てないでください。割り当てると、ゲートウェイが機能を停止します。 
+ゲートウェイには NSG を割り当てないでください。割り当てると、ゲートウェイが機能を停止します。
 
 ### <a name="storage-recommendations"></a>記憶域の推奨事項
 
 ファームの VM の記憶域構成は、オンプレミス デプロイで使用される適切なベスト プラクティスと一致する必要があります。 SharePoint サーバーではログ用に別のディスクが必要です。 検索インデックス ロールをホストする SharePoint サーバーでは、検索インデックスを格納するために追加のディスク領域が必要です。 SQL Server の場合、標準プラクティスではデータとログを分離します。 データベース バックアップ ストレージにディスクをさらに追加し、[tempdb][tempdb] 用に別のディスクを使用します。
 
-最高の信頼性を得るには、[Azure Managed Disks][managed-disks] の使用を推奨します。 マネージド ディスクでは可用性セット内の VM のディスクが必ず分離されるため、単一障害点を回避できます。 
+最高の信頼性を得るには、[Azure Managed Disks][managed-disks] の使用を推奨します。 マネージド ディスクでは可用性セット内の VM のディスクが必ず分離されるため、単一障害点を回避できます。
 
 > [!NOTE]
 > 現在、この参照用アーキテクチャの Resource Manager テンプレートではマネージド ディスクは使用されていません。 マネージド ディスクを使用するようにテンプレートを更新する予定です。
 
-SharePoint および SQL Server のすべての VM で Premium マネージド ディスクを使用してください。 マジョリティ ノード サーバー、ドメイン コントローラー、および管理サーバでは、Standard マネージド ディスクを使用できます。 
+SharePoint および SQL Server のすべての VM で Premium マネージド ディスクを使用してください。 マジョリティ ノード サーバー、ドメイン コントローラー、および管理サーバでは、Standard マネージド ディスクを使用できます。
 
 ### <a name="sharepoint-server-recommendations"></a>SharePoint Server の推奨事項
 
@@ -113,10 +115,9 @@ SharePoint ファームを構成する前に、サービスごとに 1 つの Wi
 
 最小 200 MB/s のディスク スループットのサポート要件を満たすには、必ず検索アーキテクチャを計画してください。 「[SharePoint Server 2013 でエンタープライズ検索アーキテクチャを計画する][sharepoint-search]」をご覧ください。 また、「[Best practices for crawling in SharePoint Server 2016][sharepoint-crawling](SharePoint Server 2016 のクロールのベスト プラクティス)」のガイドラインに従います。
 
-さらに、検索コンポーネント データを、パフォーマンスに優れている別の記憶域ボリュームまたはパーティションに格納します。 負荷を減らしてスループットを向上するには、オブジェクト キャッシュ ユーザー アカウントを構成します。これはこのアーキテクチャで必要です。 Windows Server オペレーティング システム ファイル、SharePoint Server 2016 プログラム ファイル、および診断ログは、通常のパフォーマンスの 3 つの記憶域ボリュームまたはパーティションに分割します。 
+さらに、検索コンポーネント データを、パフォーマンスに優れている別の記憶域ボリュームまたはパーティションに格納します。 負荷を減らしてスループットを向上するには、オブジェクト キャッシュ ユーザー アカウントを構成します。これはこのアーキテクチャで必要です。 Windows Server オペレーティング システム ファイル、SharePoint Server 2016 プログラム ファイル、および診断ログは、通常のパフォーマンスの 3 つの記憶域ボリュームまたはパーティションに分割します。
 
 これらの推奨事項について詳しくは、「[SharePoint Server 2016 での初期展開の管理およびサービス アカウント][sharepoint-accounts]」をご覧ください。
-
 
 ### <a name="hybrid-workloads"></a>ハイブリッド ワークロード
 
@@ -132,11 +133,11 @@ SharePoint Server 2016 は Azure SQL Database を使用できないため、こ�
 
 Azure で実行する SQL Server の推奨 VM サイズやその他のパフォーマンスの推奨事項について詳しくは、「[Performance best practices for SQL Server in Azure Virtual Machines][sql-performance]」(Azure 仮想マシンでの SQL Server のパフォーマンス ベスト プラクティス) をご覧ください。 「[SharePoint Server 2016 ファーム内の SQL Server のベスト プラクティス][sql-sharepoint-best-practices]」の推奨事項にも従ってください。
 
-マジョリティ ノード サーバーはレプリケーション パートナーとは別のコンピューターに配置することを推奨します。 このサーバーによって、高度セーフティ モード セッションでセカンダリ パートナー サーバーが、自動フェールオーバーを開始するかどうかを認識できるようになります。 2 つのパートナーとは異なり、マジョリティ ノード サーバーはデータベースでは使用されず、自動フェールオーバーをサポートします。 
+マジョリティ ノード サーバーはレプリケーション パートナーとは別のコンピューターに配置することを推奨します。 このサーバーによって、高度セーフティ モード セッションでセカンダリ パートナー サーバーが、自動フェールオーバーを開始するかどうかを認識できるようになります。 2 つのパートナーとは異なり、マジョリティ ノード サーバーはデータベースでは使用されず、自動フェールオーバーをサポートします。
 
 ## <a name="scalability-considerations"></a>スケーラビリティに関する考慮事項
 
-既存のサーバーを拡張するには、VM サイズを変更するだけですみます。 
+既存のサーバーを拡張するには、VM サイズを変更するだけですみます。
 
 SharePoint Server 2016 の [MinRoles][minroles] 機能により、サーバーのロールに基づいてサーバーをスケールアウトできます。ロールからサーバーを削除することもできます。 サーバーをロールに追加するときは、単独ロールのいずれか、または組み合わされたロールのいずれかを指定できます。 ただし、サーバーを検索ロールに追加する場合は、PowerShell を使用して検索トポロジも再構成する必要があります。 MinRoles を使用してロールを変換することもできます。 詳しくは、「[SharePoint Server 2016 での MinRole サーバー ファームの管理][sharepoint-minrole]」をご覧ください。
 
@@ -152,7 +153,7 @@ SharePoint Server 2016 では自動スケーリングのための仮想マシン
 
 サーバー、サーバー ファーム、およびサイトを運用して管理するには、SharePoint の運用の推奨プラクティスに従います。 詳しくは、[SharePoint Server 2016 の運用][sharepoint-ops]に関する記事をご覧ください。
 
-SharePoint 環境で SQL Server を管理する際に検討するタスクは、データベース アプリケーションで一般的に検討されるタスクとは異なる場合があります。 ベスト プラクティスは、すべての SQL データベースを週 1 回完全にバックアップし、さらに毎晩増分バックアップすることです。 トランザクション ログは 15 分間隔でバックアップします。 別のプラクティスでは、SQL Server メンテナンス タスクをデータベースに実装し、組み込みの SharePoint メンテナンス タスクは無効にします。 詳しくは、「[ストレージおよび SQL Server の容量計画と構成 ][sql-server-capacity-planning]」をご覧ください。 
+SharePoint 環境で SQL Server を管理する際に検討するタスクは、データベース アプリケーションで一般的に検討されるタスクとは異なる場合があります。 ベスト プラクティスは、すべての SQL データベースを週 1 回完全にバックアップし、さらに毎晩増分バックアップすることです。 トランザクション ログは 15 分間隔でバックアップします。 別のプラクティスでは、SQL Server メンテナンス タスクをデータベースに実装し、組み込みの SharePoint メンテナンス タスクは無効にします。 詳しくは、「[ストレージおよび SQL Server の容量計画と構成 ][sql-server-capacity-planning]」をご覧ください。
 
 ## <a name="security-considerations"></a>セキュリティに関する考慮事項
 
@@ -175,7 +176,7 @@ SharePoint Server 2016 の実行に使用されるドメインレベル サー�
 - ra-onprem-sp2016-rg
 - ra-sp2016-network-rg
 
-テンプレート パラメーター ファイルは、これらの名前を参照します。したがって、名前を変更する場合は、それに合わせてパラメーター ファイルも更新します。 
+テンプレート パラメーター ファイルは、これらの名前を参照します。したがって、名前を変更する場合は、それに合わせてパラメーター ファイルも更新します。
 
 パラメーター ファイルには、ハードコーディングされたパスワードがさまざまな場所に含まれています。 デプロイする前にこれらの値を変更します。
 
@@ -183,7 +184,7 @@ SharePoint Server 2016 の実行に使用されるドメインレベル サー�
 
 [!INCLUDE [ref-arch-prerequisites.md](../../../includes/ref-arch-prerequisites.md)]
 
-### <a name="deploy-the-solution"></a>ソリューションのデプロイ方法 
+### <a name="deployment-steps"></a>デプロイメントの手順
 
 1. シミュレートされたオンプレミス ネットワークをデプロイするには、次のコマンドを実行します。
 
@@ -203,12 +204,13 @@ SharePoint Server 2016 の実行に使用されるドメインレベル サー�
     azbb -s <subscription_id> -g ra-onprem-sp2016-rg -l <location> -p azure1.json --deploy
     ```
 
-4. フェールオーバー クラスターと可用性グループを作成するには、次のコマンドを実行します。 
+4. フェールオーバー クラスターと可用性グループを作成するには、次のコマンドを実行します。
 
     ```bash
     azbb -s <subscription_id> -g ra-onprem-sp2016-rg -l <location> -p azure2-cluster.json --deploy
+    ```
 
-5. Run the following command to deploy the remaining VMs.
+5. 次のコマンドを実行して、残りの VMをデプロイします。
 
     ```bash
     azbb -s <subscription_id> -g ra-onprem-sp2016-rg -l <location> -p azure3.json --deploy
@@ -230,7 +232,7 @@ SharePoint Server 2016 の実行に使用されるドメインレベル サー�
 
 出力は次のようになります。
 
-```powershell
+```console
 ComputerName     : 10.0.3.100
 RemoteAddress    : 10.0.3.100
 RemotePort       : 1433
@@ -239,7 +241,7 @@ SourceAddress    : 10.0.0.132
 TcpTestSucceeded : True
 ```
 
-失敗した場合は、Azure Portal を使用して、`ra-sp-sql-vm2` という名前の VM を再起動します。 VM を再起動した後、`Test-NetConnection` コマンドを再実行します。 接続の正常な確立のため、VM が再起動した後、約 1 分待機しなければならない場合があります。 
+失敗した場合は、Azure Portal を使用して、`ra-sp-sql-vm2` という名前の VM を再起動します。 VM を再起動した後、`Test-NetConnection` コマンドを再実行します。 接続の正常な確立のため、VM が再起動した後、約 1 分待機しなければならない場合があります。
 
 デプロイを次のように完了します。
 
@@ -265,17 +267,17 @@ TcpTestSucceeded : True
 
 1. [Azure Portal][azure-portal] で、`ra-onprem-sp2016-rg` リソース グループに移動します。
 
-2. リソースの一覧で、`ra-onpr-u-vm1` という名前の VM リソースを選択します。 
+2. リソースの一覧で、`ra-onpr-u-vm1` という名前の VM リソースを選択します。
 
 3. 「[仮想マシンへの接続][connect-to-vm]」の説明に従って、VM に接続します。 ユーザー名は `\onpremuser` です。
 
-5.  VM へのリモート接続が確立されたら、VM をブラウザーで開いて `http://portal.contoso.local` に移動します。
+4. VM へのリモート接続が確立されたら、VM をブラウザーで開いて `http://portal.contoso.local` に移動します。
 
-6.  **[Windows セキュリティ]** ボックスで、ユーザー名として `contoso.local\testuser` を使用して SharePoint ポータルにログオンします。
+5. **[Windows セキュリティ]** ボックスで、ユーザー名として `contoso.local\testuser` を使用して SharePoint ポータルにログオンします。
 
 このログオンは、オンプレミス ネットワークで使用される Fabrikam.com ドメインから SharePoint ポータルで使用される contoso.local ドメインにトンネリングします。 SharePoint サイトが開くと、ルート デモ サイトが表示されます。
 
-**_この参照用アーキテクチャの共同作成者_** &mdash; Joe Davies、Bob Fox、Neil Hodgkinson、Paul Stork
+"**_この参照アーキテクチャの共同作成者_**" &mdash; Joe Davies、Bob Fox、Neil Hodgkinson、Paul Stork
 
 <!-- links -->
 

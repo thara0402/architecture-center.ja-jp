@@ -1,16 +1,17 @@
 ---
-title: オンプレミス ネットワークを Azure に接続するためのソリューションを選択する
+title: オンプレミス ネットワークの Azure への接続
+titleSuffix: Azure Reference Architectures
 description: オンプレミス ネットワークを Azure に接続するための参照アーキテクチャを比較します。
 author: telmosampaio
 ms.date: 07/02/2018
-ms.openlocfilehash: a9e2a212d65530e714635bbfae3a57766e77c3a6
-ms.sourcegitcommit: 19a517a2fb70768b3edb9a7c3c37197baa61d9b5
+ms.openlocfilehash: de509b6d95805f4fc871f6dbd76a87d2c0bec6f1
+ms.sourcegitcommit: 88a68c7e9b6b772172b7faa4b9fd9c061a9f7e9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52295490"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53119916"
 ---
-# <a name="connect-an-on-premises-network-to-azure"></a>オンプレミス ネットワークの Azure への接続
+# <a name="choose-a-solution-for-connecting-an-on-premises-network-to-azure"></a>オンプレミス ネットワークを Azure に接続するためのソリューションを選択する
 
 この記事では、オンプレミス ネットワークを Azure Virtual Network (VNet) に接続するためのオプションを比較します。 各オプションには、さらに詳細な参照アーキテクチャが用意されています。
 
@@ -75,11 +76,9 @@ ms.locfileid: "52295490"
 
 - [ExpressRoute と VPN フェールオーバーを使用したハイブリッド ネットワーク](./expressroute-vpn-failover.md)
 
-
 ## <a name="hub-spoke-network-topology"></a>ハブスポーク ネットワーク トポロジ
 
 ハブスポーク ネットワーク トポロジは、ID やセキュリティなどのサービスを共有しながらワークロードを切り離す手法です。 ハブは、オンプレミス ネットワークへの主要な接続ポイントとして機能する Azure の仮想ネットワーク (VNet) です。 スポークはハブとピア接続する Vnet です。 共有サービスはハブにデプロイされ、個々のワークロードはスポークとしてデプロイされます。
-
 
 **参照アーキテクチャ**
 
