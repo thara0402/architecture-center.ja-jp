@@ -2,13 +2,13 @@
 title: Azure Databricks によるストリーム処理
 description: Azure Databricks を使用して、Azure でエンド ツー エンドのストリーム処理パイプラインを作成します
 author: petertaylor9999
-ms.date: 11/01/2018
-ms.openlocfilehash: a7e9df57572c9b3a3b0e4f418f148449aa40b04c
-ms.sourcegitcommit: 19a517a2fb70768b3edb9a7c3c37197baa61d9b5
+ms.date: 11/30/2018
+ms.openlocfilehash: 0640e900c212d2b75cc9cdd5bec3a4f7c050490d
+ms.sourcegitcommit: e7e0e0282fa93f0063da3b57128ade395a9c1ef9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52295735"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52902835"
 ---
 # <a name="stream-processing-with-azure-databricks"></a>Azure Databricks によるストリーム処理
 
@@ -269,7 +269,7 @@ StreamingMetricsListener 内のメソッドは、構造化ストリーミング 
 
 ### <a name="latency-and-throughput-for-streaming-queries"></a>ストリーミング クエリの待機時間とスループット 
 
-```
+```shell
 taxijob_CL
 | where TimeGenerated > startofday(datetime(<date>)) and TimeGenerated < endofday(datetime(<date>))
 | project  mdc_inputRowsPerSecond_d, mdc_durationms_triggerExecution_d  
@@ -277,7 +277,7 @@ taxijob_CL
 ``` 
 ### <a name="exceptions-logged-during-stream-query-execution"></a>ストリーム クエリの実行中に記録された例外
 
-```
+```shell
 taxijob_CL
 | where TimeGenerated > startofday(datetime(<date>)) and TimeGenerated < endofday(datetime(<date>))
 | where Level contains "Error" 
@@ -285,7 +285,7 @@ taxijob_CL
 
 ### <a name="accumulation-of-malformed-fare-and-ride-data"></a>形式に誤りがある料金データと乗車データの蓄積
 
-```
+```shell
 SparkMetric_CL 
 | where TimeGenerated > startofday(datetime(<date>)) and TimeGenerated < endofday(datetime(<date>))
 | render timechart 
@@ -298,7 +298,8 @@ SparkMetric_CL
 ```
 
 ### <a name="job-execution-to-trace-resiliency"></a>回復性をトレースするジョブ実行
-```
+
+```shell
 SparkMetric_CL 
 | where TimeGenerated > startofday(datetime(<date>)) and TimeGenerated < endofday(datetime(<date>))
 | render timechart 
@@ -307,11 +308,11 @@ SparkMetric_CL
 
 ## <a name="deploy-the-solution"></a>ソリューションのデプロイ方法
 
-この参照アーキテクチャのデプロイは、[GitHub](https://github.com/mspnp/reference-architectures/tree/master/data) で入手できます。 
+この参照アーキテクチャのデプロイは、[GitHub](https://github.com/mspnp/azure-databricks-streaming-analytics) で入手できます。 
 
 ### <a name="prerequisites"></a>前提条件
 
-1. [参照アーキテクチャ](https://github.com/mspnp/reference-architectures) GitHub リポジトリに ZIP ファイルを複製、フォーク、またはダウンロードします。
+1. 「[Azure Databricks によるストリーム処理](https://github.com/mspnp/azure-databricks-streaming-analytics)」GitHub リポジトリを複製、フォーク、またはダウンロードします。
 
 2. [Docker](https://www.docker.com/) をインストールして、データ ジェネレーターを実行します。
 
@@ -320,7 +321,7 @@ SparkMetric_CL
 4. [Databricks CLI](https://docs.databricks.com/user-guide/dev-tools/databricks-cli.html) をインストールします。
 
 5. コマンド プロンプト、bash プロンプト、または PowerShell プロンプトから、次のように Azure アカウントにサインインします。
-    ```
+    ```shell
     az login
     ```
 6. Java IDE と次のリソースをインストールします。
@@ -330,7 +331,7 @@ SparkMetric_CL
 
 ### <a name="download-the-new-york-city-taxi-and-neighborhood-data-files"></a>ニューヨーク市のタクシー データ ファイルと地域データ ファイルをダウンロードする
 
-1. ご自身のローカル ファイル システムで、`data/streaming_azuredatabricks` ディレクトリの下に `DataFile` という名前のディレクトリを作成します。
+1. ご自身のローカル ファイル システムで、複製された GitHub リポジトリのルートに `DataFile` という名前のディレクトリを作成します。
 
 2. Web ブラウザーを開き、 https://uofi.app.box.com/v/NYCtaxidata/folder/2332219935 に移動します。
 
@@ -341,17 +342,15 @@ SparkMetric_CL
     > [!NOTE]
     > この ZIP ファイルには、他の ZIP ファイルが含まれています。 子 ZIP ファイルは抽出しないでください。
 
-    ディレクトリ構造は次のようになります。
+    ディレクトリ構造は次のようにする必要があります。
 
-    ```
-    /data
-        /streaming_azuredatabricks
-            /DataFile
-                /FOIL2013
-                    trip_data_1.zip
-                    trip_data_2.zip
-                    trip_data_3.zip
-                    ...
+    ```shell
+    /DataFile
+        /FOIL2013
+            trip_data_1.zip
+            trip_data_2.zip
+            trip_data_3.zip
+            ...
     ```
 
 5. Web ブラウザーを開き、 https://www.zillow.com/howto/api/neighborhood-boundaries.htm に移動します。 
@@ -368,10 +367,10 @@ SparkMetric_CL
     az login
     ```
 
-2. GitHub リポジトリの `data/streaming_azuredatabricks` フォルダーに移動します。
+2. GitHub リポジトリの `azure` という名前のフォルダーに移動します。
 
     ```bash
-    cd data/streaming_azuredatabricks
+    cd azure
     ```
 
 3. 次のコマンドを実行して、Azure リソースをデプロイします。
@@ -390,7 +389,7 @@ SparkMetric_CL
 
     # Deploy resources
     az group deployment create --resource-group $resourceGroup \
-        --template-file ./azure/deployresources.json --parameters \
+        --template-file deployresources.json --parameters \
         eventHubNamespace=$eventHubNamespace \
         databricksWorkspaceName=$databricksWorkspaceName \
         cosmosDatabaseAccount=$cosmosDatabaseAccount \
@@ -439,7 +438,7 @@ SparkMetric_CL
 4. **[enter CQL command to create the table]\(テーブルを作成する CQL コマンドを入力\)** セクションで、`newyorktaxi` の横にあるテキスト ボックスに「`neighborhoodstats`」と入力します。
 
 5. 下のテキスト ボックスに、次を入力します。
-```
+```shell
 (neighborhood text, window_end timestamp, number_of_rides bigint,total_fare_amount double, primary key(neighborhood, window_end))
 ```
 6. **[スループット (1,000 - 1,000,000 RU/秒)]** テキスト ボックスに、値 `4000` を入力します。
@@ -451,17 +450,17 @@ SparkMetric_CL
 最初に、EventHub のシークレットを入力します。
 
 1. 前提条件の手順 2. でインストールした **Azure Databricks CLI** を使用して、Azure Databricks シークレット スコープを作成します。
-    ```
+    ```shell
     databricks secrets create-scope --scope "azure-databricks-job"
     ```
 2. タクシー乗車 EventHub のシークレットを追加します。
-    ```
+    ```shell
     databricks secrets put --scope "azure-databricks-job" --key "taxi-ride"
     ```
     実行されると、このコマンドによって vi エディターが開きます。 「*Azure リソースをデプロイする*」セクションの手順 4. の **eventHubs** 出力セクションに示されている **taxi-ride-eh** 値を入力します。 保存して vi を終了します。
 
 3. タクシー料金 EventHub のシークレットを追加します。
-    ```
+    ```shell
     databricks secrets put --scope "azure-databricks-job" --key "taxi-fare"
     ```
     実行されると、このコマンドによって vi エディターが開きます。 「*Azure リソースをデプロイする*」セクションの手順 4. の **eventHubs** 出力セクションに示されている **taxi-fare-eh** 値を入力します。 保存して vi を終了します。
@@ -471,13 +470,13 @@ SparkMetric_CL
 1. Azure portal を開いて、「**Azure リソースをデプロイする**」セクションの手順 3. で指定したリソース グループに移動します。 [Azure Cosmos DB アカウント] をクリックします。
 
 2. **Azure Databricks CLI** を使用して、Cosmos DB ユーザー名のシークレットを追加します。
-    ```
+    ```shell
     databricks secrets put --scope azure-databricks-job --key "cassandra-username"
     ```
 実行されると、このコマンドによって vi エディターが開きます。 「*Azure リソースをデプロイする*」セクションの手順 4. の **CosmosDb** 出力セクションに示されている **username** 値を入力します。 保存して vi を終了します。
 
 3. 次に、Cosmos DB パスワードのシークレットを追加します。
-    ```
+    ```shell
     databricks secrets put --scope azure-databricks-job --key "cassandra-password"
     ```
 
@@ -493,7 +492,7 @@ SparkMetric_CL
     dbfs mkdirs dbfs:/azure-databricks-jobs
     ```
 
-2. data/streaming_azuredatabricks/DataFile に移動し、次を入力します。
+2. `DataFile` ディレクトリに移動し、次を入力します。
     ```bash
     dbfs cp ZillowNeighborhoods-NY.zip dbfs:/azure-databricks-jobs
     ```
@@ -502,37 +501,37 @@ SparkMetric_CL
 
 このセクションでは、Log Analytics ワークスペースの ID と主キーが必要です。 ワークスペース ID は、「*Azure リソースをデプロイする*」セクションの手順 4. の **logAnalytics** 出力セクションに示されている **workspaceId** 値です。 主キーは、その出力セクションの **secret** です。 
 
-1. log4j ログ記録を構成するには、data\streaming_azuredatabricks\azure\AzureDataBricksJob\src\main\resources\com\microsoft\pnp\azuredatabricksjob\log4j.properties を開きます。 次の 2 つの値を編集します。
-    ```
+1. log4j ログ記録を構成するには、`\azure\AzureDataBricksJob\src\main\resources\com\microsoft\pnp\azuredatabricksjob\log4j.properties` を開きます。 次の 2 つの値を編集します。
+    ```shell
     log4j.appender.A1.workspaceId=<Log Analytics workspace ID>
     log4j.appender.A1.secret=<Log Analytics primary key>
     ```
 
-2. カスタム ログ記録を構成するには、data\streaming_azuredatabricks\azure\azure-databricks-monitoring\scripts\metrics.properties を開きます。 次の 2 つの値を編集します。
-    ``` 
+2. カスタム ログ記録を構成するには、`\azure\azure-databricks-monitoring\scripts\metrics.properties` を開きます。 次の 2 つの値を編集します。
+    ```shell
     *.sink.loganalytics.workspaceId=<Log Analytics workspace ID>
     *.sink.loganalytics.secret=<Log Analytics primary key>
     ```
 
 ### <a name="build-the-jar-files-for-the-databricks-job-and-databricks-monitoring"></a>Databricks ジョブおよび Databricks 監視用の .jar ファイルをビルドする
 
-1. お使いの Java IDE を使用して、**data/streaming_azuredatabricks** ディレクトリのルートにある、**pom.xml** という名前の Maven プロジェクト ファイルをインポートします。 
+1. ご自身の Java IDE を使用して、ルート ディレクトリにある、**pom.xml** という名前の Maven プロジェクト ファイルをインポートします。 
 
 2. クリーン ビルドを実行します。 このビルドの出力は、**azure-databricks-job-1.0-SNAPSHOT.jar** および **azure-databricks-monitoring-0.9.jar** という名前のファイルです。 
 
 ### <a name="configure-custom-logging-for-the-databricks-job"></a>Databricks ジョブのカスタム ログ記録を構成する
 
 1. **Databricks CLI** で次のコマンドを入力して、**azure-databricks-monitoring-0.9.jar** ファイルを Databricks ファイル システムにコピーします。
-    ```
+    ```shell
     databricks fs cp --overwrite azure-databricks-monitoring-0.9.jar dbfs:/azure-databricks-job/azure-databricks-monitoring-0.9.jar
     ```
 
-2. 次のコマンドを入力して、data\streaming_azuredatabricks\azure\azure-databricks-monitoring\scripts\metrics.properties のカスタム ログ記録プロパティを Databricks ファイル システムにコピーします。
-    ```
+2. 次のコマンドを入力して、`\azure\azure-databricks-monitoring\scripts\metrics.properties` のカスタム ログ記録プロパティを Databricks ファイル システムにコピーします。
+    ```shell
     databricks fs cp --overwrite metrics.properties dbfs:/azure-databricks-job/metrics.properties
     ```
 
-3. Databricks クラスターの名前をまだ決めていませんが、ここでそれを選択します。 お使いのクラスターの Databricks ファイル システム パスに、以下の名前を入力します。 次のコマンドを入力して、data\streaming_azuredatabricks\azure\azure-databricks-monitoring\scripts\spark.metrics の初期化スクリプトを Databricks ファイル システムにコピーします。
+3. Databricks クラスターの名前をまだ決めていませんが、ここでそれを選択します。 お使いのクラスターの Databricks ファイル システム パスに、以下の名前を入力します。 次のコマンドを入力して、`\azure\azure-databricks-monitoring\scripts\spark.metrics` の初期化スクリプトを Databricks ファイル システムにコピーします。
     ```
     databricks fs cp --overwrite spark-metrics.sh dbfs:/databricks/init/<cluster-name>/spark-metrics.sh
     ```
@@ -576,7 +575,7 @@ SparkMetric_CL
 5. **[メイン クラス]** フィールドに「**com.microsoft.pnp.TaxiCabReader**」と入力します。
 
 6. 引数フィールドに、次を入力します。
-    ```
+    ```shell
     -n jar:file:/dbfs/azure-databricks-jobs/ZillowNeighborhoods-NY.zip!/ZillowNeighborhoods-NY.shp --taxi-ride-consumer-group taxi-ride-eh-cg --taxi-fare-consumer-group taxi-fare-eh-cg --window-interval "1 minute" --cassandra-host <Cosmos DB Cassandra host name from above> 
     ``` 
 
@@ -629,11 +628,11 @@ SparkMetric_CL
 
 ### <a name="run-the-data-generator"></a>データ ジェネレーターを実行する
 
-1. GitHub リポジトリの `data/streaming_azuredatabricks/onprem` ディレクトリに移動します。
+1. GitHub リポジトリの `onprem` という名前のディレクトリに移動します。
 
 2. 次のように、**main.env** ファイル内の値を更新します。
 
-    ```
+    ```shell
     RIDE_EVENT_HUB=[Connection string for the taxi-ride event hub]
     FARE_EVENT_HUB=[Connection string for the taxi-fare event hub]
     RIDE_DATA_FILE_PATH=/DataFile/FOIL2013
@@ -648,7 +647,7 @@ SparkMetric_CL
     docker build --no-cache -t dataloader .
     ```
 
-4. 親ディレクトリ `data/stream_azuredatabricks` に戻ります。
+4. 親ディレクトリに戻ります。
 
     ```bash
     cd ..

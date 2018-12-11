@@ -3,12 +3,12 @@ title: Azure アプリケーションのディザスター リカバリー
 description: Microsoft Azure でのディザスター リカバリーに対応したアプリケーションを設計するための方法に関する技術的概要と詳細。
 author: adamglick
 ms.date: 09/12/2018
-ms.openlocfilehash: 4f879445154e37502bbeeeb90939737b6072e6ec
-ms.sourcegitcommit: 25bf02e89ab4609ae1b2eb4867767678a9480402
+ms.openlocfilehash: ff5da8a3d2612d7c122ec8ed87979eddf778dbf0
+ms.sourcegitcommit: e7e0e0282fa93f0063da3b57128ade395a9c1ef9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45584801"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52902852"
 ---
 # <a name="disaster-recovery-for-azure-applications"></a>Azure アプリケーションのディザスター リカバリー
 
