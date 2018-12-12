@@ -2,13 +2,13 @@
 title: クラウド設計パターン
 description: Microsoft Azure のクラウド設計パターン
 keywords: Azure
-ms.date: 06/23/2017
-ms.openlocfilehash: 308e9bc784fc791d04adcecaae64bf258edeb20b
-ms.sourcegitcommit: ae8a1de6f4af7a89a66a8339879843d945201f85
+ms.date: 12/10/2018
+ms.openlocfilehash: 26ee59ef15fc63bb5e823cd85f610cd9ad01177a
+ms.sourcegitcommit: 9a15af3a25f25b8730968d32cbb006434b183e18
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43326199"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53234052"
 ---
 # <a name="cloud-design-patterns"></a>クラウド設計パターン
 
@@ -104,6 +104,7 @@ ms.locfileid: "43326199"
 |              [具体化されたビュー](./materialized-view.md)              |                                        必要なクエリ操作に対してデータのフォーマットが適していない場合に、1 つ以上のデータ ストアのデータについてあらかじめデータが移入されたビューを生成します。                                        |
 |              [パイプとフィルター](./pipes-and-filters.md)              |                                                        複雑な処理を実行するタスクを、再利用できる一連の独立した要素に分解します。                                                        |
 |                 [優先順位キュー](./priority-queue.md)                 |                                 サービスに送信される要求に優先順位を設定し、優先順位の高い要求から順番に受信および処理されるようにします。                                  |
+| [パブリッシャー/サブスクライバー](./publisher-subscriber.md) | 送信側と受信側を結合せずに、アプリケーションから複数の対象コンシューマーに対して非同期的にイベントを通知できるようにします。 |
 |      [キュー ベースの負荷平準化](./queue-based-load-leveling.md)      |                                               タスクとそのタスクが呼び出すサービスとの間でバッファーとして機能するキューを使用して、断続的な大きい負荷を平準化します。                                               |
 |                          [Retry](./retry.md)                          |               予測される一時的な障害をアプリケーションが処理できるようにします。アプリケーションがサービスまたはネットワーク リソースに接続しようとする際に、失敗した操作を透過的に再試行します。                |
 |     [Scheduler エージェント スーパーバイザー](./scheduler-agent-supervisor.md)     |                                                              分散されている一連のサービスやその他のリモート リソースに対して、一連のアクションを調整します。                                                               |
