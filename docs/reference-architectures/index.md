@@ -4,21 +4,22 @@ description: Azure での一般的なワークロードに対応する、参照�
 layout: LandingPage
 ms.topic: landing-page
 ms.date: 08/30/2018
-ms.openlocfilehash: 5b117ce308fcc47cae68bb83166ada71b75f6ce7
-ms.sourcegitcommit: 7d21aec9d9de0004ac777c1d1e364f53aac2350d
+ms.openlocfilehash: efac05ff95431f9551c6fb76939dbb91cfa01d1d
+ms.sourcegitcommit: 4ba3304eebaa8c493c3e5307bdd9d723cd90b655
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2018
-ms.locfileid: "53120771"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53307019"
 ---
 # <a name="azure-reference-architectures"></a>Azure の参照アーキテクチャ
 
 これらの参照アーキテクチャは、関連するアーキテクチャをまとめてシナリオごとに配置されています。 各アーキテクチャの説明には、推奨プラクティスが、スケーラビリティ、可用性、管理性、およびセキュリティに関する考慮事項と共に含まれます。 また、ほとんどにはデプロイ可能なソリューションも含まれています。
 
-ジャンプ先: [AI](#ai-and-machine-learning) | [ビッグ データ](#big-data-solutions) | [サーバーレス](#serverless-applications) | [仮想ネットワーク](#virtual-networks) | [VM ワークロード](#vm-workloads) | [SAP](#sap) | [Web アプリ](#web-applications) | [Active Directory](#extend-on-premises-active-directory-to-azure)
+ジャンプ先:[AI](#ai-and-machine-learning) | [ビッグ データ](#big-data-solutions) | [サーバーレス](#serverless-applications) | [仮想ネットワーク](#virtual-networks) | [VM ワークロード](#vm-workloads) | [SAP](#sap) | [Web アプリ](#web-applications) | [Active Directory](#extend-on-premises-active-directory-to-azure)
 
 ## <a name="ai-and-machine-learning"></a>AI と機械学習
 
+<!-- markdownlint-disable MD033 -->
 <ul  class="panelContent cardsF">
 <!-- Batch scoring for deep learning models -->
 <li style="display: flex; flex-direction: column;">
@@ -54,6 +55,26 @@ ms.locfileid: "53120771"
                     <div class="cardText">
                         <h3>Python モデルのリアルタイム スコアリング</h3>
                         <p>通常の Python モデルまたはディープ ラーニング モデルを使用して、リアルタイムの予測を行う Web サービスとして Python モデルをデプロイします。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</li>
+<!-- Batch scoring for R models -->
+<li style="display: flex; flex-direction: column;">
+    <a href="./ai/realtime-scoring-r.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="../_images/icons/logo-r.svg" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>R 機械学習モデルを使用したリアルタイム スコアリング</h3>
+                        <p>Azure Kubernetes Service (AKS) で実行される Microsoft Machine Learning Server を使用して、R のリアルタイム予測サービスを実装します。</p>
                     </div>
                 </div>
             </div>

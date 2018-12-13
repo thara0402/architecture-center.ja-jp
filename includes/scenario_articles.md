@@ -110,11 +110,11 @@
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="./apps/media/architecture-devops-dotnet-webapp.png" height="140px" />
+                            <img src="./apps/media/architecture-devops-dotnet-webapp.svg" height="140px" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure DevOps を使用した CI/CD パイプライン</h3>
+                        <h3>Azure DevOps を使用した CI/CD パイプラインの設計</h3>
                         <p>Azure DevOps を使用して .NET アプリを構築し、Azure Web Apps にリリースします。</p>
                     </div>
                 </div>
@@ -430,7 +430,7 @@
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>規制対象業界向けのセキュリティで保護された Windows Web アプリケーション</h3>
+                        <h3>Azure 上の Windows Server を使用した、セキュリティで保護された Web アプリの構築</h3>
                         <p>スケール セット、Application Gateway、ロード バランサーを使用して、セキュリティで保護された多層 Web アプリケーションを、Azure 上の Windows Server を使用して構築します。</p>
                     </div>
                 </div>
