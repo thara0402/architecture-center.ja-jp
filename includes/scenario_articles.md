@@ -58,26 +58,7 @@
                     </div>
                     <div class="cardText">
                         <h3>Azure 上の API ベースのアーキテクチャへの、従来の Web アプリケーションの移行</h3>
-                        <p>Azure API Management を使用して、従来の Web アプリケーションを最新化します。</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </a>
-</li>
-<li style="display: flex; flex-direction: column;">
-    <a href="./apps/app-monitoring.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
-        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
-            <div class="cardPadding" style="display: flex;">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="./apps/media/architecture-app-monitoring.png" height="140px" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>Azure での Web アプリケーションの監視</h3>
-                        <p>Azure App Service でホストされる Web アプリケーションを監視します。</p>
+                        <p>Azure API Management を使用して、従来の Web アプリケーションを最新式にしています。</p>
                     </div>
                 </div>
             </div>
