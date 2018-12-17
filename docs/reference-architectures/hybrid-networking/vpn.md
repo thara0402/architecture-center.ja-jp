@@ -1,47 +1,44 @@
 ---
 title: VPN を使用した Azure へのオンプレミス ネットワークの接続
-description: VPN を使用して接続された Azure 仮想ネットワークとオンプレミス ネットワークにまたがる、セキュリティで保護されたサイト間ネットワーク アーキテクチャの実装方法。
+titleSuffix: Azure Reference Architectures
+description: VPN を使用して接続された Azure 仮想ネットワークとオンプレミス ネットワークにまたがる、セキュリティで保護されたサイト間ネットワーク アーキテクチャを実装します。
 author: RohitSharma-pnp
 ms.date: 10/22/2018
-pnp.series.title: Connect an on-premises network to Azure
-pnp.series.next: expressroute
-pnp.series.prev: ./index
-cardTitle: VPN
-ms.openlocfilehash: a494ff952dd6c8be3b38c2ca7f6740a44b5b30e1
-ms.sourcegitcommit: 19a517a2fb70768b3edb9a7c3c37197baa61d9b5
+ms.openlocfilehash: a1bb2e250cb261e1a56abfb58b099fd078c068e5
+ms.sourcegitcommit: 88a68c7e9b6b772172b7faa4b9fd9c061a9f7e9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52295669"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53120443"
 ---
 # <a name="connect-an-on-premises-network-to-azure-using-a-vpn-gateway"></a>VPN ゲートウェイを使用した Azure へのオンプレミス ネットワークの接続
 
-この参照アーキテクチャでは、サイト間の仮想プライベート ネットワーク (VPN) を使用して、オンプレミス ネットワークを Azure に拡張する方法を示します。 オンプレミス ネットワークと Azure 仮想ネットワーク (VNet) 間のトラフィックは、IPSec VPN トンネルを介して行き来します。 [**こちらのソリューションをデプロイしてください**。](#deploy-the-solution)
+この参照アーキテクチャでは、サイト間の仮想プライベート ネットワーク (VPN) を使用して、オンプレミス ネットワークを Azure に拡張する方法を示します。 オンプレミス ネットワークと Azure 仮想ネットワーク (VNet) 間のトラフィックは、IPSec VPN トンネルを介して行き来します。 [**このソリューションをデプロイします**](#deploy-the-solution)。
 
-![[0]][0]
+![オンプレミスと Azure インフラストラクチャにまたがるハイブリッド ネットワーク](./images/vpn.png)
 
 "*このアーキテクチャの [Visio ファイル][visio-download]をダウンロードします。*"
 
-## <a name="architecture"></a>アーキテクチャ 
+## <a name="architecture"></a>アーキテクチャ
 
 アーキテクチャは、次のコンポーネントで構成されます。
 
-* **オンプレミス ネットワーク**。 組織内で運用されているプライベートのローカル エリア ネットワーク。
+- **オンプレミス ネットワーク**。 組織内で運用されているプライベートのローカル エリア ネットワーク。
 
-* **VPN アプライアンス**。 オンプレミス ネットワークへの外部接続を提供するデバイスまたはサービス。 VPN アプライアンスは、ハードウェア デバイスである場合や、ソフトウェア ソリューション (Windows Server 2012 のルーティングとリモート アクセス サービス (RRAS) など) である場合があります。 サポートされている VPN アプライアンスの一覧と、Azure VPN ゲートウェイに接続するためのその構成については、[サイト間 VPN Gateway 接続用の VPN デバイス][vpn-appliance]に関するページをご覧ください。
+- **VPN アプライアンス**。 オンプレミス ネットワークへの外部接続を提供するデバイスまたはサービス。 VPN アプライアンスは、ハードウェア デバイスである場合や、ソフトウェア ソリューション (Windows Server 2012 のルーティングとリモート アクセス サービス (RRAS) など) である場合があります。 サポートされている VPN アプライアンスの一覧と、Azure VPN ゲートウェイに接続するためのその構成については、[サイト間 VPN Gateway 接続用の VPN デバイス][vpn-appliance]に関するページをご覧ください。
 
-* **仮想ネットワーク (VNet)**。 Azure VPN ゲートウェイのクラウド アプリケーションとコンポーネントは同じ [VNet][azure-virtual-network] に存在します。
+- **仮想ネットワーク (VNet)**。 Azure VPN ゲートウェイのクラウド アプリケーションとコンポーネントは同じ [VNet][azure-virtual-network] に存在します。
 
-* **Azure VPN ゲートウェイ**。 [VPN ゲートウェイ][azure-vpn-gateway] サービスを使用すると、VNet を VPN アプライアンスを介してオンプレミス ネットワークに接続できます。 詳細については、「[オンプレミス ネットワークを Microsoft Azure 仮想ネットワークに接続する][connect-to-an-Azure-vnet]」を参照してください。 VPN ゲートウェイには、次の要素が含まれています。
-  
-  * **仮想ネットワーク ゲートウェイ**。 VNet の仮想 VPN アプライアンスを提供するリソース。 オンプレミス ネットワークから VNet へのトラフィックのルーティングを行います。
-  * **ローカル ネットワーク ゲートウェイ**。 オンプレミス VPN アプライアンスの抽象化。 クラウド アプリケーションからオンプレミス ネットワークへのネットワーク トラフィックは、このゲートウェイを介してルーティングされます。
-  * **接続**。 この接続には、接続の種類 (IPSec) を指定するプロパティと、オンプレミス VPN アプライアンスとの共有キー (トラフィックの暗号化用) を指定するプロパティがあります。
-  * **ゲートウェイ サブネット**。 仮想ネットワーク ゲートウェイは独自のサブネットで保持され、以下の推奨事項セクションで説明されているさまざまな要件の対象となります。
+- **Azure VPN ゲートウェイ**。 [VPN ゲートウェイ][azure-vpn-gateway] サービスを使用すると、VNet を VPN アプライアンスを介してオンプレミス ネットワークに接続できます。 詳細については、「[オンプレミス ネットワークを Microsoft Azure 仮想ネットワークに接続する][connect-to-an-Azure-vnet]」を参照してください。 VPN ゲートウェイには、次の要素が含まれています。
 
-* **クラウド アプリケーション**。 Azure でホストされるアプリケーション。 Azure ロード バランサーを介して接続された複数のサブネットを持つ、複数の層が含まれる場合があります。 アプリケーション インフラストラクチャの詳細については、「[Windows VM ワークロードの実行][windows-vm-ra]」と「[Linux VM ワークロードの実行][linux-vm-ra]」を参照してください。
+  - **仮想ネットワーク ゲートウェイ**。 VNet の仮想 VPN アプライアンスを提供するリソース。 オンプレミス ネットワークから VNet へのトラフィックのルーティングを行います。
+  - **ローカル ネットワーク ゲートウェイ**。 オンプレミス VPN アプライアンスの抽象化。 クラウド アプリケーションからオンプレミス ネットワークへのネットワーク トラフィックは、このゲートウェイを介してルーティングされます。
+  - **接続**。 この接続には、接続の種類 (IPSec) を指定するプロパティと、オンプレミス VPN アプライアンスとの共有キー (トラフィックの暗号化用) を指定するプロパティがあります。
+  - **ゲートウェイ サブネット**。 仮想ネットワーク ゲートウェイは独自のサブネットで保持され、以下の推奨事項セクションで説明されているさまざまな要件の対象となります。
 
-* **内部ロード バランサー**:  VPN ゲートウェイからのネットワーク トラフィックは、内部ロード バランサーを介してクラウド アプリケーションにルーティングされます。 ロード バランサーは、アプリケーションのフロントエンドのサブネットに配置されます。
+- **クラウド アプリケーション**。 Azure でホストされるアプリケーション。 Azure ロード バランサーを介して接続された複数のサブネットを持つ、複数の層が含まれる場合があります。 アプリケーション インフラストラクチャの詳細については、「[Windows VM ワークロードの実行][windows-vm-ra]」と「[Linux VM ワークロードの実行][linux-vm-ra]」を参照してください。
+
+- **内部ロード バランサー**:  VPN ゲートウェイからのネットワーク トラフィックは、内部ロード バランサーを介してクラウド アプリケーションにルーティングされます。 ロード バランサーは、アプリケーションのフロントエンドのサブネットに配置されます。
 
 ## <a name="recommendations"></a>Recommendations
 
@@ -56,12 +53,11 @@ ms.locfileid: "52295669"
 1. VNet のアドレス空間の変数ビットを、ゲートウェイ サブネットで使用されているビットまで 1 に設定し、残りのビットを 0 に設定します。
 2. 結果のビットを 10 進数に変換し、プレフィックス長をゲートウェイ サブネットのサイズに設定して、その 10 進数をアドレス空間として表現します。
 
-たとえば、IP アドレス範囲が 10.20.0.0/16 の VNet については、上の手順 1. を適用すると、10.20.0b11111111.0b11100000 になります。  これを 10 進数に変換し、アドレス空間として表現すると、10.20.255.224/27 が生成されます。 
+たとえば、IP アドレス範囲が 10.20.0.0/16 の VNet については、上の手順 1. を適用すると、10.20.0b11111111.0b11100000 になります。  これを 10 進数に変換し、アドレス空間として表現すると、10.20.255.224/27 が生成されます。
 
 > [!WARNING]
 > VM をゲートウェイ サブネットにデプロイしないでください。 また、NSG をこのサブネットに割り当てないでください。割り当てると、ゲートウェイが機能しなくなります。
-> 
-> 
+>
 
 ### <a name="virtual-network-gateway"></a>仮想ネットワーク ゲートウェイ
 
@@ -77,15 +73,13 @@ ms.locfileid: "52295669"
 
 > [!NOTE]
 > ゲートウェイを作成したら、ゲートウェイを削除して再作成しない限り、ゲートウェイの種類を変更することはできません。
-> 
-> 
+>
 
 ご自分のスループット要件に最も合致する Azure VPN ゲートウェイ SKU を選択します。 詳細については、「[ゲートウェイの SKU][azure-gateway-skus]」を参照してください
 
 > [!NOTE]
 > Basic SKU は、Azure ExpressRoute と互換性がありません。 ゲートウェイの作成後、[SKU を変更][changing-SKUs]できます。
-> 
-> 
+>
 
 料金は、ゲートウェイがプロビジョニングされ、利用可能になっている時間に基づいて発生します。 「[VPN Gateway の価格][azure-gateway-charges]」を参照してください。
 
@@ -103,9 +97,9 @@ Azure VNet のアドレスに向けた要求が VPN デバイスに転送され�
 
 接続をテストして、次の点を確認してください。
 
-* トラフィックが Azure VPN ゲートウェイを介してクラウド アプリケーションに到達するように、オンプレミス VPN アプライアンスによって正しくルーティングしている。
-* トラフィックがオンプレミス ネットワークに戻るように、VNet によって正しくルーティングされている。
-* 両方向の禁止されたトラフィックが、正しくブロックされている。
+- トラフィックが Azure VPN ゲートウェイを介してクラウド アプリケーションに到達するように、オンプレミス VPN アプライアンスによって正しくルーティングしている。
+- トラフィックがオンプレミス ネットワークに戻るように、VNet によって正しくルーティングされている。
+- 両方向の禁止されたトラフィックが、正しくブロックされている。
 
 ## <a name="scalability-considerations"></a>スケーラビリティに関する考慮事項
 
@@ -123,7 +117,7 @@ VNet でオンプレミスの Active Directory ドメイン コントローラ�
 
 組織に複数のオンプレミス サイトがある場合は、1 つ以上の Azure VNet への[マルチサイト接続][vpn-gateway-multi-site]を作成します。 このアプローチには、動的 (ルート ベース) のルーティングが必要です。したがって、オンプレミス VPN ゲートウェイがこの機能をサポートしていることを確認してください。
 
-サービス レベル アグリーメントの詳細については、「[VPN Gateway のSLA][sla-for-vpn-gateway]」を参照してください。 
+サービス レベル アグリーメントの詳細については、「[VPN Gateway のSLA][sla-for-vpn-gateway]」を参照してください。
 
 ## <a name="manageability-considerations"></a>管理容易性に関する考慮事項
 
@@ -133,7 +127,7 @@ VNet でオンプレミスの Active Directory ドメイン コントローラ�
 
 Azure Portal で使用できる監査ログを使用して、Azure VPN ゲートウェイの操作ログを監視します。 ローカル ネットワーク ゲートウェイ、Azure ネットワーク ゲートウェイ、および接続に対して個別のログを使用できます。 この情報は、ゲートウェイに対する変更の追跡に使用でき、前に機能していたゲートウェイの動作が何らかの理由で停止した場合に役立ちます。
 
-![[2]][2]
+![Azure portal の監査ログ](../_images/guidance-hybrid-network-vpn/audit-logs.png)
 
 接続を監視し、接続エラー イベントを追跡します。 この情報は、[Nagios][nagios] などの監視パッケージを使用して取得し、レポートすることができます。
 
@@ -143,8 +137,7 @@ VPN ゲートウェイごとに別の共有キーを生成します。 強力な
 
 > [!NOTE]
 > 現在、Azure VPN ゲートウェイのキーを事前共有するために、Azure Key Vault を使用することはできません。
-> 
-> 
+>
 
 オンプレミスの VPN アプライアンスによって、[Azure VPN ゲートウェイと互換性のある][vpn-appliance-ipsec]暗号化方式が使用されていることを確認してください。 ポリシー ベースのルーティングでは、Azure VPN ゲートウェイは、AES256、AES128、および 3DES 暗号化アルゴリズムをサポートしています。 ルート ベースのゲートウェイは、AES256 および 3DES をサポートしています。
 
@@ -154,11 +147,9 @@ VNet のアプリケーションがインターネットにデータを送信す
 
 > [!NOTE]
 > 強制トンネリングは、Azure サービス (Storage サービスなど) と Windows ライセンス マネージャーへの接続に影響を与える場合があります。
-> 
-> 
+>
 
-
-## <a name="troubleshooting"></a>トラブルシューティング 
+## <a name="troubleshooting"></a>トラブルシューティング
 
 一般的な VPN 関連エラーのトラブルシューティングに関する全般的な情報については、「[Troubleshooting common VPN related errors (一般的な VPN 関連エラーのトラブルシューティング)][troubleshooting-vpn-errors]」を参照してください。
 
@@ -176,7 +167,7 @@ VNet のアプリケーションがインターネットにデータを送信す
 
         - Inability to connect, possibly due to an incorrect IP address specified for the Azure VPN gateway in the RRAS VPN network interface configuration.
 
-        ```
+        ```console
         EventID            : 20111
         MachineName        : on-prem-vm
         Data               : {41, 3, 0, 0}
@@ -208,7 +199,7 @@ VNet のアプリケーションがインターネットにデータを送信す
 
         - The wrong shared key being specified in the RRAS VPN network interface configuration.
 
-        ```
+        ```console
         EventID            : 20111
         MachineName        : on-prem-vm
         Data               : {233, 53, 0, 0}
@@ -232,15 +223,15 @@ VNet のアプリケーションがインターネットにデータを送信す
         Container          :
         ```
 
-    次の PowerShell コマンドを使用して、RRAS サービスを介した接続試行に関するイベント ログ情報を入手することもできます。 
+    次の PowerShell コマンドを使用して、RRAS サービスを介した接続試行に関するイベント ログ情報を入手することもできます。
 
-    ```
+    ```powershell
     Get-EventLog -LogName Application -Source RasClient | Format-List -Property *
     ```
 
     接続で障害が発生した場合、このログには、次のようなエラーが含まれます。
 
-    ```
+    ```console
     EventID            : 20227
     MachineName        : on-prem-vm
     Data               : {}
@@ -264,13 +255,13 @@ VNet のアプリケーションがインターネットにデータを送信す
 
     VPN アプライアンスによって、Azure VPN Gateway を介したトラフィックが正しくルーティングされていない可能性があります。 [PsPing][psping] などのツールを使用して、VPN ゲートウェイを介した接続とルーティングを確認してください。 たとえば、オンプレミスのマシンから VNet にある Web サーバーへの接続をテストするには、次のコマンドを実行します (`<<web-server-address>>` を Web サーバーのアドレスで置き換えてください)。
 
-    ```
+    ```console
     PsPing -t <<web-server-address>>:80
     ```
 
     オンプレミスのマシンがトラフィックを Web サーバーにルーティングできる場合は、次のような出力が表示されます。
 
-    ```
+    ```console
     D:\PSTools>psping -t 10.20.0.5:80
 
     PsPing v2.01 - PsPing - ping, latency, bandwidth measurement utility
@@ -290,7 +281,7 @@ VNet のアプリケーションがインターネットにデータを送信す
 
     オンプレミスのマシンが指定した接続先と通信できない場合は、次のようなメッセージが表示されます。
 
-    ```
+    ```console
     D:\PSTools>psping -t 10.20.1.6:80
 
     PsPing v2.01 - PsPing - ping, latency, bandwidth measurement utility
@@ -320,7 +311,7 @@ VNet のアプリケーションがインターネットにデータを送信す
 
     Azure VPN ゲートウェイによって保存されている共有キーを表示するには、次の Azure CLI コマンドを使用します。
 
-    ```
+    ```azurecli
     azure network vpn-connection shared-key show <<resource-group>> <<vpn-connection-name>>
     ```
 
@@ -330,13 +321,13 @@ VNet のアプリケーションがインターネットにデータを送信す
 
     サブネットを詳細を表示するには、次の Azure CLI コマンドを使用します。
 
-    ```
+    ```azurecli
     azure network vnet subnet show -g <<resource-group>> -e <<vnet-name>> -n GatewaySubnet
     ```
 
     *Network Security Group id* という名前のデータ フィールドがないことを確認します。次の例は、割り当られた NSG (*VPN-Gateway-Group*) を持つ *GatewaySubnet* のインスタンスの結果を示しています。 この場合、この NSG に対してルールが定義されていると、ゲートウェイは正しく動作できなくなる可能性があります。
 
-    ```
+    ```console
     C:\>azure network vnet subnet show -g profx-prod-rg -e profx-vnet -n GatewaySubnet
         info:    Executing command network vnet subnet show
         + Looking up virtual network "profx-vnet"
@@ -353,7 +344,7 @@ VNet のアプリケーションがインターネットにデータを送信す
 
     こうした仮想マシンを含むサブネットに関連付けられているすべての NSG ルールを確認します。 すべての NSG ルールを表示するには、次の Azure CLI コマンドを使用します。
 
-    ```
+    ```azurecli
     azure network nsg show -g <<resource-group>> -n <<nsg-name>>
     ```
 
@@ -361,13 +352,13 @@ VNet のアプリケーションがインターネットにデータを送信す
 
     次の Azure PowerShell コマンドを使用すると、Azure VPN 接続の現在の状態を確認できます。 `<<connection-name>>` パラメーターは、仮想ネットワーク ゲートウェイとローカル ゲートウェイをリンクする Azure VPN 接続の名前です。
 
-    ```
+    ```powershell
     Get-AzureRmVirtualNetworkGatewayConnection -Name <<connection-name>> - ResourceGroupName <<resource-group>>
     ```
 
     次のスニペットは、ゲートウェイが接続されている場合 (最初の例)、および切断されている場合 (2 番目の例) に生成される出力を示しています。
 
-    ```
+    ```powershell
     PS C:\> Get-AzureRmVirtualNetworkGatewayConnection -Name profx-gateway-connection -ResourceGroupName profx-prod-rg
 
     AuthorizationKey           :
@@ -385,7 +376,7 @@ VNet のアプリケーションがインターネットにデータを送信す
     ...
     ```
 
-    ```
+    ```powershell
     PS C:\> Get-AzureRmVirtualNetworkGatewayConnection -Name profx-gateway-connection2 -ResourceGroupName profx-prod-rg
 
     AuthorizationKey           :
@@ -411,11 +402,11 @@ VNet のアプリケーションがインターネットにデータを送信す
 
     これを確認する方法は、オンプレミスで実行されている VPN アプライアンスによって異なります。 たとえば、Windows Server 2012 で RRAS を使用している場合は、パフォーマンス モニターを使用して、VPN 接続経由で送受信されているデータ量を追跡できます。 *RAS Total* オブジェクトを使用して、*Bytes Received/Sec* と *Bytes Transmitted/Sec* のカウンターを選択します。
 
-    ![[3]][3]
+    ![VPN ネットワーク トラフィックを監視するパフォーマンス カウンター](../_images/guidance-hybrid-network-vpn/RRAS-perf-counters.png)
 
     結果を、VPN ゲートウェイで使用できる帯域幅 (100 Mbps (Basic SKU の場合) から 1.25 Gbps (VpnGw3 SKU の場合)) と比較します。
 
-    ![[4]][4]
+    ![VPN ネットワーク パフォーマンス グラフの例](../_images/guidance-hybrid-network-vpn/RRAS-perf-graph.png)
 
 - **アプリケーションの負荷に対して適切な数およびサイズの VM がデプロイされていることを確認する。**
 
@@ -427,21 +418,22 @@ VNet のアプリケーションがインターネットにデータを送信す
 
 ## <a name="deploy-the-solution"></a>ソリューションのデプロイ方法
 
-
-**前提条件。** 既存のオンプレミス インフラストラクチャが、適切なネットワーク アプライアンスで既に構成されている必要があります。
+**前提条件**。 既存のオンプレミス インフラストラクチャが、適切なネットワーク アプライアンスで既に構成されている必要があります。
 
 ソリューションをデプロイするには、次の手順を実行します。
 
+<!-- markdownlint-disable MD033 -->
+
 1. 下記のボタンをクリックします。<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmspnp%2Freference-architectures%2Fmaster%2Fhybrid-networking%2Fvpn%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
-2. Azure ポータルでリンクが開くのを待った後、次の手順に従います。 
-   * **リソース グループ**の名前はパラメーター ファイルで既に定義されているため、**[新規作成]** を選択し、テキスト ボックスに「`ra-hybrid-vpn-rg`」と入力します。
-   * **[場所]** ボックスの一覧でリージョンを選択します。
-   * **[Template Root Uri (テンプレート ルート URI)]** または **[Parameter Root Uri (パラメーター ルート URI)]** ボックスは編集しないでください。
-   * 使用条件を確認し、**[上記の使用条件に同意する]** チェック ボックスをオンにします。
-   * **[購入]** ボタンをクリックします。
+2. Azure ポータルでリンクが開くのを待った後、次の手順に従います。
+   - **リソース グループ**の名前はパラメーター ファイルで既に定義されているため、**[新規作成]** を選択し、テキスト ボックスに「`ra-hybrid-vpn-rg`」と入力します。
+   - **[場所]** ボックスの一覧でリージョンを選択します。
+   - **[Template Root Uri (テンプレート ルート URI)]** または **[Parameter Root Uri (パラメーター ルート URI)]** ボックスは編集しないでください。
+   - 使用条件を確認し、**[上記の使用条件に同意する]** チェック ボックスをオンにします。
+   - **[購入]** ボタンをクリックします。
 3. デプロイが完了するまで待ちます。
 
-
+<!-- markdownlint-enable MD033 -->
 
 <!-- links -->
 
@@ -489,7 +481,3 @@ VNet のアプリケーションがインターネットにデータを送信す
 [virtualNetworkGateway-parameters]: https://github.com/mspnp/hybrid-networking/vpn/parameters/virtualNetworkGateway.parameters.json
 [azure-cli]: https://azure.microsoft.com/documentation/articles/xplat-cli-install/
 [CIDR]: https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing
-[0]: ./images/vpn.png "オンプレミスと Azure インフラストラクチャにまたがるハイブリッド ネットワーク"
-[2]: ../_images/guidance-hybrid-network-vpn/audit-logs.png "Azure Portal の監査ログ"
-[3]: ../_images/guidance-hybrid-network-vpn/RRAS-perf-counters.png "VPN ネットワーク トラフィックを監視するパフォーマンス カウンター"
-[4]: ../_images/guidance-hybrid-network-vpn/RRAS-perf-graph.png "VPN ネットワーク パフォーマンス グラフの例"

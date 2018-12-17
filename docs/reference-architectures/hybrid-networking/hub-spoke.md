@@ -1,58 +1,59 @@
 ---
 title: Azure にハブスポーク ネットワーク トポロジを実装する
-description: Azure にハブスポーク ネットワーク トポロジを実装する方法。
+titleSuffix: Azure Reference Architectures
+description: Azure にハブスポーク ネットワーク トポロジを実装します。
 author: telmosampaio
 ms.date: 10/08/2018
+ms.custom: seodec18
 pnp.series.title: Implement a hub-spoke network topology in Azure
 pnp.series.prev: expressroute
-ms.openlocfilehash: e14abb5526b6ecd8637fb89c4ef7154d3b26f7a4
-ms.sourcegitcommit: dbbf914757b03cdee7a274204f9579fa63d7eed2
+ms.openlocfilehash: 23821353fe943d3e389ed89ca26b946ff6afeed3
+ms.sourcegitcommit: 88a68c7e9b6b772172b7faa4b9fd9c061a9f7e9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50916347"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53120304"
 ---
 # <a name="implement-a-hub-spoke-network-topology-in-azure"></a>Azure にハブスポーク ネットワーク トポロジを実装する
 
-この参照アーキテクチャでは、Azure にハブスポーク トポロジを実装する方法を示します。 *ハブ*は、オンプレミス ネットワークへの主要な接続ポイントとして機能する Azure の仮想ネットワーク (VNet) です。 *スポーク*は、ハブとピアリングする VNet であり、ワークロードを分離するために使用できます。 トラフィックは、ExpressRoute または VPN ゲートウェイ接続を経由してオンプレミスのデータセンターとハブの間を流れます。  [**このソリューションをデプロイします**](#deploy-the-solution)。
+この参照アーキテクチャでは、Azure にハブスポーク トポロジを実装する方法を示します。 *ハブ*は、オンプレミス ネットワークへの主要な接続ポイントとして機能する Azure の仮想ネットワーク (VNet) です。 *スポーク*は、ハブとピアリングする VNet であり、ワークロードを分離するために使用できます。 トラフィックは、ExpressRoute または VPN ゲートウェイ接続を経由してオンプレミスのデータセンターとハブの間を流れます。 [**このソリューションをデプロイします**](#deploy-the-solution)。
 
 ![[0]][0]
 
 *このアーキテクチャの [Visio ファイル][visio-download]をダウンロードします。*
 
-
 このトポロジの利点は次のとおりです。
 
-* **コストの削減**: 複数のワークロードを共有するサービス (ネットワーク仮想アプライアンス (NVA) や DNS サーバーなど) を 1 か所に集めます。
-* **サブスクリプション数の上限の解消**: 中央のハブに別のサブスクリプションから VNet をピアリングします。
-* **問題の分離**: 中央の IT (SecOps、InfraOps) とワークロード (DevOps) の間で実施します。
+- **コストの削減**: 複数のワークロードを共有するサービス (ネットワーク仮想アプライアンス (NVA) や DNS サーバーなど) を 1 か所に集めます。
+- **サブスクリプション数の上限の解消**: 中央のハブに別のサブスクリプションから VNet をピアリングします。
+- **問題の分離**: 中央の IT (SecOps、InfraOps) とワークロード (DevOps) の間で実施します。
 
 このアーキテクチャの一般的な用途は次のとおりです。
 
-* DNS、IDS、NTP、AD DS などの共有サービスを必要とするさまざまな環境 (開発、テスト、運用など) でデプロイされるワークロード。 共有サービスはハブ VNet に配置され、分離性を維持するために各環境はスポークにデプロイされます。
-* 相互接続が不要であり、共有サービスへのアクセスは必要なワークロード。
-* セキュリティ要素 (DMZ としてのハブのファイアウォールなど) の一元管理、および各スポークにおけるワークロードの分別管理が必要なエンタープライズ。
+- DNS、IDS、NTP、AD DS などの共有サービスを必要とするさまざまな環境 (開発、テスト、運用など) でデプロイされるワークロード。 共有サービスはハブ VNet に配置され、分離性を維持するために各環境はスポークにデプロイされます。
+- 相互接続が不要であり、共有サービスへのアクセスは必要なワークロード。
+- セキュリティ要素 (DMZ としてのハブのファイアウォールなど) の一元管理、および各スポークにおけるワークロードの分別管理が必要なエンタープライズ。
 
 ## <a name="architecture"></a>アーキテクチャ
 
 アーキテクチャは、次のコンポーネントで構成されます。
 
-* **オンプレミス ネットワーク**。 組織内で実行されているプライベートなローカル エリア ネットワークです。
+- **オンプレミス ネットワーク**。 組織内で実行されているプライベートなローカル エリア ネットワークです。
 
-* **VPN デバイス**。 オンプレミス ネットワークへの外部接続を提供するデバイスまたはサービスです。 VPN デバイスには、ハードウェア デバイス、または Windows Server 2012 のルーティングとリモート アクセス サービス (RRAS) などのソフトウェア ソリューションがあります。 サポート対象の VPN アプライアンスの一覧と選択した VPN アプライアンスを Azure に接続するための構成については、「[サイト間 VPN ゲートウェイ接続用の VPN デバイスと IPsec/IKE パラメーターについて][vpn-appliance]」をご覧ください。
+- **VPN デバイス**。 オンプレミス ネットワークへの外部接続を提供するデバイスまたはサービスです。 VPN デバイスには、ハードウェア デバイス、または Windows Server 2012 のルーティングとリモート アクセス サービス (RRAS) などのソフトウェア ソリューションがあります。 サポート対象の VPN アプライアンスの一覧と選択した VPN アプライアンスを Azure に接続するための構成については、「[サイト間 VPN ゲートウェイ接続用の VPN デバイスと IPsec/IKE パラメーターについて][vpn-appliance]」をご覧ください。
 
-* **VPN 仮想ネットワーク ゲートウェイまたは ExpressRoute ゲートウェイ**。 仮想ネットワーク ゲートウェイでは、オンプレミス ネットワークとの接続に使用する VPN デバイス (ExpressRoute 回線) に VNet を接続できます。 詳しくは、「[Connect an on-premises network to a Microsoft Azure virtual network][connect-to-an-Azure-vnet]」(Microsoft Azure 仮想ネットワークにオンプレミス ネットワークを接続する) をご覧ください。
+- **VPN 仮想ネットワーク ゲートウェイまたは ExpressRoute ゲートウェイ**。 仮想ネットワーク ゲートウェイでは、オンプレミス ネットワークとの接続に使用する VPN デバイス (ExpressRoute 回線) に VNet を接続できます。 詳しくは、「[Connect an on-premises network to a Microsoft Azure virtual network][connect-to-an-Azure-vnet]」(Microsoft Azure 仮想ネットワークにオンプレミス ネットワークを接続する) をご覧ください。
 
 > [!NOTE]
 > この参照アーキテクチャのデプロイ スクリプトでは、VPN ゲートウェイを使用して接続し、Azure の VNet を使用してオンプレミス ネットワークをシミュレートします。
 
-* **ハブ VNet**。 ハブスポーク トポロジのハブとして使用する Azure VNet。 ハブは、オンプレミス ネットワークへの主要な接続ポイントであり、スポーク VNet でホストされるさまざまなワークロードによって消費できるサービスをホストする場所です。
+- **ハブ VNet**。 ハブスポーク トポロジのハブとして使用する Azure VNet。 ハブは、オンプレミス ネットワークへの主要な接続ポイントであり、スポーク VNet でホストされるさまざまなワークロードによって消費できるサービスをホストする場所です。
 
-* **ゲートウェイ サブネット**。 仮想ネットワーク ゲートウェイは、同じサブネット内に保持されます。
+- **ゲートウェイ サブネット**。 仮想ネットワーク ゲートウェイは、同じサブネット内に保持されます。
 
-* **スポーク VNet**。 ハブスポーク トポロジでスポークとして使用される 1 つ以上の Azure VNet です。 スポークを使用すると、独自の VNet にワークロードを分離して、その他のスポークから個別に管理できます。 各ワークロードには複数の階層が含まれる場合があります。これらの階層には、Azure ロード バランサーを使用して接続されている複数のサブネットがあります。 アプリケーション インフラストラクチャについて詳しくは、「[Running Windows VM workloads][windows-vm-ra]」(Windows VM ワークロードを実行する) および「[Running Linux VM workloads][linux-vm-ra]」(Linux VM ワークロードを実行する) をご覧ください。
+- **スポーク VNet**。 ハブスポーク トポロジでスポークとして使用される 1 つ以上の Azure VNet です。 スポークを使用すると、独自の VNet にワークロードを分離して、その他のスポークから個別に管理できます。 各ワークロードには複数の階層が含まれる場合があります。これらの階層には、Azure ロード バランサーを使用して接続されている複数のサブネットがあります。 アプリケーション インフラストラクチャについて詳しくは、「[Running Windows VM workloads][windows-vm-ra]」(Windows VM ワークロードを実行する) および「[Running Linux VM workloads][linux-vm-ra]」(Linux VM ワークロードを実行する) をご覧ください。
 
-* **VNet ピアリング**。 [ピアリング接続][vnet-peering]を使用して、2 つの VNet を接続できます。 ピアリング接続は、VNet 間の待機時間の短い非推移的な接続です。 ピアリングが完了すると、VNet は、ルーターがなくても Azure のバックボーンを使用してトラフィックを交換します。 ハブスポーク ネットワーク トポロジでは、VNet ピアリングを使用して、ハブを各スポークに接続します。 同じリージョンまたは異なるリージョンの仮想ネットワークをピアリングできます。 詳細については、「[要件と制約][vnet-peering-requirements]」を参照してください。
+- **VNet ピアリング**。 [ピアリング接続][vnet-peering]を使用して、2 つの VNet を接続できます。 ピアリング接続は、VNet 間の待機時間の短い非推移的な接続です。 ピアリングが完了すると、VNet は、ルーターがなくても Azure のバックボーンを使用してトラフィックを交換します。 ハブスポーク ネットワーク トポロジでは、VNet ピアリングを使用して、ハブを各スポークに接続します。 同じリージョンまたは異なるリージョンの仮想ネットワークをピアリングできます。 詳細については、「[要件と制約][vnet-peering-requirements]」を参照してください。
 
 > [!NOTE]
 > この記事で説明するのは [Resource Manager](/azure/azure-resource-manager/resource-group-overview) のデプロイのみですが、クラシック VNet を同じサブスクリプションの Resource Manager VNet に接続することもできます。 これにより、クラシック デプロイ をスポークでホストして、ハブで共有するサービスのメリットを引き続き得ることができます。
@@ -63,7 +64,7 @@ ms.locfileid: "50916347"
 
 ### <a name="resource-groups"></a>リソース グループ
 
-ハブ VNet と各スポーク VNet は異なるリソース グループに実装でき、異なるサブスクリプションに実装することさえできます。 異なるサブスクリプションに属する仮想ネットワークをピアリングする場合、両方のサブスクリプションを同じまたは異なる Azure Active Directory テナントに関連付けることができます。 これにより、各ワークロードを分散管理し、サービスの共有はハブ VNet で維持できます。 
+ハブ VNet と各スポーク VNet は異なるリソース グループに実装でき、異なるサブスクリプションに実装することさえできます。 異なるサブスクリプションに属する仮想ネットワークをピアリングする場合、両方のサブスクリプションを同じまたは異なる Azure Active Directory テナントに関連付けることができます。 これにより、各ワークロードを分散管理し、サービスの共有はハブ VNet で維持できます。
 
 ### <a name="vnet-and-gatewaysubnet"></a>VNet と GatewaySubnet
 
@@ -76,7 +77,7 @@ ms.locfileid: "50916347"
 
 高可用性を確保するために、ExpressRoute に加えてフェールオーバー用の VPN を使用できます。 「[Connect an on-premises network to Azure using ExpressRoute with VPN failover][hybrid-ha]」(ExpressRoute と VPN フェールオーバーを使用してオンプレミス ネットワークを Azure に接続する) をご覧ください。
 
-オンプレミス ネットワークに接続する必要がない場合は、ゲートウェイを設定せずにハブスポーク トポロジを使用することもできます。 
+オンプレミス ネットワークに接続する必要がない場合は、ゲートウェイを設定せずにハブスポーク トポロジを使用することもできます。
 
 ### <a name="vnet-peering"></a>VNET ピアリング
 
@@ -86,9 +87,9 @@ VNet ピアリングは、2 つの VNet 間の非推移的な関係です。 相
 
 リモート ネットワークと通信するハブ VNet ゲートウェイを使用するようにスポークを構成することもできます。 ゲートウェイ トラフィックをスポークからハブに流して、リモート ネットワークに接続するには、次の手順を実行する必要があります。
 
-  - **ゲートウェイ トランジットを許可する**ようにハブで VNet ピアリング接続を構成します。
-  - **リモート ゲートウェイを使用する**ように各スポークで VNet ピアリング接続を構成します。
-  - **転送されたトラフィックを許可する**ようにすべての VNet ピアリング接続を構成します。
+- **ゲートウェイ トランジットを許可する**ようにハブで VNet ピアリング接続を構成します。
+- **リモート ゲートウェイを使用する**ように各スポークで VNet ピアリング接続を構成します。
+- **転送されたトラフィックを許可する**ようにすべての VNet ピアリング接続を構成します。
 
 ## <a name="considerations"></a>考慮事項
 
@@ -135,7 +136,7 @@ Azure の [VNet ごとの VNet ピアリング数の制限][vnet-peering-limit]�
 
 2. `onprem.json` ファイルを開きます。 `adminUsername` および `adminPassword` の値を置き換えます。
 
-    ```bash
+    ```json
     "adminUsername": "<user name>",
     "adminPassword": "<password>",
     ```
@@ -156,7 +157,7 @@ Azure の [VNet ごとの VNet ピアリング数の制限][vnet-peering-limit]�
 
 1. `hub-vnet.json` ファイルを開きます。 `adminUsername` および `adminPassword` の値を置き換えます。
 
-    ```bash
+    ```json
     "adminUsername": "<user name>",
     "adminPassword": "<password>",
     ```
@@ -165,7 +166,7 @@ Azure の [VNet ごとの VNet ピアリング数の制限][vnet-peering-limit]�
 
 3. `sharedKey` の両方のインスタンスを見つけ、VPN 接続の共有キーを入力します。 値は一致する必要があります。
 
-    ```bash
+    ```json
     "sharedKey": "",
     ```
 
@@ -192,6 +193,7 @@ Azure の [VNet ごとの VNet ピアリング数の制限][vnet-peering-limit]�
    ```powershell
    Test-NetConnection 10.0.0.68 -CommonTCPPort RDP
    ```
+
 出力は次のようになります。
 
 ```powershell
@@ -216,7 +218,7 @@ TcpTestSucceeded : True
 
 4. `ping` コマンドを使用して、ハブ VNet のジャンプボックス VM への接続をテストします。
 
-   ```bash
+   ```shell
    ping 10.0.0.68
    ```
 
@@ -226,7 +228,7 @@ TcpTestSucceeded : True
 
 1. `spoke1.json` ファイルを開きます。 `adminUsername` および `adminPassword` の値を置き換えます。
 
-    ```bash
+    ```json
     "adminUsername": "<user name>",
     "adminPassword": "<password>",
     ```
@@ -238,7 +240,7 @@ TcpTestSucceeded : True
    ```bash
    azbb -s <subscription_id> -g spoke1-vnet-rg -l <location> -p spoke1.json --deploy
    ```
-  
+
 4. `spoke2.json` ファイルに対して手順 1. ～ 2. を繰り返します。
 
 5. 次のコマンドを実行します。
@@ -276,11 +278,11 @@ Linux VM を使用して、シミュレートされたオンプレミスの環�
 
 1. Azure Portal を使用して、`onprem-jb-rg` リソース グループで `jb-vm1` という名前の VM を見つけます。
 
-2. `Connect` をクリックし、ポータルに表示されている `ssh` コマンドをコピーします。 
+2. `Connect` をクリックし、ポータルに表示されている `ssh` コマンドをコピーします。
 
 3. Linux プロンプトから `ssh` を実行して、シミュレートされたオンプレミスの環境に接続します。 `onprem.json` パラメーター ファイルで指定したパスワードを使用します。
 
-5. `ping` コマンドを使用して、各スポーク内のジャンプボックス VM への接続をテストします。
+4. `ping` コマンドを使用して、各スポーク内のジャンプボックス VM への接続をテストします。
 
    ```bash
    ping 10.1.0.68
@@ -293,7 +295,7 @@ Linux VM を使用して、シミュレートされたオンプレミスの環�
 
 1. `hub-nva.json` ファイルを開きます。 `adminUsername` および `adminPassword` の値を置き換えます。
 
-    ```bash
+    ```json
     "adminUsername": "<user name>",
     "adminPassword": "<password>",
     ```
@@ -322,9 +324,9 @@ Linux VM を使用して、シミュレートされたオンプレミスの環�
 [vnet-peering-requirements]: /azure/virtual-network/virtual-network-manage-peering#requirements-and-constraints
 [vpn-appliance]: /azure/vpn-gateway/vpn-gateway-about-vpn-devices
 [windows-vm-ra]: ../virtual-machines-windows/index.md
-
 [visio-download]: https://archcenter.blob.core.windows.net/cdn/hybrid-network-hub-spoke.vsdx
 [ref-arch-repo]: https://github.com/mspnp/reference-architectures
+
 [0]: ./images/hub-spoke.png "Azure のハブスポーク トポロジ"
 [1]: ./images/hub-spoke-gateway-routing.svg "Azure のハブスポーク トポロジと推移的なルーティング"
 [2]: ./images/hub-spoke-no-gateway-routing.svg "Azure のハブスポーク トポロジと NVA を使用した推移的なルーティング"

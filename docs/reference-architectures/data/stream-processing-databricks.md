@@ -1,22 +1,24 @@
 ---
 title: Azure Databricks によるストリーム処理
-description: Azure Databricks を使用して、Azure でエンド ツー エンドのストリーム処理パイプラインを作成します
+titleSuffix: Azure Reference Architectures
+description: Azure Databricks を使用して、Azure でエンド ツー エンドのストリーム処理パイプラインを作成します。
 author: petertaylor9999
 ms.date: 11/30/2018
-ms.openlocfilehash: 0640e900c212d2b75cc9cdd5bec3a4f7c050490d
-ms.sourcegitcommit: e7e0e0282fa93f0063da3b57128ade395a9c1ef9
+ms.custom: seodec18
+ms.openlocfilehash: 822a3c448dcc2bdd4ae77ef2a2b7a9ffad633440
+ms.sourcegitcommit: 88a68c7e9b6b772172b7faa4b9fd9c061a9f7e9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52902835"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53120324"
 ---
-# <a name="stream-processing-with-azure-databricks"></a>Azure Databricks によるストリーム処理
+# <a name="create-a-stream-processing-pipeline-with-azure-databricks"></a>Azure Databricks を使用してストリーム処理パイプラインを作成します
 
-この参照アーキテクチャでは、エンド ツー エンドの[ストリーム処理](/azure/architecture/data-guide/big-data/real-time-processing)パイプラインを示します。 この種類のパイプラインには、取り込み、処理、格納、および分析とレポート作成の 4 つの段階があります。 この参照アーキテクチャでは、パイプラインは、2 つのソースからデータを取り込み、各ストリームの関連するレコードに対して結合を実行し、結果を強化させ、リアルタイムで平均を計算します。 結果が保存され、さらに詳しい分析が行われます。 [**こちらのソリューションをデプロイしてください**。](#deploy-the-solution)
+この参照アーキテクチャでは、エンド ツー エンドの[ストリーム処理](/azure/architecture/data-guide/big-data/real-time-processing)パイプラインを示します。 この種類のパイプラインには、取り込み、処理、格納、および分析とレポート作成の 4 つの段階があります。 この参照アーキテクチャでは、パイプラインは、2 つのソースからデータを取り込み、各ストリームの関連するレコードに対して結合を実行し、結果を強化させ、リアルタイムで平均を計算します。 結果が保存され、さらに詳しい分析が行われます。 [**このソリューションをデプロイします**](#deploy-the-solution)。
 
-![](./images/stream-processing-databricks.png)
+![Azure Databricks によるストリーム処理の参照アーキテクチャ](./images/stream-processing-databricks.png)
 
-**シナリオ**: タクシー会社が各乗車に関するデータを収集しています。 このシナリオでは、データを送信する 2 つのデバイスがあることを想定しています。 タクシーには、各乗車の情報 (走行時間、距離、乗車場所と降車場所) を送信するメーターがあります。 別のデバイスでは、乗客からの支払いを受け付け、料金に関するデータを送信します。 利用者数の傾向をつかむために、このタクシー会社では、各地で走行 1 マイルあたりの平均チップをリアルタイムで計算したいと考えています。
+**シナリオ**:タクシー会社が各乗車に関するデータを収集しています。 このシナリオでは、データを送信する 2 つのデバイスがあることを想定しています。 タクシーには、各乗車の情報 (走行時間、距離、乗車場所と降車場所) を送信するメーターがあります。 別のデバイスでは、乗客からの支払いを受け付け、料金に関するデータを送信します。 利用者数の傾向をつかむために、このタクシー会社では、各地で走行 1 マイルあたりの平均チップをリアルタイムで計算したいと考えています。
 
 ## <a name="architecture"></a>アーキテクチャ
 
@@ -34,15 +36,15 @@ ms.locfileid: "52902835"
 
 ## <a name="data-ingestion"></a>データの取り込み
 
-データ ソースをシミュレートするために、この参照アーキテクチャでは [New York City Taxi Data](https://uofi.app.box.com/v/NYCtaxidata/folder/2332218797) データセット<sup>[[1]](#note1)</sup> を使用します。 このデータセットには、ニューヨーク市の 4 年間 (2010 年から 2013 年) のタクシー乗車に関するデータが含まれています。 乗車データと料金データの 2 種類のレコードがあります。 乗車データには、走行時間、乗車距離、乗車場所と降車場所が含まれます。 料金データには、料金、税、チップの金額が含まれます。 この 2 種類のレコードの共通フィールドには、営業許可番号、タクシー免許、ベンダー ID があります。 この 3 つのフィールドを組み合わせて、タクシーと運転手が一意に識別されます。 データは CSV 形式で保存されます。 
+データ ソースをシミュレートするために、この参照アーキテクチャでは [New York City Taxi Data](https://uofi.app.box.com/v/NYCtaxidata/folder/2332218797) データセット<sup>[[1]](#note1)</sup> を使用します。 このデータセットには、ニューヨーク市の 4 年間 (2010 年から 2013 年) のタクシー乗車に関するデータが含まれています。 乗車データと料金データの 2 種類のレコードがあります。 乗車データには、走行時間、乗車距離、乗車場所と降車場所が含まれます。 料金データには、料金、税、チップの金額が含まれます。 この 2 種類のレコードの共通フィールドには、営業許可番号、タクシー免許、ベンダー ID があります。 この 3 つのフィールドを組み合わせて、タクシーと運転手が一意に識別されます。 データは CSV 形式で保存されます。
 
-データ ジェネレーターは、レコードを読み取り、Azure Event Hubs に送信する .NET Core アプリケーションです。 ジェネレーターは、JSON 形式の乗車データと CSV 形式の料金データを送信します。 
+データ ジェネレーターは、レコードを読み取り、Azure Event Hubs に送信する .NET Core アプリケーションです。 ジェネレーターは、JSON 形式の乗車データと CSV 形式の料金データを送信します。
 
-Event Hubs では、[パーティション](/azure/event-hubs/event-hubs-features#partitions)を使用してデータをセグメント化します。 複数のパーティションでは、コンシューマーは各パーティションを並列で読み取ることができます。 Event Hubs にデータを送信するときに、パーティション キーを明示的に指定できます。 それ以外の場合は、ラウンド ロビン方式でパーティションにレコードが割り当てられます。 
+Event Hubs では、[パーティション](/azure/event-hubs/event-hubs-features#partitions)を使用してデータをセグメント化します。 複数のパーティションでは、コンシューマーは各パーティションを並列で読み取ることができます。 Event Hubs にデータを送信するときに、パーティション キーを明示的に指定できます。 それ以外の場合は、ラウンド ロビン方式でパーティションにレコードが割り当てられます。
 
 このシナリオでは、特定のタクシーの乗車データと料金データは、最終的に同じパーティション ID を共有します。 これにより、Databricks は 2 つのストリームを関連付けるときに、ある程度の並列処理を適用できます。 乗車データのパーティション *n* 内のレコードは、料金データのパーティション *n* 内のレコードに対応します。
 
-![](./images/stream-processing-databricks-eh.png)
+![Azure Databricks と Event Hubs によるストリーム処理のダイアグラム](./images/stream-processing-databricks-eh.png)
 
 データ ジェネレーターでは、両方のレコードの種類に対応した共通データ モデルに、`Medallion`、`HackLicense`、`VendorId` を連結した `PartitionKey` プロパティがあります。
 
@@ -84,13 +86,13 @@ using (var client = pool.GetObject())
 
 ### <a name="event-hubs"></a>Event Hubs
 
-Event Hubs のスループット容量は、[スループット ユニット](/azure/event-hubs/event-hubs-features#throughput-units)で測定されます。 [自動インフレ](/azure/event-hubs/event-hubs-auto-inflate)を有効にすると、イベント ハブを自動スケーリングできます。自動インフレでは、トラフィックに基づいて、スループット ユニットが構成済みの最大値まで自動的にスケーリングされます。 
+Event Hubs のスループット容量は、[スループット ユニット](/azure/event-hubs/event-hubs-features#throughput-units)で測定されます。 [自動インフレ](/azure/event-hubs/event-hubs-auto-inflate)を有効にすると、イベント ハブを自動スケーリングできます。自動インフレでは、トラフィックに基づいて、スループット ユニットが構成済みの最大値まで自動的にスケーリングされます。
 
 ## <a name="stream-processing"></a>ストリーム処理
 
 Azure Databricks では、ジョブによってデータ処理が実行されます。 ジョブはクラスターに割り当てられ、そこで実行されます。 ジョブは、Java で記述されたカスタム コードか、Spark [Notebook](https://docs.databricks.com/user-guide/notebooks/index.html) です。
 
-この参照アーキテクチャでは、ジョブは、Java と Scala の両方で記述されたクラスを含む Java アーカイブです。 Databricks ジョブの Java アーカイブを指定する場合、実行対象のクラスは Databricks クラスターによって指定されます。 ここでは、**com.microsoft.pnp.TaxiCabReader** クラスの **main** メソッドに、データ処理ロジックが含まれています。 
+この参照アーキテクチャでは、ジョブは、Java と Scala の両方で記述されたクラスを含む Java アーカイブです。 Databricks ジョブの Java アーカイブを指定する場合、実行対象のクラスは Databricks クラスターによって指定されます。 ここでは、**com.microsoft.pnp.TaxiCabReader** クラスの **main** メソッドに、データ処理ロジックが含まれています。
 
 ### <a name="reading-the-stream-from-the-two-event-hub-instances"></a>2 つのイベント ハブ インスタンスからのストリームの読み取り
 
@@ -116,9 +118,9 @@ val rideEventHubOptions = EventHubsConf(rideEventHubConnectionString)
 
 ### <a name="enriching-the-data-with-the-neighborhood-information"></a>地域情報によるデータの強化
 
-乗車データには、乗車場所と降車場所の緯度と経度の座標が含まれています。 これらの座標は便利ですが、分析で使用するのは簡単ではありません。 したがって、このデータは、[シェープファイル](https://en.wikipedia.org/wiki/Shapefile)から読み取られる地域データで強化されます。 
+乗車データには、乗車場所と降車場所の緯度と経度の座標が含まれています。 これらの座標は便利ですが、分析で使用するのは簡単ではありません。 したがって、このデータは、[シェープファイル](https://en.wikipedia.org/wiki/Shapefile)から読み取られる地域データで強化されます。
 
-シェープファイルはバイナリ形式で、簡単には解析されませんが、[GeoTools](http://geotools.org/) ライブラリには、シェープファイル形式を使用する地理空間データを対象としたツールが用意されています。 このライブラリは、乗車場所と降車場所の座標に基づいて地域名を判断するために、**com.microsoft.pnp.GeoFinder** クラスで使用されます。 
+シェープファイルはバイナリ形式で、簡単には解析されませんが、[GeoTools](http://geotools.org/) ライブラリには、シェープファイル形式を使用する地理空間データを対象としたツールが用意されています。 このライブラリは、乗車場所と降車場所の座標に基づいて地域名を判断するために、**com.microsoft.pnp.GeoFinder** クラスで使用されます。
 
 ```scala
 val neighborhoodFinder = (lon: Double, lat: Double) => {
@@ -223,7 +225,6 @@ databricks secrets put --scope "azure-databricks-job" --key "taxi-ride"
 
 コードでは、Azure Databricks [シークレット ユーティリティ](https://docs.databricks.com/user-guide/dev-tools/dbutils.html#secrets-utilities)を介してシークレットにアクセスします。
 
-
 ## <a name="monitoring-considerations"></a>監視に関する考慮事項
 
 Azure Databricks は Apache Spark に基づいており、どちらも、ログ記録用の標準ライブラリとして [log4j](https://logging.apache.org/log4j/2.x/) を使用しています。 Apache Spark によって提供される既定のログ記録に加え、この参照アーキテクチャでは、ログとメトリックを [Azure Log Analytics](/azure/log-analytics/) に送信します。
@@ -267,48 +268,49 @@ spark.streams.addListener(new StreamingMetricsListener())
 
 StreamingMetricsListener 内のメソッドは、構造化ストリーミング イベントが発生すると必ず、Apache Spark ランタイムによって呼び出され、ログ メッセージとメトリックを Azure Log Analytics ワークスペースに送信します。 アプリケーションを監視するには、ワークスペースで次のクエリを使用とできます。
 
-### <a name="latency-and-throughput-for-streaming-queries"></a>ストリーミング クエリの待機時間とスループット 
+### <a name="latency-and-throughput-for-streaming-queries"></a>ストリーミング クエリの待機時間とスループット
 
 ```shell
 taxijob_CL
 | where TimeGenerated > startofday(datetime(<date>)) and TimeGenerated < endofday(datetime(<date>))
-| project  mdc_inputRowsPerSecond_d, mdc_durationms_triggerExecution_d  
+| project  mdc_inputRowsPerSecond_d, mdc_durationms_triggerExecution_d
 | render timechart
-``` 
+```
+
 ### <a name="exceptions-logged-during-stream-query-execution"></a>ストリーム クエリの実行中に記録された例外
 
 ```shell
 taxijob_CL
 | where TimeGenerated > startofday(datetime(<date>)) and TimeGenerated < endofday(datetime(<date>))
-| where Level contains "Error" 
+| where Level contains "Error"
 ```
 
 ### <a name="accumulation-of-malformed-fare-and-ride-data"></a>形式に誤りがある料金データと乗車データの蓄積
 
 ```shell
-SparkMetric_CL 
+SparkMetric_CL
 | where TimeGenerated > startofday(datetime(<date>)) and TimeGenerated < endofday(datetime(<date>))
-| render timechart 
+| render timechart
 | where name_s contains "metrics.malformedrides"
 
-SparkMetric_CL 
+SparkMetric_CL
 | where TimeGenerated > startofday(datetime(<date>)) and TimeGenerated < endofday(datetime(<date>))
-| render timechart 
-| where name_s contains "metrics.malformedfares" 
+| render timechart
+| where name_s contains "metrics.malformedfares"
 ```
 
 ### <a name="job-execution-to-trace-resiliency"></a>回復性をトレースするジョブ実行
 
 ```shell
-SparkMetric_CL 
+SparkMetric_CL
 | where TimeGenerated > startofday(datetime(<date>)) and TimeGenerated < endofday(datetime(<date>))
-| render timechart 
-| where name_s contains "driver.DAGScheduler.job.allJobs" 
+| render timechart
+| where name_s contains "driver.DAGScheduler.job.allJobs"
 ```
 
 ## <a name="deploy-the-solution"></a>ソリューションのデプロイ方法
 
-この参照アーキテクチャのデプロイは、[GitHub](https://github.com/mspnp/azure-databricks-streaming-analytics) で入手できます。 
+この参照アーキテクチャのデプロイは、[GitHub](https://github.com/mspnp/azure-databricks-streaming-analytics) で入手できます。
 
 ### <a name="prerequisites"></a>前提条件
 
@@ -353,7 +355,7 @@ SparkMetric_CL
             ...
     ```
 
-5. Web ブラウザーを開き、 https://www.zillow.com/howto/api/neighborhood-boundaries.htm に移動します。 
+5. Web ブラウザーを開き、 https://www.zillow.com/howto/api/neighborhood-boundaries.htm に移動します。
 
 6. **New York Neighborhood Boundaries** をクリックして、ファイルをダウンロードします。
 
@@ -399,7 +401,7 @@ SparkMetric_CL
 
 4. 完了すると、デプロイの出力はコンソールに書き込まれます。 出力で次の JSON を探します。
 
-```JSON
+```json
 "outputs": {
         "cosmosDb": {
           "type": "Object",
@@ -425,6 +427,7 @@ SparkMetric_CL
         }
 },
 ```
+
 これらの値は、以降のセクションで Databricks シークレットに追加されるシークレットです。 これらのセクションで追加するまで、安全に保管してください。
 
 ### <a name="add-a-cassandra-table-to-the-cosmos-db-account"></a>Cassandra テーブルを Cosmos DB アカウントに追加する
@@ -433,14 +436,14 @@ SparkMetric_CL
 
 2. **[概要]** ブレードで、**[テーブルの追加]** をクリックします。
 
-3. **[テーブルの追加]** ブレードが開いたら、**[Keyspace name]\(キースペース名\)** テキスト ボックスに「`newyorktaxi`」と入力します。 
+3. **[テーブルの追加]** ブレードが開いたら、**[Keyspace name]\(キースペース名\)** テキスト ボックスに「`newyorktaxi`」と入力します。
 
 4. **[enter CQL command to create the table]\(テーブルを作成する CQL コマンドを入力\)** セクションで、`newyorktaxi` の横にあるテキスト ボックスに「`neighborhoodstats`」と入力します。
 
-5. 下のテキスト ボックスに、次を入力します。
-```shell
-(neighborhood text, window_end timestamp, number_of_rides bigint,total_fare_amount double, primary key(neighborhood, window_end))
-```
+5. 下のテキスト ボックスに、次のように入力します。
+    ```shell
+    (neighborhood text, window_end timestamp, number_of_rides bigint,total_fare_amount double, primary key(neighborhood, window_end))
+    ```
 6. **[スループット (1,000 - 1,000,000 RU/秒)]** テキスト ボックスに、値 `4000` を入力します。
 
 7. Click **OK**.
@@ -499,7 +502,7 @@ SparkMetric_CL
 
 ### <a name="add-the-azure-log-analytics-workspace-id-and-primary-key-to-configuration-files"></a>Azure Log Analytics ワークスペースの ID と主キーを構成ファイルに追加する
 
-このセクションでは、Log Analytics ワークスペースの ID と主キーが必要です。 ワークスペース ID は、「*Azure リソースをデプロイする*」セクションの手順 4. の **logAnalytics** 出力セクションに示されている **workspaceId** 値です。 主キーは、その出力セクションの **secret** です。 
+このセクションでは、Log Analytics ワークスペースの ID と主キーが必要です。 ワークスペース ID は、「*Azure リソースをデプロイする*」セクションの手順 4. の **logAnalytics** 出力セクションに示されている **workspaceId** 値です。 主キーは、その出力セクションの **secret** です。
 
 1. log4j ログ記録を構成するには、`\azure\AzureDataBricksJob\src\main\resources\com\microsoft\pnp\azuredatabricksjob\log4j.properties` を開きます。 次の 2 つの値を編集します。
     ```shell
@@ -515,9 +518,9 @@ SparkMetric_CL
 
 ### <a name="build-the-jar-files-for-the-databricks-job-and-databricks-monitoring"></a>Databricks ジョブおよび Databricks 監視用の .jar ファイルをビルドする
 
-1. ご自身の Java IDE を使用して、ルート ディレクトリにある、**pom.xml** という名前の Maven プロジェクト ファイルをインポートします。 
+1. ご自身の Java IDE を使用して、ルート ディレクトリにある、**pom.xml** という名前の Maven プロジェクト ファイルをインポートします。
 
-2. クリーン ビルドを実行します。 このビルドの出力は、**azure-databricks-job-1.0-SNAPSHOT.jar** および **azure-databricks-monitoring-0.9.jar** という名前のファイルです。 
+2. クリーン ビルドを実行します。 このビルドの出力は、**azure-databricks-job-1.0-SNAPSHOT.jar** および **azure-databricks-monitoring-0.9.jar** という名前のファイルです。
 
 ### <a name="configure-custom-logging-for-the-databricks-job"></a>Databricks ジョブのカスタム ログ記録を構成する
 
@@ -532,13 +535,13 @@ SparkMetric_CL
     ```
 
 3. Databricks クラスターの名前をまだ決めていませんが、ここでそれを選択します。 お使いのクラスターの Databricks ファイル システム パスに、以下の名前を入力します。 次のコマンドを入力して、`\azure\azure-databricks-monitoring\scripts\spark.metrics` の初期化スクリプトを Databricks ファイル システムにコピーします。
-    ```
+    ```shell
     databricks fs cp --overwrite spark-metrics.sh dbfs:/databricks/init/<cluster-name>/spark-metrics.sh
     ```
 
 ### <a name="create-a-databricks-cluster"></a>Databricks クラスターを作成する
 
-1. Databricks ワークスペースで、[クラスター]、[クラスターの作成] の順にクリックします。 前の「**Databricks ジョブのカスタム ログ記録を構成する**」セクションの手順 3. で作成したクラスター名を入力します。 
+1. Databricks ワークスペースで、[クラスター]、[クラスターの作成] の順にクリックします。 前の「**Databricks ジョブのカスタム ログ記録を構成する**」セクションの手順 3. で作成したクラスター名を入力します。
 
 2. **[標準]** クラスター モードを選択します。
 
@@ -552,9 +555,9 @@ SparkMetric_CL
 
 7. **[Min Workers]\(最小 worker 数\)** を **[2]** に設定します。
 
-8. **[Enable autoscaling]\(自動スケールを有効にする\)** の選択を解除します。 
+8. **[Enable autoscaling]\(自動スケールを有効にする\)** の選択を解除します。
 
-9. **[Auto Termination]\(自動的に終了\)** ダイアログ ボックスで、**[Init Scripts]\(初期化スクリプト\)** をクリックします。 
+9. **[Auto Termination]\(自動的に終了\)** ダイアログ ボックスで、**[Init Scripts]\(初期化スクリプト\)** をクリックします。
 
 10. 「**dbfs:/databricks/init/<cluster-name>/spark-metrics.sh**」と入力します。<cluster-name> には、手順 1. で作成したクラスター名を指定します。
 
@@ -576,50 +579,51 @@ SparkMetric_CL
 
 6. 引数フィールドに、次を入力します。
     ```shell
-    -n jar:file:/dbfs/azure-databricks-jobs/ZillowNeighborhoods-NY.zip!/ZillowNeighborhoods-NY.shp --taxi-ride-consumer-group taxi-ride-eh-cg --taxi-fare-consumer-group taxi-fare-eh-cg --window-interval "1 minute" --cassandra-host <Cosmos DB Cassandra host name from above> 
-    ``` 
+    -n jar:file:/dbfs/azure-databricks-jobs/ZillowNeighborhoods-NY.zip!/ZillowNeighborhoods-NY.shp --taxi-ride-consumer-group taxi-ride-eh-cg --taxi-fare-consumer-group taxi-fare-eh-cg --window-interval "1 minute" --cassandra-host <Cosmos DB Cassandra host name from above>
+    ```
 
 7. 次の手順に従って、依存するライブラリをインストールします。
-    
+
     1. Databricks ユーザー インターフェイスで、**[ホーム]** をクリックします。
-    
+
     2. **[ユーザー]** ドロップダウンで、ご自身のユーザー アカウント名をクリックして、お使いのアカウント ワークスペースの設定を開きます。
-    
+
     3. ご自身のアカウント名の横にあるドロップダウン矢印をクリックし、**[作成]**、**[ライブラリ]** の順にクリックして、**[新しいライブラリ]** ダイアログを開きます。
-    
+
     4. **[ソース]** ドロップダウン コントロールで、**[Maven Coordinate]\(Maven 座標\)** を選択します。
-    
-    5. **[Install Maven Artifacts]\(Maven Artifacts のインストール\)** 見出しで、**[Coordinate]\(座標\)** テキスト ボックスに「`com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.5`」と入力します。 
-    
+
+    5. **[Install Maven Artifacts]\(Maven Artifacts のインストール\)** 見出しで、**[Coordinate]\(座標\)** テキスト ボックスに「`com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.5`」と入力します。
+
     6. **[ライブラリの作成]** をクリックして、**[アーティファクト]** ウィンドウを開きます。
-    
+
     7. **[Status on running clusters]\(実行中のクラスターの状態\)** で、**[Attach automatically to all clusters]\(すべてのクラスターに自動的に接続する\)** チェック ボックスをオンします。
-    
+
     8. `com.microsoft.azure.cosmosdb:azure-cosmos-cassandra-spark-helper:1.0.0` Maven 座標について、手順 1. から 7. を繰り返します。
-    
+
     9. `org.geotools:gt-shapefile:19.2` Maven 座標について、手順 1. から 6. を繰り返します。
-    
+
     10. **[詳細オプション]** をクリックします。
-    
-    11. **[リポジトリ]** テキスト ボックスに「`http://download.osgeo.org/webdav/geotools/`」と入力します。 
-    
+
+    11. **[リポジトリ]** テキスト ボックスに「`http://download.osgeo.org/webdav/geotools/`」と入力します。
+
     12. **[ライブラリの作成]** をクリックして、**[アーティファクト]** ウィンドウを開きます。 
-    
+
     13. **[Status on running clusters]\(実行中のクラスターの状態\)** で、**[Attach automatically to all clusters]\(すべてのクラスターに自動的に接続する\)** チェック ボックスをオンします。
 
 8. 手順 7. で追加した依存ライブラリを、手順 6. の最後に作成したジョブに追加します。
+
     1. Azure Databricks ワークスペースで、**[ジョブ]** をクリックします。
 
-    2. 「**Databricks ジョブを作成する**」セクションの手順 2. で作成されたジョブ名をクリックします。 
-    
-    3. **[Dependent Libraries]\(依存ライブラリ\)** セクションの横で、**[追加]** をクリックして、**[Add Dependent Library]\(依存ライブラリの追加\)** ダイアログを開きます。 
-    
+    2. 「**Databricks ジョブを作成する**」セクションの手順 2. で作成されたジョブ名をクリックします。
+
+    3. **[Dependent Libraries]\(依存ライブラリ\)** セクションの横で、**[追加]** をクリックして、**[Add Dependent Library]\(依存ライブラリの追加\)** ダイアログを開きます。
+
     4. **[Library From]\(ライブラリの選択元\)** で、**[ワークスペース]** を選択します。
-    
-    5. **[ユーザー]**、ご自身のユーザー名、`azure-eventhubs-spark_2.11:2.3.5` の順にクリックします。 
-    
+
+    5. **[ユーザー]**、ご自身のユーザー名、`azure-eventhubs-spark_2.11:2.3.5` の順にクリックします。
+
     6. Click **OK**.
-    
+
     7. `spark-cassandra-connector_2.11:2.3.1` および `gt-shapefile:19.2` について、手順 1. から 6. を繰り返します。
 
 9. **[クラスター]** の横で、**[編集]** をクリックします。 これにより、**[クラスターの構成]** ダイアログが開きます。 **[クラスターの種類]** ドロップダウンで、**[Existing Cluster]\(既存のクラスター\)** を選択します。 **[クラスターの選択]** ドロップダウンで、「**Databricks クラスターを作成する**」セクションで作成されたクラスターを選択します。 **[確認]** をクリックします。
@@ -672,4 +676,4 @@ Created 30000 records for TaxiFare
 
 Databricks ジョブが正しく実行されていることを確認するには、Azure portal を開き、Cosmos DB データベースに移動します。 **[データ エクスプローラー]** ブレードを開いて、**taxi records** テーブルでデータを確認します。 
 
-[1] <span id="note1">Brian Donovan、Dan Work (2016 年): New York City Taxi Trip Data (2010-2013)。 イリノイ大学アーバナシャンペーン校。 https://doi.org/10.13012/J8PN93H8
+[1] <span id="note1">Donovan, Brian; Work, Dan (2016):New York City Taxi Trip Data (2010-2013). イリノイ大学アーバナシャンペーン校。 https://doi.org/10.13012/J8PN93H8
