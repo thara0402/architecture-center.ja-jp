@@ -1,46 +1,45 @@
 ---
 title: Active Directory Domain Services (AD DS) を Azure に拡張する
+titleSuffix: Azure Reference Architectures
 description: オンプレミスにある Active Directory ドメインを Azure に拡張する
 author: telmosampaio
 ms.date: 05/02/2018
-pnp.series.title: Identity management
-pnp.series.prev: azure-ad
-pnp.series.next: adds-forest
-ms.openlocfilehash: ff3ef7565b692ad63b7ff779497df0f85d3bca3a
-ms.sourcegitcommit: 1287d635289b1c49e94f839b537b4944df85111d
+ms.custom: seodec18
+ms.openlocfilehash: 69ce95fcf74579f6446cf99dad9ed53ced31fde7
+ms.sourcegitcommit: 88a68c7e9b6b772172b7faa4b9fd9c061a9f7e9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52332308"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53120409"
 ---
 # <a name="extend-active-directory-domain-services-ad-ds-to-azure"></a>Active Directory Domain Services (AD DS) を Azure に拡張する
 
-この参照アーキテクチャでは、Active Directory 環境を Azure に拡張し、Active Directory Domain Services (AD DS) を使用して分散認証サービスを提供する方法を示します。 [**こちらのソリューションをデプロイしてください**。](#deploy-the-solution)
+この参照アーキテクチャでは、Active Directory 環境を Azure に拡張し、Active Directory Domain Services (AD DS) を使用して分散認証サービスを提供する方法を示します。 [**このソリューションをデプロイします**](#deploy-the-solution)。
 
-[![0]][0] 
+![Active Directory を使用するセキュリティ保護されたハイブリッド ネットワーク アーキテクチャ](./images/adds-extend-domain.png)
 
 "*このアーキテクチャの [Visio ファイル][visio-download]をダウンロードします。*"
 
-AD DS は、ユーザー、コンピューター、アプリケーション、またはセキュリティ ドメインに含まれるその他の ID の認証に使用します。 オンプレミスでホストできますが、アプリケーションがオンプレミスと Azure で部分的にホストされる場合は、Azure でこの機能をレプリケートする方が効率的です。 これにより、クラウドからオンプレミスで実行されている AD DS に返される認証要求とローカルの承認要求の送信が原因の待機時間を削減できます。 
+AD DS は、ユーザー、コンピューター、アプリケーション、またはセキュリティ ドメインに含まれるその他の ID の認証に使用します。 オンプレミスでホストできますが、アプリケーションがオンプレミスと Azure で部分的にホストされる場合は、Azure でこの機能をレプリケートする方が効率的です。 これにより、クラウドからオンプレミスで実行されている AD DS に返される認証要求とローカルの承認要求の送信が原因の待機時間を削減できます。
 
 このアーキテクチャは、オンプレミス ネットワークと Azure 仮想ネットワークが VPN または ExpressRoute によって接続されている場合によく使用されます。 また、このアーキテクチャは、双方向レプリケーションをサポートします。つまり、オンプレミスまたはクラウドで変更を行うことができ、両方のソースの一貫性が確保されます。 このアーキテクチャの一般的な用途には、オンプレミスと Azure 間で機能が配布されるハイブリッド アプリケーション、および Active Directory を使用して認証を実行するアプリケーションとサービスがあります。
 
-その他の考慮事項については、「[オンプレミスの Active Directory を Azure と統合するためのソリューションの選択][considerations]」をご覧ください。 
+その他の考慮事項については、「[オンプレミスの Active Directory を Azure と統合するためのソリューションの選択][considerations]」をご覧ください。
 
-## <a name="architecture"></a>アーキテクチャ 
+## <a name="architecture"></a>アーキテクチャ
 
 このアーキテクチャは、「[DMZ between Azure and the Internet][implementing-a-secure-hybrid-network-architecture-with-internet-access]」(Azure とインターネット間の DMZ) に示すアーキテクチャを拡張します。 アーキテクチャに含まれるコンポーネントを次に示します。
 
-* **オンプレミス ネットワーク**。 オンプレミス ネットワークには、オンプレミスにあるコンポーネントの認証と承認を実行できるローカルの Active Directory サーバーが含まれています。
-* **Active Directory サーバー**。 クラウドで VM として実行されているディレクトリ サービス (AD DS) を実装するドメイン コントローラーです。 このようなサーバーは、Azure 仮想ネットワークで実行されるコンポーネントの認証を提供できます。
-* **Active Directory サブネット**。 AD DS サーバーは、個別のサブネットでホストされます。 ネットワーク セキュリティ グループ (NSG) ルールによって AD DS サーバーが保護され、予期しないソースからのトラフィックに対するファイアウォールが提供されます。
-* **Azure ゲートウェイと Active Directory 同期**。 Azure ゲートウェイによって、オンプレミス ネットワークと Azure VNet の間に接続が提供されます。 [VPN 接続][azure-vpn-gateway]または [Azure ExpressRoute][azure-expressroute] を使用できます。 クラウドおよびオンプレミスの Active Directory サーバー間のすべての同期要求はゲートウェイを経由します。 Azure に渡すオンプレミスのトラフィックのルーティングは、ユーザー定義ルート (UDR) によって処理されます。 Active Directory サーバーとの間のトラフィックは、このシナリオで使用するネットワーク仮想アプライアンス (NVA) を経由しません。
+- **オンプレミス ネットワーク**。 オンプレミス ネットワークには、オンプレミスにあるコンポーネントの認証と承認を実行できるローカルの Active Directory サーバーが含まれています。
+- **Active Directory サーバー**。 クラウドで VM として実行されているディレクトリ サービス (AD DS) を実装するドメイン コントローラーです。 このようなサーバーは、Azure 仮想ネットワークで実行されるコンポーネントの認証を提供できます。
+- **Active Directory サブネット**。 AD DS サーバーは、個別のサブネットでホストされます。 ネットワーク セキュリティ グループ (NSG) ルールによって AD DS サーバーが保護され、予期しないソースからのトラフィックに対するファイアウォールが提供されます。
+- **Azure ゲートウェイと Active Directory 同期**。 Azure ゲートウェイによって、オンプレミス ネットワークと Azure VNet の間に接続が提供されます。 [VPN 接続][azure-vpn-gateway]または [Azure ExpressRoute][azure-expressroute] を使用できます。 クラウドおよびオンプレミスの Active Directory サーバー間のすべての同期要求はゲートウェイを経由します。 Azure に渡すオンプレミスのトラフィックのルーティングは、ユーザー定義ルート (UDR) によって処理されます。 Active Directory サーバーとの間のトラフィックは、このシナリオで使用するネットワーク仮想アプライアンス (NVA) を経由しません。
 
-UDR と NVA の設定について詳しくは、「[Implementing a secure hybrid network architecture in Azure][implementing-a-secure-hybrid-network-architecture]」(セキュリティ保護されたハイブリッド ネットワーク アーキテクチャを Azure に実装する) をご覧ください。 
+UDR と NVA の設定について詳しくは、「[Implementing a secure hybrid network architecture in Azure][implementing-a-secure-hybrid-network-architecture]」(セキュリティ保護されたハイブリッド ネットワーク アーキテクチャを Azure に実装する) をご覧ください。
 
 ## <a name="recommendations"></a>Recommendations
 
-ほとんどのシナリオには、次の推奨事項が適用されます。 これらの推奨事項には、オーバーライドする特定の要件がない限り、従ってください。 
+ほとんどのシナリオには、次の推奨事項が適用されます。 これらの推奨事項には、オーバーライドする特定の要件がない限り、従ってください。
 
 ### <a name="vm-recommendations"></a>VM の推奨事項
 
@@ -56,10 +55,9 @@ Active Directory 用の データベース、ログ、および SYSVOL を格納
 
 > [!NOTE]
 > パブリック IP アドレスを使用して AD DS の VM NIC を構成しないでください。 詳しくは、「[セキュリティに関する考慮事項][security-considerations]」をご覧ください。
-> 
-> 
+>
 
-Active Directory サブネット NSG には、オンプレミスからの受信トラフィックを許可するルールが必要です。 AD DS で使用されるポートについて詳しくは、「[Active Directory and Active Directory Domain Services Port Requirements][ad-ds-ports]」(Active Directory と Active Directory Domain Services のポート要件) をご覧ください。 また、UDR テーブルは、このアーキテクチャで使用される NVA を使用して AD DS トラフィックをルーティングしません。 
+Active Directory サブネット NSG には、オンプレミスからの受信トラフィックを許可するルールが必要です。 AD DS で使用されるポートについて詳しくは、「[Active Directory and Active Directory Domain Services Port Requirements][ad-ds-ports]」(Active Directory と Active Directory Domain Services のポート要件) をご覧ください。 また、UDR テーブルは、このアーキテクチャで使用される NVA を使用して AD DS トラフィックをルーティングしません。
 
 ### <a name="active-directory-site"></a>Active Directory サイト
 
@@ -75,7 +73,7 @@ Azure にデプロイされたドメイン コントローラーには操作マ�
 
 ### <a name="monitoring"></a>監視
 
-ドメイン コントローラー VM のリソースおよび AD DS を監視し、問題を迅速に修正するためのプランを作成します。 詳しくは、「[Monitoring Active Directory][monitoring_ad]」(Active Directory の監視) をご覧ください。 [Microsoft Systems Center][microsoft_systems_center] などのツールを監視サーバーにインストールして (アーキテクチャの図を参照)、これらのタスクを実行することもできます。  
+ドメイン コントローラー VM のリソースおよび AD DS を監視し、問題を迅速に修正するためのプランを作成します。 詳しくは、「[Monitoring Active Directory][monitoring_ad]」(Active Directory の監視) をご覧ください。 [Microsoft Systems Center][microsoft_systems_center] などのツールを監視サーバーにインストールして (アーキテクチャの図を参照)、これらのタスクを実行することもできます。
 
 ## <a name="scalability-considerations"></a>スケーラビリティに関する考慮事項
 
@@ -121,11 +119,11 @@ BitLocker または Azure Disk Encryption を使用して、AD DS データベ�
 
 ### <a name="deploy-the-azure-vnet"></a>Azure VNet をデプロイする
 
-1. `azure.json` ファイルを開きます。  `adminPassword` と `Password` のインスタンスを検索し、パスワードの値を追加します。 
+1. `azure.json` ファイルを開きます。  `adminPassword` と `Password` のインスタンスを検索し、パスワードの値を追加します。
 
-2. 同じファイルで `sharedKey` のインスタンスを検索し、VPN 接続の共有キーを入力します。 
+2. 同じファイルで `sharedKey` のインスタンスを検索し、VPN 接続の共有キーを入力します。
 
-    ```bash
+    ```json
     "sharedKey": "",
     ```
 
@@ -149,16 +147,16 @@ BitLocker または Azure Disk Encryption を使用して、AD DS データベ�
 
 4. リモート デスクトップ セッション内から、10.0.4.4 への別のリモート デスクトップ セッションを開きます。これは、`adds-vm1` という名前の VM の IP アドレスです。 ユーザー名は `contoso\testuser` で、パスワードは、`azure.json` パラメーター ファイルで指定したものを使用します。
 
-5. `adds-vm1` のリモート デスクトップ セッション内から、**サーバー マネージャー**に移動し、**[Add other servers to manage]\(管理する他のサーバーを追加する\)** に移動します。 
+5. `adds-vm1` のリモート デスクトップ セッション内から、**サーバー マネージャー**に移動し、**[Add other servers to manage]\(管理する他のサーバーを追加する)** に移動します。
 
 6. **[Active Directory]** タブで、**[今すぐ検索]** をクリックします。 AD、AD DS、および Web VM の一覧が表示されます。
 
-   ![](./images/add-servers-dialog.png)
+   ![[サーバーの追加] ダイアログのスクリーンショット](./images/add-servers-dialog.png)
 
 ## <a name="next-steps"></a>次の手順
 
-* Azure で [AD DS リソース フォレストを作成する][adds-resource-forest]ためのベスト プラクティスを学習します。
-* Azure で [Active Directory フェデレーション サービス (AD FS) インフラストラクチャを作成する][adfs]ためのベスト プラクティスを学習します。
+- Azure で [AD DS リソース フォレストを作成する][adds-resource-forest]ためのベスト プラクティスを学習します。
+- Azure で [Active Directory フェデレーション サービス (AD FS) インフラストラクチャを作成する][adfs]ためのベスト プラクティスを学習します。
 
 <!-- links -->
 
@@ -178,7 +176,7 @@ BitLocker または Azure Disk Encryption を使用して、AD DS データベ�
 [capacity-planning-for-adds]: https://social.technet.microsoft.com/wiki/contents/articles/14355.capacity-planning-for-active-directory-domain-services.aspx
 [considerations]: ./considerations.md
 [GitHub]: https://github.com/mspnp/identity-reference-architectures/tree/master/adds-extend-domain
-[microsoft_systems_center]: https://www.microsoft.com/server-cloud/products/system-center-2016/
+[microsoft_systems_center]: https://www.microsoft.com/download/details.aspx?id=50013
 [monitoring_ad]: https://msdn.microsoft.com/library/bb727046.aspx
 [security-considerations]: #security-considerations
 [set-a-static-ip-address]: /azure/virtual-network/virtual-networks-static-private-ip-arm-pportal
