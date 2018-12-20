@@ -3,12 +3,13 @@ title: 自動車のリアルタイム IoT データのインジェストと処�
 description: IoT を使用して、リアルタイムの車両データを取り込んで処理します。
 author: msdpalam
 ms.date: 09/12/2018
-ms.openlocfilehash: 6562e3277e6b6eb38993132284ad43542ef4c0d3
-ms.sourcegitcommit: 0a31fad9b68d54e2858314ca5fe6cba6c6b95ae4
+ms.custom: fasttrack
+ms.openlocfilehash: 8c123403f21ce96549fe075675ec2275b79493a3
+ms.sourcegitcommit: a0e8d11543751d681953717f6e78173e597ae207
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51610738"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53004884"
 ---
 # <a name="ingestion-and-processing-of-real-time-automotive-iot-data"></a>自動車のリアルタイム IoT データのインジェストと処理
 
@@ -64,7 +65,7 @@ IoT デバイスで生成されたイベント (データまたはメッセー�
 このアーキテクチャに含まれているテクノロジは、イベントを処理するために必要な規模、サービスの SLA、コスト管理、コンポーネントの管理容易性に基づいて選択されました。
 * 管理された [HDInsight Kafka](/azure/hdinsight/kafka/apache-kafka-introduction) には、Azure Managed Disks と統合された 99.9% の SLA が付属しています。
 * [Azure Databricks](/azure/azure-databricks/what-is-azure-databricks) は、クラウドのパフォーマンスとコスト効率が完全に最適化されています。 Databricks Runtime は、いくつかの重要な機能を Apache Spark ワークロードに加えて、Azure での実行時に 10 から 100 倍のパフォーマンス向上やコスト削減が可能です。これには以下が含まれます。
-* Azure Databricks は、[Azure SQL Data Warehouse](/azure/sql-data-warehouse)、[Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db)、[Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage)、[Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs) などの Azure のデータベースおよびストアと深いレベルで統合します。
+* Azure Databricks は、[Azure SQL Data Warehouse](/azure/sql-data-warehouse)、[Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db)、[Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage)、[Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs) などの Azure のデータベースおよびストアと深いレベルで統合します
     * Spark クラスターの自動スケーリングと自動終了により、自動的にコストが最小限に抑えられます。
     * キャッシュ、インデックス作成、高度なクエリ最適化などのパフォーマンスの最適化により、クラウド環境やオンプレミスの環境での従来の Apache Spark のデプロイと比べてパフォーマンスを 10 倍から 100 倍向上させることができます。
     * Azure Active Directory との統合により、Azure Databricks を使って Azure ベースの完全なソリューションを実行することができます。

@@ -3,12 +3,13 @@ title: Azure での Oracle データベースを使用した SAP 運用環境ワ
 description: Oracle データベースを使用して Azure で SAP 運用環境デプロイを実行します。
 author: DharmeshBhagat
 ms.date: 9/12/2018
-ms.openlocfilehash: 75942b4d9b18b7bbe7a162826bcf4fe9ece22dce
-ms.sourcegitcommit: 0a31fad9b68d54e2858314ca5fe6cba6c6b95ae4
+ms.custom: fasttrack
+ms.openlocfilehash: e345760c69c4d3cc26fe6d4d7cb8a93d183a5818
+ms.sourcegitcommit: a0e8d11543751d681953717f6e78173e597ae207
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51610908"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53004961"
 ---
 # <a name="running-sap-production-workloads-using-an-oracle-database-on-azure"></a>Azure での Oracle データベースを使用した SAP 運用環境ワークロードの実行
 
@@ -48,7 +49,7 @@ SAP システムは、ミッション クリティカルなビジネス アプ�
 
 ### <a name="alternatives"></a>代替手段
 
-SAP では、Azure の環境でのさまざまなオペレーティング システム、データベース管理システム、VM の種類の組み合わせを柔軟に選択できます。 詳細については、「[SAP note 1928533 (SAP ノート 1928533)](https://launchpad.support.sap.com/#/notes/1928533) の SAP Applications on Azure: Supported Products and Azure VM Types (Azure 上の SAP アプリケーション: サポート対象の製品と Azure VM の種類)」を参照してください。
+SAP では、Azure の環境でのさまざまなオペレーティング システム、データベース管理システム、VM の種類の組み合わせを柔軟に選択できます。 詳細については、[SAP Note 1928533](https://launchpad.support.sap.com/#/notes/1928533) の「SAP Applications on Azure: Supported Products and Azure VM Types (Azure 上の SAP アプリケーション:サポート対象の製品と Azure VM の種類)」を参照してください。
 
 ## <a name="considerations"></a>考慮事項
 
@@ -75,13 +76,13 @@ Extra Large|250000|M64s|6xP30、1xP30|DS11_v2|1x P10|10x DS14_v2|1x P10|[Extra L
 > [!NOTE]
 > この価格は目安であり、VM とストレージの料金を示しているに過ぎません。 ネットワーク、バックアップ ストレージ、データ イングレス/エグレスの料金は含まれていません。
 
-* [Small](https://azure.com/e/45880ba0bfdf47d497851a7cf2650c7c): 小規模なシステムは、データベース サーバー用の VM の種類 DS13_v2 (8 個の vCPU)、56 GB の RAM、112 GB の一時ストレージ、追加の 5 個の 512 GB の Premium Storage ディスクで構成されています。 VM の種類 DS11_v2 (2 個の vCPU)、14 GB の RAM、28 GB の一時ストレージを使用する SAP セントラル インスタンス サーバーも含まれます。 SAP アプリケーション サーバー用の 1 個の VM の種類 DS13_v2 (8 個の vCPU)、56 GB の RAM、400 GB の一時ストレージ、追加の 1 個の 128 GB の Premium Storage ディスクも含まれます。
+* [Small](https://azure.com/e/45880ba0bfdf47d497851a7cf2650c7c):小規模なシステムは、データベース サーバー用の VM の種類 DS13_v2 (8 個の vCPU)、56 GB の RAM、112 GB の一時ストレージ、追加の 5 個の 512 GB の Premium Storage ディスクで構成されています。 VM の種類 DS11_v2 (2 個の vCPU)、14 GB の RAM、28 GB の一時ストレージを使用する SAP セントラル インスタンス サーバーも含まれます。 SAP アプリケーション サーバー用の 1 個の VM の種類 DS13_v2 (8 個の vCPU)、56 GB の RAM、400 GB の一時ストレージ、追加の 1 個の 128 GB の Premium Storage ディスクも含まれます。
 
-* [Medium](https://azure.com/e/9a523f79591347ca9a48c3aaa1406f8a): 中規模のシステムは、データベース サーバー用の VM の種類 DS14_v2 (16 個の vCPU)、112 GB の RAM、800 GB の一時ストレージ、追加の 7 個の 512 GB の Premium Storage ディスクで構成されています。 VM の種類 DS11_v2 (2 個の vCPU)、14 GB の RAM、28 GB の一時ストレージを使用する SAP セントラル インスタンス サーバーも含まれます。 SAP アプリケーション サーバー用の 4 個の VM の種類 DS13_v2 (8 個の vCPU)、56 GB の RAM、400 GB の一時ストレージ、追加の 1 個の 128 GB の Premium Storage ディスクも含まれます。
+* [Medium](https://azure.com/e/9a523f79591347ca9a48c3aaa1406f8a):中規模のシステムは、データベース サーバー用の VM の種類 DS14_v2 (16 個の vCPU)、112 GB の RAM、800 GB の一時ストレージ、追加の 7 個の 512 GB の Premium Storage ディスクで構成されています。 VM の種類 DS11_v2 (2 個の vCPU)、14 GB の RAM、28 GB の一時ストレージを使用する SAP セントラル インスタンス サーバーも含まれます。 SAP アプリケーション サーバー用の 4 個の VM の種類 DS13_v2 (8 個の vCPU)、56 GB の RAM、400 GB の一時ストレージ、追加の 1 個の 128 GB の Premium Storage ディスクも含まれます。
 
-* [Large](https://azure.com/e/f70fccf571e948c4b37d4fecc07cbf42): 大規模なシステムは、データベース サーバー用の VM の種類 E32s_v3 (32 個の vCPU)、256 GB の RAM、800 GB の一時ストレージ、追加の 3 個の 512 GB と 1 個の 128 GB Premium Storage ディスクで構成されています。 VM の種類 DS11_v2 (2 個の vCPU)、14 GB の RAM、28 GB の一時ストレージを使用する SAP セントラル インスタンス サーバーも含まれます。 SAP アプリケーション サーバー用の 6 個の VM の種類 DS14_v2 (16 個の vCPU)、112 GB の RAM、224 GB の一時ストレージ、追加の 6 個の 128 GB の Premium Storage ディスクも含まれます。
+* [Large](https://azure.com/e/f70fccf571e948c4b37d4fecc07cbf42):大規模なシステムは、データベース サーバー用の VM の種類 E32s_v3 (32 個の vCPU)、256 GB の RAM、800 GB の一時ストレージ、追加の 3 個の 512 GB と 1 個の 128 GB Premium Storage ディスクで構成されています。 VM の種類 DS11_v2 (2 個の vCPU)、14 GB の RAM、28 GB の一時ストレージを使用する SAP セントラル インスタンス サーバーも含まれます。 SAP アプリケーション サーバー用の 6 個の VM の種類 DS14_v2 (16 個の vCPU)、112 GB の RAM、224 GB の一時ストレージ、追加の 6 個の 128 GB の Premium Storage ディスクも含まれます。
 
-* [Extra Large](https://azure.com/e/58c636922cf94faf9650f583ff35e97b): 超大規模なシステムは、データベース サーバー用の VM の種類 M64s (64 個の vCPU)、1,024 GB の RAM、2,000 GB の一時ストレージ、追加の 7 個の 1024 GB の Premium Storage ディスクで構成されています。 VM の種類 DS11_v2 (2 個の vCPU)、14 GB の RAM、28 GB の一時ストレージを使用する SAP セントラル インスタンス サーバーも含まれます。 SAP アプリケーション サーバー用の 10 個の VM の種類 DS14_v2 (16 個の vCPU)、112 GB の RAM、224 GB の一時ストレージ、追加の 10 個の 128 GB の Premium Storage ディスクも含まれます。
+* [Extra Large](https://azure.com/e/58c636922cf94faf9650f583ff35e97b):超大規模なシステムは、データベース サーバー用の VM の種類 M64s (64 個の vCPU)、1,024 GB の RAM、2,000 GB の一時ストレージ、追加の 7 個の 1024 GB の Premium Storage ディスクで構成されています。 VM の種類 DS11_v2 (2 個の vCPU)、14 GB の RAM、28 GB の一時ストレージを使用する SAP セントラル インスタンス サーバーも含まれます。 SAP アプリケーション サーバー用の 10 個の VM の種類 DS14_v2 (16 個の vCPU)、112 GB の RAM、224 GB の一時ストレージ、追加の 10 個の 128 GB の Premium Storage ディスクも含まれます。
 
 ## <a name="deployment"></a>Deployment
 

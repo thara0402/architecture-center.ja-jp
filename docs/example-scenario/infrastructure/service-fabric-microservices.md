@@ -3,12 +3,13 @@ title: Service Fabric を使用したモノリシック アプリケーション
 description: 大規模なモノリシック アプリケーションをマイクロサービスに分解します。
 author: timomta
 ms.date: 09/20/2018
-ms.openlocfilehash: 9194ddd53a6d78f49fea2f7bb36fbc8721a502ea
-ms.sourcegitcommit: b2a4eb132857afa70201e28d662f18458865a48e
+ms.custom: fasttrack
+ms.openlocfilehash: 438d2eabff39356a7593f2da798a74eebe94553a
+ms.sourcegitcommit: a0e8d11543751d681953717f6e78173e597ae207
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48819661"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53004624"
 ---
 # <a name="using-service-fabric-to-decompose-monolithic-applications"></a>Service Fabric を使用したモノリシック アプリケーションの分解
 

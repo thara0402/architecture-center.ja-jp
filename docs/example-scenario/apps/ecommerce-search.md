@@ -3,12 +3,13 @@ title: eコマースのインテリジェントな製品検索エンジン
 description: eコマース アプリケーションに世界水準の検索エクスペリエンスを提供します。
 author: jelledruyts
 ms.date: 09/14/2018
-ms.openlocfilehash: a57477c26665b4560671550f6fdd81c2d9505e71
-ms.sourcegitcommit: 0a31fad9b68d54e2858314ca5fe6cba6c6b95ae4
+ms.custom: fasttrack
+ms.openlocfilehash: 5eabdb94b9345e73b21526681e0dbd6ae859d7be
+ms.sourcegitcommit: a0e8d11543751d681953717f6e78173e597ae207
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51610670"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53004902"
 ---
 # <a name="intelligent-product-search-engine-for-e-commerce"></a>eコマースのインテリジェントな製品検索エンジン
 
@@ -98,9 +99,9 @@ eコマース アプリケーションがどれくらい成功するかは、顧
 
 取得するトラフィックの量に基づいて、次の 3 つのサンプル コスト プロファイルが用意されています。
 
-* [小][small-pricing]: このプロファイルでは、Web サイトをホストするための 1 つの `Standard S1` Web アプリ、Azure Bot Service の Free レベル、1 つの `Basic` Azure Search Service、`Standard S2` SQL Database を使用しています。
-* [中][medium-pricing]: ここでは、Web アプリを `Standard S3` レベルの 2 つのインスタンスにスケールアップし、Search Service を `Standard S1` レベルにアップグレードし、`Standard S6` SQL Database を使用しています。
-* [大][large-pricing]: 最大のプロファイルでは、`Premium P2V2` Web アプリの 4 つのインスタンスを使用し、Azure Bot Service を `Standard S1` レベル (Premium チャネルで 1.000.000 メッセージ) にアップグレードし、2 ユニットの `Standard S3` Azure Search Service と `Premium P6` SQL Database を使用しています。
+* [小][small-pricing]:このプロファイルでは、Web サイトをホストするための 1 つの `Standard S1` Web アプリ、Azure Bot Service の Free レベル、1 つの `Basic` Azure Search Service、`Standard S2` SQL Database を使用しています。
+* [中][medium-pricing]:ここでは、Web アプリを `Standard S3` レベルの 2 つのインスタンスにスケールアップし、Search Service を `Standard S1` レベルにアップグレードし、`Standard S6` SQL Database を使用しています。
+* [大][large-pricing]:最大のプロファイルでは、`Premium P2V2` Web アプリの 4 つのインスタンスを使用し、Azure Bot Service を `Standard S1` レベル (Premium チャネルで 1.000.000 メッセージ) にアップグレードし、2 ユニットの `Standard S3` Azure Search Service と `Premium P6` SQL Database を使用しています。
 
 ## <a name="related-resources"></a>関連リソース
 

@@ -1,33 +1,36 @@
 ---
-title: AnyDB 向けの SAP NetWeaver (Windows) を Azure Virtual Machines にデプロイする
+title: AnyDB 向けの SAP NetWeaver (Windows) を Azure VM にデプロイする
+titleSuffix: Azure Reference Architectures
 description: 高可用性を備えた Azure の Linux環境で SAP S/4HANA を実行するための実証済みプラクティス。
 author: lbrader
 ms.date: 08/03/2018
-ms.openlocfilehash: 3a8c59b63d55dea520f807efbe72ff56e678ec8e
-ms.sourcegitcommit: dbbf914757b03cdee7a274204f9579fa63d7eed2
+ms.custom: seodec18
+ms.openlocfilehash: 4014d5736527a2f29692720d199b4a1aa8f76020
+ms.sourcegitcommit: 88a68c7e9b6b772172b7faa4b9fd9c061a9f7e9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50916585"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53120188"
 ---
-# <a name="deploy-sap-netweaver-windows-for-anydb-on-azure-virtual-machines"></a>AnyDB 向けの SAP NetWeaver (Windows) を Azure Virtual Machines にデプロイする
+# <a name="deploy-sap-netweaver-windows-for-anydb-on-azure-virtual-machines"></a>AnyDB 向けの SAP NetWeaver (Windows) を Azure 仮想マシンにデプロイする
 
 この参照用アーキテクチャは、高可用性を備えた Azure の Windows 環境で SAP NetWeaver を実行するための一連の実証済みプラクティスを示しています。 データベースは AnyDB (SAP HANA を除く、サポートされている任意の DBMS を表す SAP 用語) です。 このアーキテクチャは特定の仮想マシン (VM) サイズでデプロイされ、お客様の組織のニーズに合わせて変更できます。
 
-![](./images/sap-netweaver.png)
+![Azure VM 上の AnyDB 向けの SAP NetWeaver (Windows) の参照アーキテクチャ](./images/sap-netweaver.png)
 
 "*このアーキテクチャの [Visio ファイル][visio-download]をダウンロードします。*"
 
-> [!NOTE] 
+> [!NOTE]
 > この参照用アーキテクチャをデプロイするには、SAP 製品と他の Microsoft 以外のテクノロジの適切なライセンスが必要です。
 
 ## <a name="architecture"></a>アーキテクチャ
+
 このアーキテクチャは、次のインフラストラクチャ コンポーネントと主要ソフトウェア コンポーネントで構成されます。
 
 **Virtual network**。 Azure Virtual Network サービスによって、Azure リソースが安全に相互接続されます。 このアーキテクチャでは、仮想ネットワークは、[ハブスポーク](../hybrid-networking/hub-spoke.md)のハブにデプロイされた VPN ゲートウェイ経由でオンプレミス環境に接続されます。 スポークは、SAP アプリケーションおよびデータベース層に使用される仮想ネットワークです。
 
 **サブネット**。 仮想ネットワークは、階層 (アプリケーション (SAP NetWeaver) 層、データベース層、共有サービス (Jumpbox) 層、Active Directory 層) ごとに個別のサブネットに分割されます。
-    
+
 **仮想マシン**。 このアーキテクチャでは、アプリケーション層とデータベース層に仮想マシンが使用され、次のようにグループ化されます。
 
 - **SAP NetWeaver**。 アプリケーション層では Windows 仮想マシンが使用され、SAP セントラル サービスと SAP アプリケーション サーバーが実行されます。 セントラル サービスを実行する VM は、高可用性のために Windows Server フェールオーバー クラスターとして構成され、SIOS DataKeeper Cluster Edition によってサポートされます。
@@ -35,7 +38,7 @@ ms.locfileid: "50916585"
 - **Jumpbox**。 要塞ホストとも呼ばれます。 これは、他の仮想マシンに接続するために管理者が使用するネットワークの安全な仮想マシンです。
 - **Windows Server Active Directory ドメイン コントローラー**。 ドメイン コントローラーは、ドメイン内のすべての VM とユーザーで使用されます。
 
-**ロード バランサー**。 [Azure Load Balancer](/azure/load-balancer/load-balancer-overview) インスタンスは、アプリケーション層サブネット内の仮想マシンにトラフィックを分散させるときに使用されます。 データ層では、DBMS に応じて、組み込みの SAP ロード バランサー、Azure Load Balancer、またはその他のメカニズムを使用して高可用性を実現できます。 詳細については、「[SAP NetWeaver のための Azure Virtual Machines DBMS のデプロイ](/azure/virtual-machines/workloads/sap/dbms-guide)」を参照してください。 
+**ロード バランサー**。 [Azure Load Balancer](/azure/load-balancer/load-balancer-overview) インスタンスは、アプリケーション層サブネット内の仮想マシンにトラフィックを分散させるときに使用されます。 データ層では、DBMS に応じて、組み込みの SAP ロード バランサー、Azure Load Balancer、またはその他のメカニズムを使用して高可用性を実現できます。 詳細については、「[SAP NetWeaver のための Azure Virtual Machines DBMS のデプロイ](/azure/virtual-machines/workloads/sap/dbms-guide)」を参照してください。
 
 **可用性セット**。 SAP Web Dispatcher、SAP アプリケーション サーバー、および (A) SCS ロールの仮想マシンが個別の[可用性セット](/azure/virtual-machines/windows/tutorial-availability-sets)にグループ化され、ロールごとに少なくとも 2 つの仮想マシンがプロビジョニングされます。 これにより、仮想マシンが、より高度な[サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/virtual-machines) (SLA) に対応できるようになります。
 
@@ -45,10 +48,11 @@ ms.locfileid: "50916585"
 
 **ゲートウェイ**。 ゲートウェイにより、オンプレミス ネットワークが Azure 仮想ネットワークに拡張されます。 [ExpressRoute](/azure/architecture/reference-architectures/hybrid-networking/expressroute) は、パブリック インターネットを経由しないプライベート接続を作成するための推奨 Azure サービスですが、[サイト間](/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal)接続を使用することもできます。
 
-**Azure Storage**。 仮想マシンの仮想ハード ディスク (VHD) の永続的ストレージを提供するには、[Azure Storage](/azure/storage/storage-standard-storage) が必要です。 これは、フェールオーバー クラスター操作を実装するために、[クラウド監視](/windows-server/failover-clustering/deploy-cloud-witness)によっても使用されます。 
+**Azure Storage**。 仮想マシンの仮想ハード ディスク (VHD) の永続的ストレージを提供するには、[Azure Storage](/azure/storage/storage-standard-storage) が必要です。 これは、フェールオーバー クラスター操作を実装するために、[クラウド監視](/windows-server/failover-clustering/deploy-cloud-witness)によっても使用されます。
 
 ## <a name="recommendations"></a>Recommendations
-実際の要件は、ここで説明するアーキテクチャとは異なる場合があります。 これらの推奨事項は原案として使用してください。
+
+実際の要件は、ここで説明するアーキテクチャとは異なる場合があります。 これらの推奨事項を開始点として使用してください。
 
 ### <a name="sap-web-dispatcher-pool"></a>SAP Web Dispatcher プール
 
@@ -68,7 +72,7 @@ ABAP アプリケーション サーバーのログオン グループの管理�
 
 詳細については、 「[Running SAP applications on the Microsoft platform (Microsoft プラットフォーム上での SAP アプリケーションの実行)](https://blogs.msdn.microsoft.com/saponsqlserver/2017/05/04/sap-on-azure-general-update-for-customers-partners-april-2017/)」で、Azure の SIOS で ASCS を実行する SAP のお客様向けの重要な更新に関するトピックをご覧ください。
 
-Windows Server フェールオーバー クラスターを使ってファイル共有クラスターを実装して、クラスタリングを処理することもできます。 [SAP](https://blogs.sap.com/2018/03/19/migration-from-a-shared-disk-cluster-to-a-file-share-cluster/) では、UNC パスを介して /sapmnt グローバル ディレクトリにアクセスするための、セントラル サービス デプロイ パターンを最近変更しました。 この変更により、セントラル サービス VM の SIOS または他の共有ディスク ソリューションに関する[要件がなくなりました](https://blogs.msdn.microsoft.com/saponsqlserver/2017/08/10/high-available-ascs-for-windows-on-file-share-shared-disk-no-longer-required/)。 ただし、/sapmnt UNC 共有の[高可用性](https://blogs.sap.com/2017/07/21/how-to-create-a-high-available-sapmnt-share/)は確保することをお勧めします。 セントラル サービス インスタンスでこれを実現するには、Windows Server フェールオーバー クラスターと、Windows Server 2016 で[スケールアウト ファイル サーバー](https://blogs.msdn.microsoft.com/saponsqlserver/2017/11/14/file-server-with-sofs-and-s2d-as-an-alternative-to-cluster-shared-disk-for-clustering-of-an-sap-ascs-instance-in-azure-is-generally-available/) (SOFS) および[記憶域スペース ダイレクト](https://blogs.sap.com/2018/03/07/your-sap-on-azure-part-5-ascs-high-availability-with-storage-spaces-direct/) (S2D) 機能を使用します。 
+Windows Server フェールオーバー クラスターを使ってファイル共有クラスターを実装して、クラスタリングを処理することもできます。 [SAP](https://blogs.sap.com/2018/03/19/migration-from-a-shared-disk-cluster-to-a-file-share-cluster/) では、UNC パスを介して /sapmnt グローバル ディレクトリにアクセスするための、セントラル サービス デプロイ パターンを最近変更しました。 この変更により、セントラル サービス VM の SIOS または他の共有ディスク ソリューションに関する[要件がなくなりました](https://blogs.msdn.microsoft.com/saponsqlserver/2017/08/10/high-available-ascs-for-windows-on-file-share-shared-disk-no-longer-required/)。 ただし、/sapmnt UNC 共有の[高可用性](https://blogs.sap.com/2017/07/21/how-to-create-a-high-available-sapmnt-share/)は確保することをお勧めします。 セントラル サービス インスタンスでこれを実現するには、Windows Server フェールオーバー クラスターと、Windows Server 2016 で[スケールアウト ファイル サーバー](https://blogs.msdn.microsoft.com/saponsqlserver/2017/11/14/file-server-with-sofs-and-s2d-as-an-alternative-to-cluster-shared-disk-for-clustering-of-an-sap-ascs-instance-in-azure-is-generally-available/) (SOFS) および[記憶域スペース ダイレクト](https://blogs.sap.com/2018/03/07/your-sap-on-azure-part-5-ascs-high-availability-with-storage-spaces-direct/) (S2D) 機能を使用します。
 
 ### <a name="availability-sets"></a>可用性セット
 
@@ -112,7 +116,7 @@ SQL 上の SAP については、「[Top 10 Key Considerations for Deploying SAP
 
 ## <a name="scalability-considerations"></a>スケーラビリティに関する考慮事項
 
-SAP アプリケーション レイヤーでは、Azure は、スケールアップおよびスケールアウトのための幅広い仮想マシン サイズを提供しています。詳細な一覧については、[SAP Note 1928533](https://launchpad.support.sap.com/#/notes/1928533) の「SAP Applications on Azure: Supported Products and Azure VM types (Azure 上の SAP アプリケーション: サポートされる製品と Azure VM の種類)」を参照してください  (アクセスするには、SAP Service Marketplace アカウントが必要です)。 SAP アプリケーション サーバーとセントラル サービス クラスターは、インスタンスを追加することでスケールアップ/スケールダウンまたはスケールアウトできます。 AnyDB データベースの場合、スケールアップ/スケールダウンは可能ですが、スケールアウトできません。AnyDB の SAP データベース コンテナーでは、シャーディングがサポートされません。
+SAP アプリケーション レイヤーでは、Azure は、スケールアップおよびスケールアウトのための幅広い仮想マシン サイズを提供しています。詳細な一覧については、[SAP Note 1928533](https://launchpad.support.sap.com/#/notes/1928533) の「SAP Applications on Azure: Supported Products and Azure VM Types (Azure 上の SAP アプリケーション:サポートされる製品と Azure VM の種類)」を参照してください。 (アクセスするには、SAP Service Marketplace アカウントが必要です)。 SAP アプリケーション サーバーとセントラル サービス クラスターは、インスタンスを追加することでスケールアップ/スケールダウンまたはスケールアウトできます。 AnyDB データベースの場合、スケールアップ/スケールダウンは可能ですが、スケールアウトできません。AnyDB の SAP データベース コンテナーでは、シャーディングがサポートされません。
 
 ## <a name="availability-considerations"></a>可用性に関する考慮事項
 
@@ -145,7 +149,7 @@ SAP アプリケーション サーバーの高可用性は、アプリケーシ
 
 - **アプリケーション サーバー層**。 SAP アプリケーション サーバーには、ビジネス データが含まれていません。 Azure での単純な DR 戦略は、セカンダリ リージョンで SAP アプリケーション サーバーを作成し、そのサーバーをシャットダウンすることです。 プライマリ アプリケーション サーバーで構成変更やカーネル更新を行った場合、同じ変更がセカンダリ リージョンの仮想マシンにコピーされなければなりません。 たとえば、カーネルの実行可能ファイルが DR 仮想マシンにコピーされます。 アプリケーション サーバーをセカンダリ リージョンに自動的にレプリケートするためのソリューションとしては、[Azure Site Recovery](/azure/site-recovery/site-recovery-overview) をお勧めします。
 
-- **セントラル サービス**。 SAP アプリケーション スタックのこのコンポーネントにも、ビジネス データが保持されません。 ディザスター リカバリー リージョンで VM を作成すると、セントラル サービス ロールを実行できます。 プライマリ セントラル サービス ノードから同期されるコンテンツは、/sapmnt 共有コンテンツだけです。 また、構成の変更やカーネルの更新がプライマリ セントラル サービス サーバーで発生した場合、その変更や更新は、セントラル サービスが実行されているディザスター リカバリー リージョンの VM でもう一度行われなければなりません。 2 つのサーバーを同期するには、Azure Site Recovery を使用してクラスター ノードをレプリケートするか、単純に、定期的にコピーするようにスケジュール設定されたコピー ジョブを使用して、/sapmnt をディザスター リカバリー リージョンにコピーします。 このシンプルなレプリケーション方法の作成、コピー、およびテスト フェールオーバー プロセスの詳細については、「[SAP NetWeaver: Building a Hyper-V and Microsoft Azure–based Disaster Recovery Solution (SAP NetWeaver: Hyper-V および Microsoft Azure ベースのディザスター リカバリー ソリューション)](https://download.microsoft.com/download/9/5/6/956FEDC3-702D-4EFB-A7D3-2DB7505566B6/SAP%20NetWeaver%20-%20Building%20an%20Azure%20based%20Disaster%20Recovery%20Solution%20V1_5%20.docx)」をダウンロードして、「4.3. SAP SPOF layer (ASCS) (4.3 SAP SPOF レイヤー (ASCS))」を参照してください。
+- **セントラル サービス**。 SAP アプリケーション スタックのこのコンポーネントにも、ビジネス データが保持されません。 ディザスター リカバリー リージョンで VM を作成すると、セントラル サービス ロールを実行できます。 プライマリ セントラル サービス ノードから同期されるコンテンツは、/sapmnt 共有コンテンツだけです。 また、構成の変更やカーネルの更新がプライマリ セントラル サービス サーバーで発生した場合、その変更や更新は、セントラル サービスが実行されているディザスター リカバリー リージョンの VM でもう一度行われなければなりません。 2 つのサーバーを同期するには、Azure Site Recovery を使用してクラスター ノードをレプリケートするか、単純に、定期的にコピーするようにスケジュール設定されたコピー ジョブを使用して、/sapmnt をディザスター リカバリー リージョンにコピーします。 このシンプルなレプリケーション方法の作成、コピー、およびテスト フェールオーバー プロセスの詳細については、「[SAP NetWeaver:Building a Hyper-V and Microsoft Azure–based Disaster Recovery Solution (SAP NetWeaver: Hyper-V および Microsoft Azure ベースのディザスター リカバリー ソリューション)](https://download.microsoft.com/download/9/5/6/956FEDC3-702D-4EFB-A7D3-2DB7505566B6/SAP%20NetWeaver%20-%20Building%20an%20Azure%20based%20Disaster%20Recovery%20Solution%20V1_5%20.docx)」をダウンロードして、「4.3. SAP SPOF layer (ASCS) (4.3 SAP SPOF レイヤー (ASCS))」を参照してください。
 
 - **データベース層**。 DR の実装には、データベース独自の統合レプリケーション テクノロジを使用するのが最適です。 たとえば、SQL Server の場合は、AlwaysOn 可用性グループを使用して、リモート リージョンにレプリカを作成し、手動フェールオーバーで非同期的にトランザクションをレプリケートすることをお勧めします。 非同期レプリケーションにより、プライマリ サイトにおけるインタラクティブ ワークロードのパフォーマンスへの影響を回避できます。 手動フェールオーバーにより、ユーザーが、DR の影響を評価し、DR サイトからの操作が正当かどうかを判断できるようになります。
 
@@ -159,7 +163,7 @@ SAP インフラストラクチャのリソースとサービス パフォーマ
 
 ## <a name="security-considerations"></a>セキュリティに関する考慮事項
 
-SAP は、SAP アプリケーション内でのロールベース アクセスと承認を制御するために、独自のユーザー管理エンジン (UME) を備えています。 詳細については、「[SAP NetWeaver Application Server for ABAP Security Guide (SAP NetWeaver Application Server for ABAP セキュリティ ガイド)](https://help.sap.com/doc/7b932ef4728810148a4b1a83b0e91070/1610 001/en-US/frameset.htm?4dde53b3e9142e51e10000000a42189c.html)」および「[SAP NetWeaver Application Server Java Security Guide (SAP NetWeaver Application Server Java セキュリティ ガイド)](https://help.sap.com/doc/saphelp_snc_uiaddon_10/1.0/en-US/57/d8bfcf38f66f48b95ce1f52b3f5184/frameset.htm)」を参照してください。
+SAP は、SAP アプリケーション内でのロールベース アクセスと承認を制御するために、独自のユーザー管理エンジン (UME) を備えています。 詳細については、「[SAP NetWeaver Application Server for ABAP Security Guide (SAP NetWeaver Application Server for ABAP セキュリティ ガイド)](https://help.sap.com/viewer/864321b9b3dd487d94c70f6a007b0397/7.4.19)」および「[SAP NetWeaver Application Server Java Security Guide (SAP NetWeaver Application Server Java セキュリティ ガイド)](https://help.sap.com/doc/saphelp_snc_uiaddon_10/1.0/en-US/57/d8bfcf38f66f48b95ce1f52b3f5184/frameset.htm)」を参照してください。
 
 追加のネットワーク セキュリティについては、[ネットワーク DMZ](../dmz/secure-vnet-hybrid.md) を実装することを検討します。これにより、ネットワーク仮想アプライアンスを使用して、Web Dispatcher のサブネットの外側にファイアウォールが作成されます。
 

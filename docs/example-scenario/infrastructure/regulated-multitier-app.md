@@ -1,40 +1,41 @@
 ---
-title: 規制対象業界向けのセキュリティで保護された Windows Web アプリケーション
+title: Azure 上の Windows Server を使用した、セキュリティで保護された Web アプリの構築
 description: スケール セット、Application Gateway、ロード バランサーを使用して、セキュリティで保護された多層 Web アプリケーションを、Azure 上の Windows Server を使用して構築します。
 author: iainfoulds
-ms.date: 07/11/2018
-ms.openlocfilehash: c7137988bd9b5e26718b4fe0955a3dca3dc638b8
-ms.sourcegitcommit: 0a31fad9b68d54e2858314ca5fe6cba6c6b95ae4
+ms.date: 12/06/2018
+ms.custom: seodec18
+ms.openlocfilehash: 4e4d2117fbc46eda46f7ef276a71739e3a79270e
+ms.sourcegitcommit: 4ba3304eebaa8c493c3e5307bdd9d723cd90b655
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51610721"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53307063"
 ---
-# <a name="secure-windows-web-application-for-regulated-industries"></a>規制対象業界向けのセキュリティで保護された Windows Web アプリケーション
+# <a name="building-secure-web-applications-with-windows-virtual-machines-on-azure"></a>Azure 上の Windows Server を使用した、セキュリティで保護された Web アプリケーションの構築
 
-このシナリオ例は、多層アプリケーションをセキュリティで保護する必要がある規制対象業界に適用されます。 このシナリオでは、フロントエンド ASP.NET アプリケーションから、保護されたバックエンド Microsoft SQL Server クラスターに安全に接続します。
+このシナリオでは、セキュリティ保護された多層 Web アプリケーションを Microsoft Azure で実行するためのアーキテクチャと設計のガイダンスを示します。 この例の ASP.NET アプリケーションは、仮想マシンを使用する保護されたバックエンド Microsoft SQL Server クラスターに安全に接続します。
 
-アプリケーションのサンプル シナリオには、手術室アプリケーションの実行、患者の予約とレコードの保存、または処方箋の差し替えと注文が含まれます。 これまでは、これらのシナリオのために、従来のオンプレミス アプリケーションとサービスを組織が維持する必要がありました。 これらの Windows Server アプリケーションを、セキュリティで保護されたスケーラブルな方法で Azure にデプロイすることにより、組織は自身のデプロイを最新化し、オンプレミスの運用コストと管理オーバーヘッドを減らすことができます。
+これまでは、安全なインフラストラクチャを提供するために、従来のオンプレミスのアプリケーションとサービスを組織が維持する必要がありました。 これらの Windows Server アプリケーションを Azure に安全にデプロイすることにより、組織は自身のデプロイを最新化し、オンプレミスの運用コストと管理オーバーヘッドを減らすことができます。
 
 ## <a name="relevant-use-cases"></a>関連するユース ケース
 
-その他の関連するユース ケース:
+このシナリオを適用できるいくつかの例を、次に示します。
 
 * セキュリティで保護されたクラウド環境におけるアプリケーション デプロイの最新化。
-* 従来のオンプレミス アプリケーションとサービス管理の軽減。
+* 従来のオンプレミスのアプリケーションとサービスの管理のオーバーヘッドの軽減。
 * 新しいアプリケーション プラットフォームでの医療と患者体験の向上。
 
 ## <a name="architecture"></a>アーキテクチャ
 
 ![規制対象業界向けの多層 Windows Server アプリケーションに関与する Azure コンポーネントのアーキテクチャ概要][architecture]
 
-このシナリオでは、ASP.NET および Microsoft SQL Server を使用する規制対象業界の多層アプリケーションに対応できます。 このシナリオのデータ フローは次のとおりです。
+このシナリオでは、バックエンド データベースに接続されているフロント エンド Web アプリケーション (両方とも Windows Server 2016 で実行されています) を示します。 このシナリオのデータ フローは次のとおりです。
 
-1. ユーザーが Azure Application Gateway 経由で、フロントエンドの規制対象業界向け ASP.NET アプリケーションにアクセスします。
+1. ユーザーが Azure Application Gateway 経由で、フロントエンドの ASP.NET アプリケーションにアクセスします。
 2. Application Gateway は、Azure 仮想マシン スケール セット内でトラフィックを VM インスタンスに分散します。
-3. ASP.NET アプリケーションは、Azure Load Balancer を使用して、バックエンド層の Microsoft SQL Server クラスターに接続します。 これらのバックエンド SQL Server インスタンスは別個の Azure 仮想ネットワークにあり、トラフィック フローを制限するネットワーク セキュリティ グループの規則によってセキュリティで保護されています。
+3. このアプリケーションは、Azure Load Balancer を使用して、バックエンド層の Microsoft SQL Server クラスターに接続します。 これらのバックエンド SQL Server インスタンスは別個の Azure 仮想ネットワークにあり、トラフィック フローを制限するネットワーク セキュリティ グループの規則によってセキュリティで保護されています。
 4. ロード バランサーは、SQL Server のトラフィックを、別の仮想マシン スケール セット内の VM インスタンスに分散します。
-5. Azure Blob Storage は、バックエンド層の SQL Server クラスター用のクラウド監視として機能します。 VNet 内からの接続は、Azure Storage の VNet サービス エンドポイントで有効にされます。
+5. Azure Blob Storage は、バックエンド層の SQL Server クラスター用の[クラウド監視][cloud-witness]として機能します。 VNet 内からの接続は、Azure Storage の VNet サービス エンドポイントで有効にされます。
 
 ### <a name="components"></a>コンポーネント
 
@@ -47,7 +48,7 @@ ms.locfileid: "51610721"
 
 ### <a name="alternatives"></a>代替手段
 
-* インフラストラクチャにはオペレーティング システム に依存しているものがないため、*nix、Windows は、他のさまざまなオペレーティング システムに置き換えることができます。
+* インフラストラクチャはオペレーティング システムに依存しないため、Linux と Windows は同じ意味で使用できます。
 
 * バックエンド データ ストアの代わりに、[Linux 用 SQL Server][sql-linux] を使用できます。
 
@@ -61,7 +62,7 @@ ms.locfileid: "51610721"
 
 データベース層は、AlwaysOn 可用性グループを使用するように構成できます。 この SQL Server 構成により、クラスター内の 1 つのプライマリ データベースが、最大 8 つのセカンダリ データベースと共に構成されます。 プライマリ データベースで問題が発生した場合、クラスターは、セカンダリ データベースのいずれかにフェールオーバーします。これにより、アプリケーションを引き続き使用できます。 詳細については、[SQL Server 用の Always On 可用性グループの概要][sqlalwayson-docs]に関するページをご覧ください。
 
-可用性に関する他のトピックについては、Azure アーキテクチャ センターの[可用性のチェックリスト][availability]を参照してください。
+可用性に関する他のガイダンスについては、Azure アーキテクチャ センターの[可用性のチェックリスト][availability]を参照してください。
 
 ### <a name="scalability"></a>スケーラビリティ
 
@@ -112,9 +113,9 @@ Azure Resource Manager テンプレートを使用して、このシナリオの
 
 ## <a name="related-resources"></a>関連リソース
 
-このシナリオでは、Microsoft SQL Server クラスターを実行するバックエンド仮想マシン スケール セットを使用しました。 アプリケーション データ用に、安全でスケーラブルなデータベース層として Cosmos DB を使用することもできます。 [Azure 仮想ネットワーク サービス エンドポイント][vnetendpoint-docs]を使用すると、重要な Azure サービス リソースへのアクセスを仮想ネットワークのみに限定することができます。 このシナリオでは、VNet エンドポイントを使用することで、フロントエンド アプリケーション層と Cosmos DB の間のトラフィックをセキュリティで保護できます。 詳しくは、[Azure Cosmos DB の概要](/azure/cosmos-db/introduction)に関するページをご覧ください。
+このシナリオでは、Microsoft SQL Server クラスターを実行するバックエンド仮想マシン スケール セットを使用しました。 アプリケーション データ用に、安全でスケーラブルなデータベース層として Cosmos DB を使用することもできます。 [Azure 仮想ネットワーク サービス エンドポイント][vnetendpoint-docs]を使用すると、重要な Azure サービス リソースへのアクセスを仮想ネットワークのみに限定することができます。 このシナリオでは、VNet エンドポイントを使用することで、フロントエンド アプリケーション層と Cosmos DB の間のトラフィックをセキュリティで保護できます。 詳しくは、「[Azure Cosmos DB の概要](/azure/cosmos-db/introduction)」をご覧ください。
 
-[SQL Server を使用した一般的な N 層アプリケーションの参照アーキテクチャ][ntiersql-ra]の詳細を確認することもできます。
+詳細な実装ガイドについては、[SQL Server を使用した N 層アプリケーションの参照アーキテクチャ][ntiersql-ra]に関するページを確認してください。
 
 <!-- links -->
 [appgateway-docs]: /azure/application-gateway/overview
@@ -137,7 +138,7 @@ Azure Resource Manager テンプレートを使用して、このシナリオの
 [pci-dss]: /azure/security/blueprints/pcidss-iaaswa-overview
 [dmz]: /azure/virtual-network/virtual-networks-dmz-nsg
 [sql-linux]: /sql/linux/sql-server-linux-overview?view=sql-server-linux-2017
-
+[cloud-witness]: /windows-server/failover-clustering/deploy-cloud-witness
 [small-pricing]: https://azure.com/e/711bbfcbbc884ef8aa91cdf0f2caff72
 [medium-pricing]: https://azure.com/e/b622d82d79b34b8398c4bce35477856f
 [large-pricing]: https://azure.com/e/1d99d8b92f90496787abecffa1473a93

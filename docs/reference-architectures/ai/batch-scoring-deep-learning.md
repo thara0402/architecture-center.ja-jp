@@ -1,25 +1,26 @@
 ---
-title: ディープ ラーニング モデル用の Azure でのバッチ スコアリング
-description: この参照アーキテクチャでは、Azure Batch AI を使用してニューラル スタイルの転送を動画に適用する方法を示します
+title: ディープ ラーニング モデル用のバッチ スコアリング
+titleSuffix: Azure Reference Architectures
+description: この参照アーキテクチャでは、Azure Batch AI を使用してニューラル スタイルの転送を動画に適用する方法を示します。
 author: jiata
 ms.date: 10/02/2018
-ms.author: jiata
-ms.openlocfilehash: 1f3f3d3882b2b30eb29acd26c9eab9ff128028e2
-ms.sourcegitcommit: 9eecff565392273d11b8702f1fcecb4d75e27a15
+ms.custom: azcat-ai
+ms.openlocfilehash: 0396903a39d00a4131df65872a63f4b3fde8dce7
+ms.sourcegitcommit: 88a68c7e9b6b772172b7faa4b9fd9c061a9f7e9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48243728"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53119882"
 ---
 # <a name="batch-scoring-on-azure-for-deep-learning-models"></a>ディープ ラーニング モデル用の Azure でのバッチ スコアリング
 
 この参照アーキテクチャでは、Azure Batch AI を使用してニューラル スタイルの転送を動画に適用する方法を示します。 "*スタイルの転送*" とは、別の画像のスタイルに既存の画像を組み込むディープ ラーニングの手法です。 このアーキテクチャは、ディープ ラーニングでバッチ スコアリングを使用する任意のシナリオに一般化することができます。 [**このソリューションをデプロイします**](#deploy-the-solution)。
- 
-![](./_images/batch-ai-deep-learning.png)
 
-**シナリオ**: あるメディア組織は、動画のスタイルを特定の絵画のように変更したいと考えています。 組織は、適切なタイミングで自動的に動画のすべてのフレームにこのスタイルを適用できることを望んでいます。 ニューラル スタイル転送アルゴリズムの背景について詳しくは、「[Image Style Transfer Using Convolutional Neural Networks][image-style-transfer]」(畳み込みニューラル ネットワークを使用した画像スタイルの転送) (PDF) をご覧ください。
+![Azure Batch AI を使用したディープ ラーニング モデルのアーキテクチャ ダイアグラム](./_images/batch-ai-deep-learning.png)
 
-| スタイル画像: | 入力/コンテンツ動画: | 出力動画: | 
+**シナリオ**:あるメディア組織は、動画のスタイルを特定の絵画のように変更したいと考えています。 組織は、適切なタイミングで自動的に動画のすべてのフレームにこのスタイルを適用できることを望んでいます。 ニューラル スタイル転送アルゴリズムの背景について詳しくは、「[Image Style Transfer Using Convolutional Neural Networks][image-style-transfer]」(畳み込みニューラル ネットワークを使用した画像スタイルの転送) (PDF) をご覧ください。
+
+| スタイル画像: | 入力/コンテンツ動画: | 出力動画: |
 |--------|--------|---------|
 | <img src="https://happypathspublic.blob.core.windows.net/assets/batch_scoring_for_dl/style_image.jpg" width="300"> | [<img src="https://happypathspublic.blob.core.windows.net/assets/batch_scoring_for_dl/input_video_image_0.jpg" width="300" height="300">](https://happypathspublic.blob.core.windows.net/assets/batch_scoring_for_dl/input_video.mp4 "入力動画") *クリックすると動画が表示されます* | [<img src="https://happypathspublic.blob.core.windows.net/assets/batch_scoring_for_dl/output_video_image_0.jpg" width="300" height="300">](https://happypathspublic.blob.core.windows.net/assets/batch_scoring_for_dl/output_video.mp4 "出力動画") *クリックすると動画が表示されます* |
 
@@ -35,9 +36,10 @@ ms.locfileid: "48243728"
 1. 生成されたフレームをダウンロードして、画像を動画に合成します。
 
 ## <a name="architecture"></a>アーキテクチャ
+
 このアーキテクチャは、次のコンポーネントで構成されます。
 
-### <a name="compute"></a>コンピューティング
+### <a name="compute"></a>Compute
 
 **[Azure Batch AI][batch-ai]** は、ニューラル スタイル転送アルゴリズムを実行するために使用されます。 Batch AI は、GPU 対応の VM でディープ ラーニング フレームワーク用にあらかじめ構成されているコンテナー化された環境を提供することにより、ディープ ラーニング ワークロードをサポートします。 Batch AI は、BLOB ストレージにコンピューティング クラスターを接続することもできます。
 
@@ -62,7 +64,7 @@ ms.locfileid: "48243728"
 3. FFmpeg を使用して、動画を個々のフレームに分割します。 フレームは、並列で個別に処理されます。
 4. AzCopy を使用して、個々のフレームを BLOB コンテナーにコピーします。
 
-この段階で、動画映像はニューラル スタイル転送に使用できる形式になっています。 
+この段階で、動画映像はニューラル スタイル転送に使用できる形式になっています。
 
 ## <a name="performance-considerations"></a>パフォーマンスに関する考慮事項
 
@@ -74,7 +76,7 @@ ms.locfileid: "48243728"
 
 ### <a name="parallelizing-across-vms-vs-cores"></a>VM とコアの間の並列化
 
-スタイル転送プロセスをバッチ ジョブとして実行するとき、主に GPU 上で実行されるジョブは、VM 間で並列化する必要があります。 2 つの方法が可能であり、単一の GPU を備えた VM を使用して大規模なクラスターを作成するか、または多くの GPU を備えた VM を使用して小規模なクラスターを作成することができます。 
+スタイル転送プロセスをバッチ ジョブとして実行するとき、主に GPU 上で実行されるジョブは、VM 間で並列化する必要があります。 2 つの方法が可能であり、単一の GPU を備えた VM を使用して大規模なクラスターを作成するか、または多くの GPU を備えた VM を使用して小規模なクラスターを作成することができます。
 
 このワークロードでは、これら 2 つのオプションのパフォーマンスは同等です。 VM あたりの GPU が多い少数の VM を使用すると、データ移動を削減するのに役立ちます。 ただし、このワークロードではジョブごとのデータ量がそれほど多くないので、BLOB ストレージによって大きく制限されることはありません。
 
@@ -96,7 +98,7 @@ Batch AI を使用する場合は、シナリオに必要なスループット�
 
 ### <a name="data-encryption-and-data-movement"></a>データの暗号化とデータの移動
 
-この参照アーキテクチャでは、バッチ スコアリング プロセスの例として、スタイルの転送を使用しています。 データの機密性がさらに高いシナリオでは、ストレージに保存されているときのデータを暗号化する必要があります。 データがある場所から次の場所に移動されるたびに、SSL を使用してデータ転送をセキュリティ保護します。 詳しくは、「[Azure Storage セキュリティ ガイド][storage-security]」をご覧ください。 
+この参照アーキテクチャでは、バッチ スコアリング プロセスの例として、スタイルの転送を使用しています。 データの機密性がさらに高いシナリオでは、ストレージに保存されているときのデータを暗号化する必要があります。 データがある場所から次の場所に移動されるたびに、SSL を使用してデータ転送をセキュリティ保護します。 詳しくは、「[Azure Storage セキュリティ ガイド][storage-security]」をご覧ください。
 
 ### <a name="securing-data-in-a-virtual-network"></a>仮想ネットワーク内のデータのセキュリティ保護
 
@@ -108,26 +110,25 @@ Batch AI クラスターを展開するときは、仮想ネットワークの�
 
 - RBAC を使用して、ユーザーのアクセスを必要なリソースのみに制限します。
 - 2 つのストレージ アカウントを個別にプロビジョニングします。 1 つのアカウントで、入力と出力のデータを格納します。 外部ユーザーにはこのアカウントへのアクセスを許可できます。 もう 1 つのアカウントには、実行可能なスクリプトと出力ログ ファイルを格納します。 外部ユーザーはこのアカウントにアクセスできないようにします。 このようにすると、外部ユーザーは実行可能ファイルを変更 (して悪意のあるコードを挿入) することができず、機密情報が保持されている可能性があるログ ファイルにアクセスできません。
-- 悪意のあるユーザーは、ジョブ キューに対して DDOS を行ったり、不正な形式の有害なメッセージをジョブ キューに挿入したりして、システムをロックさせたりデキュー エラーを発生させたりする可能性があります。 
+- 悪意のあるユーザーは、ジョブ キューに対して DDOS を行ったり、不正な形式の有害なメッセージをジョブ キューに挿入したりして、システムをロックさせたりデキュー エラーを発生させたりする可能性があります。
 
 ## <a name="monitoring-and-logging"></a>監視およびログ記録
 
 ### <a name="monitoring-batch-ai-jobs"></a>Batch AI ジョブの監視
 
-ジョブの実行中は、進行状況を監視し、想定どおりに動作していることを確認することが重要です。 ただし、アクティブなノードのクラスター全体を監視するのは困難な場合があります。 
+ジョブの実行中は、進行状況を監視し、想定どおりに動作していることを確認することが重要です。 ただし、アクティブなノードのクラスター全体を監視するのは困難な場合があります。
 
-クラスターの全体的な状態を把握するには、Azure Portal の Batch AI ブレードに移動して、クラスター内のノードの状態を検査します。 ノードが非アクティブになった場合、またはジョブが失敗した場合は、エラー ログが BLOB ストレージに保存されており、Azure Portal の [ジョブ] ブレードでもアクセスできます。 
+クラスターの全体的な状態を把握するには、Azure Portal の Batch AI ブレードに移動して、クラスター内のノードの状態を検査します。 ノードが非アクティブになった場合、またはジョブが失敗した場合は、エラー ログが BLOB ストレージに保存されており、Azure Portal の [ジョブ] ブレードでもアクセスできます。
 
 ログを Application Insights に接続することで、または別のプロセスを実行して Batch AI クラスターとそのジョブの状態をポーリングすることで、監視をさらに強化できます。
 
 ### <a name="logging-in-batch-ai"></a>Batch AI でのログ
 
-Batch AI は、関連付けられている BLOB ストレージ アカウントに、すべての stdout/stderr を自動的に記録します。 Storage Explorer などのストレージ ナビゲーション ツールを使用すると、ログ ファイルをナビゲートするエクスペリエンスがはるかに簡単になります。 
+Batch AI は、関連付けられている BLOB ストレージ アカウントに、すべての stdout/stderr を自動的に記録します。 Storage Explorer などのストレージ ナビゲーション ツールを使用すると、ログ ファイルをナビゲートするエクスペリエンスがはるかに簡単になります。
 
-この参照アーキテクチャの展開の手順では、さらに簡単なログ記録システムをセットアップする方法も示されています。このシステムでは、次に示すように、さまざまなジョブ全体のすべてのログが、BLOB コンテナー内の同じディレクトリに保存されます。
-これらのログを使用して、各ジョブおよび各画像の処理にかかった時間を監視します。 このようにすると、プロセスをさらに最適化するのにいっそうよい方法を思い付くことができます。
+この参照アーキテクチャの展開の手順では、さらに簡単なログ記録システムをセットアップする方法も示されています。このシステムでは、次に示すように、さまざまなジョブ全体のすべてのログが、BLOB コンテナー内の同じディレクトリに保存されます。 これらのログを使用して、各ジョブおよび各画像の処理にかかった時間を監視します。 このようにすると、プロセスをさらに最適化するのにいっそうよい方法を思い付くことができます。
 
-![](./_images/batch-ai-logging.png)
+![Azure Batch AI のログ記録のスクリーンショット](./_images/batch-ai-logging.png)
 
 ## <a name="cost-considerations"></a>コストに関する考慮事項
 
@@ -142,6 +143,8 @@ Batch AI クラスターのサイズは、キュー内のジョブに応じて�
 ## <a name="deploy-the-solution"></a>ソリューションのデプロイ方法
 
 この参照アーキテクチャを展開するには、[GitHub リポジトリ][deployment]で説明されている手順に従ってください。
+
+<!-- links -->
 
 [azcopy]: /azure/storage/common/storage-use-azcopy-linux
 [batch-ai]: /azure/batch-ai/

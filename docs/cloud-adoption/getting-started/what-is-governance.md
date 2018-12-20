@@ -1,16 +1,16 @@
 ---
-title: 'エンタープライズ クラウドの導入: クラウド リソース ガバナンスとは'
+title: エンタープライズ クラウドの導入:クラウド リソース ガバナンスとは
 description: Azure でのリソース アクセス ガバナンスの概念についての説明
 author: petertaylor9999
 ms.date: 09/10/2018
-ms.openlocfilehash: 14c26cbccdbea524a7c7220b3bb98ed2a118c30d
-ms.sourcegitcommit: c49aeef818d7dfe271bc4128b230cfc676f05230
+ms.openlocfilehash: fb01b2e2823c16e32f8ded696de0b6faf1d2e610
+ms.sourcegitcommit: e7f8676bbffe500fc4d6deb603b7c0b7ba1884a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44389215"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53179282"
 ---
-# <a name="enterprise-cloud-adoption-what-is-cloud-resource-governance"></a>エンタープライズ クラウドの導入: クラウド リソース ガバナンスとは
+# <a name="enterprise-cloud-adoption-what-is-cloud-resource-governance"></a>エンタープライズ クラウドの導入:クラウド リソース ガバナンスとは
 
 [Azure のしくみ](what-is-azure.md)に関するページでは、Azure は、仮想化されたハードウェアとソフトウェアをユーザーの代わりに実行する、サーバーとネットワーク ハードウェアのコレクションであることを説明しました。 Azure を使用すると、必要に応じてリソースを容易に作成、読み取り、更新、および削除できるようにすることで、組織の開発および IT 部門の俊敏性を高めることが可能です。
 
@@ -20,7 +20,7 @@ ms.locfileid: "44389215"
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2ii94] 
 
-これらの目標や要件は組織によって異なるため、1 つのアプローチですべてのガバナンス対応するのは不可能です。 正確には、Azure では、主要ガバナンス ツールとして**リソース ベースのアクセス制御 (RBAC)** と**リソース ポリシー**の 2 つが実装され、これらのツールを使用してガバナンス モデルを設計することは、それぞれの組織の責任です。
+これらの目標や要件は組織によって異なるため、1 つのアプローチですべてのガバナンス対応するのは不可能です。 正確には、Azure では、主要ガバナンス ツールとして**ロール ベースのアクセス制御 (RBAC)** と**リソース ポリシー**の 2 つが実装され、これらのツールを使用してガバナンス モデルを設計することは、それぞれの組織の責任です。
 
 RBAC ではロールが定義され、そのロールによって、ロールに割り当てられているユーザーの機能が定義されます。 たとえば、**所有者**ロールでは、リソースのすべての機能 (作成、読み取り、更新、および削除) が有効になりますが、**閲覧者**ロールでは、読み取り機能しか有効になりません。 広範なスコープでロールを定義して、多くの種類のリソースに適用することも、スコープを狭くして適用対象を少なくすることもできます。 
 

@@ -3,20 +3,21 @@ title: Azure における高可用性とディザスター リカバリー用に
 description: Azure 上で Azure 仮想マシン、可用性セット、可用性ゾーン、Azure Site Recovery、Azure Traffic Manager を使用して高可用性とディザスター リカバリー用にビルドされた多層 Web アプリケーションを作成します
 author: sujayt
 ms.date: 11/16/2018
-ms.openlocfilehash: 28593c680746dc5ac8f7f25641faa57569dcc53f
-ms.sourcegitcommit: 16bc6a91b6b9565ca3bcc72d6eb27c2c4ae935e4
+ms.custom: product-team
+ms.openlocfilehash: 71534dc095d5fba137a0e610d4e725c2efc6b432
+ms.sourcegitcommit: a0e8d11543751d681953717f6e78173e597ae207
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52579485"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53004597"
 ---
 # <a name="multitier-web-application-built-for-high-availability-and-disaster-recovery-on-azure"></a>Azure における高可用性とディザスター リカバリー用にビルドされた多層 Web アプリケーション
 
 このシナリオの例は、高可用性とディザスター リカバリーを実現できるようにビルドされた、回復性がある多層アプリケーションをデプロイする必要があるあらゆる業界に適用されます。 このシナリオでは、アプリケーションは 3 つのレイヤーで構成されます。
 
-- Web 層: ユーザー インターフェイスを含む最上位レイヤー。 このレイヤーでは、ユーザーの操作が解析され、処理するためにアクションが次のレイヤーに渡されます。
-- ビジネス層: ユーザーの操作が処理され、次のステップに関して論理的な意思決定が行われます。 このレイヤーは、Web 層とデータ層に接続されます。
-- データ層: アプリケーション データが格納されます。 通常は、データベース、オブジェクト ストレージ、またはファイル ストレージが使用されます。
+- Web 層:ユーザー インターフェイスを含む最上位レイヤー。 このレイヤーでは、ユーザーの操作が解析され、処理するためにアクションが次のレイヤーに渡されます。
+- ビジネス層:ユーザーの操作が処理され、次のステップに関して論理的な意思決定が行われます。 このレイヤーは、Web 層とデータ層に接続されます。
+- データ層:アプリケーション データが格納されます。 通常は、データベース、オブジェクト ストレージ、またはファイル ストレージが使用されます。
 
 一般的なアプリケーション シナリオには、Windows または Linux で実行されているあらゆるミッション クリティカルなアプリケーションが含まれます。 SAP や SharePoint など、市販のアプリケーションのほか、カスタム基幹業務アプリケーションも該当します。
 

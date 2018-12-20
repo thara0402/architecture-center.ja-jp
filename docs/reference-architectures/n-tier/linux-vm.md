@@ -1,44 +1,46 @@
 ---
 title: Azure での Linux VM の実行
-description: 拡張性、回復性、管理容易性、セキュリティに注目しながら、Azure で Linux VM を実行する方法。
+titleSuffix: Azure Reference Architectures
+description: Azure での Linux 仮想マシンの実行に関するベスト プラクティス。
 author: telmosampaio
 ms.date: 09/13/2018
-ms.openlocfilehash: 0c7b9492576877ff34d1016bb7eed7c92b9f7b93
-ms.sourcegitcommit: dbbf914757b03cdee7a274204f9579fa63d7eed2
+ms.custom: seodec18
+ms.openlocfilehash: b8e0f758765f45eabf5fe3480c99cc54bf5d0ee8
+ms.sourcegitcommit: 88a68c7e9b6b772172b7faa4b9fd9c061a9f7e9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50916670"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53120052"
 ---
-# <a name="run-a-linux-vm-on-azure"></a>Azure での Linux VM の実行
+# <a name="run-a-linux-virtual-machine-on-azure"></a>Azure で Linux 仮想マシンを実行する
 
-この記事は、Azure で Linuxs 仮想マシン (VM) を実行するための一連の実証済みの方法について説明します。 ネットワークおよびストレージ コンポーネントと共に VM をプロビジョニングするための推奨事項が含まれます。 [**以下のソリューションをデプロイします。**](#deploy-the-solution)
+この記事では、Azure で Linux 仮想マシン (VM) を実行するための一連の実証済みの方法を示します。 ネットワークおよびストレージ コンポーネントと共に VM をプロビジョニングするための推奨事項が含まれます。 [**このソリューションをデプロイします**](#deploy-the-solution)。
 
-![[0]][0]
+[0]: ./images/single-vm-diagram.png "Azure における単一の Linux VM"
 
 ## <a name="components"></a>コンポーネント
 
 Azure VM のプロビジョニングには、VM 自体の他に、ネットワーク リソース、ストレージ リソースなどの追加コンポーネントがいくつか必要です。
 
-* **リソース グループ。** [リソース グループ][resource-manager-overview]は、関連する Azure リソースを保持する論理コンテナーです。 一般には、リソースの有効期間や管理者に基づいて、リソースをグループ化します。 
+- **リソース グループ**。 [リソース グループ][resource-manager-overview]は、関連する Azure リソースを保持する論理コンテナーです。 一般には、リソースの有効期間や管理者に基づいて、リソースをグループ化します。
 
-* **VM**。 VM は、発行されたイメージの一覧や、Azure BLOB ストレージにアップロードされたカスタム管理されたイメージまたは仮想ハード ディスク (VHD) ファイルからプロビジョニングできます。 Azure は、CentOS、Debian、Red Hat Enterprise、Ubuntu、FreeBSD など、現在普及しているさまざまな Linux ディストリビューションに対応します。 詳細については、「[Azure と Linux][azure-linux]」を参照してください。
+- **VM**。 VM は、発行されたイメージの一覧や、Azure BLOB ストレージにアップロードされたカスタム管理されたイメージまたは仮想ハード ディスク (VHD) ファイルからプロビジョニングできます。 Azure は、CentOS、Debian、Red Hat Enterprise、Ubuntu、FreeBSD など、現在普及しているさまざまな Linux ディストリビューションに対応します。 詳細については、「[Azure と Linux][azure-linux]」を参照してください。
 
-* **Managed Disks**。 [Azure Managed Disks][managed-disks] は、ユーザーに代わってストレージを処理することでディスク管理を簡素化します。 OS ディスクは [Azure Storage][azure-storage] に格納された VHD であるため、ホスト マシンが停止している場合でも維持されます。 Linux VM の場合、OS ディスクは `/dev/sda1` です。 また、[データ ディスク][data-disk]を 1 つ以上作成することもお勧めします。データ ディスクは、アプリケーション データ用に使用される永続的な VHD です。 
+- **Managed Disks**。 [Azure Managed Disks][managed-disks] は、ユーザーに代わってストレージを処理することでディスク管理を簡素化します。 OS ディスクは [Azure Storage][azure-storage] に格納された VHD であるため、ホスト マシンが停止している場合でも維持されます。 Linux VM の場合、OS ディスクは `/dev/sda1` です。 また、[データ ディスク][data-disk]を 1 つ以上作成することもお勧めします。データ ディスクは、アプリケーション データ用に使用される永続的な VHD です。
 
-* **一時ディスク。** VM は一時ディスクを使用して作成されます。 このディスクは、ホスト コンピューターの物理ドライブ上に格納されます。 Azure Storage には保存され*ない*ため、再起動やその他の VM ライフサイクル イベント中に削除される可能性があります。 ページ ファイルやスワップ ファイルなどの一時的なデータにのみ、このディスクを使用してください。 Linux VM の場合、一時ディスクは `/dev/sdb1` であり、`/mnt/resource` または `/mnt` でマウントされます。
+- **一時ディスク**。  VM は一時ディスクを使用して作成されます。 このディスクは、ホスト コンピューターの物理ドライブ上に格納されます。 Azure Storage には保存され*ない*ため、再起動やその他の VM ライフサイクル イベント中に削除される可能性があります。 ページ ファイルやスワップ ファイルなどの一時的なデータにのみ、このディスクを使用してください。 Linux VM の場合、一時ディスクは `/dev/sdb1` であり、`/mnt/resource` または `/mnt` でマウントされます。
 
-* **仮想ネットワーク (VNet)。** どの Azure VM も、複数のサブネットにセグメント化できる VNet にデプロイされます。
+- **仮想ネットワーク (VNet)**。 どの Azure VM も、複数のサブネットにセグメント化できる VNet にデプロイされます。
 
-* **ネットワーク インターフェイス (NIC)**。 NIC を使用すると、VM は仮想ネットワークと通信できます。
+- **ネットワーク インターフェイス (NIC)**。 NIC を使用すると、VM は仮想ネットワークと通信できます。
 
-* **パブリック IP アドレス。** パブリック IP アドレスは、SSH 経由などで VM と通信するために必要です。
+- **パブリック IP アドレス**。 パブリック IP アドレスは、SSH 経由などで VM と通信するために必要です。
 
-* **Azure DNS**。 [Azure DNS][azure-dns] は、DNS ドメインのホスティング サービスであり、Microsoft Azure インフラストラクチャを使用した名前解決を提供します。 Azure でドメインをホストすることで、その他の Azure サービスと同じ資格情報、API、ツール、課金情報を使用して DNS レコードを管理できます。
+- **Azure DNS**。 [Azure DNS][azure-dns] は、DNS ドメインのホスティング サービスであり、Microsoft Azure インフラストラクチャを使用した名前解決を提供します。 Azure でドメインをホストすることで、その他の Azure サービスと同じ資格情報、API、ツール、課金情報を使用して DNS レコードを管理できます。
 
-* **ネットワーク セキュリティ グループ (NSG)**。 [ネットワーク セキュリティ グループ][nsg]は、VM へのネットワーク トラフィックを許可または拒否するために使用されます。 NSG は、サブネットまたは個々の VM インスタンスと関連付けることができます。
+- **ネットワーク セキュリティ グループ (NSG)**。 [ネットワーク セキュリティ グループ][nsg]は、VM へのネットワーク トラフィックを許可または拒否するために使用されます。 NSG は、サブネットまたは個々の VM インスタンスと関連付けることができます。
 
-* **[診断]。** 診断ログは、VM の管理とトラブルシューティングにとって非常に重要です。
+- **診断**  診断ログは、VM の管理とトラブルシューティングにとって非常に重要です。
 
 ## <a name="vm-recommendations"></a>VM の推奨事項
 
@@ -46,23 +48,23 @@ Azure は、さまざまな仮想マシン サイズを提供します。 詳細
 
 一般的に、内部ユーザーや顧客に最も近い Azure リージョンを選択します。 ただし、すべてのリージョンですべての VM サイズを使用できるわけではありません。 詳細については、「[リージョン別のサービス][services-by-region]」をご覧ください。 特定のリージョンで使用できる VM サイズの一覧を表示するには、Azure コマンド ライン インターフェイス (CLI) から次のコマンドを実行します。
 
-```
+```azurecli
 az vm list-sizes --location <location>
 ```
 
 発行された VM イメージの選択については、[Linux VM イメージの検索][select-vm-image]に関するページを参照してください。
 
-基本的な正常性メトリック、診断インフラストラクチャ ログ、[ブート診断][boot-diagnostics]などの監視と診断を有効にします。 VM が起動不可能な状態になった場合は、起動エラーを診断するのにブート診断が役立ちます。 詳細については、「[監視と診断の有効化][enable-monitoring]」を参照してください。  
+基本的な正常性メトリック、診断インフラストラクチャ ログ、[ブート診断][boot-diagnostics]などの監視と診断を有効にします。 VM が起動不可能な状態になった場合は、起動エラーを診断するのにブート診断が役立ちます。 詳細については、「[監視と診断の有効化][enable-monitoring]」を参照してください。
 
 ## <a name="disk-and-storage-recommendations"></a>ディスクとストレージの推奨事項
 
-最適なディスク I/O パフォーマンスを得るには、データがソリッド ステート ドライブ (SSD) に格納される [Premium Storage][premium-storage] をお勧めします。 コストは、プロビジョニングされたディスクの容量に基づきます。 また、IOPS とスループット (つまり、データ転送速度) もディスク サイズによって異なるため、ディスクをプロビジョニングする場合は、3 つの要素 (容量、IOPS、スループット) すべてを考慮してください。 
+最適なディスク I/O パフォーマンスを得るには、データがソリッド ステート ドライブ (SSD) に格納される [Premium Storage][premium-storage] をお勧めします。 コストは、プロビジョニングされたディスクの容量に基づきます。 また、IOPS とスループット (つまり、データ転送速度) もディスク サイズによって異なるため、ディスクをプロビジョニングする場合は、3 つの要素 (容量、IOPS、スループット) すべてを考慮してください。
 
 [Managed Disks][managed-disks] を使用することもお勧めします。 マネージド ディスクでは、ストレージ アカウントは必要ありません。 単にディスクのサイズと種類を指定するだけで、可用性の高いリソースとしてデプロイされます。
 
 1 つ以上のデータ ディスクを追加します。 作成した VHD は、フォーマットされていません。 その VM にログインしてディスクをフォーマットしてください。 Linux のシェルでは、データ ディスクは `/dev/sdc`、`/dev/sdd` などのように表示されます。 `lsblk` を実行すると、ディスクなどのブロック デバイスの一覧を表示できます。 データ ディスクを使用するには、パーティションとファイル システムを作成し、ディスクをマウントします。 例: 
 
-```bat
+```bash
 # Create a partition.
 sudo fdisk /dev/sdc     # Enter 'n' to partition, 'w' to write the change.
 
@@ -87,8 +89,8 @@ Premium Storage アカウントで使用する VM のディスクは SSD なの�
 
 パブリック IP アドレスは、動的でも静的でもかまいません。 既定では、動的アドレスになっています。
 
-* 変化しない固定 IP アドレスが必要な場合 (たとえば、DNS に A レコードを作成する必要がある場合や IP アドレスをホワイトリストに登録する必要がある場合) は、[静的 IP アドレス][static-ip]を予約します。
-* IP アドレスの完全修飾ドメイン名 (FQDN) を作成することもできます。 これにより、その FQDN を参照する DNS で [CNAME レコード][cname-record]を登録できます。 詳細については、「[Azure Portal での完全修飾ドメイン名の作成][fqdn]」をご覧ください。 [Azure DNS][azure-dns] または別の DNS サービスを使用できます。
+- 変化しない固定 IP アドレスが必要な場合 (たとえば、DNS に A レコードを作成する必要がある場合や IP アドレスをホワイトリストに登録する必要がある場合) は、[静的 IP アドレス][static-ip]を予約します。
+- IP アドレスの完全修飾ドメイン名 (FQDN) を作成することもできます。 これにより、その FQDN を参照する DNS で [CNAME レコード][cname-record]を登録できます。 詳細については、「[Azure Portal での完全修飾ドメイン名の作成][fqdn]」をご覧ください。 [Azure DNS][azure-dns] または別の DNS サービスを使用できます。
 
 すべての NSG に[既定の規則][nsg-default-rules] (すべての受信インターネット トラフィックをブロックする規則など) のセットが含まれています。 既定のルールを削除することはできませんが、他の規則でオーバーライドすることはできます。 インターネット トラフィックを有効にするには、特定のポート (HTTP のポート 80 など) への着信トラフィックを許可するルールを作成します。
 
@@ -108,68 +110,68 @@ VM は、[計画的メンテナンス][planned-maintenance]または[計画外�
 
 ## <a name="manageability-considerations"></a>管理容易性に関する考慮事項
 
-**リソース グループ** 同じライフサイクルを共有する密接に関連付けられたリソースを同じ[リソース グループ][resource-manager-overview]に配置します。 リソース グループを使用すると、リソースをグループとしてデプロイおよび監視したり、リソース グループ別に課金コストを追跡したりできます。 セットとしてリソースを削除することもできます。これはテスト デプロイの場合に便利です。 特定のリソースの検索やその役割の理解を簡略化するために、意味のあるリソース名を割り当ててください。 詳細については、「[Recommended naming conventions for Azure resources][naming-conventions]」(Azure リソースの推奨される名前付け規則) を参照してください。
+**リソース グループ**。 同じライフサイクルを共有する密接に関連付けられたリソースを同じ[リソース グループ][resource-manager-overview]に配置します。 リソース グループを使用すると、リソースをグループとしてデプロイおよび監視したり、リソース グループ別に課金コストを追跡したりできます。 セットとしてリソースを削除することもできます。これはテスト デプロイの場合に便利です。 特定のリソースの検索やその役割の理解を簡略化するために、意味のあるリソース名を割り当ててください。 詳細については、「[Recommended naming conventions for Azure resources][naming-conventions]」(Azure リソースの推奨される名前付け規則) を参照してください。
 
 **SSH**。 Linux VM を作成する前に、2048 ビット RSA 公開/秘密キー ペアを生成します。 VM を作成する場合は、公開キー ファイルを使用します。 詳細については、[Azure 上の Linux または Mac における SSH の使用方法][ssh-linux]に関する記事を参照してください。
 
-**VM の停止。** Azure では、"停止" 状態と "割り当て解除済み" 状態が区別されます。 VM が割り当て解除されたときではなく、VM が停止状態のときに課金されます。 Azure Portal の **[停止]** ボタンを使用すると、VM の割り当てが解除されます。 ログイン中に OS からシャットダウンした場合、VM は停止しますが割り当ては "**解除されない**" ため、引き続き課金されます。
+**VM の停止**。 Azure では、"停止" 状態と "割り当て解除済み" 状態が区別されます。 VM が割り当て解除されたときではなく、VM が停止状態のときに課金されます。 Azure Portal の **[停止]** ボタンを使用すると、VM の割り当てが解除されます。 ログイン中に OS からシャットダウンした場合、VM は停止しますが割り当ては "**解除されない**" ため、引き続き課金されます。
 
-**VM の削除。** VM を削除しても VHD は削除されません。 つまり、データを失うことなく安全に VM を削除できます。 ただし、Storage に対して引き続き課金されます。 VHD を削除するには、[Blob Storage][blob-storage] からファイルを削除します。 誤って削除されないようにするために、[リソース ロック][resource-lock]を使用してリソース グループ全体をロックするか、または個別のリソース (VM など) をロックします。
+**VM の削除**。  VM を削除しても VHD は削除されません。 つまり、データを失うことなく安全に VM を削除できます。 ただし、Storage に対して引き続き課金されます。 VHD を削除するには、[Blob Storage][blob-storage] からファイルを削除します。 誤って削除されないようにするために、[リソース ロック][resource-lock]を使用してリソース グループ全体をロックするか、または個別のリソース (VM など) をロックします。
 
 ## <a name="security-considerations"></a>セキュリティに関する考慮事項
 
 [Azure Security Center][security-center] を使用すると、Azure リソースのセキュリティの状態を一元的に表示して把握できます。 Security Center は、潜在的なセキュリティ上の問題を監視し、デプロイのセキュリティの正常性を包括的に示します。 セキュリティ センターは、Azure サブスクリプションごとに構成されます。 「[Azure Security Center クイック スタート ガイド][security-center-get-started]」の説明に従って、セキュリティ データの収集を有効にします。 データ収集を有効にすると、セキュリティ センターは、そのサブスクリプションに作成されているすべての VM を自動的にスキャンします。
 
-**更新プログラムの管理。** 有効になっている場合、Security Center はセキュリティ更新プログラムや緊急更新プログラムが不足しているかどうかをチェックします。 
+**更新プログラムの管理**。 有効になっている場合、Security Center はセキュリティ更新プログラムや緊急更新プログラムが不足しているかどうかをチェックします。
 
-**マルウェア対策。** 有効な場合、セキュリティ センターは、マルウェア対策ソフトウェアがインストールされているかどうかを確認します。 セキュリティ センターを使用して、Azure Portal 内からマルウェア対策ソフトウェアをインストールすることもできます。
+**マルウェア対策**。  有効な場合、セキュリティ センターは、マルウェア対策ソフトウェアがインストールされているかどうかを確認します。 セキュリティ センターを使用して、Azure Portal 内からマルウェア対策ソフトウェアをインストールすることもできます。
 
-**操作。** [ロールベースのアクセス制御 (RBAC)][rbac] を使用して、デプロイする Azure リソースへのアクセスを制御します。 RBAC を使用すると、DevOps チームのメンバーに承認の役割を割り当てることができます。 たとえば、閲覧者の役割では、Azure リソースを表示することはできますが、作成、削除、または管理することはできません。 一部の役割は、特定の Azure リソースの種類に固有です。 たとえば、仮想マシンの共同作業者ロールは VM を再起動または割り当て解除したり、管理者パスワードをリセットしたり、新しい VM を作成したりできます。 このアーキテクチャで役立つ可能性のあるその他の[組み込みの RBAC ロール][rbac-roles]には、[DevTest Labs ユーザー][rbac-devtest]や[ネットワークの共同作業者][rbac-network]が含まれます。 ユーザーを複数の役割に割り当てることができ、よりきめ細かいアクセス許可のカスタム ロールを作成することができます。
+**操作**。 [ロールベースのアクセス制御 (RBAC)][rbac] を使用して、デプロイする Azure リソースへのアクセスを制御します。 RBAC を使用すると、DevOps チームのメンバーに承認の役割を割り当てることができます。 たとえば、閲覧者の役割では、Azure リソースを表示することはできますが、作成、削除、または管理することはできません。 一部の役割は、特定の Azure リソースの種類に固有です。 たとえば、仮想マシンの共同作業者ロールは VM を再起動または割り当て解除したり、管理者パスワードをリセットしたり、新しい VM を作成したりできます。 このアーキテクチャで役立つ可能性のあるその他の[組み込みの RBAC ロール][rbac-roles]には、[DevTest Labs ユーザー][rbac-devtest]や[ネットワークの共同作業者][rbac-network]が含まれます。 ユーザーを複数の役割に割り当てることができ、よりきめ細かいアクセス許可のカスタム ロールを作成することができます。
 
 > [!NOTE]
-> RBAC では、VM にログインしているユーザーが実行できる操作は制限されません。 これらのアクセス許可は、ゲスト OS のアカウントの種類によって決まります。   
+> RBAC では、VM にログインしているユーザーが実行できる操作は制限されません。 これらのアクセス許可は、ゲスト OS のアカウントの種類によって決まります。
 
 プロビジョニング操作や他の VM イベントを確認するには、[監査ログ][audit-logs]を使用します。
 
-**データの暗号化。** OS ディスクとデータ ディスクを暗号化する必要がある場合は、[Azure Disk Encryption][disk-encryption] を検討します。 
+**データの暗号化**。 OS ディスクとデータ ディスクを暗号化する必要がある場合は、[Azure Disk Encryption][disk-encryption] を検討します。
 
-**DDoS 保護**。 [DDoS Protection Standard](/azure/virtual-network/ddos-protection-overview) を有効にすることをお勧めします。これにより、VNet 内のリソースに対して DDoS の軽減策が追加されます。 Azure プラットフォームの一部として基本な DDoS 保護が自動的に有効になりますが、DDoS Protection Standard により、特に Azure Virtual Network リソース向けにチューニングされた軽減機能が提供されます。  
+**DDoS 保護**。 [DDoS Protection Standard](/azure/virtual-network/ddos-protection-overview) を有効にすることをお勧めします。これにより、VNet 内のリソースに対して DDoS の軽減策が追加されます。 Azure プラットフォームの一部として基本な DDoS 保護が自動的に有効になりますが、DDoS Protection Standard により、特に Azure Virtual Network リソース向けにチューニングされた軽減機能が提供されます。
 
 ## <a name="deploy-the-solution"></a>ソリューションのデプロイ方法
 
 デプロイは、[GitHub][github-folder] で実行できます。 以下がデプロイされます。
 
-  * VM をホストするために使用される、**web** という名前の 1 つのサブネットを含む仮想ネットワーク。
-  * VM に対する SSH と HTTP トラフィックを許可する 2 つの受信ルールを持つ NSG。
-  * Ubuntu 16.04.3 LTS の最新バージョンを実行する VM。
-  * 2 つのデータ ディスクをフォーマットし、Apache HTTP Server を Ubuntu VM にデプロイするサンプルのカスタム スクリプト拡張機能。
+- VM をホストするために使用される、**web** という名前の 1 つのサブネットを含む仮想ネットワーク。
+- VM に対する SSH と HTTP トラフィックを許可する 2 つの受信ルールを持つ NSG。
+- Ubuntu 16.04.3 LTS の最新バージョンを実行する VM。
+- 2 つのデータ ディスクをフォーマットし、Apache HTTP Server を Ubuntu VM にデプロイするサンプルのカスタム スクリプト拡張機能。
 
 ### <a name="prerequisites"></a>前提条件
 
 [!INCLUDE [ref-arch-prerequisites.md](../../../includes/ref-arch-prerequisites.md)]
 
-5. SSH キー ペアを作成します。 詳細については、「[Azure に Linux VM 用の SSH 公開キーと秘密キーのペアを作成して使用する方法](/azure/virtual-machines/linux/mac-create-ssh-keys)」を参照してください。
-
 ### <a name="deploy-the-solution-using-azbb"></a>azbb を使用したソリューションのデプロイ
 
-1. 上の前提条件の手順でダウンロードしたリポジトリの `virtual-machines/single-vm/parameters/linux` フォルダーに移動します。
+1. SSH キー ペアを作成します。 詳細については、「[Azure に Linux VM 用の SSH 公開キーと秘密キーのペアを作成して使用する方法](/azure/virtual-machines/linux/mac-create-ssh-keys)」を参照してください。
 
-2. `single-vm-v2.json` ファイルを開き、引用符の間にユーザー名と使用している SSH 公開キーを入力した後、ファイルを保存します。
+2. 上の前提条件の手順でダウンロードしたリポジトリの `virtual-machines/single-vm/parameters/linux` フォルダーに移動します。
 
-  ```bash
-  "adminUsername": "<your username>",
-  "sshPublicKey": "ssh-rsa AAAAB3NzaC1...",
-  ```
+3. `single-vm-v2.json` ファイルを開き、引用符の間にユーザー名と使用している SSH 公開キーを入力した後、ファイルを保存します。
 
-3. 次に示すように、`azbb` を実行して VM のサンプルをデプロイします。
+    ```json
+    "adminUsername": "<your username>",
+    "sshPublicKey": "ssh-rsa AAAAB3NzaC1...",
+    ```
 
-  ```bash
-  azbb -s <subscription_id> -g <resource_group_name> -l <location> -p single-vm-v2.json --deploy
-  ```
+4. 次に示すように、`azbb` を実行して VM のサンプルをデプロイします。
+
+    ```azurecli
+    azbb -s <subscription_id> -g <resource_group_name> -l <location> -p single-vm-v2.json --deploy
+    ```
 
 デプロイを確認するには、次の Azure CLI コマンドを実行して、VM のパブリック IP アドレスを見つけます。
 
-```bash
+```azurecli
 az vm show -n ra-single-linux-vm1 -g <resource-group-name> -d -o table
 ```
 
@@ -223,4 +225,3 @@ Web ブラウザーでこのアドレスに移動すると、既定の Apache2 �
 [vm-resize]: /azure/virtual-machines/virtual-machines-linux-change-vm-size
 [vm-size-tables]: /azure/virtual-machines/virtual-machines-linux-sizes
 [vm-sla]: https://azure.microsoft.com/support/legal/sla/virtual-machines
-[0]: ./images/single-vm-diagram.png "Azure における単一の Linux VM"

@@ -1,52 +1,54 @@
 ---
 title: Apache Cassandra を使用する N 層アプリケーション
-description: Microsoft Azure で N 層アーキテクチャの Linux VM を実行する方法について説明します。
+titleSuffix: Azure Reference Architectures
+description: Microsoft Azure で Apache Cassandra を使用して N 層アーキテクチャの Linux 仮想マシンを実行します。
 author: MikeWasson
 ms.date: 11/12/2018
-ms.openlocfilehash: ec2d6f8310e5b7ae5b135aa0e16f14f572149f7f
-ms.sourcegitcommit: 9293350ab66fb5ed042ff363f7a76603bf68f568
+ms.custom: seodec18
+ms.openlocfilehash: bbd1029fe17b5d88d54246127c5d8983a573b012
+ms.sourcegitcommit: 88a68c7e9b6b772172b7faa4b9fd9c061a9f7e9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51577176"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53120171"
 ---
 # <a name="linux-n-tier-application-in-azure-with-apache-cassandra"></a>Apache Cassandra を使用する Azure の Linux N 層アプリケーション
 
-この参照アーキテクチャでは、Linux 上の Apache Cassandra をデータ層に使用して、N 層アプリケーション用に構成された VM と仮想ネットワークをデプロイする方法を示します。 [**こちらのソリューションをデプロイしてください**。](#deploy-the-solution) 
+この参照アーキテクチャでは、Linux 上の Apache Cassandra をデータ層に使用して、N 層アプリケーション用に構成された仮想マシン (VM) と仮想ネットワークをデプロイする方法を示します。 [**このソリューションをデプロイします**](#deploy-the-solution)。
 
-![[0]][0]
+![Microsoft Azure を使用した N 層アーキテクチャ](./images/n-tier-cassandra.png)
 
 "*このアーキテクチャの [Visio ファイル][visio-download]をダウンロードします。*"
 
-## <a name="architecture"></a>アーキテクチャ 
+## <a name="architecture"></a>アーキテクチャ
 
 アーキテクチャには次のコンポーネントがあります。
 
-* **リソース グループ。** [リソース グループ][resource-manager-overview]は、リソースをグループ化して、有効期間、所有者、またはその他の条件別に管理できるようにするために使用されます。
+- **リソース グループ**。 [リソース グループ][resource-manager-overview]は、リソースをグループ化して、有効期間、所有者、またはその他の条件別に管理できるようにするために使用されます。
 
-* **仮想ネットワーク (VNet) とサブネット。** どの Azure VM も、サブネットにセグメント化できる VNet にデプロイされます。 階層ごとに個別のサブネットを作成します。 
+- **仮想ネットワーク (VNet) とサブネット**。 どの Azure VM も、サブネットにセグメント化できる VNet にデプロイされます。 階層ごとに個別のサブネットを作成します。
 
-* **NSG。** [ネットワーク セキュリティ グループ][nsg] (NSG) を使用して、VNet 内のネットワーク トラフィックを制限します。 たとえば、ここに示されている 3 層アーキテクチャでは、データベース層は、ビジネス層と管理サブネットからトラフィックを受信します。Web フロントエンドからは受信しません。
+- **NSG**。 [ネットワーク セキュリティ グループ][nsg] (NSG) を使用して、VNet 内のネットワーク トラフィックを制限します。 たとえば、ここに示されている 3 層アーキテクチャでは、データベース層は、ビジネス層と管理サブネットからトラフィックを受信します。Web フロントエンドからは受信しません。
 
-* **DDoS Protection**。 Azure プラットフォームには分散型サービス拒否 (DDoS) 攻撃に対する基本的な保護が用意されていますが、Microsoft では [DDoS Protection Standard][ddos] を使用することをお勧めします。このサービスでは、DDoS 攻撃を軽減する機能が強化されています。 「[セキュリティに関する考慮事項](#security-considerations)」を参照してください。
+- **DDoS Protection**。 Azure プラットフォームには分散型サービス拒否 (DDoS) 攻撃に対する基本的な保護が用意されていますが、Microsoft では [DDoS Protection Standard][ddos] を使用することをお勧めします。このサービスでは、DDoS 攻撃を軽減する機能が強化されています。 「[セキュリティに関する考慮事項](#security-considerations)」を参照してください。
 
-* **仮想マシン**。 VM の構成に関する推奨事項については、「[Run a Windows VM on Azure (Azure での Windows VM の実行)](./windows-vm.md)」および「[Run a Linux VM on Azure (Azure での Linux VM の実行)](./linux-vm.md)」をご覧ください。
+- **仮想マシン**。 VM の構成に関する推奨事項については、「[Run a Windows VM on Azure (Azure での Windows VM の実行)](./windows-vm.md)」および「[Run a Linux VM on Azure (Azure での Linux VM の実行)](./linux-vm.md)」をご覧ください。
 
-* **可用性セット。** 階層ごとに[可用性セット][azure-availability-sets]を作成し、各階層に 2 つ以上の VM をプロビジョニングします。これにより、VM がさらに高度な[サービス レベル アグリーメント (SLA)][vm-sla] に対応できるようになります。
+- **可用性セット**。 階層ごとに[可用性セット][azure-availability-sets]を作成し、各階層に 2 つ以上の VM をプロビジョニングします。これにより、VM がさらに高度な[サービス レベル アグリーメント (SLA)][vm-sla] に対応できるようになります。
 
-* **Azure Load Balancer。** [ロード バランサー][load-balancer]は、受信インターネット要求を各 VM インスタンスに分散します。 [パブリック ロード バランサー][load-balancer-external]を使用して受信インターネット トラフィックを Web 層に分散し、[内部ロード バランサー][load-balancer-internal]を使用して Web 層からのネットワーク トラフィックをビジネス層に分散します。
+- **Azure ロード バランサー**。 [ロード バランサー][load-balancer]は、受信インターネット要求を各 VM インスタンスに分散します。 [パブリック ロード バランサー][load-balancer-external]を使用して受信インターネット トラフィックを Web 層に分散し、[内部ロード バランサー][load-balancer-internal]を使用して Web 層からのネットワーク トラフィックをビジネス層に分散します。
 
-* **パブリック IP アドレス**。 パブリック IP アドレスは、パブリック ロード バランサーがインターネット トラフィックを受信するために必要です。
+- **パブリック IP アドレス**。 パブリック IP アドレスは、パブリック ロード バランサーがインターネット トラフィックを受信するために必要です。
 
-* **ジャンプボックス。** [要塞ホスト]とも呼ばれます。 管理者が他の VM に接続するために使用するネットワーク上のセキュアな VM です。 ジャンプボックスの NSG は、セーフ リストにあるパブリック IP アドレスからのリモート トラフィックのみを許可します。 NSG では SSH トラフィックを許可する必要があります。
+- **Jumpbox**。 [要塞ホスト]とも呼ばれます。 管理者が他の VM に接続するために使用するネットワーク上のセキュアな VM です。 jumpbox の NSG は、セーフ リストにあるパブリック IP アドレスからのリモート トラフィックのみを許可します。 NSG では SSH トラフィックを許可する必要があります。
 
-* **Apache Cassandra データベース**。 レプリケーションとフェールオーバーを有効にすることで、データ層で高い可用性を提供します。
+- **Apache Cassandra データベース**。 レプリケーションとフェールオーバーを有効にすることで、データ層で高い可用性を提供します。
 
-* **Azure DNS**。 [Azure DNS][azure-dns] は DNS ドメインのホスティング サービスです。 これは Microsoft Azure インフラストラクチャを使用した名前解決を提供します。 Azure でドメインをホストすることで、その他の Azure サービスと同じ資格情報、API、ツール、課金情報を使用して DNS レコードを管理できます。
+- **Azure DNS**。 [Azure DNS][azure-dns] は DNS ドメインのホスティング サービスです。 これは Microsoft Azure インフラストラクチャを使用した名前解決を提供します。 Azure でドメインをホストすることで、その他の Azure サービスと同じ資格情報、API、ツール、課金情報を使用して DNS レコードを管理できます。
 
 ## <a name="recommendations"></a>Recommendations
 
-実際の要件は、ここで説明するアーキテクチャとは異なる場合があります。 これらの推奨事項は原案として使用してください。 
+実際の要件は、ここで説明するアーキテクチャとは異なる場合があります。 これらの推奨事項を開始点として使用してください。
 
 ### <a name="vnet--subnets"></a>VNet/サブネット
 
@@ -64,10 +66,10 @@ VM は直接インターネットに公開しないでください。 代わり�
 
 ### <a name="network-security-groups"></a>ネットワーク セキュリティ グループ
 
-NSG ルールを使用して階層間のトラフィックを制限します。 たとえば、上記の 3 層アーキテクチャでは、Web 層はデータベース層と直接通信しません。 これを強制するには、データベース層が Web 層のサブネットからの着信トラフィックをブロックする必要があります。  
+NSG ルールを使用して階層間のトラフィックを制限します。 たとえば、上記の 3 層アーキテクチャでは、Web 層はデータベース層と直接通信しません。 これを強制するには、データベース層が Web 層のサブネットからの着信トラフィックをブロックする必要があります。
 
-1. VNet からのすべての受信トラフィックを拒否します。 (ルール内で `VIRTUAL_NETWORK` タグを使用します。) 
-2. ビジネス層のサブネットからの受信トラフィックを許可します。  
+1. VNet からのすべての受信トラフィックを拒否します。 (ルール内で `VIRTUAL_NETWORK` タグを使用します。)
+2. ビジネス層のサブネットからの受信トラフィックを許可します。
 3. データベース層のサブネットからの受信トラフィックを許可します。 このルールにより、データベースのレプリケーションやフェールオーバーに必要な、データベース VM 間の通信が可能になります。
 4. ジャンプボックスのサブネットからの SSH トラフィック (ポート 22) を許可します。 このルールによって、管理者がジャンプボックスからデータベース層に接続できるようにします。
 
@@ -75,18 +77,17 @@ NSG ルールを使用して階層間のトラフィックを制限します。 
 
 ### <a name="cassandra"></a>Cassandra
 
-運用環境では [DataStax Enterprise][datastax] の使用をお勧めしますが、これらの推奨事項はすべての Cassandra エディションに適用されます。 Azure での DataStax の実行の詳細については、「[Azure 用の DataStax Enterprise Deployment ガイド][cassandra-in-azure]」を参照してください。 
+運用環境では [DataStax Enterprise][datastax] の使用をお勧めしますが、これらの推奨事項はすべての Cassandra エディションに適用されます。 Azure での DataStax の実行の詳細については、「[Azure 用の DataStax Enterprise Deployment ガイド][cassandra-in-azure]」を参照してください。
 
-Cassandra クラスター用の VM を可用性セット内に配置して、Cassandra レプリカが複数の障害ドメインおよびアップグレード ドメイン間に分散されることを保証します。 障害ドメインおよびアップグレード ドメインの詳細については、「[Virtual Machines の可用性管理][azure-availability-sets]」を参照してください。 
+Cassandra クラスター用の VM を可用性セット内に配置して、Cassandra レプリカが複数の障害ドメインおよびアップグレード ドメイン間に分散されることを保証します。 障害ドメインおよびアップグレード ドメインの詳細については、「[Virtual Machines の可用性管理][azure-availability-sets]」を参照してください。
 
-可用性セットごとに 3 個の障害ドメイン (最大数) と 18 個のアップグレード ドメインを構成します。 これは、障害ドメイン間で引き続き均等に分散できるアップグレード ドメインの最大数を提供します。   
+可用性セットごとに 3 個の障害ドメイン (最大数) と 18 個のアップグレード ドメインを構成します。 これは、障害ドメイン間で引き続き均等に分散できるアップグレード ドメインの最大数を提供します。
 
 ラック認識モードでノードを構成します。 `cassandra-rackdc.properties` ファイル内で障害ドメインをラックにマッピングします。
 
 クラスターの前にロード バランサーは必要ありません。 クライアントはクラスターのノードに直接接続します。
 
 高可用性を確保するために、複数の Azure リージョンに Cassandra をデプロイします。 各リージョンのノードが、リージョン内の回復性を高めるために、障害ドメインとアップグレード ドメインを持つラック認識モードで構成されます。
-
 
 ### <a name="jumpbox"></a>Jumpbox
 
@@ -121,12 +122,12 @@ Web 層とビジネス層については、個別の VM を可用性セットに
 
 ロード バランサーの正常性プローブには、次のような推奨事項があります。
 
-* プローブでは、HTTP または TCP のいずれかをテストできます。 VM で HTTP サーバーを実行している場合、HTTP プローブを作成します。 それ以外の場合は、TCP プローブを作成します。
-* HTTP プローブでは、HTTP エンドポイントへのパスを指定します。 プローブでは、このパスからの HTTP 200 の応答をチェックします。 これには、ルート パス ("/")、またはアプリケーションの正常性をチェックするためのカスタム ロジックを実装した正常性監視エンドポイントを指定できます。 エンドポイントでは、匿名の HTTP 要求を許可する必要があります。
-* このプローブは、[既知の IP アドレス][health-probe-ip]である 168.63.129.16 から送信されます。 任意のファイアウォール ポリシーまたは NSG ルールで、この IP アドレスを送受信するトラフィックをブロックしていないことを確認します。
-* [正常性プローブ ログ][health-probe-log]を使用して、正常性プローブの状態を表示します。 各ロード バランサーに対して Azure Portal のログ記録を有効にします。 ログは Azure Blob Storage に書き込まれます。 ログには、プローブの応答に失敗したために、ネットワーク トラフィックを取得していない VM 数が表示されます。
+- プローブでは、HTTP または TCP のいずれかをテストできます。 VM で HTTP サーバーを実行している場合、HTTP プローブを作成します。 それ以外の場合は、TCP プローブを作成します。
+- HTTP プローブでは、HTTP エンドポイントへのパスを指定します。 プローブでは、このパスからの HTTP 200 の応答をチェックします。 これには、ルート パス ("/")、またはアプリケーションの正常性をチェックするためのカスタム ロジックを実装した正常性監視エンドポイントを指定できます。 エンドポイントでは、匿名の HTTP 要求を許可する必要があります。
+- このプローブは、[既知の IP アドレス][health-probe-ip]である 168.63.129.16 から送信されます。 任意のファイアウォール ポリシーまたは NSG ルールで、この IP アドレスを送受信するトラフィックをブロックしていないことを確認します。
+- [正常性プローブ ログ][health-probe-log]を使用して、正常性プローブの状態を表示します。 各ロード バランサーに対して Azure Portal のログ記録を有効にします。 ログは Azure Blob Storage に書き込まれます。 ログには、プローブの応答に失敗したために、ネットワーク トラフィックを取得していない VM 数が表示されます。
 
-Cassandra クラスターの場合、フェールオーバー シナリオは、アプリケーションで使用される一貫性レベルと、レプリカの数によって異なります。 Cassandra での一貫性レベルと使用については、「[Configuring data consistency][cassandra-consistency]」(データの一貫性の構成) と「[Cassandra: How many nodes are talked to with Quorum?][cassandra-consistency-usage]」(Cassandra: Quorum を使用してトークできるノードの数) を参照してください。 Cassandra でのデータの可用性は、アプリケーションで使用される一貫性レベルとレプリケーション メカニズムによって決まります。 Cassandra のレプリケーションについては、「[Data Replication in NoSQL Databases Explained][cassandra-replication]」(NoSQL Database でのデータレプリケーションの説明) を参照してください。
+Cassandra クラスターの場合、フェールオーバー シナリオは、アプリケーションで使用される一貫性レベルと、レプリカの数によって異なります。 Cassandra での一貫性レベルと使用については、[データの一貫性の構成][cassandra-consistency]および [Cassandra:Quorum を使用してトークできるノードの数][cassandra-consistency-usage]に関するページを参照してください。 Cassandra でのデータの可用性は、アプリケーションで使用される一貫性レベルとレプリケーション メカニズムによって決まります。 Cassandra のレプリケーションについては、「[Data Replication in NoSQL Databases Explained][cassandra-replication]」(NoSQL Database でのデータレプリケーションの説明) を参照してください。
 
 ## <a name="security-considerations"></a>セキュリティに関する考慮事項
 
@@ -138,11 +139,11 @@ Cassandra クラスターの場合、フェールオーバー シナリオは、
 
 **暗号化**。 機密の保存データを暗号化し、[Azure Key Vault][azure-key-vault] を使用してデータベース暗号化キーを管理します。 Key Vault では、ハードウェア セキュリティ モジュール (HSM) に暗号化キーを格納することができます。 データベース接続文字列などのアプリケーション シークレットも Key Vault に格納することをお勧めします。
 
-**DDoS 保護**。 Azure プラットフォームには、基本的な DDoS 保護が既定で用意されています。 この基本的な保護は、Azure インフラストラクチャ全体を保護することを目的としています。 基本的な DDoS 保護は自動的に有効になっていますが、Microsoft では [DDoS Protection Standard][ddos] を使用することをお勧めします。 Standard Protection では、アプリケーションのネットワーク トラフィック パターンに基づいて、アダプティブ チューニングが使用され、脅威が検出されます。 これにより、インフラストラクチャ全体の DDoS ポリシーで見落とされてしまう可能性のある DDoS 攻撃に対して、軽減策を適用することができます。 Standard Protection では、Azure Monitor を介して、アラート、テレメトリ、および分析機能も提供されます。 詳細については、「[Azure DDoS Protection: ベスト プラクティスと参照アーキテクチャ][ddos-best-practices]」を参照してください。
+**DDoS 保護**。 Azure プラットフォームには、基本的な DDoS 保護が既定で用意されています。 この基本的な保護は、Azure インフラストラクチャ全体を保護することを目的としています。 基本的な DDoS 保護は自動的に有効になっていますが、Microsoft では [DDoS Protection Standard][ddos] を使用することをお勧めします。 Standard Protection では、アプリケーションのネットワーク トラフィック パターンに基づいて、アダプティブ チューニングが使用され、脅威が検出されます。 これにより、インフラストラクチャ全体の DDoS ポリシーで見落とされてしまう可能性のある DDoS 攻撃に対して、軽減策を適用することができます。 Standard Protection では、Azure Monitor を介して、アラート、テレメトリ、および分析機能も提供されます。 詳細については、「[Azure DDoS Protection:ベスト プラクティスと参照アーキテクチャ][ddos-best-practices]」を参照してください。
 
 ## <a name="deploy-the-solution"></a>ソリューションのデプロイ方法
 
-このリファレンス アーキテクチャのデプロイについては、[GitHub][github-folder] を参照してください。 
+このリファレンス アーキテクチャのデプロイについては、[GitHub][github-folder] を参照してください。
 
 ### <a name="prerequisites"></a>前提条件
 
@@ -158,13 +159,14 @@ N 層アプリケーションの参照アーキテクチャで Linux VM をデ�
 
 3. 次に示すように、**azbb** ツールを使用して参照アーキテクチャをデプロイします。
 
-   ```bash
+   ```azurecli
    azbb -s <your subscription_id> -g <your resource_group_name> -l <azure region> -p n-tier-linux.json --deploy
    ```
 
 Azure の構成要素を使用してこのサンプルの参照アーキテクチャをデプロイする方法の詳細については、「[GitHub リポジトリ][git]」を参照してください。
 
 <!-- links -->
+
 [dmz]: ../dmz/secure-vnet-dmz.md
 [multi-vm]: ./multi-vm.md
 [naming conventions]: /azure/guidance/guidance-naming-conventions
@@ -193,9 +195,8 @@ Azure の構成要素を使用してこのサンプルの参照アーキテク�
 [パブリック IP アドレス]: /azure/virtual-network/virtual-network-ip-addresses-overview-arm
 [vm-sla]: https://azure.microsoft.com/support/legal/sla/virtual-machines
 [visio-download]: https://archcenter.blob.core.windows.net/cdn/vm-reference-architectures.vsdx
-[0]: ./images/n-tier-cassandra.png "Microsoft Azure を使用した N 層アーキテクチャ"
 
-[resource-manager-overview]: /azure/azure-resource-manager/resource-group-overview 
+[resource-manager-overview]: /azure/azure-resource-manager/resource-group-overview
 [vmss]: /azure/virtual-machine-scale-sets/virtual-machine-scale-sets-overview
 [load-balancer]: /azure/load-balancer/load-balancer-get-started-internet-arm-cli
 [load-balancer-hashing]: /azure/load-balancer/load-balancer-overview#load-balancer-features

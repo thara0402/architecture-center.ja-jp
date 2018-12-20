@@ -1,24 +1,25 @@
 ---
-title: Azure Integration Services を使用したエンタープライズ統合
-description: このアーキテクチャのリファレンスでは、Azure Logic Apps と Azure API Management を使ってシンプルなエンタープライズ統合パターンを実装できる方法を示します。
+title: Azure を使用した基本的なエンタープライズ統合
+titleSuffix: Azure Reference Architectures
+description: Azure Logic Apps と Azure API Management を使用した単純なエンタープライズ統合パターンの実装の推奨アーキテクチャ。
 services: logic-apps
 author: mattfarm
-ms.author: mattfarm
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 12/03/2018
-ms.openlocfilehash: c8aa3f8b736fabd1a6701778f22a7eec9bf46ee7
-ms.sourcegitcommit: e7e0e0282fa93f0063da3b57128ade395a9c1ef9
+ms.custom: integration-services
+ms.openlocfilehash: 36419706714b8516a309cf634649a4b44a9bc136
+ms.sourcegitcommit: 88a68c7e9b6b772172b7faa4b9fd9c061a9f7e9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52919103"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53120205"
 ---
 # <a name="basic-enterprise-integration-on-azure"></a>Azure での基本的なエンタープライズ統合
 
 この参照アーキテクチャでは、[Azure Integration Services][integration-services] を使用して、エンタープライズ バックエンド システムへの呼び出しを調整します。 バックエンド システムには、サービスとしてのソフトウェア (SaaS) システム、Azure サービス、およびご自身の企業内の既存の Web サービスが含まれる場合があります。
 
-Azure Integration Services は、アプリケーションとデータを統合するサービスのコレクションです。 このアーキテクチャでは、そのうち、ワークフローを調整する [Logic Apps][logic-apps] と、API のカタログを作成する [API Management][apim] という 2 つのサービスを使用します。 バックエンド サービスへの同期呼び出しによってワークフローがトリガーされる基本的な統合シナリオの場合は、このアーキテクチャで十分です。 この基本的なアーキテクチャを基にして、[キューとイベント](./queues-events.md)を使用した、より高度なアーキテクチャを構築できます。 
+Azure Integration Services は、アプリケーションとデータを統合するサービスのコレクションです。 このアーキテクチャでは、そのうち、ワークフローを調整する [Logic Apps][logic-apps] と、API のカタログを作成する [API Management][apim] という 2 つのサービスを使用します。 バックエンド サービスへの同期呼び出しによってワークフローがトリガーされる基本的な統合シナリオの場合は、このアーキテクチャで十分です。 この基本的なアーキテクチャを基にして、[キューとイベント](./queues-events.md)を使用した、より高度なアーキテクチャを構築できます。
 
 ![アーキテクチャの図 - シンプルなエンタープライズ統合](./_images/simple-enterprise-integration.png)
 
@@ -32,13 +33,13 @@ Azure Integration Services は、アプリケーションとデータを統合�
 
 - **Azure API Management**。 [API Management][apim] は、HTTP API のカタログを発行するためのマネージド サービスで、このサービスを使うと再利用や検出可能性が高まります。 API Management は、次の 2 つの関連するコンポーネントで構成されます。
 
-    - **API ゲートウェイ**。 API ゲートウェイは、HTTP 呼び出しを受け入れ、バックエンドにルーティングします。 
+  - **API ゲートウェイ**。 API ゲートウェイは、HTTP 呼び出しを受け入れ、バックエンドにルーティングします。
 
-    - **開発者ポータル**。 Azure API Management の各インスタンスによって、[開発者ポータル][apim-dev-portal]へのアクセスが提供されます。 開発者は、このポータルから、ドキュメントとAPI を呼び出すためのコード サンプルにアクセスできます。 開発者ポータル内で API をテストすることもできます。
+  - **開発者ポータル**。 Azure API Management の各インスタンスによって、[開発者ポータル][apim-dev-portal]へのアクセスが提供されます。 開発者は、このポータルから、ドキュメントとAPI を呼び出すためのコード サンプルにアクセスできます。 開発者ポータル内で API をテストすることもできます。
 
-    このアーキテクチャでは、API として[ロジック アプリをインポートする][apim-logic-app]ことによって、複合 API が構築されます。 [OpenAPI (Swagger) 仕様をインポートする][apim-openapi]か、または WSDL 仕様から [SOAP API をインポートする][apim-soap]ことによって、既存の Web サービスをインポートすることもできます。 
+  このアーキテクチャでは、API として[ロジック アプリをインポートする][apim-logic-app]ことによって、複合 API が構築されます。 [OpenAPI (Swagger) 仕様をインポートする][apim-openapi]か、または WSDL 仕様から [SOAP API をインポートする][apim-soap]ことによって、既存の Web サービスをインポートすることもできます。
 
-    API ゲートウェイは、バックエンドからフロントエンド クライアントを分離するのに役立ちます。 たとえば、URL を再書き込みしたり、バックエンドに到達する前に要求を変換したりできます。 また、認証、クロス オリジン リソース共有 (CORS) のサポート、応答のキャッシュなど、多くのサービスにまたがる機能を処理することもできます。
+  API ゲートウェイは、バックエンドからフロントエンド クライアントを分離するのに役立ちます。 たとえば、URL を再書き込みしたり、バックエンドに到達する前に要求を変換したりできます。 また、認証、クロス オリジン リソース共有 (CORS) のサポート、応答のキャッシュなど、多くのサービスにまたがる機能を処理することもできます。
 
 - **Azure DNS**。 [Azure DNS][dns] は DNS ドメインのホスティング サービスです。 Azure DNS は、Microsoft Azure インフラストラクチャを使用した名前解決を提供します。 Azure でドメインをホストすることで、その他の Azure サービスに使用しているのと同じ資格情報、API、ツール、課金情報を使用して DNS レコードを管理できます。 カスタム ドメイン名 (contoso.com など) を使用するには、カスタム ドメイン名を IP アドレスにマップする DNS レコードを作成します。 詳細については、[API Management でのカスタム ドメイン名の構成][apim-domain]に関するページを参照してください。
 
@@ -54,7 +55,7 @@ API Management の Basic、Standard、または Premium レベルを使用しま
 
 各 Azure API Management インスタンスには既定のドメイン名が付いています。これは `azure-api.net` のサブドメイン (例: `contoso.azure-api.net`) です。 ご自身の組織用に[カスタム ドメイン][apim-domain]を構成することを検討してください。
 
-### <a name="logic-apps"></a>Logic Apps 
+### <a name="logic-apps"></a>Logic Apps
 
 Logic Apps は、非同期や準長期実行の API 呼び出しなど、応答が低遅延でなくてもよいシナリオで最適に動作します。 低遅延が必要な場合、たとえば、ユーザー インターフェイスをブロックする呼び出しでは、別のテクノロジを使用します。 たとえば、Azure App Service にデプロイされた Azure Functions または Web API を使用します。 API Management を使用して、API コンシューマーに向けて API を配置します。
 
@@ -82,7 +83,6 @@ API Management サービスのスケーリングに関する推奨事項を次�
 
 Premium レベルでは、複数の Azure リージョンにまたがって API Management インスタンスをスケーリングできます。 これにより、API Management は、より高度な SLA に対応できるようになり、複数のリージョンに位置するユーザーの近くでサービスをプロビジョニングできます。
 
-
 Logic Apps サーバーレス モデルによって、管理者はサービスのスケーラビリティについて計画を立てる必要がなくなります。 サービスは、需要に合わせて自動的にスケーリングされます。
 
 ## <a name="availability-considerations"></a>可用性に関する考慮事項
@@ -98,9 +98,9 @@ Premium レベルで 2 つ以上のリージョンにまたがって API Managem
 
 お使いの API Management の構成は、定期的に[バックアップ][apim-backup]してください。 バックアップ ファイルは、サービスがデプロイされているのとは別の場所または Azure リージョンに保管します。 [RTO][rto] に基づいて、ディザスター リカバリー戦略を選択してください。
 
-* ディザスター リカバリー イベントで、新しい API Management インスタンスをプロビジョニングして、バックアップを新しいインスタンスに復元し、DNS レコードを補完します。
+- ディザスター リカバリー イベントで、新しい API Management インスタンスをプロビジョニングして、バックアップを新しいインスタンスに復元し、DNS レコードを補完します。
 
-* API Management サービスのパッシブ インスタンスは、別の Azure リージョンに保持します。 アクティブ サービスとの同期を保つには、定期的にそのインスタンスにバックアップを復元してください。 ディザスター リカバリー イベントの中でサービスを復元するには、DNS レコードのみを補完する必要があります。 このアプローチではパッシブ インスタンスの支払いが生じるため追加コストが発生しますが、回復にかかる時間は短縮されます。 
+- API Management サービスのパッシブ インスタンスは、別の Azure リージョンに保持します。 アクティブ サービスとの同期を保つには、定期的にそのインスタンスにバックアップを復元してください。 ディザスター リカバリー イベントの中でサービスを復元するには、DNS レコードのみを補完する必要があります。 このアプローチではパッシブ インスタンスの支払いが生じるため追加コストが発生しますが、回復にかかる時間は短縮されます。
 
 ロジック アプリについては、コードとしての構成アプローチで、バックアップと復元を行うことをお勧めします。 ロジック アプリはサーバーレスなので、Azure Resource Manager テンプレートから迅速に再作成できます。 テンプレートはソース コントロールに保存し、お使いの継続的インテグレーション/継続的配置 (CI/CD) プロセスにテンプレートを統合します。 ディザスター リカバリー イベントの際は、新しいリージョンにテンプレートをデプロイしてください。
 
@@ -112,13 +112,13 @@ Premium レベルで 2 つ以上のリージョンにまたがって API Managem
 
 リソースをリソース グループに割り当てるときは、次の要素を検討してください。
 
-* **ライフサイクル**。 一般的に、同じライフサイクルのリソースは、同じリソース グループに配置します。
+- **ライフサイクル**。 一般的に、同じライフサイクルのリソースは、同じリソース グループに配置します。
 
-* **アクセス**。 アクセス ポリシーをグループ内のリソースに適用するには、[ロールベースのアクセス制御][rbac] (RBAC) を使用できます。
+- **アクセス**。 アクセス ポリシーをグループ内のリソースに適用するには、[ロールベースのアクセス制御][rbac] (RBAC) を使用できます。
 
-* **課金**。 リソース グループのロールアップ コストを表示できます。
+- **課金**。 リソース グループのロールアップ コストを表示できます。
 
-* **API Management の価格レベル**。 開発環境およびテスト環境には、Developer レベルを使用してください。 運用前環境のコストを最小限に抑えるには、運用環境のレプリカをデプロイしてテストを実行し、シャットダウンします。
+- **API Management の価格レベル**。 開発環境およびテスト環境には、Developer レベルを使用してください。 運用前環境のコストを最小限に抑えるには、運用環境のレプリカをデプロイしてテストを実行し、シャットダウンします。
 
 ### <a name="deployment"></a>Deployment
 
@@ -132,9 +132,9 @@ API Management と個々の任意のロジック アプリを別々の独自の 
 
 API Management では、次に示すように、バージョンに関して 2 つの異なる補完的概念がサポートされています。
 
-* "*バージョン*" により、API のコンシューマーはニーズに基づいて API のバージョン (v1、v2、ベータ、または運用など) を選択できます。
+- "*バージョン*" により、API のコンシューマーはニーズに基づいて API のバージョン (v1、v2、ベータ、または運用など) を選択できます。
 
-* "*リビジョン*" により、API 管理者が API の非破壊的変更を行い、これらの変更をデプロイできるようになります。その際、API コンシューマーにこれらの変更を通知する変更ログもデプロイされます。
+- "*リビジョン*" により、API 管理者が API の非破壊的変更を行い、これらの変更をデプロイできるようになります。その際、API コンシューマーにこれらの変更を通知する変更ログもデプロイされます。
 
 開発環境でリビジョンを作成して、Resource Manager テンプレートを使って他の環境にその変更をデプロイできます。 詳細については、[複数のバージョンの API の発行][apim-versions]に関する記事をご覧ください。
 
@@ -149,29 +149,29 @@ API Management では、次に示すように、バージョンに関して 2 �
 
 また、各サービスには、次のオプションがあります。
 
-* より詳細な分析およびダッシュボード化のために、[Azure Log Analytics][logic-apps-log-analytics] に Logic Apps ログを送信します。
+- より詳細な分析およびダッシュボード化のために、[Azure Log Analytics][logic-apps-log-analytics] に Logic Apps ログを送信します。
 
-* DevOps 監視には、API Management 用に Azure Application Insights を構成します。
+- DevOps 監視には、API Management 用に Azure Application Insights を構成します。
 
-* API Management では、[カスタム API 分析のための Power BI ソリューション テンプレート][apim-pbi]をサポートしています。 独自の分析ソリューションを作成して、このソリューション テンプレートを使用できます。 Power BI ではビジネス ユーザー向けに、レポートを利用可能にします。
+- API Management では、[カスタム API 分析のための Power BI ソリューション テンプレート][apim-pbi]をサポートしています。 独自の分析ソリューションを作成して、このソリューション テンプレートを使用できます。 Power BI ではビジネス ユーザー向けに、レポートを利用可能にします。
 
 ## <a name="security-considerations"></a>セキュリティに関する考慮事項
 
 次の一覧は、セキュリティ上のベスト プラクティスをすべて網羅しているわけではありませんが、このアーキテクチャに特に該当するセキュリティ上のいくつかの考慮事項を示しています。
 
-* Azure API Management サービスには、固定のパブリック IP アドレスがあります。 Logic Apps エンドポイントを呼び出すためのアクセスを、API Management の IP アドレスのみに制限します。 詳細については、[受信 IP アドレスの制限][logic-apps-restrict-ip]に関するページを参照してください。
+- Azure API Management サービスには、固定のパブリック IP アドレスがあります。 Logic Apps エンドポイントを呼び出すためのアクセスを、API Management の IP アドレスのみに制限します。 詳細については、[受信 IP アドレスの制限][logic-apps-restrict-ip]に関するページを参照してください。
 
-* ユーザーが適切なアクセス レベルを保持していることを確認するには、ロールベースのアクセス制御 (RBAC) を使用します。
+- ユーザーが適切なアクセス レベルを保持していることを確認するには、ロールベースのアクセス制御 (RBAC) を使用します。
 
-* OAuth/OpenID Connect を使用して、API Management にあるパブリック API エンドポイントをセキュリティで保護する。 パブリック API エンドポイントをセキュリティで保護するには、ID プロバイダーを構成し、JSON Web トークン (JWT) 検証ポリシーを追加します。 詳細については、「[Azure Active Directory と API Management で OAuth 2.0 を使用して API を保護する][apim-oauth]」を参照してください。
+- OAuth/OpenID Connect を使用して、API Management にあるパブリック API エンドポイントをセキュリティで保護する。 パブリック API エンドポイントをセキュリティで保護するには、ID プロバイダーを構成し、JSON Web トークン (JWT) 検証ポリシーを追加します。 詳細については、「[Azure Active Directory と API Management で OAuth 2.0 を使用して API を保護する][apim-oauth]」を参照してください。
 
-* 相互証明書を使用して、API Management からバックエンド サービスに接続する。
+- 相互証明書を使用して、API Management からバックエンド サービスに接続する。
 
-* API Management API に HTTPS を強制します。
+- API Management API に HTTPS を強制します。
 
 ### <a name="storing-secrets"></a>シークレットの保存
 
-パスワード、アクセス キー、または接続文字列を、ソース管理にチェックインしないでください。 これらの値が必要な場合は、適切な手段を使用して、値をセキュリティで保護してデプロイします。 
+パスワード、アクセス キー、または接続文字列を、ソース管理にチェックインしないでください。 これらの値が必要な場合は、適切な手段を使用して、値をセキュリティで保護してデプロイします。
 
 1 つのロジック アプリがコネクタ内に作成できない何らかの機密値を必要としている場合、それらの値を Azure Key Vault に保存して、Resource Manager テンプレートから参照します。 デプロイ テンプレートのパラメーターと、各環境のパラメーター ファイルを使用します。 詳細については、「[ワークフロー内のパラメーターと入力のセキュリティ保護][logic-apps-secure]」を参照してください。
 
@@ -202,7 +202,7 @@ Logic Apps では、[サーバーレス](/azure/logic-apps/logic-apps-serverless
 [apim-monitor]: /azure/api-management/api-management-howto-use-azure-monitor
 [apim-oauth]: /azure/api-management/api-management-howto-protect-backend-with-aad
 [apim-openapi]: /azure/api-management/import-api-from-oas
-[apim-pbi]: http://aka.ms/apimpbi
+[apim-pbi]: https://aka.ms/apimpbi
 [apim-pricing]: https://azure.microsoft.com/pricing/details/api-management/
 [apim-properties]: /azure/api-management/api-management-howto-properties
 [apim-sla]: https://azure.microsoft.com/support/legal/sla/api-management/

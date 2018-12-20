@@ -3,12 +3,13 @@ title: Azure での SAP ワークロード向けの開発/テスト環境
 description: SAP ワークロード向けの開発/テスト環境を構築します。
 author: AndrewDibbins
 ms.date: 7/11/18
-ms.openlocfilehash: 1cfd15b0287a1979ae5ad60e41a0b1627a2e115c
-ms.sourcegitcommit: 0a31fad9b68d54e2858314ca5fe6cba6c6b95ae4
+ms.custom: fasttrack
+ms.openlocfilehash: 84665bfeb6ada568c631e1db72b97269d79f2e60
+ms.sourcegitcommit: a0e8d11543751d681953717f6e78173e597ae207
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51610806"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53004682"
 ---
 # <a name="devtest-environments-for-sap-workloads-on-azure"></a>Azure での SAP ワークロード向けの開発/テスト環境
 
@@ -80,10 +81,10 @@ Extra Large|64000|M64s|P20 x 4、P10 x 1|[Extra Large](https://azure.com/e/975fb
 > [!NOTE]
 > この価格は、単に VM とストレージの料金を示す目安です。 ネットワーク、バックアップ ストレージ、データ イングレス/エグレスの料金は含まれていません。
 
-* [Small](https://azure.com/e/9d26b9612da9466bb7a800eab56e71d1): 小規模なシステムは、VM の種類 D8s_v3 (8 個の vCPU)、32 GB の RAM、200 GB の一時ストレージ、および 2 つの 512 GB と 1 つの 128 GB Premium Storage ディスクで構成されています。
-* [Medium](https://azure.com/e/465bd07047d148baab032b2f461550cd): 中規模なシステムは、VM の種類 D16s_v3 (16 個の vCPU)、64 GB の RAM、400 GB の一時ストレージ、および 3 つの 512 GB と 1 つの 128 GB Premium Storage ディスクで構成されています。
-* [Large](https://azure.com/e/ada2e849d68b41c3839cc976000c6931): 大規模なシステムは、VM の種類 E32s_v3 (32 個の vCPU)、256 GB の RAM、512 GB の一時ストレージ、および 3 つの 512 GB と 1 つの 128 GB Premium Storage ディスクで構成されています。
-* [Extra Large](https://azure.com/e/975fb58a965c4fbbb54c5c9179c61cef): 超大規模なシステムは、VM の種類 M64s (64 個の vCPU)、1,024 GB の RAM、2,000 GB の一時ストレージ、および 4 つの 512 GB と 1 つの 128 GB Premium Storage ディスクで構成されています。
+* [Small](https://azure.com/e/9d26b9612da9466bb7a800eab56e71d1):小規模なシステムは、VM の種類 D8s_v3 (8 個の vCPU)、32 GB の RAM、200 GB の一時ストレージ、および 2 つの 512 GB と 1 つの 128 GB Premium Storage ディスクで構成されています。
+* [Medium](https://azure.com/e/465bd07047d148baab032b2f461550cd):中規模なシステムは、VM の種類 D16s_v3 (16 個の vCPU)、64 GB の RAM、400 GB の一時ストレージ、および 3 つの 512 GB と 1 つの 128 GB Premium Storage ディスクで構成されています。
+* [Large](https://azure.com/e/ada2e849d68b41c3839cc976000c6931):大規模なシステムは、VM の種類 E32s_v3 (32 個の vCPU)、256 GB の RAM、512 GB の一時ストレージ、および 3 つの 512 GB と 1 つの 128 GB Premium Storage ディスクで構成されています。
+* [Extra Large](https://azure.com/e/975fb58a965c4fbbb54c5c9179c61cef):超大規模なシステムは、VM の種類 M64s (64 個の vCPU)、1,024 GB の RAM、2,000 GB の一時ストレージ、および 4 つの 512 GB と 1 つの 128 GB Premium Storage ディスクで構成されています。
 
 ## <a name="deployment"></a>Deployment
 

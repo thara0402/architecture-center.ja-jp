@@ -3,12 +3,13 @@ title: Azure での 3D ビデオのレンダリング
 description: Azure Batch サービスを使用して、Azure でネイティブ HPC ワークロードを実行します。
 author: adamboeglin
 ms.date: 07/13/2018
-ms.openlocfilehash: 1ffdaa5467fec73a01b8caa18b71c2bc4e49abbe
-ms.sourcegitcommit: 0a31fad9b68d54e2858314ca5fe6cba6c6b95ae4
+ms.custom: fasttrack
+ms.openlocfilehash: 7dacefd5179c426912dd97af9af7b5a39505392d
+ms.sourcegitcommit: a0e8d11543751d681953717f6e78173e597ae207
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51610687"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53004831"
 ---
 # <a name="3d-video-rendering-on-azure"></a>Azure での 3D ビデオのレンダリング
 
@@ -124,15 +125,15 @@ Azure Batch の使用コストは、プールに使用されている VM のサ�
 
 あるジョブを 8 時間実行した場合に発生するコストの例を、サーバー数ごとに次に示します。
 
-* 100 台の高パフォーマンス CPU VM: [コストの見積もり][hpc-est-high]
+* 100 台の高パフォーマンス CPU VM:[コストの見積もり][hpc-est-high]
 
   100 x H16m (16 コア、225 GB RAM、Premium Storage 512 GB)、2 TB Blob Storage、1 TB 送信
 
-* 50 台の高パフォーマンス CPU VM: [コストの見積もり][hpc-est-med]
+* 50 台の高パフォーマンス CPU VM:[コストの見積もり][hpc-est-med]
 
   50 x H16m (16 コア、225 GB RAM、Premium Storage 512 GB)、2 TB Blob Storage、1 TB 送信
 
-* 10 台の高パフォーマンス CPU VM: [コストの見積もり][hpc-est-low]
+* 10 台の高パフォーマンス CPU VM:[コストの見積もり][hpc-est-low]
 
   10 x H16m (16 コア、225 GB RAM、Premium Storage 512 GB)、2 TB Blob Storage、1 TB 送信
 
