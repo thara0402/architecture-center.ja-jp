@@ -1,15 +1,16 @@
 ---
 title: eコマースのインテリジェントな製品検索エンジン
+titleSuffix: Azure Example Scenarios
 description: eコマース アプリケーションに世界水準の検索エクスペリエンスを提供します。
 author: jelledruyts
 ms.date: 09/14/2018
 ms.custom: fasttrack
-ms.openlocfilehash: 5eabdb94b9345e73b21526681e0dbd6ae859d7be
-ms.sourcegitcommit: a0e8d11543751d681953717f6e78173e597ae207
+ms.openlocfilehash: 9e24f7ab2104f877fcc3aec310dd21677160608c
+ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53004902"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53643468"
 ---
 # <a name="intelligent-product-search-engine-for-e-commerce"></a>eコマースのインテリジェントな製品検索エンジン
 
@@ -23,9 +24,9 @@ SQL Server や Azure SQL Database などのリレーショナル データベー
 
 その他の関連するユース ケース:
 
-* 物理的にユーザーの近くにある不動産一覧または店舗の検索。
-* "_最近_" の情報を優先した、ニュース サイトの記事やスポーツ結果の検索。
-* 政策立案者や公証人など、"_ドキュメント中心_" の組織向けの大規模なリポジトリの検索。
+- 物理的にユーザーの近くにある不動産一覧または店舗の検索。
+- "_最近_" の情報を優先した、ニュース サイトの記事やスポーツ結果の検索。
+- 政策立案者や公証人など、"_ドキュメント中心_" の組織向けの大規模なリポジトリの検索。
 
 最終的には、何らかの形式の検索機能を持つ "_すべての_" アプリケーションが、専用検索サービスからメリットを得ることができます。
 
@@ -34,6 +35,7 @@ SQL Server や Azure SQL Database などのリレーショナル データベー
 ![eコマース向けのインテリジェントな製品検索エンジンに関連する Azure コンポーネントのアーキテクチャの概要][architecture]
 
 このシナリオでは、顧客が製品カタログを検索できる eコマース ソリューションについて説明します。
+
 1. 顧客は、任意のデバイスから **eコマース Web アプリケーション**に移動します。
 2. 製品カタログは、トランザクション処理のために **Azure SQL Database** に保持されています。
 3. Azure Search は、**検索インデクサー**を使用し、統合された変更追跡機能によって、検索インデックスを自動的に最新の状態に保ちます。
@@ -43,21 +45,21 @@ SQL Server や Azure SQL Database などのリレーショナル データベー
 
 ### <a name="components"></a>コンポーネント
 
-* [App Services - Web Apps][docs-webapps] により Web アプリケーションがホストされ、自動スケーリングと高可用性が可能になります。インフラストラクチャの管理は不要です。
-* [SQL Database][docs-sql-database] は、リレーショナル データ、JSON、空間、XML などの構造をサポートする、Microsoft Azure における汎用リレーショナル データベース管理サービスです。
-* [Azure Search][docs-search] はサービスとしての検索クラウド ソリューションで、多彩な検索機能を、Web、モバイル、およびエンタープライズ アプリケーションのプライベートな異種コンテンツに提供します。
-* [Bot Service][docs-botservice]: インテリジェント ボットの構築、テスト、デプロイ、管理を行うツールを提供します。
-* [Cognitive Services][docs-cognitive]: 自然なコミュニケーション手段を通じて、見る、聞く、話す、理解する、ユーザーのニーズを解釈することが可能なインテリジェントなアルゴリズムを使用できます。
+- [App Services - Web Apps][docs-webapps] により Web アプリケーションがホストされ、自動スケーリングと高可用性が可能になります。インフラストラクチャの管理は不要です。
+- [SQL Database][docs-sql-database] は、リレーショナル データ、JSON、空間、XML などの構造をサポートする、Microsoft Azure における汎用リレーショナル データベース管理サービスです。
+- [Azure Search][docs-search] はサービスとしての検索クラウド ソリューションで、多彩な検索機能を、Web、モバイル、およびエンタープライズ アプリケーションのプライベートな異種コンテンツに提供します。
+- [Bot Service][docs-botservice]: インテリジェント ボットの構築、テスト、デプロイ、管理を行うツールを提供します。
+- [Cognitive Services][docs-cognitive]: 自然なコミュニケーション手段を通じて、見る、聞く、話す、理解する、ユーザーのニーズを解釈することが可能なインテリジェントなアルゴリズムを使用できます。
 
 ### <a name="alternatives"></a>代替手段
 
-* たとえば、SQL Server のフルテキスト検索で**データベース内検索**機能を使用できますが、その場合、トランザクション ストアでもクエリが処理され (必要な処理能力の増加)、データベース内の検索機能の方が限定的です。
-* オープン ソースの [Apache Lucene][apache-lucene] (その上に Azure Search が構築されます) を Azure Virtual Machines でホストできますが、そうすると、インフラストラクチャとしてのサービス (IaaS) の管理に戻り、Azure Search が Lucene 上で提供する多くの機能のメリットを得られません。
-* Azure Marketplace からの [Elastic Search][elastic-marketplace] の展開を検討することもできます。これは代替機能であり、サード パーティ ベンダーからの製品を検索できますが、この場合も IaaS ワークロードを実行することになります。
+- たとえば、SQL Server のフルテキスト検索で**データベース内検索**機能を使用できますが、その場合、トランザクション ストアでもクエリが処理され (必要な処理能力の増加)、データベース内の検索機能の方が限定的です。
+- オープン ソースの [Apache Lucene][apache-lucene] (その上に Azure Search が構築されます) を Azure Virtual Machines でホストできますが、そうすると、インフラストラクチャとしてのサービス (IaaS) の管理に戻り、Azure Search が Lucene 上で提供する多くの機能のメリットを得られません。
+- Azure Marketplace からの [Elastic Search][elastic-marketplace] の展開を検討することもできます。これは代替機能であり、サード パーティ ベンダーからの製品を検索できますが、この場合も IaaS ワークロードを実行することになります。
 
 データ層の他のオプションを次に示します。
 
-* [Cosmos DB](/azure/cosmos-db/introduction) は、Microsoft のグローバル分散型マルチモデル データベースです。 Costmos DB では、Mongo DB、Cassandra、Graph データ、シンプルなテーブル ストレージなど、他のデータ モデルを実行するためのプラットフォームが提供されます。 Azure Search では、Cosmos DB からのデータに直接インデックスを付けることもサポートされています。
+- [Cosmos DB](/azure/cosmos-db/introduction) は、Microsoft のグローバル分散型マルチモデル データベースです。 Costmos DB では、Mongo DB、Cassandra、Graph データ、シンプルなテーブル ストレージなど、他のデータ モデルを実行するためのプラットフォームが提供されます。 Azure Search では、Cosmos DB からのデータに直接インデックスを付けることもサポートされています。
 
 ## <a name="considerations"></a>考慮事項
 
@@ -85,11 +87,11 @@ eコマース アプリケーションがどれくらい成功するかは、顧
 
 検索サービスを調整する一般的な方法は次のとおりです。
 
-* [スコアリング プロファイル][search-scoring]を使用して、検索結果の関連性に影響を与えます。たとえば、クエリと一致したフィールド、データの新しさ、ユーザーに対する地理的な距離などを基にします。
-* 高度な自然言語処理 (NLP) スタックを使用してクエリをより適切に解釈する [Microsoft 提供の言語アナライザー][search-languages]を使用します。
-* [カスタム アナライザー][search-analyzers]を使用して、製品が正しく検出されるようにします。特に、製品の製造元やモデルのような言語に基づかない情報で検索する場合。
+- [スコアリング プロファイル][search-scoring]を使用して、検索結果の関連性に影響を与えます。たとえば、クエリと一致したフィールド、データの新しさ、ユーザーに対する地理的な距離などを基にします。
+- 高度な自然言語処理 (NLP) スタックを使用してクエリをより適切に解釈する [Microsoft 提供の言語アナライザー][search-languages]を使用します。
+- [カスタム アナライザー][search-analyzers]を使用して、製品が正しく検出されるようにします。特に、製品の製造元やモデルのような言語に基づかない情報で検索する場合。
 
-## <a name="deploy-this-scenario"></a>このシナリオのデプロイ
+## <a name="deploy-the-scenario"></a>シナリオのデプロイ
 
 このシナリオのさらに完全な eコマース バージョンを展開するには、簡単なチケット購入アプリケーションを実行する .NET サンプル アプリケーションを提供するこちらの[ステップ バイ ステップ チュートリアル][end-to-end-walkthrough]に従ってください。 これには Azure Search も含まれ、説明した機能の多くが使用されています。 さらに、ほとんどの Azure リソースのデプロイを自動化する Resource Manager テンプレートもあります。
 
@@ -99,9 +101,9 @@ eコマース アプリケーションがどれくらい成功するかは、顧
 
 取得するトラフィックの量に基づいて、次の 3 つのサンプル コスト プロファイルが用意されています。
 
-* [小][small-pricing]:このプロファイルでは、Web サイトをホストするための 1 つの `Standard S1` Web アプリ、Azure Bot Service の Free レベル、1 つの `Basic` Azure Search Service、`Standard S2` SQL Database を使用しています。
-* [中][medium-pricing]:ここでは、Web アプリを `Standard S3` レベルの 2 つのインスタンスにスケールアップし、Search Service を `Standard S1` レベルにアップグレードし、`Standard S6` SQL Database を使用しています。
-* [大][large-pricing]:最大のプロファイルでは、`Premium P2V2` Web アプリの 4 つのインスタンスを使用し、Azure Bot Service を `Standard S1` レベル (Premium チャネルで 1.000.000 メッセージ) にアップグレードし、2 ユニットの `Standard S3` Azure Search Service と `Premium P6` SQL Database を使用しています。
+- [小][small-pricing]:このプロファイルでは、Web サイトをホストするための 1 つの `Standard S1` Web アプリ、Azure Bot Service の Free レベル、1 つの `Basic` Azure Search Service、`Standard S2` SQL Database を使用しています。
+- [中][medium-pricing]:ここでは、Web アプリを `Standard S3` レベルの 2 つのインスタンスにスケールアップし、Search Service を `Standard S1` レベルにアップグレードし、`Standard S6` SQL Database を使用しています。
+- [大][large-pricing]:最大のプロファイルでは、`Premium P2V2` Web アプリの 4 つのインスタンスを使用し、Azure Bot Service を `Standard S1` レベル (Premium チャネルで 1.000.000 メッセージ) にアップグレードし、2 ユニットの `Standard S3` Azure Search Service と `Premium P6` SQL Database を使用しています。
 
 ## <a name="related-resources"></a>関連リソース
 

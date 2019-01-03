@@ -5,12 +5,12 @@ description: Azure Databricks を使用して、Azure でエンド ツー エン
 author: petertaylor9999
 ms.date: 11/30/2018
 ms.custom: seodec18
-ms.openlocfilehash: ceea89b554e11619823b2065a7f03919527b21fa
-ms.sourcegitcommit: 8d951fd7e9534054b160be48a1881ae0857561ef
+ms.openlocfilehash: f7364334f889388ad432efadd46362a9fa82fe8b
+ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53329417"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53644123"
 ---
 # <a name="create-a-stream-processing-pipeline-with-azure-databricks"></a>Azure Databricks を使用してストリーム処理パイプラインを作成します
 
@@ -36,9 +36,13 @@ ms.locfileid: "53329417"
 
 ## <a name="data-ingestion"></a>データの取り込み
 
+<!-- markdownlint-disable MD033 -->
+
 データ ソースをシミュレートするために、この参照アーキテクチャでは [New York City Taxi Data](https://uofi.app.box.com/v/NYCtaxidata/folder/2332218797) データセット<sup>[[1]](#note1)</sup> を使用します。 このデータセットには、ニューヨーク市の 4 年間 (2010 年から 2013 年) のタクシー乗車に関するデータが含まれています。 乗車データと料金データの 2 種類のレコードがあります。 乗車データには、走行時間、乗車距離、乗車場所と降車場所が含まれます。 料金データには、料金、税、チップの金額が含まれます。 この 2 種類のレコードの共通フィールドには、営業許可番号、タクシー免許、ベンダー ID があります。 この 3 つのフィールドを組み合わせて、タクシーと運転手が一意に識別されます。 データは CSV 形式で保存されます。
 
-> [1] <span id="note1">Donovan, Brian; Work, Dan (2016):New York City Taxi Trip Data (2010-2013). イリノイ大学アーバナシャンペーン校。 https://doi.org/10.13012/J8PN93H8
+> [1] <span id="note1">Donovan, Brian; Work, Dan (2016):New York City Taxi Trip Data (2010-2013). イリノイ大学アーバナシャンペーン校。 <https://doi.org/10.13012/J8PN93H8>
+
+<!-- markdownlint-enable MD033 -->
 
 データ ジェネレーターは、レコードを読み取り、Azure Event Hubs に送信する .NET Core アプリケーションです。 ジェネレーターは、JSON 形式の乗車データと CSV 形式の料金データを送信します。
 
@@ -313,4 +317,3 @@ SparkMetric_CL
 ## <a name="deploy-the-solution"></a>ソリューションのデプロイ方法
 
 リファレンス実装をデプロイおよび実行するには、[GitHub readme](https://github.com/mspnp/azure-databricks-streaming-analytics) の手順に従ってください。
-

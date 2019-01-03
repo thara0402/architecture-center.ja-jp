@@ -1,21 +1,22 @@
 ---
 title: Azure DevOps を使用した CI/CD パイプラインの設計
+titleSuffix: Azure Example Scenarios
 description: Azure DevOps を使用して .NET アプリを構築し、Azure Web Apps にリリースします。
 author: christianreddington
 ms.date: 12/06/2018
 ms.custom:
 - fasttrack
 - seodec18
-ms.openlocfilehash: 23945493115522d099b6b26922f567653da0367e
-ms.sourcegitcommit: 4ba3304eebaa8c493c3e5307bdd9d723cd90b655
+ms.openlocfilehash: ae2dddd7567c6b69f936b3b9c9339313389e3bf6
+ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53307284"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53643800"
 ---
 # <a name="design-a-cicd-pipeline-using-azure-devops"></a>Azure DevOps を使用した CI/CD パイプラインの設計
 
-このシナリオでは、継続的インテグレーション (CI) と継続的配置 (CD) パイプラインを構築するためのアーキテクチャと設計のガイダンスを示します。  この例の CI/CD パイプラインは、Azure App Service に 2 層の .NET Web アプリケーションをデプロイします。
+このシナリオでは、継続的インテグレーション (CI) と継続的配置 (CD) パイプラインを構築するためのアーキテクチャと設計のガイダンスを示します。 この例の CI/CD パイプラインは、Azure App Service に 2 層の .NET Web アプリケーションをデプロイします。
 
 最新の CI/CD プロセスへの移行には、アプリケーションのビルド、デプロイ、テスト、および監視の点で多くのメリットがあります。 Azure DevOps を App Service などの他のサービスと共に使用することで、組織では、自身のシナリオを実現するためのサポート インフラストラクチャの管理ではなく、アプリ自体の開発に集中することができます。
 
@@ -84,7 +85,7 @@ Azure Web Apps でのホスティングに代わる方法として以下を検�
 
 ### <a name="prerequisites"></a>前提条件
 
-- 既存の Azure アカウントが必要です。 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウント][azure-free-account]を作成してください。
+- 既存の Azure アカウントが必要です。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 - Azure DevOps 組織にサインアップする必要があります。 詳細については、[クイック スタートの組織の作成][vsts-account-create]に関するページを参照してください。
 
@@ -119,7 +120,6 @@ CI/CD および Azure DevOps の詳細については、次のリソースを参
 [ansible]: /azure/ansible/
 [application-insights]: /azure/application-insights/app-insights-overview
 [app-service-reference-architecture]: ../../reference-architectures/app-service-web-app/basic-web-app.md
-[azure-free-account]: https://azure.microsoft.com/free/?WT.mc_id=A261C142F
 [arm-templates]: /azure/azure-resource-manager/resource-group-overview#template-deployment
 [architecture]: ./media/architecture-devops-dotnet-webapp.svg
 [chef]: /azure/chef/
