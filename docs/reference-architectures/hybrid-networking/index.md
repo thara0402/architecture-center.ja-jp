@@ -4,12 +4,12 @@ titleSuffix: Azure Reference Architectures
 description: オンプレミス ネットワークを Azure に接続するための参照アーキテクチャを比較します。
 author: telmosampaio
 ms.date: 07/02/2018
-ms.openlocfilehash: de509b6d95805f4fc871f6dbd76a87d2c0bec6f1
-ms.sourcegitcommit: 88a68c7e9b6b772172b7faa4b9fd9c061a9f7e9d
+ms.openlocfilehash: f13249f225ad7ab5072de2b2175cdc2ffb6d0074
+ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53119916"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54011057"
 ---
 # <a name="choose-a-solution-for-connecting-an-on-premises-network-to-azure"></a>オンプレミス ネットワークを Azure に接続するためのソリューションを選択する
 
@@ -21,39 +21,41 @@ ms.locfileid: "53119916"
 
 このアーキテクチャは、オンプレミス ハードウェアとクラウド間のトラフィックが軽量であると考えられるハイブリッド アプリケーション、または待機時間よりも柔軟性とクラウドの処理能力を優先させる場合に適しています。
 
-**メリット**
+### <a name="benefits"></a>メリット
 
 - 構成が簡単です。
 
-**課題**
+### <a name="challenges"></a>課題
 
 - オンプレミスの VPN デバイスが必要です。
 - Microsoft は各 VPN Gateway の 99.9% の可用性を保証していますが、この [SLA](https://azure.microsoft.com/support/legal/sla/vpn-gateway/) は、VPN Gateway のみが対象であり、ゲートウェイへのネットワーク接続は含まれていません。
 - 現在、Azure VPN Gateway 経由の VPN 接続では、最大で 1.25 Gbps の帯域幅がサポートされています。 このスループットを超えると予想される場合は、ご利用の Azure Virtual Network を複数の VPN 接続に分割する必要がある可能性があります。
 
-**参照アーキテクチャ**
+### <a name="reference-architecture"></a>参照アーキテクチャ
 
 - [VPN ゲートウェイを使用するハイブリッド ネットワーク](./vpn.md)
 
+<!-- markdownlint-disable MD024 -->
+
 ## <a name="azure-expressroute-connection"></a>Azure ExpressRoute 接続
 
-[ExpressRoute](/azure/expressroute/) 接続は、サード パーティ製接続プロバイダーを経由する、プライベートの専用接続を使用します。 プライベート接続は、ご利用のオンプレミス ネットワークを Azure に拡張します。 
+[ExpressRoute](/azure/expressroute/) 接続は、サード パーティ製接続プロバイダーを経由する、プライベートの専用接続を使用します。 プライベート接続は、ご利用のオンプレミス ネットワークを Azure に拡張します。
 
-このアーキテクチャは、高度なスケーラビリティを必要とする、大規模な、ミッション クリティカルのワークロードを実行するハイブリッド アプリケーションに適しています。 
+このアーキテクチャは、高度なスケーラビリティを必要とする、大規模な、ミッション クリティカルのワークロードを実行するハイブリッド アプリケーションに適しています。
 
-**メリット**
+### <a name="benefits"></a>メリット
 
 - 接続プロバイダーに応じて、最大 10 Gbpsの より高い帯域幅を使用できます。
 - 要求が低い期間のコストを削減できる、帯域幅の動的スケーリングがサポートされます。 ただし、このオプションがない接続プロバイダーもあります。
 - 接続プロバイダーによっては、組織は各国のクラウドに直接アクセスできる場合があります。
 - 接続全体において、99.9% の可用性 SLA があります。
 
-**課題**
+### <a name="challenges"></a>課題
 
 - セットアップが複雑になることがあります。 ExpressRoute 接続の作成には、サード パーティ製接続プロバイダーの操作が必要です。 このプロバイダーは、ネットワーク接続のプロビジョニングを行います。
 - オンプレミスの、高帯域幅のルーターが必要です。
 
-**参照アーキテクチャ**
+### <a name="reference-architecture"></a>参照アーキテクチャ
 
 - [ExpressRoute を使用したハイブリッド ネットワーク](./expressroute.md)
 
@@ -61,26 +63,28 @@ ms.locfileid: "53119916"
 
 このオプションは、前の 2 つのオプションを組み合わせたもので、ExpressRoute を通常の条件で使用しますが、ExpressRoute 回線に接続の切断がある場合は、VPN 接続にフェールオーバーします。
 
-このアーキテクチャは、ExpressRoute のより高い帯域幅および可用性の高いネットワーク接続を必要とする、ハイブリッド アプリケーションに適しています。 
+このアーキテクチャは、ExpressRoute のより高い帯域幅および可用性の高いネットワーク接続を必要とする、ハイブリッド アプリケーションに適しています。
 
-**メリット**
+### <a name="benefits"></a>メリット
 
 - フェールバック接続はより低い帯域幅ネットワークとなりますが、ExpressRoute 回線が切断されても可用性が高いままとなります。
 
-**課題**
+### <a name="challenges"></a>課題
 
 - 構成が複雑です。 VPN 接続と ExpressRoute 回線の両方を設定する必要があります。
 - 冗長ハードウェア (VPN アプライアンス)、および有料の冗長 Azure VPN Gateway 接続が必要です。
 
-**参照アーキテクチャ**
+### <a name="reference-architecture"></a>参照アーキテクチャ
 
 - [ExpressRoute と VPN フェールオーバーを使用したハイブリッド ネットワーク](./expressroute-vpn-failover.md)
+
+<!-- markdownlint-disable MD024 -->
 
 ## <a name="hub-spoke-network-topology"></a>ハブスポーク ネットワーク トポロジ
 
 ハブスポーク ネットワーク トポロジは、ID やセキュリティなどのサービスを共有しながらワークロードを切り離す手法です。 ハブは、オンプレミス ネットワークへの主要な接続ポイントとして機能する Azure の仮想ネットワーク (VNet) です。 スポークはハブとピア接続する Vnet です。 共有サービスはハブにデプロイされ、個々のワークロードはスポークとしてデプロイされます。
 
-**参照アーキテクチャ**
+### <a name="reference-architectures"></a>参照用アーキテクチャ
 
 - [ハブスポーク トポロジ](./hub-spoke.md)
 - [共有サービスを含むハブスポーク](./shared-services.md)

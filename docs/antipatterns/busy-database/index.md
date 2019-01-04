@@ -1,18 +1,20 @@
 ---
 title: ビジー状態のデータベースのアンチパターン
+titleSuffix: Performance antipatterns for cloud apps
 description: 処理をデータベース サーバーにオフロードすると、パフォーマンスおよびスケーラビリティの問題が発生する可能性があります。
 author: dragon119
 ms.date: 06/05/2017
-ms.openlocfilehash: a14a350aefc1801ae08cb4a8d0eb3d5b248c92bf
-ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
+ms.custom: seodec18
+ms.openlocfilehash: 11bce03aed2e988d0a814b3298818715ba42c1c5
+ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47428909"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54011465"
 ---
 # <a name="busy-database-antipattern"></a>ビジー状態のデータベースのアンチパターン
 
-処理をデータベース サーバーにオフロードすると、データの格納および取得要求への応答よりも、コードの実行にかなりの時間が費やされる可能性があります。 
+処理をデータベース サーバーにオフロードすると、データの格納および取得要求への応答よりも、コードの実行にかなりの時間が費やされる可能性があります。
 
 ## <a name="problem-description"></a>問題の説明
 
@@ -217,9 +219,9 @@ using (var command = new SqlCommand(...))
 
 ## <a name="how-to-detect-the-problem"></a>問題の検出方法
 
-ビジー状態のデータベースでは、データベースにアクセスする操作においてスループットと応答時間の急激な低下が見られます。 
+ビジー状態のデータベースでは、データベースにアクセスする操作においてスループットと応答時間の急激な低下が見られます。
 
-この問題の識別に役立てるために、次の手順を実行できます。 
+この問題の識別に役立てるために、次の手順を実行できます。
 
 1. パフォーマンスの監視を使用して、運用システムにおいてデータベース アクティビティの実行に費やされる時間を識別します。
 
@@ -261,10 +263,9 @@ CPU と DTU の使用率からは、スループットが高くなっている�
 
 ![Azure SQL Database モニターに表示された、クライアント アプリケーションで処理を実行中のデータベースのパフォーマンス][ProcessingInClientApplicationMonitor]
 
-## <a name="related-resources"></a>関連リソース 
+## <a name="related-resources"></a>関連リソース
 
 - [余分なフェッチのアンチパターン][ExtraneousFetching]
-
 
 [dtu]: /azure/sql-database/sql-database-service-tiers-dtu
 [ExtraneousFetching]: ../extraneous-fetching/index.md

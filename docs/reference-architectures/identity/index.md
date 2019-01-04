@@ -4,12 +4,12 @@ titleSuffix: Azure Reference Architectures
 description: オンプレミスの Active Directory を Azure と統合するための参照アーキテクチャを比較します。
 ms.date: 07/02/2018
 ms.custom: seodec18
-ms.openlocfilehash: 905dedda6de1a107f55b2f7651441780a685aea7
-ms.sourcegitcommit: 88a68c7e9b6b772172b7faa4b9fd9c061a9f7e9d
+ms.openlocfilehash: 99a64f0a5fbe5624aa8ad05bd3565ab2aef618b3
+ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53119865"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54011788"
 ---
 # <a name="choose-a-solution-for-integrating-on-premises-active-directory-with-azure"></a>オンプレミスの Active Directory を Azure と統合するためのソリューションの選択
 
@@ -46,7 +46,7 @@ Azure AD ディレクトリは、オンプレミス ディレクトリの拡張�
 **課題**
 
 - ID サービスはユーザーとグループに制限されます。 サービス アカウントやコンピューター アカウントを認証することはできません。
-- Azure AD ディレクトリの同期を維持するために、オンプレミス ドメインとの接続を構成する必要があります。 
+- Azure AD ディレクトリの同期を維持するために、オンプレミス ドメインとの接続を構成する必要があります。
 - Azure AD 経由の認証を可能にするために、アプリケーション コードの再記述が必要になる場合があります。
 
 **参照アーキテクチャ**
@@ -55,9 +55,9 @@ Azure AD ディレクトリは、オンプレミス ディレクトリの拡張�
 
 ## <a name="ad-ds-in-azure-joined-to-an-on-premises-forest"></a>Azure 内の AD DS をオンプレミス フォレストに参加させる
 
-AD ドメイン サービス (AD DS) サーバーを Azure にデプロイします。 Azure 内にドメインを作成し、それをオンプレミスの AD フォレストに参加させます。 
+AD ドメイン サービス (AD DS) サーバーを Azure にデプロイします。 Azure 内にドメインを作成し、それをオンプレミスの AD フォレストに参加させます。
 
-Azure AD で現在実装されていない AD DS 機能を使用する必要がある場合には、このオプションを検討してください。 
+Azure AD で現在実装されていない AD DS 機能を使用する必要がある場合には、このオプションを検討してください。
 
 **メリット**
 
@@ -97,13 +97,13 @@ AD ドメイン サービス (AD DS) サーバーを Azure にデプロイしま
 
 ## <a name="extend-ad-fs-to-azure"></a>AD FS を Azure に拡張する
 
-Azure で実行されているコンポーネントのフェデレーション認証と承認を実行するために、Active Directory フェデレーション サービス (AD FS) のデプロイを Azure にレプリケートします。 
+Azure で実行されているコンポーネントのフェデレーション認証と承認を実行するために、Active Directory フェデレーション サービス (AD FS) のデプロイを Azure にレプリケートします。
 
 このアーキテクチャは通常、次の目的のために使用されます。
 
 - パートナー組織のユーザーを認証および承認する。
 - 組織のファイアウォールの外部で実行されている Web ブラウザーからユーザーを認証できるようにする。
-- ユーザーが、承認済みの外部デバイス (モバイル デバイスなど) から接続できるようにする。 
+- ユーザーが、承認済みの外部デバイス (モバイル デバイスなど) から接続できるようにする。
 
 **メリット**
 
