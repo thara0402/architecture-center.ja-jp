@@ -5,12 +5,12 @@ keywords: AWS エキスパート, Azure との比較, AWS との比較, Azure �
 author: lbrader
 ms.date: 09/19/2018
 pnp.series.title: Azure for AWS Professionals
-ms.openlocfilehash: 0735d24b223a5e5cab6030774280c038c28f35e6
-ms.sourcegitcommit: dbbf914757b03cdee7a274204f9579fa63d7eed2
+ms.openlocfilehash: e6077349a285df56d234f3cc2a14dc0d0d33da55
+ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50916687"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54011669"
 ---
 # <a name="azure-for-aws-professionals"></a>AWS プロフェッショナルのための Azure
 
@@ -63,7 +63,7 @@ AWS アカウントと同じように、サブスクリプションには既定�
 
 Azure では、"リソース" という用語を AWS と同じように使用しています。つまり、すべてのコンピューティング インスタンス、ストレージ オブジェクト、ネットワーク デバイス、プラットフォームで作成または構成できるその他のエンティティを意味します。
 
-Azure リソースは、2 つのモデル ([Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview) と従来の Azure [クラシック デプロイ モデル](/azure/azure-resource-manager/resource-manager-deployment-model)) のどちらかでデプロイして管理されます。
+Azure リソースは、次の 2 つのモデルのいずれかを使用してデプロイ、管理されます。[Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview) または従来の Azure [クラシック デプロイ モデル](/azure/azure-resource-manager/resource-manager-deployment-model)。
 すべての新しいリソースは、Resource Manager モデルを使用して作成されます。
 
 ### <a name="resource-groups"></a>リソース グループ
@@ -174,7 +174,7 @@ AWS インスタンスのタイプと Azure 仮想マシンのサイズは、似
 
 -   [Azure の仮想マシンのサイズ (Linux)](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
 
-AWS の秒単位の課金とは異なり、Azure のオンデマンド VM は分単位で課金されます。
+AWS の秒単位の課金と同様に、Azure のオンデマンド VM は秒単位で課金されます。
 
 #### <a name="ebs-and-azure-storage-for-vm-disks"></a>EBS と VM ディスク用の Azure Storage
 
@@ -217,11 +217,11 @@ Azure には、AWS に直接相当するものがないいくつかのコンピ�
 
 -   [ポータルを使用して Azure に Linux VM を作成する](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-quick-create-portal/)
 
--   [Azure リファレンス アーキテクチャ: Azure での Linux VM の実行](https://azure.microsoft.com/documentation/articles/guidance-compute-single-vm-linux/)
+-   [Azure リファレンス アーキテクチャ:Azure での Linux VM の実行](https://azure.microsoft.com/documentation/articles/guidance-compute-single-vm-linux/)
 
 -   [Get started with Node.js web apps in Azure App Service (Azure App Service で Node.js Web アプリの使用を開始する)](https://azure.microsoft.com/documentation/articles/app-service-web-nodejs-get-started/)
 
--   [Azure リファレンス アーキテクチャ: 基本的な Web アプリケーション](https://azure.microsoft.com/documentation/articles/guidance-web-apps-basic/)
+-   [Azure リファレンス アーキテクチャ:基本的な Web アプリケーション](https://azure.microsoft.com/documentation/articles/guidance-web-apps-basic/)
 
 -   [初めての Azure 関数の作成](https://azure.microsoft.com/documentation/articles/functions-create-first-azure-function/)
 
@@ -258,7 +258,7 @@ Azure Storage では、サブスクリプションに関連付けられた[ス�
 
 -   [Azure Storage セキュリティ ガイド](https://azure.microsoft.com/documentation/articles/storage-security-guide/)
 
--   [パターンとプラクティス: コンテンツ配信ネットワーク (CDN) のガイダンス](https://azure.microsoft.com/documentation/articles/best-practices-cdn/)
+-   [パターンとプラクティス:コンテンツ配信ネットワーク (CDN) のガイダンス](https://azure.microsoft.com/documentation/articles/best-practices-cdn/)
 
 ### <a name="networking"></a>ネットワーク
 
@@ -310,7 +310,7 @@ AWS RDS のコストは、インスタンスが使用するハードウェア �
 
 -   [Azure ポータルを使用して Azure SQL Database の geo レプリケーションを構成する](https://azure.microsoft.com/documentation/articles/sql-database-geo-replication-portal/)
 
--   [Cosmos DB の概要: NoSQL JSON Database](/azure/cosmos-db/sql-api-introduction)
+-   [Cosmos DB の概要:NoSQL JSON Database](/azure/cosmos-db/sql-api-introduction)
 
 -   [Node.js から Azure Table Storage を使用する方法](https://azure.microsoft.com/documentation/articles/storage-nodejs-how-to-use-table-storage/)
 

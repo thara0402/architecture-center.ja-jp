@@ -1,25 +1,27 @@
 ---
 title: 不適切なインスタンス化のアンチパターン
+titleSuffix: Performance antipatterns for cloud apps
 description: 作成後に共有する予定のオブジェクトの新しいインスタンスを頻繁に作成することは避けてください。
 author: dragon119
 ms.date: 06/05/2017
-ms.openlocfilehash: 4d5ef9ad9e675b46df94b51e81d7a4bd4c1b25e9
-ms.sourcegitcommit: 3d9ee03e2dda23753661a80c7106d1789f5223bb
+ms.custom: seodec18
+ms.openlocfilehash: b92ae5f5e79a0ababf44d7aa2d771d4d72900cae
+ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2018
-ms.locfileid: "29477582"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54009920"
 ---
 # <a name="improper-instantiation-antipattern"></a>不適切なインスタンス化のアンチパターン
 
-作成後に共有する予定のオブジェクトの新しいインスタンスを頻繁に作成すると、パフォーマンスが低下する可能性があります。 
+作成後に共有する予定のオブジェクトの新しいインスタンスを頻繁に作成すると、パフォーマンスが低下する可能性があります。
 
 ## <a name="problem-description"></a>問題の説明
 
 多くのライブラリでは、外部リソースの抽象化が提供されます。 内部的には、これらのクラスは、通常、リソースへの独自の接続を管理して、クライアントがリソースへのアクセスに使用できるブローカーとして機能します。 Azure アプリケーションに関連するブローカー クラスのいくつかの例を次に示します。
 
 - `System.Net.Http.HttpClient` HTTP を使用して Web サービスと通信します。
-- `Microsoft.ServiceBus.Messaging.QueueClient` Service Bus キューとの間でメッセージを送受信します。 
+- `Microsoft.ServiceBus.Messaging.QueueClient` Service Bus キューとの間でメッセージを送受信します。
 - `Microsoft.Azure.Documents.Client.DocumentClient` Cosmos DB インスタンスに接続します
 - `StackExchange.Redis.ConnectionMultiplexer` Azure Redis Cache を含む Redis に接続します。
 
@@ -100,15 +102,17 @@ public class SingleHttpClientInstanceController : ApiController
 
 - 複数の要求で共有されるオブジェクトは、スレッドセーフである "*必要があります*"。 `HttpClient` クラスはこのように使用されるように設計されています。しかし、他のクラスは同時要求をサポートしない可能性があるため、参照可能なドキュメントを確認してください。
 
+- 共有のオブジェクトへのプロパティの設定では、競合状態になる可能性があるため、注意が必要です。 たとえば、各要求の前に `HttpClient` クラスに `DefaultRequestHeaders` を設定すると、競合状態が発生する場合があります。 このようなプロパティは一度 (起動時などに) 設定し、別の設定を行う必要が生じたら、個別のインスタンスを作成します。
+
 - リソースの種類によっては十分でないものもあり、このようなリソースは保持すべきではありません。 データベース接続はその一例です。 開かれたデータベース接続を必要でないのに保持すると、他の同時ユーザーがデータベースにアクセスできなくなる可能性があります。
 
-- .NET Framework では、外部リソースへの接続を確立する多くのオブジェクトは、これらの接続を管理する他のクラスの静的ファクトリ メソッドを使用して作成されます。 これらのファクトリ オブジェクトは、廃棄した後で再び作成するのではなく、保存して再利用することが意図されています。 たとえば、Azure Service Bus では、`QueueClient` オブジェクトは `MessagingFactory` オブジェクトを通じて作成されます。 内部的には、`MessagingFactory` が接続を管理します。 詳細については、「[Service Bus メッセージングを使用したパフォーマンス向上のためのベスト プラクティス][service-bus-messaging]」を参照してください。
+- .NET Framework では、外部リソースへの接続を確立する多くのオブジェクトは、これらの接続を管理する他のクラスの静的ファクトリ メソッドを使用して作成されます。 これらのオブジェクトは、廃棄した後で再び作成するのではなく、保存して再利用することが意図されています。 たとえば、Azure Service Bus では、`QueueClient` オブジェクトは `MessagingFactory` オブジェクトを通じて作成されます。 内部的には、`MessagingFactory` が接続を管理します。 詳細については、「[Service Bus メッセージングを使用したパフォーマンス向上のためのベスト プラクティス][service-bus-messaging]」を参照してください。
 
 ## <a name="how-to-detect-the-problem"></a>問題の検出方法
 
-この問題の現象としては、次の 1 つまたは複数の現象に加えて、スループットの低下またはエラー率の増加が挙げられます。 
+この問題の現象としては、次の 1 つまたは複数の現象に加えて、スループットの低下またはエラー率の増加が挙げられます。
 
-- ソケット、データベース接続、ファイル ハンドルなどのリソースの枯渇を示す例外の増加。 
+- ソケット、データベース接続、ファイル ハンドルなどのリソースの枯渇を示す例外の増加。
 - メモリ使用量とガベージ コレクションの増加。
 - ネットワーク、ディスク、またはデータベース アクティビティの増加。
 
@@ -119,7 +123,7 @@ public class SingleHttpClientInstanceController : ApiController
 3. 運用システムではなく、管理されたテスト環境で、疑わしい操作のそれぞれに対してロード テストを実行します。
 4. ソース コードを調べて、ブローカー オブジェクトの管理方法を確認します。
 
-スタック トレースを調べて、システムに負荷がかかっているときに実行が低速になる操作や例外を生成する操作を確認します。 この情報は、これらの操作がどのようにリソースを利用しているかを識別するのに役立ちます。 例外は、共用リソースの枯渇が原因でエラーが発生しているかどうかを判断するのに役立ちます。 
+スタック トレースを調べて、システムに負荷がかかっているときに実行が低速になる操作や例外を生成する操作を確認します。 この情報は、これらの操作がどのようにリソースを利用しているかを識別するのに役立ちます。 例外は、共用リソースの枯渇が原因でエラーが発生しているかどうかを判断するのに役立ちます。
 
 ## <a name="example-diagnosis"></a>診断の例
 
@@ -127,7 +131,7 @@ public class SingleHttpClientInstanceController : ApiController
 
 ### <a name="identify-points-of-slow-down-or-failure"></a>速度低下またはエラーのポイントを識別する
 
-次の画像は、[New Relic APM][new-relic] を使用して生成された結果を示しています。応答時間が低速な操作が示されています。 この場合、`NewHttpClientInstancePerRequest` コントローラーの `GetProductAsync` メソッドをさらに調査する価値があります。 これらの操作が実行されているときにエラー率も増加していることに注意してください。 
+次の画像は、[New Relic APM][new-relic] を使用して生成された結果を示しています。応答時間が低速な操作が示されています。 この場合、`NewHttpClientInstancePerRequest` コントローラーの `GetProductAsync` メソッドをさらに調査する価値があります。 これらの操作が実行されているときにエラー率も増加していることに注意してください。
 
 ![New Relic モニター ダッシュボードに表示された、要求ごとに HttpClient オブジェクトの新しいインスタンスが作成されるサンプル アプリケーション][dashboard-new-HTTPClient-instance]
 
@@ -143,7 +147,7 @@ public class SingleHttpClientInstanceController : ApiController
 
 ![要求ごとに HttpClient オブジェクトの新しいインスタンスが作成されるサンプル アプリケーションのスループット][throughput-new-HTTPClient-instance]
 
-最初は、ワークロードが増加するにつれて、1 秒あたりに処理される要求の量が増えます。 しかし、ユーザー数が約 30 人になると、成功する要求の量が限度に達し、システムが例外を生成し始めます。 それ以後、ユーザーの負荷に応じて例外の量が徐々に増えます。 
+最初は、ワークロードが増加するにつれて、1 秒あたりに処理される要求の量が増えます。 しかし、ユーザー数が約 30 人になると、成功する要求の量が限度に達し、システムが例外を生成し始めます。 それ以後、ユーザーの負荷に応じて例外の量が徐々に増えます。
 
 ロード テストでは、これらのエラーが HTTP 500 (内部サーバー) エラーとして報告されています。 テレメトリを調べると、これらのエラーの原因は、`HttpClient` オブジェクトが作成され続けた結果、システムのソケット リソースが不足したことにあることがわかります。
 
@@ -163,11 +167,9 @@ public class SingleHttpClientInstanceController : ApiController
 
 ![New Relic スレッド プロファイラーに表示された、すべての要求に対して HttpClient オブジェクトの単一のインスタンスが作成されるサンプル アプリケーション][thread-profiler-single-HTTPClient-instance]
 
-次のグラフは、`ExpensiveToCreateService` オブジェクトの共有インスタンスを使用した場合の同様のロード テストを示しています。 この場合も、処理された要求の量はユーザーの負荷に応じて増加していますが、平均応答時間は低いままです。 
+次のグラフは、`ExpensiveToCreateService` オブジェクトの共有インスタンスを使用した場合の同様のロード テストを示しています。 この場合も、処理された要求の量はユーザーの負荷に応じて増加していますが、平均応答時間は低いままです。
 
 ![要求ごとに HttpClient オブジェクトの同じインスタンスが再利用されるサンプル アプリケーションのスループット][throughput-single-ExpensiveToCreateService-instance]
-
-
 
 [sample-app]: https://github.com/mspnp/performance-optimization/tree/master/ImproperInstantiation
 [service-bus-messaging]: /azure/service-bus-messaging/service-bus-performance-improvements

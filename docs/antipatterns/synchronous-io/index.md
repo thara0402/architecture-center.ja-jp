@@ -1,14 +1,16 @@
 ---
 title: 同期 I/O のアンチパターン
+titleSuffix: Performance antipatterns for cloud apps
 description: I/O が完了するまで呼び出し元スレッドをブロックすることにより、パフォーマンスが低下して、垂直拡張性に影響を及ぼすことがあります。
 author: dragon119
 ms.date: 06/05/2017
-ms.openlocfilehash: 961eacb82344ec7e71aaa96fb4cd8bc530721e96
-ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
+ms.custom: seodec18
+ms.openlocfilehash: 209295cfc911ae168bca2f1c64dc930a27a9a4ba
+ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47429011"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54009340"
 ---
 # <a name="synchronous-io-antipattern"></a>同期 I/O のアンチパターン
 
@@ -27,9 +29,9 @@ I/O の一般的な例は次のとおりです。
 
 このアンチパターンは、通常、次の理由で発生します。
 
-- アンチパターンが、操作を実行するための最も簡単な方法であると感じられるため。 
+- アンチパターンが、操作を実行するための最も簡単な方法であると感じられるため。
 - アプリケーションが要求からの応答を必要とするため。
-- アプリケーションが使用するライブラリが I/O に対して同期メソッドしか提供しないため。 
+- アプリケーションが使用するライブラリが I/O に対して同期メソッドしか提供しないため。
 - 外部ライブラリが同期 I/O を内部で実行するため。 1 回の同期 I/O 呼び出しによって呼び出しチェーン全体がブロックされます。
 
 次のコードによって、ファイルが Azure BLOB ストレージにアップロードされます。 このコードで同期 I/O の待機をブロックする箇所が 2 つあります。`CreateIfNotExists` メソッドと `UploadFromStream` メソッドです。
@@ -77,7 +79,7 @@ public class SyncController : ApiController
 
 ## <a name="how-to-fix-the-problem"></a>問題の解決方法
 
-同期 I/O 操作を非同期操作に置き換えます。 これにより、現在のスレッドがブロックされずに有意義な作業の実行を続けて、コンピューティング リソースの使用率の向上につながります。 I/O の非同期実行は、クライアント アプリケーションからの要求の予期しない増加に対応する際に特に有効です。 
+同期 I/O 操作を非同期操作に置き換えます。 これにより、現在のスレッドがブロックされずに有意義な作業の実行を続けて、コンピューティング リソースの使用率の向上につながります。 I/O の非同期実行は、クライアント アプリケーションからの要求の予期しない増加に対応する際に特に有効です。
 
 多くのライブラリでは、メソッドの同期バージョンと非同期バージョンの両方が提供されます。 可能な限り、非同期バージョンを使用してください。 次に示すのは、ファイルを Azure BLOB ストレージにアップロードする前の例の非同期バージョンです。
 
@@ -123,7 +125,7 @@ public class AsyncController : ApiController
 }
 ```
 
-操作の非同期バージョンが提供されないライブラリの場合は、選択した同期メソッドに対して非同期ラッパーを作成することができます。 このアプローチに従う際には注意が必要です。 非同期ラッパーを呼び出したスレッドの応答性を向上させることができる一方で、実際には消費リソース量が増加します。 スレッドが追加作成されることがあり、このスレッドによって行われる作業の同期に関連するオーバーヘッドが生じます。 一部のトレードオフについては、このブログ記事「[Should I expose asynchronous wrappers for synchronous methods?][async-wrappers]」(同期メソッドの非同期ラッパーを公開する必要があるか) で説明されています。
+操作の非同期バージョンが提供されないライブラリの場合は、選択した同期メソッドに対して非同期ラッパーを作成することができます。 このアプローチに従う際には注意が必要です。 非同期ラッパーを呼び出したスレッドの応答性を向上させることができる一方で、実際には消費リソース量が増加します。 スレッドが追加作成されることがあり、このスレッドによって行われる作業の同期に関連するオーバーヘッドが生じます。 一部のトレードオフについては、次のブログ記事で説明されています。[Should I expose asynchronous wrappers for synchronous methods? 同期メソッドの非同期ラッパーを公開する必要があるか][async-wrappers]
 
 同期メソッドの非同期ラッパーの例を次に示します。
 
@@ -193,16 +195,10 @@ Azure の Web アプリケーションおよび Web ロールについて、IIS 
 
 スループットははるかに高くなります。 前のテストと同じ期間で、システムはほぼ 10 倍のスループット (1 秒あたりの要求数) を処理することに成功しています。 さらに、平均応答時間は相対的に一定であり、前のテストに比べて約 25 分の 1 を保っています。
 
-
 [sample-app]: https://github.com/mspnp/performance-optimization/tree/master/SynchronousIO
-
-
 [async-wrappers]: https://blogs.msdn.microsoft.com/pfxteam/2012/03/24/should-i-expose-asynchronous-wrappers-for-synchronous-methods/
 [performance-counters]: /azure/cloud-services/cloud-services-dotnet-diagnostics-performance-counters
 [web-sites-monitor]: /azure/app-service-web/web-sites-monitor
 
 [sync-performance]: _images/SyncPerformance.jpg
 [async-performance]: _images/AsyncPerformance.jpg
-
-
-
