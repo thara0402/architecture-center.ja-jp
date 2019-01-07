@@ -117,7 +117,7 @@ items:
           href: data-guide/technology-choices/analysis-visualizations-reporting.md
         - name: バッチ処理
           href: data-guide/technology-choices/batch-processing.md
-        - name: Cognitive Services
+        - name: コグニティブ サービス
           href: data-guide/technology-choices/cognitive-services.md
         - name: データ ストレージ
           href: data-guide/technology-choices/data-storage.md
@@ -145,11 +145,11 @@ items:
     items:
     - name: 概要
       href: patterns/index.md
-    - name: Categories
+    - name: カテゴリ
       items:
       - name: 可用性
         href: patterns/category/availability.md
-      - name: '[データ管理]'
+      - name: データ管理
         href: patterns/category/data-management.md
       - name: 設計と実装
         href: patterns/category/design-implementation.md
@@ -207,13 +207,13 @@ items:
       href: patterns/materialized-view.md
     - name: パイプとフィルター
       href: patterns/pipes-and-filters.md
-    - name: Priority Queue
+    - name: 優先順位キュー
       href: patterns/priority-queue.md
     - name: パブリッシャー/サブスクライバー
       href: patterns/publisher-subscriber.md
     - name: キュー ベースの負荷平準化
       href: patterns/queue-based-load-leveling.md
-    - name: Retry
+    - name: 再試行
       href: patterns/retry.md
     - name: Scheduler Agent Supervisor
       href: patterns/scheduler-agent-supervisor.md
@@ -241,7 +241,7 @@ items:
       href: best-practices/background-jobs.md
     - name: キャッシュ
       href: best-practices/caching.md
-    - name: Content Delivery Network
+    - name: Conコンテンツ配信ネットワーク
       href: best-practices/cdn.md
     - name: データのパーティション分割
       href: best-practices/data-partitioning.md
@@ -349,10 +349,14 @@ items:
     items:
     - name: ディープ ラーニング モデル用のバッチ スコアリング
       href: reference-architectures/ai/batch-scoring-deep-learning.md
+    - name: Python モデルのバッチ スコアリング
+      href: reference-architectures/ai/batch-scoring-python.md
     - name: Python モデルのリアルタイム スコアリング
       href: reference-architectures/ai/realtime-scoring-python.md
     - name: R 機械学習モデルを使用したリアルタイム スコアリング
       href: reference-architectures/ai/realtime-scoring-r.md
+    - name: Real-time Recommendation API
+      href: reference-architectures/ai/real-time-recommendation.md
   - name: ビッグ データ
     items:
     - name: SQL Data Warehouse を使用したエンタープライズ向け BI
@@ -565,7 +569,7 @@ items:
     items:
     - name: 基本的なワークロードのデプロイ
       href: cloud-adoption/infrastructure/basic-workload.md
-  - name: '[操作]'
+  - name: 操作
     items:
     - name: 概要
       href: cloud-adoption/operations/overview.md
@@ -579,9 +583,9 @@ items:
       href: cloud-adoption/appendix/azure-scaffold.md
     - name: Azure エンタープライズ スキャフォールディングの実装
       href: cloud-adoption/appendix/azure-scaffold-examples.md
-ms.openlocfilehash: d3f9b76294ab25fed8ebc5cd3391d87ea6305858
-ms.sourcegitcommit: 8d951fd7e9534054b160be48a1881ae0857561ef
+ms.openlocfilehash: fd164df3f7b0416d4bbef85ce920e7f28c1002f4
+ms.sourcegitcommit: 032f402482762f4e674aeebbc122ad18dfba11eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53329451"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53396472"
