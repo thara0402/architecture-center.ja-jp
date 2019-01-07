@@ -5,12 +5,12 @@ description: シングル サインオン (SSO) で保護されたスケーラ�
 author: njray
 ms.date: 04/30/2018
 ms.custom: seodec18
-ms.openlocfilehash: 9dc4eb27f6c2bc8896770a2d0cd01b738c18c593
-ms.sourcegitcommit: 88a68c7e9b6b772172b7faa4b9fd9c061a9f7e9d
+ms.openlocfilehash: 26bf9cadc8db0cd4fcc61023619ca61bb7b87855
+ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53120273"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53644157"
 ---
 # <a name="run-a-jenkins-server-on-azure"></a>Azure で Jenkins サーバーを実行する
 
@@ -52,7 +52,7 @@ ms.locfileid: "53120273"
 
 - **Azure Monitoring サービス**。 このサービスは、Jenkins をホストする Azure 仮想マシンを[監視][monitor]します。 このデプロイでは、仮想マシンの状態と CPU 使用率を監視し、アラートを送信します。
 
-## <a name="recommendations"></a>Recommendations
+## <a name="recommendations"></a>推奨事項
 
 ほとんどのシナリオには、次の推奨事項が適用されます。 これらの推奨事項には、オーバーライドする特定の要件がない限り、従ってください。
 
@@ -66,7 +66,7 @@ Jenkins ジョブが Azure リソースにアクセスできるようにする�
 
 [RBAC][rbac] により、割り当てられたロールを通じてユーザーまたはサービス プリンシパルの Azure リソースへのアクセスがさらに明確に定義され、制御されます。 組み込みロールとカスタム ロールの両方がサポートされています。 また、ロールは、パイプラインをセキュリティで保護したり、ユーザーやエージェントの責任が適切に割り当てられ、承認されていることを保証したりするうえでも役立ちます。 さらに、Azure 資産へのアクセスを制限するように RBAC を設定することもできます。 たとえば、ユーザーが特定のリソース グループ内の資産だけを使用するように制限できます。
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>ストレージ
 
 Azure Marketplace からインストールされた Jenkins の [Windows Azure Storage プラグイン][storage-plugin]を使用して、他のビルドやテストと共有できるビルド成果物を保存します。 このプラグインを Jenkins ジョブで使用するには、Azure ストレージ アカウントを構成しておく必要があります。
 
@@ -174,7 +174,7 @@ Jenkins コミュニティが提供するベスト プラクティスについ�
 - Azure サービス プリンシパルを作成するには、デプロイ済みの Jenkins サーバーに関連付けられている Azure AD テナントの管理者権限が必要です。
 - 下記の手順は、Jenkins 管理者が、少なくとも共同作成者権限を持つ Azure ユーザーでもあることを前提としています。
 
-### <a name="step-1-deploy-the-jenkins-server"></a>手順 1: Jenkins サーバーをデプロイする
+### <a name="step-1-deploy-the-jenkins-server"></a>手順 1:Jenkins サーバーをデプロイする
 
 1. Web ブラウザーで [Jenkins の Azure Marketplace イメージ][azure-market]を開き、ページの左側の **[今すぐ入手する]** を選択します。
 
@@ -182,39 +182,45 @@ Jenkins コミュニティが提供するベスト プラクティスについ�
 
 詳細については、「[Azure Portal から Azure Linux VM に Jenkins サーバーを作成する][create-jenkins]」をご覧ください。 このリファレンス アーキテクチャでは、管理者ログオンでサーバーを起動して実行するだけで十分です。 その後、他のさまざまなサービスを使用するためにサーバーをプロビジョニングできます。
 
-### <a name="step-2-set-up-sso"></a>手順 2: SSO を設定する
+### <a name="step-2-set-up-sso"></a>手順 2:SSO を設定する
 
 この手順は Jenkins 管理者が実行します。管理者には、サブスクリプションの Azure AD ディレクトリのユーザー アカウントも必要であり、共同作成者ロールが割り当てられている必要があります。
 
 Jenkins サーバーで Jenkins Update Center の [Azure AD プラグイン][configure-azure-ad]を使用し、指示に従って SSO を設定します。
 
-### <a name="step-3-provision-jenkins-server-with-azure-vm-agent-plugin"></a>手順 3: Azure VM Agents プラグインを使用して Jenkins サーバーをプロビジョニングする
+### <a name="step-3-provision-jenkins-server-with-azure-vm-agent-plugin"></a>手順 3:Azure VM エージェント プラグインを使用して Jenkins サーバーをプロビジョニングする
 
-この手順は Jenkins 管理者が実行します。管理者は、既にインストールされている Azure VM Agents プラグインを設定します。
+この手順は Jenkins 管理者が実行します。管理者は、既にインストールされている Azure VM Agents プラグイン プラグインを設定します。
 
 [こちらの手順に従って、プラグインを構成します][configure-agent]。 プラグインのサービス プリンシパルの設定に関するチュートリアルについては、「[Scale your Jenkins deployments to meet demand with Azure VM agents (要求を満たすために Azure VM Agents を使用して Jenkins デプロイをスケールする)][scale-agent]」をご覧ください。
 
-### <a name="step-4-provision-jenkins-server-with-azure-storage"></a>手順 4: Azure Storage を使用して Jenkins サーバーをプロビジョニングする
+### <a name="step-4-provision-jenkins-server-with-azure-storage"></a>手順 4:Azure Storage を使用して Jenkins サーバーをプロビジョニングする
 
 この手順は Jenkins 管理者が実行します。管理者は、既にインストールされている Windows Azure Storage プラグインを設定します。
 
 [こちらの手順に従って、プラグインを構成します][configure-storage]。
 
-### <a name="step-5-provision-jenkins-server-with-azure-credential-plugin"></a>手順 5: Azure Credentials プラグインを使用して Jenkins サーバーをプロビジョニングする
+### <a name="step-5-provision-jenkins-server-with-azure-credential-plugin"></a>手順 5:Azure 資格情報プラグインを使用して Jenkins サーバーをプロビジョニングする
 
 この手順は Jenkins 管理者が実行します。管理者は、既にインストールされている Azure Credentials プラグインを設定します。
 
 [こちらの手順に従って、プラグインを構成します][configure-credential]。
 
-### <a name="step-6-provision-jenkins-server-for-monitoring-by-the-azure-monitor-service"></a>手順 6: Azure Monitor サービスで監視するために Jenkins サーバーをプロビジョニングする
+### <a name="step-6-provision-jenkins-server-for-monitoring-by-the-azure-monitor-service"></a>手順 6:Azure Monitor サービスで監視するために Jenkins サーバーをプロビジョニングする
 
 Jenkins サーバーの監視を設定するには、「[Azure Monitor での Azure サービス メトリック アラートの作成][create-metric]」の手順に従います。
 
-### <a name="step-7-provision-jenkins-server-with-managed-disks-for-disaster-recovery"></a>手順 7: ディザスター リカバリー用の管理ディスクを使用して Jenkins サーバーをプロビジョニングする
+### <a name="step-7-provision-jenkins-server-with-managed-disks-for-disaster-recovery"></a>手順 7:ディザスター リカバリー用の Managed Disks を使用して Jenkins サーバーをプロビジョニングする
 
 Microsoft Jenkins 製品グループは、Jenkins の状態を保存するために使用するマネージド ディスクを作成するディザスター リカバリー スクリプトを作成しました。 サーバーがダウンした場合、最新の状態に復元できます。
 
 [GitHub][disaster] からディザスター リカバリー スクリプトをダウンロードして実行します。
+
+同じテクノロジの一部を使用する特定のソリューションを示す次の [Azure のサンプル シナリオ](/azure/architecture/example-scenario)を見直すことができます。
+
+- [コンテナー ベースのワークロード用の CI/CD パイプライン](/azure/architecture/example-scenario/apps/devops-with-aks)
+
+<!-- links -->
 
 [acs]: https://aka.ms/azjenkinsacs
 [ad-sp]: /azure/active-directory/develop/active-directory-integrating-applications

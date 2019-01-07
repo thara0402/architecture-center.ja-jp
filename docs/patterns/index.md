@@ -1,14 +1,17 @@
 ---
 title: クラウド設計パターン
-description: Microsoft Azure のクラウド設計パターン
+titleSuffix: Azure Architecture Center
+description: 信頼性の高い、スケーラブルで安全なアプリケーションをクラウドに構築するためのクラウド設計パターン
 keywords: Azure
+author: dragon119
 ms.date: 12/10/2018
-ms.openlocfilehash: 26ee59ef15fc63bb5e823cd85f610cd9ad01177a
-ms.sourcegitcommit: 9a15af3a25f25b8730968d32cbb006434b183e18
+ms.custom: seodec18
+ms.openlocfilehash: 003bef866b0cd873122cfb8d4730b95ba49d3d7f
+ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53234052"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54011295"
 ---
 # <a name="cloud-design-patterns"></a>クラウド設計パターン
 
@@ -18,6 +21,7 @@ ms.locfileid: "53234052"
 
 ## <a name="challenges-in-cloud-development"></a>クラウド開発での課題
 
+<!-- markdownlint-disable MD033 -->
 <table>
 <tr>
     <td style="width: 64px; vertical-align: middle;"><a href="./category/availability.md"><img src="_images/category/availability.svg" alt="Availability" /></a></td>
@@ -76,10 +80,11 @@ ms.locfileid: "53234052"
     </td>
 </tr>
 </table>
+<!-- markdownlint-disable MD033 -->
 
 ## <a name="catalog-of-patterns"></a>パターンのカタログ
 
-|                                パターン                                |                                                                                                         まとめ                                                                                                         |
+|                                Pattern                                |                                                                                                         まとめ                                                                                                         |
 |-----------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |                     [Ambassador](./ambassador.md)                     |                                                            コンシューマー サービスまたはアプリケーションの代わりにネットワーク要求を送信するヘルパー サービスを作成します。                                                            |
 |          [破損対策レイヤー](./anti-corruption-layer.md)          |                                                                  最新のアプリケーションとレガシ システムの間にファサードすなわちアダプター レイヤーを実装します。                                                                  |
@@ -114,4 +119,3 @@ ms.locfileid: "53234052"
 |                      [ストラングラー](./strangler.md)                      |                                            機能の特定の部分を新しいアプリケーションやサービスに徐々に置き換えることで、レガシ システムを段階的に移行します。                                            |
 |                     [調整](./throttling.md)                     |                                                 アプリケーションのインスタンス、個々のテナント、またはサービス全体によって使用されるリソースの使用量を制御します。                                                 |
 |                      [バレット キー](./valet-key.md)                      |                                                        特定のリソースまたはサービスへの限定的な直接アクセスをクライアントに提供する、トークンまたはキーを使用します。                                                        |
-
