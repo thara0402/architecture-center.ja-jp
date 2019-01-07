@@ -4,18 +4,20 @@ description: Azure での一般的なワークロードに対応する、参照�
 layout: LandingPage
 ms.topic: landing-page
 ms.date: 08/30/2018
-ms.openlocfilehash: 05f93aedc49cc71a35d8c0303af0342ed0ba47f7
-ms.sourcegitcommit: 032f402482762f4e674aeebbc122ad18dfba11eb
+ms.openlocfilehash: 173698aee0a67578beaa806a59e1c7b0265cdd61
+ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53396421"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54011805"
 ---
 # <a name="azure-reference-architectures"></a>Azure の参照アーキテクチャ
 
 これらの参照アーキテクチャは、関連するアーキテクチャをまとめてシナリオごとに配置されています。 各アーキテクチャの説明には、推奨プラクティスが、スケーラビリティ、可用性、管理性、およびセキュリティに関する考慮事項と共に含まれます。 また、ほとんどにはデプロイ可能なソリューションも含まれています。
 
 ジャンプ先:[AI](#ai-and-machine-learning) | [ビッグ データ](#big-data-solutions) | [サーバーレス](#serverless-applications) | [仮想ネットワーク](#virtual-networks) | [VM ワークロード](#vm-workloads) | [SAP](#sap) | [Web アプリ](#web-applications) | [Active Directory](#extend-on-premises-active-directory-to-azure)
+
+<!-- markdownlint-disable MD033 -->
 
 ## <a name="ai-and-machine-learning"></a>AI と機械学習
 
@@ -750,3 +752,4 @@ ms.locfileid: "53396421"
 </li>
 </ul>
 
+<!-- markdownlint-disable MD033 -->
