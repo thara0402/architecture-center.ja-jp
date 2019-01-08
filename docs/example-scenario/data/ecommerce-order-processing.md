@@ -1,18 +1,19 @@
 ---
-title: Azure でのスケーラブルな注文処理
+title: スケーラブルな注文処理
+titleSuffix: Azure Example Scenarios
 description: Azure Cosmos DB を使用して高度にスケーラブルな注文処理パイプラインを構築します。
 author: alexbuckgit
 ms.date: 07/10/2018
-ms.openlocfilehash: 1c3bb2cc33be74f5ff8ee0513de4c3f7df70aa37
-ms.sourcegitcommit: 0a31fad9b68d54e2858314ca5fe6cba6c6b95ae4
+ms.openlocfilehash: fe4e9d64e96d0be66534198bc60e2a73dad43e84
+ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51610857"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53644191"
 ---
 # <a name="scalable-order-processing-on-azure"></a>Azure でのスケーラブルな注文処理
 
-このサンプル シナリオは、オンライン注文処理のために拡張性と回復性の高いアーキテクチャを必要とする組織に関連します。 考えられる用途としては、eコマースと小売販売管理、受注処理、および在庫予約と追跡が挙げられます。 
+このサンプル シナリオは、オンライン注文処理のために拡張性と回復性の高いアーキテクチャを必要とする組織に関連します。 考えられる用途としては、eコマースと小売販売管理、受注処理、および在庫予約と追跡が挙げられます。
 
 このシナリオのイベント ソーシング アプローチでは、マイクロサービスを介して実装される関数型プログラミング モデルが使用されています。 各マイクロサービスがストリーム プロセッサとして扱われ、すべてのビジネス ロジックがマイクロサービスを使って実装されます。 このアプローチにより、高可用性と回復性、geo レプリケーション、および高速なパフォーマンスが実現します。
 
@@ -22,10 +23,10 @@ Cosmos DB、HDInsight などのマネージド Azure サービスを使用して
 
 その他の関連するユース ケース:
 
-* eコマースまたは小売販売管理のバックエンド システム。
-* 在庫管理システム。
-* 受注システム。
-* 注文処理パイプラインに関連する他の統合シナリオ。
+- eコマースまたは小売販売管理のバックエンド システム。
+- 在庫管理システム。
+- 受注システム。
+- 注文処理パイプラインに関連する他の統合シナリオ。
 
 ## <a name="architecture"></a>アーキテクチャ
 
@@ -41,12 +42,12 @@ Cosmos DB、HDInsight などのマネージド Azure サービスを使用して
 
 ### <a name="components"></a>コンポーネント
 
-* [Cosmos DB](/azure/cosmos-db/introduction) は Microsoft のグローバル分散マルチモデル データベースです。これにより、ソリューションでは、スループットとストレージを、任意の数の地理的リージョンで柔軟かつ個別にスケーリングできるようになります。 このサービスは包括的なサービス レベル アグリーメント (SLA) により、スループット、待機時間、可用性、一貫性が保証されています。 このシナリオでは、イベント ストリーム ストレージおよびスナップショット ストレージに Cosmos DB を使用し、[Cosmos DB の Change Feed][docs-cosmos-db-change-feed] 機能を利用して、データの一貫性と障害からの復旧を実現します。
-* [HDInsight 上の Apache Kafka](/azure/hdinsight/kafka/apache-kafka-introduction) は、リアルタイムのストリーミング データ パイプラインとアプリケーションを構築するための、オープン ソースの分散ストリーム プラットフォームである Apache Kafka のマネージド サービス実装です。 Kafka は、名前付きデータ ストリームへの公開とサブスクライブのために、メッセージ キューと同様のメッセージ ブローカー機能も提供しています。 このシナリオでは、Kafka を使用して、注文処理パイプラインの受信およびダウンストリーム イベントを処理します。 
+- [Cosmos DB](/azure/cosmos-db/introduction) は Microsoft のグローバル分散マルチモデル データベースです。これにより、ソリューションでは、スループットとストレージを、任意の数の地理的リージョンで柔軟かつ個別にスケーリングできるようになります。 このサービスは包括的なサービス レベル アグリーメント (SLA) により、スループット、待機時間、可用性、一貫性が保証されています。 このシナリオでは、イベント ストリーム ストレージおよびスナップショット ストレージに Cosmos DB を使用し、[Cosmos DB の Change Feed][docs-cosmos-db-change-feed] 機能を利用して、データの一貫性と障害からの復旧を実現します。
+- [HDInsight 上の Apache Kafka](/azure/hdinsight/kafka/apache-kafka-introduction) は、リアルタイムのストリーミング データ パイプラインとアプリケーションを構築するための、オープン ソースの分散ストリーム プラットフォームである Apache Kafka のマネージド サービス実装です。 Kafka は、名前付きデータ ストリームへの公開とサブスクライブのために、メッセージ キューと同様のメッセージ ブローカー機能も提供しています。 このシナリオでは、Kafka を使用して、注文処理パイプラインの受信およびダウンストリーム イベントを処理します。
 
 ## <a name="considerations"></a>考慮事項
 
-リアルタイム メッセージ インジェスト、データ ストレージ、ストリーム処理、分析データのストレージ、および分析とレポート作成では、使用できるテクノロジ オプションが多数あります。 これらのオプションやその機能、主要な選択条件の概要については、「[Azure データ アーキテクチャ ガイド](/azure/architecture/data-guide)」の[ビッグ データ アーキテクチャのリアルタイム処理](/azure/architecture/data-guide/technology-choices/real-time-ingestion)に関するページをご覧ください。
+リアルタイム メッセージ インジェスト、データ ストレージ、ストリーム処理、分析データのストレージ、および分析とレポート作成では、使用できるテクノロジ オプションが多数あります。 これらのオプションやその機能、主要な選択条件の概要については、「[ビッグ データ アーキテクチャ: リアルタイム処理](/azure/architecture/data-guide/technology-choices/real-time-ingestion)」([Azure データ アーキテクチャ ガイド](/azure/architecture/data-guide)内) をご覧ください。
 
 現在、マイクロサービスは、回復性優れ、単独でのデプロイが可能で、迅速に展開できるスケーラブルなクラウド アプリケーションを構築するための一般的なアーキテクチャ スタイルになっています。 マイクロサービスには、アプリケーションを設計およびビルドするのためのさまざまなアプローチが必要です。 Docker、Kubernetes、Azure Service Fabric、Nomad などのツールを使用すると、マイクロサービス ベースのアーキテクチャを開発できます。 マイクロサービス ベースのアーキテクチャの構築とガイダンスについては、Azure アーキテクチャ センターの [Azure でのマイクロサービスの設計](/azure/architecture/microservices)に関するページをご覧ください。
 
@@ -54,7 +55,7 @@ Cosmos DB、HDInsight などのマネージド Azure サービスを使用して
 
 このシナリオのイベント ソーシング アプローチを使用すると、システム コンポーネントの疎結合が可能になり、それぞれ個別にデプロイできます。 Cosmos DB により[高可用性][docs-cosmos-db-regional-failover]が実現します。また、Cosmos DB は、組織が一貫性、可用性、パフォーマンスと関連するトレードオフを、それぞれに[対応する保証][docs-cosmos-db-guarantees]と共に、管理する際に役立ちます。 HDInsight 上の Apache Kafka も、[高可用性][docs-kafka-high-availability]を確保できるよう設計されています。
 
-Azure Monitor には、さまざまな Azure サービスにわたって監視するための統合ユーザー インターフェイスが用意されています。 詳細については、[Microsoft Azure での監視](/azure/monitoring-and-diagnostics/monitoring-overview)に関するページをご覧ください。 Event Hubs と Stream Analytics は両方とも、Azure Monitor に統合されています。 
+Azure Monitor には、さまざまな Azure サービスにわたって監視するための統合ユーザー インターフェイスが用意されています。 詳細については、[Microsoft Azure での監視](/azure/monitoring-and-diagnostics/monitoring-overview)に関するページをご覧ください。 Event Hubs と Stream Analytics は両方とも、Azure Monitor に統合されています。
 
 その他の可用性の考慮事項については、[可用性のチェックリスト][availability]を参照してください。
 
@@ -83,21 +84,23 @@ Azure Cosmos DB の通貨は要求ユニット (RU) です。 要求ユニット
 
 想定するアクティビティの量に基づいて、次の 3 つのサンプル コスト プロファイルが用意されています。
 
-* [Small][small-pricing]: この価格例は、Cosmos DB と小規模 (D3 v2) Kafka クラスターの 1 TB のデータ ストアで予約された 5 RU に対応します。
-* [Medium][medium-pricing]: この価格例は、Cosmos DB と中規模 (D4 v2) Kafka クラスターの 10 TB のデータ ストアで予約された 50 RU に対応します。
-* [Large][large-pricing]: この価格例は、Cosmos DB と大規模 (D5 v2) Kafka クラスターの 30 TB のデータ ストアで予約された 500 RU に対応します。
+- [Small][small-pricing]: この価格例は、Cosmos DB と小規模 (D3 v2) Kafka クラスターの 1 TB のデータ ストアで予約された 5 RU に対応します。
+- [Medium][medium-pricing]: この価格例は、Cosmos DB と中規模 (D4 v2) Kafka クラスターの 10 TB のデータ ストアで予約された 50 RU に対応します。
+- [Large][large-pricing]: この価格例は、Cosmos DB と大規模 (D5 v2) Kafka クラスターの 30 TB のデータ ストアで予約された 500 RU に対応します。
 
 ## <a name="related-resources"></a>関連リソース
 
 このサンプル シナリオは、[jet.com 社](https://jet.com)が、そのエンド ツー エンド注文処理パイプライン用に構築した、このアーキテクチャの大規模バージョンに基づいています。 詳細については、[Jet.com 社のテクニカル カスタマー プロファイル][source-document]と、[Build 2018 での Jet.com 社のプレゼンテーション][source-presentation]を参照してください。
 
 その他の関連リソースには次のものがあります。
-* _[データ量の多いアプリケーションの設計](https://dataintensive.net)_ Martin Kleppmann (O'Reilly Media、2017)。
-* _[機能的なドメイン モデリング: ドメイン主導の設計と F# でソフトウェアの複雑さに取り組む](https://pragprog.com/book/swdddf/domain-modeling-made-functional)_ Scott Wlaschin (Pragmatic Programmers LLC、2018)。
-* その他の[Cosmos DB のユース ケース][docs-cosmos-db-use-cases]
-* 「[Azure データ アーキテクチャ ガイド](/azure/architecture/data-guide)」の「[リアルタイム処理](/azure/architecture/data-guide/big-data/real-time-processing)」
+
+- *[データ量の多いアプリケーションの設計](https://dataintensive.net)* Martin Kleppmann (O'Reilly Media、2017)。
+- *[機能的なドメイン モデリング: ドメイン主導の設計と F# でソフトウェアの複雑さに取り組む](https://pragprog.com/book/swdddf/domain-modeling-made-functional)* Scott Wlaschin (Pragmatic Programmers LLC、2018)。
+- その他の[Cosmos DB のユース ケース][docs-cosmos-db-use-cases]
+- 「[Azure データ アーキテクチャ ガイド](/azure/architecture/data-guide)」の「[リアルタイム処理](/azure/architecture/data-guide/big-data/real-time-processing)」
 
 <!-- links -->
+
 [architecture]: ./media/architecture-ecommerce-order-processing.png
 [product-category]: https://azure.microsoft.com/product-categories/databases/
 [source-document]: https://customers.microsoft.com/story/jet-com-powers-innovative-e-commerce-engine-on-azure-in-less-than-12-months

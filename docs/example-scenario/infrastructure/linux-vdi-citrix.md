@@ -1,15 +1,16 @@
 ---
 title: Citrix を使用した Linux 仮想デスクトップ
+titleSuffix: Azure Example Scenarios
 description: Azure で Citrix を使用して Linux デスクトップ向けの VDI 環境を構築します。
 author: miguelangelopereira
 ms.date: 09/12/2018
 ms.custom: fasttrack
-ms.openlocfilehash: d48163638da05fa075814d3a255ca783610741f8
-ms.sourcegitcommit: a0e8d11543751d681953717f6e78173e597ae207
+ms.openlocfilehash: af1cf01cb8b118e829c3870b636018aa5181b180
+ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53004774"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53643919"
 ---
 # <a name="linux-virtual-desktops-with-citrix"></a>Citrix を使用した Linux 仮想デスクトップ
 
@@ -17,17 +18,18 @@ ms.locfileid: "53004774"
 
 従業員が複数のデバイスやオペレーティング システムを使用する異機種混合環境の組織は少なくありません。 セキュリティで保護された環境を維持しながら、アプリケーションへの一貫したアクセスを提供することは容易ではありません。 Linux デスクトップ用の VDI ソリューションを利用するなら、組織はエンド ユーザーが使用するデバイスや OS に関係なく、アクセスを提供することができます。
 
-このサンプル ソリューションの利点のいくつかを以下に示します。
-* 共有 Linux 仮想デスクトップを利用してより多くのユーザーが同じインフラストラクチャにアクセスできるようにすることで、投資収益率が高くなります。 一元化された VDI 環境にリソースを統合することで、求められるエンド ユーザーのデバイスのスペックが低くなります。
-* エンド ユーザーのデバイスに関係なく一貫したパフォーマンスが得られます。
-* ユーザーは、Linux アプリケーションに (Linux 以外のデバイスを含む) あらゆるデバイスからアクセスできます。
-* 各地に分散して配置されている全従業員の機密データを Azure データ センターで保護できます。
+このシナリオのいくつかの利点を以下に示します。
+
+- 共有 Linux 仮想デスクトップを利用してより多くのユーザーが同じインフラストラクチャにアクセスできるようにすることで、投資収益率が高くなります。 一元化された VDI 環境にリソースを統合することで、求められるエンド ユーザーのデバイスのスペックが低くなります。
+- エンド ユーザーのデバイスに関係なく一貫したパフォーマンスが得られます。
+- ユーザーは、Linux アプリケーションに (Linux 以外のデバイスを含む) あらゆるデバイスからアクセスできます。
+- 各地に分散して配置されている全従業員の機密データを Azure データ センターで保護できます。
 
 ## <a name="relevant-use-cases"></a>関連するユース ケース
 
 次のユース ケースでこのシナリオをご検討ください。
 
-* 特化されたミッション クリティカルな Linux VDI デスクトップに Linux または Linux 以外のデバイスから安全にアクセスできるようにする
+- 特化されたミッション クリティカルな Linux VDI デスクトップに Linux または Linux 以外のデバイスから安全にアクセスできるようにする
 
 ## <a name="architecture"></a>アーキテクチャ
 
@@ -35,13 +37,13 @@ ms.locfileid: "53004774"
 
 このシナリオの例では、企業ネットワークから Linux 仮想デスクトップにアクセスできるようにする方法を示しています。
 
-* オンプレミスの環境と Azure の間に ExpressRoute が確立されます。これにより、クラウドへの高速で信頼性の高い接続が可能になります。
-* VDI 用に Citrix XenDeskop ソリューションがデプロイされています。
-* Ubuntu (またはサポートされている別のディストリビューション) で CitrixVDA が実行されます。
-* Azure ネットワーク セキュリティ グループによって正しいネットワーク ACL が適用されます。
-* Citrix ADC (NetScaler) がCitrix のすべてのサービスを発行し、負荷分散します。
-* Citrix サーバーにドメイン参加するために Active Directory Domain Services が使用されます。 VDA サーバーでは、ドメイン参加は行われません。
-* Azure Hybrid File Sync により、ソリューション全体で記憶域を共有できます。 たとえば、リモート ソリューションでもホーム ソリューションでも使用できます。
+- オンプレミスの環境と Azure の間に ExpressRoute が確立されます。これにより、クラウドへの高速で信頼性の高い接続が可能になります。
+- VDI 用に Citrix XenDeskop ソリューションがデプロイされています。
+- Ubuntu (またはサポートされている別のディストリビューション) で CitrixVDA が実行されます。
+- Azure ネットワーク セキュリティ グループによって正しいネットワーク ACL が適用されます。
+- Citrix ADC (NetScaler) がCitrix のすべてのサービスを発行し、負荷分散します。
+- Citrix サーバーにドメイン参加するために Active Directory Domain Services が使用されます。 VDA サーバーでは、ドメイン参加は行われません。
+- Azure Hybrid File Sync により、ソリューション全体で記憶域を共有できます。 たとえば、リモート ソリューションでもホーム ソリューションでも使用できます。
 
 このシナリオでは、次の SKU が使用されます。
 
@@ -63,11 +65,11 @@ ms.locfileid: "53004774"
 - [Azure Load Balancer](/azure/application-gateway/overview) は、規則と正常性プローブに従って受信トラフィックを分散します。 ロード バランサーは、低遅延と高スループットを実現できるだけでなく、あらゆる TCP アプリケーションと UDP アプリケーションの数百万ものフローにスケールアップできます。 このシナリオでは、Citrix NetScaler のトラフィックの分散に内部ロード バランサーを使用します。
 - すべての共有ストレージで [Azure Hybrid File Sync](https://github.com/MicrosoftDocs/azure-docs/edit/master/articles/storage/files/storage-sync-files-planning.md) が使用されます。 ストレージは、Hybrid File Sync を使用して 2 つのファイル サーバーにレプリケートされます。
 - [Azure SQL Database](/azure/sql-database/sql-database-technical-overview) は、Microsoft SQL Server データベース エンジンの安定した最新バージョンに基づく、サービスとしてのリレーショナル データベース (DBaaS) です。 これは、Citrix のデータベースをホストするために使用されます。
-- [ExpressRoute](/azure/expressroute/expressroute-introduction) を利用すると、接続プロバイダーが提供するプライベート接続を介して、オンプレミスのネットワークを Microsoft クラウドに拡張できます。 
+- [ExpressRoute](/azure/expressroute/expressroute-introduction) を利用すると、接続プロバイダーが提供するプライベート接続を介して、オンプレミスのネットワークを Microsoft クラウドに拡張できます。
 - Active Directory Domain Services はディレクトリ サービスとユーザー認証に使用されます
-- [Azure 可用性セット](/azure/virtual-machines/windows/tutorial-availability-sets)は、Azure にデプロイされる VM を、クラスター内の複数の分離されたハードウェア ノードに分散させます。 これにより、Azure 内でハードウェアまたはソフトウェアの障害が発生した場合に影響を受けるのは VM のサブセットに限定され、ソリューション全体は引き続き利用可能であり、運用可能であることが保証されます。 
-- [Citrix ADC (NetScaler)](https://www.citrix.com/products/citrix-adc) は、アプリケーション固有のトラフィック分析を実行して、Web アプリケーション用のレイヤー 4 からレイヤー 7 (L4-L7) のネットワーク トラフィックをインテリジェントに配布、最適化、保護するアプリケーション配信コントローラーです。 
-- [Citrix Storefront](https://www.citrix.com/products/citrix-virtual-apps-and-desktops/citrix-storefront.html) は、セキュリティを強化し、デプロイを簡素化するエンタープライズ アプリ ストアです。他に例を見ない、モダンでほぼネイティブのユーザー エクスペリエンスを、あらゆるプラットフォーム上の Citrix Receiver で提供します。 StoreFront を使用すると、マルチサイトおよびマルチ バージョンの Citrix Virtual Apps and Desktops 環境を簡単に管理できます。 
+- [Azure 可用性セット](/azure/virtual-machines/windows/tutorial-availability-sets)は、Azure にデプロイされる VM を、クラスター内の複数の分離されたハードウェア ノードに分散させます。 これにより、Azure 内でハードウェアまたはソフトウェアの障害が発生した場合に影響を受けるのは VM のサブセットに限定され、ソリューション全体は引き続き利用可能であり、運用可能であることが保証されます。
+- [Citrix ADC (NetScaler)](https://www.citrix.com/products/citrix-adc) は、アプリケーション固有のトラフィック分析を実行して、Web アプリケーション用のレイヤー 4 からレイヤー 7 (L4-L7) のネットワーク トラフィックをインテリジェントに配布、最適化、保護するアプリケーション配信コントローラーです。
+- [Citrix Storefront](https://www.citrix.com/products/citrix-virtual-apps-and-desktops/citrix-storefront.html) は、セキュリティを強化し、デプロイを簡素化するエンタープライズ アプリ ストアです。他に例を見ない、モダンでほぼネイティブのユーザー エクスペリエンスを、あらゆるプラットフォーム上の Citrix Receiver で提供します。 StoreFront を使用すると、マルチサイトおよびマルチ バージョンの Citrix Virtual Apps and Desktops 環境を簡単に管理できます。
 - [Citrix License Server](https://www.citrix.com/buy/licensing/overview.html) は、Citrix 製品のライセンスを管理します。
 - [Citrix XenDesktops VDA](https://docs.citrix.com/en-us/citrix-virtual-apps-desktops-service) を使用すると、アプリケーションとデスクトップに接続できます。 VDA は、ユーザーのためにアプリケーションまたは仮想デスクトップを実行するマシンにインストールされます。 これを使用することで、マシンをデリバリー コントローラーに登録して、ユーザー デバイスへの High Definition eXperience (HDX) 接続を管理することができるようになります。
 - [Citrix Delivery Controllers](https://docs.citrix.com/en-us/xenapp-and-xendesktop/7-15-ltsr/manage-deployment/delivery-controllers) は、ユーザー アクセスの管理、および接続の仲介と最適化を担当するサーバー側のコンポーネントです。 コントローラーには、デスクトップとサーバーのイメージを作成する Machine Creation Services も備えられています。
@@ -85,13 +87,14 @@ ms.locfileid: "53004774"
 
 ### <a name="availability-scalability-and-security"></a>可用性、スケーラビリティ、セキュリティ
 
-- このサンプル ソリューションは、ライセンス サーバーを除くすべての役割が高可用性を持つよう設計されています。 ライセンス サーバーがオフラインになっても、30 日間の猶予期間にわたって環境は機能し続けるため、ライセンス サーバーに追加の冗長性は不要です。
+- このサンプルは、ライセンス サーバーを除くすべての役割が高可用性を持つように設計されています。 ライセンス サーバーがオフラインになっても、30 日間の猶予期間にわたって環境は機能し続けるため、ライセンス サーバーに追加の冗長性は不要です。
 - 同様の役割を提供するすべてのサーバーを[可用性セット](/azure/virtual-machines/windows/manage-availability#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy)にデプロイする必要があります。
-- このサンプル ソリューションには、ディザスター リカバリー機能は含まれていません。 これを設計に組み込む場合は、[Azure Site Recovery](/azure/site-recovery/site-recovery-overview) をお勧めします。
+- このサンプル シナリオには、ディザスター リカバリー機能は含まれていません。 これを設計に組み込む場合は、[Azure Site Recovery](/azure/site-recovery/site-recovery-overview) をお勧めします。
+- このシナリオの VM インスタンスを[可用性ゾーン](/azure/availability-zones/az-overview)にまたがってデプロイすることを検討します。 それぞれの可用性ゾーンは、独立した電源、冷却手段、ネットワークを備えた 1 つまたは複数のデータセンターで構成されています。 有効な各リージョンには、少なくとも 3 つの可用性ゾーンが存在します。 このようにゾーン間で VM インスタンスを分散させることにより、アプリケーション層に高可用性が実現します。 詳細については、[Azure の可用性ゾーンの概要][azureaz-docs]に関するページをご覧ください。 [Azure Availability Zones に VPN ゲートウェイと ExpressRoute ゲートウェイをデプロイする](/azure/vpn-gateway/about-zone-redundant-vnet-gateways)こともできます。
 - 運用環境では、[バックアップ](/azure/backup/backup-introduction-to-azure-backup)、[監視](/azure/monitoring-and-diagnostics/monitoring-overview)、[更新管理](/azure/automation/automation-update-management)などのデプロイ管理ソリューションを実装する必要があります。
-- このサンプル ソリューションは、約 250 人 (VDA サーバーあたり約 50 - 60 人) のユーザーがさまざまな用途で同時に使用できます。 しかし、これは使用するアプリケーションの種類によって大いに異なります。 運用環境で使用する場合は、厳しいロード テストを実施する必要があります。
+- この例では、約 250 人 (VDA サーバーあたり約 50 から 60 人) のユーザーがさまざまな用途で同時に作業できます。 しかし、これは使用するアプリケーションの種類によって大いに異なります。 運用環境で使用する場合は、厳しいロード テストを実施する必要があります。
 
-## <a name="deploy-this-scenario"></a>このシナリオのデプロイ
+## <a name="deployment"></a>Deployment
 
 デプロイの詳細については、公式の [Citrix ドキュメント](https://docs.citrix.com/en-us/citrix-virtual-apps-desktops/install-configure.html)を参照してください。
 

@@ -3,12 +3,12 @@ title: Azure Kubernetes Service (AKS) 上のマイクロサービス アーキ�
 description: Azure Kubernetes Service (AKS) 上にマイクロサービス アーキテクチャをデプロイする
 author: MikeWasson
 ms.date: 12/10/2018
-ms.openlocfilehash: c8fa92e012374882e3af89f7ef8f7d800a52dacb
-ms.sourcegitcommit: a0a9981e7586bed8d876a54e055dea1e392118f8
+ms.openlocfilehash: 9e4b607cd7f5b33bbf08ce3af67dd5d4071ae8ef
+ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53233916"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53644242"
 ---
 # <a name="microservices-architecture-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 上のマイクロサービス アーキテクチャ
 
@@ -255,7 +255,7 @@ Azure Container Registry の機能である ACR タスクを使用して、イ�
 
 マイクロサービス アーキテクチャのための堅牢な CI/CD プロセスの目標のいくつかを次に示します。
 
-- 各チームは、他のチームに影響を与えたり妨害したりすることなく、独立に所有するサービスを構築およびデプロイできます。 
+- 各チームは、他のチームに影響を与えたり妨害したりすることなく、独立に所有するサービスを構築およびデプロイできます。
 
 - サービスの新しいバージョンは、運用環境にデプロイされる前に、検証のために開発/テスト/QA 環境にデプロイされます。 品質ゲートは、各段階で適用されます。
 
@@ -280,27 +280,85 @@ Helm を使用してサービスの構築やデプロイを管理することを
 - 以前のバージョンにロールバックする機能と共にセマンティック バージョニングを使用して、更新プログラムやリビジョンを追跡します。
 - 多数のファイルにわたる情報の複製 (ラベルやセレクターなど) を回避するためにテンプレートを使用します。
 - グラフ間の依存関係を管理します。
-- グラフを Helm リポジトリ (Azure Container Registry など) に発行し、それをビルド パイプラインと統合します。 
+- グラフを Helm リポジトリ (Azure Container Registry など) に発行し、それをビルド パイプラインと統合します。
 
 Helm リポジトリとしての Container Registry の使用の詳細については、「[アプリケーションのグラフに Helm リポジトリとして Azure Container Registry を使用する](/azure/container-registry/container-registry-helm-repos)」を参照してください。
 
 ### <a name="cicd-workflow"></a>CI/CD ワークフロー
 
-次の図は、考えられる CI/CD ワークフローを示しています。 この例では、開発者ロールとは別の QA ロールが存在することを前提にしています。
+CI/CD ワークフローを作成する前に、コード ベースがどのように構造化され、管理されるかを理解しておく必要があります。
 
-![CI/CD ワークフロー](./_images/aks-cicd.png)
+- チームは、別個のリポジトリで作業するのか、単一のリポジトリで作業するのか。
+- 使用するブランチ戦略は何か。
+- 運用環境にコードをプッシュできるのは誰か。 リリース マネージャー ロールは存在するのか。
 
-1. 開発者が変更をコミットします。それにより、次が実行されます。
-1. CI パイプラインがトリガーされます。 このパイプラインはコードをビルドし、テストを実行し、コンテナー イメージを構築します。
-1. すべてのゲートに合格すると、イメージがイメージ リポジトリにプッシュされます。
-1. サービスの新しいバージョンのデプロイの準備ができると、タグが追加されます。それにより、次が実行されます。
-1. テスト CD パイプラインがトリガーされます。それにより、テスト クラスターを更新するための helm upgrade コマンドが実行されます。
-1. 新しいバージョンの運用環境へのデプロイの準備ができると、QA ロールが運用 CD パイプラインを手動でトリガーします。
+単一リポジトリ アプローチのほうが支持されていますが、どちらにも長所と短所があります。
 
-### <a name="recommended-cicd-practices"></a>推奨される CI/CD プラクティス
+| &nbsp; | 単一のリポジトリ | 複数のリポジトリ |
+|--------|----------|----------------|
+| **長所** | コードの共有<br/>コードとツールの標準化が容易<br/>コードのリファクタリングが容易<br/>探しやすさ - コードの単一のビュー<br/> | 各チームの所有権が明確<br/>マージ競合の可能性が少ない<br/>マイクロサービスを強制的に分離するのに役立つ |
+| **課題** | 共有コードの変更が複数のマイクロサービスに影響する可能性がある<br/>マージ競合の可能性が大きい<br/>大規模なコード ベースに合うようにツールを拡張する必要がある<br/>アクセス制御<br/>複雑なデプロイ プロセス | コードの共有が難しい<br/>コーディング規約の適用が難しい<br/>依存関係の管理<br/>コード ベースが拡散して探しにくい<br/>共有インフラストラクチャの欠如
 
-Kubernetes がキャッシュされたイメージを使用するのではなく、常にリポジトリから最新のイメージをプルするように、Always の imagePullPolicy を使用します。 AlwaysPullImages アドミッション コントローラーを使用して、これをクラスター全体にわたって適用できます。
+このセクションでは、次の前提に基づく可能な CI/CD ワークフローを示します。
 
-ポッド仕様のイメージに `latest` タグを使用しないでください。常にイメージ バージョンを指定します。
+- コード リポジトリは単一リポジトリであり、フォルダーがマイクロサービス別に整理されています。
+- チームのブランチ戦略は、[トランクベース開発](https://trunkbaseddevelopment.com/)に基づいています。
+- チームは、[Azure Pipelines](/azure/devops/pipelines) を使用して CI/CD プロセスを実行します。
+- チームは、Azure Container Registry の[名前空間](/azure/container-registry/container-registry-best-practices#repository-namespaces)を使用して、運用するために承認されたイメージとまだテスト中であるイメージを分離します。
 
-コンテナー イメージをマイクロサービスまたは開発チームごとに整理するには、Azure Container Service で名前空間を使用します。
+この例では、開発者は Delivery Service と呼ばれるマイクロサービスを処理します  (この名前は、[こちら](../../microservices/index.md#the-drone-delivery-application)で説明されているリファレンス実装に由来します)。新機能の開発中に、開発者は、機能ブランチにコードをチェックインします。
+
+![CI/CD ワークフロー](./_images/aks-cicd-1.png)
+
+このブランチにコミットをプッシュすると、マイクロサービス用の CI ビルドがトリガーされます。 慣例により、機能ブランチは `feature/*` と名付けられます。 [ビルド定義ファイル](/azure/devops/pipelines/yaml-schema)に、ブランチ名とソース パスでフィルター処理するトリガーが含まれます。 このアプローチを使用して、各チームは、専用のビルド パイプラインを持つことができます。
+
+```yaml
+trigger:
+  batch: true
+  branches:
+    include:
+    - master
+    - feature/*
+
+    exclude:
+    - feature/experimental/*
+
+  paths:
+     include:
+     - /src/shipping/delivery/
+```
+
+ワークフローのこの時点で、CI ビルドでは、いくつかの最小限のコードの検証が実行されます。
+
+1. コードをビルドする
+1. 単体テストを実行する
+
+ここでの考え方は、ビルド時間を短くして、開発者がすばやくフィードバックを取得できるようにすることです。 開発者は、機能をマスターにマージする準備ができたら、PR を開きます。 これにより、いくつかの追加のチェックを実行する別の CI ビルドがトリガーされます。
+
+1. コードをビルドする
+1. 単体テストを実行する
+1. ランタイム コンテナー イメージをビルドする
+1. イメージの脆弱性スキャンを実行する
+
+![CI/CD ワークフロー](./_images/aks-cicd-2.png)
+
+> [!NOTE]
+> Azure Repos では、ブランチを保護するための[ポリシー](/azure/devops/repos/git/branch-policies)を定義できます。 たとえば、マスターにマージするには、CI ビルドの成功に加え、承認者のサインオフが必要であることをポリシーで要求できます。
+
+ある時点で、チームは、この Delivery サービスの新しいバージョンをデプロイする準備が整います。 これを行うには、リリース マネージャーが `release/<microservice name>/<semver>` という名前付けパターンを使用して、マスターからブランチを作成します。 たとえば、`release/delivery/v1.0.2` です。
+これにより、これまでのすべての手順に加え、以下を実行する完全な CI ビルドがトリガーされます。
+
+1. Docker イメージを Azure Container Registry にプッシュします。 イメージには、ブランチ名から取得されたバージョン番号がタグ付けされます。
+2. `helm package` を実行して、Helm チャートをパッケージ化します。
+3. `az acr helm push` を実行することで、Helm パッケージを Container Registry にプッシュします。
+
+このビルドが成功したと仮定すると、Azure Pipelines の[リリース パイプライン](/azure/devops/pipelines/release/what-is-release-management)を使用するデプロイ プロセスがトリガーされます。 このパイプラインでは、
+
+1. `helm upgrade` を実行して、Helm チャートを QA 環境にデプロイします。
+1. パッケージが運用環境に移動される前に、承認者がサインオフする。 「[Release deployment control using approvals (承認を使用したリリース デプロイ制御)](/azure/devops/pipelines/release/approvals/approvals)」をご覧ください。
+1. Docker イメージを Azure Container Registry 内の運用名前空間用に再度タグ付けします。 たとえば、現在のタグが `myrepo.azurecr.io/delivery:v1.0.2` の場合、運用タグは `reponame.azurecr.io/prod/delivery:v1.0.2` になります。
+1. `helm upgrade` を実行して、Helm チャートを運用環境にデプロイします。
+
+![CI/CD ワークフロー](./_images/aks-cicd-3.png)
+
+単一リポジトリであっても、チームが短時間でデプロイできるように、これらのタスクのスコープを個々のマイクロサービスに設定できることを覚えておくことが重要です。 このプロセスには、いくつか手動の手順があります。PR の承認、リリース ブランチの作成、および運用クラスターへのデプロイの承認です。 これらの手順は、ポリシーによって手動で行われます。組織が望むのであれば、完全に自動化することもできます。

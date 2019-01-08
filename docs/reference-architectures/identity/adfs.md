@@ -1,16 +1,16 @@
 ---
 title: オンプレミスの AD FS を Azure に拡張する
 titleSuffix: Azure Reference Architectures
-description: Active Directory フェデレーション サービスの承認を使用するセキュリティ保護されたハイブリッド ネットワーク アーキテクチャを Azure に実装する方法。
+description: Active Directory フェデレーション サービスの承認を使用するセキュリティ保護されたハイブリッド ネットワーク アーキテクチャを Azure 上に実装します。
 author: telmosampaio
-ms.date: 11/28/2016
+ms.date: 12/18.2018
 ms.custom: seodec18
-ms.openlocfilehash: 95866961cd92f44e0925c5e47eafdc5df71652db
-ms.sourcegitcommit: 88a68c7e9b6b772172b7faa4b9fd9c061a9f7e9d
+ms.openlocfilehash: bd07ce1502c29c1543dca42f74b2f19f3a6d3878
+ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53120222"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53644106"
 ---
 # <a name="extend-active-directory-federation-services-ad-fs-to-azure"></a>Active Directory フェデレーション サービス (AD FS) を Azure に拡張する
 
@@ -53,7 +53,7 @@ AD FS はオンプレミスでホストできますが、アプリケーショ�
 
   - パートナー ユーザーの代わりにパートナー フェデレーション サーバーが作成した要求を含むセキュリティ トークンを受け取ります。 AD FS は、トークンが有効であることを確認してから、要求の承認のために、Azure で実行されている Web アプリケーションに要求を渡します。
 
-    Azure で実行されている Web アプリケーションは、"*証明書利用者*" です。 パートナー フェデレーション サーバーは、Web アプリケーションで認識される要求を発行する必要があります。 パートナー フェデレーション サーバーは、取引先組織内の認証済みアカウントに代わってアクセス要求を送信するため、"*アカウント パートナー*" と呼ばれます。 AD FS サーバーは、リソース (Web アプリケーション) へのアクセスを提供するため、"*リソース パートナー*" と呼ばれます。
+    Azure で実行されるアプリケーションが "*証明書利用者*" になります。 パートナー フェデレーション サーバーは、Web アプリケーションで認識される要求を発行する必要があります。 パートナー フェデレーション サーバーは、取引先組織内の認証済みアカウントに代わってアクセス要求を送信するため、"*アカウント パートナー*" と呼ばれます。 AD FS サーバーは、リソース (Web アプリケーション) へのアクセスを提供するため、"*リソース パートナー*" と呼ばれます。
 
   - Web アプリケーションへのアクセスを必要とする Web ブラウザーまたはデバイスを実行している外部ユーザーから受信した要求の認証と承認を、AD DS と [Active Directory Device Registration Service][ADDRS] を使用して行います。
 
@@ -75,61 +75,17 @@ AD FS はオンプレミスでホストできますが、アプリケーショ�
   > 信頼できるパートナーに AD FS への直接アクセスを提供するように、Azure ゲートウェイを使用して VPN トンネルを構成することもできます。 これらのパートナーから受信した要求は、WAP サーバーをパススルーしません。
   >
 
-アーキテクチャの AD FS に関連していない部分の詳細については、以下を参照してください。
-
-- [Azure に安全なハイブリッド ネットワーク アーキテクチャを実装する][implementing-a-secure-hybrid-network-architecture]
-- [インターネットへのアクセスを備えた安全なハイブリッド ネットワーク アーキテクチャを Azure に実装する][implementing-a-secure-hybrid-network-architecture-with-internet-access]
-- [Active Directory ID を使用する安全なハイブリッド ネットワーク アーキテクチャを Azure に実装する][extending-ad-to-azure]
-
 ## <a name="recommendations"></a>Recommendations
 
 ほとんどのシナリオには、次の推奨事項が適用されます。 これらの推奨事項には、オーバーライドする特定の要件がない限り、従ってください。
-
-### <a name="vm-recommendations"></a>VM の推奨事項
-
-予想されるトラフィック量を処理するための十分なリソースを持つ VM を作成します。 まずは、オンプレミスで AD FS をホストしている既存のマシンのサイズを使用します。 リソースの使用率を監視します。 VM が大きすぎる場合は、VM のサイズを変更してスケールダウンすることができます。
-
-[Azure での Windows VM の実行][vm-recommendations]に関するページに記載されている推奨事項に従ってください。
 
 ### <a name="networking-recommendations"></a>ネットワークの推奨事項
 
 AD FS サーバーおよび WAP サーバーをホストしている各 VM のネットワーク インターフェイスを、静的プライベート IP アドレスを使用して構成します。
 
-AD FS VM にパブリック IP アドレスを指定しないでください。 詳細については、「セキュリティに関する考慮事項」セクションを参照してください。
+AD FS VM にパブリック IP アドレスを指定しないでください。 詳細については、「[セキュリティに関する考慮事項](#security-considerations)」セクションを参照してください。
 
-各 AD FS VM および WAP VM のネットワーク インターフェイスが Active Directory DS VM を参照するように、優先およびセカンダリ ドメイン ネーム サービス (DNS) サーバーの IP アドレスを設定します。 Active Directory DS VMS は、DNS を実行している必要があります。 この手順は、各 VM がドメインに参加できるようにするために必要です。
-
-### <a name="ad-fs-availability"></a>AD FS の可用性
-
-サービスの可用性を向上させるには、少なくとも 2 台のサーバーを含む AD FS ファームを作成します。 ファーム内の AD FS VM ごとに異なるストレージ アカウントを使用します。 この手法により、1 つのストレージ アカウントのエラーによってファーム全体にアクセスできなくなることを回避します。
-
-> [!IMPORTANT]
-> [マネージド ディスク](/azure/storage/storage-managed-disks-overview)を使用することをお勧めします。 マネージド ディスクでは、ストレージ アカウントは必要ありません。 ディスクのサイズと種類を指定するだけで、可用性の高い方法でデプロイされます。 Microsoft の[参照用アーキテクチャ](/azure/architecture/reference-architectures/)では、現在、マネージド ディスクがデプロイされていませんが、[テンプレートの構成要素](https://github.com/mspnp/template-building-blocks/wiki)は、バージョン 2 でマネージド ディスクをデプロイするように更新される予定です。
-
-AD FS VM と WAP VM に個別の Azure 可用性セットを作成します。 各セットに少なくとも 2 つの VM があることを確認します。 各可用性セットには、少なくとも 2 つの更新ドメインと 2 つの障害ドメインが必要です。
-
-AD FS VM および WAP VM のロード バランサーを次のように構成します。
-
-- Azure ロード バランサーを使用して WAP VM への外部アクセスを提供し、内部ロード バランサーを使用してファーム内の AD FS サーバー間で負荷を分散します。
-- ポート 443 (HTTPS) で生じるトラフィックのみを AD FS/WAP サーバーに渡します。
-- ロード バランサーに静的 IP アドレスを指定します。
-- `/adfs/probe` に対して HTTP を使用して、正常性プローブを作成します。 詳細については、「[Hardware Load Balancer Health Checks and Web Application Proxy / AD FS 2012 R2 (ハードウェア ロード バランサー正常性チェックと Web アプリケーション プロキシ/AD FS 2012 R2)](https://blogs.technet.microsoft.com/applicationproxyblog/2014/10/17/hardware-load-balancer-health-checks-and-web-application-proxy-ad-fs-2012-r2/)」を参照してください。
-
-  > [!NOTE]
-  > AD FS サーバーは Server Name Indication (SNI) プロトコルを使用しているため、ロード バランサーから HTTPS エンドポイントを使用してプローブしようとすると失敗します。
-  >
-
-- AD FS ロード バランサーのドメインに DNS *A* レコードを追加します。 ロード バランサーの IP アドレスを指定し、ドメイン内での名前を指定します (adfs.contoso.com など)。 これは、クライアントと WAP サーバーが AD FS サーバー ファームにアクセスする際に使用する名前です。
-
-### <a name="ad-fs-security"></a>AD FS のセキュリティ
-
-AD FS サーバーがインターネットに直接公開されないようにします。 AD FS サーバーは、セキュリティ トークンを付与するための完全な権限を持つ、ドメイン参加コンピューターです。 サーバーが侵害されると、悪意のあるユーザーは、すべての Web アプリケーションのほか、AD FS によって保護されているすべてのフェデレーション サーバーに対するフル アクセス トークンを発行できます。 信頼できるパートナー サイトから接続されていない外部ユーザーからの要求をシステムで処理する必要がある場合は、WAP サーバーを使用してそれらの要求を処理します。 詳細については、「[フェデレーション サーバー プロキシを配置する場所][where-to-place-an-fs-proxy]」を参照してください。
-
-AD FS サーバーと WAP サーバーをそれぞれ独自のファイアウォールを持つ別々のサブネットに配置します。 NSG 規則を使用してファイアウォール規則を定義できます。 より包括的な保護が必要な場合は、[インターネット アクセスを備えた安全なハイブリッド ネットワーク アーキテクチャの Azure への実装][implementing-a-secure-hybrid-network-architecture-with-internet-access]に関するドキュメントで説明されているように、サブネットとネットワーク仮想アプライアンス (NVA) のペアを使用して、サーバーの周囲に追加のセキュリティ境界を実装できます。 すべてのファイアウォールは、ポート 443 (HTTPS) のトラフィックを許可する必要があります。
-
-AD FS サーバーおよび WAP サーバーへの直接的なサインイン アクセスを制限します。 DevOps スタッフだけが接続できるようにしてください。
-
-WAP サーバーをドメインに参加させないでください。
+各 AD FS VM および WAP VM のネットワーク インターフェイスが Active Directory DS VM を参照するように、優先およびセカンダリ ドメイン ネーム サービス (DNS) サーバーの IP アドレスを設定します。 Active Directory DS VM では、DNS が実行されている必要があります。 この手順は、各 VM がドメインに参加できるようにするために必要です。
 
 ### <a name="ad-fs-installation"></a>AD FS のインストール
 
@@ -192,6 +148,23 @@ AD FS 構成データの格納に Windows Internal Database を使用してい�
 
 ## <a name="availability-considerations"></a>可用性に関する考慮事項
 
+サービスの可用性を向上させるには、少なくとも 2 台のサーバーを含む AD FS ファームを作成します。 ファーム内の AD FS VM ごとに異なるストレージ アカウントを使用します。 この手法により、1 つのストレージ アカウントのエラーによってファーム全体にアクセスできなくなることを回避します。
+
+AD FS VM と WAP VM に個別の Azure 可用性セットを作成します。 各セットに少なくとも 2 つの VM があることを確認します。 各可用性セットには、少なくとも 2 つの更新ドメインと 2 つの障害ドメインが必要です。
+
+AD FS VM および WAP VM のロード バランサーを次のように構成します。
+
+- Azure ロード バランサーを使用して WAP VM への外部アクセスを提供し、内部ロード バランサーを使用してファーム内の AD FS サーバー間で負荷を分散します。
+- ポート 443 (HTTPS) で生じるトラフィックのみを AD FS/WAP サーバーに渡します。
+- ロード バランサーに静的 IP アドレスを指定します。
+- `/adfs/probe` に対して HTTP を使用して、正常性プローブを作成します。 詳細については、「[Hardware Load Balancer Health Checks and Web Application Proxy / AD FS 2012 R2 (ハードウェア ロード バランサー正常性チェックと Web アプリケーション プロキシ/AD FS 2012 R2)](https://blogs.technet.microsoft.com/applicationproxyblog/2014/10/17/hardware-load-balancer-health-checks-and-web-application-proxy-ad-fs-2012-r2/)」を参照してください。
+
+  > [!NOTE]
+  > AD FS サーバーは Server Name Indication (SNI) プロトコルを使用しているため、ロード バランサーから HTTPS エンドポイントを使用してプローブしようとすると失敗します。
+  >
+
+- AD FS ロード バランサーのドメインに DNS *A* レコードを追加します。 ロード バランサーの IP アドレスを指定し、ドメイン内での名前を指定します (adfs.contoso.com など)。 これは、クライアントと WAP サーバーが AD FS サーバー ファームにアクセスする際に使用する名前です。
+
 AD FS の構成情報を保持するには、SQL Server または Windows Internal Database を使用できます。 Windows Internal Database は、基本的な冗長性を提供します。 変更は AD FS クラスター内の 1 つの AD FS データベースだけに直接書き込まれる一方で、他のサーバーはプル レプリケーションを使用してそれらのデータベースを最新の状態に保ちます。 SQL Server を使用すると、フェールオーバー クラスタリングまたはミラーリングを使用してデータベースの完全な冗長性と高可用性を実現できます。
 
 ## <a name="manageability-considerations"></a>管理容易性に関する考慮事項
@@ -205,80 +178,189 @@ DevOps スタッフは、以下のタスクの実行を準備する必要があ�
 
 ## <a name="security-considerations"></a>セキュリティに関する考慮事項
 
-AD FS は HTTPS プロトコルを使用するため、Web 層 VM が含まれているサブネットの NSG 規則で HTTPS 要求が許可されていることを確認してください。 これらの要求は、オンプレミス ネットワークのほか、Web 層、ビジネス層、データ層、プライベート DMZ、パブリック DMZ を含むサブネットや AD FS サーバーを含むサブネットから発信される場合があります。
+AD FS では HTTPS が使用されるため、Web 層の VM が含まれているサブネットの NSG 規則で HTTPS 要求が許可されていることを確認してください。 これらの要求は、オンプレミス ネットワークのほか、Web 層、ビジネス層、データ層、プライベート DMZ、パブリック DMZ を含むサブネットや AD FS サーバーを含むサブネットから発信される場合があります。
+
+AD FS サーバーがインターネットに直接公開されないようにします。 AD FS サーバーは、セキュリティ トークンを付与するための完全な権限を持つ、ドメイン参加コンピューターです。 サーバーが侵害されると、悪意のあるユーザーは、すべての Web アプリケーションのほか、AD FS によって保護されているすべてのフェデレーション サーバーに対するフル アクセス トークンを発行できます。 信頼できるパートナー サイトから接続されていない外部ユーザーからの要求をシステムで処理する必要がある場合は、WAP サーバーを使用してそれらの要求を処理します。 詳細については、「[フェデレーション サーバー プロキシを配置する場所][where-to-place-an-fs-proxy]」を参照してください。
+
+AD FS サーバーと WAP サーバーをそれぞれ独自のファイアウォールを持つ別々のサブネットに配置します。 NSG 規則を使用してファイアウォール規則を定義できます。 すべてのファイアウォールは、ポート 443 (HTTPS) のトラフィックを許可する必要があります。
+
+AD FS サーバーおよび WAP サーバーへの直接的なサインイン アクセスを制限します。 DevOps スタッフだけが接続できるようにしてください。 WAP サーバーをドメインに参加させないでください。
 
 監査のために、仮想ネットワークの境界を越えるトラフィックに関する詳細情報を記録する一連のネットワーク仮想アプライアンスの使用を検討してください。
 
 ## <a name="deploy-the-solution"></a>ソリューションのデプロイ方法
 
-この参照用アーキテクチャをデプロイするためのソリューションは、[GitHub][github] で入手できます。 このソリューションをデプロイする Powershell スクリプトを実行するには、最新バージョンの [Azure CLI][azure-cli] が必要です。 参照アーキテクチャをデプロイするには、次の手順を実行します。
+このアーキテクチャのデプロイについては、[GitHub][github] を参照してください。 デプロイ全体を完了するには最大 2 時間かかる場合があることに注意してください。これには、VPN ゲートウェイの作成、Active Directory と AD FS を構成するスクリプトの実行などの処理が含まれます。
 
-1. [GitHub][github] からローカル マシンにソリューション フォルダーをダウンロードまたは複製します。
+### <a name="prerequisites"></a>前提条件
 
-2. Azure CLI を開き、ローカルのソリューション フォルダーに移動します。
+1. [GitHub リポジトリ](https://github.com/mspnp/identity-reference-architectures) の ZIP ファイルを複製、フォーク、またはダウンロードします。
 
-3. 次のコマンドを実行します。
+1. [Azure CLI 2.0](/cli/azure/install-azure-cli?view=azure-cli-latest) をインストールします。
 
-    ```powershell
-    .\Deploy-ReferenceArchitecture.ps1 <subscription id> <location> <mode>
+1. [Azure の構成要素](https://github.com/mspnp/template-building-blocks/wiki/Install-Azure-Building-Blocks) npm パッケージをインストールします。
+
+   ```bash
+   npm install -g @mspnp/azure-building-blocks
+   ```
+
+1. コマンド プロンプト、bash プロンプト、または PowerShell プロンプトから、次のように Azure アカウントにサインインします。
+
+   ```bash
+   az login
+   ```
+
+### <a name="deploy-the-simulated-on-premises-datacenter"></a>シミュレートされたオンプレミスのデータセンターをデプロイする
+
+1. GitHub リポジトリの `adfs` フォルダーに移動します。
+
+1. `onprem.json` ファイルを開きます。 `adminPassword``Password`、および `SafeModeAdminPassword` のインスタンスを検索し、これらのパスワードを更新します。
+
+1. 次のコマンドを実行し、デプロイが完了するまで待ちます。
+
+    ```bash
+    azbb -s <subscription_id> -g <resource group> -l <location> -p onprem.json --deploy
     ```
 
-    `<subscription id>` は、Azure サブスクリプション ID に置き換えてください。
+### <a name="deploy-the-azure-infrastructure"></a>Azure インフラストラクチャをデプロイする
 
-    `<location>` には、Azure リージョン (`eastus` や `westus` など) を指定します。
+1. `azure.json` ファイルを開きます。  `adminPassword` と `Password` のインスタンスを検索し、パスワードの値を追加します。
 
-    `<mode>` パラメーターは、デプロイの細分性を制御します。このパラメーターの値は次のいずれかになります。
+1. 次のコマンドを実行し、デプロイが完了するまで待ちます。
 
-   - `Onpremise`:シミュレートされたオンプレミスの環境をデプロイします。 既存のオンプレミス ネットワークがない場合、または既存のオンプレミス ネットワークの構成を変更せずにこの参照用アーキテクチャをテストしたい場合は、このデプロイを使用するとテストおよび実験することができます。
-   - `Infrastructure`: VNet インフラストラクチャとジャンプ ボックスをデプロイします。
-   - `CreateVpn`: Azure 仮想ネットワーク ゲートウェイをデプロイし、それをシミュレートされたオンプレミス ネットワークに接続します。
-   - `AzureADDS`: Active Directory DS サーバーとして機能する VM をデプロイし、Active Directory をそれらの VM にデプロイして、Azure にドメインを作成します。
-   - `AdfsVm`: AD FS VM をデプロイし、それらを Azure のドメインに参加させます。
-   - `PublicDMZ`: Azure にパブリック DMZ をデプロイします。
-   - `ProxyVm`: AD FS プロキシ VM をデプロイし、それらを Azure のドメインに参加させます。
-   - `Prepare`: 上記のすべてをデプロイします。 **これは、まったく新しいデプロイを構築していて、既存のオンプレミス インフラストラクチャがない場合に推奨されるオプションです。**
-   - `Workload`: オプションで、Web 層、ビジネス層、データ層の VM とサポートするネットワークをデプロイします。 `Prepare` デプロイ モードには含まれていません。
-   - `PrivateDMZ`: オプションで、上でデプロイした `Workload` VM の前に、Azure のプライベート DMZ をデプロイします。 `Prepare` デプロイ モードには含まれていません。
-
-4. デプロイが完了するまで待ちます。 `Prepare` オプションを使用した場合、デプロイは完了するまでに数時間かかり、`Preparation is completed. Please install certificate to all AD FS and proxy VMs.` というメッセージで終了します。
-
-5. ジャンプ ボックス (*ra-adfs-security-rg* グループの *ra-adfs-mgmt-vm1*) を再起動すると、その DNS 設定を有効にすることができます。
-
-6. [AD FS の SSL 証明書を入手][adfs_certificates]し、この証明書を AD FS VM にインストールします。 ジャンプ ボックスを使用してそれらに接続できることに注意してください。 IP アドレスは、**10.0.5.4** と **10.0.5.5** です。 既定のユーザー名は **contoso\testuser**、パスワードは **AweSome@PW** です。
-
-   > [!NOTE]
-   > Deploy-ReferenceArchitecture.ps1 スクリプトのこの部分のコメントは、`makecert` コマンドを使用して自己署名テスト証明書と機関を作成するための詳細な手順を示しています。 ただし、この手順は**テスト**として実行するだけにし、makecert によって生成された証明書を運用環境では使用しないでください。
-
-7. 次の PowerShell コマンドを実行して、AD FS サーバー ファームをデプロイします。
-
-    ```powershell
-    .\Deploy-ReferenceArchitecture.ps1 <subscription id> <location> Adfs
+    ```bash
+    azbb -s <subscription_id> -g <resource group> -l <location> -p azure.json --deploy
     ```
 
-8. ジャンプ ボックスで `https://adfs.contoso.com/adfs/ls/idpinitiatedsignon.htm` に移動し、AD FS のインストールをテストします (証明書の警告が表示されることがありますが、このテストでは無視できます)。 Contoso Corporation サインイン ページが表示されることを確認します。 パスワード **AweS0me@PW** を使用して **contoso\testuser** としてサインインします。
+### <a name="set-up-the-ad-fs-farm"></a>AD FS ファームを設定する
 
-9. SSL 証明書を AD FS プロキシ VM にインストールします。 IP アドレスは *10.0.6.4* と *10.0.6.5* です。
+1. `adfs-farm-first.json` ファイルを開きます。  `AdminPassword` を検索し、既定のパスワードを置き換えます。
 
-10. 次の PowerShell コマンドを実行し、最初の AD FS プロキシ サーバーをデプロイします。
+1. 次のコマンドを実行します。
 
-    ```powershell
-    .\Deploy-ReferenceArchitecture.ps1 <subscription id> <location> Proxy1
+    ```bash
+    azbb -s <subscription_id> -g <resource group> -l <location> -p adfs-farm-first.json --deploy
     ```
 
-11. スクリプトによって表示される指示に従って、最初のプロキシ サーバーのインストールをテストします。
+1. `adfs-farm-rest.json` ファイルを開きます。  `AdminPassword` を検索し、既定のパスワードを置き換えます。
 
-12. 次の PowerShell コマンドを実行して、2 番目のプロキシ サーバーをデプロイします。
+1. 次のコマンドを実行し、デプロイが完了するまで待ちます。
 
-    ```powershell
-    .\Deploy-ReferenceArchitecture.ps1 <subscription id> <location> Proxy2
+    ```bash
+    azbb -s <subscription_id> -g <resource group> -l <location> -p adfs-farm-rest.json --deploy
     ```
 
-13. スクリプトによって表示される指示に従って、完全なプロキシ構成をテストします。
+### <a name="configure-ad-fs-part-1"></a>AD FS を構成する (パート 1)
 
-## <a name="next-steps"></a>次の手順
+1. `ra-adfs-jb-vm1` という名前の VM (ジャンプボックス VM) へのリモート デスクトップ セッションを開きます。 ユーザー名は `testuser` です。
 
-- [Azure Active Directory][aad] について学習します。
-- [Azure Active Directory B2C][aadb2c] について学習します。
+1. ジャンプボックスから、`ra-adfs-proxy-vm1` という名前の VM へのリモート デスクトップ セッションを開きます。 プライベート IP アドレスは 10.0.6.4 です。
+
+1. このリモート デスクトップ セッションから、[PowerShell ISE](/powershell/scripting/components/ise/windows-powershell-integrated-scripting-environment--ise-) を実行します。
+
+1. PowerShell で、次のディレクトリに移動します。
+
+    ```powershell
+    C:\Packages\Plugins\Microsoft.Powershell.DSC\2.77.0.0\DSCWork\adfs-v2.0
+    ```
+
+1. 次のコードをスクリプト ペインに貼り付けて実行します。
+
+    ```powershell
+    . .\adfs-webproxy.ps1
+    $cd = @{
+        AllNodes = @(
+            @{
+                NodeName = 'localhost'
+                PSDscAllowPlainTextPassword = $true
+                PSDscAllowDomainUser = $true
+            }
+        )
+    }
+
+    $c1 = Get-Credential -UserName testuser -Message "Enter password"
+    InstallWebProxyApp -DomainName contoso.com -FederationName adfs.contoso.com -WebApplicationProxyName "Contoso App" -AdminCreds $c1 -ConfigurationData $cd
+    Start-DscConfiguration .\InstallWebProxyApp
+    ```
+
+    `Get-Credential` プロンプトで、デプロイ パラメーター ファイル内に指定したパスワードを入力します。
+
+1. 次のコマンドを実行して、[DSC](/powershell/dsc/overview/overview) 構成の進行状況を監視します。
+
+    ```powershell
+    Get-DscConfigurationStatus
+    ```
+
+    一貫性に到達するまでに数分かかる可能性があります。 この時間の間に、コマンドからエラーが表示される場合があります。 構成が成功すると、出力は次のようになります。
+
+    ```powershell
+    PS C:\Packages\Plugins\Microsoft.Powershell.DSC\2.77.0.0\DSCWork\adfs-v2.0> Get-DscConfigurationStatus
+
+    Status     StartDate                 Type            Mode  RebootRequested      NumberOfResources
+    ------     ---------                 ----            ----  ---------------      -----------------
+    Success    12/17/2018 8:21:09 PM     Consistency     PUSH  True                 4
+    ```
+
+### <a name="configure-ad-fs-part-2"></a>AD FS を構成する (パート 2)
+
+1. ジャンプボックスから、`ra-adfs-proxy-vm2` という名前の VM へのリモート デスクトップ セッションを開きます。 プライベート IP アドレスは 10.0.6.5 です。
+
+1. このリモート デスクトップ セッションから、[PowerShell ISE](/powershell/scripting/components/ise/windows-powershell-integrated-scripting-environment--ise-) を実行します。
+
+1. 次のディレクトリに移動します。
+
+    ```powershell
+    C:\Packages\Plugins\Microsoft.Powershell.DSC\2.77.0.0\DSCWork\adfs-v2.0
+    ```
+
+1. 次をスクリプト ペインに貼り付け、スクリプトを実行します。
+
+    ```powershell
+    . .\adfs-webproxy-rest.ps1
+    $cd = @{
+        AllNodes = @(
+            @{
+                NodeName = 'localhost'
+                PSDscAllowPlainTextPassword = $true
+                PSDscAllowDomainUser = $true
+            }
+        )
+    }
+
+    $c1 = Get-Credential -UserName testuser -Message "Enter password"
+    InstallWebProxy -DomainName contoso.com -FederationName adfs.contoso.com -WebApplicationProxyName "Contoso App" -AdminCreds $c1 -ConfigurationData $cd
+    Start-DscConfiguration .\InstallWebProxy
+    ```
+
+    `Get-Credential` プロンプトで、デプロイ パラメーター ファイル内に指定したパスワードを入力します。
+
+1. 次のコマンドを実行して、DSC 構成の進行状況を監視します。
+
+    ```powershell
+    Get-DscConfigurationStatus
+    ```
+
+    整合性が取れるまでに数分かかる可能性があります。 この時間の間に、コマンドからエラーが表示される場合があります。 構成が成功すると、出力は次のようになります。
+
+    ```powershell
+    PS C:\Packages\Plugins\Microsoft.Powershell.DSC\2.77.0.0\DSCWork\adfs-v2.0> Get-DscConfigurationStatus
+
+    Status     StartDate                 Type            Mode  RebootRequested      NumberOfResources
+    ------     ---------                 ----            ----  ---------------      -----------------
+    Success    12/17/2018 8:21:09 PM     Consistency     PUSH  True                 4
+    ```
+
+    この DSC は失敗することがあります。 状態チェックで `Status=Failure` と `Type=Consistency` が表示されている場合は、手順 4 を再実行してください。
+
+### <a name="sign-into-ad-fs"></a>AD FS にサインインする
+
+1. ジャンプボックスから、`ra-adfs-adfs-vm1` という名前の VM へのリモート デスクトップ セッションを開きます。 プライベート IP アドレスは 10.0.5.4 です。
+
+1. 「[Enable the Idp-Intiated Sign on page (IdP によって開始されるサインオン ページを有効にする)](/windows-server/identity/ad-fs/troubleshooting/ad-fs-tshoot-initiatedsignon#enable-the-idp-intiated-sign-on-page)」の手順に従って、サインオン ページを有効にします。
+
+1. ジャンプボックスから、`https://adfs.contoso.com/adfs/ls/idpinitiatedsignon.htm` を参照します。 このテストでは無視できる証明書の警告を受け取ることがあります。
+
+1. Contoso Corporation サインイン ページが表示されることを確認します。 **contoso\testuser** としてサインインします。
 
 <!-- links -->
 [extending-ad-to-azure]: adds-extend-domain.md
