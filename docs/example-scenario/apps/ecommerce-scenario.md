@@ -1,15 +1,16 @@
 ---
-title: Azure の eコマース フロントエンド
+title: eコマース フロントエンド
+titleSuffix: Azure Example Scenarios
 description: Azure で eコマース サイトをホストします。
 author: masonch
 ms.date: 7/13/18
 ms.custom: fasttrack
-ms.openlocfilehash: e48f7607fcef6e5048c57f4f8f63b2f6bdd4f183
-ms.sourcegitcommit: a0e8d11543751d681953717f6e78173e597ae207
+ms.openlocfilehash: d6587218813fa450b284f3a300c7254a3c9fe41f
+ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53004858"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53643953"
 ---
 # <a name="an-e-commerce-front-end-on-azure"></a>Azure の eコマース フロントエンド
 
@@ -21,8 +22,8 @@ ms.locfileid: "53004858"
 
 その他の関連するユース ケース:
 
-* さまざまなタイミングでユーザーの急増に対処できるように弾力性のあるスケーリングを必要とするアプリケーションを構築する。
-* 世界中のさまざまな Azure リージョンで高い可用性で運用されるよう設計されたアプリケーションを構築する。
+- さまざまなタイミングでユーザーの急増に対処できるように弾力性のあるスケーリングを必要とするアプリケーションを構築する。
+- 世界中のさまざまな Azure リージョンで高い可用性で運用されるよう設計されたアプリケーションを構築する。
 
 ## <a name="architecture"></a>アーキテクチャ
 
@@ -34,7 +35,7 @@ ms.locfileid: "53004858"
 2. Azure CDN は、静的なイメージとコンテンツをユーザーに提供します。
 3. ユーザーが Azure Active Directory B2C テナントを介してアプリケーションにサインインします。
 4. ユーザーが Azure Search を使用してコンサートを検索します。
-5. Web サイトによって、Azure SQL Database からコンサートの詳細がプルされます。 
+5. Web サイトによって、Azure SQL Database からコンサートの詳細がプルされます。
 6. Web サイトから、Blob Storage にある購入済みチケットの画像を参照します。
 7. データベース クエリの結果が、パフォーマンス向上のため、Azure Redis Cache にキャッシュされます。
 8. ユーザーが送信したチケット注文とコンサート レビューがキューに配置されます。
@@ -44,18 +45,18 @@ ms.locfileid: "53004858"
 
 ### <a name="components"></a>コンポーネント
 
-* [Azure CDN][docs-cdn] が、待機時間を減らすために、ユーザーに近い場所から、キャッシュされた静的なコンテンツを提供します。
-* [Azure Traffic Manager][docs-traffic-manager] によって、さまざまな Azure リージョンにおけるサービス エンドポイントのユーザー トラフィックの分散が制御されます。
-* [App Services - Web Apps][docs-webapps] により Web アプリケーションがホストされ、自動スケーリングと高可用性が可能になります。インフラストラクチャの管理は不要です。
-* [Azure Active Directory B2C][docs-b2c] は ID 管理サービスです。このサービスを使用すると、アプリケーションでの顧客のサインアップ、サインイン、およびプロファイル管理の方法をカスタマイズし、制御できます。
-* [Storage キュー][docs-storage-queues]には、アプリケーションからアクセスできるキュー メッセージが多数格納されています。
-* [Functions][docs-functions] は、インフラストラクチャを管理せずに、アプリケーションをオンデマンドで実行できるようにするサーバーレス コンピューティング オプションです。
-* [Cognitive Services - 感情分析][docs-sentiment-analysis]は機械学習 API を使用して、開発者が、アプリケーションに感情認識や映像検出、顔認識、音声認識、視覚認識、音声理解、言語理解など、インテリジェントな機能を簡単に追加できるようにします。
-* [Azure Search][docs-search] はサービスとしての検索クラウド ソリューションで、多彩な検索機能を、Web、モバイル、およびエンタープライズ アプリケーションのプライベートな異種コンテンツに提供します。
-* [Storage Blob][docs-storage-blobs] は、テキスト データ、バイナリ データなど、大量の非構造化データを格納するために最適化されています。
-* [Redis Cache][docs-redis-cache] は、アクセス頻度が高いデータを、アプリケーションに近い場所にある高速ストレージに一時的にコピーすることで、バックエンドのデータストアに大きく依存するシステムのパフォーマンスとスケーラビリティを向上させます。
-* [SQL Database][docs-sql-database] は、リレーショナル データ、JSON、空間、XML などの構造をサポートする、Microsoft Azure における汎用リレーショナル データベース管理サービスです。
-* [Application Insights][docs-application-insights] は、パフォーマンスやユーザビリティを継続的に向上させるうえで役立つように設計されています。これを実現するために、アプリでのユーザーの操作内容を把握しやすいように、組み込みの分析ツールを使用してパフォーマンスの異常が自動検出されます。
+- [Azure CDN][docs-cdn] が、待機時間を減らすために、ユーザーに近い場所から、キャッシュされた静的なコンテンツを提供します。
+- [Azure Traffic Manager][docs-traffic-manager] によって、さまざまな Azure リージョンにおけるサービス エンドポイントのユーザー トラフィックの分散が制御されます。
+- [App Services - Web Apps][docs-webapps] により Web アプリケーションがホストされ、自動スケーリングと高可用性が可能になります。インフラストラクチャの管理は不要です。
+- [Azure Active Directory B2C][docs-b2c] は ID 管理サービスです。このサービスを使用すると、アプリケーションでの顧客のサインアップ、サインイン、およびプロファイル管理の方法をカスタマイズし、制御できます。
+- [Storage キュー][docs-storage-queues]には、アプリケーションからアクセスできるキュー メッセージが多数格納されています。
+- [Functions][docs-functions] は、インフラストラクチャを管理せずに、アプリケーションをオンデマンドで実行できるようにするサーバーレス コンピューティング オプションです。
+- [Cognitive Services - 感情分析][docs-sentiment-analysis]は機械学習 API を使用して、開発者が、アプリケーションに感情認識や映像検出、顔認識、音声認識、視覚認識、音声理解、言語理解など、インテリジェントな機能を簡単に追加できるようにします。
+- [Azure Search][docs-search] はサービスとしての検索クラウド ソリューションで、多彩な検索機能を、Web、モバイル、およびエンタープライズ アプリケーションのプライベートな異種コンテンツに提供します。
+- [Storage Blob][docs-storage-blobs] は、テキスト データ、バイナリ データなど、大量の非構造化データを格納するために最適化されています。
+- [Redis Cache][docs-redis-cache] は、アクセス頻度が高いデータを、アプリケーションに近い場所にある高速ストレージに一時的にコピーすることで、バックエンドのデータストアに大きく依存するシステムのパフォーマンスとスケーラビリティを向上させます。
+- [SQL Database][docs-sql-database] は、リレーショナル データ、JSON、空間、XML などの構造をサポートする、Microsoft Azure における汎用リレーショナル データベース管理サービスです。
+- [Application Insights][docs-application-insights] は、パフォーマンスやユーザビリティを継続的に向上させるうえで役立つように設計されています。これを実現するために、アプリでのユーザーの操作内容を把握しやすいように、組み込みの分析ツールを使用してパフォーマンスの異常が自動検出されます。
 
 ### <a name="alternatives"></a>代替手段
 
@@ -63,43 +64,43 @@ ms.locfileid: "53004858"
 
 Web 層と機能に関するその他のオプションは次のとおりです。
 
-* [Service Fabric][docs-service-fabric] - 細かな制御でクラスター全体にデプロイして実行することでメリットを得られる分散コンポーネントの構築に重点を置いたプラットフォーム。 Service Fabric を使ってコンテナーをホストすることもできます。
-* [Azure Kubernetes Service][docs-kubernetes-service] - マイクロサービス アーキテクチャの実装として使用できる、コンテナー ベースのソリューションを構築およびデプロイするためのプラットフォーム。 これにより、アプリケーションのさまざまなコンポーネントの俊敏性が実現し、オンデマンドで個別にスケーリングできます。
-* [Azure Container Instances][docs-container-instances] - コンテナーを短いライフサイクルですばやくデプロイし、実行する手段。 このコンテナーは、メッセージの処理や計算の実行など、簡単な処理ジョブを実行するためにデプロイされ、完了するとすぐにプロビジョニングが解除されます。
-* [Service Bus][service-bus] は、Storage キューの代わりに使用できます。
+- [Service Fabric][docs-service-fabric] - 細かな制御でクラスター全体にデプロイして実行することでメリットを得られる分散コンポーネントの構築に重点を置いたプラットフォーム。 Service Fabric を使ってコンテナーをホストすることもできます。
+- [Azure Kubernetes Service][docs-kubernetes-service] - マイクロサービス アーキテクチャの実装として使用できる、コンテナー ベースのソリューションを構築およびデプロイするためのプラットフォーム。 これにより、アプリケーションのさまざまなコンポーネントの俊敏性が実現し、オンデマンドで個別にスケーリングできます。
+- [Azure Container Instances][docs-container-instances] - コンテナーを短いライフサイクルですばやくデプロイし、実行する手段。 このコンテナーは、メッセージの処理や計算の実行など、簡単な処理ジョブを実行するためにデプロイされ、完了するとすぐにプロビジョニングが解除されます。
+- [Service Bus][service-bus] は、Storage キューの代わりに使用できます。
 
 データ層の他のオプションを次に示します。
 
-* [Cosmos DB](/azure/cosmos-db/introduction):Microsoft のグローバル分散型マルチモデル データベースです。 このサービスは、Mongo DB、Cassandra、Graph データ、シンプルなテーブル ストレージなど、他のデータ モデルを実行するためのプラットフォームを提供します。
+- [Cosmos DB](/azure/cosmos-db/introduction):Microsoft のグローバル分散型マルチモデル データベースです。 このサービスは、Mongo DB、Cassandra、Graph データ、シンプルなテーブル ストレージなど、他のデータ モデルを実行するためのプラットフォームを提供します。
 
 ## <a name="considerations"></a>考慮事項
 
 ### <a name="availability"></a>可用性
 
-* クラウド アプリケーションを構築するときは、[可用性のための標準的な設計パターン][design-patterns-availability]の利用を検討してください。
-* 適切な [App Service Web アプリケーションのリファレンス アーキテクチャ][app-service-reference-architecture]で可用性に関する考慮事項を確認します
-* 可用性に関する追加の考慮事項については、Azure アーキテクチャ センターの[可用性のチェックリスト][availability]を参照してください。
+- クラウド アプリケーションを構築するときは、[可用性のための標準的な設計パターン][design-patterns-availability]の利用を検討してください。
+- 適切な [App Service Web アプリケーションのリファレンス アーキテクチャ][app-service-reference-architecture]で可用性に関する考慮事項を確認します
+- 可用性に関する追加の考慮事項については、Azure アーキテクチャ センターの[可用性のチェックリスト][availability]を参照してください。
 
 ### <a name="scalability"></a>スケーラビリティ
 
-* クラウド アプリケーションを構築するときは、[スケーラビリティのための標準的な設計パターン][design-patterns-scalability]に注意してください。
-* 適切な [App Service Web アプリケーションのリファレンス アーキテクチャ][app-service-reference-architecture]でスケーラビリティに関する考慮事項を確認します
-* スケーラビリティに関する他のトピックについては、Azure アーキテクチャ センターの[スケーラビリティのチェックリスト][scalability]を参照してください。
+- クラウド アプリケーションを構築するときは、[スケーラビリティのための標準的な設計パターン][design-patterns-scalability]に注意してください。
+- 適切な [App Service Web アプリケーションのリファレンス アーキテクチャ][app-service-reference-architecture]でスケーラビリティに関する考慮事項を確認します
+- スケーラビリティに関する他のトピックについては、Azure アーキテクチャ センターの[スケーラビリティのチェックリスト][scalability]を参照してください。
 
 ### <a name="security"></a>セキュリティ
 
-* 必要に応じて、[セキュリティのための標準的な設計パターン][design-patterns-security]を利用することを検討してください。
-* 適切な [App Service Web アプリケーションのリファレンス アーキテクチャ][app-service-reference-architecture]のセキュリティに関する考慮事項を確認します。
-* [セキュリティで保護された開発ライフサイクル][secure-development] プロセスに従って、開発コストを削減しながら、開発者がより安全なソフトウェアを構築し、セキュリティ コンプライアンス要件に対応できるようにします。
-* [Azure PCI DSS コンプライアンス][pci-dss-blueprint]を実現するためのブループリント アーキテクチャを確認してください。
+- 必要に応じて、[セキュリティのための標準的な設計パターン][design-patterns-security]を利用することを検討してください。
+- 適切な [App Service Web アプリケーションのリファレンス アーキテクチャ][app-service-reference-architecture]のセキュリティに関する考慮事項を確認します。
+- [セキュリティで保護された開発ライフサイクル][secure-development] プロセスに従って、開発コストを削減しながら、開発者がより安全なソフトウェアを構築し、セキュリティ コンプライアンス要件に対応できるようにします。
+- [Azure PCI DSS コンプライアンス][pci-dss-blueprint]を実現するためのブループリント アーキテクチャを確認してください。
 
 ### <a name="resiliency"></a>回復性
 
-* アプリケーションの一部が使用できない場合は、[サーキット ブレーカー パターン][circuit-breaker]を利用して、グレースフル エラー処理を提供することを検討してください。
-* [回復性のための標準的な設計パターン][design-patterns-resiliency]を確認し、必要に応じて、これらを実装することを検討します。
-* Azure アーキテクチャ センターでは、多数の [App Service に関する推奨プラクティス][resiliency-app-service]を確認できます。
-* データ層にはアクティブ [geo レプリケーション][sql-geo-replication]を、イメージおよびキューには [geo 冗長][storage-geo-redudancy]ストレージを使用することを検討します。
-* [回復性][resiliency]の詳細については、Azure アーキテクチャ センターの関連記事を参照してください。
+- アプリケーションの一部が使用できない場合は、[サーキット ブレーカー パターン][circuit-breaker]を利用して、グレースフル エラー処理を提供することを検討してください。
+- [回復性のための標準的な設計パターン][design-patterns-resiliency]を確認し、必要に応じて、これらを実装することを検討します。
+- Azure アーキテクチャ センターでは、多数の [App Service に関する推奨プラクティス][resiliency-app-service]を確認できます。
+- データ層にはアクティブ [geo レプリケーション][sql-geo-replication]を、イメージおよびキューには [geo 冗長][storage-geo-redudancy]ストレージを使用することを検討します。
+- [回復性][resiliency]の詳細については、Azure アーキテクチャ センターの関連記事を参照してください。
 
 ## <a name="deploy-the-scenario"></a>シナリオのデプロイ
 
@@ -111,14 +112,14 @@ Web 層と機能に関するその他のオプションは次のとおりです�
 
 取得するトラフィックの量に基づいて、次の 3 つのサンプル コスト プロファイルが用意されています。
 
-* [Small][small-pricing]:この価格例は、最小の運用レベル インスタンスの構築に必要なコンポーネントを表します。 ここでは、1 か月あたり数千人の少人数のユーザーを想定しています。 アプリでは標準の Web アプリの単一インスタンスが使用されており、自動スケーリングを有効にするにはこれで十分です。 その他のコンポーネントはそれぞれ Basic レベルにスケーリングされ、最小限のコストで、SLA をサポートし、運用レベルのワークロードを処理できるだけの容量が確保されます。
-* [Medium][medium-pricing]:この価格例は、中規模サイズのデプロイの指標となるコンポーネントを表します。 ここでは、1 か月間に約 100,000 人のユーザーがシステムを使用することを推定しています。 予想されるトラフィックは、中程度の Standard レベルによって単一アプリ サービス インスタンスで処理されます。 また、中レベルのコグニティブおよび検索サービスが計算ツールに追加されています。
-* [Large][large-pricing]:この価格例は、高度のスケーリングを想定したアプリケーションを表します。このアプリケーションでは、1 か月あたり数百万人のユーザーが数テラバイトのデータをやり取りします。 このレベルの使用状況では、トラフィック マネージャーがアクセスする複数のリージョンにデプロイされた、高パフォーマンスの Premium レベルの Web アプリが必要です。 データは、ストレージ、データベース、および CDN で構成され、これらはテラバイト データ用に構成されています。
+- [Small][small-pricing]:この価格例は、最小の運用レベル インスタンスの構築に必要なコンポーネントを表します。 ここでは、1 か月あたり数千人の少人数のユーザーを想定しています。 アプリでは標準の Web アプリの単一インスタンスが使用されており、自動スケーリングを有効にするにはこれで十分です。 その他のコンポーネントはそれぞれ Basic レベルにスケーリングされ、最小限のコストで、SLA をサポートし、運用レベルのワークロードを処理できるだけの容量が確保されます。
+- [Medium][medium-pricing]:この価格例は、中規模サイズのデプロイの指標となるコンポーネントを表します。 ここでは、1 か月間に約 100,000 人のユーザーがシステムを使用することを推定しています。 予想されるトラフィックは、中程度の Standard レベルによって単一アプリ サービス インスタンスで処理されます。 また、中レベルのコグニティブおよび検索サービスが計算ツールに追加されています。
+- [Large][large-pricing]:この価格例は、高度のスケーリングを想定したアプリケーションを表します。このアプリケーションでは、1 か月あたり数百万人のユーザーが数テラバイトのデータをやり取りします。 このレベルの使用状況では、トラフィック マネージャーがアクセスする複数のリージョンにデプロイされた、高パフォーマンスの Premium レベルの Web アプリが必要です。 データは、ストレージ、データベース、および CDN で構成され、これらはテラバイト データ用に構成されています。
 
 ## <a name="related-resources"></a>関連リソース
 
-* [複数リージョンの Web アプリケーション向けリファレンス アーキテクチャ][multi-region-web-app]
-* [eShopOnContainers の参照用の例][microservices-ecommerce]
+- [複数リージョンの Web アプリケーション向けリファレンス アーキテクチャ][multi-region-web-app]
+- [eShopOnContainers の参照用の例][microservices-ecommerce]
 
 <!-- links -->
 [architecture]: ./media/architecture-ecommerce-scenario.png

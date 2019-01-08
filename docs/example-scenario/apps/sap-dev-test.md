@@ -1,15 +1,16 @@
 ---
-title: Azure での SAP ワークロード向けの開発/テスト環境
+title: SAP ワークロード向けの開発/テスト環境
+titleSuffix: Azure Example Scenarios
 description: SAP ワークロード向けの開発/テスト環境を構築します。
 author: AndrewDibbins
 ms.date: 7/11/18
 ms.custom: fasttrack
-ms.openlocfilehash: 84665bfeb6ada568c631e1db72b97269d79f2e60
-ms.sourcegitcommit: a0e8d11543751d681953717f6e78173e597ae207
+ms.openlocfilehash: 3f6c828e8757a3f82ad6972a8f21cd2fed629162
+ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53004682"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53643970"
 ---
 # <a name="devtest-environments-for-sap-workloads-on-azure"></a>Azure での SAP ワークロード向けの開発/テスト環境
 
@@ -17,16 +18,16 @@ ms.locfileid: "53004682"
 
 運用ユース ケースについては、以下で使用できる SAP リファレンス アーキテクチャを確認してください。
 
-* [AnyDB 向けの SAP NetWeaver][sap-netweaver]
-* [SAP S/4HANA][sap-hana]
-* [SAP on Azure L インスタンス][sap-large]
+- [AnyDB 向けの SAP NetWeaver][sap-netweaver]
+- [SAP S/4HANA][sap-hana]
+- [SAP on Azure L インスタンス][sap-large]
 
 ## <a name="relevant-use-cases"></a>関連するユース ケース
 
 その他の関連するユース ケース:
 
-* 重要度、生産性が低い SAP ワークロード (サンドボックス、開発、テスト、品質保証)
-* 重要度が低い SAP ビジネス ワークロード
+- 重要度、生産性が低い SAP ワークロード (サンドボックス、開発、テスト、品質保証)
+- 重要度が低い SAP ビジネス ワークロード
 
 ## <a name="architecture"></a>アーキテクチャ
 
@@ -35,17 +36,17 @@ ms.locfileid: "53004682"
 このシナリオは、単一の仮想マシンに単一の SAP システム データベースと SAP アプリケーション サーバーをプロビジョニングする方法を示しています。 このシナリオのデータ フローは次のとおりです。
 
 1. お客様は、SAP ユーザー インターフェイスまたは他のクライアント ツール (Excel、Web ブラウザー、またはその他の Web アプリケーション) を使用して、Azure ベースの SAP システムにアクセスします。
-2. 確立された ExpressRoute を使用して接続が提供されます。 ExpressRoute 接続は、Azure の ExpressRoute ゲートウェイが終端です。 ネットワーク トラフィックが、ExpressRoute ゲートウェイを介してゲートウェイ サブネット、アプリケーション層スポーク サブネットの順にルーティングされ ([ハブスポーク][hub-spoke] パターンを参照)、さらにネットワーク セキュリティ ゲートウェイ経由で SAP アプリケーションの仮想マシンにルーティングされます。
+2. 確立された ExpressRoute を使用して接続が提供されます。 ExpressRoute 接続は、Azure の ExpressRoute ゲートウェイが終端です。 ネットワーク トラフィックは、ExpressRoute ゲートウェイを介してゲートウェイ サブネットに、ゲートウェイ サブネットからアプリケーション層のスポーク サブネットにルーティングされ ([ハブスポーク][hub-spoke] パターンを参照)、さらにネットワーク セキュリティ ゲートウェイ経由で SAP アプリケーションの仮想マシンにルーティングされます。
 3. ID 管理サーバーは、認証サービスを提供します。
 4. ジャンプ ボックスは、ローカル管理機能を提供します。
 
 ### <a name="components"></a>コンポーネント
 
-* [仮想ネットワーク](/azure/virtual-network/virtual-networks-overview)は、Azure 内のネットワーク通信の基盤です
-* [仮想マシン](/azure/virtual-machines/windows/overview)である Azure Virtual Machines では、Windows または Linux サーバーを使用して、セキュリティで保護された高スケールな仮想化インフラストラクチャをオンデマンドで構築できます。
-* [ExpressRoute](/azure/expressroute/expressroute-introduction) を利用すると、接続プロバイダーが提供するプライベート接続を介して、オンプレミスのネットワークを Microsoft クラウドに拡張できます。
-* [ネットワーク セキュリティ グループ](/azure/virtual-network/security-overview)を使用すると、仮想ネットワーク内のリソースへのネットワーク トラフィックを制限できます。 ネットワーク セキュリティ グループには、ソースまたはターゲット IP アドレス、ポート、およびプロトコルを基に、受信/送信ネットワーク トラフィックを許可または拒否するセキュリティ規則の一覧が含まれています。 
-* [リソース グループ](/azure/azure-resource-manager/resource-group-overview#resource-groups)は、Azure リソースの論理コンテナーとして機能します。
+- [仮想ネットワーク](/azure/virtual-network/virtual-networks-overview)は、Azure 内のネットワーク通信の基盤です
+- [仮想マシン](/azure/virtual-machines/windows/overview)である Azure Virtual Machines では、Windows または Linux サーバーを使用して、セキュリティで保護された高スケールな仮想化インフラストラクチャをオンデマンドで構築できます。
+- [ExpressRoute](/azure/expressroute/expressroute-introduction) を利用すると、接続プロバイダーが提供するプライベート接続を介して、オンプレミスのネットワークを Microsoft クラウドに拡張できます。
+- [ネットワーク セキュリティ グループ](/azure/virtual-network/security-overview)を使用すると、仮想ネットワーク内のリソースへのネットワーク トラフィックを制限できます。 ネットワーク セキュリティ グループには、ソースまたはターゲット IP アドレス、ポート、およびプロトコルを基に、受信/送信ネットワーク トラフィックを許可または拒否するセキュリティ規則の一覧が含まれています。
+- [リソース グループ](/azure/azure-resource-manager/resource-group-overview#resource-groups)は、Azure リソースの論理コンテナーとして機能します。
 
 ## <a name="considerations"></a>考慮事項
 
@@ -81,18 +82,22 @@ Extra Large|64000|M64s|P20 x 4、P10 x 1|[Extra Large](https://azure.com/e/975fb
 > [!NOTE]
 > この価格は、単に VM とストレージの料金を示す目安です。 ネットワーク、バックアップ ストレージ、データ イングレス/エグレスの料金は含まれていません。
 
-* [Small](https://azure.com/e/9d26b9612da9466bb7a800eab56e71d1):小規模なシステムは、VM の種類 D8s_v3 (8 個の vCPU)、32 GB の RAM、200 GB の一時ストレージ、および 2 つの 512 GB と 1 つの 128 GB Premium Storage ディスクで構成されています。
-* [Medium](https://azure.com/e/465bd07047d148baab032b2f461550cd):中規模なシステムは、VM の種類 D16s_v3 (16 個の vCPU)、64 GB の RAM、400 GB の一時ストレージ、および 3 つの 512 GB と 1 つの 128 GB Premium Storage ディスクで構成されています。
-* [Large](https://azure.com/e/ada2e849d68b41c3839cc976000c6931):大規模なシステムは、VM の種類 E32s_v3 (32 個の vCPU)、256 GB の RAM、512 GB の一時ストレージ、および 3 つの 512 GB と 1 つの 128 GB Premium Storage ディスクで構成されています。
-* [Extra Large](https://azure.com/e/975fb58a965c4fbbb54c5c9179c61cef):超大規模なシステムは、VM の種類 M64s (64 個の vCPU)、1,024 GB の RAM、2,000 GB の一時ストレージ、および 4 つの 512 GB と 1 つの 128 GB Premium Storage ディスクで構成されています。
+- [Small](https://azure.com/e/9d26b9612da9466bb7a800eab56e71d1):小規模なシステムは、VM の種類 D8s_v3 (8 個の vCPU)、32 GB の RAM、200 GB の一時ストレージ、および 2 つの 512 GB と 1 つの 128 GB Premium Storage ディスクで構成されています。
+- [Medium](https://azure.com/e/465bd07047d148baab032b2f461550cd):中規模なシステムは、VM の種類 D16s_v3 (16 個の vCPU)、64 GB の RAM、400 GB の一時ストレージ、および 3 つの 512 GB と 1 つの 128 GB Premium Storage ディスクで構成されています。
+- [Large](https://azure.com/e/ada2e849d68b41c3839cc976000c6931):大規模なシステムは、VM の種類 E32s_v3 (32 個の vCPU)、256 GB の RAM、512 GB の一時ストレージ、および 3 つの 512 GB と 1 つの 128 GB Premium Storage ディスクで構成されています。
+- [Extra Large](https://azure.com/e/975fb58a965c4fbbb54c5c9179c61cef):超大規模なシステムは、VM の種類 M64s (64 個の vCPU)、1,024 GB の RAM、2,000 GB の一時ストレージ、および 4 つの 512 GB と 1 つの 128 GB Premium Storage ディスクで構成されています。
 
 ## <a name="deployment"></a>Deployment
 
 次をクリックして、このシナリオの基盤となるインフラストラクチャをデプロイします。
 
+<!-- markdownlint-disable MD033 -->
+
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmspnp%2Fsolution-architectures%2Fmaster%2Fapps%2Fsap-2tier%2Fazuredeploy.json" target="_blank">
     <img src="https://azuredeploy.net/deploybutton.png"/>
 </a>
+
+<!-- markdownlint-enable MD033 -->
 
 > [!NOTE]
 > このデプロイでは、SAP と Oracle はインストールされません。 それらのコンポーネントは、個別にデプロイする必要があります。

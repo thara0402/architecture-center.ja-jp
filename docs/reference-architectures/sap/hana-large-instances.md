@@ -5,12 +5,12 @@ description: Azure Large Instances の高可用性環境で SAP HANA を実行�
 author: lbrader
 ms.date: 05/16/2018
 ms.custom: seodec18
-ms.openlocfilehash: c21a5ac83d8d8ee9a9b9d7edad07288c85544994
-ms.sourcegitcommit: 88a68c7e9b6b772172b7faa4b9fd9c061a9f7e9d
+ms.openlocfilehash: ef3c57f292024af0abbeb4ead62ab4b3aeb57a90
+ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53120159"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53644089"
 ---
 # <a name="run-sap-hana-on-azure-large-instances"></a>SAP HANA on Azure Large Instances を実行する
 
@@ -168,6 +168,15 @@ CPU、メモリ、ネットワーク帯域幅、記憶域スペースなどの H
 - [Azure コミュニティ サポート][azure-forum]
 - [SAP Community][sap-community]
 - [Stack Overflow SAP][stack-overflow]
+
+## <a name="related-resources"></a>関連リソース
+
+同じテクノロジの一部を使用する具体的なソリューションを示す次の [Azure のサンプル シナリオ](/azure/architecture/example-scenario)をレビューできます。
+
+- [Azure での Oracle Database を使用した SAP 運用環境ワークロードの実行](/azure/architecture/example-scenario/apps/sap-production)
+- [Azure での SAP ワークロード向けの開発/テスト環境](/azure/architecture/example-scenario/apps/sap-dev-test)
+
+<!-- links -->
 
 [azure-forum]: https://azure.microsoft.com/support/forums/
 [azure-large-instances]: /azure/virtual-machines/workloads/sap/hana-overview-architecture

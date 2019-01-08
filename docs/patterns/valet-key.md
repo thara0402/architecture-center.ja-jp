@@ -8,12 +8,12 @@ pnp.series.title: Cloud Design Patterns
 pnp.pattern.categories:
 - data-management
 - security
-ms.openlocfilehash: 791132eabf926cc285567454c60f894efa286433
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 99d3fbe05e34d61edc0d339f34665e557b250b05
+ms.sourcegitcommit: fb22348f917a76e30a6c090fcd4a18decba0b398
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
-ms.locfileid: "24542043"
+ms.lasthandoff: 12/16/2018
+ms.locfileid: "53450889"
 ---
 # <a name="valet-key-pattern"></a>バレット キー パターン
 
@@ -41,7 +41,7 @@ ms.locfileid: "24542043"
 
 データの範囲など、他の依存関係があるキーを構成することもできます。 たとえば、データ ストアの機能に応じて、キーでデータ ストア内のテーブル全体を指定することも、テーブル内の特定の行だけを指定することもできます。 クラウド ストレージ システム内では、キーによって、コンテナーを指定することも、コンテナー内の特定項目だけを指定することもできます。
 
-キーは、アプリケーションによって無効にすることも可能です。 これは、クライアントがサーバーに、データ転送操作が完了したことを通知する場合に役立つアプローチです。 サーバーはその後、そのキーを無効にして、それ以上を停止できます。
+キーは、アプリケーションによって無効にすることも可能です。 これは、クライアントがサーバーに、データ転送操作が完了したことを通知する場合に役立つアプローチです。 サーバーはその後、そのキーを無効にして、それ以上のアクセスを停止できます。
 
 このパターンを使用すると、ユーザーを作成して認証し、アクセス許可を与え、その後ユーザーを再度削除する必要がないため、リソースへのアクセスの管理を簡略化できます。 場所、アクセス許可、および有効期間の制限も容易になり、すべて実行時にキーを生成するだけです。 重要な要素は、受信者がリソースを意図した目的にのみ使用できるように、有効期間と、特にリソースの場所をできるだけ厳しく制限することです。
 
@@ -159,7 +159,7 @@ public class ValuesController : ApiController
 
 > 完全なサンプルは、[GitHub](https://github.com/mspnp/cloud-design-patterns/tree/master/valet-key) からダウンロードできる ValetKey ソリューションに収録されています。 このソリューションの ValetKey.Web プロジェクトには、上に示した `ValuesController` クラスを含む Web アプリケーションが含まれています。 この Web アプリケーションを使用して Shared Access Signature キーを取得し、ファイルを BLOB ストレージにアップロードするサンプル クライアント アプリケーションは、ValetKey.Client プロジェクトに収録されています。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このパターンを実装する場合は、次のパターンとガイダンスも関連している可能性があります。
 - このパターンを示すサンプルは [GitHub](https://github.com/mspnp/cloud-design-patterns/tree/master/valet-key) から入手できます。

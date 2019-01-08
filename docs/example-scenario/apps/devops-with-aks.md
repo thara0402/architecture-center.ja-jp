@@ -1,14 +1,15 @@
 ---
 title: コンテナー ベースのワークロード用の CI/CD パイプライン
+titleSuffix: Azure Example Scenarios
 description: Jenkins、Azure Container Registry、Azure Kubernetes Service、Cosmos DB、Grafana を使用して Node.js Web アプリの DevOps パイプラインを構築します。
 author: iainfoulds
 ms.date: 07/05/2018
-ms.openlocfilehash: db8de674ee2789c5b41cebebee5745ecc8544122
-ms.sourcegitcommit: 0a31fad9b68d54e2858314ca5fe6cba6c6b95ae4
+ms.openlocfilehash: 9d2681294b5c332e15259706518e4b02a488002f
+ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51610840"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53643766"
 ---
 # <a name="cicd-pipeline-for-container-based-workloads"></a>コンテナー ベースのワークロード用の CI/CD パイプライン
 
@@ -22,9 +23,9 @@ Azure Kubernetes Service、Container Registry、Cosmos DB などの Azure サー
 
 その他の関連するユース ケース:
 
-* アプリケーション開発プラクティスを、コンテナー ベースのマイクロサービス手法に最新化する。
-* アプリケーションの開発とデプロイのライフサイクルを加速化する。
-* 検証のために、テスト環境または受け入れ環境へのデプロイを自動化する。
+- アプリケーション開発プラクティスを、コンテナー ベースのマイクロサービス手法に最新化する。
+- アプリケーションの開発とデプロイのライフサイクルを加速化する。
+- 検証のために、テスト環境または受け入れ環境へのデプロイを自動化する。
 
 ## <a name="architecture"></a>アーキテクチャ
 
@@ -43,19 +44,19 @@ Azure Kubernetes Service、Container Registry、Cosmos DB などの Azure サー
 
 ### <a name="components"></a>コンポーネント
 
-* [Jenkins][jenkins]: オープンソースのオートメーション サーバーです。Azure サービスと統合することで、継続的インテグレーション (CI) と継続的配置 (CD) が可能になります。 このシナリオでは、Jenkins によって、ソース管理へのコミットに基づいて新しいコンテナー イメージの作成が調整され、それらのイメージが Azure Container Registry にプッシュされた後、Azure Kubernetes Service 内でアプリケーション インスタンスが更新されます。
-* [Azure Linux Virtual Machines][docs-virtual-machines]: Jenkins インスタンスと Grafana インスタンスを実行するために使用される IaaS プラットフォームです。
-* [Azure Container Registry][docs-acr]: Azure Kubernetes Service クラスターで使用されるコンテナー イメージを保存し、管理します。 イメージは安全に保存されています。Azure プラットフォームによって他のリージョンにレプリケートすることで、デプロイ時間を短縮できます。
-* [Azure Kubernetes Service][docs-aks]: コンテナー オーケストレーションの専門知識がなくても、コンテナー化されたアプリケーションをデプロイし、管理できるマネージド Kubernetes プラットフォームです。 ホストされた Kubernetes サービスとして、Azure は正常性監視やメンテナンスなどの重要なタスクを自動的に処理します。
-* [Azure Cosmos DB][docs-cosmos-db]: ニーズに合わせて、さまざまなデータベースや整合性モデルの中から選択できる、グローバル分散型のマルチモデル データベースです。 Cosmos DB を使用すると、データをグローバルにレプリケートできます。デプロイして構成するクラスター管理コンポーネントやレプリケーション コンポーネントはありません。
-* [Azure Monitor][docs-azure-monitor]: パフォーマンスの追跡、セキュリティの維持、傾向の把握に役立ちます。 Monitor によって取得されたメトリックは、他のリソースやツール (Grafana など) で使用できます。
-* [Grafana][grafana]: メトリックのクエリの実行、視覚化、アラートの作成を行い、メトリックを理解するためのオープンソース ソリューションです。 Azure Monitor のデータ ソース プラグインにより、Grafana では、Azure Kubernetes Service で実行され、Cosmos DB を使用するアプリケーションのパフォーマンスを監視するビジュアル ダッシュボードを作成できます。
+- [Jenkins][jenkins]: オープンソースのオートメーション サーバーです。Azure サービスと統合することで、継続的インテグレーション (CI) と継続的配置 (CD) が可能になります。 このシナリオでは、Jenkins によって、ソース管理へのコミットに基づいて新しいコンテナー イメージの作成が調整され、それらのイメージが Azure Container Registry にプッシュされた後、Azure Kubernetes Service 内でアプリケーション インスタンスが更新されます。
+- [Azure Linux Virtual Machines][docs-virtual-machines]: Jenkins インスタンスと Grafana インスタンスを実行するために使用される IaaS プラットフォームです。
+- [Azure Container Registry][docs-acr]: Azure Kubernetes Service クラスターで使用されるコンテナー イメージを保存し、管理します。 イメージは安全に保存されています。Azure プラットフォームによって他のリージョンにレプリケートすることで、デプロイ時間を短縮できます。
+- [Azure Kubernetes Service][docs-aks]: コンテナー オーケストレーションの専門知識がなくても、コンテナー化されたアプリケーションをデプロイし、管理できるマネージド Kubernetes プラットフォームです。 ホストされた Kubernetes サービスとして、Azure は正常性監視やメンテナンスなどの重要なタスクを自動的に処理します。
+- [Azure Cosmos DB][docs-cosmos-db]: ニーズに合わせて、さまざまなデータベースや整合性モデルの中から選択できる、グローバル分散型のマルチモデル データベースです。 Cosmos DB を使用すると、データをグローバルにレプリケートできます。デプロイして構成するクラスター管理コンポーネントやレプリケーション コンポーネントはありません。
+- [Azure Monitor][docs-azure-monitor]: パフォーマンスの追跡、セキュリティの維持、傾向の把握に役立ちます。 Monitor によって取得されたメトリックは、他のリソースやツール (Grafana など) で使用できます。
+- [Grafana][grafana]: メトリックのクエリの実行、視覚化、アラートの作成を行い、メトリックを理解するためのオープンソース ソリューションです。 Azure Monitor のデータ ソース プラグインにより、Grafana では、Azure Kubernetes Service で実行され、Cosmos DB を使用するアプリケーションのパフォーマンスを監視するビジュアル ダッシュボードを作成できます。
 
 ### <a name="alternatives"></a>代替手段
 
-* [Azure Pipelines][azure-pipelines] を使用して、アプリの継続的インテグレーション (CI)、テスト、および継続的配置 (CD) のパイプラインを実装できます。
-* クラスターをより細かく制御する必要がある場合は、マネージド サービスを介してではなく、Azure VM 上で [Kubernetes][kubernetes] を直接実行できます。
-* [Service Fabric][service-fabric] は、AKS の代わりに使用できる別の代替コンテナー オーケストレーターです。
+- [Azure Pipelines][azure-pipelines] を使用して、アプリの継続的インテグレーション (CI)、テスト、および継続的配置 (CD) のパイプラインを実装できます。
+- クラスターをより細かく制御する必要がある場合は、マネージド サービスを介してではなく、Azure VM 上で [Kubernetes][kubernetes] を直接実行できます。
+- [Service Fabric][service-fabric] は、AKS の代わりに使用できる別の代替コンテナー オーケストレーターです。
 
 ## <a name="considerations"></a>考慮事項
 
@@ -91,11 +92,13 @@ Azure Kubernetes Service を使用すると、アプリケーションの要求�
 
 ## <a name="deploy-the-scenario"></a>シナリオのデプロイ
 
-**前提条件。**
+### <a name="prerequisites"></a>前提条件
 
-* 既存の Azure アカウントが必要です。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
-* SSH 公開キー ペアが必要です。 公開キー ペアの作成手順については、[Linux VM 用の SSH キー ペアの作成と使用][sshkeydocs]に関する記事をご覧ください。
-* サービスとリソースの認証用に Azure Active Directory (AD) サービス プリンシパルが必要です。 必要に応じて、[az ad sp create-for-rbac][createsp] を使用してサービス プリンシパルを作成できます。
+- 既存の Azure アカウントが必要です。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+
+- SSH 公開キー ペアが必要です。 公開キー ペアの作成手順については、[Linux VM 用の SSH キー ペアの作成と使用][sshkeydocs]に関する記事をご覧ください。
+
+- サービスとリソースの認証用に Azure Active Directory (AD) サービス プリンシパルが必要です。 必要に応じて、[az ad sp create-for-rbac][createsp] を使用してサービス プリンシパルを作成できます。
 
     ```azurecli-interactive
     az ad sp create-for-rbac --name myDevOpsScenario
@@ -103,17 +106,23 @@ Azure Kubernetes Service を使用すると、アプリケーションの要求�
 
     このコマンドの出力の *appId* と *password* をメモしておきます。 これらの値は、シナリオをデプロイするときにテンプレートに入力します。
 
+### <a name="walk-through"></a>チュートリアル
+
 Azure Resource Manager テンプレートを使用してこのシナリオをデプロイするには、次の手順を実行します。
+
+<!-- markdownlint-disable MD033 -->
 
 1. **[Deploy to Azure]\(Azure にデプロイ\)** をクリックします。<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmspnp%2Fsolution-architectures%2Fmaster%2Fapps%2Fdevops-with-aks%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 2. Azure portal でテンプレートのデプロイが開くまで待ってから、次の手順を実行します。
-   * リソース グループを**新規作成**し、テキスト ボックスに名前 (例: *myAKSDevOpsScenario*) を指定します。
-   * **[場所]** ドロップダウン ボックスでリージョンを選択します。
-   * `az ad sp create-for-rbac` コマンドで出力されたサービス プリンシパルのアプリ ID とパスワードを入力します。
-   * Jenkins インスタンスと Grafana コンソールのユーザー名とセキュリティで保護されたパスワードを入力します。
-   * Linux VM へのログインをセキュリティで保護する SSH キーを提供します。
-   * 使用条件を確認し、**[上記の使用条件に同意する]** をオンにします。
-   * **[購入]** をクリックします。
+   - リソース グループを**新規作成**し、テキスト ボックスに名前 (例: *myAKSDevOpsScenario*) を指定します。
+   - **[場所]** ドロップダウン ボックスでリージョンを選択します。
+   - `az ad sp create-for-rbac` コマンドで出力されたサービス プリンシパルのアプリ ID とパスワードを入力します。
+   - Jenkins インスタンスと Grafana コンソールのユーザー名とセキュリティで保護されたパスワードを入力します。
+   - Linux VM へのログインをセキュリティで保護する SSH キーを提供します。
+   - 使用条件を確認し、**[上記の使用条件に同意する]** をオンにします。
+   - **[購入]** をクリックします。
+
+<!-- markdownlint-enable MD033 -->
 
 デプロイが完了するまでに 15 から 20 分かかることがあります。
 
@@ -123,9 +132,9 @@ Azure Resource Manager テンプレートを使用してこのシナリオをデ
 
 保存するコンテナー イメージの数とアプリケーションを実行する Kubernetes ノードの数に基づいて、3 つのサンプル コスト プロファイルが用意されています。
 
-* [Small][small-pricing]: この価格例は、1 か月あたり 1,000 個のコンテナー ビルドに対応します。
-* [Medium][medium-pricing]: この価格例は、1 か月あたり 100,000 個のコンテナー ビルドに対応します。
-* [Large][large-pricing]: この価格例は、1 か月あたり 1,000,000 個のコンテナー ビルドに対応します。
+- [Small][small-pricing]: この価格例は、1 か月あたり 1,000 個のコンテナー ビルドに対応します。
+- [Medium][medium-pricing]: この価格例は、1 か月あたり 100,000 個のコンテナー ビルドに対応します。
+- [Large][large-pricing]: この価格例は、1 か月あたり 1,000,000 個のコンテナー ビルドに対応します。
 
 ## <a name="related-resources"></a>関連リソース
 

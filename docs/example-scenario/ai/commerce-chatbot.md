@@ -1,14 +1,15 @@
 ---
-title: Azure でのホテル予約用の会話型チャットボット
+title: ホテル予約用の会話型チャットボット
+titleSuffix: Azure Example Scenarios
 description: Azure Bot Service を使用して商取引アプリケーション用の会話型チャットボットを構築します。
 author: iainfoulds
 ms.date: 07/05/2018
-ms.openlocfilehash: a922a75d621672fcac95296b1d99112d68c91107
-ms.sourcegitcommit: 0a31fad9b68d54e2858314ca5fe6cba6c6b95ae4
+ms.openlocfilehash: 31a7384b11262ac967ab5f8a6c5e7f17e9a00b6f
+ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51610772"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53643851"
 ---
 # <a name="conversational-chatbot-for-hotel-reservations-on-azure"></a>Azure でのホテル予約用の会話型チャットボット
 
@@ -22,9 +23,9 @@ Bot Service と Language Understanding Service や Speech API サービスなど
 
 その他の関連するユース ケース:
 
-* レストランのテイクアウト メニューの表示と料理の注文
-* ホテルの空室状況の確認と部屋の予約
-* 利用可能な写真の検索とプリントの注文
+- レストランのテイクアウト メニューの表示と料理の注文
+- ホテルの空室状況の確認と部屋の予約
+- 利用可能な写真の検索とプリントの注文
 
 ## <a name="architecture"></a>アーキテクチャ
 
@@ -41,18 +42,18 @@ Bot Service と Language Understanding Service や Speech API サービスなど
 
 ### <a name="components"></a>コンポーネント
 
-* [Azure Active Directory][aad-docs]: Microsoft が提供する、マルチテナントに対応したクラウドベースのディレクトリおよび ID 管理サービスです。 Azure AD では、Google、Facebook、Microsoft アカウントなどの外部 ID を使用して個人を識別できる B2C コネクタがサポートされています。
-* [App Service][appservice-docs]: インフラストラクチャを管理することなく、任意のプログラミング言語で Web アプリケーションを構築し、ホストすることができます。
-* [Bot Service][botservice-docs]: インテリジェント ボットの構築、テスト、デプロイ、管理を行うツールを提供します。
-* [Cognitive Services][cognitive-docs]: 自然なコミュニケーション手段を通じて、見る、聞く、話す、理解する、ユーザーのニーズを解釈することが可能なインテリジェントなアルゴリズムを使用できます。
-* [SQL Database][sqldatabase-docs]: SQL Server エンジンの互換性を提供するフル マネージド リレーショナル クラウド データベース サービスです。
-* [Application Insights][appinsights-docs]: チャットボットなどのアプリケーションのパフォーマンスを監視できる、拡張可能な Application Performance Management (APM) サービスです。
+- [Azure Active Directory][aad-docs]: Microsoft が提供する、マルチテナントに対応したクラウドベースのディレクトリおよび ID 管理サービスです。 Azure AD では、Google、Facebook、Microsoft アカウントなどの外部 ID を使用して個人を識別できる B2C コネクタがサポートされています。
+- [App Service][appservice-docs]: インフラストラクチャを管理することなく、任意のプログラミング言語で Web アプリケーションを構築し、ホストすることができます。
+- [Bot Service][botservice-docs]: インテリジェント ボットの構築、テスト、デプロイ、管理を行うツールを提供します。
+- [Cognitive Services][cognitive-docs]: 自然なコミュニケーション手段を通じて、見る、聞く、話す、理解する、ユーザーのニーズを解釈することが可能なインテリジェントなアルゴリズムを使用できます。
+- [SQL Database][sqldatabase-docs]: SQL Server エンジンの互換性を提供するフル マネージド リレーショナル クラウド データベース サービスです。
+- [Application Insights][appinsights-docs]: チャットボットなどのアプリケーションのパフォーマンスを監視できる、拡張可能な Application Performance Management (APM) サービスです。
 
 ### <a name="alternatives"></a>代替手段
 
-* [Microsoft Speech API][speech-api] を使用して、顧客とボット間のインターフェイスを変更できます。
-* [QnA Maker][qna-maker] を使用すると、FAQ などの半構造化コンテンツから、ボットに知識をすばやく追加できます。
-* [Translator Text][translator] は、ボットに多言語サポートを簡単に追加するために検討できるサービスです。
+- [Microsoft Speech API][speech-api] を使用して、顧客とボット間のインターフェイスを変更できます。
+- [QnA Maker][qna-maker] を使用すると、FAQ などの半構造化コンテンツから、ボットに知識をすばやく追加できます。
+- [Translator Text][translator] は、ボットに多言語サポートを簡単に追加するために検討できるサービスです。
 
 ## <a name="considerations"></a>考慮事項
 
@@ -88,23 +89,29 @@ Azure SQL Database に格納される情報は、Transparent Data Encryption (TD
 
 このシナリオは、最も重視される分野を検討するために、次の 3 つのコンポーネントに分かれています。
 
-* [インフラストラクチャ コンポーネント](#deploy-infrastructure-components)。 Azure Resource Manger テンプレートを使用して、コア インフラストラクチャ コンポーネント (App Service、Web App、Application Insights、ストレージ アカウント、SQL Server およびデータベース) をデプロイします。
-* [Web App チャットボット](#deploy-web-app-chatbot)。 Azure CLI を使用して、Bot Service および Language Understanding and Intelligent Services (LUIS) アプリと共にボットをデプロイします。
-* [サンプル C# チャットボット アプリケーション](#deploy-chatbot-c-application-code)。 Visual Studio を使用して、ホテル予約 C# アプリケーションのサンプル コードを確認し、ボットを Azure にデプロイします。
+- [インフラストラクチャ コンポーネント](#deploy-infrastructure-components)。 Azure Resource Manger テンプレートを使用して、コア インフラストラクチャ コンポーネント (App Service、Web App、Application Insights、ストレージ アカウント、SQL Server およびデータベース) をデプロイします。
+- [Web App チャットボット](#deploy-web-app-chatbot)。 Azure CLI を使用して、Bot Service および Language Understanding and Intelligent Services (LUIS) アプリと共にボットをデプロイします。
+- [サンプル C# チャットボット アプリケーション](#deploy-chatbot-c-application-code)。 Visual Studio を使用して、ホテル予約 C# アプリケーションのサンプル コードを確認し、ボットを Azure にデプロイします。
 
-**前提条件:**  既存の Azure アカウントが必要です。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+### <a name="prerequisites"></a>前提条件
 
-### <a name="deploy-infrastructure-components"></a>インフラストラクチャ コンポーネントをデプロイする
+既存の Azure アカウントが必要です。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+
+### <a name="walk-through"></a>チュートリアル
 
 Resource Manager テンプレートを使用してインフラストラクチャ コンポーネントをデプロイするには、次の手順を実行します。
 
+<!-- markdownlint-disable MD033 -->
+
 1. **[Deploy to Azure]\(Azure にデプロイ\)** をクリックします。<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmspnp%2Fsolution-architectures%2Fmaster%2Fapps%2Fcommerce-chatbot.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 2. Azure portal でテンプレートのデプロイが開くまで待ってから、次の手順を実行します。
-   * リソース グループを**新規作成**し、テキスト ボックスに名前 (例: *myCommerceChatBotInfrastructure*) を指定します。
-   * **[場所]** ドロップダウン ボックスでリージョンを選択します。
-   * SQL Server 管理者アカウントのユーザー名とセキュリティで保護されたパスワードを入力します。
-   * 使用条件を確認し、**[上記の使用条件に同意する]** をオンにします。
-   * **[購入]** をクリックします。
+   - リソース グループを**新規作成**し、テキスト ボックスに名前 (例: *myCommerceChatBotInfrastructure*) を指定します。
+   - **[場所]** ドロップダウン ボックスでリージョンを選択します。
+   - SQL Server 管理者アカウントのユーザー名とセキュリティで保護されたパスワードを入力します。
+   - 使用条件を確認し、**[上記の使用条件に同意する]** をオンにします。
+   - **[購入]** をクリックします。
+
+<!-- markdownlint-enable MD033 -->
 
 デプロイが完了するまで数分かかります。
 
@@ -131,9 +138,9 @@ az bot create \
 
 ### <a name="deploy-chatbot-c-application-code"></a>チャットボット C# アプリケーション コードをデプロイする
 
-サンプル C# アプリケーションは GitHub で入手できます。 
+サンプル C# アプリケーションは GitHub で入手できます。
 
-* [コマース ボット C# サンプル](https://github.com/Microsoft/AzureBotServices-scenarios/tree/master/CSharp/Commerce/src)
+- [コマース ボット C# サンプル](https://github.com/Microsoft/AzureBotServices-scenarios/tree/master/CSharp/Commerce/src)
 
 このサンプル アプリケーションには、Azure Active Directory 認証コンポーネント、および Cognitive Services の Language Understanding and Intelligent Services (LUIS) コンポーネントとの統合が含まれています。 アプリケーションでは、シナリオを構築してデプロイするために Visual Studio が必要です。 AAD B2C と LUIS アプリの構成に関する追加情報については、GitHub リポジトリのドキュメントをご覧ください。
 
@@ -143,16 +150,16 @@ az bot create \
 
 チャットボットが処理すると予想されるメッセージの量に基づいて、次の 3 つのサンプル コスト プロファイルが用意されています。
 
-* [Small][small-pricing]: この価格例は、1 か月あたり 10,000 未満のメッセージの処理に対応します。
-* [Medium][medium-pricing]: この価格例は、1 か月あたり 500,000 未満のメッセージの処理に対応します。
-* [Large][large-pricing]: この価格例は、1 か月あたり 10,000,000 未満のメッセージの処理に対応します。
+- [Small][small-pricing]: この価格例は、1 か月あたり 10,000 未満のメッセージの処理に対応します。
+- [Medium][medium-pricing]: この価格例は、1 か月あたり 500,000 未満のメッセージの処理に対応します。
+- [Large][large-pricing]: この価格例は、1 か月あたり 10,000,000 未満のメッセージの処理に対応します。
 
 ## <a name="related-resources"></a>関連リソース
 
 Azure Bot Service に関する一連のガイド付きチュートリアルについては、ドキュメントの[チュートリアル セクション][botservice-docs]をご覧ください。
 
-
 <!-- links -->
+
 [aadb2c-docs]: /azure/active-directory-b2c/active-directory-b2c-overview
 [aad-docs]: /azure/active-directory/
 [appinsights-docs]: /azure/application-insights/app-insights-overview

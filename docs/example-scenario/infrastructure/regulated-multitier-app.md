@@ -1,15 +1,16 @@
 ---
-title: Azure 上の Windows Server を使用した、セキュリティで保護された Web アプリの構築
+title: Windows VM を使用した、セキュリティで保護された Web アプリのビルド
+titleSuffix: Azure Example Scenarios
 description: スケール セット、Application Gateway、ロード バランサーを使用して、セキュリティで保護された多層 Web アプリケーションを、Azure 上の Windows Server を使用して構築します。
 author: iainfoulds
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 4e4d2117fbc46eda46f7ef276a71739e3a79270e
-ms.sourcegitcommit: 4ba3304eebaa8c493c3e5307bdd9d723cd90b655
+ms.openlocfilehash: 2c5f77f265c10388f42138e7d3f6da9e3ead1cd8
+ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53307063"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53643535"
 ---
 # <a name="building-secure-web-applications-with-windows-virtual-machines-on-azure"></a>Azure 上の Windows Server を使用した、セキュリティで保護された Web アプリケーションの構築
 
@@ -21,9 +22,9 @@ ms.locfileid: "53307063"
 
 このシナリオを適用できるいくつかの例を、次に示します。
 
-* セキュリティで保護されたクラウド環境におけるアプリケーション デプロイの最新化。
-* 従来のオンプレミスのアプリケーションとサービスの管理のオーバーヘッドの軽減。
-* 新しいアプリケーション プラットフォームでの医療と患者体験の向上。
+- セキュリティで保護されたクラウド環境におけるアプリケーション デプロイの最新化。
+- 従来のオンプレミスのアプリケーションとサービスの管理のオーバーヘッドの軽減。
+- 新しいアプリケーション プラットフォームでの医療と患者体験の向上。
 
 ## <a name="architecture"></a>アーキテクチャ
 
@@ -39,26 +40,26 @@ ms.locfileid: "53307063"
 
 ### <a name="components"></a>コンポーネント
 
-* [Azure Application Gateway][appgateway-docs] は、アプリケーション対応のレイヤー 7 Web トラフィック ロード バランサーで、特定のルーティング規則に基づいてトラフィックを分散できます。 App Gateway で、SSL オフロードを処理し、Web サーバーのパフォーマンスを向上させることもできます。
-* [Azure Virtual Network][vnet-docs] を使用すると、VM などのリソースが、他の Azure リソース、インターネット、およびオンプレミスのネットワークと安全に通信することができます。 仮想ネットワークにより、分離性、セグメント化、トラフィックのフィルター処理とルーティングが提供され、場所間の接続が可能になります。 このシナリオでは適切な NSG で結合されている 2 つ仮想ネットワークを使用して、[非武装地帯][dmz] (DMZ) と、アプリケーション コンポーネントの分離性が提供されます。 仮想ネットワーク ピアリングによって、2 つのネットワークが接続されます。
-* [Azure 仮想マシン スケール セット][scaleset-docs]では、負荷分散が行われる同一の VM のグループを作成して管理できます。 需要または定義されたスケジュールに応じて、VM インスタンスの数を自動的に増減させることができます。 このシナリオでは 2 つの別個の仮想マシン スケール セットが使用されます。1 つはフロントエンドの ASP.NET アプリケーション インスタンス用、もう 1 つはバックエンドの SQL Server クラスター VM インスタンス用です。 PowerShell の Desired State Configuration (DSC) または Azure カスタム スクリプト拡張機能を使用すると、必要なソフトウェアおよび構成設定で VM インスタンスをプロビジョニングできます。
-* [Azure ネットワーク セキュリティ グループ][nsg-docs]には、ソースまたはターゲット IP アドレス、ポート、およびプロトコルを基に、受信/送信ネットワーク トラフィックを許可または拒否するセキュリティ規則の一覧が含まれています。 このシナリオの仮想ネットワークは、アプリケーション コンポーネント間のトラフィック フローを制限するネットワーク セキュリティ グループ規則によって保護されています。
-* [Azure Load Balancer][loadbalancer-docs] は、規則と正常性プローブに従って受信トラフィックを分散します。 ロード バランサーは、低遅延と高スループットを実現できるだけでなく、あらゆる TCP アプリケーションと UDP アプリケーションの数百万ものフローにスケールアップできます。 このシナリオでは内部ロード バランサーを使用して、フロントエンド アプリケーション層からバックエンド SQL Server クラスターへのトラフィックを分散します。
-* [Azure Blob Storage][cloudwitness-docs] は、SQL Server クラスター用のクラウド監視の場所として機能します。 この監視は、クォーラムの決定に追加の投票が必要な、クラスター操作と意思決定で使用されます。 クラウド監視を使用すると、従来のファイル共有監視として機能する追加の VM が不要になります。
+- [Azure Application Gateway][appgateway-docs] は、アプリケーション対応のレイヤー 7 Web トラフィック ロード バランサーで、特定のルーティング規則に基づいてトラフィックを分散できます。 App Gateway で、SSL オフロードを処理し、Web サーバーのパフォーマンスを向上させることもできます。
+- [Azure Virtual Network][vnet-docs] を使用すると、VM などのリソースが、他の Azure リソース、インターネット、およびオンプレミスのネットワークと安全に通信することができます。 仮想ネットワークにより、分離性、セグメント化、トラフィックのフィルター処理とルーティングが提供され、場所間の接続が可能になります。 このシナリオでは適切な NSG で結合されている 2 つ仮想ネットワークを使用して、[非武装地帯][dmz] (DMZ) と、アプリケーション コンポーネントの分離性が提供されます。 仮想ネットワーク ピアリングによって、2 つのネットワークが接続されます。
+- [Azure 仮想マシン スケール セット][scaleset-docs]では、負荷分散が行われる同一の VM のグループを作成して管理できます。 需要または定義されたスケジュールに応じて、VM インスタンスの数を自動的に増減させることができます。 このシナリオでは 2 つの別個の仮想マシン スケール セットが使用されます。1 つはフロントエンドの ASP.NET アプリケーション インスタンス用、もう 1 つはバックエンドの SQL Server クラスター VM インスタンス用です。 PowerShell の Desired State Configuration (DSC) または Azure カスタム スクリプト拡張機能を使用すると、必要なソフトウェアおよび構成設定で VM インスタンスをプロビジョニングできます。
+- [Azure ネットワーク セキュリティ グループ][nsg-docs]には、ソースまたはターゲット IP アドレス、ポート、およびプロトコルを基に、受信/送信ネットワーク トラフィックを許可または拒否するセキュリティ規則の一覧が含まれています。 このシナリオの仮想ネットワークは、アプリケーション コンポーネント間のトラフィック フローを制限するネットワーク セキュリティ グループ規則によって保護されています。
+- [Azure Load Balancer][loadbalancer-docs] は、規則と正常性プローブに従って受信トラフィックを分散します。 ロード バランサーは、低遅延と高スループットを実現できるだけでなく、あらゆる TCP アプリケーションと UDP アプリケーションの数百万ものフローにスケールアップできます。 このシナリオでは内部ロード バランサーを使用して、フロントエンド アプリケーション層からバックエンド SQL Server クラスターへのトラフィックを分散します。
+- [Azure Blob Storage][cloudwitness-docs] は、SQL Server クラスター用のクラウド監視の場所として機能します。 この監視は、クォーラムの決定に追加の投票が必要な、クラスター操作と意思決定で使用されます。 クラウド監視を使用すると、従来のファイル共有監視として機能する追加の VM が不要になります。
 
 ### <a name="alternatives"></a>代替手段
 
-* インフラストラクチャはオペレーティング システムに依存しないため、Linux と Windows は同じ意味で使用できます。
+- インフラストラクチャはオペレーティング システムに依存しないため、Linux と Windows は同じ意味で使用できます。
 
-* バックエンド データ ストアの代わりに、[Linux 用 SQL Server][sql-linux] を使用できます。
+- バックエンド データ ストアの代わりに、[Linux 用 SQL Server][sql-linux] を使用できます。
 
-* データ ストアの代わりに、[Cosmos DB](/azure/cosmos-db/introduction) を使用することもできます。
+- データ ストアの代わりに、[Cosmos DB](/azure/cosmos-db/introduction) を使用することもできます。
 
 ## <a name="considerations"></a>考慮事項
 
 ### <a name="availability"></a>可用性
 
-このシナリオの VM インスタンスは、可用性ゾーンにまたがってデプロイされます。 それぞれのゾーンは、独立した電源、冷却手段、ネットワークを備えた 1 つまたは複数のデータセンターで構成されています。 最低で 3 つのゾーンを、有効なすべてのリージョンで使用できます。 このようにゾーン間で VM インスタンスを分散させることにより、アプリケーション層に高可用性が実現します。 詳細については、[Azure の可用性ゾーンの概要][azureaz-docs]に関するページをご覧ください。
+このシナリオの VM インスタンスは、[可用性ゾーン](/azure/availability-zones/az-overview)にまたがってデプロイされます。 それぞれのゾーンは、独立した電源、冷却手段、ネットワークを備えた 1 つまたは複数のデータセンターで構成されています。 有効な各リージョンには、少なくとも 3 つの可用性ゾーンが存在します。 このようにゾーン間で VM インスタンスを分散させることにより、アプリケーション層に高可用性が実現します。
 
 データベース層は、AlwaysOn 可用性グループを使用するように構成できます。 この SQL Server 構成により、クラスター内の 1 つのプライマリ データベースが、最大 8 つのセカンダリ データベースと共に構成されます。 プライマリ データベースで問題が発生した場合、クラスターは、セカンダリ データベースのいずれかにフェールオーバーします。これにより、アプリケーションを引き続き使用できます。 詳細については、[SQL Server 用の Always On 可用性グループの概要][sqlalwayson-docs]に関するページをご覧ください。
 
@@ -84,20 +85,27 @@ Payment Card Industry Data Security Standards (PCI DSS 3.2) の展開のガイ�
 
 ## <a name="deploy-the-scenario"></a>シナリオのデプロイ
 
-**前提条件。**
+### <a name="prerequisites"></a>前提条件
 
-* 既存の Azure アカウントが必要です。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
-* バックエンド スケール セットに SQL Server クラスターをデプロイするには、Azure Active Directory (AD) Domain Services 内のドメインが必要です。
+- 既存の Azure アカウントが必要です。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+
+- バックエンド スケール セットに SQL Server クラスターをデプロイするには、Azure Active Directory (AD) Domain Services 内のドメインが必要です。
+
+### <a name="deploy-the-components"></a>コンポーネントをデプロイする
 
 Azure Resource Manager テンプレートを使用して、このシナリオのコア インフラストラクチャをデプロイするには、次の手順を実行します。
 
+<!-- markdownlint-disable MD033 -->
+
 1. **[Deploy to Azure]\(Azure にデプロイ\)** を選択します。<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmspnp%2Fsolution-architectures%2Fmaster%2Finfrastructure%2Fregulated-multitier-app%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 2. Azure portal でテンプレートのデプロイが開くまで待ってから、次の手順を実行します。
-   * リソース グループの **[新規作成]** を選択し、テキスト ボックスに名前 (例: *myWindowsscenario*) を入力します。
-   * **[場所]** ドロップダウン ボックスでリージョンを選択します。
-   * 仮想マシン スケール セット インスタンスのユーザー名と安全なパスワードを入力します。
-   * 使用条件を確認し、**[上記の使用条件に同意する]** をオンにします。
-   * **[購入]** をクリックします。
+   - リソース グループの **[新規作成]** を選択し、テキスト ボックスに名前 (例: *myWindowsscenario*) を入力します。
+   - **[場所]** ドロップダウン ボックスでリージョンを選択します。
+   - 仮想マシン スケール セット インスタンスのユーザー名と安全なパスワードを入力します。
+   - 使用条件を確認し、**[上記の使用条件に同意する]** をオンにします。
+   - **[購入]** をクリックします。
+
+<!-- markdownlint-enable MD033 -->
 
 デプロイが完了するまでに 15 から 20 分かかることがあります。
 
@@ -107,9 +115,9 @@ Azure Resource Manager テンプレートを使用して、このシナリオの
 
 ご自身のアプリケーションを実行するスケール セット VM インスタンスの数に基づいて、3 つのサンプル コスト プロファイルが用意されています。
 
-* [Small][small-pricing]: この価格例は、2 つのフロントエンドおよび 2 つのバックエンド VM インスタンスに対応します。
-* [Medium][medium-pricing]: この価格例は、20 つのフロントエンドおよび 5 つのバックエンド VM インスタンスに対応します。
-* [Large][large-pricing]: この価格例は、100 つのフロントエンドおよび 10 つのバックエンド VM インスタンスに対応します。
+- [Small][small-pricing]: この価格例は、2 つのフロントエンドおよび 2 つのバックエンド VM インスタンスに対応します。
+- [Medium][medium-pricing]: この価格例は、20 つのフロントエンドおよび 5 つのバックエンド VM インスタンスに対応します。
+- [Large][large-pricing]: この価格例は、100 つのフロントエンドおよび 10 つのバックエンド VM インスタンスに対応します。
 
 ## <a name="related-resources"></a>関連リソース
 
@@ -122,14 +130,13 @@ Azure Resource Manager テンプレートを使用して、このシナリオの
 [architecture]: ./media/architecture-regulated-multitier-app.png
 [autoscaling]: /azure/architecture/best-practices/auto-scaling
 [availability]: ../../checklist/availability.md
-[azureaz-docs]: /azure/availability-zones/az-overview
 [cloudwitness-docs]: /windows-server/failover-clustering/deploy-cloud-witness
 [loadbalancer-docs]: /azure/load-balancer/load-balancer-overview
 [nsg-docs]: /azure/virtual-network/security-overview
 [ntiersql-ra]: /azure/architecture/reference-architectures/n-tier/n-tier-sql-server
-[resiliency]: /azure/architecture/resiliency/ 
+[resiliency]: /azure/architecture/resiliency/
 [security]: /azure/security/
-[scalability]: /azure/architecture/checklist/scalability 
+[scalability]: /azure/architecture/checklist/scalability
 [scaleset-docs]: /azure/virtual-machine-scale-sets/overview
 [sqlalwayson-docs]: /sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server
 [vmssautoscale-docs]: /azure/virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview

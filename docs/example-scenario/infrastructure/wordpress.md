@@ -1,14 +1,15 @@
 ---
-title: Azure での高度にスケーラブルで安全な WordPress Web サイト
+title: 高度にスケーラブルで安全な WordPress Web サイト
+titleSuffix: Azure Example Scenarios
 description: メディア イベント用の高度にスケーラブルで安全な WordPress Web サイトを構築します。
 author: david-stanford
 ms.date: 09/18/2018
-ms.openlocfilehash: 6ff39d09fa301c8c68ce2a644cc489c0e87a22fa
-ms.sourcegitcommit: 0a31fad9b68d54e2858314ca5fe6cba6c6b95ae4
+ms.openlocfilehash: c0dad12e1da1f17b75d0661195123da4a8267152
+ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51610609"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53644046"
 ---
 # <a name="highly-scalable-and-secure-wordpress-website"></a>高度にスケーラブルで安全な WordPress Web サイト
 
@@ -18,10 +19,10 @@ ms.locfileid: "51610609"
 
 その他の関連するユース ケース:
 
-* トラフィックの急増を引き起こすメディア イベント。
-* コンテンツ管理システムとして WordPress を使用しているブログ。
-* WordPress を使用するビジネスまたは eコマースの Web サイト。
-* 他のコンテンツ管理システムを使用して構築された Web サイト。
+- トラフィックの急増を引き起こすメディア イベント。
+- コンテンツ管理システムとして WordPress を使用しているブログ。
+- WordPress を使用するビジネスまたは eコマースの Web サイト。
+- 他のコンテンツ管理システムを使用して構築された Web サイト。
 
 ## <a name="architecture"></a>アーキテクチャ
 
@@ -47,19 +48,19 @@ ms.locfileid: "51610609"
 
 ### <a name="components"></a>コンポーネント
 
-* [Azure コンテンツ配信ネットワーク (CDN)](/azure/cdn/cdn-overview) は、ユーザーに Web コンテンツを効率的に配信するサーバーの分散ネットワークです。 CDN はキャッシュされたコンテンツをエンド ユーザーに近いポイントオブプレゼンスの場所のエッジ サーバーに格納して、待ち時間を最小限に抑えます。
-* [仮想ネットワーク](/azure/virtual-network/virtual-networks-overview)を使用すると、VM などのリソースが互い同士や、インターネット、およびオンプレミスのネットワークと安全に通信することができます。 仮想ネットワークにより、分離性、セグメント化、トラフィックのフィルター処理とルーティングが提供され、場所間の接続が可能になります。 2 つのネットワークは、Vnet ピアリング経由で接続されます。
-* [ネットワーク セキュリティ グループ](/azure/virtual-network/security-overview)には、ソースまたはターゲット IP アドレス、ポート、プロトコルを基に、受信/送信ネットワーク トラフィックを許可または拒否するセキュリティ規則の一覧が含まれています。 このシナリオの仮想ネットワークは、アプリケーション コンポーネント間のトラフィック フローを制限するネットワーク セキュリティ グループ規則によって保護されています。
-* [ロード バランサー](/azure/load-balancer/load-balancer-overview)は、規則と正常性プローブに従って受信トラフィックを分散します。 ロード バランサーは、低遅延と高スループットを実現できるだけでなく、あらゆる TCP アプリケーションと UDP アプリケーションの数百万ものフローにスケールアップできます。 このシナリオでは、コンテンツ配信ネットワークからフロントエンド Web サーバーへのトラフィックの分散にロード バランサーが使用されています。
-* [仮想マシン スケール セット][docs-vmss]では、負荷分散が行われる同一の VM のグループを作成して管理することができます。 需要または定義されたスケジュールに応じて、VM インスタンスの数を自動的に増減させることができます。 このシナリオでは、2 つの異なる仮想マシンスケール セットが使用されます。1 つはコンテンツを提供するフロントエンド Web サーバー用で、もう 1 つは新しいコンテンツを作成するために使用されるフロントエンド Web サーバー用です。
-* [Azure Files](/azure/storage/files/storage-files-introduction) は、このシナリオにおけるすべての WordPress コンテンツをホストする完全に管理されたファイル共有をクラウドで提供し、すべての VM がそのデータにアクセスできるようにします。
-* [Azure Key Vault](/azure/key-vault/key-vault-overview) は、パスワード、証明書、キーを格納し、それらへのアクセスを厳重に制御するために使用されます。
-* [Azure Active Directory (Azure AD)](/azure/active-directory/fundamentals/active-directory-whatis) は、マルチテナントに対応したクラウドベースのディレクトリおよび ID の管理サービスです。 このシナリオでは、Azure AD が Web サイトと VPN トンネルの認証サービスを提供します。
+- [Azure コンテンツ配信ネットワーク (CDN)](/azure/cdn/cdn-overview) は、ユーザーに Web コンテンツを効率的に配信するサーバーの分散ネットワークです。 CDN はキャッシュされたコンテンツをエンド ユーザーに近いポイントオブプレゼンスの場所のエッジ サーバーに格納して、待ち時間を最小限に抑えます。
+- [仮想ネットワーク](/azure/virtual-network/virtual-networks-overview)を使用すると、VM などのリソースが互い同士や、インターネット、およびオンプレミスのネットワークと安全に通信することができます。 仮想ネットワークにより、分離性、セグメント化、トラフィックのフィルター処理とルーティングが提供され、場所間の接続が可能になります。 2 つのネットワークは、Vnet ピアリング経由で接続されます。
+- [ネットワーク セキュリティ グループ](/azure/virtual-network/security-overview)には、ソースまたはターゲット IP アドレス、ポート、プロトコルを基に、受信/送信ネットワーク トラフィックを許可または拒否するセキュリティ規則の一覧が含まれています。 このシナリオの仮想ネットワークは、アプリケーション コンポーネント間のトラフィック フローを制限するネットワーク セキュリティ グループ規則によって保護されています。
+- [ロード バランサー](/azure/load-balancer/load-balancer-overview)は、規則と正常性プローブに従って受信トラフィックを分散します。 ロード バランサーは、低遅延と高スループットを実現できるだけでなく、あらゆる TCP アプリケーションと UDP アプリケーションの数百万ものフローにスケールアップできます。 このシナリオでは、コンテンツ配信ネットワークからフロントエンド Web サーバーへのトラフィックの分散にロード バランサーが使用されています。
+- [仮想マシン スケール セット][docs-vmss]では、負荷分散が行われる同一の VM のグループを作成して管理することができます。 需要または定義されたスケジュールに応じて、VM インスタンスの数を自動的に増減させることができます。 このシナリオでは、2 つの異なる仮想マシンスケール セットが使用されます。1 つはコンテンツを提供するフロントエンド Web サーバー用で、もう 1 つは新しいコンテンツを作成するために使用されるフロントエンド Web サーバー用です。
+- [Azure Files](/azure/storage/files/storage-files-introduction) は、このシナリオにおけるすべての WordPress コンテンツをホストする完全に管理されたファイル共有をクラウドで提供し、すべての VM がそのデータにアクセスできるようにします。
+- [Azure Key Vault](/azure/key-vault/key-vault-overview) は、パスワード、証明書、キーを格納し、それらへのアクセスを厳重に制御するために使用されます。
+- [Azure Active Directory (Azure AD)](/azure/active-directory/fundamentals/active-directory-whatis) は、マルチテナントに対応したクラウドベースのディレクトリおよび ID の管理サービスです。 このシナリオでは、Azure AD が Web サイトと VPN トンネルの認証サービスを提供します。
 
 ### <a name="alternatives"></a>代替手段
 
-* MariaDB データ ストアの代わりに、[Linux 用 SQL Server](/azure/virtual-machines/linux/sql/sql-server-linux-virtual-machines-overview) を使用できます。
-* 完全に管理されたソリューションをご希望の場合は、[Azure database for MySQL](/azure/mysql/overview) で Maria DB データ ストアを置き換えることができます。
+- MariaDB データ ストアの代わりに、[Linux 用 SQL Server](/azure/virtual-machines/linux/sql/sql-server-linux-virtual-machines-overview) を使用できます。
+- 完全に管理されたソリューションをご希望の場合は、[Azure database for MySQL](/azure/mysql/overview) で Maria DB データ ストアを置き換えることができます。
 
 ## <a name="considerations"></a>考慮事項
 
@@ -95,9 +96,9 @@ ms.locfileid: "51610609"
 
 上記のアーキテクチャ ダイアグラムに基づいて、[料金プロファイル] [ pricing]が事前に構成されています。 独自のユース ケースに合わせて料金計算ツールを構成するために、考慮すべきいくつかの点があります。その主なものを以下に示します。
 
-* どのくらいのトラフィックを予想していますか (GB/月単位)? トラフィックの量は、仮想マシン スケール セットのデータを表示するために必要な VM の数に影響するため、コストに最も大きな影響を与えます。 さらに、これは CDN を介して表示されるデータの量と直接相関します。
-* どのくらいの新しいデータを Web サイトに書き込む予定ですか? Web サイトに書き込まれる新しいデータは、リージョン間でミラーリングされるデータの量と関係しています。
-* コンテンツのうち、動的コンテンツはどのくらいですか? 静的コンテンツはどのくらいですか? 動的コンテンツと静的コンテンツの差異は、どのくらいのデータをデータベース階層から取得する必要があり、どのくらいのデータが CDN にキャッシュされるかに影響します。
+- どのくらいのトラフィックを予想していますか (GB/月単位)? トラフィックの量は、仮想マシン スケール セットのデータを表示するために必要な VM の数に影響するため、コストに最も大きな影響を与えます。 さらに、これは CDN を介して表示されるデータの量と直接相関します。
+- どのくらいの新しいデータを Web サイトに書き込む予定ですか? Web サイトに書き込まれる新しいデータは、リージョン間でミラーリングされるデータの量と関係しています。
+- コンテンツのうち、動的コンテンツはどのくらいですか? 静的コンテンツはどのくらいですか? 動的コンテンツと静的コンテンツの差異は、どのくらいのデータをデータベース階層から取得する必要があり、どのくらいのデータが CDN にキャッシュされるかに影響します。
 
 <!-- links -->
 [architecture]: ./media/architecture-secure-scalable-wordpress.png

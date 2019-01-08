@@ -1,15 +1,16 @@
 ---
-title: Azure での計算流体力学 (CFD) シミュレーションの実行
+title: CFD シミュレーションの実行
+titleSuffix: Azure Example Scenarios
 description: Azure で計算流体力学 (CFD) シミュレーションを実行します。
 author: mikewarr
 ms.date: 09/20/2018
 ms.custom: fasttrack
-ms.openlocfilehash: 42921122d74d07bf890f55be61b04c7e9a4f4e87
-ms.sourcegitcommit: a0e8d11543751d681953717f6e78173e597ae207
+ms.openlocfilehash: af43a60e952d75f84b4c7903a1567b0c76b9f4c4
+ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53004650"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53643936"
 ---
 # <a name="running-computational-fluid-dynamics-cfd-simulations-on-azure"></a>Azure での計算流体力学 (CFD) シミュレーションの実行
 
@@ -23,11 +24,11 @@ HPC クラスターの作成、管理、最適化を簡略化するには、Azur
 
 CFD アプリケーションに関連するその他の業界:
 
-* 航空
-* 自動車
-* 建築 HVAC
-* 石油、ガス
-* ライフ サイエンス
+- 航空
+- 自動車
+- 建築 HVAC
+- 石油、ガス
+- ライフ サイエンス
 
 ## <a name="architecture"></a>アーキテクチャ
 
@@ -46,12 +47,12 @@ CFD アプリケーションに関連するその他の業界:
 
 ### <a name="components"></a>コンポーネント
 
-* [Azure CycleCloud][cyclecloud] は、Azure で HPC とビッグ コンピューティング クラスターを作成、管理、運用、最適化するためのツールです。
-* [Azure 上の Avere vFXT][avere] は、クラウド向けに構築されたエンタープライズ規模のクラスター化されたファイル システムを提供するために使用されます。
-* [Azure Virtual Machines (VM)][vms] は、コンピューティング インスタンスの静的なセットの作成に使用されます。
-* [Virtual Machine Scale Sets (仮想マシン スケール セット)][vmss] は、Azure CycleCloud によってスケールアップまたはスケールダウンされる同じ VM のグループを提供します。
-* [Azure Storage アカウント](/azure/storage/common/storage-introduction)は、同期とデータ保持に使用されます。
-* [Virtual Network](/azure/virtual-network/virtual-networks-overview) では、Azure Virtual Machine (VM) などのさまざまな種類の Azure リソースが、他の Azure リソース、インターネット、およびオンプレミスのネットワークと安全に通信することができます。
+- [Azure CycleCloud][cyclecloud] は、Azure で HPC とビッグ コンピューティング クラスターを作成、管理、運用、最適化するためのツールです。
+- [Azure 上の Avere vFXT][avere] は、クラウド向けに構築されたエンタープライズ規模のクラスター化されたファイル システムを提供するために使用されます。
+- [Azure Virtual Machines (VM)][vms] は、コンピューティング インスタンスの静的なセットの作成に使用されます。
+- [Virtual Machine Scale Sets (仮想マシン スケール セット)][vmss] は、Azure CycleCloud によってスケールアップまたはスケールダウンされる同じ VM のグループを提供します。
+- [Azure Storage アカウント](/azure/storage/common/storage-introduction)は、同期とデータ保持に使用されます。
+- [Virtual Network](/azure/virtual-network/virtual-networks-overview) では、Azure Virtual Machine (VM) などのさまざまな種類の Azure リソースが、他の Azure リソース、インターネット、およびオンプレミスのネットワークと安全に通信することができます。
 
 ### <a name="alternatives"></a>代替手段
 
@@ -65,15 +66,22 @@ Azure CycleCloud 上の実行ノードのスケーリングは、手動で、ま
 
 セキュリティで保護されたソリューションの設計に関する一般的なガイダンスについては、「[Azure のセキュリティのドキュメント][security]」をご覧ください。
 
-## <a name="deploy-this-scenario"></a>このシナリオのデプロイ
+## <a name="deploy-the-scenario"></a>シナリオのデプロイ
 
-Azure にデプロイする前に、いくつかの前提条件が必要です。 Resource Manager テンプレートをデプロイする前に、次の手順に従ってください。
+### <a name="prerequisites"></a>前提条件
+
+Resource Manager テンプレートをデプロイする前に、次の手順に従ってください。
+
 1. アプリ ID、表示名、名前、パスワード、テナントを取得するための[サービス プリンシパル][cycle-svcprin]を作成します。
 2. CycleCloud サーバーに安全にサインインするための [SSH キー ペア][cycle-ssh]を生成します。
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FCycleCloudCommunity%2Fcyclecloud_arm%2Fmaster%2Fazuredeploy.json" target="_blank">
-    <img src="https://azuredeploy.net/deploybutton.png"/>
-</a>
+    <!-- markdownlint-disable MD033 -->
+
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FCycleCloudCommunity%2Fcyclecloud_arm%2Fmaster%2Fazuredeploy.json" target="_blank">
+        <img src="https://azuredeploy.net/deploybutton.png"/>
+    </a>
+
+    <!-- markdownlint-enable MD033 -->
 
 3. [CycleCloud サーバーにログイン][cycle-login]して、新しいクラスターを構成および作成します。
 4. [クラスターを作成][cycle-create]します。
@@ -90,12 +98,12 @@ CycleCloud サーバーを使用して HPC の実装を実行するコストは�
 
 このシナリオでは CFD アプリケーションを Azure で実行する方法を示すので、マシンには RDMA 機能が必要であり、これは特定の VM サイズでのみ使用できます。 次に示すのは、1 か月間継続して 1 日 8 時間割り当てられた、データ送信が 1 TB のスケール セットにかかるコストの例です。 Azure CycleCloud サーバーと、Azure インストール用 Avere vFXT の価格も含まれます。
 
-* リージョン:北ヨーロッパ
-* Azure CycleCloud サーバー:1 x Standard D3 (4 x CPU、14 GB メモリ、Standard HDD 32 GB)
-* Azure CycleCloud Master サーバー:1 x Standard D12 v (4 x CPU、28 GB メモリ、Standard HDD 32 GB)
-* Azure CycleCloud ノード アレイ:10 x Standard H16r (16 x CPU、112 GB メモリ)
-* Azure クラスター上の Avere vFXT:3 x D16s v3 (200 GB OS、Premium SSD 1-TB データ ディスク)
-* データ送信:1 TB (テラバイト)
+- リージョン:北ヨーロッパ
+- Azure CycleCloud サーバー:1 x Standard D3 (4 x CPU、14 GB メモリ、Standard HDD 32 GB)
+- Azure CycleCloud Master サーバー:1 x Standard D12 v (4 x CPU、28 GB メモリ、Standard HDD 32 GB)
+- Azure CycleCloud ノード アレイ:10 x Standard H16r (16 x CPU、112 GB メモリ)
+- Azure クラスター上の Avere vFXT:3 x D16s v3 (200 GB OS、Premium SSD 1-TB データ ディスク)
+- データ送信:1 TB (テラバイト)
 
 上に示したハードウェアについてはこちらの[価格見積もり][pricing]をご覧ください。
 
@@ -105,8 +113,8 @@ CycleCloud サーバーを使用して HPC の実装を実行するコストは�
 
 ## <a name="related-resources"></a>関連リソース
 
-* [RDMA 対応のマシン インスタンス][rdma]
-* [RDMA インスタンス VM のカスタマイズ][rdma-custom]
+- [RDMA 対応のマシン インスタンス][rdma]
+- [RDMA インスタンス VM のカスタマイズ][rdma-custom]
 
 <!-- links -->
 [architecture]: ./media/architecture-hpc-cfd.png

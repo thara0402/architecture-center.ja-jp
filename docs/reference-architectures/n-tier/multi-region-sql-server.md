@@ -5,12 +5,12 @@ description: 高可用性と回復性を得るために複数のリージョン�
 author: MikeWasson
 ms.date: 07/19/2018
 ms.custom: seodec18
-ms.openlocfilehash: 5036d8c74dbf92d9547ab866b15b1576df48e3eb
-ms.sourcegitcommit: 88a68c7e9b6b772172b7faa4b9fd9c061a9f7e9d
+ms.openlocfilehash: 84da8aaef7e552beff1f06befbaa2e50a3ac3d8b
+ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53120001"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53643711"
 ---
 # <a name="run-an-n-tier-application-in-multiple-azure-regions-for-high-availability"></a>高可用性を得るために複数の Azure リージョンで N 層アプリケーションを実行する
 
@@ -159,6 +159,13 @@ SQL Server クラスターでは、2 つのフェールオーバー シナリオ
 - ドメイン コントローラー上の DNS サービスのシャットダウン。
 
 回復時間を測定し、ビジネス要件を満たしていることを確認します。 障害モードの組み合わせもテストします。
+
+## <a name="related-resources"></a>関連リソース
+
+同じテクノロジの一部を使用する具体的なソリューションを示す次の [Azure のサンプル シナリオ](/azure/architecture/example-scenario)をレビューできます。
+
+- [Azure における高可用性とディザスター リカバリー用にビルドされた多層 Web アプリケーション](/azure/architecture/example-scenario/infrastructure/multi-tier-app-disaster-recovery)
+- [Azure 上の Windows Server を使用した、セキュリティで保護された Web アプリケーションの構築](/azure/architecture/example-scenario/infrastructure/regulated-multitier-app)
 
 <!-- links -->
 

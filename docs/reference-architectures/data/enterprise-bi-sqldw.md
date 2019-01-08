@@ -5,12 +5,12 @@ description: Azure を使用して、オンプレミスに保存されたリレ�
 author: MikeWasson
 ms.date: 11/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 656bf6f1bd342856fd8a2d2aa0b62a9dd4d4f87f
-ms.sourcegitcommit: 88a68c7e9b6b772172b7faa4b9fd9c061a9f7e9d
+ms.openlocfilehash: 3808cc5d09e2e0a5aaee1a6cfcb050b98a0ef2ee
+ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53120086"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53644225"
 ---
 # <a name="enterprise-bi-in-azure-with-sql-data-warehouse"></a>SQL Data Warehouse を使用した Azure のエンタープライズ向け BI
 
@@ -113,7 +113,7 @@ AzCopy では、パブリック インターネット経由でデータをスト
 
 PolyBase では、ウェアハウスで並列処理を自動的に利用します。 DWU を増やすと、読み込みパフォーマンスがスケーリングされます。 最適なパフォーマンスを得るために、単一の読み込み操作を使用します。 入力データをチャンクに分割し、複数の同時読み込みを実行すると、パフォーマンス上のメリットは得られません。
 
-PolyBase では Gzip 圧縮ファイルを読み取ることができます。 ただし、ファイルの圧縮解除はシングル スレッド操作であるため、リーダーは圧縮ファイルごとに 1 つしか使用されません。 そのため、単一の大きな圧縮ファイルの読み込みは避けてください。 代わりに、並列処理を活用するために、データを複数の圧縮ファイルに分割します。 
+PolyBase では Gzip 圧縮ファイルを読み取ることができます。 ただし、ファイルの圧縮解除はシングル スレッド操作であるため、リーダーは圧縮ファイルごとに 1 つしか使用されません。 そのため、単一の大きな圧縮ファイルの読み込みは避けてください。 代わりに、並列処理を活用するために、データを複数の圧縮ファイルに分割します。
 
 次の制限事項に注意してください。
 
@@ -183,10 +183,10 @@ Analysis Services のファイアウォール機能を使用して、クライ�
 
 ### <a name="authorization"></a>承認
 
-Azure Analysis Services では、Azure Active Directory (Azure AD) を使用して Analysis Services サーバーに接続するユーザーを認証します。 ロールを作成し、Azure AD ユーザーまたはグループをそれらのロールに割り当てることで、特定のユーザーが表示できるデータを制限できます。 各ロールでは次のことが可能です。 
+Azure Analysis Services では、Azure Active Directory (Azure AD) を使用して Analysis Services サーバーに接続するユーザーを認証します。 ロールを作成し、Azure AD ユーザーまたはグループをそれらのロールに割り当てることで、特定のユーザーが表示できるデータを制限できます。 各ロールでは次のことが可能です。
 
-- テーブルまたは個々の列を保護する。 
-- フィルター式に基づいて個々の行を保護する。 
+- テーブルまたは個々の列を保護する。
+- フィルター式に基づいて個々の行を保護する。
 
 詳細については、「[データベース ロールとユーザーの管理](/azure/analysis-services/analysis-services-database-users)」をご覧ください。
 
@@ -202,6 +202,13 @@ Azure Analysis Services では、Azure Active Directory (Azure AD) を使用し�
 ## <a name="next-steps"></a>次の手順
 
 - Azure Data Factory を使用して ELT パイプラインを自動化します。 「[SQL Data Warehouse と Azure Data Factory を使用したエンタープライズ BI の自動化][adf-ra]」を参照してください。
+
+## <a name="related-resources"></a>関連リソース
+
+同じテクノロジの一部を使用する具体的なソリューションを示す次の [Azure のサンプル シナリオ](/azure/architecture/example-scenario)をレビューできます。
+
+- [販売およびマーケティング向けのデータ ウェアハウスと分析](/azure/architecture/example-scenario/data/data-warehouse)
+- [既存のオンプレミス SSIS と Azure Data Factory を使用したハイブリッド ETL](/azure/architecture/example-scenario/data/hybrid-etl-with-adf)
 
 <!-- links -->
 

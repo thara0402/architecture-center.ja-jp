@@ -1,15 +1,16 @@
 ---
-title: Azure での Oracle データベースを使用した SAP 運用環境ワークロードの実行
+title: Oracle データベースを使用した SAP 運用環境ワークロードの実行
+titleSuffix: Azure Example Scenarios
 description: Oracle データベースを使用して Azure で SAP 運用環境デプロイを実行します。
 author: DharmeshBhagat
 ms.date: 9/12/2018
 ms.custom: fasttrack
-ms.openlocfilehash: e345760c69c4d3cc26fe6d4d7cb8a93d183a5818
-ms.sourcegitcommit: a0e8d11543751d681953717f6e78173e597ae207
+ms.openlocfilehash: 2f398e98e383053f40fa8debcf5636c609339baf
+ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53004961"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53643732"
 ---
 # <a name="running-sap-production-workloads-using-an-oracle-database-on-azure"></a>Azure での Oracle データベースを使用した SAP 運用環境ワークロードの実行
 
@@ -23,9 +24,9 @@ SAP システムは、ミッション クリティカルなビジネス アプ�
 
 その他の関連するユース ケース:
 
-* SAP で実行されるミッション クリティカルなワークロード。
-* 非クリティカルな SAP ワークロード。
-* 高可用性環境をシミュレートする SAP のテスト環境。
+- SAP で実行されるミッション クリティカルなワークロード。
+- 非クリティカルな SAP ワークロード。
+- 高可用性環境をシミュレートする SAP のテスト環境。
 
 ## <a name="architecture"></a>アーキテクチャ
 
@@ -41,11 +42,11 @@ SAP システムは、ミッション クリティカルなビジネス アプ�
 
 ### <a name="components"></a>コンポーネント
 
-* このシナリオでは、Azure で仮想ハブ アンド スポーク トポロジを作成するために[仮想ネットワーク](/azure/virtual-network/virtual-networks-overview)が使用されています。
-* [仮想マシン](/azure/virtual-machines/windows/overview)は、ソリューションの各層の計算リソースを提供します。 仮想マシンの各クラスターは、[可用性セット](/azure/virtual-machines/windows/regions-and-availability#availability-sets)として構成されています。
-* [ExpressRoute](/azure/expressroute/expressroute-introduction) を利用すると、接続プロバイダーが確立するプライベート接続を介して、オンプレミスのネットワークが Microsoft クラウドに拡張されます。
-* [ネットワーク セキュリティ グループ (NSG)](/azure/virtual-network/security-overview) は、仮想ネットワーク内のリソースへのネットワーク アクセスを制限します。 NSG には、ソースまたはターゲット IP アドレス、ポート、プロトコルを基に、ネットワーク トラフィックを許可または拒否するセキュリティ規則の一覧が含まれています。 
-* [リソース グループ](/azure/azure-resource-manager/resource-group-overview#resource-groups)は、Azure リソースの論理コンテナーとして機能します。
+- このシナリオでは、Azure で仮想ハブ アンド スポーク トポロジを作成するために[仮想ネットワーク](/azure/virtual-network/virtual-networks-overview)が使用されています。
+- [仮想マシン](/azure/virtual-machines/windows/overview)は、ソリューションの各層の計算リソースを提供します。 仮想マシンの各クラスターは、[可用性セット](/azure/virtual-machines/windows/regions-and-availability#availability-sets)として構成されています。
+- [ExpressRoute](/azure/expressroute/expressroute-introduction) を利用すると、接続プロバイダーが確立するプライベート接続を介して、オンプレミスのネットワークが Microsoft クラウドに拡張されます。
+- [ネットワーク セキュリティ グループ (NSG)](/azure/virtual-network/security-overview) は、仮想ネットワーク内のリソースへのネットワーク アクセスを制限します。 NSG には、ソースまたはターゲット IP アドレス、ポート、プロトコルを基に、ネットワーク トラフィックを許可または拒否するセキュリティ規則の一覧が含まれています。
+- [リソース グループ](/azure/azure-resource-manager/resource-group-overview#resource-groups)は、Azure リソースの論理コンテナーとして機能します。
 
 ### <a name="alternatives"></a>代替手段
 
@@ -53,10 +54,11 @@ SAP では、Azure の環境でのさまざまなオペレーティング シス
 
 ## <a name="considerations"></a>考慮事項
 
-Azure で高可用性 SAP 環境を構築するための推奨プラクティスが定義されています。 詳細については、「[SAP NetWeaver のための高可用性のアーキテクチャとシナリオ](/azure/virtual-machines/workloads/sap/sap-high-availability-architecture-scenarios)」を参照してください。
-詳細については、「[Azure VM での SAP アプリケーションの高可用性](/azure/virtual-machines/workloads/sap/high-availability-guide)」を参照してください。
-* Oracle データベースにも Azure 用の推奨プラクティスがあります。 詳細については、「[Azure での Oracle データベースの設計と実装](/azure/virtual-machines/workloads/oracle/oracle-design)」を参照してください。 
-* Oracle Data Guard は、ミッション クリティカルな Oracle データベースの単一障害点を排除するために使用されます。 詳細については、「[Azure Linux 仮想マシンで Oracle Data Guard を実装する](/azure/virtual-machines/workloads/oracle/configure-oracle-dataguard)」を参照してください。
+Azure で高可用性 SAP 環境を構築するための推奨プラクティスが定義されています。 詳細については、「[SAP NetWeaver のための高可用性のアーキテクチャとシナリオ](/azure/virtual-machines/workloads/sap/sap-high-availability-architecture-scenarios)」を参照してください。 [Azure VM での SAP アプリケーションの高可用性](/azure/virtual-machines/workloads/sap/high-availability-guide)に関する記事もご覧ください。
+
+Oracle データベースにも Azure 用の推奨プラクティスがあります。 詳細については、「[Azure での Oracle データベースの設計と実装](/azure/virtual-machines/workloads/oracle/oracle-design)」を参照してください。
+
+Oracle Data Guard は、ミッション クリティカルな Oracle データベースの単一障害点を排除するために使用されます。 詳細については、「[Azure Linux 仮想マシンで Oracle Data Guard を実装する](/azure/virtual-machines/workloads/oracle/configure-oracle-dataguard)」を参照してください。
 
 Microsoft Azure は、Oracle データベースと共に SAP 製品をデプロイするために使用できるインフラストラクチャ サービスを提供します。 詳細については、「[SAP ワークロードのための Oracle DBMS のデプロイ](/azure/virtual-machines/workloads/sap/dbms_guide_oracle)」を参照してください。
 
@@ -76,22 +78,26 @@ Extra Large|250000|M64s|6xP30、1xP30|DS11_v2|1x P10|10x DS14_v2|1x P10|[Extra L
 > [!NOTE]
 > この価格は目安であり、VM とストレージの料金を示しているに過ぎません。 ネットワーク、バックアップ ストレージ、データ イングレス/エグレスの料金は含まれていません。
 
-* [Small](https://azure.com/e/45880ba0bfdf47d497851a7cf2650c7c):小規模なシステムは、データベース サーバー用の VM の種類 DS13_v2 (8 個の vCPU)、56 GB の RAM、112 GB の一時ストレージ、追加の 5 個の 512 GB の Premium Storage ディスクで構成されています。 VM の種類 DS11_v2 (2 個の vCPU)、14 GB の RAM、28 GB の一時ストレージを使用する SAP セントラル インスタンス サーバーも含まれます。 SAP アプリケーション サーバー用の 1 個の VM の種類 DS13_v2 (8 個の vCPU)、56 GB の RAM、400 GB の一時ストレージ、追加の 1 個の 128 GB の Premium Storage ディスクも含まれます。
+- [Small](https://azure.com/e/45880ba0bfdf47d497851a7cf2650c7c):小規模なシステムは、データベース サーバー用の VM の種類 DS13_v2 (8 個の vCPU)、56 GB の RAM、112 GB の一時ストレージ、追加の 5 個の 512 GB の Premium Storage ディスクで構成されています。 VM の種類 DS11_v2 (2 個の vCPU)、14 GB の RAM、28 GB の一時ストレージを使用する SAP セントラル インスタンス サーバーも含まれます。 SAP アプリケーション サーバー用の 1 個の VM の種類 DS13_v2 (8 個の vCPU)、56 GB の RAM、400 GB の一時ストレージ、追加の 1 個の 128 GB の Premium Storage ディスクも含まれます。
 
-* [Medium](https://azure.com/e/9a523f79591347ca9a48c3aaa1406f8a):中規模のシステムは、データベース サーバー用の VM の種類 DS14_v2 (16 個の vCPU)、112 GB の RAM、800 GB の一時ストレージ、追加の 7 個の 512 GB の Premium Storage ディスクで構成されています。 VM の種類 DS11_v2 (2 個の vCPU)、14 GB の RAM、28 GB の一時ストレージを使用する SAP セントラル インスタンス サーバーも含まれます。 SAP アプリケーション サーバー用の 4 個の VM の種類 DS13_v2 (8 個の vCPU)、56 GB の RAM、400 GB の一時ストレージ、追加の 1 個の 128 GB の Premium Storage ディスクも含まれます。
+- [Medium](https://azure.com/e/9a523f79591347ca9a48c3aaa1406f8a):中規模のシステムは、データベース サーバー用の VM の種類 DS14_v2 (16 個の vCPU)、112 GB の RAM、800 GB の一時ストレージ、追加の 7 個の 512 GB の Premium Storage ディスクで構成されています。 VM の種類 DS11_v2 (2 個の vCPU)、14 GB の RAM、28 GB の一時ストレージを使用する SAP セントラル インスタンス サーバーも含まれます。 SAP アプリケーション サーバー用の 4 個の VM の種類 DS13_v2 (8 個の vCPU)、56 GB の RAM、400 GB の一時ストレージ、追加の 1 個の 128 GB の Premium Storage ディスクも含まれます。
 
-* [Large](https://azure.com/e/f70fccf571e948c4b37d4fecc07cbf42):大規模なシステムは、データベース サーバー用の VM の種類 E32s_v3 (32 個の vCPU)、256 GB の RAM、800 GB の一時ストレージ、追加の 3 個の 512 GB と 1 個の 128 GB Premium Storage ディスクで構成されています。 VM の種類 DS11_v2 (2 個の vCPU)、14 GB の RAM、28 GB の一時ストレージを使用する SAP セントラル インスタンス サーバーも含まれます。 SAP アプリケーション サーバー用の 6 個の VM の種類 DS14_v2 (16 個の vCPU)、112 GB の RAM、224 GB の一時ストレージ、追加の 6 個の 128 GB の Premium Storage ディスクも含まれます。
+- [Large](https://azure.com/e/f70fccf571e948c4b37d4fecc07cbf42):大規模なシステムは、データベース サーバー用の VM の種類 E32s_v3 (32 個の vCPU)、256 GB の RAM、800 GB の一時ストレージ、追加の 3 個の 512 GB と 1 個の 128 GB Premium Storage ディスクで構成されています。 VM の種類 DS11_v2 (2 個の vCPU)、14 GB の RAM、28 GB の一時ストレージを使用する SAP セントラル インスタンス サーバーも含まれます。 SAP アプリケーション サーバー用の 6 個の VM の種類 DS14_v2 (16 個の vCPU)、112 GB の RAM、224 GB の一時ストレージ、追加の 6 個の 128 GB の Premium Storage ディスクも含まれます。
 
-* [Extra Large](https://azure.com/e/58c636922cf94faf9650f583ff35e97b):超大規模なシステムは、データベース サーバー用の VM の種類 M64s (64 個の vCPU)、1,024 GB の RAM、2,000 GB の一時ストレージ、追加の 7 個の 1024 GB の Premium Storage ディスクで構成されています。 VM の種類 DS11_v2 (2 個の vCPU)、14 GB の RAM、28 GB の一時ストレージを使用する SAP セントラル インスタンス サーバーも含まれます。 SAP アプリケーション サーバー用の 10 個の VM の種類 DS14_v2 (16 個の vCPU)、112 GB の RAM、224 GB の一時ストレージ、追加の 10 個の 128 GB の Premium Storage ディスクも含まれます。
+- [Extra Large](https://azure.com/e/58c636922cf94faf9650f583ff35e97b):超大規模なシステムは、データベース サーバー用の VM の種類 M64s (64 個の vCPU)、1,024 GB の RAM、2,000 GB の一時ストレージ、追加の 7 個の 1024 GB の Premium Storage ディスクで構成されています。 VM の種類 DS11_v2 (2 個の vCPU)、14 GB の RAM、28 GB の一時ストレージを使用する SAP セントラル インスタンス サーバーも含まれます。 SAP アプリケーション サーバー用の 10 個の VM の種類 DS14_v2 (16 個の vCPU)、112 GB の RAM、224 GB の一時ストレージ、追加の 10 個の 128 GB の Premium Storage ディスクも含まれます。
 
 ## <a name="deployment"></a>Deployment
 
 次のリンクを使用して、このシナリオの基盤となるインフラストラクチャをデプロイします。
 
+<!-- markdownlint-disable MD033 -->
+
 <a
 href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmspnp%2Fsolution-architectures%2Fmaster%2Fapps%2Fsap-3tier-distributed-ora%2Fazuredeploy.json" target="_blank">
     <img src="https://azuredeploy.net/deploybutton.png"/>
 </a>
+
+<!-- markdownlint-enable MD033 -->
 
 > [!NOTE]
 > このデプロイでは、SAP と Oracle はインストールされません。 それらのコンポーネントは、個別にデプロイする必要があります。
@@ -99,9 +105,10 @@ href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.
 ## <a name="related-resources"></a>関連リソース
 
 Azure での SAP 運用ワークロードの実行の詳細については、以下の参照アーキテクチャをご確認ください。
-* [AnyDB 向けの SAP NetWeaver](/azure/architecture/reference-architectures/sap/sap-netweaver) 
-* [SAP S/4HANa](/azure/architecture/reference-architectures/sap/sap-s4hana)
-* [SAP HANA L インスタンス](/azure/architecture/reference-architectures/sap/hana-large-instances)
+
+- [AnyDB 向けの SAP NetWeaver](/azure/architecture/reference-architectures/sap/sap-netweaver)
+- [SAP S/4HANa](/azure/architecture/reference-architectures/sap/sap-s4hana)
+- [SAP HANA L インスタンス](/azure/architecture/reference-architectures/sap/hana-large-instances)
 
 <!-- links -->
 [architecture]: media/architecture-sap-production.png

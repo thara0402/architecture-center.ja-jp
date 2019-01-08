@@ -1,26 +1,28 @@
 ---
-title: Service Fabric を使用したモノリシック アプリケーションの分解
+title: Service Fabric を使用したアプリケーションの分解
+titleSuffix: Azure Example Scenarios
 description: 大規模なモノリシック アプリケーションをマイクロサービスに分解します。
 author: timomta
 ms.date: 09/20/2018
 ms.custom: fasttrack
-ms.openlocfilehash: 438d2eabff39356a7593f2da798a74eebe94553a
-ms.sourcegitcommit: a0e8d11543751d681953717f6e78173e597ae207
+ms.openlocfilehash: 90159b0cbfd3e7af542a79d050d153b4a3435a0d
+ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53004624"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53643817"
 ---
 # <a name="using-service-fabric-to-decompose-monolithic-applications"></a>Service Fabric を使用したモノリシック アプリケーションの分解
 
 このシナリオの例では、扱いにくいモノリシック アプリケーションを分解するためのプラットフォームとして [Service Fabric](/azure/service-fabric/service-fabric-overview) を使用するアプローチについて説明します。 ここでは、IIS/ASP.Net Web サイトを管理しやすい複数のマイクロサービスから成るアプリケーションに分解する反復的なアプローチを検討します。
 
 モノリシック アーキテクチャからマイクロサービス アーキテクチャに移行すると、次のような利点があります。
-* 1 つの小さなわかりやすいコード単位を変更して、その単位のみを展開することができます。
-* 各コード単位の展開にかかる時間はわずか数分です。
-* 小さな単位にエラーがある場合、アプリケーション全体ではなくその単位のみが動作を停止します。
-* 小さいコード単位を複数の開発チームに個別に配布する処理も簡単です。
-* 新規の開発者でも、単位の個別機能を短時間で簡単に理解できます。
+
+- 1 つの小さなわかりやすいコード単位を変更して、その単位のみを展開することができます。
+- 各コード単位の展開にかかる時間はわずか数分です。
+- 小さな単位にエラーがある場合、アプリケーション全体ではなくその単位のみが動作を停止します。
+- 小さいコード単位を複数の開発チームに個別に配布する処理も簡単です。
+- 新規の開発者でも、単位の個別機能を短時間で簡単に理解できます。
 
 この例ではサーバー ファームの大規模な IIS アプリケーションを使用しますが、反復的な分解とホスティングの概念は、任意の種類の大規模アプリケーションに使用できます。 このソリューションでは Windows を使用しますが、Service Fabric は Linux OS でも実行できます。 オンプレミス、Azure、または任意のクラウド プロバイダー内の VM ノードで実行できます。
 

@@ -1,15 +1,16 @@
 ---
-title: Azure 上の API ベースのアーキテクチャへの、従来の Web アプリケーションの移行
+title: Web アプリの API ベースのアーキテクチャへの移行
+titleSuffix: Azure Example Scenarios
 description: Azure API Management を使用して、従来の Web アプリケーションを最新式にしています。
 author: begim
 ms.date: 09/13/2018
 ms.custom: fasttrack
-ms.openlocfilehash: ea063653b4962e42cbec7f9d98c16e22e987efd1
-ms.sourcegitcommit: a0e8d11543751d681953717f6e78173e597ae207
+ms.openlocfilehash: 257b9bb5c69afb00917f8934585c1164f909feb6
+ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53004715"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53643485"
 ---
 # <a name="migrating-a-legacy-web-application-to-an-api-based-architecture-on-azure"></a>Azure 上の API ベースのアーキテクチャへの、従来の Web アプリケーションの移行
 
@@ -17,9 +18,9 @@ ms.locfileid: "53004715"
 
 このプロジェクトの目標は、技術的な負債に対処し、継続的なメンテナンスを改善し、回帰バグの少ない機能開発を加速することです。 このプロジェクトでは、反復プロセスを使用してリスクを回避し、いくつかの手順を並行して実行します。
 
-* 開発チームは、アプリケーション バック エンドを最新式にしています。これは、VM 上でホストされるリレーショナル データベースから構成されます。
-* 社内開発チームは、新しい HTTP API を介して公開される新しいビジネス機能を作成します。
-* 契約開発チームは、Azure でホストされる新しいブラウザーベースの UI を構築します。
+- 開発チームは、アプリケーション バック エンドを最新式にしています。これは、VM 上でホストされるリレーショナル データベースから構成されます。
+- 社内開発チームは、新しい HTTP API を介して公開される新しいビジネス機能を作成します。
+- 契約開発チームは、Azure でホストされる新しいブラウザーベースの UI を構築します。
 
 新しいアプリケーション機能が段階的に提供されます。 これらの機能により、現在の e コマース ビジネスを強化する既存のブラウザーベースのクライアント/サーバー UI 機能 (オンプレミスでホストされている機能) が段階的に置き換えられます。
 
@@ -36,38 +37,38 @@ ms.locfileid: "53004715"
 1. 既存のオンプレミス Web アプリケーションは、引き続き既存のオンプレミス Web サービスを直接消費します。
 2. 既存の Web アプリから既存の HTTP サービスへの呼び出しは変わりません。 このような呼び出しは、企業ネットワークの内部で行われます。
 3. 受信呼び出しは、Azure から既存の内部サービスに対して行われます。
-    * セキュリティ チームは、[セキュア トランスポート (HTTPS/SSL) を使用して][apim-ssl]、APIM インスタンスからのトラフィックを企業ファイアウォールを介して既存のオンプレミス サービスに渡すことができます。
-    * 運用チームは、APIM インスタンスからサービスへの受信呼び出しのみを許可します。 この要件は、企業ネットワーク境界内の [APIM インスタンスの IP アドレスをホワイトリストに登録する][apim-whitelist-ip]ことで満たされます。
-    * 新しいモジュールは、(外部から発信された接続の場合に**のみ**動作する) オンプレミスの HTTP サービス要求パイプラインに構成されます。これにより、[APIM が提供する証明書][apim-mutualcert-auth]が検証されます。
-1. 新しい API:
-    * APIM インスタンスを介してのみ公開され、API ファサードを提供します。 新しい API には直接アクセスしません。
-    * [Azure PaaS Web API アプリ][azure-api-apps]として開発、公開されます。
-    * [APIM VIP][apim-faq-vip] のみを受け入れるように、([Web アプリ設定][azure-appservice-ip-restrict]を介して) ホワイトリストに登録されます。
-    * セキュア トランスポート/SSL を有効にして、Azure Web Apps でホストされます。
-    * 承認が有効にされ、Azure Active Directory と OAuth2 を使用して、[Azure App Service に提供され][azure-appservice-auth]ています。
-2. 新しいブラウザーベースの Web アプリケーションは、既存の HTTP API と新しい API の**両方**のために Azure API Management インスタンスに依存します。
+    - セキュリティ チームは、[セキュア トランスポート (HTTPS/SSL) を使用して][apim-ssl]、APIM インスタンスからのトラフィックを企業ファイアウォールを介して既存のオンプレミス サービスに渡すことができます。
+    - 運用チームは、APIM インスタンスからサービスへの受信呼び出しのみを許可します。 この要件は、企業ネットワーク境界内の [APIM インスタンスの IP アドレスをホワイトリストに登録する][apim-whitelist-ip]ことで満たされます。
+    - 新しいモジュールは、(外部から発信された接続の場合に**のみ**動作する) オンプレミスの HTTP サービス要求パイプラインに構成されます。これにより、[APIM が提供する証明書][apim-mutualcert-auth]が検証されます。
+4. 新しい API:
+    - APIM インスタンスを介してのみ公開され、API ファサードを提供します。 新しい API には直接アクセスしません。
+    - [Azure PaaS Web API アプリ][azure-api-apps]として開発、公開されます。
+    - [APIM VIP][apim-faq-vip] のみを受け入れるように、([Web アプリ設定][azure-appservice-ip-restrict]を介して) ホワイトリストに登録されます。
+    - セキュア トランスポート/SSL を有効にして、Azure Web Apps でホストされます。
+    - 承認が有効にされ、Azure Active Directory と OAuth2 を使用して、[Azure App Service に提供され][azure-appservice-auth]ています。
+5. 新しいブラウザーベースの Web アプリケーションは、既存の HTTP API と新しい API の**両方**のために Azure API Management インスタンスに依存します。
 
 APIM インスタンスは、レガシ HTTP サービスを新しい API コントラクトにマップするように構成されます。 これにより、新しい Web UI は、一連のレガシ サービス/API と新しい API との統合を認識していません。 今後、プロジェクト チームは段階的に機能を新しい API に移植し、元のサービスを廃止します。 このような変更は、APIM の構成内で処理され、フロントエンド UI は影響を受けないため、再開発作業を回避できます。
 
 ### <a name="alternatives"></a>代替手段
 
-* 組織が、レガシ アプリケーションをホストしている VM を含め、インフラストラクチャを完全に Azure に移行する予定だった場合でも、APIM は、アドレス指定可能な HTTP エンドポイントのファサードとして機能することができるため、優れた選択肢になります。
-* お客様が既存のエンドポイントを非公開なままにして公開しないと決めた場合、API Management インスタンスを [Azure Virtual Network (VNet)][azure-vnet] にリンクできます。
-  * デプロイされた Azure Virtual Network にリンクされた [Azure リフトおよびシフト シナリオ][azure-vm-lift-shift]では、お客様はプライベート IP アドレスを介してバックエンド サービスに直接アドレス指定することができました。
-  * オンプレミスのシナリオで、API Management インスタンスは、[Azure VPN ゲートウェイとサイト間 IPSec VPN 接続][azure-vpn]または [ExpressRoute][azure-er] を介して、非公開で内部サービスに到達し、これを[ハイブリッドの Azure およびオンプレミス シナリオ][azure-hybrid]にすることができます。
-* 内部モードで API Management インスタンスを展開することで、API Management インスタンスを非公開のままにすることができます。 この展開を [Azure Application Gateway][azure-appgw] と共に使用することで、いくつかの API のパブリック アクセスを可能にしながら、その他を内部のままにすることができます。 詳細については、[内部モードの APIM を VNET に接続する方法][apim-vnet-internal]に関するページを参照してください。
+- 組織が、レガシ アプリケーションをホストしている VM を含め、インフラストラクチャを完全に Azure に移行する予定だった場合でも、APIM は、アドレス指定可能な HTTP エンドポイントのファサードとして機能することができるため、優れた選択肢になります。
+- お客様が既存のエンドポイントを非公開なままにして公開しないと決めた場合、API Management インスタンスを [Azure Virtual Network (VNet)][azure-vnet] にリンクできます。
+  - デプロイされた Azure Virtual Network にリンクされた [Azure リフトおよびシフト シナリオ][azure-vm-lift-shift]では、お客様はプライベート IP アドレスを介してバックエンド サービスに直接アドレス指定することができました。
+  - オンプレミスのシナリオで、API Management インスタンスは、[Azure VPN ゲートウェイとサイト間 IPSec VPN 接続][azure-vpn]または [ExpressRoute][azure-er] を介して、非公開で内部サービスに到達し、これを[ハイブリッドの Azure およびオンプレミス シナリオ][azure-hybrid]にすることができます。
+- 内部モードで API Management インスタンスを展開することで、API Management インスタンスを非公開のままにすることができます。 この展開を [Azure Application Gateway][azure-appgw] と共に使用することで、いくつかの API のパブリック アクセスを可能にしながら、その他を内部のままにすることができます。 詳細については、[内部モードの APIM を VNET に接続する方法][apim-vnet-internal]に関するページを参照してください。
 
 > [!NOTE]
 > API Management を VNET に接続するための一般的な情報については、[こちらを参照してください][apim-vnet]。
 
 ### <a name="availability-and-scalability"></a>可用性とスケーラビリティ
 
-* Azure API Management は、価格レベルを選択し、ユニットを追加することで[スケールアウト][apim-scaleout]することができます。
-* スケーリングは[自動スケーリング][apim-autoscale]で自動的に行われます。
-* [複数リージョンにデプロイ][apim-multi-regions]すると、フェールオーバー オプションが有効になります。これは [Premium レベル][apim-pricing]で実行できます。
-* 監視のために [Azure Monitor][azure-mon] を介してメトリックに接続することもできる [Azure Application Insights との統合][azure-apim-ai]を検討してみてください。
+- Azure API Management は、価格レベルを選択し、ユニットを追加することで[スケールアウト][apim-scaleout]することができます。
+- スケーリングは[自動スケーリング][apim-autoscale]で自動的に行われます。
+- [複数リージョンにデプロイ][apim-multi-regions]すると、フェールオーバー オプションが有効になります。これは [Premium レベル][apim-pricing]で実行できます。
+- 監視のために [Azure Monitor][azure-mon] を介してメトリックに接続することもできる [Azure Application Insights との統合][azure-apim-ai]を検討してみてください。
 
-## <a name="deployment"></a>Deployment
+## <a name="deploy-the-scenario"></a>シナリオのデプロイ
 
 まず、[ポータルで Azure API Management インスタンスを作成します。][apim-create]
 
@@ -88,8 +89,8 @@ API Management は、Developer、Basic、Standard、Premium の 4 つのレベ�
 
 さまざまな Azure API Management の[ドキュメントとリファレンスの記事][apim]を確認してください。
 
-
 <!-- links -->
+
 [architecture]: ./media/architecture-apim-api-scenario.png
 [apim-create]: /azure/api-management/get-started-create-service-instance
 [apim-git]: /azure/api-management/api-management-configuration-repository-git

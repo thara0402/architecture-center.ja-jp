@@ -4,12 +4,12 @@ titleSuffix: Enterprise Cloud Adoption
 description: デジタル資産を合理化するときに使用できるオプションについて説明する
 author: BrianBlanchard
 ms.date: 12/10/2018
-ms.openlocfilehash: 4e2765198b64c36470adc9fbe35872e4714780e8
-ms.sourcegitcommit: e7f8676bbffe500fc4d6deb603b7c0b7ba1884a6
+ms.openlocfilehash: 66eee782b63210bcba3022e3be5b8fdee11716ec
+ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53179731"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53643681"
 ---
 # <a name="enterprise-cloud-adoption-the-5-rs-of-rationalization"></a>エンタープライズ クラウドの導入: 合理化の 5 R
 

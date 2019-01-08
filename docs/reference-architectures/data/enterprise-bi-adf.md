@@ -5,18 +5,18 @@ description: Azure Data Factory と SQL Data Warehouse を使用して、Azure �
 author: MikeWasson
 ms.date: 11/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: d87583802496f8be85e44c896ae7d6a26306cffc
-ms.sourcegitcommit: 88a68c7e9b6b772172b7faa4b9fd9c061a9f7e9d
+ms.openlocfilehash: 8263da7675beb61add371c945aab72b203c2349c
+ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53120341"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53644007"
 ---
 # <a name="automated-enterprise-bi-with-sql-data-warehouse-and-azure-data-factory"></a>SQL Data Warehouse と Azure Data Factory を使用したエンタープライズ BI の自動化
 
 この参照アーキテクチャは、[抽出 - 読み込み - 変換 (ELT)](../../data-guide/relational-data/etl.md#extract-load-and-transform-elt) パイプラインで段階的に読み込む方法を示しています。 Azure Data Factory を使用して ELT パイプラインを自動化します。 パイプラインは、オンプレミスの SQL Server データベースから SQL Data Warehouse に最新の OLTP データを段階的に移動します。 トランザクション データは、分析のために表形式モデルに変換されます。
 
-> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2Gnz2]
+> [!VIDEO <https://www.microsoft.com/videoplayer/embed/RE2Gnz2>]
 
 このアーキテクチャのリファレンス実装は、[GitHub][github] で入手できます。
 
@@ -201,7 +201,16 @@ SET [Integration].[Sale_Staging].[WWI Customer ID] =  CustomerHolder.[WWI Custom
 - Azure Analysis Services インスタンス。
 - ELT ジョブ用の Azure Data Factory と Data Factory パイプライン。
 
+## <a name="related-resources"></a>関連リソース
+
+同じテクノロジの一部を使用する具体的なソリューションを示す次の [Azure のサンプル シナリオ](/azure/architecture/example-scenario)をレビューできます。
+
+- [販売およびマーケティング向けのデータ ウェアハウスと分析](/azure/architecture/example-scenario/data/data-warehouse)
+- [既存のオンプレミス SSIS と Azure Data Factory を使用したハイブリッド ETL](/azure/architecture/example-scenario/data/hybrid-etl-with-adf)
+
+<!-- links -->
+
 [adf]: /azure/data-factory
-[github]: https://github.com/mspnp/reference-architectures/tree/master/data/enterprise_bi_sqldw_advanced
+[github]: https://github.com/mspnp/azure-data-factory-sqldw-elt-pipeline
 [MergeLocation]: https://github.com/mspnp/reference-architectures/blob/master/data/enterprise_bi_sqldw_advanced/azure/sqldw_scripts/city/%5BIntegration%5D.%5BMergeLocation%5D.sql
 [wwi]: /sql/sample/world-wide-importers/wide-world-importers-oltp-database

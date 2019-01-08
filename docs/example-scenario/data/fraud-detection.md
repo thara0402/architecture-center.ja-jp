@@ -1,14 +1,15 @@
 ---
-title: Azure におけるリアルタイムでの不正検出
+title: リアルタイムでの不正検出
+titleSuffix: Azure Example Scenarios
 description: Azure Event Hubs と Stream Analytics を使用して、リアルタイムで不正行為を検出します。
 author: alexbuckgit
 ms.date: 07/05/2018
-ms.openlocfilehash: bd9eb4d572651c4e57a0043226860623cd8d17e1
-ms.sourcegitcommit: 0a31fad9b68d54e2858314ca5fe6cba6c6b95ae4
+ms.openlocfilehash: 9e4d8c5d24acc414ab38722d2df59102395250fb
+ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51610619"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53643407"
 ---
 # <a name="real-time-fraud-detection-on-azure"></a>Azure におけるリアルタイムでの不正検出
 
@@ -24,9 +25,9 @@ Event Hubs、Stream Analytics などのフル マネージド Azure サービス
 
 その他の関連するユース ケース:
 
-* 電気通信シナリオで不正な携帯電話呼び出しを検出する。
-* 金融機関向けに不正なクレジット カード トランザクションを特定する。
-* 小売または eコマースのシナリオで不正購入を特定する。
+- 電気通信シナリオで不正な携帯電話呼び出しを検出する。
+- 金融機関向けに不正なクレジット カード トランザクションを特定する。
+- 小売または eコマースのシナリオで不正購入を特定する。
 
 ## <a name="architecture"></a>アーキテクチャ
 
@@ -34,28 +35,28 @@ Event Hubs、Stream Analytics などのフル マネージド Azure サービス
 
 このシナリオでは、リアルタイム分析パイプラインのバックエンド コンポーネントに対応できます。 シナリオのデータ フローは次のとおりです。
 
-1. 携帯電話呼び出しメタデータが、ソース システムから Azure Event Hubs インスタンスに送信されます。 
+1. 携帯電話呼び出しメタデータが、ソース システムから Azure Event Hubs インスタンスに送信されます。
 2. Stream Analytics ジョブが開始され、イベント ハブ ソースを介してデータが受信されます。
 3. Stream Analytics ジョブによって定義済みクエリが実行されます。これにより、入力ストリームが変換され、不正なトランザクションのアルゴリズムに基づいて分析されます。 このクエリでは、タンブリング ウィンドウを使って、ストリームが個別のテンポラル ユニットにセグメント化されます。
 4. Stream Analytics ジョブにより、検出された不正な呼び出しを表す変換済みストリームが、Azure Blob Storage の出力シンクに書き込まれます。
 
 ### <a name="components"></a>コンポーネント
 
-* [Azure Event Hubs][docs-event-hubs] はリアルタイム ストリーミング プラットフォームであり、毎秒数百万のイベントを受け取って処理できるイベント インジェスト サービスです。 Event Hubs では、分散されたソフトウェアやデバイスから生成されるイベント、データ、またはテレメトリを処理および格納できます。 このシナリオでは、Event Hubs が、すべての電話呼び出しメタデータを受け取り、不正行為に関する分析を実行します。
-* [Azure Stream Analytics][docs-stream-analytics] は、デバイスおよび他のデータ ソースからの大量のデータ ストリームを分析できるイベント処理エンジンです。 また、データ ストリームから情報を抽出し、パターンやリレーションシップを特定することもできます。 これらのパターンでは、その他のダウンストリーム アクションをトリガーできます。 このシナリオでは、Stream Analytics によって、Event Hubs からの入力ストリームが変換され、不正な呼び出しが特定されます。
-* このシナリオでは、[BLOB ストレージ](/azure/storage/blobs/storage-blobs-introduction)を使って、Stream Analytics ジョブの結果が格納されます。
+- [Azure Event Hubs][docs-event-hubs] はリアルタイム ストリーミング プラットフォームであり、毎秒数百万のイベントを受け取って処理できるイベント インジェスト サービスです。 Event Hubs では、分散されたソフトウェアやデバイスから生成されるイベント、データ、またはテレメトリを処理および格納できます。 このシナリオでは、Event Hubs が、すべての電話呼び出しメタデータを受け取り、不正行為に関する分析を実行します。
+- [Azure Stream Analytics][docs-stream-analytics] は、デバイスおよび他のデータ ソースからの大量のデータ ストリームを分析できるイベント処理エンジンです。 また、データ ストリームから情報を抽出し、パターンやリレーションシップを特定することもできます。 これらのパターンでは、その他のダウンストリーム アクションをトリガーできます。 このシナリオでは、Stream Analytics によって、Event Hubs からの入力ストリームが変換され、不正な呼び出しが特定されます。
+- このシナリオでは、[BLOB ストレージ](/azure/storage/blobs/storage-blobs-introduction)を使って、Stream Analytics ジョブの結果が格納されます。
 
 ## <a name="considerations"></a>考慮事項
 
 ### <a name="alternatives"></a>代替手段
 
-リアルタイム メッセージ インジェスト、データ ストレージ、ストリーム処理、分析データのストレージ、および分析とレポート作成では、使用できるテクノロジが多数あります。 これらのオプションやその機能、主要な選択条件の概要については、Azure データ アーキテクチャ ガイドの[ビッグ データ アーキテクチャのリアルタイム処理](/azure/architecture/data-guide/technology-choices/real-time-ingestion)に関するページをご覧ください。
+リアルタイム メッセージ インジェスト、データ ストレージ、ストリーム処理、分析データのストレージ、および分析とレポート作成では、使用できるテクノロジが多数あります。 これらのオプションやその機能、主要な選択条件の概要については、Azure データ アーキテクチャ ガイドの「[ビッグ データ アーキテクチャ: リアルタイム処理](/azure/architecture/data-guide/technology-choices/real-time-ingestion)」をご覧ください。
 
 また、より複雑な不正検出アルゴリズムを、Azure のさまざまな機械学習サービスで生成することもできます。 これらのオプションの概要については、「[Azure データ アーキテクチャ ガイド](../../data-guide/index.md)」の[機械学習のテクノロジの選択](/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning)に関するページをご覧ください。
 
 ### <a name="availability"></a>可用性
 
-Azure Monitor には、さまざまな Azure サービスにわたって監視するための統合ユーザー インターフェイスが用意されています。 詳細については、[Microsoft Azure での監視](/azure/monitoring-and-diagnostics/monitoring-overview)に関するページをご覧ください。 Event Hubs と Stream Analytics は両方とも、Azure Monitor に統合されています。 
+Azure Monitor には、さまざまな Azure サービスにわたって監視するための統合ユーザー インターフェイスが用意されています。 詳細については、[Microsoft Azure での監視](/azure/monitoring-and-diagnostics/monitoring-overview)に関するページをご覧ください。 Event Hubs と Stream Analytics は両方とも、Azure Monitor に統合されています。
 
 他の可用性に関する考慮事項については、Azure アーキテクチャ センターの「[可用性のチェックリスト][availability]」を参照してください。
 
@@ -85,9 +86,9 @@ Azure Event Hubs では、Shared Access Signature (SAS) トークンとイベン
 
 取得するトラフィックの量に基づいて、次の 3 つのサンプル コスト プロファイルが用意されています。
 
-* [Small][small-pricing]: 1 標準ストリーミング ユニットで 1 か月あたり 100万件のイベントを処理します。
-* [Medium][medium-pricing]: 5 標準ストリーミング ユニットで 1 か月あたり 1 億件のイベントを処理します。
-* [Large][large-pricing]: 20 標準ストリーミング ユニットで 1 か月あたり 9 億 9,900 万件のイベントを処理します。
+- [Small][small-pricing]: 1 標準ストリーミング ユニットで 1 か月あたり 100万件のイベントを処理します。
+- [Medium][medium-pricing]: 5 標準ストリーミング ユニットで 1 か月あたり 1 億件のイベントを処理します。
+- [Large][large-pricing]: 20 標準ストリーミング ユニットで 1 か月あたり 9 億 9,900 万件のイベントを処理します。
 
 ## <a name="related-resources"></a>関連リソース
 
@@ -110,4 +111,3 @@ Azure Event Hubs では、Shared Access Signature (SAS) トークンとイベン
 [scalability]: /azure/architecture/checklist/scalability
 [resiliency]: ../../resiliency/index.md
 [security]: /azure/security/
-

@@ -5,12 +5,12 @@ description: 高可用性を備えた Azure の Linux環境で SAP S/4HANA を�
 author: lbrader
 ms.date: 05/11/2018
 ms.custom: seodec18
-ms.openlocfilehash: 356b80c79aeb13ac951654350eafa904ff5e5ec1
-ms.sourcegitcommit: 88a68c7e9b6b772172b7faa4b9fd9c061a9f7e9d
+ms.openlocfilehash: 9eb73ddaf5b1cb815f037f46c7e187f61d126876
+ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53120239"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53644174"
 ---
 # <a name="sap-s4hana-for-linux-virtual-machines-on-azure"></a>Azure における Linux Virtual Machines の SAP S/4HANA
 
@@ -201,5 +201,14 @@ Linux IaaS 仮想マシン ディスクを暗号化するには、[Azure Disk En
 - [Azure コミュニティ サポート](https://azure.microsoft.com/support/community/)
 - [SAP Community](https://www.sap.com/community.html)
 - [Stack Overflow](https://stackoverflow.com/tags/sap/)
+
+## <a name="related-resources"></a>関連リソース
+
+同じテクノロジの一部を使用する具体的なソリューションを示す次の [Azure のサンプル シナリオ](/azure/architecture/example-scenario)をレビューできます。
+
+- [Azure での Oracle Database を使用した SAP 運用環境ワークロードの実行](/azure/architecture/example-scenario/apps/sap-production)
+- [Azure での SAP ワークロード向けの開発/テスト環境](/azure/architecture/example-scenario/apps/sap-dev-test)
+
+<!-- links -->
 
 [visio-download]: https://archcenter.blob.core.windows.net/cdn/sap-reference-architectures.vsdx

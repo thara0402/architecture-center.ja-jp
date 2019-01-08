@@ -1,15 +1,16 @@
 ---
-title: Azure での 3D ビデオのレンダリング
+title: 3D ビデオのレンダリング
+titleSuffix: Azure Example Scenarios
 description: Azure Batch サービスを使用して、Azure でネイティブ HPC ワークロードを実行します。
 author: adamboeglin
 ms.date: 07/13/2018
 ms.custom: fasttrack
-ms.openlocfilehash: 7dacefd5179c426912dd97af9af7b5a39505392d
-ms.sourcegitcommit: a0e8d11543751d681953717f6e78173e597ae207
+ms.openlocfilehash: 7e86da637553378a460b1c179c4f59ac258f0b34
+ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53004831"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53643575"
 ---
 # <a name="3d-video-rendering-on-azure"></a>Azure での 3D ビデオのレンダリング
 
@@ -21,10 +22,10 @@ Windows Server と Linux コンピューティングのどちらのノードを�
 
 その他の関連するユース ケース:
 
-* 3D モデリング
-* Visual FX (VFX) レンダリング
-* ビデオ コード変換
-* 画像処理、色補正、およびサイズ変更
+- 3D モデリング
+- Visual FX (VFX) レンダリング
+- ビデオ コード変換
+- 画像処理、色補正、およびサイズ変更
 
 ## <a name="architecture"></a>アーキテクチャ
 
@@ -45,9 +46,9 @@ Windows Server と Linux コンピューティングのどちらのノードを�
 
 Azure Batch は、次の Azure テクノロジに基づいています。
 
-* [仮想ネットワーク](/azure/virtual-network/virtual-networks-overview)は、ヘッド ノードとコンピューティング リソースの両方に使用されます。
-* [Azure Storage アカウント](/azure/storage/common/storage-introduction)は、同期とデータ保持に使用されます。
-* [仮想マシン スケール セット][vmss]は、CycleCloud によってコンピューティング リソース用に使用されます。
+- [仮想ネットワーク](/azure/virtual-network/virtual-networks-overview)は、ヘッド ノードとコンピューティング リソースの両方に使用されます。
+- [Azure Storage アカウント](/azure/storage/common/storage-introduction)は、同期とデータ保持に使用されます。
+- [仮想マシン スケール セット][vmss]は、CycleCloud によってコンピューティング リソース用に使用されます。
 
 ## <a name="considerations"></a>考慮事項
 
@@ -55,18 +56,18 @@ Azure Batch は、次の Azure テクノロジに基づいています。
 
 レンダリング カスタマーのほとんどが高 CPU パワーのリソースを選択しますが、仮想マシンスケール セットを使用するワークロードでは VM を異なる方法で選択でき、そのワークロードはさまざまな要因に依存します。
 
-* バインドされたメモリでアプリケーションが実行されているか。
-* アプリケーションが GPU を使用する必要があるか。 
-* ジョブの種類が驚異的並列か、または密に結合されたジョブに対する InfiniBand 接続が必要か。
-* コンピューティング ノードでストレージにアクセスするには、高速の I/O が必要です。
+- バインドされたメモリでアプリケーションが実行されているか。
+- アプリケーションが GPU を使用する必要があるか。
+- ジョブの種類が驚異的並列か、または密に結合されたジョブに対する InfiniBand 接続が必要か。
+- コンピューティング ノードでストレージにアクセスするには、高速の I/O が必要です。
 
 Azure では、上記のアプリケーション要件のそれぞれに対処できる広範な VM サイズが必要で、その一部は HPC に固有ですが、最小のサイズを使用して、効果的なグリッド実装を提供することもできます。
 
-* [HPC VM サイズ][compute-hpc]: CPU バインド型レンダリングの性質があるため、Microsoft では、通常、Azure H シリーズの VM を提案しています。 この種類の VM は、特にハイエンド コンピューティング ニーズ用に構築され、8 および 16 コア vCPU サイズが使用可能で、DDR4 メモリ、SSD 一時ストレージ、および Haswell E5 Intel テクノロジを備えています。
-* [GPU VM サイズ][compute-gpu]: GPU 最適化済み VM サイズは、1 つまたは複数の NVIDIA GPU を備えた、特殊な用途に特化した仮想マシンです。 これらのサイズは、コンピューティング処理やグラフィック処理の負荷が高い視覚化ワークロードを意図して設計されています。
-* NC、NCv2、NCv3、ND の各サイズは、CUDA および OpenCL ベースのアプリケーションやシミュレーション、AI、ディープ ラーニングなどの、コンピューティング集中型およびネットワーク集中型のアプリケーション、アルゴリズム用に最適化されています。 NV サイズは、リモートの視覚化、ストリーミング、ゲーム、エンコーディング、および OpenGL や DirectX などのフレームワークを使用する VDI シナリオ用に最適化されています。
-* [メモリ最適化 VM サイズ][compute-memory]: さらに多くのメモリが必要な場合は、より高いメモリ対 CPU 比率を提供するメモリ最適化 VM サイズを使用します。
-* [汎用 VM サイズ][compute-general]: バランスのとれた CPU 対メモリ比率を提供する汎用 VM サイズを使用することもできます。
+- [HPC VM サイズ][compute-hpc]: CPU バインド型レンダリングの性質があるため、Microsoft では、通常、Azure H シリーズの VM を提案しています。 この種類の VM は、特にハイエンド コンピューティング ニーズ用に構築され、8 および 16 コア vCPU サイズが使用可能で、DDR4 メモリ、SSD 一時ストレージ、および Haswell E5 Intel テクノロジを備えています。
+- [GPU VM サイズ][compute-gpu]: GPU 最適化済み VM サイズは、1 つまたは複数の NVIDIA GPU を備えた、特殊な用途に特化した仮想マシンです。 これらのサイズは、コンピューティング処理やグラフィック処理の負荷が高い視覚化ワークロードを意図して設計されています。
+- NC、NCv2、NCv3、ND の各サイズは、CUDA および OpenCL ベースのアプリケーションやシミュレーション、AI、ディープ ラーニングなどの、コンピューティング集中型およびネットワーク集中型のアプリケーション、アルゴリズム用に最適化されています。 NV サイズは、リモートの視覚化、ストリーミング、ゲーム、エンコーディング、および OpenGL や DirectX などのフレームワークを使用する VDI シナリオ用に最適化されています。
+- [メモリ最適化 VM サイズ][compute-memory]: さらに多くのメモリが必要な場合は、より高いメモリ対 CPU 比率を提供するメモリ最適化 VM サイズを使用します。
+- [汎用 VM サイズ][compute-general]: バランスのとれた CPU 対メモリ比率を提供する汎用 VM サイズを使用することもできます。
 
 ### <a name="alternatives"></a>代替手段
 
@@ -90,32 +91,35 @@ Azure Batch アカウント内のプールをスケーリングするには、�
 
 現在 Azure Batch にはフェールオーバー機能がありません。計画外の停止が発生した場合は、次の手順を使用して、可用性を確保することをお勧めします。
 
-* 代替ストレージ アカウントを使用して代替の Azure の場所で Azure Batch アカウントを作成します
-* 同じノード プールを、同じ名前で、ノードの割り当てなしで作成します
-* アプリケーションが作成され、代替ストレージ アカウントに更新されていることを確認します
-* 入力ファイルをアップロードし、ジョブを代替 Azure Batch アカウントに送信します
+- 代替ストレージ アカウントを使用して代替の Azure の場所で Azure Batch アカウントを作成します
+- 同じノード プールを、同じ名前で、ノードの割り当てなしで作成します
+- アプリケーションが作成され、代替ストレージ アカウントに更新されていることを確認します
+- 入力ファイルをアップロードし、ジョブを代替 Azure Batch アカウントに送信します
 
-## <a name="deploy-this-scenario"></a>このシナリオのデプロイ
+## <a name="deploy-the-scenario"></a>シナリオのデプロイ
 
-### <a name="creating-an-azure-batch-account-and-pools-manually"></a>Azure Batch アカウントとプールを手動で作成する
+### <a name="create-an-azure-batch-account-and-pools-manually"></a>Azure Batch アカウントとプールを手動で作成する
 
 このシナリオでは、ご自身の顧客向けに開発できる Azure Batch ラボを SaaS ソリューションの例として紹介しながら、Azure Batch のしくみを示します。
 
 [Azure Batch Masterclass][batch-labs-masterclass]
 
-### <a name="deploying-the-example-scenario-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用してシナリオ例をデプロイする
+### <a name="deploy-the-components"></a>コンポーネントをデプロイする
 
 テンプレートによってデプロイされるもの:
 
-* 新しい Azure Batch アカウント
-* ストレージ アカウント
-* バッチ アカウントに関連付けられているノード プール
-* ノード プールは、A2 v2 VM Canonical Ubuntu イメージを使用するように構成されます
-* ノード プールには最初は VM がなく、VM を追加して手動でスケーリングする必要があります
+- 新しい Azure Batch アカウント
+- ストレージ アカウント
+- バッチ アカウントに関連付けられているノード プール
+- ノード プールは、A2 v2 VM Canonical Ubuntu イメージを使用するように構成されます
+- ノード プールには最初は VM がなく、VM を追加して手動でスケーリングする必要があります
+
+<!-- markdownlint-disable MD033 -->
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmspnp%2Fsolution-architectures%2Fmaster%2Fhpc%2Fbatchcreatewithpools.json" target="_blank">
     <img src="https://azuredeploy.net/deploybutton.png"/>
 </a>
+<!-- markdownlint-enable MD033 -->
 
 詳しくは、[Resource Manager テンプレート][azure-arm-templates]に関するページをご覧ください。
 
@@ -125,15 +129,15 @@ Azure Batch の使用コストは、プールに使用されている VM のサ�
 
 あるジョブを 8 時間実行した場合に発生するコストの例を、サーバー数ごとに次に示します。
 
-* 100 台の高パフォーマンス CPU VM:[コストの見積もり][hpc-est-high]
+- 100 台の高パフォーマンス CPU VM:[コストの見積もり][hpc-est-high]
 
   100 x H16m (16 コア、225 GB RAM、Premium Storage 512 GB)、2 TB Blob Storage、1 TB 送信
 
-* 50 台の高パフォーマンス CPU VM:[コストの見積もり][hpc-est-med]
+- 50 台の高パフォーマンス CPU VM:[コストの見積もり][hpc-est-med]
 
   50 x H16m (16 コア、225 GB RAM、Premium Storage 512 GB)、2 TB Blob Storage、1 TB 送信
 
-* 10 台の高パフォーマンス CPU VM:[コストの見積もり][hpc-est-low]
+- 10 台の高パフォーマンス CPU VM:[コストの見積もり][hpc-est-low]
 
   10 x H16m (16 コア、225 GB RAM、Premium Storage 512 GB)、2 TB Blob Storage、1 TB 送信
 
@@ -141,7 +145,7 @@ Azure Batch の使用コストは、プールに使用されている VM のサ�
 
 Azure Batch では、ノード プールでの低優先度 VM の使用もサポートされます。これにより、大幅にコストを削減できる可能性があります。 Standard VM と低優先度 VM の価格の比較など詳しくは、「[Azure Batch の価格][batch-pricing]」をごらんく。
 
-> [!NOTE] 
+> [!NOTE]
 > 低優先度 VM は、特定のアプリケーションとワークロードにのみ適します。
 
 ## <a name="related-resources"></a>関連リソース

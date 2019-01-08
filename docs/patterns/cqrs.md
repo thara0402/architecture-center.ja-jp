@@ -9,12 +9,12 @@ pnp.pattern.categories:
 - data-management
 - design-implementation
 - performance-scalability
-ms.openlocfilehash: 9a2eecdff7494fb627ea5c4655e6edc789bd5bdf
-ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
+ms.openlocfilehash: de9530f7dd55c0ce5460cd3b58ab9f216c9b5c8c
+ms.sourcegitcommit: fb22348f917a76e30a6c090fcd4a18decba0b398
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47429691"
+ms.lasthandoff: 12/16/2018
+ms.locfileid: "53450872"
 ---
 # <a name="command-and-query-responsibility-segregation-cqrs-pattern"></a>コマンド クエリ責務分離 (CQRS) パターン
 
@@ -39,8 +39,6 @@ ms.locfileid: "47429691"
 - 複数のアクターが同じデータ セットに対して操作を並列で実行するコラボレーション ドメインのデータ ストアでレコードがロックされている場合、データ競合のリスクがあります。 また、オプティミスティック ロックを使用している場合、同時更新による更新の競合のリスクもあります。 システムの複雑さとスループットの増加に伴って、これらのリスクも増加します。 さらに、従来のアプローチは、データ ストアとデータ アクセス層への負荷、および情報を取得するために必要なクエリの複雑さによって、パフォーマンスに悪影響を及ぼす可能性があります。
 
 - 各エンティティは読み取りと書き込みの両方の操作の対象となり、誤ったコンテキストでデータが公開されることがあるため、セキュリティとアクセス許可の管理が複雑化する可能性があります。
-
-> CRUD アプローチの制限の詳細については、[余裕がある場合にのみ CRUD を使用する方法](https://blogs.msdn.microsoft.com/maarten_mullender/2004/07/23/crud-only-when-you-can-afford-it-revisited/)に関するページをご覧ください。
 
 ## <a name="solution"></a>解決策
 
