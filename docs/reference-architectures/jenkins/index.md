@@ -5,12 +5,12 @@ description: シングル サインオン (SSO) で保護されたスケーラ�
 author: njray
 ms.date: 04/30/2018
 ms.custom: seodec18
-ms.openlocfilehash: 26bf9cadc8db0cd4fcc61023619ca61bb7b87855
-ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
+ms.openlocfilehash: 3500e05631ad34af0abc8e0f7a3e2b4919157746
+ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53644157"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54011346"
 ---
 # <a name="run-a-jenkins-server-on-azure"></a>Azure で Jenkins サーバーを実行する
 
@@ -52,7 +52,7 @@ ms.locfileid: "53644157"
 
 - **Azure Monitoring サービス**。 このサービスは、Jenkins をホストする Azure 仮想マシンを[監視][monitor]します。 このデプロイでは、仮想マシンの状態と CPU 使用率を監視し、アラートを送信します。
 
-## <a name="recommendations"></a>推奨事項
+## <a name="recommendations"></a>Recommendations
 
 ほとんどのシナリオには、次の推奨事項が適用されます。 これらの推奨事項には、オーバーライドする特定の要件がない限り、従ってください。
 
@@ -66,7 +66,7 @@ Jenkins ジョブが Azure リソースにアクセスできるようにする�
 
 [RBAC][rbac] により、割り当てられたロールを通じてユーザーまたはサービス プリンシパルの Azure リソースへのアクセスがさらに明確に定義され、制御されます。 組み込みロールとカスタム ロールの両方がサポートされています。 また、ロールは、パイプラインをセキュリティで保護したり、ユーザーやエージェントの責任が適切に割り当てられ、承認されていることを保証したりするうえでも役立ちます。 さらに、Azure 資産へのアクセスを制限するように RBAC を設定することもできます。 たとえば、ユーザーが特定のリソース グループ内の資産だけを使用するように制限できます。
 
-### <a name="storage"></a>ストレージ
+### <a name="storage"></a>Storage
 
 Azure Marketplace からインストールされた Jenkins の [Windows Azure Storage プラグイン][storage-plugin]を使用して、他のビルドやテストと共有できるビルド成果物を保存します。 このプラグインを Jenkins ジョブで使用するには、Azure ストレージ アカウントを構成しておく必要があります。
 
@@ -190,7 +190,7 @@ Jenkins サーバーで Jenkins Update Center の [Azure AD プラグイン][con
 
 ### <a name="step-3-provision-jenkins-server-with-azure-vm-agent-plugin"></a>手順 3:Azure VM エージェント プラグインを使用して Jenkins サーバーをプロビジョニングする
 
-この手順は Jenkins 管理者が実行します。管理者は、既にインストールされている Azure VM Agents プラグイン プラグインを設定します。
+この手順は Jenkins 管理者が実行します。管理者は、既にインストールされている Azure VM Agents プラグインを設定します。
 
 [こちらの手順に従って、プラグインを構成します][configure-agent]。 プラグインのサービス プリンシパルの設定に関するチュートリアルについては、「[Scale your Jenkins deployments to meet demand with Azure VM agents (要求を満たすために Azure VM Agents を使用して Jenkins デプロイをスケールする)][scale-agent]」をご覧ください。
 
