@@ -1,14 +1,14 @@
 ---
 title: Azure Resource Manager テンプレート機能の拡張
-description: Azure Resource Manager テンプレート機能を拡張する方法のヒントとテクニックについて説明します。
+description: Azure Resource Manager テンプレート機能を拡張する方法のヒントやコツについて説明します。
 author: petertay
 ms.date: 06/09/2017
-ms.openlocfilehash: 33ae6850ffa5b28108f30475804be5347859f0c3
-ms.sourcegitcommit: ea7108f71dab09175ff69322874d1bcba800a37a
+ms.openlocfilehash: 725013df3d0551060a9f504da7a97cdc370f956a
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
-ms.locfileid: "29963195"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54111378"
 ---
 # <a name="extend-azure-resource-manager-template-functionality"></a>Azure Resource Manager テンプレート機能の拡張
 

@@ -1,17 +1,17 @@
 ---
 title: クラウド設計パターン
 titleSuffix: Azure Architecture Center
-description: 信頼性の高い、スケーラブルで安全なアプリケーションをクラウドに構築するためのクラウド設計パターン
+description: 信頼性の高い、スケーラブルで安全なアプリケーションをクラウドに構築するための設計パターン。
 keywords: Azure
 author: dragon119
 ms.date: 12/10/2018
 ms.custom: seodec18
-ms.openlocfilehash: 003bef866b0cd873122cfb8d4730b95ba49d3d7f
-ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
+ms.openlocfilehash: 51f5f146ecf453e7134e7cc3811b2dd5ded325ac
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54011295"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54112483"
 ---
 # <a name="cloud-design-patterns"></a>クラウド設計パターン
 

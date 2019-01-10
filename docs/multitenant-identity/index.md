@@ -3,30 +3,28 @@ title: マルチテナント アプリケーションの ID 管理
 description: マルチテナント アプリケーションでの認証、承認、および ID 管理のベスト プラクティス。
 author: MikeWasson
 ms.date: 07/21/2017
-pnp.series.title: Manage Identity in Multitenant Applications
-pnp.series.next: tailspin
-ms.openlocfilehash: 24e09720d3257cbfae350995fa5238663da1d26e
-ms.sourcegitcommit: e7e0e0282fa93f0063da3b57128ade395a9c1ef9
+ms.openlocfilehash: 864317cc98ee0211d4f4274253eda12b72beceed
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52902053"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54114149"
 ---
 # <a name="manage-identity-in-multitenant-applications"></a>マルチテナント アプリケーションでの ID 管理
 
 この一連の記事では、Azure AD を認証と ID 管理のために使用する際のマルチテナントのベスト プラクティスについて説明します。
 
-[![GitHub](../_images/github.png) サンプル コード][sample application]
+[![GitHub](../_images/github.png) サンプル コード][sample-application]
 
 マルチテナント アプリケーションを構築する場合、最初の課題の 1 つは、すべてのユーザーがテナントに属しているようになるために、ユーザー ID を管理することです。 例: 
 
-* ユーザーは、その組織の資格情報でサインインします。
-* ユーザーは、その組織のデータへのアクセス権を持つ必要がありますが、他のテナントに属しているデータは必要ありません。
-* 組織は、アプリケーションにサインアップし、そのメンバーにアプリケーション ロールを割り当てることができます。
+- ユーザーは、その組織の資格情報でサインインします。
+- ユーザーは、その組織のデータへのアクセス権を持つ必要がありますが、他のテナントに属しているデータは必要ありません。
+- 組織は、アプリケーションにサインアップし、そのメンバーにアプリケーション ロールを割り当てることができます。
 
 Azure Active Directory (Azure AD) には、これらのシナリオのすべてをサポートするいくつかの優れた機能があります。
 
-この一連の記事に付け加えるために、マルチテナント アプリケーションの完全な[エンドツーエンド実装][sample application]を作成しました。 記事には、アプリケーションの作成プロセスで学習した内容が反映されています。 アプリケーションを開始するには、[「Run the Surveys application」][running-the-app] (Surveys アプリケーションの実行) を参照してください。
+この一連の記事に付け加えるために、マルチテナント アプリケーションの完全な[エンドツーエンド実装][sample-application]を作成しました。 記事には、アプリケーションの作成プロセスで学習した内容が反映されています。 アプリケーションを開始するには、[「Run the Surveys application」][running-the-app] (Surveys アプリケーションの実行) を参照してください。
 
 ## <a name="introduction"></a>はじめに
 
@@ -38,14 +36,19 @@ Azure Active Directory (Azure AD) には、これらのシナリオのすべて�
 
 ![組織のユーザー](./images/org-users.png)
 
-例: Tailspin は、SaaS アプリケーションへのサブスクリプションを販売しています。 Contoso と Fabrikam がアプリにサインアップします。 Alice (`alice@contoso`) がサインインすると、アプリケーションは Alice が Contoso に属していることを認識します。
+例:Tailspin は、SaaS アプリケーションへのサブスクリプションを販売しています。 Contoso と Fabrikam がアプリにサインアップします。 Alice (`alice@contoso`) がサインインすると、アプリケーションは Alice が Contoso に属していることを認識します。
 
-* Alice には、Contoso データへのアクセス権が *付与されます* 。
-* Alice は Fabrikam データのアクセス権を持っている*べきではありません*。
+- Alice には、Contoso データへのアクセス権が *付与されます* 。
+- Alice は Fabrikam データのアクセス権を持っている*べきではありません*。
 
-このガイダンスでは、マルチテナント アプリケーションで [Azure Active Directory][AzureAD] (Azure AD) を使用してサインインと認証を処理し、ユーザー ID を管理する方法を説明します。
+このガイダンスでは、マルチテナント アプリケーションで [Azure Active Directory (Azure AD)](/azure/active-directory) を使用してサインインと認証を処理し、ユーザー ID を管理する方法を説明します。
+
+<!-- markdownlint-disable MD026 -->
 
 ## <a name="what-is-multitenancy"></a>マルチテナントとは
+
+<!-- markdownlint-enable MD026 -->
+
 *テナント* は、ユーザーのグループです。 SaaS アプリケーションのテナントとは、アプリケーションのサブスクライバーまたは顧客です。 *マルチテナント* は、複数のテナントがアプリの同じ物理インスタンスを共有するアーキテクチャです。 テナントは物理リソース (VM や記憶域など) を共有しますが、各テナントにはアプリの論理インスタンスが付与されます。
 
 通常、アプリケーション データは、テナント内のユーザー間で共有されますが、他のテナントとは共有されません。
@@ -57,6 +60,7 @@ Azure Active Directory (Azure AD) には、これらのシナリオのすべて�
 ![シングル テナント](./images/single-tenant.png)
 
 ### <a name="multitenancy-and-horizontal-scaling"></a>マルチテナントと水平スケーリング
+
 クラウドでスケーリングを達成するには、物理インスタンスを追加する方法が一般的です。 これは "*水平スケーリング*" または "*スケーリング アウト*" と呼ばれます。たとえば、Web アプリがあるとします。 多くのトラフィックを処理する場合、サーバー VM を追加し、ロード バランサーの背後に配置します。 各 VM では、別物理インスタンスの Web アプリを実行します。
 
 ![Web サイトの負荷分散](./images/load-balancing.png)
@@ -64,40 +68,34 @@ Azure Active Directory (Azure AD) には、これらのシナリオのすべて�
 任意の要求を任意のインスタンスにルーティングできます。 その結果、システムは 1 つの論理インスタンスとして機能します。 ユーザーに影響を与えることなく、VM を増減することができます。 このアーキテクチャでは、各物理インスタンスがマルチ テナントであり、インスタンスを追加することで拡張できます。 1 つのインスタンスが停止しても、テナントに影響は及びません。
 
 ## <a name="identity-in-a-multitenant-app"></a>マルチテナント アプリの ID
+
 マルチテナント アプリの場合、テナントのコンテキストでユーザーを考慮する必要があります。
 
-**認証**
+### <a name="authentication"></a>Authentication
 
-* ユーザーは、組織の資格情報を使用してアプリにサインインします。 ユーザーがアプリの新しいユーザー プロファイルを作成する必要はありません。
-* 同じ組織内のユーザーは、同じテナントに属します。
-* ユーザーがサインインすると、アプリケーションユーザーが属するテナントを認識します。
+- ユーザーは、組織の資格情報を使用してアプリにサインインします。 ユーザーがアプリの新しいユーザー プロファイルを作成する必要はありません。
+- 同じ組織内のユーザーは、同じテナントに属します。
+- ユーザーがサインインすると、アプリケーションユーザーが属するテナントを認識します。
 
-**承認**
+### <a name="authorization"></a>Authorization
 
-* ユーザーのアクション (リソースの表示など) を承認する場合、アプリはユーザーのテナントを考慮する必要があります。
-* ユーザーには、アプリケーション内のロール ("Admin"、"Standard User" など) が割り当てられていることがあります。 ロールの割り当ては、SaaS プロバイダーではなく、顧客が管理する必要があります。
+- ユーザーのアクション (リソースの表示など) を承認する場合、アプリはユーザーのテナントを考慮する必要があります。
+- ユーザーには、アプリケーション内のロール ("Admin"、"Standard User" など) が割り当てられていることがあります。 ロールの割り当ては、SaaS プロバイダーではなく、顧客が管理する必要があります。
 
 **例:** Contoso の従業員である Alice は、ブラウザーでアプリケーションを開き、[ログイン] ボタンをクリックします。 ログイン画面にリダイレクトされ、Alice は会社の資格情報 (ユーザー名とパスワード) を入力します。 この時点で、 `alice@contoso.com`としてアプリにログインされます。 アプリケーションは、Alice がこのアプリケーションの管理者であることも認識します。 Alice は管理者なので、Contoso に属するすべてのリソースの一覧を表示できます。 ただし、自分のテナント内でのみ管理者なので、Fabrikam のリソースは表示できません。
 
 このガイドでは、ID 管理のために Azure AD を使用することに注目します。
 
-* ここでは、顧客が Azure AD (Office 365 テナントや Dynamics CRM テナントなど) にユーザー プロファイルを保存しているとします。
-* オンプレミスの Active Directory (AD) がある顧客は、[Azure AD Connect][ADConnect] を使用してオンプレミスの AD を Azure AD と同期できます。
+- ここでは、顧客が Azure AD (Office 365 テナントや Dynamics CRM テナントなど) にユーザー プロファイルを保存しているとします。
+- オンプレミスの Active Directory (AD) がある顧客は、[Azure AD Connect](/azure/active-directory/hybrid/whatis-hybrid-identity) を使用してオンプレミスの AD を Azure AD と同期できます。
 
-オンプレミスの AD がある顧客が (会社の IT ポリシーなどの理由で) Azure AD Connect を使用できない場合、SaaS プロバイダーは、Active Directory Federation Services (AD FS) を介して顧客の AD と連携できます。 このオプションについては、「 [顧客の AD FS とのフェデレーション]」を参照してください。
+オンプレミスの AD がある顧客が (会社の IT ポリシーなどの理由で) Azure AD Connect を使用できない場合、SaaS プロバイダーは、Active Directory Federation Services (AD FS) を介して顧客の AD と連携できます。 このオプションについては、「 [顧客の AD FS とのフェデレーション](adfs.md)」を参照してください。
 
 このガイドでは、データのパーティション分割、テナントごとの構成など、マルチテナントの他の側面について考慮していません。
 
-[**次へ**][tailpin]
+[**次へ**](./tailspin.md)
 
+<!-- links -->
 
-
-<!-- Links -->
-[ADConnect]: /azure/active-directory/hybrid/whatis-hybrid-identity
-[AzureAD]: /azure/active-directory
-
-[顧客の AD FS とのフェデレーション]: adfs.md
-[tailpin]: tailspin.md
-
+[sample-application]: https://github.com/mspnp/multitenant-saas-guidance
 [running-the-app]: ./run-the-app.md
-[sample application]: https://github.com/mspnp/multitenant-saas-guidance
