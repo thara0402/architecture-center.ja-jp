@@ -7,12 +7,12 @@ tags: azure-resource-manager
 ms.service: virtual-network
 ms.date: 11/28/2018
 ms.author: jonor
-ms.openlocfilehash: 1d8a9e860ab1a66104dc4133eb5f22ffb4706b84
-ms.sourcegitcommit: 5a3fa0bf35376bbe4a6dd668f2d7d44f9cf9c806
+ms.openlocfilehash: f02cc7df1e90ba3de97a1c25777ab6d27bfdf697
+ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53411686"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54011195"
 ---
 # <a name="azure-virtual-datacenter-a-network-perspective"></a>Azure 仮想データセンター:ネットワーク パースペクティブ
 
@@ -51,15 +51,6 @@ VDC 実装は、企業が次のシナリオでワークロードとアプリケ�
 -   複数のワークロード間に、共有または一元化されたセキュリティとアクセスの要件を実装する。
 -   大企業向けに Azure DevOps と一元化された IT を適切に組み合わせる。
 
-VDC の利点を実現する鍵となるのは、次のような Azure の機能を組み合わせた集中型トポロジ (ハブとスポーク) です。 
-
-- [Azure Virtual Network][VNet] 
-- [ネットワーク セキュリティ グループ (NSG)][NSG]
-- [仮想ネットワーク ピアリング][VNetPeering] 
-- [ユーザー定義ルート (UDR)][UDR]
-- [ロールベースのアクセス制御 (RBAC)][RBAC] を使用した Azure ID サービス 
-- (必要に応じて) [Azure Firewall][AzFW]、[Azure DNS][DNS]、[Azure Front Door][AFD]、[Azure Virtual WAN][vWAN]
-
 VDC の利点を実現する鍵となるのは、次のような Azure サービスの機能を組み合わせた集中型のハブとスポークのネットワーク トポロジです。
 
 * [Azure Virtual Network][VNet]、
@@ -79,9 +70,6 @@ VDC の利点を実現する鍵となるのは、次のような Azure サービ
 ## <a name="considerations-for-implementing-a-virtual-datacenter"></a>仮想データ センターの実装に関する考慮事項
 
 VDC 実装を設計するときは、考慮すべき非常に重要な問題がいくつかあります。
-
-### <a name="identity-and-directory-services"></a>ID とディレクトリ サービス
-ID とディレクトリ サービスは、オンプレミスとクラウドの両方のすべてのデータセンターの重要な側面です。 ID は、VDC 内のサービスへのアクセスと承認のすべての側面に関連しています。 承認されたユーザーとプロセスだけが Azure アカウントおよびリソースにアクセスできるようにするために、Azure では複数の種類の資格情報が認証に使用されます。 これには、Azure アカウントにアクセスするためのパスワード、暗号化キー、デジタル署名、証明書が含まれます。 
 
 ### <a name="identity-and-directory-service"></a>ID とディレクトリ サービス
 
@@ -340,7 +328,7 @@ Operations Management Suite 内の [Network Performance Monitor][NPM] ソリュ�
 
 **ビッグ データ/分析**:データを膨大な量に拡張する必要があるときに、データベースが適切にスケールアップされない場合があります。 Hadoop テクノロジは、多数のノードで分散クエリを並列に実行するシステムを提供します。 ユーザーは、データ ワークロードを IaaS VM または PaaS ([HDInsight][HDI]) で実行することを選択できます。 HDInsight は、場所ベースの VNet へのデプロイをサポートし、VDC のスポーク内のクラスターにデプロイできます。
 
-**イベントとメッセージング**:[Azure Event Hubs][EventHubs] は、数百万のイベントを収集、変換、保存する、ハイパースケールのテレメトリ インジェスト サービスです。 分散型のストリーミング プラットフォームとして、遅延時間が短く、保持時間を設定可能なため、膨大な量のテレメトリを Azure に送信し、複数のアプリケーションからデータを読み込むことができます。 Event Hubs では、1 つのストリームでリアルタイム パイプラインとバッチ ベースのパイプラインの両方をサポートできます。
+**イベントとメッセージング**:Azure Event Hubs[EventHubs] は、数百万のイベントを収集、変換、保存する、ハイパースケールのテレメトリ インジェスト サービスです。 分散型のストリーミング プラットフォームとして、遅延時間が短く、保持時間を設定可能なため、膨大な量のテレメトリを Azure に送信し、複数のアプリケーションからデータを読み込むことができます。 Event Hubs では、1 つのストリームでリアルタイム パイプラインとバッチ ベースのパイプラインの両方をサポートできます。
 
 [Azure Service Bus][ServiceBus] により、アプリケーションとサービス間に信頼性の高いクラウド メッセージング サービスを実装できます。 Azure Service Bus は、クライアントとサーバー間の非同期のブローカー メッセージング、構造化された先入れ先出し (FIFO) メッセージング、および発行機能とサブスクライブ機能を提供します。
 
