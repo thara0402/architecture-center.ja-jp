@@ -6,27 +6,28 @@ ms.date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications
 pnp.series.prev: adfs
 pnp.series.next: key-vault
-ms.openlocfilehash: 58eed82c982fe1c6cba0f04b237d92d117a26fd4
-ms.sourcegitcommit: e7e0e0282fa93f0063da3b57128ade395a9c1ef9
+ms.openlocfilehash: b5951153fff109b648e7e4f74daac0f414240fe4
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52902273"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54113146"
 ---
-# <a name="use-client-assertion-to-get-access-tokens-from-azure-ad"></a><span data-ttu-id="56c86-103">クライアント アサーションを使用した Azure AD からのアクセス トークンの取得</span><span class="sxs-lookup"><span data-stu-id="56c86-103">Use client assertion to get access tokens from Azure AD</span></span>
+# <a name="use-client-assertion-to-get-access-tokens-from-azure-ad"></a><span data-ttu-id="2ab9b-103">クライアント アサーションを使用した Azure AD からのアクセス トークンの取得</span><span class="sxs-lookup"><span data-stu-id="2ab9b-103">Use client assertion to get access tokens from Azure AD</span></span>
 
-<span data-ttu-id="56c86-104">[![GitHub](../_images/github.png) サンプル コード][sample application]</span><span class="sxs-lookup"><span data-stu-id="56c86-104">[![GitHub](../_images/github.png) Sample code][sample application]</span></span>
+<span data-ttu-id="2ab9b-104">[![GitHub](../_images/github.png) サンプル コード][sample application]</span><span class="sxs-lookup"><span data-stu-id="2ab9b-104">[![GitHub](../_images/github.png) Sample code][sample application]</span></span>
 
-## <a name="background"></a><span data-ttu-id="56c86-105">バックグラウンド</span><span class="sxs-lookup"><span data-stu-id="56c86-105">Background</span></span>
-<span data-ttu-id="56c86-106">OpenID Connect で承認コード フローまたはハイブリッド フローを使用すると、クライアントはアクセス トークンの承認コードを交換します。</span><span class="sxs-lookup"><span data-stu-id="56c86-106">When using authorization code flow or hybrid flow in OpenID Connect, the client exchanges an authorization code for an access token.</span></span> <span data-ttu-id="56c86-107">クライアントは、この手順中にサーバーに対して自身を認証する必要があります。</span><span class="sxs-lookup"><span data-stu-id="56c86-107">During this step, the client has to authenticate itself to the server.</span></span>
+## <a name="background"></a><span data-ttu-id="2ab9b-105">バックグラウンド</span><span class="sxs-lookup"><span data-stu-id="2ab9b-105">Background</span></span>
+
+<span data-ttu-id="2ab9b-106">OpenID Connect で承認コード フローまたはハイブリッド フローを使用すると、クライアントはアクセス トークンの承認コードを交換します。</span><span class="sxs-lookup"><span data-stu-id="2ab9b-106">When using authorization code flow or hybrid flow in OpenID Connect, the client exchanges an authorization code for an access token.</span></span> <span data-ttu-id="2ab9b-107">クライアントは、この手順中にサーバーに対して自身を認証する必要があります。</span><span class="sxs-lookup"><span data-stu-id="2ab9b-107">During this step, the client has to authenticate itself to the server.</span></span>
 
 ![クライアント シークレット](./images/client-secret.png)
 
-<span data-ttu-id="56c86-109">クライアントを認証する方法の 1 つは、クライアント シークレットの使用です。</span><span class="sxs-lookup"><span data-stu-id="56c86-109">One way to authenticate the client is by using a client secret.</span></span> <span data-ttu-id="56c86-110">[Tailspin Surveys][Surveys] アプリケーションは、クライアント シークレットを使用するように既定で構成されます。</span><span class="sxs-lookup"><span data-stu-id="56c86-110">That's how the [Tailspin Surveys][Surveys] application is configured by default.</span></span>
+<span data-ttu-id="2ab9b-109">クライアントを認証する方法の 1 つは、クライアント シークレットの使用です。</span><span class="sxs-lookup"><span data-stu-id="2ab9b-109">One way to authenticate the client is by using a client secret.</span></span> <span data-ttu-id="2ab9b-110">[Tailspin Surveys][Surveys] アプリケーションは、クライアント シークレットを使用するように既定で構成されます。</span><span class="sxs-lookup"><span data-stu-id="2ab9b-110">That's how the [Tailspin Surveys][Surveys] application is configured by default.</span></span>
 
-<span data-ttu-id="56c86-111">次に、クライアントから IDP に対して、アクセス トークンを要求する要求の例を示します。</span><span class="sxs-lookup"><span data-stu-id="56c86-111">Here is an example request from the client to the IDP, requesting an access token.</span></span> <span data-ttu-id="56c86-112">`client_secret` パラメーターに注目してください。</span><span class="sxs-lookup"><span data-stu-id="56c86-112">Note the `client_secret` parameter.</span></span>
+<span data-ttu-id="2ab9b-111">次に、クライアントから IDP に対して、アクセス トークンを要求する要求の例を示します。</span><span class="sxs-lookup"><span data-stu-id="2ab9b-111">Here is an example request from the client to the IDP, requesting an access token.</span></span> <span data-ttu-id="2ab9b-112">`client_secret` パラメーターに注目してください。</span><span class="sxs-lookup"><span data-stu-id="2ab9b-112">Note the `client_secret` parameter.</span></span>
 
-```
+```http
 POST https://login.microsoftonline.com/b9bd2162xxx/oauth2/token HTTP/1.1
 Content-Type: application/x-www-form-urlencoded
 
@@ -37,15 +38,15 @@ resource=https://tailspin.onmicrosoft.com/surveys.webapi
   &code=PG8wJG6Y...
 ```
 
-<span data-ttu-id="56c86-113">シークレットは単なる文字列なので、値が漏えいしないように注意する必要があります。</span><span class="sxs-lookup"><span data-stu-id="56c86-113">The secret is just a string, so you have to make sure not to leak the value.</span></span> <span data-ttu-id="56c86-114">ベスト プラクティスは、クライアント シークレットをソース制御とは別に保存することです。</span><span class="sxs-lookup"><span data-stu-id="56c86-114">The best practice is to keep the client secret out of source control.</span></span> <span data-ttu-id="56c86-115">Azure にデプロイするときは、[アプリ設定][configure-web-app]にシークレットを保存します。</span><span class="sxs-lookup"><span data-stu-id="56c86-115">When you deploy to Azure, store the secret in an [app setting][configure-web-app].</span></span>
+<span data-ttu-id="2ab9b-113">シークレットは単なる文字列なので、値が漏えいしないように注意する必要があります。</span><span class="sxs-lookup"><span data-stu-id="2ab9b-113">The secret is just a string, so you have to make sure not to leak the value.</span></span> <span data-ttu-id="2ab9b-114">ベスト プラクティスは、クライアント シークレットをソース制御とは別に保存することです。</span><span class="sxs-lookup"><span data-stu-id="2ab9b-114">The best practice is to keep the client secret out of source control.</span></span> <span data-ttu-id="2ab9b-115">Azure にデプロイするときは、[アプリ設定][configure-web-app]にシークレットを保存します。</span><span class="sxs-lookup"><span data-stu-id="2ab9b-115">When you deploy to Azure, store the secret in an [app setting][configure-web-app].</span></span>
 
-<span data-ttu-id="56c86-116">ただし、Azure サブスクリプションにアクセス権を持つ全員がアプリ設定を表示できます。</span><span class="sxs-lookup"><span data-stu-id="56c86-116">However, anyone with access to the Azure subscription can view the app settings.</span></span> <span data-ttu-id="56c86-117">さらに、シークレットをソース制御 (たとえばデプロイ スクリプトなど) に組み入れたり、電子メールで共有したりするなどの誘惑は常にあります。</span><span class="sxs-lookup"><span data-stu-id="56c86-117">Further, there is always a temptation to check secrets into source control (e.g., in deployment scripts), share them by email, and so on.</span></span>
+<span data-ttu-id="2ab9b-116">ただし、Azure サブスクリプションにアクセス権を持つ全員がアプリ設定を表示できます。</span><span class="sxs-lookup"><span data-stu-id="2ab9b-116">However, anyone with access to the Azure subscription can view the app settings.</span></span> <span data-ttu-id="2ab9b-117">さらに、シークレットをソース制御 (たとえばデプロイ スクリプトなど) に組み入れたり、電子メールで共有したりするなどの誘惑は常にあります。</span><span class="sxs-lookup"><span data-stu-id="2ab9b-117">Further, there is always a temptation to check secrets into source control (e.g., in deployment scripts), share them by email, and so on.</span></span>
 
-<span data-ttu-id="56c86-118">セキュリティを強化するには、クライアント シークレットではなく、 [クライアント アサーション] を使用できます。</span><span class="sxs-lookup"><span data-stu-id="56c86-118">For additional security, you can use [client assertion] instead of a client secret.</span></span> <span data-ttu-id="56c86-119">クライアント アサーションの場合、クライアントは X.509 証明書を使用して、クライアントから送信されたトークン要求を証明します。</span><span class="sxs-lookup"><span data-stu-id="56c86-119">With client assertion, the client uses an X.509 certificate to prove the token request came from the client.</span></span> <span data-ttu-id="56c86-120">クライアント証明書は Web サーバーにインストールされています。</span><span class="sxs-lookup"><span data-stu-id="56c86-120">The client certificate is installed on the web server.</span></span> <span data-ttu-id="56c86-121">一般的に、クライアント シークレットが誤って暴露されないようにするよりも、証明書に対するアクセス権を制限する方が簡単です。</span><span class="sxs-lookup"><span data-stu-id="56c86-121">Generally, it will be easier to restrict access to the certificate, than to ensure that nobody inadvertently reveals a client secret.</span></span> <span data-ttu-id="56c86-122">Web アプリで証明書を構成する方法の詳細については、「[Using Certificates in Azure Websites Applications (Azure Websites アプリケーションでの証明書の使用)][using-certs-in-websites]」をご覧ください。</span><span class="sxs-lookup"><span data-stu-id="56c86-122">For more information about configuring certificates in a web app, see [Using Certificates in Azure Websites Applications][using-certs-in-websites]</span></span>
+<span data-ttu-id="2ab9b-118">セキュリティを強化するには、クライアント シークレットではなく、 [クライアント アサーション] を使用できます。</span><span class="sxs-lookup"><span data-stu-id="2ab9b-118">For additional security, you can use [client assertion] instead of a client secret.</span></span> <span data-ttu-id="2ab9b-119">クライアント アサーションの場合、クライアントは X.509 証明書を使用して、クライアントから送信されたトークン要求を証明します。</span><span class="sxs-lookup"><span data-stu-id="2ab9b-119">With client assertion, the client uses an X.509 certificate to prove the token request came from the client.</span></span> <span data-ttu-id="2ab9b-120">クライアント証明書は Web サーバーにインストールされています。</span><span class="sxs-lookup"><span data-stu-id="2ab9b-120">The client certificate is installed on the web server.</span></span> <span data-ttu-id="2ab9b-121">一般的に、クライアント シークレットが誤って暴露されないようにするよりも、証明書に対するアクセス権を制限する方が簡単です。</span><span class="sxs-lookup"><span data-stu-id="2ab9b-121">Generally, it will be easier to restrict access to the certificate, than to ensure that nobody inadvertently reveals a client secret.</span></span> <span data-ttu-id="2ab9b-122">Web アプリで証明書を構成する方法の詳細については、「[Using Certificates in Azure Websites Applications (Azure Websites アプリケーションでの証明書の使用)][using-certs-in-websites]」をご覧ください。</span><span class="sxs-lookup"><span data-stu-id="2ab9b-122">For more information about configuring certificates in a web app, see [Using Certificates in Azure Websites Applications][using-certs-in-websites]</span></span>
 
-<span data-ttu-id="56c86-123">クライアント アサーションを使用したトークン要求を次に示します。</span><span class="sxs-lookup"><span data-stu-id="56c86-123">Here is a token request using client assertion:</span></span>
+<span data-ttu-id="2ab9b-123">クライアント アサーションを使用したトークン要求を次に示します。</span><span class="sxs-lookup"><span data-stu-id="2ab9b-123">Here is a token request using client assertion:</span></span>
 
-```
+```http
 POST https://login.microsoftonline.com/b9bd2162xxx/oauth2/token HTTP/1.1
 Content-Type: application/x-www-form-urlencoded
 
@@ -57,16 +58,14 @@ resource=https://tailspin.onmicrosoft.com/surveys.webapi
   &code= PG8wJG6Y...
 ```
 
-<span data-ttu-id="56c86-124">`client_secret` パラメーターは使用されなくなったことに注意してください。</span><span class="sxs-lookup"><span data-stu-id="56c86-124">Notice that the `client_secret` parameter is no longer used.</span></span> <span data-ttu-id="56c86-125">代わりに、クライアント証明書を使用して署名された JWT トークンは `client_assertion` パラメーターに含まれます。</span><span class="sxs-lookup"><span data-stu-id="56c86-125">Instead, the `client_assertion` parameter contains a JWT token that was signed using the client certificate.</span></span> <span data-ttu-id="56c86-126">`client_assertion_type` パラメーターでは、アサーションの種類 (この例では JWT トークン) を指定します。</span><span class="sxs-lookup"><span data-stu-id="56c86-126">The `client_assertion_type` parameter specifies the type of assertion &mdash; in this case, JWT token.</span></span> <span data-ttu-id="56c86-127">サーバーが JWT トークンを検証します。</span><span class="sxs-lookup"><span data-stu-id="56c86-127">The server validates the JWT token.</span></span> <span data-ttu-id="56c86-128">JWT トークンが無効の場合、トークン要求からエラーが返されます。</span><span class="sxs-lookup"><span data-stu-id="56c86-128">If the JWT token is invalid, the token request returns an error.</span></span>
+<span data-ttu-id="2ab9b-124">`client_secret` パラメーターは使用されなくなったことに注意してください。</span><span class="sxs-lookup"><span data-stu-id="2ab9b-124">Notice that the `client_secret` parameter is no longer used.</span></span> <span data-ttu-id="2ab9b-125">代わりに、クライアント証明書を使用して署名された JWT トークンは `client_assertion` パラメーターに含まれます。</span><span class="sxs-lookup"><span data-stu-id="2ab9b-125">Instead, the `client_assertion` parameter contains a JWT token that was signed using the client certificate.</span></span> <span data-ttu-id="2ab9b-126">`client_assertion_type` パラメーターでは、アサーションの種類 (この例では JWT トークン) を指定します。</span><span class="sxs-lookup"><span data-stu-id="2ab9b-126">The `client_assertion_type` parameter specifies the type of assertion &mdash; in this case, JWT token.</span></span> <span data-ttu-id="2ab9b-127">サーバーが JWT トークンを検証します。</span><span class="sxs-lookup"><span data-stu-id="2ab9b-127">The server validates the JWT token.</span></span> <span data-ttu-id="2ab9b-128">JWT トークンが無効の場合、トークン要求からエラーが返されます。</span><span class="sxs-lookup"><span data-stu-id="2ab9b-128">If the JWT token is invalid, the token request returns an error.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="56c86-129">X.509 証明書は、クライアント アサーションの唯一の形式ではありませんが、Azure AD でサポートされているため、この記事では取り上げています。</span><span class="sxs-lookup"><span data-stu-id="56c86-129">X.509 certificates are not the only form of client assertion; we focus on it here because it is supported by Azure AD.</span></span>
-> 
-> 
+> <span data-ttu-id="2ab9b-129">X.509 証明書は、クライアント アサーションの唯一の形式ではありませんが、Azure AD でサポートされているため、この記事では取り上げています。</span><span class="sxs-lookup"><span data-stu-id="2ab9b-129">X.509 certificates are not the only form of client assertion; we focus on it here because it is supported by Azure AD.</span></span>
 
-<span data-ttu-id="56c86-130">実行時に、Web アプリケーションは証明書ストアから証明書を読み取ります。</span><span class="sxs-lookup"><span data-stu-id="56c86-130">At run time, the web application reads the certificate from the certificate store.</span></span> <span data-ttu-id="56c86-131">証明書は Web アプリと同じコンピューターにインストールされている必要があります。</span><span class="sxs-lookup"><span data-stu-id="56c86-131">The certificate must be installed on the same machine as the web app.</span></span>
+<span data-ttu-id="2ab9b-130">実行時に、Web アプリケーションは証明書ストアから証明書を読み取ります。</span><span class="sxs-lookup"><span data-stu-id="2ab9b-130">At run time, the web application reads the certificate from the certificate store.</span></span> <span data-ttu-id="2ab9b-131">証明書は Web アプリと同じコンピューターにインストールされている必要があります。</span><span class="sxs-lookup"><span data-stu-id="2ab9b-131">The certificate must be installed on the same machine as the web app.</span></span>
 
-<span data-ttu-id="56c86-132">Surveys アプリケーションには、Azure AD からトークンを取得する [AuthenticationContext.AcquireTokenSilentAsync](/dotnet/api/microsoft.identitymodel.clients.activedirectory.authenticationcontext.acquiretokensilentasync) メソッドに渡すことができる、[ClientAssertionCertificate](/dotnet/api/microsoft.identitymodel.clients.activedirectory.clientassertioncertificate) を作成するヘルパー クラスが含まれています。</span><span class="sxs-lookup"><span data-stu-id="56c86-132">The Surveys application includes a helper class that creates a [ClientAssertionCertificate](/dotnet/api/microsoft.identitymodel.clients.activedirectory.clientassertioncertificate) that you can pass to the [AuthenticationContext.AcquireTokenSilentAsync](/dotnet/api/microsoft.identitymodel.clients.activedirectory.authenticationcontext.acquiretokensilentasync) method to acquire a token from Azure AD.</span></span>
+<span data-ttu-id="2ab9b-132">Surveys アプリケーションには、Azure AD からトークンを取得する [AuthenticationContext.AcquireTokenSilentAsync](/dotnet/api/microsoft.identitymodel.clients.activedirectory.authenticationcontext.acquiretokensilentasync) メソッドに渡すことができる、[ClientAssertionCertificate](/dotnet/api/microsoft.identitymodel.clients.activedirectory.clientassertioncertificate) を作成するヘルパー クラスが含まれています。</span><span class="sxs-lookup"><span data-stu-id="2ab9b-132">The Surveys application includes a helper class that creates a [ClientAssertionCertificate](/dotnet/api/microsoft.identitymodel.clients.activedirectory.clientassertioncertificate) that you can pass to the [AuthenticationContext.AcquireTokenSilentAsync](/dotnet/api/microsoft.identitymodel.clients.activedirectory.authenticationcontext.acquiretokensilentasync) method to acquire a token from Azure AD.</span></span>
 
 ```csharp
 public class CertificateCredentialService : ICredentialService
@@ -96,11 +95,12 @@ public class CertificateCredentialService : ICredentialService
 }
 ```
 
-<span data-ttu-id="56c86-133">Surveys アプリケーションでのクライアント アサーションの設定については、「[Use Azure Key Vault to protect application secrets (Azure Key Vault を使用したアプリケーション シークレットの保護)][key vault]」をご覧ください。</span><span class="sxs-lookup"><span data-stu-id="56c86-133">For information about setting up client assertion in the Surveys application, see [Use Azure Key Vault to protect application secrets ][key vault].</span></span>
+<span data-ttu-id="2ab9b-133">Surveys アプリケーションでのクライアント アサーションの設定については、「[Use Azure Key Vault to protect application secrets (Azure Key Vault を使用したアプリケーション シークレットの保護)][key vault]」をご覧ください。</span><span class="sxs-lookup"><span data-stu-id="2ab9b-133">For information about setting up client assertion in the Surveys application, see [Use Azure Key Vault to protect application secrets ][key vault].</span></span>
 
-<span data-ttu-id="56c86-134">[**次へ**][key vault]</span><span class="sxs-lookup"><span data-stu-id="56c86-134">[**Next**][key vault]</span></span>
+<span data-ttu-id="2ab9b-134">[**次へ**][key vault]</span><span class="sxs-lookup"><span data-stu-id="2ab9b-134">[**Next**][key vault]</span></span>
 
-<!-- Links -->
+<!-- links -->
+
 [configure-web-app]: /azure/app-service-web/web-sites-configure/
 [azure-management-portal]: https://portal.azure.com
 [クライアント アサーション]: https://tools.ietf.org/html/rfc7521

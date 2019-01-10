@@ -117,7 +117,7 @@ items:
           href: data-guide/technology-choices/analysis-visualizations-reporting.md
         - name: バッチ処理
           href: data-guide/technology-choices/batch-processing.md
-        - name: コグニティブ サービス
+        - name: Cognitive Services
           href: data-guide/technology-choices/cognitive-services.md
         - name: データ ストレージ
           href: data-guide/technology-choices/data-storage.md
@@ -145,7 +145,7 @@ items:
     items:
     - name: 概要
       href: patterns/index.md
-    - name: カテゴリ
+    - name: Categories
       items:
       - name: 可用性
         href: patterns/category/availability.md
@@ -207,13 +207,13 @@ items:
       href: patterns/materialized-view.md
     - name: パイプとフィルター
       href: patterns/pipes-and-filters.md
-    - name: 優先順位キュー
+    - name: Priority Queue
       href: patterns/priority-queue.md
     - name: パブリッシャー/サブスクライバー
       href: patterns/publisher-subscriber.md
     - name: キュー ベースの負荷平準化
       href: patterns/queue-based-load-leveling.md
-    - name: 再試行
+    - name: Retry
       href: patterns/retry.md
     - name: Scheduler Agent Supervisor
       href: patterns/scheduler-agent-supervisor.md
@@ -225,7 +225,7 @@ items:
       href: patterns/static-content-hosting.md
     - name: ストラングラー
       href: patterns/strangler.md
-    - name: 調整
+    - name: Throttling
       href: patterns/throttling.md
     - name: バレット キー
       href: patterns/valet-key.md
@@ -241,7 +241,7 @@ items:
       href: best-practices/background-jobs.md
     - name: キャッシュ
       href: best-practices/caching.md
-    - name: Conコンテンツ配信ネットワーク
+    - name: Content Delivery Network
       href: best-practices/cdn.md
     - name: データのパーティション分割
       href: best-practices/data-partitioning.md
@@ -401,6 +401,8 @@ items:
       href: reference-architectures/identity/adds-forest.md
     - name: AD FS を Azure に拡張する
       href: reference-architectures/identity/adfs.md
+  - name: モノのインターネット (IoT)
+    href: reference-architectures/iot/index.md
   - name: ネットワーク DMZ
     items:
     - name: Azure とオンプレミスの間の DMZ
@@ -583,9 +585,9 @@ items:
       href: cloud-adoption/appendix/azure-scaffold.md
     - name: Azure エンタープライズ スキャフォールディングの実装
       href: cloud-adoption/appendix/azure-scaffold-examples.md
-ms.openlocfilehash: fd164df3f7b0416d4bbef85ce920e7f28c1002f4
-ms.sourcegitcommit: 032f402482762f4e674aeebbc122ad18dfba11eb
+ms.openlocfilehash: eba799444e767ab6d0a3196f714edd8bc2df09e1
+ms.sourcegitcommit: 7d9efe716e8c9e99f3fafa9d0213d48c23d9713d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53396472"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54160844"
