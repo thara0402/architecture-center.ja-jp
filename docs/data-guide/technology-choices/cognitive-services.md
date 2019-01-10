@@ -3,12 +3,12 @@ title: Cognitive Services テクノロジの選択
 description: ''
 author: zoinerTejada
 ms.date: 02/12/2018
-ms.openlocfilehash: 0551bf05cb47cb3972b0d5f2e5226e23cbdacc68
-ms.sourcegitcommit: e7e0e0282fa93f0063da3b57128ade395a9c1ef9
+ms.openlocfilehash: 13d510056e4b1ce6eeec603427658215691e48ab
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52902552"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54110988"
 ---
 # <a name="choosing-a-microsoft-cognitive-services-technology"></a>Microsoft Cognitive Services テクノロジの選択
 
@@ -16,26 +16,33 @@ Microsoft Cognitive Services は、人工知能 (AI) アプリケーションお
 
 Cognitive Services の内容:
 
-* テキスト分析
-* Computer Vision
-* ビデオ分析
-* 音声認識と生成
-* 自然言語の理解
-* インテリジェント検索
+- テキスト分析
+- Computer Vision
+- ビデオ分析
+- 音声認識と生成
+- 自然言語の理解
+- インテリジェント検索
 
 主な利点:
 
-* 最小限の開発作業で最先端の AI サービスを利用。
-* HTTP REST インターフェイス経由でアプリケーションに簡単に統合。
-* Azure Data Lake Analytics で Cognitive Services を使用するための組み込みのサポート。
+- 最小限の開発作業で最先端の AI サービスを利用。
+- HTTP REST インターフェイス経由でアプリケーションに簡単に統合。
+- Azure Data Lake Analytics で Cognitive Services を使用するための組み込みのサポート。
 
 考慮事項:
 
-* Web 経由でのみ利用可能です。 通常、インターネット接続が必要です。 ただし、Custom Vision Service は例外です。このサービスでは、デバイスおよび IoT エッジで、トレーニングされたモデルを予測のためにエクスポートできます。
-* さまざまなカスタマイズがサポートされていますが、利用できるサービスがすべての予測分析要件に適合しない可能性があります。
+- Web 経由でのみ利用可能です。 通常、インターネット接続が必要です。 ただし、Custom Vision Service は例外です。このサービスでは、デバイスおよび IoT エッジで、トレーニングされたモデルを予測のためにエクスポートできます。
+
+- さまざまなカスタマイズがサポートされていますが、利用できるサービスがすべての予測分析要件に適合しない可能性があります。
+
+<!-- markdownlint-disable MD026 -->
 
 ## <a name="what-are-your-options-when-choosing-amongst-the-cognitive-services"></a>Cognitive Services の中から選ぶ場合のオプション
+
+<!-- markdownlint-disable MD026 -->
+
 Azure には数十種類の Cognitive Services があります。 最新の一覧は、サポートする機能領域別に分類されたディレクトリを確認してください。
+
 - [Vision](https://azure.microsoft.com/services/cognitive-services/directory/vision/)
 - [Speech](https://azure.microsoft.com/services/cognitive-services/directory/speech/)
 - [Knowledge](https://azure.microsoft.com/services/cognitive-services/directory/know/)
@@ -46,13 +53,13 @@ Azure には数十種類の Cognitive Services があります。 最新の一�
 
 選択肢を絞り込むために、まず次の質問に答えてください。
 
-- どのような種類のデータを扱っていますか。 使用している入力データの種類に基づいてオプションを絞り込んでください。 たとえば、入力がテキストの場合は、入力種類がテキストのサービスから選択します。 
+- どのような種類のデータを扱っていますか。 使用している入力データの種類に基づいてオプションを絞り込んでください。 たとえば、入力がテキストの場合は、入力種類がテキストのサービスから選択します。
 
-- モデルをトレーニングするためのデータは持っていますか。 "はい" の場合、精度とパフォーマンスを向上するために、用意したデータを使用して基になるモデルをトレーニングすることができるカスタム サービスを検討してください。 
+- モデルをトレーニングするためのデータは持っていますか。 "はい" の場合、精度とパフォーマンスを向上するために、用意したデータを使用して基になるモデルをトレーニングすることができるカスタム サービスを検討してください。
 
 ## <a name="capability-matrix"></a>機能のマトリックス
 
-次の表は、機能の主な相違点をまとめたものです。 
+次の表は、機能の主な相違点をまとめたものです。
 
 ### <a name="uses-prebuilt-models"></a>事前構築済みのモデルを使用
 
@@ -89,7 +96,6 @@ Azure には数十種類の Cognitive Services があります。 最新の一�
 | | 入力の種類 | 主な長所 |
 | --- | --- | --- |
 | Custom Vision Service | 画像 (またはビデオのフレーム) | 独自のコンピューター ビジョン モデルをカスタマイズします。 |
-| Custom Speech Service | 音声 | 話し方、背景ノイズ、ボキャブラリといった音声認識の障壁をなくします。 | 
+| Custom Speech Service | 音声 | 話し方、背景ノイズ、ボキャブラリといった音声認識の障壁をなくします。 |
 | Custom Decision Service | Web コンテンツ (RSS フィードなど) | 機械学習を使用して、ホーム ページに適したコンテンツを自動的に選択します |
 | Bing Custom Search API | テキスト (Web 検索クエリ) | 商用グレードの検索ツール。 |
-

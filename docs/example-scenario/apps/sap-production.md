@@ -3,14 +3,14 @@ title: Oracle データベースを使用した SAP 運用環境ワークロー�
 titleSuffix: Azure Example Scenarios
 description: Oracle データベースを使用して Azure で SAP 運用環境デプロイを実行します。
 author: DharmeshBhagat
-ms.date: 9/12/2018
+ms.date: 09/12/2018
 ms.custom: fasttrack
-ms.openlocfilehash: 2f398e98e383053f40fa8debcf5636c609339baf
-ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
+ms.openlocfilehash: 02a6eb43d3e11604857b8bd1f461c22a48f655c7
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53643732"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54110929"
 ---
 # <a name="running-sap-production-workloads-using-an-oracle-database-on-azure"></a>Azure での Oracle データベースを使用した SAP 運用環境ワークロードの実行
 
@@ -43,9 +43,13 @@ SAP システムは、ミッション クリティカルなビジネス アプ�
 ### <a name="components"></a>コンポーネント
 
 - このシナリオでは、Azure で仮想ハブ アンド スポーク トポロジを作成するために[仮想ネットワーク](/azure/virtual-network/virtual-networks-overview)が使用されています。
+
 - [仮想マシン](/azure/virtual-machines/windows/overview)は、ソリューションの各層の計算リソースを提供します。 仮想マシンの各クラスターは、[可用性セット](/azure/virtual-machines/windows/regions-and-availability#availability-sets)として構成されています。
+
 - [ExpressRoute](/azure/expressroute/expressroute-introduction) を利用すると、接続プロバイダーが確立するプライベート接続を介して、オンプレミスのネットワークが Microsoft クラウドに拡張されます。
+
 - [ネットワーク セキュリティ グループ (NSG)](/azure/virtual-network/security-overview) は、仮想ネットワーク内のリソースへのネットワーク アクセスを制限します。 NSG には、ソースまたはターゲット IP アドレス、ポート、プロトコルを基に、ネットワーク トラフィックを許可または拒否するセキュリティ規則の一覧が含まれています。
+
 - [リソース グループ](/azure/azure-resource-manager/resource-group-overview#resource-groups)は、Azure リソースの論理コンテナーとして機能します。
 
 ### <a name="alternatives"></a>代替手段
@@ -54,13 +58,13 @@ SAP では、Azure の環境でのさまざまなオペレーティング シス
 
 ## <a name="considerations"></a>考慮事項
 
-Azure で高可用性 SAP 環境を構築するための推奨プラクティスが定義されています。 詳細については、「[SAP NetWeaver のための高可用性のアーキテクチャとシナリオ](/azure/virtual-machines/workloads/sap/sap-high-availability-architecture-scenarios)」を参照してください。 [Azure VM での SAP アプリケーションの高可用性](/azure/virtual-machines/workloads/sap/high-availability-guide)に関する記事もご覧ください。
+- Azure で高可用性 SAP 環境を構築するための推奨プラクティスが定義されています。 詳細については、「[SAP NetWeaver のための高可用性のアーキテクチャとシナリオ](/azure/virtual-machines/workloads/sap/sap-high-availability-architecture-scenarios)」を参照してください。 [Azure VM での SAP アプリケーションの高可用性](/azure/virtual-machines/workloads/sap/high-availability-guide)に関する記事もご覧ください。
 
-Oracle データベースにも Azure 用の推奨プラクティスがあります。 詳細については、「[Azure での Oracle データベースの設計と実装](/azure/virtual-machines/workloads/oracle/oracle-design)」を参照してください。
+- Oracle データベースにも Azure 用の推奨プラクティスがあります。 詳細については、「[Azure での Oracle データベースの設計と実装](/azure/virtual-machines/workloads/oracle/oracle-design)」を参照してください。
 
-Oracle Data Guard は、ミッション クリティカルな Oracle データベースの単一障害点を排除するために使用されます。 詳細については、「[Azure Linux 仮想マシンで Oracle Data Guard を実装する](/azure/virtual-machines/workloads/oracle/configure-oracle-dataguard)」を参照してください。
+- Oracle Data Guard は、ミッション クリティカルな Oracle データベースの単一障害点を排除するために使用されます。 詳細については、「[Azure Linux 仮想マシンで Oracle Data Guard を実装する](/azure/virtual-machines/workloads/oracle/configure-oracle-dataguard)」を参照してください。
 
-Microsoft Azure は、Oracle データベースと共に SAP 製品をデプロイするために使用できるインフラストラクチャ サービスを提供します。 詳細については、「[SAP ワークロードのための Oracle DBMS のデプロイ](/azure/virtual-machines/workloads/sap/dbms_guide_oracle)」を参照してください。
+- Microsoft Azure は、Oracle データベースと共に SAP 製品をデプロイするために使用できるインフラストラクチャ サービスを提供します。 詳細については、「[SAP ワークロードのための Oracle DBMS のデプロイ](/azure/virtual-machines/workloads/sap/dbms_guide_oracle)」を参照してください。
 
 ## <a name="pricing"></a>価格
 

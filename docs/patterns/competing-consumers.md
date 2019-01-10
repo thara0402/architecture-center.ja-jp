@@ -1,18 +1,17 @@
 ---
-title: 競合コンシューマー
+title: 競合コンシューマー パターン
+titleSuffix: Cloud Design Patterns
 description: 複数の同時実行コンシューマーが、同じメッセージング チャネルで受信したメッセージを処理できるようにします。
 keywords: 設計パターン
 author: dragon119
 ms.date: 06/23/2017
-pnp.series.title: Cloud Design Patterns
-pnp.pattern.categories:
-- messaging
-ms.openlocfilehash: aea172dcdb33c0d8513fb69715f1549b4a20f5e6
-ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
+ms.custom: seodec18
+ms.openlocfilehash: 77459ff42422969acdc83e66535197547d555de1
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47428379"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54112109"
 ---
 # <a name="competing-consumers-pattern"></a>競合コンシューマー パターン
 
@@ -34,7 +33,7 @@ ms.locfileid: "47428379"
 
 このソリューションには次の利点があります。
 
-- アプリケーション インスタンスから送信される要求量が大幅に変動する場合でも要求を処理できる負荷平準化システムがあります。 キューは、アプリケーション インスタンスとコンシューマー サービス インスタンス間のバッファーとして機能します。 これは、「[Queue-based Load Leveling pattern](queue-based-load-leveling.md)」(キューベースの負荷平準化パターン) で説明されているよう、アプリケーションとサービス インスタンスの両方の可用性と応答性に影響を最小限に抑えるために役立ちます。 一部の実行時間が長い処理が必要なメッセージの処理では、コンシューマー サービスの他のインスタンスによる他のメッセージの同時処理が回避されません。
+- アプリケーション インスタンスから送信される要求量が大幅に変動する場合でも要求を処理できる負荷平準化システムがあります。 キューは、アプリケーション インスタンスとコンシューマー サービス インスタンス間のバッファーとして機能します。 これは、「[Queue-based Load Leveling pattern](./queue-based-load-leveling.md)」(キューベースの負荷平準化パターン) で説明されているよう、アプリケーションとサービス インスタンスの両方の可用性と応答性に影響を最小限に抑えるために役立ちます。 一部の実行時間が長い処理が必要なメッセージの処理では、コンシューマー サービスの他のインスタンスによる他のメッセージの同時処理が回避されません。
 
 - そのため、信頼性が向上します。 プロデューサーがこのパターンを使用するのではなく、コンシューマーと直接通信し、コンシューマーの監視は行わない場合、コンシューマーが失敗したときにメッセージが失われたり、処理に失敗したりする可能性が高くなります。 このパターンでは、メッセージは特定のサービス インスタンスに送信されません。 失敗したサービス インスタンスによってプロデューサーはブロックされず、機能している任意のサービス インスタンスがメッセージを処理できます。
 
@@ -85,8 +84,9 @@ ms.locfileid: "47428379"
 
 Azure には、このパターンを実装するメカニズムとして機能するストレージ キューと Service Bus キューが用意されています。 アプリケーション ロジックで、メッセージをキューに投稿できます。また、1 つ以上のロールでタスクとして実装されているコンシューマーで、このキューからメッセージを取得し、処理することができます。 Service Bus キューでは回復性のために、コンシューマーがキューからメッセージを取得するときに `PeekLock` モードを使用できます。 このモードでは、メッセージは実際に削除されず、他のコンシューマーには単に非表示にされます。 元のコンシューマーは、処理の完了時にメッセージを削除できます。 コンシューマーが失敗した場合はピーク ロックがタイムアウトし、メッセージは再び可視状態になり、別のコンシューマーが取得できるようになります。
 
-> Azure Service Bus キューの使用の詳細については、「[Service Bus のキュー、トピック、サブスクリプション](https://msdn.microsoft.com/library/windowsazure/hh367516.aspx)」を参照してください。
-Azure Storage キューの使用の詳細については、「[.NET を使用して Azure Queue Storage を使用する](https://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-queues/)」を参照してください。
+Azure Service Bus キューの使用の詳細については、「[Service Bus のキュー、トピック、サブスクリプション](https://msdn.microsoft.com/library/windowsazure/hh367516.aspx)」を参照してください。
+
+Azure Storage キューの使用の詳細については、「[.NET を使用して Azure Queue Storage を使用する](/azure/storage/queues/storage-dotnet-how-to-use-queues)」を参照してください。
 
 [GitHub](https://github.com/mspnp/cloud-design-patterns/tree/master/competing-consumers) で入手できる CompetingConsumers ソリューションの `QueueManager` クラスから引用した次のコードは、Web または worker ロールで `Start` イベント ハンドラーの `QueueClient` インスタンスを使用してキューを作成する方法を示しています。
 
@@ -174,7 +174,7 @@ private void OptionsOnExceptionReceived(object sender,
 }
 ```
 
-Azure などで使用できる自動スケール機能を使用して、キューの長さの変動に応じてロール インスタンスを開始および停止できます。 詳細については、[自動スケールのガイダンス](https://msdn.microsoft.com/library/dn589774.aspx)を参照してください。 また、ロール インスタンスとワーカー プロセス間に 1 対 1 の対応が維持されているとは限りません。1 つのロール インスタンスが複数のワーカー プロセスを実装している可能性があります。 詳細については、「[Compute Resource Consolidation pattern](compute-resource-consolidation.md)」(コンピューティング リソース統合パターン) を参照してください。
+Azure などで使用できる自動スケール機能を使用して、キューの長さの変動に応じてロール インスタンスを開始および停止できます。 詳細については、[自動スケールのガイダンス](https://msdn.microsoft.com/library/dn589774.aspx)を参照してください。 また、ロール インスタンスとワーカー プロセス間に 1 対 1 の対応が維持されているとは限りません。1 つのロール インスタンスが複数のワーカー プロセスを実装している可能性があります。 詳細については、「[Compute Resource Consolidation pattern](./compute-resource-consolidation.md)」(コンピューティング リソース統合パターン) を参照してください。
 
 ## <a name="related-patterns-and-guidance"></a>関連のあるパターンとガイダンス
 
@@ -184,8 +184,8 @@ Azure などで使用できる自動スケール機能を使用して、キュ�
 
 - [自動スケール ガイダンス](https://msdn.microsoft.com/library/dn589774.aspx)。 キュー アプリケーションの投稿メッセージの長さは変動するので、コンシューマー サービスのインスタンスを開始および停止できることがあります。 自動スケールは、ピーク時処理中のスループットの維持に役立ちます。
 
-- [コンピューティング リソース統合パターン](compute-resource-consolidation.md)。 複数のインスタンスのコンシューマー サービスを 1 つのプロセスに統合して、コストと管理のオーバーヘッドを軽減できることがあります。 「Compute Resource Consolidation」(コンピューティング リソース統合パターン) では、この手法に従う場合の利点とトレードオフについて説明しています。
+- [Compute Resource Consolidation パターン](./compute-resource-consolidation.md)。 複数のインスタンスのコンシューマー サービスを 1 つのプロセスに統合して、コストと管理のオーバーヘッドを軽減できることがあります。 「Compute Resource Consolidation」(コンピューティング リソース統合パターン) では、この手法に従う場合の利点とトレードオフについて説明しています。
 
-- [キューベースの負荷平準化パターン](queue-based-load-leveling.md)。 メッセージ キューを導入すると、システムに回復性が加わり、アプリケーション インスタンスからの変動が大きい要求量をサービス インスタンスで処理できるようになります。 メッセージ キューはバッファーとして機能し、負荷が平準化されます。 「Queue-based Load Leveling pattern」(キューベースの負荷平準化パターン) では、このスキーマについて詳しく説明しています。
+- [キュー ベースの負荷平準化パターン](./queue-based-load-leveling.md)。 メッセージ キューを導入すると、システムに回復性が加わり、アプリケーション インスタンスからの変動が大きい要求量をサービス インスタンスで処理できるようになります。 メッセージ キューはバッファーとして機能し、負荷が平準化されます。 「Queue-based Load Leveling pattern」(キューベースの負荷平準化パターン) では、このスキーマについて詳しく説明しています。
 
 - このパターンには、[サンプル アプリケーション](https://github.com/mspnp/cloud-design-patterns/tree/master/competing-consumers)が関連付けられています。

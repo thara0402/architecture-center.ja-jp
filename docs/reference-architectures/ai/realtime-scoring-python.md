@@ -2,15 +2,15 @@
 title: Python モデルのリアルタイム スコアリング
 titleSuffix: Azure Reference Architectures
 description: この参照アーキテクチャでは、Azure で Python モデルを Web サービスとしてデプロイして、リアルタイムの予測を行う方法を示します。
-author: njray
+author: msalvaris
 ms.date: 11/09/2018
 ms.custom: azcat-ai
-ms.openlocfilehash: e2312d1d1d2444f9915f4e6aa067c1487e096d3e
-ms.sourcegitcommit: 88a68c7e9b6b772172b7faa4b9fd9c061a9f7e9d
+ms.openlocfilehash: b40072b43630adf13e8ead0b6aa6bec59ca1bfac
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53120358"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54110894"
 ---
 # <a name="real-time-scoring-of-python-scikit-learn-and-deep-learning-models-on-azure"></a>Azure での Python scikit-learn モデルおよびディープ ラーニング モデルのリアルタイム スコアリング
 

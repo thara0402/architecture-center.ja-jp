@@ -1,18 +1,17 @@
 ---
-title: フェデレーション ID
+title: フェデレーション ID パターン
+titleSuffix: Cloud Design Patterns
 description: 外部の ID プロバイダーに認証を委任します。
 keywords: 設計パターン
 author: dragon119
 ms.date: 06/23/2017
-pnp.series.title: Cloud Design Patterns
-pnp.pattern.categories:
-- security
-ms.openlocfilehash: a1edbdd080309383201d33e73602e2f18928c080
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.custom: seodec18
+ms.openlocfilehash: b268000a81edbb2f224a9244d5949def75854f04
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
-ms.locfileid: "24542635"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54110359"
 ---
 # <a name="federated-identity-pattern"></a>フェデレーション ID パターン
 
@@ -41,7 +40,6 @@ ms.locfileid: "24542635"
 次の図は、クライアント アプリケーションが認証を必要とするサービスにアクセスする必要がある場合のフェデレーション ID のパターンを示しています。 認証は、STS と連携して動作する IdP によって実行されます。 IdP は、認証されたユーザーの情報を提供するセキュリティ トークンを発行します。 要求と呼ばれるこの情報にはユーザーの ID が含まれ、ロール メンバーシップ、より詳細なアクセス権などのその他の情報が含まれることもあります。
 
 ![フェデレーション認証の概要](./_images/federated-identity-overview.png)
-
 
 このモデルは一般に要求ベースのアクセス制御と呼ばれます。 アプリケーションとサービスは、トークンに含まれる要求に基づいて、機能へのアクセスを承認します。 認証が必要なサービスは、IdP を信頼する必要があります。 クライアント アプリケーションは、認証を実行する IdP と接続します。 認証が成功すると、IdP はユーザーを識別する要求を含んだトークンを STS に返します (IdP と STS は同じサービスになることがあります)。 STS では、クライアントにトークンを返す前に、定義済みの規則に基づいてトークン内の要求を変換したり補強したりできます。 これで、クライアント アプリケーションは ID の証明としてこのトークンをサービスに渡すことができます。
 
@@ -85,7 +83,6 @@ ms.locfileid: "24542635"
 
 ![大規模なエンタープライズ サブスクライバーでユーザーがアプリケーションにアクセスする方法](./_images/federated-identity-multitenat.png)
 
-
 図では、テナントが独自の ID プロバイダー、ここでは ADFS を使用して認証する方法が示されています (ステップ 1)。 テナントを正常に認証した後、ADFS がトークンを発行します。 クライアントのブラウザーは、このトークンを、テナントの ADFS が発行したトークンを信頼する SaaS アプリケーションのフェデレーション プロバイダーに転送して、SaaS フェデレーション プロバイダーに有効なトークンを取り戻します (ステップ 2)。 必要に応じて、SaaS フェデレーション プロバイダーは、新しいトークンをクライアントのブラウザーに返す前にトークン内の要求をアプリケーションが認識する要求に変換します (ステップ 3)。 アプリケーションは SaaS フェデレーション プロバイダーによって発行されたトークンを信頼し、トークン内の要求を使用して承認規則を適用します (ステップ 4)。
 
 テナントはアプリケーションにアクセスするために個別の資格情報を保存する必要がなく、テナントの会社の管理者は独自の ADFS 内でアプリケーションにアクセスできるユーザーの一覧を構成できます。
@@ -95,5 +92,5 @@ ms.locfileid: "24542635"
 - [Microsoft Azure Active Directory](https://azure.microsoft.com/services/active-directory/)
 - [Active Directory Domain Services](https://msdn.microsoft.com/library/bb897402.aspx)
 - [Active Directory フェデレーション サービス (AD FS)](https://msdn.microsoft.com/library/bb897402.aspx)
-- [Microsoft Azure のマルチテナント アプリケーションの ID 管理](https://azure.microsoft.com/documentation/articles/guidance-multitenant-identity/)
-- [Azure 上のマルチテナント アプリケーション](https://azure.microsoft.com/documentation/articles/dotnet-develop-multitenant-applications/)
+- [Microsoft Azure のマルチテナント アプリケーションの ID 管理](/azure/architecture/multitenant-identity)
+- [Azure 上のマルチテナント アプリケーション](/azure/dotnet-develop-multitenant-applications)

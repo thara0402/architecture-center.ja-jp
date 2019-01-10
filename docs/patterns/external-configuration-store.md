@@ -1,19 +1,17 @@
 ---
-title: 外部構成ストア
-description: アプリケーション展開パッケージの構成情報を一元管理される場所に移動します。
+title: 外部構成ストア パターン
+titleSuffix: Cloud Design Patterns
+description: アプリケーション展開パッケージから、一元管理される場所に構成情報を移動します。
 keywords: 設計パターン
 author: dragon119
 ms.date: 06/23/2017
-pnp.series.title: Cloud Design Patterns
-pnp.pattern.categories:
-- design-implementation
-- management-monitoring
-ms.openlocfilehash: 733ca979903d1526d3a1a6b281a8903893e19fda
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.custom: seodec18
+ms.openlocfilehash: 7e37e5bc052a9d8e8747a3a4ac3d79a311185ea4
+ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
-ms.locfileid: "24542283"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54011312"
 ---
 # <a name="external-configuration-store-pattern"></a>外部構成ストア パターン
 
@@ -41,7 +39,6 @@ ms.locfileid: "24542283"
 
 ![省略可能なローカル キャッシュがある外部構成ストア パターンの概要。](./_images/external-configuration-store-overview.png)
 
-
 ## <a name="issues-and-considerations"></a>問題と注意事項
 
 このパターンの実装方法を決めるときには、以下の点に注意してください。
@@ -52,7 +49,7 @@ ms.locfileid: "24542283"
 
 バッキング ストアの物理機能、構成情報を格納する方法と関連付ける方法、およびパフォーマンスに対する影響を検討します。 たとえば、構成情報を含む XML ドキュメントの保存には、個々の設定を読み取るために、ドキュメントを解析できる構成インターフェイスまたはアプリケーションが必要です。 設定の更新は複雑になりますが、設定のキャッシュによって、読み取りパフォーマンスの低下と相殺することができます。
 
-構成インターフェイスで、構成設定の範囲と継承の制御を許可する方法を検討します。 たとえば、構成設定の範囲を組織、アプリケーション、およびコンピューター レベルに設定する要件が考えられます。 必要に応じて、異なる範囲に対するアクセスの制御の委任をサポートし、個々のアプリケーションが設定を上書きすることを禁止または許可します。
+構成インターフェイスで、構成設定の範囲と継承の制御を許可する方法を検討します。 たとえば、構成設定の範囲を組織、アプリケーション、およびコンピューター レベルに設定する要件が考えられます。 必要に応じて、異なる範囲に対するアクセスの制御の委任をサポートし、個々のアプリケーションが設定をオーバーライドすることを禁止または許可します。
 
 構成インターフェイスで、型指定された値、コレクション、キー/値のペア、プロパティ バッグなど、必要な形式で構成データを公開できるようにします。
 
@@ -66,13 +63,13 @@ ms.locfileid: "24542283"
 
 ## <a name="when-to-use-this-pattern"></a>このパターンを使用する状況
 
-このパターンは次の場合に役立ちます。
+このパターンは次の目的に役立ちます。
 
 - 複数のアプリケーションとアプリケーション インスタンス間で構成設定を共有する場合、または標準の構成を複数のアプリケーションとアプリケーション インスタンス全体に適用する必要がある場合。
 
 - 画像や複雑なデータ型の格納など、必要なすべての構成設定をサポートしない標準の構成システム。
 
-- 一元的に保存されている設定の一部またはすべてをアプリケーションで上書きできるようにする場合など、アプリケーションの一部の設定の補完的なストアとして。
+- 一元的に保存されている設定の一部またはすべてをアプリケーションでオーバーライドできるようにする場合など、アプリケーションの一部の設定の補完的なストアとして。
 
 - 複数のアプリケーションの管理を簡易化する方法として。また、必要に応じて、構成ストアに対する一部またはすべての種類のアクセスをログに記録して、構成設定の使用を監視するため。
 
@@ -101,7 +98,7 @@ public interface ISettingsStore
 
 すべての設定は、すばやくアクセスできるように、`ExternalConfigurationManager` クラス内の `Dictionary` オブジェクトにもキャッシュされます。 構成設定の取得に使用された `GetSetting` メソッドで、キャッシュからデータを読み取ります。 キャッシュに設定が見つからなかった場合は、代わりに `BlobSettingsStore` オブジェクトから取得されます。
 
-`GetSettings` メソッドは `CheckForConfigurationChanges` メソッドを呼び出して、BLOB ストレージの構成情報が変更されたかどうかを検出します。 この処理のために、バージョン番号が確認され、`ExternalConfigurationManager` オブジェクトに保持されている最新バージョン番号が比較されます。 1 つ以上の変更が発生した場合、`Changed` イベントが発生し、`Dictionary` オブジェクトにキャッシュされている構成設定は更新されます。 これは、[キャッシュアサイド パターン](cache-aside.md)のアプリケーションです。
+`GetSettings` メソッドは `CheckForConfigurationChanges` メソッドを呼び出して、BLOB ストレージの構成情報が変更されたかどうかを検出します。 この処理のために、バージョン番号が確認され、`ExternalConfigurationManager` オブジェクトに保持されている最新バージョン番号が比較されます。 1 つ以上の変更が発生した場合、`Changed` イベントが発生し、`Dictionary` オブジェクトにキャッシュされている構成設定は更新されます。 これは、[キャッシュアサイド パターン](./cache-aside.md)のアプリケーションです。
 
 次のコード サンプルは、`Changed` イベント、`GetSettings` メソッド、および `CheckForConfigurationChanges` メソッドの実装方法を示しています。
 
@@ -130,7 +127,7 @@ public class ExternalConfigurationManager : IDisposable
   public string GetAppSetting(string key)
   {
     ...
-    // Try to get the value from the settings cache. 
+    // Try to get the value from the settings cache.
     // If there's a cache miss, get the setting from the settings store and refresh the settings cache.
 
     string value;

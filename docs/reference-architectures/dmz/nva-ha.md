@@ -5,12 +5,12 @@ description: 高可用性のネットワーク仮想アプライアンスをデ�
 author: telmosampaio
 ms.date: 12/08/2018
 ms.custom: seodec18
-ms.openlocfilehash: d3f9017db1bbf9741b10db16eb5a3dbab78f1160
-ms.sourcegitcommit: 7d21aec9d9de0004ac777c1d1e364f53aac2350d
+ms.openlocfilehash: 646721f80d19f493b7674884f8108762d743201b
+ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2018
-ms.locfileid: "53120754"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54011091"
 ---
 # <a name="deploy-highly-available-network-virtual-appliances"></a>高可用性のネットワーク仮想アプライアンスをデプロイする
 
@@ -30,6 +30,8 @@ NVA に高可用性を持たせるには、複数の NVA を可用性セット�
 
 以下のアーキテクチャは、高可用性の NVA で必要なリソースと構成について説明しています。
 
+<!-- markdownlint-disable MD033 -->
+
 | 解決策 | メリット | 考慮事項 |
 | --- | --- | --- |
 | [第 7 層で NVA を使用するイングレス][ingress-with-layer-7] |すべての NVA ノードがアクティブ |接続を終了し SNAT を使用できる NVA が必要<br/> インターネットからのトラフィックと Azure からのトラフィック用に別個の NVA セットが必要 <br/> Azure の外部から発信されるトラフィックでのみ使用可能 |
@@ -37,6 +39,8 @@ NVA に高可用性を持たせるには、複数の NVA を可用性セット�
 | [第 7 層で NVA を使用するイングレスとエグレス][ingress-egress-with-layer-7] |すべてのノードがアクティブ<br/>Azure で発信されたトラフィックを処理可能 |接続を終了し SNAT を使用できる NVA が必要<br/>インターネットからのトラフィックと Azure からのトラフィック用に別個の NVA セットが必要 |
 | [PIP-UDR スイッチ][pip-udr-switch] |すべてのトラフィック用の単一の NVA セット<br/>すべてのトラフィックを処理可能 (ポート規則に制限なし) |アクティブ/パッシブ<br/>フェールオーバー プロセスが必要 |
 | [SNAT なしのPIP-UDR](#pip-udr-nvas-without-snat) | すべてのトラフィック用の単一の NVA セット<br/>すべてのトラフィックを処理可能 (ポート規則に制限なし)<br/>着信要求に対して SNAT を構成する必要なし |アクティブ/パッシブ<br/>フェールオーバー プロセスが必要<br/>調査とフェールオーバーのロジックを仮想ネットワークの外部で実行 |
+
+<!-- markdown-enable MD033 -->
 
 ## <a name="ingress-with-layer-7-nvas"></a>第 7 層で NVA を使用するイングレス
 

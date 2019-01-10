@@ -5,12 +5,12 @@ description: さまざまな Azure サービスの回復性のガイダンスを
 author: petertaylor9999
 ms.date: 11/26/2018
 ms.custom: resiliency, checklist
-ms.openlocfilehash: 55f17d3b24af4be4f313c66923f4153296041545
-ms.sourcegitcommit: 4ba3304eebaa8c493c3e5307bdd9d723cd90b655
+ms.openlocfilehash: e1fb780cf9f54a5078cc5d3c6b597b351f93e05e
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53307182"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54112670"
 ---
 # <a name="resiliency-checklist-for-specific-azure-services"></a>特定の Azure サービスの回復性のチェックリスト
 
@@ -124,7 +124,7 @@ ms.locfileid: "53307182"
 
 **データベースをレプリケートします。** データベースをレプリケートするには、SQL Server Always On 可用性グループを使用します。 1 つの SQL Server インスタンスが失敗した場合は、高可用性を提供してください。 詳細については、「[n 層アプリケーションの Windows VM を実行する](../reference-architectures/virtual-machines-windows/n-tier.md)」をご覧ください。
 
-**データベースをバックアップします。** 既に [Azure Backup](https://azure.microsoft.com/documentation/services/backup/) を使用して VM をバックアップしている場合は、[DPM を使用した SQL Server ワークロード用 Azure Backup](/azure/backup/backup-azure-backup-sql/) を使用することを検討してください。 このアプローチでは、組織用の 1 つのバックアップ管理者の役割と、VM および SQL Server 用の 1 つにまとめられた復旧手順があります。 それ以外の場合は、[Microsoft Azure への SQL Server マネージド バックアップ](https://msdn.microsoft.com/library/dn449496.aspx)を使用してください。
+**データベースをバックアップします。** 既に [Azure Backup](/azure/backup/) を使用して VM をバックアップしている場合は、[DPM を使用した SQL Server ワークロード用 Azure Backup](/azure/backup/backup-azure-backup-sql/) を使用することを検討してください。 このアプローチでは、組織用の 1 つのバックアップ管理者の役割と、VM および SQL Server 用の 1 つにまとめられた復旧手順があります。 それ以外の場合は、[Microsoft Azure への SQL Server マネージド バックアップ](https://msdn.microsoft.com/library/dn449496.aspx)を使用してください。
 
 ## <a name="traffic-manager"></a>Traffic Manager
 

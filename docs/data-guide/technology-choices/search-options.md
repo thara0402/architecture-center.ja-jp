@@ -3,24 +3,29 @@ title: 検索データ ストアの選択
 description: ''
 author: zoinerTejada
 ms.date: 02/12/2018
-ms.openlocfilehash: b5943cd1410777b974a8cefcd77c7c2f1f2bfe67
-ms.sourcegitcommit: e7e0e0282fa93f0063da3b57128ade395a9c1ef9
+ms.openlocfilehash: 331777ff289b2158a1804541a01e8f61be38cdf7
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52902331"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54113401"
 ---
 # <a name="choosing-a-search-data-store-in-azure"></a>Azure での検索データ ストアの選択
 
-この記事では、Azure での検索データ ストア向けのテクノロジーの選択肢を比較します。 検索データ ストアは、自由形式のテキストで検索を実行するための特殊なインデックスを作成して格納するために使用されます。 インデックスが設定されたテキストは、BLOB ストレージなどの独立したデータ ストアに配置できます。 アプリケーションは、検索データ ストアにクエリを送信します。その結果は一致するドキュメントの一覧です。 このシナリオの詳細については、[自由形式のテキストでの検索の処理](../scenarios/search.md)に関する記事を参照してください。 
+この記事では、Azure での検索データ ストア向けのテクノロジーの選択肢を比較します。 検索データ ストアは、自由形式のテキストで検索を実行するための特殊なインデックスを作成して格納するために使用されます。 インデックスが設定されたテキストは、BLOB ストレージなどの独立したデータ ストアに配置できます。 アプリケーションは、検索データ ストアにクエリを送信します。その結果は一致するドキュメントの一覧です。 このシナリオの詳細については、[自由形式のテキストでの検索の処理](../scenarios/search.md)に関する記事を参照してください。
+
+<!-- markdownlint-disable MD026 -->
 
 ## <a name="what-are-your-options-when-choosing-a-search-data-store"></a>検索データ ストアを選択するときのオプション
+
+<!-- markdownlint-enable MD026 -->
+
 Azure では、次のデータ ストアのすべてが、検索インデックスを提供することによって自由形式のテキスト データに対する検索のコア要件を満たしています。
+
 - [Azure Search](/azure/search/search-what-is-azure-search)
 - [Elasticsearch](https://azuremarketplace.microsoft.com/marketplace/apps/elastic.elasticsearch?tab=Overview)
 - [Solr を使用する HDInsight](/azure/hdinsight/hdinsight-hadoop-solr-install-linux)
 - [フルテキスト検索を行う Azure SQL Database](/sql/relational-databases/search/full-text-search)
-
 
 ## <a name="key-selection-criteria"></a>主要な選択条件
 
@@ -44,37 +49,37 @@ Azure では、次のデータ ストアのすべてが、検索インデック�
 
 ### <a name="general-capabilities"></a>一般的な機能
 
-| | Azure Search | Elasticsearch | Solr を使用する HDInsight | SQL Database | 
-| --- | --- | --- | --- | --- | 
+| | Azure Search | Elasticsearch | Solr を使用する HDInsight | SQL Database |
+| --- | --- | --- | --- | --- |
 | マネージド サービスか | [はい] | いいえ  | 可能  | [はい] |  
-| REST API | [はい] | はい | [はい] | いいえ  |
-| プログラミング | .NET | Java | Java | T-SQL | 
+| REST API | [はい] | はい | はい | いいえ  |
+| プログラミング | .NET | Java | Java | T-SQL |
 | 一般的なファイルの種類 (PDF、DOCX、TXT、およびなど) 向けのドキュメント インデクサー | [はい] | いいえ  | はい | いいえ  |
 
 ### <a name="manageability-capabilities"></a>管理容易性機能
 
-| | Azure Search | Elasticsearch | Solr を使用する HDInsight | SQL Database | 
+| | Azure Search | Elasticsearch | Solr を使用する HDInsight | SQL Database |
 | --- | --- | --- | --- | --- |
 | 更新可能なスキーマ | いいえ  | 可能  | はい | [はい] |
-| スケール アウトのサポート  | [はい] | はい | [はい] | いいえ  |
+| スケール アウトのサポート  | [はい] | はい | はい | いいえ  |
 
 ### <a name="analytic-workload-capabilities"></a>分析ワークロード機能
 
-| | Azure Search | Elasticsearch | Solr を使用する HDInsight | SQL Database | 
-| --- | --- | --- | --- | --- | 
+| | Azure Search | Elasticsearch | Solr を使用する HDInsight | SQL Database |
+| --- | --- | --- | --- | --- |
 | フルテキスト検索を上回る分析のサポート | いいえ  | 可能  | はい | [はい] |
 | ログ分析スタックの一部 | いいえ  | はい (ELK) |  いいえ  | いいえ  |
-| セマンティック検索のサポート | はい (類似のドキュメントのみ検索) | [はい] | はい | はい | 
+| セマンティック検索のサポート | はい (類似のドキュメントのみ検索) | [はい] | はい | はい |
 
 ### <a name="security-capabilities"></a>セキュリティ機能
 
-| | Azure Search | Elasticsearch | Solr を使用する HDInsight | SQL Database | 
-| --- | --- | --- | --- | --- | 
-| 行レベルのセキュリティ | 一部 (グループ ID でフィルター処理するアプリケーション クエリが必要) | 一部 (グループ ID でフィルター処理するアプリケーション クエリが必要) | [はい] | [はい] | 
+| | Azure Search | Elasticsearch | Solr を使用する HDInsight | SQL Database |
+| --- | --- | --- | --- | --- |
+| 行レベルのセキュリティ | 一部 (グループ ID でフィルター処理するアプリケーション クエリが必要) | 一部 (グループ ID でフィルター処理するアプリケーション クエリが必要) | [はい] | [はい] |
 | 透過的なデータ暗号化 | いいえ  | いいえ  | いいえ  | [はい] |  
-| 特定の IP アドレスへのアクセスを制限 | いいえ  | 可能  | はい | [はい] |   
+| 特定の IP アドレスへのアクセスを制限 | いいえ  | 可能  | はい | [はい] |
 | 仮想ネットワーク アクセスのみを許可するようにアクセスを制限 | いいえ  | 可能  | はい | [はい] |  
-| Active Directory 認証 (統合認証) | いいえ  | いいえ  | いいえ  | [はい] | 
+| Active Directory 認証 (統合認証) | いいえ  | いいえ  | いいえ  | [はい] |
 
 ## <a name="see-also"></a>関連項目
 

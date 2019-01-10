@@ -1,19 +1,17 @@
 ---
-title: バレット キー
+title: バレット キー パターン
+titleSuffix: Cloud Design Patterns
 description: 特定のリソースまたはサービスへの限定的な直接アクセスをクライアントに提供する、トークンまたはキーを使用します。
 keywords: 設計パターン
 author: dragon119
 ms.date: 06/23/2017
-pnp.series.title: Cloud Design Patterns
-pnp.pattern.categories:
-- data-management
-- security
-ms.openlocfilehash: 99d3fbe05e34d61edc0d339f34665e557b250b05
-ms.sourcegitcommit: fb22348f917a76e30a6c090fcd4a18decba0b398
+ms.custom: seodec18
+ms.openlocfilehash: 09173717d499d524d4d5dad2c1202c1bf361b1e5
+ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2018
-ms.locfileid: "53450889"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54009867"
 ---
 # <a name="valet-key-pattern"></a>バレット キー パターン
 
@@ -105,7 +103,7 @@ Azure は、BLOB、テーブル、およびキュー内のデータへのきめ�
 
 Azure Shared Access Signature は、テーブルや BLOB などの特定のリソースに関連付けることができる、サーバーに保存されるアクセス ポリシーもサポートしています。 この機能は、アプリケーションで生成される Shared Access Signature トークンと比べて制御性と柔軟性が優れていて、可能な場合には常に使用する必要があります。 サーバーに保存されたポリシーで定義されている設定は変更可能で、新しいトークンを発行する必要なくトークンに反映されますが、トークン内に定義されている設定は、新しいトークンを発行せずに変更することができません。 このアプローチによって、有効期限が切れる前に有効な Shared Access Signature トークンを取り消すことも可能になっています。
 
-> 詳細については、MSDN の「[Introducing Table SAS (Shared Access Signature), Queue SAS and update to Blob SAS (テーブル SAS (Shared Access Signature)、キュー SAS、および BLOB SAS の更新の概要)](https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas/)」と「[Shared Access Signature の使用](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)」をご覧ください。
+> 詳細については、MSDN の「[Introducing Table SAS (Shared Access Signature), Queue SAS and update to Blob SAS (テーブル SAS (Shared Access Signature)、キュー SAS、および BLOB SAS の更新の概要)](https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas/)」と「[Shared Access Signature の使用](/azure/storage/common/storage-dotnet-shared-access-signature-part-1)」をご覧ください。
 
 次のコードは、5 分間有効な Shared Access Signature トークンを作成する方法を示しています。 `GetSharedAccessReferenceForUpload` メソッドは、ファイルを Azure Blob Storage にアップロードするために使用できる Shared Access Signature トークンを返します。
 
@@ -162,9 +160,10 @@ public class ValuesController : ApiController
 ## <a name="next-steps"></a>次の手順
 
 このパターンを実装する場合は、次のパターンとガイダンスも関連している可能性があります。
+
 - このパターンを示すサンプルは [GitHub](https://github.com/mspnp/cloud-design-patterns/tree/master/valet-key) から入手できます。
-- [ゲートキーパー パターン](gatekeeper.md)。 このパターンはバレット キー パターンと併用し、クライアントとアプリケーションまたはサービスの間でブローカーとして機能する専用のホスト インスタンスを使用してアプリケーションとサービスを保護できます。 ゲートキーパーは、要求を検証して不要部分を削除し、クライアントとアプリケーションの間で要求とデータを渡します。 セキュリティの追加の層を提供し、システムの攻撃対象領域を減らすことができます。
-- [静的コンテンツ ホスティング パターン](static-content-hosting.md)。 高価なコンピューティング インスタンスの要件を低減するするため、これらのリソースをクライアントに直接提供できるクラウド ベースのストレージ サービスに静的リソースをデプロイする方法について説明します。 リソースを一般に公開する予定がない場合は、バレット キー パターンを使用してそれらを保護できます。
+- [ゲートキーパー パターン](./gatekeeper.md)。 このパターンはバレット キー パターンと併用し、クライアントとアプリケーションまたはサービスの間でブローカーとして機能する専用のホスト インスタンスを使用してアプリケーションとサービスを保護できます。 ゲートキーパーは、要求を検証して不要部分を削除し、クライアントとアプリケーションの間で要求とデータを渡します。 セキュリティの追加の層を提供し、システムの攻撃対象領域を減らすことができます。
+- [静的コンテンツ ホスティング パターン](./static-content-hosting.md)。 高価なコンピューティング インスタンスの要件を低減するするため、これらのリソースをクライアントに直接提供できるクラウド ベースのストレージ サービスに静的リソースをデプロイする方法について説明します。 リソースを一般に公開する予定がない場合は、バレット キー パターンを使用してそれらを保護できます。
 - [Introducing Table SAS (Shared Access Signature), Queue SAS and update to Blob SAS (テーブル SAS (Shared Access Signature)、キュー SAS、および BLOB SAS の更新の概要)](https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas/)
-- [Shared Access Signatures の使用](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)
-- [Service Bus による Shared Access Signature 認証](https://azure.microsoft.com/documentation/articles/service-bus-shared-access-signature-authentication/)
+- [Shared Access Signatures の使用](/azure/storage/common/storage-dotnet-shared-access-signature-part-1)
+- [Service Bus による Shared Access Signature 認証](/azure/service-bus-messaging/service-bus-sas)

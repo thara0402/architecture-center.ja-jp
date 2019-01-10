@@ -8,12 +8,12 @@ description: >-
 author: telmosampaio
 ms.date: 05/02/2018
 ms.custom: seodec18
-ms.openlocfilehash: 3e3c3c8ff12bab85a96d4eb879f81195d22e79f8
-ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
+ms.openlocfilehash: e4415a2f9c2d37e61190f2fd60bbfe5990693697
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53643783"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54113316"
 ---
 # <a name="create-an-active-directory-domain-services-ad-ds-resource-forest-in-azure"></a>Azure での Active Directory Domain Services (AD DS) リソース フォレストの作成
 
@@ -27,7 +27,7 @@ Active Directory Domain Services (AD DS) は、階層構造に ID 情報を格�
 
 このアーキテクチャの一般的な使用例として、クラウドに保持するオブジェクトと ID のセキュリティの分離を維持する場合や、個々のドメインをオンプレミスからクラウドに移行する場合があります。
 
-その他の考慮事項については、「[オンプレミスの Active Directory を Azure と統合するためのソリューションの選択][considerations]」をご覧ください。 
+その他の考慮事項については、「[オンプレミスの Active Directory を Azure と統合するためのソリューションの選択][considerations]」をご覧ください。
 
 ## <a name="architecture"></a>アーキテクチャ
 
@@ -174,8 +174,8 @@ Active Directory 固有のセキュリティの考慮事項については、[Ac
 [running-VMs-for-an-N-tier-architecture-on-Azure]: ../virtual-machines-windows/n-tier.md
 
 [ad-azure-guidelines]: https://msdn.microsoft.com/library/azure/jj156090.aspx
-[azure-expressroute]: https://azure.microsoft.com/documentation/articles/expressroute-introduction/
-[azure-vpn-gateway]: https://azure.microsoft.com/documentation/articles/vpn-gateway-about-vpngateways/
+[azure-expressroute]: /azure/expressroute/expressroute-introduction
+[azure-vpn-gateway]: /azure/vpn-gateway/vpn-gateway-about-vpngateways
 [considerations]: ./considerations.md
 [creating-external-trusts]: https://technet.microsoft.com/library/cc816837(v=ws.10).aspx
 [creating-forest-trusts]: https://technet.microsoft.com/library/cc816810(v=ws.10).aspx

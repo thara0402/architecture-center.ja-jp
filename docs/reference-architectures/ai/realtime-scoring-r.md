@@ -2,14 +2,14 @@
 title: R 機械学習モデルを使用したリアルタイム スコアリング
 description: Azure Kubernetes Service (AKS) で実行される Machine Learning Server を使用して、R のリアルタイム予測サービスを実装します。
 author: njray
-ms.date: 12/12/18
+ms.date: 12/12/2018
 ms.custom: azcat-ai
-ms.openlocfilehash: a6069704c48fbc1f1a1e4b5df428011d6b5b883d
-ms.sourcegitcommit: 62d2211badd1d6950e8cb819d70c9a4ab1ee01d9
+ms.openlocfilehash: 6f3447d1dcab801ccdaf4cf88611725cc00eb68d
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53318994"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54112279"
 ---
 # <a name="real-time-scoring-of-r-machine-learning-models"></a>R 機械学習モデルを使用したリアルタイム スコアリング
 
@@ -51,7 +51,7 @@ Machine Learning Server の[モデルの運用化][operationalization]を使用�
 
 モデルの運用化をコンテナー上の Machine Learning Server で正しく機能させるには、JSON Web トークン (JWT) の証明書をインストールする必要があります。 このデプロイでは、Microsoft が提供する証明書を使用しています。 運用環境の設定では、独自のものを提供してください。
 
-Container Registry と AKS 間のトラフィックについては、[ロール ベースのアクセス制御][rbac] (RBAC) を有効にして、必要なものだけにアクセス特権を制限します。 
+Container Registry と AKS 間のトラフィックについては、[ロール ベースのアクセス制御][rbac] (RBAC) を有効にして、必要なものだけにアクセス特権を制限します。
 
 ### <a name="separate-storage"></a>別個のストレージ
 

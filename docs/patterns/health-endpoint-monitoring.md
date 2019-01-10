@@ -1,20 +1,17 @@
 ---
-title: 正常性エンドポイントの監視
+title: 正常性エンドポイントの監視パターン
+titleSuffix: Cloud Design Patterns
 description: 公開されたエンドポイントを通じて外部ツールが定期的にアクセスできる機能チェックをアプリケーションに実装します。
 keywords: 設計パターン
 author: dragon119
 ms.date: 06/23/2017
-pnp.series.title: Cloud Design Patterns
-pnp.pattern.categories:
-- availability
-- management-monitoring
-- resiliency
-ms.openlocfilehash: 22a4e47c4dd8dd3dd11a4238e859acbea49f9d1b
-ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
+ms.custom: seodec18
+ms.openlocfilehash: 85a1355ff47e6fce80d9b2ed114024651eb994db
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47428977"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54114251"
 ---
 # <a name="health-endpoint-monitoring-pattern"></a>正常性エンドポイントの監視パターン
 
@@ -42,6 +39,7 @@ Web アプリケーションとバックエンド サービスを監視して、
 ![パターンの概要](./_images/health-endpoint-monitoring-pattern.png)
 
 アプリケーションの正常性監視コードによって実行されるその他のチェックには、以下があります。
+
 - クラウド ストレージまたはデータベースの可用性と応答時間のチェック。
 - アプリケーション内にあるその他のリソースやサービス、または他の場所にあるがアプリケーションで使用されるその他のリソースやサービスのチェック。
 
@@ -67,7 +65,7 @@ Web アプリケーションを監視するサービスとツールを利用で�
 
 応答を確認する方法。 たとえば、アプリケーションが正常に動作していることを確認するには、200 (OK) 状態コードだけで十分でしょうか。 これは、アプリケーション可用性の最も基本的な基準であり、このパターンの最低限の実装である一方、アプリケーションの動作、傾向、問題発生の可能性に関する情報をほとんど提供してくれません。
 
-   >  200 (OK) がアプリケーションによって正常に返されるのは、ターゲット リソースが見つかって処理された場合のみであることを確認してください。 一部のシナリオ (ターゲット Web ページのホストにマスター ページを使用している場合など) では、ターゲットのコンテンツ ページが見つからなかった場合でも、サーバーから 404 (見つかりません) コードではなく 200 (OK) 状態コードが返されます。
+   > 200 (OK) がアプリケーションによって正常に返されるのは、ターゲット リソースが見つかって処理された場合のみであることを確認してください。 一部のシナリオ (ターゲット Web ページのホストにマスター ページを使用している場合など) では、ターゲットのコンテンツ ページが見つからなかった場合でも、サーバーから 404 (見つかりません) コードではなく 200 (OK) 状態コードが返されます。
 
 アプリケーション用に公開されるエンドポイントの数。 1 つのアプローチとしては、アプリケーションによって使用されるコア サービス用に少なくとも 1 つのエンドポイントを公開し、優先度の低いサービス用に別のエンドポイントを公開する方法があります。これにより、それぞれの監視結果に異なる重要度を割り当てることができます。 また、監視の粒度を高めるために、(コア サービスごとに 1 つなど) 公開するエンドポイントを増やすことも検討します。 たとえば、正常性確認チェックでは、アプリケーションで使用されるデータベース、ストレージ、外部のジオコーディング サービスをチェックする場合があります。これらはそれぞれ、異なるレベルのアップタイムと応答時間が必要とされています。 ジオコーディング サービスやその他のバックグラウンド タスクが数分間利用できない場合でも、アプリケーションは依然として正常である可能性があります。
 
@@ -98,6 +96,7 @@ Web アプリケーションを監視するサービスとツールを利用で�
 ## <a name="when-to-use-this-pattern"></a>このパターンを使用する状況
 
 このパターンは次の目的に役立ちます。
+
 - Web サイトと Web アプリケーションを監視して可用性を確認する。
 - Web サイトと Web アプリケーションを監視して動作の正常性をチェックする。
 - 中間層または共有のサービスを監視し、他のアプリケーションを中断させる可能性があるエラーを検出して分離する。
@@ -134,6 +133,7 @@ public ActionResult CoreServices()
   return new HttpStatusCodeResult((int)HttpStatusCode.OK);
 }
 ```
+
 `ObscurePath` メソッドは、アプリケーション構成からパスを読み取り、それをテストのエンドポイントとして使用する方法を示します。 この例 (C#) では、ID をパラメーターとして受け取り、それを使用して有効な要求をチェックする方法も示します。
 
 ```csharp
@@ -178,6 +178,7 @@ public ActionResult TestResponseFromConfig()
   return new HttpStatusCodeResult(returnStatusCode);
 }
 ```
+
 ## <a name="monitoring-endpoints-in-azure-hosted-applications"></a>Azure でホストされているアプリケーションのエンドポイントの監視
 
 Azure アプリケーションのエンドポイントの監視には、いくつかのオプションがあります。
@@ -192,7 +193,7 @@ Azure アプリケーションのエンドポイントの監視には、いく�
 
 監視できる条件は、アプリケーションに選択したホスティング メカニズム (Websites、Cloud Services、Virtual Machines、Mobile Services など) によって異なりますが、これらすべてのメカニズムでは、サービスに関する設定で指定した Web エンドポイントが使用されるアラート ルールを作成できます。 アプリケーションが正常に動作していることをアラート システムが検出できるように、このエンドポイントは迅速に応答する必要があります。
 
->  詳細については、[アラート通知の作成][portal-alerts]に関するページを参照してください。
+> 詳細については、[アラート通知の作成][portal-alerts]に関するページを参照してください。
 
 Azure Cloud Services Web ロールおよび worker ロール、または Virtual Machines でアプリケーションをホストする場合、Azure の組み込みサービスの 1 つである Traffic Manager を活用できます。 Traffic Manager は、ルーティングおよび負荷分散サービスであり、さまざまなルールと設定に基づいて、Cloud Services でホストされたアプリケーションの固有のインスタンスに要求を分散できます。
 
@@ -200,13 +201,14 @@ Traffic Manager は要求をルーティングするほか、指定された URL
 
 ただし、Traffic Manager は、監視対象の URL からの応答を受け取るために 10 秒しか待機しません。 そのため、この時間内に正常性確認コードが実行されるようにする必要があります。そうすることで、Traffic Manager とアプリケーションの間のラウンド トリップのネットワーク待ち時間に対応できます。
 
->  詳細については、[アプリケーションの監視での Traffic Manager の使用](https://azure.microsoft.com/documentation/services/traffic-manager/)に関するページを参照してください。 Traffic Manager については、「[Multiple Datacenter Deployment Guidance (複数のデータセンターへのデプロイ ガイダンス)](https://msdn.microsoft.com/library/dn589779.aspx)」でも説明されています。
+> 詳細については、[アプリケーションの監視での Traffic Manager の使用](/azure/traffic-manager/)に関するページを参照してください。 Traffic Manager については、「[Multiple Datacenter Deployment Guidance (複数のデータセンターへのデプロイ ガイダンス)](https://msdn.microsoft.com/library/dn589779.aspx)」でも説明されています。
 
 ## <a name="related-guidance"></a>関連するガイダンス
 
 次のガイダンスは、このパターンを実装する際に役に立ちます。
+
 - [Instrumentation and Telemetry Guidance (インストルメンテーションと製品利用統計情報のガイダンス)](https://msdn.microsoft.com/library/dn589775.aspx)。 サービスとコンポーネントの正常性のチェックは、通常プローブで行います。しかし、アプリケーションのパフォーマンスを監視し、実行時に発生したイベントを検出するための情報を整理することも有用です。 このデータは、正常性監視に関する追加の情報として監視ツールに送り返すことができます。 インストルメンテーションとテレメトリに関するガイダンスでは、アプリケーションのインストルメンテーションで収集されるリモート診断情報の収集について説明しています。
 - [アラート通知の受信][portal-alerts]。
 - このパターンには、ダウンロード可能な[サンプル アプリケーション](https://github.com/mspnp/cloud-design-patterns/tree/master/health-endpoint-monitoring)が含まれています。
 
-[portal-alerts]: https://azure.microsoft.com/documentation/articles/insights-receive-alert-notifications/
+[portal-alerts]: /azure/azure-monitor/platform/alerts-metric

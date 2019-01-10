@@ -1,16 +1,17 @@
 ---
 title: メッセージングのパターン
+titleSuffix: Cloud Design Patterns
 description: クラウド アプリケーションの分散特性には、スケーラビリティを最大化するために、コンポーネントとサービスが (できれば疎結合的に) 接続されているメッセージング インフラストラクチャが必要です。 非同期メッセージングは広く使用されており、多くの利点がもたらされますが、メッセージの順序、有害メッセージの管理、べき等など、課題も多数あります。
 keywords: 設計パターン
 author: dragon119
 ms.date: 12/07/2018
-pnp.series.title: Cloud Design Patterns
-ms.openlocfilehash: 754e9a7dcad20dc1c4471af00f3f142f18022d62
-ms.sourcegitcommit: a0a9981e7586bed8d876a54e055dea1e392118f8
+ms.custom: seodec18
+ms.openlocfilehash: 4619d30c152f050f3f95aee3f9983b8fe85911ed
+ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53233882"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54011329"
 ---
 # <a name="messaging-patterns"></a>メッセージングのパターン
 
@@ -18,7 +19,7 @@ ms.locfileid: "53233882"
 
 クラウド アプリケーションの分散特性には、スケーラビリティを最大化するために、コンポーネントとサービスが (できれば疎結合的に) 接続されているメッセージング インフラストラクチャが必要です。 非同期メッセージングは広く使用されており、多くの利点がもたらされますが、メッセージの順序、有害メッセージの管理、べき等など、課題も多数あります。
 
-| パターン | まとめ |
+| Pattern | まとめ |
 | ------- | ------- |
 | [競合コンシューマー](../competing-consumers.md) | 複数の同時実行コンシューマーが、同じメッセージング チャネルで受信したメッセージを処理できるようにします。 |
 | [パイプとフィルター](../pipes-and-filters.md) | 複雑な処理を実行するタスクを、再利用できる一連の独立した要素に分解します。 |

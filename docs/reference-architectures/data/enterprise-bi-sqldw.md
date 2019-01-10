@@ -5,12 +5,12 @@ description: Azure を使用して、オンプレミスに保存されたリレ�
 author: MikeWasson
 ms.date: 11/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 3808cc5d09e2e0a5aaee1a6cfcb050b98a0ef2ee
-ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
+ms.openlocfilehash: 2f15b8d4376638e6e8e522e5150a3b3c247cba8f
+ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53644225"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54010292"
 ---
 # <a name="enterprise-bi-in-azure-with-sql-data-warehouse"></a>SQL Data Warehouse を使用した Azure のエンタープライズ向け BI
 
@@ -72,7 +72,7 @@ ms.locfileid: "53644225"
 
 [bcp](/sql/tools/bcp-utility) (一括コピー プログラム) ユーティリティを使用すると、SQL テーブルからフラット テキスト ファイルを迅速に作成できます。 この手順では、エクスポートする列を選択しますが、データは変換しません。 データ変換は、SQL Data Warehouse で実行する必要があります。
 
-**Recommendations (推奨事項)**
+**推奨事項:**
 
 運用環境でのリソースの競合を最小限に抑えるために、可能であれば、データ抽出をピーク外の時間帯にスケジュールします。
 
@@ -84,7 +84,7 @@ ms.locfileid: "53644225"
 
 [AzCopy](/azure/storage/common/storage-use-azcopy) ユーティリティは、Azure Blob Storage への高パフォーマンスのデータ コピーを実行するように設計されています。
 
-**Recommendations (推奨事項)**
+**推奨事項:**
 
 ソース データの場所に近いリージョンにストレージ アカウントを作成します。 ストレージ アカウントと SQL Data Warehouse インスタンスを同じリージョンにデプロイします。
 
@@ -105,7 +105,7 @@ AzCopy では、パブリック インターネット経由でデータをスト
 1. データの一連の外部テーブルを作成します。 外部テーブルとは、ウェアハウスの外部に格納されたデータを参照するテーブル定義です。この場合は、Blob Storage 内のフラット ファイルです。 この手順では、データをウェアハウスに移動しません。
 2. ステージング テーブルを作成し、データをステージング テーブルに読み込みます。 この手順でデータをウェアハウスにコピーします。
 
-**Recommendations (推奨事項)**
+**推奨事項:**
 
 大量のデータ (1 TB 超) があり、並列処理のメリットが得られる分析ワークロードを実行する場合に、SQL Data Warehouse を検討します。 SQL Data Warehouse は、OLTP ワークロードや小規模のデータ セット (250 GB 未満) には適していません。 250 GB 未満のデータ セットについては、Azure SQL Database または SQL Server を検討します。 詳細については、[データ ウェアハウス](../../data-guide/relational-data/data-warehousing.md)に関する記事をご覧ください。
 
@@ -155,7 +155,7 @@ Power BI では、Azure Analysis Services に接続するための 2 つのオ�
 
 Power BI モデルにデータをコピーする必要がないため、ライブ接続をお勧めします。 また、DirectQuery を使用すると、結果を最新のソース データと常に一致させることができます。 詳細については、「[Power BI を使用した接続](/azure/analysis-services/analysis-services-connect-pbi)」をご覧ください。
 
-**Recommendations (推奨事項)**
+**推奨事項:**
 
 BI ダッシュボードのクエリをデータ ウェアハウスに対して直接実行しないようにしてください。 BI ダッシュボードでは、応答時間が非常に短いことが求められます。ウェアハウスに対してクエリを直接実行すると、この要件を満たすことができない可能性があります。 また、ダッシュボードの更新は同時クエリの数にカウントされるので、パフォーマンスに影響を及ぼす可能性があります。
 

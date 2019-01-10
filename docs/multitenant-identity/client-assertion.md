@@ -6,18 +6,19 @@ ms.date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications
 pnp.series.prev: adfs
 pnp.series.next: key-vault
-ms.openlocfilehash: 58eed82c982fe1c6cba0f04b237d92d117a26fd4
-ms.sourcegitcommit: e7e0e0282fa93f0063da3b57128ade395a9c1ef9
+ms.openlocfilehash: b5951153fff109b648e7e4f74daac0f414240fe4
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52902273"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54113146"
 ---
 # <a name="use-client-assertion-to-get-access-tokens-from-azure-ad"></a>クライアント アサーションを使用した Azure AD からのアクセス トークンの取得
 
 [![GitHub](../_images/github.png) サンプル コード][sample application]
 
 ## <a name="background"></a>バックグラウンド
+
 OpenID Connect で承認コード フローまたはハイブリッド フローを使用すると、クライアントはアクセス トークンの承認コードを交換します。 クライアントは、この手順中にサーバーに対して自身を認証する必要があります。
 
 ![クライアント シークレット](./images/client-secret.png)
@@ -26,7 +27,7 @@ OpenID Connect で承認コード フローまたはハイブリッド フロー
 
 次に、クライアントから IDP に対して、アクセス トークンを要求する要求の例を示します。 `client_secret` パラメーターに注目してください。
 
-```
+```http
 POST https://login.microsoftonline.com/b9bd2162xxx/oauth2/token HTTP/1.1
 Content-Type: application/x-www-form-urlencoded
 
@@ -45,7 +46,7 @@ resource=https://tailspin.onmicrosoft.com/surveys.webapi
 
 クライアント アサーションを使用したトークン要求を次に示します。
 
-```
+```http
 POST https://login.microsoftonline.com/b9bd2162xxx/oauth2/token HTTP/1.1
 Content-Type: application/x-www-form-urlencoded
 
@@ -61,8 +62,6 @@ resource=https://tailspin.onmicrosoft.com/surveys.webapi
 
 > [!NOTE]
 > X.509 証明書は、クライアント アサーションの唯一の形式ではありませんが、Azure AD でサポートされているため、この記事では取り上げています。
-> 
-> 
 
 実行時に、Web アプリケーションは証明書ストアから証明書を読み取ります。 証明書は Web アプリと同じコンピューターにインストールされている必要があります。
 
@@ -100,7 +99,8 @@ Surveys アプリケーションでのクライアント アサーションの�
 
 [**次へ**][key vault]
 
-<!-- Links -->
+<!-- links -->
+
 [configure-web-app]: /azure/app-service-web/web-sites-configure/
 [azure-management-portal]: https://portal.azure.com
 [クライアント アサーション]: https://tools.ietf.org/html/rfc7521

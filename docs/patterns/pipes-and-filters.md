@@ -1,19 +1,17 @@
 ---
-title: パイプとフィルター
+title: パイプとフィルターのパターン
+titleSuffix: Cloud Design Patterns
 description: 複雑な処理を実行するタスクを、再利用できる一連の独立した要素に分解します。
 keywords: 設計パターン
 author: dragon119
 ms.date: 06/23/2017
-pnp.series.title: Cloud Design Patterns
-pnp.pattern.categories:
-- design-implementation
-- messaging
-ms.openlocfilehash: fd616676f9487bdfe1bf23b3d0fec6c65b97a8f4
-ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
+ms.custom: seodec18
+ms.openlocfilehash: 7084b538159f7104d2322e35f94f43e905f700bf
+ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47429572"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54011686"
 ---
 # <a name="pipes-and-filters-pattern"></a>パイプとフィルターのパターン
 
@@ -39,7 +37,6 @@ ms.locfileid: "47429572"
 
 ![図 2 - パイプとフィルターを使用して実装したソリューション](./_images/pipes-and-filters-solution.png)
 
-
 1 つの要求を処理するのにかかる時間は、パイプライン内で最も低速なフィルターの速度によって決まります。 特定のデータ ソースからのストリーム内に多数の要求が含まれている場合は特に、1 つまたは複数のフィルターがボトルネックになる可能性があります。 パイプラインの構造の主な利点は、低速フィルターのインスタンスを並列に実行する機会が与えられていることです。これにより、システムの負荷を分散し、スループットを高めることができます。
 
 パイプラインを構成するフィルターは別々のコンピューターで実行できます。このため、フィルターを個別にスケール変更したり、多くのクラウド環境で提供されている弾力性を活用したりできます。 計算負荷の高いフィルターは高性能のハードウェアで実行し、その他の必要条件が低いフィルターは低価格の汎用的なハードウェアで実行することができます。 フィルターは同じデータ センターまたは地理的な場所に配置される必要はないので、パイプライン内の各要素は、必要とするリソースに近い環境で実行することができます。  次の図に、ソース 1 からのデータに対するパイプラインの適用例を示します。
@@ -50,11 +47,12 @@ ms.locfileid: "47429572"
 
 もう 1 つの利点は、このモデルで実現される回復性です。 フィルターで障害が発生したり、フィルターを実行していたコンピューターが使用できなくなったりした場合、パイプラインは、フィルターで実行されていた作業のスケジュールを設定し直して、その作業をコンポーネントの別のインスタンスに割り当てることができます。 1 つのフィルターでエラーが発生した場合、必ずしもそれが原因でパイプライン全体がエラーになるとは限りません。
 
-分散トランザクションを実装するための別のアプローチとして、パイプとフィルターのパターンを [Compensating Transaction パターン](compensating-transaction.md) と組み合わせて使用するという方法があります。 この場合、分散トランザクションを補正可能な個別のタスクに分けることができ、各タスクは Compensating Transaction パターンも実装するフィルターを使用して実装することができます。 パイプライン内のフィルターは、管理しているデータの近くで個別のホストされたタスクが実行されるように実装することができます。
+分散トランザクションを実装するための別のアプローチとして、パイプとフィルターのパターンを [Compensating Transaction パターン](./compensating-transaction.md) と組み合わせて使用するという方法があります。 この場合、分散トランザクションを補正可能な個別のタスクに分けることができ、各タスクは Compensating Transaction パターンも実装するフィルターを使用して実装することができます。 パイプライン内のフィルターは、管理しているデータの近くで個別のホストされたタスクが実行されるように実装することができます。
 
 ## <a name="issues-and-considerations"></a>問題と注意事項
 
 このパターンの実装方法を決めるときには、以下の点に注意してください。
+
 - **複雑さ**。 パイプライン内のフィルターをさまざまなサーバー間で分散する場合は特に、このパターンによって柔軟性が向上する一方で、複雑性が増大します。
 
 - **信頼性**。 パイプライン内のフィルター間を流れるデータが失われないことを保証したインフラストラクチャを使用します。
@@ -70,11 +68,12 @@ ms.locfileid: "47429572"
 ## <a name="when-to-use-this-pattern"></a>このパターンを使用する状況
 
 このパターンは次の状況で使用します。
+
 - アプリケーションで必要な処理を一連の独立した手順に容易に分割することができる。
 
 - アプリケーションによって実行される処理手順に、さまざまなスケーラビリティ要件がある。
 
-    >  スケールの変更が必要なフィルターを同じプロセスにグループ化することができます。 詳細については、「[Compute Resource Consolidation pattern](compute-resource-consolidation.md)」 (Compute Resource Consolidation パターン) を参照してください。
+    >  スケールの変更が必要なフィルターを同じプロセスにグループ化することができます。 詳細については、「[Compute Resource Consolidation pattern](./compute-resource-consolidation.md)」 (Compute Resource Consolidation パターン) を参照してください。
 
 - アプリケーションによって実行される処理手順の並び替えを可能にする柔軟性、または手順を追加および削除する機能が必要である。
 
@@ -83,6 +82,7 @@ ms.locfileid: "47429572"
 - データの処理中に手順において発生したエラーの影響を最小限に抑えることができる信頼性の高いソリューションが必要である。
 
 このパターンが適さない状況
+
 - アプリケーションによって実行される処理手順が独立していない。すなわち、それらの手順を同じトランザクションの一部としてまとめて実行する必要がある。
 
 - 手順で必要とされるコンテキストまたは状態情報の量が、このアプローチを使用するには不十分である。 状態情報をデータベースに保存しておくことができる場合があります。しかし、データベース上での負荷の増加が過剰な競合を引き起こす場合、この手法は使用しないでください。
@@ -93,10 +93,9 @@ ms.locfileid: "47429572"
 
 ![図 4 - メッセージ キューを使用したパイプラインの実装](./_images/pipes-and-filters-message-queues.png)
 
-
 Azure 上でソリューションを構築する場合は、Service Bus キューを使用して信頼性が高くスケーラブルなキュー メカニズムを実現できます。 次の C# で作成された `ServiceBusPipeFilter` クラスは、キューからの入力メッセージを受信し、これらのメッセージを処理し、結果を別のキューにポストするフィルターを実装する方法を示しています。
 
->  `ServiceBusPipeFilter` クラスは、[GitHub](https://github.com/mspnp/cloud-design-patterns/tree/master/pipes-and-filters) から入手可能な PipesAndFilters.Shared プロジェクト内に定義されています。
+> `ServiceBusPipeFilter` クラスは、[GitHub](https://github.com/mspnp/cloud-design-patterns/tree/master/pipes-and-filters) から入手可能な PipesAndFilters.Shared プロジェクト内に定義されています。
 
 ```csharp
 public class ServiceBusPipeFilter
@@ -278,8 +277,9 @@ public class FinalReceiverRoleEntry : RoleEntryPoint
 ## <a name="related-patterns-and-guidance"></a>関連のあるパターンとガイダンス
 
 このパターンを実装する場合は、次のパターンとガイダンスも関連している可能性があります。
+
 - このパターンを示すサンプルは [GitHub](https://github.com/mspnp/cloud-design-patterns/tree/master/pipes-and-filters) から入手できます。
-- [競合コンシューマー パターン](competing-consumers.md)。 パイプラインには、1 つまたは複数のフィルターの複数のインスタンスを含めることができます。 このアプローチは、低速フィルターのインスタンスを並列実行することで、システムの負荷を分散しスループットを向上させる場合に便利です。 フィルターの各インスタンスは、入力に対して互いに競合するので、フィルターの 2 つのインスタンスで同じデータを処理すべきではありません。 このアプローチの説明を入力します。
-- [Compute Resource Consolidation パターン](compute-resource-consolidation.md)。 スケールの変更が必要なフィルターを同じプロセスにグループ化することができる場合があります。 この方法の利点とトレードオフの詳細について説明します。
-- [Compensating Transaction パターン](compensating-transaction.md)。 フィルターは、取り消し可能な操作として、または、障害発生時に前の状態に復元するための補正操作を備えた操作として実装できます。 最終的な一貫性を維持または実現するためには、この方法をどのように実装すればよいかを説明します。
+- [競合コンシューマー パターン](./competing-consumers.md)。 パイプラインには、1 つまたは複数のフィルターの複数のインスタンスを含めることができます。 このアプローチは、低速フィルターのインスタンスを並列実行することで、システムの負荷を分散しスループットを向上させる場合に便利です。 フィルターの各インスタンスは、入力に対して互いに競合するので、フィルターの 2 つのインスタンスで同じデータを処理すべきではありません。 このアプローチの説明を入力します。
+- [Compute Resource Consolidation パターン](./compute-resource-consolidation.md)。 スケールの変更が必要なフィルターを同じプロセスにグループ化することができる場合があります。 この方法の利点とトレードオフの詳細について説明します。
+- [Compensating Transaction パターン](./compensating-transaction.md)。 フィルターは、取り消し可能な操作として、または、障害発生時に前の状態に復元するための補正操作を備えた操作として実装できます。 最終的な一貫性を維持または実現するためには、この方法をどのように実装すればよいかを説明します。
 - Jonathan Oliver のブログの [Idempotency パターン](https://blog.jonathanoliver.com/idempotency-patterns/)。

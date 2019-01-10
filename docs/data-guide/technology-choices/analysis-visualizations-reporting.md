@@ -3,18 +3,22 @@ title: データ分析とレポート テクノロジの選択
 description: ''
 author: zoinerTejada
 ms.date: 02/12/2018
-ms.openlocfilehash: a5e793c9caf50daca4ef7e40c49e54f25f04e856
-ms.sourcegitcommit: e7e0e0282fa93f0063da3b57128ade395a9c1ef9
+ms.openlocfilehash: 5b4947f53edf595c206ef4f55572dadc1a9daa09
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52902418"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54111412"
 ---
 # <a name="choosing-a-data-analytics-technology-in-azure"></a>Azure でのデータ分析とテクノロジの選択
 
-ほとんどのビッグ データ ソリューションの目的は、分析とレポートによってデータに関する実用的な情報を提供することにあります。 これには、事前に構成されたレポートと視覚化や、対話型データ探索が含まれます。 
+ほとんどのビッグ データ ソリューションの目的は、分析とレポートによってデータに関する実用的な情報を提供することにあります。 これには、事前に構成されたレポートと視覚化や、対話型データ探索が含まれます。
+
+<!-- markdownlint-disable MD026 -->
 
 ## <a name="what-are-your-options-when-choosing-a-data-analytics-technology"></a>データ分析テクノロジを選ぶときのオプション
+
+<!-- markdownlint-disable MD026 -->
 
 Azure での分析、視覚化、レポートには、ニーズに応じていくつかのオプションがあります。
 
@@ -29,7 +33,7 @@ Azure での分析、視覚化、レポートには、ニーズに応じてい�
 
 組織では、Power BI を使用してレポートを作成し、組織に公開できます。 すべてのユーザーは、ガバナンスと[セキュリティが組み込まれた](/power-bi/service-admin-power-bi-security)パーソナライズされたダッシュボードを作成できます。 Power BI は、[Azure Active Directory](/azure/active-directory/) (Azure AD) を使用して、Power BI サービスにログインするユーザーを認証し、ユーザーが認証を必要とするリソースへのアクセスを試みるたびに Power BI ログイン資格情報を使用します。
 
-### <a name="jupyter-notebooks"></a>Jupyter Notebooks 
+### <a name="jupyter-notebooks"></a>Jupyter Notebooks
 
 [Jupyter Notebook](https://jupyter.readthedocs.io/en/latest/index.html) は、データ サイエンティストが Python、Scala、または R コードおよびマークダウン テキストを含む "*ノートブック*" ファイルを作成できるブラウザー ベースのシェルを提供し、コードと結果を 1 つのドキュメントで共有および文書化して効果的に共同作業できるようにします。
 
@@ -49,15 +53,15 @@ Jupyter Notebook では、Power BI などの BI/レポート ツールでより�
 
 主な利点:
 
-* 無料のサービスで、Azure サブスクリプションは必要ありません。
-* Jupyter やサポートする R または Python ディストリビューションをローカルにインストールする必要はありません。ブラウザーだけを使用します。
-* 独自のオンライン ライブラリを管理し、任意のデバイスからアクセスできます。
-* ノートブックをコラボレーターと共有できます。
+- 無料のサービスで、Azure サブスクリプションは必要ありません。
+- Jupyter やサポートする R または Python ディストリビューションをローカルにインストールする必要はありません。ブラウザーだけを使用します。
+- 独自のオンライン ライブラリを管理し、任意のデバイスからアクセスできます。
+- ノートブックをコラボレーターと共有できます。
 
 考慮事項:
 
-* オフラインのときは、ノートブックにアクセスできません。
-* 無料のノートブック サービスの制限付き処理機能は、大規模または複雑なモデルのトレーニングに不十分な場合があります。
+- オフラインのときは、ノートブックにアクセスできません。
+- 無料のノートブック サービスの制限付き処理機能は、大規模または複雑なモデルのトレーニングに不十分な場合があります。
 
 ## <a name="key-selection-criteria"></a>主要な選択条件
 
@@ -73,13 +77,15 @@ Jupyter Notebook では、Power BI などの BI/レポート ツールでより�
 
 ## <a name="capability-matrix"></a>機能のマトリックス
 
-次の表は、機能の主な相違点をまとめたものです。 
+次の表は、機能の主な相違点をまとめたものです。
 
 ### <a name="general-capabilities"></a>一般的な機能
 
+<!-- markdownlint-disable MD033 -->
+
 | | Power BI | Jupyter Notebooks | Zeppelin Notebook | Microsoft Azure Notebooks |
 | --- | --- | --- | --- | --- |
-| 高度な処理のためのビッグ データ クラスターへの接続 | [はい] | はい | [はい] | いいえ  |
+| 高度な処理のためのビッグ データ クラスターへの接続 | [はい] | はい | はい | いいえ  |
 | 管理されたサービス | [はい] | はい <sup>1</sup> | はい <sup>1</sup> | [はい] |
 | 数百のデータ ソースへの接続 | [はい] | いいえ  | いいえ  | いいえ  |
 | オフライン機能 | はい <sup>2</sup> | いいえ  | いいえ  | いいえ  |
@@ -90,6 +96,8 @@ Jupyter Notebook では、Power BI などの BI/レポート ツールでより�
 | 価格 | 無料の Power BI Desktop (作成) については、ホスティング オプションの[料金](https://powerbi.microsoft.com/pricing/)をご覧ください | 無料 | 無料 | 無料 |
 | マルチユーザー コラボレーション | [はい](/power-bi/service-how-to-collaborate-distribute-dashboards-reports) | はい (共有または [JupyterHub](https://github.com/jupyterhub/jupyterhub) などのマルチユーザー サーバーを使用) | [はい] | はい (共有を使用) |
 
+<!-- markdownlint-enable MD033 -->
+
 [1] 管理される HDInsight クラスターの一部として使用する場合。
 
 [2] Power BI Desktop を使用する場合。
@@ -97,4 +105,3 @@ Jupyter Notebook では、Power BI などの BI/レポート ツールでより�
 [2] コミュニティから提供されたパッケージは [Maven リポジトリ](https://search.maven.org/)で検索できます。
 
 [3] pip または conda を使用して Python パッケージをインストールできます。 R パッケージは CRAN または GitHub からインストールできます。 F# のパッケージは、[パケット依存関係マネージャー](https://fsprojects.github.io/Paket/)を使用して Nuget.org 経由でインストールできます。
-

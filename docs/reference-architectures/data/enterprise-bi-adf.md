@@ -5,18 +5,18 @@ description: Azure Data Factory と SQL Data Warehouse を使用して、Azure �
 author: MikeWasson
 ms.date: 11/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 8263da7675beb61add371c945aab72b203c2349c
-ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
+ms.openlocfilehash: 579ef0361ec44d0eb82b9076490eed5a6d88df35
+ms.sourcegitcommit: cd3de23543f739a95a1daf38886561f67add9d64
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53644007"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54183594"
 ---
 # <a name="automated-enterprise-bi-with-sql-data-warehouse-and-azure-data-factory"></a>SQL Data Warehouse と Azure Data Factory を使用したエンタープライズ BI の自動化
 
 この参照アーキテクチャは、[抽出 - 読み込み - 変換 (ELT)](../../data-guide/relational-data/etl.md#extract-load-and-transform-elt) パイプラインで段階的に読み込む方法を示しています。 Azure Data Factory を使用して ELT パイプラインを自動化します。 パイプラインは、オンプレミスの SQL Server データベースから SQL Data Warehouse に最新の OLTP データを段階的に移動します。 トランザクション データは、分析のために表形式モデルに変換されます。
 
-> [!VIDEO <https://www.microsoft.com/videoplayer/embed/RE2Gnz2>]
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2Gnz2]
 
 このアーキテクチャのリファレンス実装は、[GitHub][github] で入手できます。
 

@@ -1,19 +1,17 @@
 ---
-title: キャッシュ アサイド
+title: キャッシュ アサイド パターン
+titleSuffix: Cloud Design Patterns
 description: オンデマンドでデータをデータ ストアからキャッシュに読み込みます。
 keywords: 設計パターン
 author: dragon119
 ms.date: 11/01/2018
-pnp.series.title: Cloud Design Patterns
-pnp.pattern.categories:
-- data-management
-- performance-scalability
-ms.openlocfilehash: 4c93ed02ff28e79cedc26f83364592baba96821d
-ms.sourcegitcommit: dbbf914757b03cdee7a274204f9579fa63d7eed2
+ms.custom: seodec18
+ms.openlocfilehash: 96dee3ca766414a3a17ea161f13c9fcd15001b4d
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50916382"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54114166"
 ---
 # <a name="cache-aside-pattern"></a>キャッシュ アサイド パターン
 
@@ -35,14 +33,13 @@ ms.locfileid: "50916382"
 
 ![キャッシュ アサイド パターンを使用したキャッシュへのデータの格納](./_images/cache-aside-diagram.png)
 
-
 アプリケーションは、情報を更新したら、データ ストアに変更を加え、キャッシュ内の対応する項目を無効にすることによって、ライト スルー戦略に従うことができます。
 
 その項目が次回必要になったときは、キャッシュ アサイド戦略を使用することで、データ ストアから最新のデータが取得され、キャッシュに再度追加されます。
 
 ## <a name="issues-and-considerations"></a>問題と注意事項
 
-このパターンの実装方法を決めるときには、以下の点に注意してください。 
+このパターンの実装方法を決めるときには、以下の点に注意してください。
 
 **キャッシュ データの有効期間**:  多くのキャッシュで、指定された期間アクセスされなかったデータを、無効にしてキャッシュから削除する有効期限ポリシーが実装されています。 キャッシュ アサイドを効果的に使用するには、有効期限ポリシーが、データを使用するアプリケーションのアクセス パターンに適合していることを確認します。 有効期限が短すぎると、アプリケーションが常にデータ ストアからデータを取得してキャッシュに追加する可能性があるので、有効期限をあまり短くしないでください。 同様に、キャッシュ データが古くなる可能性が高いので、有効期限をあまり長くしないでください。 キャッシュは、比較的静的なデータまたは頻繁に読み取られるデータに最も効果的であることに注意してください。
 
@@ -68,9 +65,9 @@ ms.locfileid: "50916382"
 
 ## <a name="example"></a>例
 
-Microsoft Azure では、Azure Redis Cache を使用して、アプリケーションの複数のインスタンスで共有できる分散キャッシュを作成できます。 
+Microsoft Azure では、Azure Redis Cache を使用して、アプリケーションの複数のインスタンスで共有できる分散キャッシュを作成できます。
 
-次のコード例では、.NET 向けに作成された Redis クライアント ライブラリである、[StackExchange.Redis] クライアントを使用しています。 Azure Redis Cache インスタンスに接続するには、静的 `ConnectionMultiplexer.Connect` メソッドを呼び出し、接続文字列を渡します。 このメソッドは、接続を表す `ConnectionMultiplexer` を返します。 アプリケーション内の `ConnectionMultiplexer` インスタンスを共有する方法の 1 つに、次の例のように、接続されたインスタンスを返す静的プロパティを設定する方法があります。 この方法では、接続された 1 つのインスタンスだけがスレッドセーフな方法で初期化されます。
+次のコード例では、.NET 向けに作成された Redis クライアント ライブラリである、[StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis) クライアントを使用しています。 Azure Redis Cache インスタンスに接続するには、静的 `ConnectionMultiplexer.Connect` メソッドを呼び出し、接続文字列を渡します。 このメソッドは、接続を表す `ConnectionMultiplexer` を返します。 アプリケーション内の `ConnectionMultiplexer` インスタンスを共有する方法の 1 つに、次の例のように、接続されたインスタンスを返す静的プロパティを設定する方法があります。 この方法では、接続された 1 つのインスタンスだけがスレッドセーフな方法で初期化されます。
 
 ```csharp
 private static ConnectionMultiplexer Connection;
@@ -89,7 +86,6 @@ public static ConnectionMultiplexer Connection => lazyConnection.Value;
 
 オブジェクトは、整数 ID をキーとして使用して識別されます。 `GetMyEntityAsync` メソッドは、このキーを持つ項目をキャッシュから取得することを試みます。 一致する項目が見つかった場合は、それが返されます。 キャッシュに一致するものがない場合、`GetMyEntityAsync` メソッドはデータ ストアからオブジェクトを取得し、キャッシュに追加してから返します。 データ ストアから実際にデータを読み取るコードはデータ ストアによって異なるため、ここでは示していません。 キャッシュ項目は、他の場所で更新された場合に古くならないように有効期限が構成されています。
 
-
 ```csharp
 // Set five minute expiration as a default
 private const double DefaultExpirationTimeInMinutes = 5.0;
@@ -99,23 +95,23 @@ public async Task<MyEntity> GetMyEntityAsync(int id)
   // Define a unique key for this method and its parameters.
   var key = $"MyEntity:{id}";
   var cache = Connection.GetDatabase();
-  
+
   // Try to get the entity from the cache.
   var json = await cache.StringGetAsync(key).ConfigureAwait(false);
-  var value = string.IsNullOrWhiteSpace(json) 
-                ? default(MyEntity) 
+  var value = string.IsNullOrWhiteSpace(json)
+                ? default(MyEntity)
                 : JsonConvert.DeserializeObject<MyEntity>(json);
-  
+
   if (value == null) // Cache miss
   {
     // If there's a cache miss, get the entity from the original store and cache it.
-    // Code has been omitted because it's data store dependent.  
+    // Code has been omitted because it is data store dependent.
     value = ...;
 
     // Avoid caching a null value.
     if (value != null)
     {
-      // Put the item in the cache with a custom expiration time that 
+      // Put the item in the cache with a custom expiration time that
       // depends on how critical it is to have stale data.
       await cache.StringSetAsync(key, JsonConvert.SerializeObject(value)).ConfigureAwait(false);
       await cache.KeyExpireAsync(key, TimeSpan.FromMinutes(DefaultExpirationTimeInMinutes)).ConfigureAwait(false);
@@ -126,7 +122,7 @@ public async Task<MyEntity> GetMyEntityAsync(int id)
 }
 ```
 
->  各例では、Redis Cache を使用してストアにアクセスし、キャッシュから情報を取得します。 詳細については、[Microsoft Azure Redis Cache の使用方法](https://docs.microsoft.com/azure/redis-cache/cache-dotnet-how-to-use-azure-redis-cache)に関する記事、および「[Redis Cache で Web アプリを作成する方法](https://docs.microsoft.com/azure/redis-cache/cache-web-app-howto)」をご覧ください。
+> 各例では、Redis Cache を使用してストアにアクセスし、キャッシュから情報を取得します。 詳細については、[Microsoft Azure Redis Cache の使用方法](https://docs.microsoft.com/azure/redis-cache/cache-dotnet-how-to-use-azure-redis-cache)に関する記事、および「[Redis Cache で Web アプリを作成する方法](https://docs.microsoft.com/azure/redis-cache/cache-web-app-howto)」をご覧ください。
 
 次に示す `UpdateEntityAsync` メソッドは、アプリケーションによって値が変更されたときにキャッシュ内のオブジェクトを無効にする方法を示しています。 このコードでは、元のデータ ストアを更新した後、キャッシュ項目をキャッシュから削除します。
 
@@ -134,7 +130,7 @@ public async Task<MyEntity> GetMyEntityAsync(int id)
 public async Task UpdateEntityAsync(MyEntity entity)
 {
     // Update the object in the original data store.
-    await this.store.UpdateEntityAsync(entity).ConfigureAwait(false); 
+    await this.store.UpdateEntityAsync(entity).ConfigureAwait(false);
 
     // Invalidate the current cache object.
     var cache = Connection.GetDatabase();
@@ -147,14 +143,10 @@ public async Task UpdateEntityAsync(MyEntity entity)
 > [!NOTE]
 > ステップの順序が重要です。 項目をキャッシュから削除する "*前に*" データ ストアを更新します。 キャッシュ項目を先に削除すると、データ ストアが更新されるまでの短い時間に、クライアントがその項目を取得する可能性があります。 これにより、キャッシュ ミスが発生し (キャッシュから項目が削除されたため)、以前のバージョンの項目がデータ ストアから取得され、キャッシュに再度追加されることになります。 その結果、キャッシュ データが古くなります。
 
-
-## <a name="related-guidance"></a>関連するガイダンス 
+## <a name="related-guidance"></a>関連するガイダンス
 
 このパターンを実装するときは、次の情報を参考にしてください。
 
 - [キャッシュ ガイダンス](https://docs.microsoft.com/azure/architecture/best-practices/caching)。 クラウド ソリューションでデータをキャッシュする方法と、キャッシュを実装する際に考慮すべき問題に関する追加情報を提供します。
 
 - [Data consistency primer (データ整合性入門)](https://msdn.microsoft.com/library/dn589800.aspx)。 通常、クラウド アプリケーションは、複数のデータ ストアに分散したデータを使用します。 この環境でのデータ整合性の管理と維持は、システム (特に、発生する可能性のあるコンカレンシーと可用性の問題) の重要な側面です。 この入門書では、分散データの整合性に関する問題について説明し、アプリケーションがデータの可用性を維持するために最終的な整合性を実装する方法の概要を説明します。
-
-
-[StackExchange.Redis]: https://github.com/StackExchange/StackExchange.Redis

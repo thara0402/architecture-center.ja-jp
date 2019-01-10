@@ -3,18 +3,22 @@ title: 自然言語処理技術の選択
 description: ''
 author: zoinerTejada
 ms.date: 02/12/2018
-ms.openlocfilehash: b1cb019164285d16b6e9d34eae220801785adab9
-ms.sourcegitcommit: e7e0e0282fa93f0063da3b57128ade395a9c1ef9
+ms.openlocfilehash: 699e01bc9905d02fc8ec1113039087189f6e8caf
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52902310"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54114115"
 ---
 # <a name="choosing-a-natural-language-processing-technology-in-azure"></a>Azure での自然言語処理技術の選択
 
 自由形式テキストの処理は、通常は検索をサポートする目的でテキストの段落を含むドキュメントに対して実行されますが、センチメント分析、トピック検出、言語検出、キー フレーズ抽出、ドキュメントの分類などの他の自然言語処理 (NLP) タスクの実行にも使用されます。 この記事では、NLP タスクのサポートで機能するテクノロジの選択に重点を置いて説明します。
 
+<!-- markdownlint-disable MD026 -->
+
 ## <a name="what-are-your-options-when-choosing-an-nlp-service"></a>NLP サービスを選ぶときのオプション
+
+<!-- markdownlint-enable MD026 -->
 
 Azure では、次のサービスに自然言語処理 (NLP) 機能があります。
 
@@ -36,7 +40,7 @@ Azure では、次のサービスに自然言語処理 (NLP) 機能がありま�
 
 ## <a name="capability-matrix"></a>機能のマトリックス
 
-次の表は、機能の主な相違点をまとめたものです。  
+次の表は、機能の主な相違点をまとめたものです。
 
 ### <a name="general-capabilities"></a>一般的な機能
 
@@ -50,7 +54,7 @@ Azure では、次のサービスに自然言語処理 (NLP) 機能がありま�
 ### <a name="low-level-natural-language-processing-capabilities"></a>低レベルの自然言語処理機能
 
 | | Azure HDInsight | Microsoft Cognitive Services |  
-| --- | --- | --- | 
+| --- | --- | --- |
 | トークナイザー | はい (Spark NLP) | はい (Linguistic Analysis API) |
 | ステマー | はい (Spark NLP) | いいえ  |
 | レンマタイザー | はい (Spark NLP) | いいえ  |
@@ -63,8 +67,8 @@ Azure では、次のサービスに自然言語処理 (NLP) 機能がありま�
 ### <a name="high-level-natural-language-processing-capabilities"></a>高レベルの自然言語処理機能
 
 | | Azure HDInsight | Microsoft Cognitive Services |
-| --- | --- | --- | 
-| エンティティ/意図の識別と抽出 | いいえ  | はい (Language Understanding Intelligent Service (LUIS) API) |    
+| --- | --- | --- |
+| エンティティ/意図の識別と抽出 | いいえ  | はい (Language Understanding Intelligent Service (LUIS) API) |
 | トピック検出 | はい (Spark NLP) | はい (Text Analytics API) |
 | スペル チェック | はい (Spark NLP) | はい (Bing Spell Check API) |
 | センチメント分析 | はい (Spark NLP) | はい (Text Analytics API) |
