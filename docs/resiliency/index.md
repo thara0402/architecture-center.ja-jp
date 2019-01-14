@@ -4,12 +4,12 @@ description: 高可用性とディザスター リカバリーのために Azure
 author: MikeWasson
 ms.date: 12/18/2018
 ms.custom: resiliency
-ms.openlocfilehash: 28ad589c6d54a1574b5cd5c4f08e3c6adfe349c3
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.openlocfilehash: ef8fd64756c483528aa83048e23f6387dedb74d6
+ms.sourcegitcommit: 7d9efe716e8c9e99f3fafa9d0213d48c23d9713d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54113129"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54160861"
 ---
 # <a name="designing-resilient-applications-for-azure"></a>回復性に優れた Azure 用アプリケーションの設計
 
@@ -148,7 +148,7 @@ Azure SQL Database に書き込む App Service Web アプリについて検討�
 
 **複数リージョン デプロイの SLA**。 もう 1 つの HA 手法は、アプリケーションを複数のリージョンにデプロイし、1 つのリージョンのアプリケーションで障害が発生した場合にフェールオーバーするように Azure Traffic Manager を使用する方法です。 マルチリージョンのデプロイの場合、複合 SLA は次のように計算されます。
 
-1 つのリージョンにデプロイされるアプリケーションの複合 SLA を *N* とし、アプリケーションがデプロイされるリージョンの数を *R* とします。 すべてのリージョンでアプリケーションの障害が発生する可能性は ((1 &minus N) ^ R) と予測されます。
+1 つのリージョンにデプロイされるアプリケーションの複合 SLA を *N* とし、アプリケーションがデプロイされるリージョンの数を *R* とします。 すべてのリージョンでアプリケーションの障害が発生する可能性は ((1 &minus; N) ^ R) と予測されます。
 
 たとえば、1 つのリージョンの SLA が 99.95% の場合は次のようになります。
 

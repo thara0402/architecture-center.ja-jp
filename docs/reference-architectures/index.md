@@ -4,18 +4,18 @@ description: Azure での一般的なワークロードに対応する、参照�
 layout: LandingPage
 ms.topic: landing-page
 ms.date: 08/30/2018
-ms.openlocfilehash: 173698aee0a67578beaa806a59e1c7b0265cdd61
-ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
+ms.openlocfilehash: 4e0f3b32abc8d2e0da9b139b0e6aae1d48152a37
+ms.sourcegitcommit: 7d9efe716e8c9e99f3fafa9d0213d48c23d9713d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54011805"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54160776"
 ---
 # <a name="azure-reference-architectures"></a>Azure の参照アーキテクチャ
 
 これらの参照アーキテクチャは、関連するアーキテクチャをまとめてシナリオごとに配置されています。 各アーキテクチャの説明には、推奨プラクティスが、スケーラビリティ、可用性、管理性、およびセキュリティに関する考慮事項と共に含まれます。 また、ほとんどにはデプロイ可能なソリューションも含まれています。
 
-ジャンプ先:[AI](#ai-and-machine-learning) | [ビッグ データ](#big-data-solutions) | [サーバーレス](#serverless-applications) | [仮想ネットワーク](#virtual-networks) | [VM ワークロード](#vm-workloads) | [SAP](#sap) | [Web アプリ](#web-applications) | [Active Directory](#extend-on-premises-active-directory-to-azure)
+ジャンプ先:[AI](#ai-and-machine-learning) | [ビッグ データ](#big-data-solutions) | [IoT](#internet-of-things) | [サーバーレス](#serverless-applications) | [仮想ネットワーク](#virtual-networks) | [VM ワークロード](#vm-workloads) | [SAP](#sap) | [Web アプリ](#web-applications) | [Active Directory](#extend-on-premises-active-directory-to-azure)
 
 <!-- markdownlint-disable MD033 -->
 
@@ -201,6 +201,31 @@ ms.locfileid: "54011805"
                     <div class="cardText">
                         <h3>Azure Stream Analytics によるストリーム処理</h3>
                         <p>2 つのデータ ストリームからのレコードを関連付けてローリング平均を計算する、エンド ツー エンドのストリーム処理パイプライン。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</li>
+</ul>
+
+## <a name="internet-of-things"></a>モノのインターネット (IoT)
+
+<ul class="panelContent cardsF">
+<!-- IoT reference architecture -->
+<li style="display: flex; flex-direction: column;">
+    <a href="./iot/index.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="./iot/_images/iot.svg" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Azure IoT 参照アーキテクチャ</h3>
+                        <p>PaaS (サービスとしてのプラットフォーム) コンポーネントを使用する Azure の IoT アプリケーションの推奨アーキテクチャ。</p>
                     </div>
                 </div>
             </div>
