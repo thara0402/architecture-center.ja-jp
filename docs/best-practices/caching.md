@@ -5,12 +5,12 @@ description: キャッシュによるパフォーマンスとスケーラビリ�
 author: dragon119
 ms.date: 05/24/2017
 ms.custom: seodec18
-ms.openlocfilehash: b7f720b9e08b0316f9967a19e1b93069aa04e55f
-ms.sourcegitcommit: 4ba3304eebaa8c493c3e5307bdd9d723cd90b655
+ms.openlocfilehash: da676ba3037f5c232ea97b9cb41488c7c2202476
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53307471"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54113112"
 ---
 # <a name="caching"></a>キャッシュ
 
@@ -476,9 +476,9 @@ var customer1 = cache.Wait(task1);
 var customer2 = cache.Wait(task2);
 ```
 
-Azure Redis Cache を実行できるクライアント アプリケーションの構築方法の詳細については、[Azure Redis Cache ドキュメント](https://azure.microsoft.com/documentation/services/cache/)を参照してください。 詳細については、[StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis/blob/master/Docs/Basics.md) も参照してください。
+Azure Redis Cache を実行できるクライアント アプリケーションの作成方法の詳細については、「[Azure Cache for Redis のドキュメント](/azure/azure-cache-for-redis/)」を参照してください。 詳細については、[StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis/blob/master/Docs/Basics.md) も参照してください。
 
-また同サイトの「 [Pipelines and multiplexers](https://stackexchange.github.io/StackExchange.Redis/PipelinesMultiplexers) (パイプラインとマルチプレクサー)」のページには、Redis と StackExchange ライブラリを使用した非同期操作とパイプライン処理が詳しく説明されています。 
+また同サイトの「 [Pipelines and multiplexers](https://stackexchange.github.io/StackExchange.Redis/PipelinesMultiplexers) (パイプラインとマルチプレクサー)」のページには、Redis と StackExchange ライブラリを使用した非同期操作とパイプライン処理が詳しく説明されています。
 
 ## <a name="using-redis-caching"></a>Redis のキャッシュの使用
 
@@ -898,7 +898,7 @@ ISubscriber subscriber = redisHostConnection.GetSubscriber();
 
 ## <a name="more-information"></a>詳細情報
 
-- [Azure Redis Cache のドキュメント](https://azure.microsoft.com/documentation/services/cache/) 
+- [Azure Redis Cache のドキュメント](/azure/azure-cache-for-redis/)
 - [Azure Redis Cache の FAQ](/azure/redis-cache/cache-faq)
 - [タスク ベースの非同期パターン](/dotnet/standard/asynchronous-programming-patterns/task-based-asynchronous-pattern-tap)
 - [Redis のドキュメント](https://redis.io/documentation)
