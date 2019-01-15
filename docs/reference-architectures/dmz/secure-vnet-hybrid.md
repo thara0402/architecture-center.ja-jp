@@ -5,16 +5,12 @@ description: セキュリティ保護されたハイブリッド ネットワー
 author: telmosampaio
 ms.date: 10/22/2018
 ms.custom: seodec18
-pnp.series.title: Network DMZ
-pnp.series.prev: ./index
-pnp.series.next: secure-vnet-dmz
-cardTitle: DMZ between Azure and on-premises
-ms.openlocfilehash: c57f741aa0e68783f457f94ea6fd84e1d552f059
-ms.sourcegitcommit: 88a68c7e9b6b772172b7faa4b9fd9c061a9f7e9d
+ms.openlocfilehash: 9a74401d3496807ce2dfc113476e001d19e657e5
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53120426"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54112296"
 ---
 # <a name="implement-a-dmz-between-azure-and-your-on-premises-datacenter"></a>Azure とオンプレミス データセンター間に DMZ を実装する
 
@@ -222,7 +218,7 @@ NVA の前のロード バランサーも、負荷分散規則で開いていな
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure とインターネットの間の DMZ](secure-vnet-dmz.md) を実装する方法について説明します。
+- [Azure とインターネットの間の DMZ](./secure-vnet-dmz.md) を実装する方法について説明します。
 - [高可用性ハイブリッド ネットワーク アーキテクチャ][ra-vpn-failover]を実装する方法について説明します。
 - Azure でのネットワーク セキュリティの管理の詳細については、「[Microsoft クラウド サービスとネットワーク セキュリティ][cloud-services-network-security]」をご覧ください。
 - Azure のリソース保護の詳細については、「[Microsoft Azure セキュリティの概要][getting-started-with-azure-security]」をご覧ください。
@@ -235,7 +231,7 @@ NVA の前のロード バランサーも、負荷分散規則で開いていな
 [azurect]: https://github.com/Azure/NetworkMonitoring/tree/master/AzureCT
 [azure-forced-tunneling]: https://azure.microsoft.com/en-gb/documentation/articles/vpn-gateway-forced-tunneling-rm/
 [azure-marketplace-nva]: https://azuremarketplace.microsoft.com/marketplace/apps/category/networking
-[cloud-services-network-security]: https://azure.microsoft.com/documentation/articles/best-practices-network-security/
+[cloud-services-network-security]: /azure/best-practices-network-security
 [getting-started-with-azure-security]: /azure/security/azure-security-getting-started
 [github-folder]: https://github.com/mspnp/reference-architectures/tree/master/dmz/secure-vnet-hybrid
 [guidance-expressroute]: ../hybrid-networking/expressroute.md

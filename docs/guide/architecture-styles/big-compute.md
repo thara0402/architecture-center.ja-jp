@@ -1,27 +1,29 @@
 ---
 title: ビッグ コンピューティング アーキテクチャ スタイル
-description: Azure のビッグ コンピューティング アーキテクチャのメリット、課題、ベスト プラクティスを説明します。　
+titleSuffix: Azure Application Architecture Guide
+description: Azure のビッグ コンピューティング アーキテクチャのメリット、課題、ベスト プラクティスを説明します。
 author: MikeWasson
 ms.date: 08/30/2018
-ms.openlocfilehash: aca2221faf1fbf47de2fd81c8909dfe8aef46bea
-ms.sourcegitcommit: ae8a1de6f4af7a89a66a8339879843d945201f85
+ms.custom: seojan19
+ms.openlocfilehash: 7dbd8e25a0db79e6dde4c1c7e787eaa040ffdb3b
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43326175"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54114064"
 ---
 # <a name="big-compute-architecture-style"></a>ビッグ コンピューティング アーキテクチャ スタイル
 
 *ビッグ コンピューティング*という用語は、数百、数千という大量の数のコアを必要とする大規模なワークロードを指します。 シナリオには、イメージのレンダリング、流体力学、財務リスクのモデリング、石油探査、薬物設計、および工学応力分析などが含まれます。
 
-![](./images/big-compute-logical.png)
+![ビッグ コンピューティング アーキテクチャ スタイルの論理図](./images/big-compute-logical.png)
 
 ビッグ コンピューティング アプリケーションの一般的な特性を次に示します。
 
 - 作業は、多くのコアで同時に実行できる個別のタスクに分割できます。
-- 各タスクは有限です。 タスクはいくつかの入力を受け取り、いくつかの処理を行って、出力が生成されます。 アプリケーション全体は、一定時間 (数分から数日) 実行されます。 一般的なパターンは、バーストにより大量のコアをプロビジョニングし、アプリケーションが完了するとコア数はゼロまで下降します。 
+- 各タスクは有限です。 タスクはいくつかの入力を受け取り、いくつかの処理を行って、出力が生成されます。 アプリケーション全体は、一定時間 (数分から数日) 実行されます。 一般的なパターンは、バーストにより大量のコアをプロビジョニングし、アプリケーションが完了するとコア数はゼロまで下降します。
 - アプリケーションを常時実行し続ける必要はありません。 ただし、システムでは、ノードの障害またはアプリケーションのクラッシュを処理する必要があります。
-- 一部のアプリケーションでは、タスクは独立しており、並列して実行できます。 または、タスクが緊密に結合されているため、相互に交信または中間結果を交換する必要がある場合もあります。 この場合、InfiniBand やリモート ダイレクト メモリ アクセス (RDMA) などの高速ネットワーク テクノロジを使用することを検討してください。 
+- 一部のアプリケーションでは、タスクは独立しており、並列して実行できます。 または、タスクが緊密に結合されているため、相互に交信または中間結果を交換する必要がある場合もあります。 この場合、InfiniBand やリモート ダイレクト メモリ アクセス (RDMA) などの高速ネットワーク テクノロジを使用することを検討してください。
 - ワークロードに応じてコンピューティング集中型の VM サイズ (H16r、H16mr、および A9) を使用することができます。
 
 ## <a name="when-to-use-this-architecture"></a>このアーキテクチャを使用する条件
@@ -37,12 +39,12 @@ ms.locfileid: "43326175"
 - "[驚異的並列][embarrassingly-parallel]" 処理による高いパフォーマンス。
 - 大きな問題を高速で解決するために何百、何千ものコンピューター コアを使用できます。
 - 専用の高速 InfiniBand ネットワークを使用した、特殊な高性能ハードウェアの使用。
-- 作業中、必要に応じて VM をプロビジョニングし、削除できます。 
+- 作業中、必要に応じて VM をプロビジョニングし、削除できます。
 
 ## <a name="challenges"></a>課題
 
 - VM インフラストラクチャの管理。
-- 大量の計算の管理。 
+- 大量の計算の管理
 - 適切なタイミングで数千のコアをプロビジョニングする。
 - 緊密に結合されたタスクにコアを追加すると逆効果になる場合があります。 実験を通して最適なコア数を特定する必要があります。
 
@@ -52,7 +54,7 @@ ms.locfileid: "43326175"
 
 Azure Batch を使用して、VM プールを構成し、アプリケーションとデータ ファイルをアップロードします。 バッチ サービスにより VM がプロビジョニングされ、VM にタスクが割り当てられ、タスクが実行され、進行状況が監視されます。 バッチは、ワークロードに応じて VM を自動的にスケール アウトできます。 また、バッチは、ジョブのスケジューリングも提供します。
 
-![](./images/big-compute-batch.png) 
+![Azure Batch を使用したビッグ コンピューティングの図](./images/big-compute-batch.png)
 
 ## <a name="big-compute-running-on-virtual-machines"></a>Virtual Machines で実行されるビッグ コンピューティング
 
@@ -62,21 +64,20 @@ Azure Batch を使用して、VM プールを構成し、アプリケーショ�
 
 このシナリオでは、HPC クラスターすべてを Azure 内で作成します。
 
-![](./images/big-compute-iaas.png) 
- 
+![Azure にデプロイされた HPC Pack の図](./images/big-compute-iaas.png)
+
 ヘッド ノードは、管理およびジョブ スケジューリング サービスをクラスターに提供します。 緊密に結合されたタスクの場合は、非常に高い帯域幅、低待機時間の VM 間通信を提供する RDMA ネットワークを使用します。 詳細については、「[Azure に HPC Pack 2016 クラスターをデプロイする][deploy-hpc-azure]」を参照してください。
 
 ### <a name="burst-an-hpc-cluster-to-azure"></a>Azure への HPC クラスターのバースト
 
 このシナリオでは、組織は、HPC Pack をオンプレミスで実行しており、バースト容量のために Azure VM を使用します。 クラスターのヘッド ノードは、オンプレミスに設置されています。 ExpressRoute または VPN Gateway は、オンプレミス ネットワークを Azure VNet に接続します。
 
-![](./images/big-compute-hybrid.png) 
+![ハイブリッド ビッグ コンピューティング クラスターの図](./images/big-compute-hybrid.png)
 
+<!-- links -->
 
 [batch]: /azure/batch/
 [batch-hpc-solutions]: /azure/batch/batch-hpc-solutions
 [deploy-hpc-azure]: /azure/virtual-machines/windows/hpcpack-2016-cluster
 [embarrassingly-parallel]: https://en.wikipedia.org/wiki/Embarrassingly_parallel
 [hpc-pack]: https://technet.microsoft.com/library/cc514029
-
- 

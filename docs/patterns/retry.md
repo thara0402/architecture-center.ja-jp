@@ -1,18 +1,17 @@
 ---
-title: Retry
+title: 再試行パターン
+titleSuffix: Cloud Design Patterns
 description: 予測される一時的な障害をアプリケーションが処理できるようにします。アプリケーションがサービスまたはネットワーク リソースに接続しようとする際に、失敗した操作を透過的に再試行します。
 keywords: 設計パターン
 author: dragon119
 ms.date: 06/23/2017
-pnp.series.title: Cloud Design Patterns
-pnp.pattern.categories:
-- resiliency
-ms.openlocfilehash: 73fdcbcc2bd75593a4c8e33dc2259c90593e14db
-ms.sourcegitcommit: 3d9ee03e2dda23753661a80c7106d1789f5223bb
+ms.custom: seodec18
+ms.openlocfilehash: 44a9c7e188bcf76a5f6904879c2121d50397da6c
+ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2018
-ms.locfileid: "29478257"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54011513"
 ---
 # <a name="retry-pattern"></a>再試行パターン
 
@@ -60,7 +59,7 @@ ms.locfileid: "29478257"
 
 最短の待ち時間で何回も再試行を行う攻撃的な再試行ポリシーは、フル稼働しているかその状態に近いビジー状態のサービスをさらに低下させる可能性があります。 この再試行ポリシーは、障害が発生した操作を継続的に再試行しようとした場合、アプリケーションの応答性にも影響を与える可能性があります。
 
-何回も再試行した後で要求がまだ失敗する場合、アプリケーションは、同じリソースにさらに要求を送信することを停止し、ただちに障害を報告することをお勧めします。 一定時間が経過した後で、アプリケーションは、試しに 1 つまたは複数の要求を送信して、それらが正常に実行されるかどうかを確認できます。 この方法の詳細については、「[サーキット ブレーカー パターン](circuit-breaker.md)」を参照してください。
+何回も再試行した後で要求がまだ失敗する場合、アプリケーションは、同じリソースにさらに要求を送信することを停止し、ただちに障害を報告することをお勧めします。 一定時間が経過した後で、アプリケーションは、試しに 1 つまたは複数の要求を送信して、それらが正常に実行されるかどうかを確認できます。 この方法の詳細については、「[サーキット ブレーカー パターン](./circuit-breaker.md)」を参照してください。
 
 操作がべき等であるかどうかを検討します。 その場合、再試行は本質的に安全です。 それ以外の場合、再試行によって操作を複数回実行すると、意図しない副作用が発生する可能性があります。 たとえば、サービスは要求を受信して要求を正常に処理したが、応答の送信に失敗したとします。 その時点で、再試行ロジックは、最初の要求が受信されなかったと仮定して、要求を再送信する可能性があります。
 
@@ -74,7 +73,7 @@ ms.locfileid: "29478257"
 
 重要なのは、再試行の原因となるすべての接続障害をログに記録して、基になるアプリケーション、サービス、またはリソースの問題を識別できるようすることです。
 
-サービスまたはリソースで最も発生する可能性がある障害を調べて、それらの障害が長く続くか末期的になる可能性があるかどうかを判断します。 該当する場合は、障害を例外として処理することをお勧めします。 アプリケーションは、例外を報告するかログに記録した後、別のサービスを呼び出す (使用可能なものがある場合) か、機能を低下させることで、続行することを試行できます。 長く続く障害を検出して処理する方法の詳細については、「[サーキット ブレーカー パターン](circuit-breaker.md)」を参照してください。
+サービスまたはリソースで最も発生する可能性がある障害を調べて、それらの障害が長く続くか末期的になる可能性があるかどうかを判断します。 該当する場合は、障害を例外として処理することをお勧めします。 アプリケーションは、例外を報告するかログに記録した後、別のサービスを呼び出す (使用可能なものがある場合) か、機能を低下させることで、続行することを試行できます。 長く続く障害を検出して処理する方法の詳細については、「[サーキット ブレーカー パターン](./circuit-breaker.md)」を参照してください。
 
 ## <a name="when-to-use-this-pattern"></a>このパターンを使用する状況
 
@@ -120,7 +119,7 @@ public async Task OperationWithBasicRetryAsync()
       // long to wait, based on the retry strategy.
       if (currentRetry > this.retryCount || !IsTransient(ex))
       {
-        // If this isn't a transient error or we shouldn't retry, 
+        // If this isn't a transient error or we shouldn't retry,
         // rethrow the exception.
         throw;
       }
@@ -173,6 +172,6 @@ private bool IsTransient(Exception ex)
 
 ## <a name="related-patterns-and-guidance"></a>関連のあるパターンとガイダンス
 
-- [サーキット ブレーカー パターン](circuit-breaker.md)。 再試行パターンは、一時的な障害を処理するために役立ちます。 障害が長く続くことが予想される場合は、サーキット ブレーカー パターンを実装するほうが適切である可能があります。 再試行パターンとサーキット ブレーカー パターンを組み合わせて、障害を処理するための包括的なアプローチを提供することもできます。
+- [サーキット ブレーカー パターン](./circuit-breaker.md)。 再試行パターンは、一時的な障害を処理するために役立ちます。 障害が長く続くことが予想される場合は、サーキット ブレーカー パターンを実装するほうが適切である可能があります。 再試行パターンとサーキット ブレーカー パターンを組み合わせて、障害を処理するための包括的なアプローチを提供することもできます。
 - [特定のサービスの再試行ガイダンス](https://docs.microsoft.com/azure/architecture/best-practices/retry-service-specific)
 - [接続の回復性](https://docs.microsoft.com/ef/core/miscellaneous/connection-resiliency)

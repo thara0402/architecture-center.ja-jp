@@ -1,14 +1,17 @@
 ---
 title: ゲートウェイ オフロード パターン
+titleSuffix: Cloud Design Patterns
 description: 共有または専用のサービス機能の負荷をゲートウェイ プロキシにオフロードします。
+keywords: 設計パターン
 author: dragon119
 ms.date: 06/23/2017
-ms.openlocfilehash: 6b3e4541aae77349ca91c18c788ddb508912361d
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.custom: seodec18
+ms.openlocfilehash: 50af3d8593279986ed6efee55667187424c18e56
+ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
-ms.locfileid: "24540011"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54010215"
 ---
 # <a name="gateway-offloading-pattern"></a>ゲートウェイ オフロード パターン
 
@@ -24,12 +27,12 @@ ms.locfileid: "24540011"
 
 ## <a name="solution"></a>解決策
 
-一部の機能、特に証明書の管理、認証、SSL 終了、監視、プロトコル変換、調整など、分野横断的な懸念事項を、API ゲートウェイにオフロードします。 
+一部の機能、特に証明書の管理、認証、SSL 終了、監視、プロトコル変換、調整など、分野横断的な懸念事項を、API ゲートウェイにオフロードします。
 
 次の図は、受信 SSL 接続を終了する API ゲートウェイを示しています。 これは、元の要求元に代わって、API ゲートウェイの HTTP サーバー アップ ストリームからデータを要求します。
 
- ![](./_images/gateway-offload.png)
- 
+ ![ゲートウェイ オフロード パターンの図](./_images/gateway-offload.png)
+
 このパターンには次のような利点があります。
 
 - Web サーバー証明書、安全な Web サイトの構成など、関連リソースを配布および管理する必要をなくして、サービス開発をシンプルにします。 構成がシンプルになると、管理が容易になり、スケーラビリティが実現し、サービスのアップグレードも簡単になります。
@@ -40,10 +43,10 @@ ms.locfileid: "24540011"
 
 ## <a name="issues-and-considerations"></a>問題と注意事項
 
-- API ゲートウェイが高可用性を備え、障害に対する回復性があることを確認します。 API ゲートウェイの複数のインスタンスを実行し、単一障害点をなくします。 
+- API ゲートウェイが高可用性を備え、障害に対する回復性があることを確認します。 API ゲートウェイの複数のインスタンスを実行し、単一障害点をなくします。
 - アプリケーションおよびエンドポイントの容量とスケーリングの要件に対応できるようにゲートウェイが設計されていることを確認します。 ゲートウェイがアプリケーションのボトルネックになっていないこと、また、十分にスケーラブルであることを確認します。
 - セキュリティ、データ転送など、アプリケーション全体で使用される機能のみをオフロードします。
-- ビジネス ロジックは API ゲートウェイにオフロードしないでください。 
+- ビジネス ロジックは API ゲートウェイにオフロードしないでください。
 - トランザクションを追跡する必要がある場合は、ログ記録のために関連付け ID を生成することを検討します。
 
 ## <a name="when-to-use-this-pattern"></a>このパターンを使用する状況
@@ -60,7 +63,7 @@ ms.locfileid: "24540011"
 
 次の構成は、Nginx を SSL オフロード アプライアンスとして使用して、受信 SSL 接続を終了し、接続を 3 台のアップストリーム HTTP サーバーのいずれかに分散します。
 
-```
+```console
 upstream iis {
         server  10.3.0.10    max_fails=3    fail_timeout=15s;
         server  10.3.0.20    max_fails=3    fail_timeout=15s;
@@ -86,7 +89,6 @@ proxy_set_header X-Real-IP $remote_addr;
 
 ## <a name="related-guidance"></a>関連するガイダンス
 
-- [フロントエンド パターン用バックエンド](./backends-for-frontends.md)
+- [フロントエンド用バックエンド パターン](./backends-for-frontends.md)
 - [ゲートウェイ集約パターン](./gateway-aggregation.md)
-- [ゲートウェイ ルーティング パターン](./gateway-routing.md)
-
+- [Gateway Routing pattern](./gateway-routing.md) (ゲートウェイ ルーティング パターン)

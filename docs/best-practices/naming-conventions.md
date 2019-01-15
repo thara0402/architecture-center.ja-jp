@@ -5,12 +5,12 @@ description: 仮想マシン、ストレージ アカウント、ネットワー
 author: telmosampaio
 ms.date: 10/19/2018
 ms.custom: seodec18
-ms.openlocfilehash: 4f934102acea24e8e1070ed6a25d63927f0bd252
-ms.sourcegitcommit: 4ba3304eebaa8c493c3e5307bdd9d723cd90b655
+ms.openlocfilehash: f0349b5db7eb15037bd92567eaf917b5d044daa0
+ms.sourcegitcommit: 036cd03c39f941567e0de4bae87f4e2aa8c84cf8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53307080"
+ms.lasthandoff: 01/05/2019
+ms.locfileid: "54058201"
 ---
 # <a name="naming-conventions-for-azure-resources"></a>Azure リソースの名前付け規則
 
@@ -62,7 +62,7 @@ Azure のリソースに名前を付けるときは、リソースの種類と�
 | --- | --- | --- |
 | 環境 |dev、prod、QA |リソースの環境を識別 |
 | 場所 |uw (米国西部)、ue (米国東部) |リソースの展開先のリージョンを識別 |
-| インスタンス |01、02 |複数の名前付きインスタンスが存在するリソースの場合 (Web サーバーなど)。 |
+| インスタンス |1、2、... |複数の名前付きインスタンスが存在するリソースの場合 (VM や NIC など)。 |
 | 製品またはサービス |service |リソースがサポートする製品、アプリケーション、サービスを識別 |
 | Role |sql、web、messaging |関連付けられているリソースのロールを識別 |
 
@@ -175,7 +175,7 @@ Azure Resource Manager では、コンテキストを識別し、自動化を合
 
 Azure ストレージ アカウントの BLOB データにアクセスするためのカスタム ドメイン名を構成できます。 Blob service の既定のエンドポイントは `https://<name>.blob.core.windows.net`です。
 
-ただし、カスタム ドメイン (www.contoso.com など) をストレージ アカウントの BLOB エンドポイントにマップしている場合、ユーザーはそのドメインを使って、ストレージ アカウントの BLOB データにもアクセスできます。 たとえば、カスタム ドメイン名を使用すると、`https://mystorage.blob.core.windows.net/mycontainer/myblob` に、`https://www.contoso.com/mycontainer/myblob` としてアクセスできます。
+しかし、カスタム ドメイン (`www.contoso.com` など) をストレージ アカウントの BLOB エンドポイントにマップしている場合、ユーザーはそのドメインを使って、ストレージ アカウントの BLOB データにもアクセスできます。 たとえば、カスタム ドメイン名を使用すると、`https://mystorage.blob.core.windows.net/mycontainer/myblob` に、`https://www.contoso.com/mycontainer/myblob` としてアクセスできます。
 
 この機能の構成の詳細については、「[BLOB ストレージ エンドポイントのカスタム ドメイン名の構成](/azure/storage/storage-custom-domain-name/)」を参照してください。
 

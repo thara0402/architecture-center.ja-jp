@@ -1,14 +1,17 @@
 ---
 title: ゲートウェイ ルーティング パターン
+titleSuffix: Cloud Design Patterns
 description: 単一のエンドポイントを使用して複数のサービスに要求をルーティングします。
+keywords: 設計パターン
 author: dragon119
 ms.date: 06/23/2017
-ms.openlocfilehash: ea0bc4d31b745043a7ac3afb277dfc46d87ff109
-ms.sourcegitcommit: 85334ab0ccb072dac80de78aa82bcfa0f0044d3f
+ms.custom: seodec18
+ms.openlocfilehash: 4db98038f582e0315a743a55d46013d2eda187e3
+ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35252602"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54010479"
 ---
 # <a name="gateway-routing-pattern"></a>ゲートウェイ ルーティング パターン
 
@@ -26,8 +29,8 @@ ms.locfileid: "35252602"
 
 また、ゲートウェイにより、クライアントからバックエンド サービスを抽象化できるので、ゲートウェイの背後でバックエンド サービスの変更を可能にしながら、クライアント呼び出しをシンプルに保つことができます。 クライアント呼び出しは、クライアントの予想される動作を処理する必要がある 1 つまたは複数のサービスにルーティングできるので、クライアントを変更せずに、ゲートウェイの背後でサービスを追加、分割、再構成できます。
 
-![](./_images/gateway-routing.png)
- 
+![ゲートウェイ ルーティング パターンの図](./_images/gateway-routing.png)
+
 このパターンは、更新プログラムをユーザーにロールアウトする方法を管理できるため、デプロイでも役立ちます。 サービスの新しいバージョンをデプロイするときは、既存のバージョンと並行してデプロイできます。 ルーティングにより、クライアントに提示するサービスのバージョンを制御できるため、更新プログラムのロールアウトが増分、並列、完全のいずれであるかを問わず、さまざまなリリース戦略を使用する柔軟がもたらされます。 新しいサービスのデプロイ後に問題が見つかった場合、ゲートウェイで構成変更を行うことで、クライアントに影響を及ぼすことなく、簡単に元に戻すことができます。
 
 ## <a name="issues-and-considerations"></a>問題と注意事項
@@ -51,7 +54,7 @@ ms.locfileid: "35252602"
 
 ルーターとして Nginx を使用して、さまざまな仮想ディレクトリに存在するアプリケーションの要求を、それぞれバックエンドの異なるコンピューターにルーティングするサーバーの構成ファイルの簡単な例を次に示します。
 
-```
+```console
 server {
     listen 80;
     server_name domain.com;
@@ -75,6 +78,3 @@ server {
 - [フロントエンド用バックエンド パターン](./backends-for-frontends.md)
 - [Gateway Aggregation pattern](./gateway-aggregation.md) (ゲートウェイ集約パターン)
 - [ゲートウェイ オフロード パターン](./gateway-offloading.md)
-
-
-

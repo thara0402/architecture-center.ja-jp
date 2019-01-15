@@ -1,16 +1,16 @@
 ---
 title: データの破損または偶発的な削除から復旧する
-description: データの破損または偶発的なデータの削除から復旧する方法、回復力と高可用性を備えたフォールト トレラント アプリケーションを設計する方法、障害復旧を計画する方法に関する記事
+description: データの破損または偶発的なデータの削除から復旧する方法、回復力のある高可用性のフォールト トレラント アプリケーションの設計、およびディザスター リカバリーの計画について説明します。
 author: MikeWasson
 ms.date: 11/11/2018
-ms.openlocfilehash: 1f3dd448ac6172727481c437fb8a113f25d83464
-ms.sourcegitcommit: dbbf914757b03cdee7a274204f9579fa63d7eed2
+ms.openlocfilehash: 40379f32c6af47002e897c28392816fa1578502a
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50916284"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54111259"
 ---
-# <a name="recover-from-data-corruption-or-accidental-deletion"></a>データの破損または偶発的な削除から復旧する 
+# <a name="recover-from-data-corruption-or-accidental-deletion"></a>データの破損または偶発的な削除から復旧する
 
 堅牢なビジネス継続性計画の一環として、データが破損した場合や誤って削除された場合に備えた計画を作成します。 以下に、アプリケーション エラーによってデータが破損したか、オペレーターのエラーによってデータが誤って削除された後の復旧に関する情報を示します。
 
@@ -20,7 +20,7 @@ Azure Virtual Machines (VM) をアプリケーション エラーや誤削除か
 
 ## <a name="storage"></a>Storage
 
-Azure Storage は、自動レプリカによるデータ回復性を備えています。 ただし、アプリケーション コードやユーザーが、誤ってまたは悪意を持ってデータを破損させるのを防ぐことはできません。 アプリケーション エラーやユーザー エラーが発生した場合にデータの忠実性を維持するには、監査ログと共にセカンダリ ストレージの場所にデータをコピーするなどの高度な手法が必要です。 
+Azure Storage は、自動レプリカによるデータ回復性を備えています。 ただし、アプリケーション コードやユーザーが、誤ってまたは悪意を持ってデータを破損させるのを防ぐことはできません。 アプリケーション エラーやユーザー エラーが発生した場合にデータの忠実性を維持するには、監査ログと共にセカンダリ ストレージの場所にデータをコピーするなどの高度な手法が必要です。
 
 - **ブロック BLOB**:  各ブロック BLOB の特定時点のスナップショットを作成します。 詳細については、「 [BLOB のスナップショットの作成](/rest/api/storageservices/creating-a-snapshot-of-a-blob)」を参照してください。 各スナップショットについて、BLOB 内で前回のスナップショットの状態との差分を保存するために必要なストレージのみに課金されます。 スナップショットには、差分を取るための基になる BLOB が存在している必要があるため、別の BLOB または別のストレージ アカウントにコピーすることをお勧めします。 これにより、バックアップ データを誤って削除してしまうことから確実に保護できます。 [AzCopy](/azure/storage/common/storage-use-azcopy) または [Azure PowerShell](/azure/storage/common/storage-powershell-guide-full) を使用して、別のストレージ アカウントに BLOB をコピーできます。
 
@@ -30,7 +30,7 @@ Azure Storage は、自動レプリカによるデータ回復性を備えてい
 
 ## <a name="database"></a>Database
 
-### <a name="azure-sql-database"></a>Azure SQL Database 
+### <a name="azure-sql-database"></a>Azure SQL Database
 
 SQL Database は、データ損失からビジネスを守るために、データベースの完全バックアップ (毎週)、データベースの差分バックアップ (1 時間ごと)、およびトランザクション ログのバックアップ (5 ～ 10 分ごと) を組み合わせて自動的に実行します。 ポイントインタイム リストアを使用して、データベースを以前の状態に復元します。 詳細については、次を参照してください。
 
@@ -46,11 +46,10 @@ VM 上で実行される SQL Server の場合、従来のバックアップと�
 
 Azure Cosmos DB では、一定の間隔でバックアップを自動的に作成します。 バックアップは別のストレージ サービスに個別に保存されます。これらのバックアップは、リージョンの障害に対する回復性を確保するためにグローバルにレプリケートされます。 データベースまたはコレクションを誤って削除した場合は、サポート チケットを申請するか、Azure サポートに連絡して、最新の自動バックアップからデータを復元できます。 詳細については、「[Azure Cosmos DB での自動オンライン バックアップと復元](/azure/cosmos-db/online-backup-and-restore)」をご覧ください。
 
-### <a name="azure-database-for-mysql-azure-database-for-postresql"></a>Azure Database for MySQL、Azure Database for PostreSQL
+### <a name="azure-database-for-mysql-azure-database-for-postgresql"></a>Azure Database for MySQL、Azure Database for PostgreSQL
 
-Azure Database for MySQL または Azure Database for PostreSQL を使用すると、5 分ごとにサービスのバックアップが自動的に作成されます。 自動バックアップ機能を使用して、過去の特定の時点までサーバーとそのサーバーのすべてのデータベースを新しいサーバーに復元できます。 詳細については、次を参照してください。
+Azure Database for MySQL または Azure Database for PostgreSQL を使用すると、データベース サービスで 5 分ごとにサービスのバックアップが自動的に作成されます。 自動バックアップ機能を使用して、過去の特定の時点までサーバーとそのサーバーのすべてのデータベースを新しいサーバーに復元できます。 詳細については、次を参照してください。
 
 - [Azure Portal を使用して Azure Database for MySQL サーバーのバックアップと復元を行う方法](/azure/mysql/howto-restore-server-portal)
 
 - [Azure Portal を使用した Azure Database for PostgreSQL サーバーのバックアップと復元方法](/azure/postgresql/howto-restore-server-portal)
-

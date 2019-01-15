@@ -4,12 +4,12 @@ titleSuffix: Azure Reference Architectures
 description: 可用性、セキュリティ、スケーラビリティ、および管理容易性のために Azure で多層アーキテクチャを実装します。
 author: MikeWasson
 ms.date: 11/12/2018
-ms.openlocfilehash: 38983dec83718f53fc1ffd79c1347582200f5db0
-ms.sourcegitcommit: 88a68c7e9b6b772172b7faa4b9fd9c061a9f7e9d
+ms.openlocfilehash: e7dbd8dd2b8e5aff8f18ff9b87fce0b76a850bce
+ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53120129"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54011380"
 ---
 # <a name="windows-n-tier-application-on-azure-with-sql-server"></a>SQL Server を使用した Azure の Windows N 層アプリケーション
 
@@ -65,7 +65,7 @@ VNet を作成するときに、各サブネット内のリソースが要求す
 
 ### <a name="load-balancers"></a>ロード バランサー
 
-VM は直接インターネットに公開せず、代わりに各 VM にプライベート IP アドレスを付与します。 クライアントは、Application Gateway に関連付けられているパブリック IP アドレスを使用して接続します。
+VM は直接インターネットに公開せず、代わりに各 VM にプライベート IP アドレスを付与します。 クライアントでは、Application Gateway に関連付けられているパブリック IP アドレスを使用して接続します。
 
 ロード バランサー規則を定義して、ネットワーク トラフィックを VM に転送します。 たとえば、HTTP トラフィックを有効にするには、フロントエンド構成からのポート 80 をバックエンド アドレス プールのポート 80 にマップします。 クライアントがポート 80 に HTTP 要求を送信するときに、ロード バランサーは、発信元 IP アドレスを含む[ハッシュ アルゴリズム][load-balancer-hashing]を使用して、バックエンド IP アドレスを選択します。 クライアント要求が、バックエンド アドレス プールのすべての VM に分散されます。
 
@@ -153,7 +153,7 @@ Web 層とビジネス層については、個別の VM を可用性セットに
 
 **暗号化**。 機密の保存データを暗号化し、[Azure Key Vault][azure-key-vault] を使用してデータベース暗号化キーを管理します。 Key Vault では、ハードウェア セキュリティ モジュール (HSM) に暗号化キーを格納することができます。 詳細については、[Azure VM 上の SQL Server 向け Azure Key Vault 統合の構成][sql-keyvault]に関するページを参照してください。 データベース接続文字列などのアプリケーション シークレットも Key Vault に格納することをお勧めします。
 
-**DDoS 保護**。 Azure プラットフォームには、基本的な DDoS 保護が既定で用意されています。 この基本的な保護は、Azure インフラストラクチャ全体を保護することを目的としています。 基本的な DDoS 保護は自動的に有効になっていますが、Microsoft では [DDoS Protection Standard][ddos] を使用することをお勧めします。 Standard Protection では、アプリケーションのネットワーク トラフィック パターンに基づいて、アダプティブ チューニングが使用され、脅威が検出されます。 これにより、インフラストラクチャ全体の DDoS ポリシーで見落とされてしまう可能性のある DDoS 攻撃に対して、軽減策を適用することができます。 Standard Protection では、Azure Monitor を介して、アラート、テレメトリ、および分析機能も提供されます。 詳細については、[Azure DDoS Protection:ベスト プラクティスと参照アーキテクチャ][ddos-best-practices]に関するページを参照してください。
+**DDoS 保護**。 Azure プラットフォームには、基本的な DDoS 保護が既定で用意されています。 この基本的な保護は、Azure インフラストラクチャ全体を保護することを目的としています。 基本的な DDoS 保護は自動的に有効になっていますが、Microsoft では [DDoS Protection Standard][ddos] を使用することをお勧めします。 Standard Protection では、アプリケーションのネットワーク トラフィック パターンに基づいて、アダプティブ チューニングが使用され、脅威が検出されます。 これにより、インフラストラクチャ全体の DDoS ポリシーで見落とされてしまう可能性のある DDoS 攻撃に対して、軽減策を適用することができます。 Standard Protection では、Azure Monitor を介して、アラート、テレメトリ、および分析機能も提供されます。 詳細については、「[Azure DDoS Protection:ベスト プラクティスと参照アーキテクチャ][ddos-best-practices]に関するページを参照してください。
 
 ## <a name="deploy-the-solution"></a>ソリューションのデプロイ方法
 

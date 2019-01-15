@@ -1,14 +1,14 @@
 ---
 title: Azure Resource Manager テンプレートのリソースを条件付きでデプロイする
-description: Azure Resource Manager テンプレートの機能を拡張し、パラメーターの値に応じて、条件付きでリソースをデプロイする方法について説明します
+description: Azure Resource Manager テンプレートの機能を拡張し、パラメーターの値に応じて、条件付きでリソースをデプロイする方法について説明します。
 author: petertay
 ms.date: 10/30/2018
-ms.openlocfilehash: 2c74e17a5f38f9225b696640a23b55b1285276bb
-ms.sourcegitcommit: e9eb2b895037da0633ef3ccebdea2fcce047620f
+ms.openlocfilehash: 0e02fbbd130bd6be2fc10173c8466b028d5d61da
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50251840"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54113469"
 ---
 # <a name="conditionally-deploy-a-resource-in-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートのリソースを条件付きでデプロイする
 
@@ -22,7 +22,7 @@ ms.locfileid: "50251840"
 
 テンプレートの各セクションを見てみましょう。
 
-`parameters` 要素は、`virtualNetworkPeerings` という名前の単一パラメーターを定義します。 
+`parameters` 要素は、`virtualNetworkPeerings` という名前の単一パラメーターを定義します。
 
 ```json
 {
@@ -35,6 +35,7 @@ ms.locfileid: "50251840"
     }
   },
 ```
+
 `virtualNetworkPeerings` パラメーターは `array` であり、次のスキーマがあります。
 
 ```json
@@ -95,9 +96,10 @@ ms.locfileid: "50251840"
     }
 ]
 ```
+
 このテンプレートのこの部分では、2 つの処理が行われています。 最初に、デプロイされている実際のリソースは type が `Microsoft.Resources/deployments` のインライン テンプレートであり、実際に `Microsoft.Network/virtualNetworks/virtualNetworkPeerings` をデプロイする独自のテンプレートが含まれています。
 
-このインライン テンプレートに対する `name` は、`copyIndex()` の現在の繰り返しを接頭辞 `vnp-` で連結することによって一意になります。 
+このインライン テンプレートに対する `name` は、`copyIndex()` の現在の繰り返しを接頭辞 `vnp-` で連結することによって一意になります。
 
 `condition` 要素は、`greater()` 関数が `true` として評価された場合にリソースが処理される必要があることを指定しています。 ここでは、`virtualNetworkPeerings` パラメーター配列が 0 よりも `greater()` であるかどうかをテストしています。 0 より大きい場合は、評価結果が `true` となり、`condition` が満たされます。 それ以外の場合は、`false` となります。
 
@@ -116,7 +118,7 @@ ms.locfileid: "50251840"
   },
 ```
 
-`workaround` 変数には、`true` および `false` という 2 つのプロパティが含まれます。 `true` プロパティは、評価されて `virtualNetworkPeerings`パラメーター配列の値になります。 `false` プロパティの評価結果は、Resource Manager での表示を想定している名前付きのプロパティも含めて空のオブジェクトになります。`false` は、`virtualNetworkPeerings` パラメーターと同様、実際には検証を満たす配列であることに注意してください。 
+`workaround` 変数には、`true` および `false` という 2 つのプロパティが含まれます。 `true` プロパティは、評価されて `virtualNetworkPeerings`パラメーター配列の値になります。 `false` プロパティの評価結果は、Resource Manager での表示を想定している名前付きのプロパティも含めて空のオブジェクトになります。`false` は、`virtualNetworkPeerings` パラメーターと同様、実際には検証を満たす配列であることに注意してください。
 
 `peerings` 変数は `workaround` 変数をもう一度使用し、`virtualNetworkPeerings` パラメーター配列の長さが 0 より大きいかどうかをテストします。 0 より大きい場合、`string` は `true` として評価され、`workaround` 変数は `virtualNetworkPeerings` パラメーター配列として評価されます。 それ以外の場合、評価結果が `false` となり、`workaround` 変数の評価結果によって配列の最初の要素が空のオブジェクトになります。
 
@@ -137,7 +139,7 @@ az group deployment create -g <resource-group-name> \
 * スカラー値ではなくオブジェクトを、テンプレート パラメーターとして使用します。 「[Azure Resource Manager テンプレートのパラメーターとしてオブジェクトを使用する](./objects-as-parameters.md)」を参照してください
 
 <!-- links -->
-[azure-resource-manager-condition]: /azure/azure-resource-manager/resource-group-authoring-templates#resources
+[azure-resource-manager-condition]: /azure/azure-resource-manager/resource-manager-templates-resources#condition
 [azure-resource-manager-variable]: /azure/azure-resource-manager/resource-group-authoring-templates#variables
 [vnet-peering-resource-schema]: /azure/templates/microsoft.network/virtualnetworks/virtualnetworkpeerings
 [cli]: /cli/azure/?view=azure-cli-latest

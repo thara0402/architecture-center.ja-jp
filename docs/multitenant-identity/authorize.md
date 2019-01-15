@@ -1,17 +1,17 @@
 ---
 title: マルチテナント アプリケーションでの承認
-description: マルチテナント アプリケーションで承認を実行する方法
+description: マルチテナント アプリケーションで承認を行う方法。
 author: MikeWasson
 ms.date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications
 pnp.series.prev: app-roles
 pnp.series.next: web-api
-ms.openlocfilehash: 8ff2317eb85197ed93e048b6a2d836405436cc17
-ms.sourcegitcommit: 4ba3304eebaa8c493c3e5307bdd9d723cd90b655
+ms.openlocfilehash: 6e406a7e80b77dea161db194a82ccae043bdc777
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53307165"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54110341"
 ---
 # <a name="role-based-and-resource-based-authorization"></a>ロールベースおよびリソースベースの承認
 
@@ -25,6 +25,7 @@ Microsoft の[参照実装]は、ASP.NET Core アプリケーションです。 
 一般的なアプリは両方のアプローチを採用します。 たとえば、リソースを削除する場合、ユーザーはリソース所有者 *または* 管理者である必要があります。
 
 ## <a name="role-based-authorization"></a>ロールベースの承認
+
 [Tailspin Surveys][Tailspin] アプリケーションでは次のロールが定義されます。
 
 * 管理者。 そのテナントに属するすべてのアンケートに対してすべての CRUD 操作を実行できます。
@@ -38,6 +39,7 @@ Microsoft の[参照実装]は、ASP.NET Core アプリケーションです。 
 ロールを管理する方法にかかわらず、承認コードは同様になります。 ASP.NET Core は、[承認ポリシー][policies]という抽象化を使用しています。 この機能を使用してコードで承認ポリシーを定義し、そのポリシーをコントローラー アクションに適用します。 ポリシーは、コントローラーから切り離されます。
 
 ### <a name="create-policies"></a>ポリシーの作成
+
 ポリシーを定義するには、まず `IAuthorizationRequirement`を実装するクラスを作成します。 `AuthorizationHandler`から派生するのが最も簡単です。 `Handle` メソッドで、関連する要求を確認してください。
 
 Tailspin Surveys アプリケーションの例を次に示します。
@@ -47,7 +49,7 @@ public class SurveyCreatorRequirement : AuthorizationHandler<SurveyCreatorRequir
 {
     protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, SurveyCreatorRequirement requirement)
     {
-        if (context.User.HasClaim(ClaimTypes.Role, Roles.SurveyAdmin) || 
+        if (context.User.HasClaim(ClaimTypes.Role, Roles.SurveyAdmin) ||
             context.User.HasClaim(ClaimTypes.Role, Roles.SurveyCreator))
         {
             context.Succeed(requirement);
@@ -68,7 +70,7 @@ services.AddAuthorization(options =>
         policy =>
         {
             policy.AddRequirements(new SurveyCreatorRequirement());
-            policy.RequireAuthenticatedUser(); // Adds DenyAnonymousAuthorizationRequirement 
+            policy.RequireAuthenticatedUser(); // Adds DenyAnonymousAuthorizationRequirement
             // By adding the CookieAuthenticationDefaults.AuthenticationScheme, if an authenticated
             // user is not in the appropriate role, they will be redirected to a "forbidden" page.
             policy.AddAuthenticationSchemes(CookieAuthenticationDefaults.AuthenticationScheme);
@@ -87,6 +89,7 @@ services.AddAuthorization(options =>
 このコードにより認証スキームも設定され、承認に失敗した場合は、どの認証ミドルウェアを実行すべきかを ASP.NET に伝えます。 ここでは、Cookie 認証ミドルウェアを指定しますが、その理由は Cookie 認証ミドルウェアがユーザーを "禁止された" ページにリダイレクトできるためです。 禁止されたページの場所は、Cookie ミドルウェアの `AccessDeniedPath` オプションで設定されます。詳しくは、「[認証ミドルウェアの構成]」をご覧ください。
 
 ### <a name="authorize-controller-actions"></a>コントローラー アクションを承認する
+
 最後に、MVC コントローラーのアクションを承認するには、 `Authorize` 属性のポリシーを設定します。
 
 ```csharp
@@ -112,6 +115,7 @@ public IActionResult Create()
 * ポリシーを使用すると、1 つのロール メンバーシップでは表現できない、より複雑な承認判断 (21 歳以上の年齢など) を実行できます。
 
 ## <a name="resource-based-authorization"></a>リソース ベースの承認
+
 *リソース ベースの承認* は、操作の影響を受ける特定のリソースに承認が依存している場合に常に発生します。 Tailspin Surveys アプリケーションでは、すべてのアンケートに 1 人の所有者がいて、0 対多の共同作成者がいます。
 
 * 所有者は、アンケートの読み取り、更新、削除、発行、発行の取り消しを行うことができます。
@@ -166,7 +170,7 @@ Surveys アプリの例を次に示します。 このアプリケーション�
 * 読み取り
 * 更新
 * 削除
-* [発行]
+* 発行
 * 発行の取り消し
 
 次のコードは、特定のユーザーとアンケートのアクセス許可の一覧を作成します。 このコードは、ユーザーのアプリ ロールと、アンケートの所有者/共同作成者フィールドの両方を確認します。
@@ -247,7 +251,8 @@ static readonly Dictionary<OperationAuthorizationRequirement, Func<List<UserPerm
 
 [**次へ**][web-api]
 
-<!-- Links -->
+<!-- links -->
+
 [Tailspin]: tailspin.md
 
 [アプリケーション ロール]: app-roles.md

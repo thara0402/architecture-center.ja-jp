@@ -5,12 +5,12 @@ description: Azure ExpressRoute を使用して接続された Azure 仮想ネ�
 author: telmosampaio
 ms.date: 10/22/2017
 ms.custom: seodec18
-ms.openlocfilehash: 8e9de168fe2969159f62ce84a19f4b21fd1cb538
-ms.sourcegitcommit: 88a68c7e9b6b772172b7faa4b9fd9c061a9f7e9d
+ms.openlocfilehash: 1308f85f2f6d05b86e22f2558d89f164d076d182
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53120392"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54112789"
 ---
 # <a name="connect-an-on-premises-network-to-azure-using-expressroute"></a>ExpressRoute を使用した Azure へのオンプレミス ネットワークの接続
 
@@ -207,8 +207,7 @@ Azure 接続の高可用性は、ご使用のプロバイダーの種類と、�
 
 - VNet を、さまざまなサービス プロバイダーによって提供される、複数の ExpressRoute 回線に接続します。 この戦略により、追加の高可用性機能と、ディザスター リカバリー機能が提供されます。
 
-- ExpressRoute のフェールオーバー パスとしてサイト間 VPN を構成します。 このオプションの詳細については、「[VPN フェールオーバー付きの ExpressRoute を使用してオンプレミス ネットワークを Azure に接続する][highly-available-network-architecture]」を参照してください。
- このオプションは、プライベート ピアリングにのみ適用されます。 Azure と Office 365 サービスについては、インターネットが唯一のフェールオーバー パスです。
+- ExpressRoute のフェールオーバー パスとしてサイト間 VPN を構成します。 このオプションの詳細については、「[VPN フェールオーバー付きの ExpressRoute を使用してオンプレミス ネットワークを Azure に接続する][highly-available-network-architecture]」を参照してください。 このオプションは、プライベート ピアリングにのみ適用されます。 Azure と Office 365 サービスについては、インターネットが唯一のフェールオーバー パスです。
 
 ## <a name="manageability-considerations"></a>管理容易性に関する考慮事項
 
@@ -224,7 +223,7 @@ ExpressRoute はレイヤー 3 で動作します。 アプリケーション �
 
 ![[2]][2]
 
-監査やコンプライアンスの目的で、VNet で実行されているコンポーネントからインターネットへの直接アクセスを禁止し、[強制トンネリング][forced-tuneling]を実装しなければならない場合があります。 このような場合は、インターネット トラフィックを、オンプレミスで実行されているプロキシにリダイレクトして、監査できるようにする必要があります。 プロキシは、承認されていないトラフィックが流出するのをブロックし、悪意のある可能性がある受信トラフィックをフィルター処理するように構成できます。
+監査やコンプライアンスの目的で、VNet で実行されているコンポーネントからインターネットへの直接アクセスを禁止し、[強制トンネリング][forced-tunneling]を実装しなければならない場合があります。 このような場合は、インターネット トラフィックを、オンプレミスで実行されているプロキシを介してリダイレクトし、監査できるようにする必要があります。 プロキシは、承認されていないトラフィックが流出するのをブロックし、悪意のある可能性がある受信トラフィックをフィルター処理するように構成できます。
 
 ![[3]][3]
 
@@ -270,7 +269,7 @@ VM の管理エンドポイントを外部ネットワークに公開する必�
 
 <!-- links -->
 
-[forced-tuneling]: ../dmz/secure-vnet-hybrid.md
+[forced-tunneling]: ../dmz/secure-vnet-hybrid.md
 [highly-available-network-architecture]: ./expressroute-vpn-failover.md
 
 [expressroute-technical-overview]: /azure/expressroute/expressroute-introduction
@@ -286,8 +285,8 @@ VM の管理エンドポイントを外部ネットワークに公開する必�
 [azurect]: https://github.com/Azure/NetworkMonitoring/tree/master/AzureCT
 [visio-download]: https://archcenter.blob.core.windows.net/cdn/hybrid-network-architectures.vsdx
 [er-circuit-parameters]: https://github.com/mspnp/reference-architectures/tree/master/hybrid-networking/expressroute/parameters/expressRouteCircuit.parameters.json
-[azure-powershell-download]: https://azure.microsoft.com/documentation/articles/powershell-install-configure/
-[azure-cli]: https://azure.microsoft.com/documentation/articles/xplat-cli-install/
+[azure-powershell-download]: /powershell/azure/overview
+[azure-cli]: /cli/azure/install-azure-cli
 
 [0]: ./images/expressroute.png "Azure ExpressRoute を使用したハイブリッド ネットワーク アーキテクチャ"
 [1]: ../_images/guidance-hybrid-network-expressroute/figure2.png "冗長ルーターと、ExpressRoute のプライマリ回路とセカンダリ回路の使用"

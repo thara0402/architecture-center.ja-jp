@@ -1,18 +1,17 @@
 ---
-title: 補正トランザクション
+title: 補正トランザクション パターン
+titleSuffix: Cloud Design Patterns
 description: 最終的に整合性がある操作を定義する一連のステップで実行された作業を元に戻します。
 keywords: 設計パターン
 author: dragon119
 ms.date: 06/23/2017
-pnp.series.title: Cloud Design Patterns
-pnp.pattern.categories:
-- resiliency
-ms.openlocfilehash: 3d58537d9c77b97332bcabf762b9af7ed2f20421
-ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
+ms.custom: seodec18
+ms.openlocfilehash: b81151a6db08c2c14c7f26af3b4b79bfd22a18bb
+ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47428144"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54011618"
 ---
 # <a name="compensating-transaction-pattern"></a>補正トランザクション パターン
 
@@ -86,7 +85,7 @@ ms.locfileid: "47428144"
 
 ![旅行プランを予約するために長時間実行されるトランザクションを元に戻すための補正トランザクションの生成](./_images/compensating-transaction-diagram.png)
 
-
+> [!NOTE]
 > 各ステップに対する補正ロジックの設計方法によっては、補正トランザクション内の手順を並列で実行できる場合があります。
 
 多くのビジネス ソリューションでは、1 つのステップの失敗によって、補正トランザクションを使用したシステムのロールバックが常に必要になるわけではありません。 たとえば、&mdash;旅行 Web サイトのシナリオで、顧客が F1 便、F2 便、および F3 便を予約した後で&mdash;、ホテル H1 の部屋を予約できなかった場合、望ましいのは航空券の予約を取り消すことではなく、同じ市内にある別のホテルを提案することです。 顧客はこの旅行プランをキャンセルすると決めることができます (この場合、補正トランザクションが実行され、F1 便、F2 便、および F3 便の予約が元に戻されます) が、この決定は、システムではなく顧客が行う必要があります。
@@ -97,6 +96,6 @@ ms.locfileid: "47428144"
 
 - [Data consistency primer (データ整合性入門)](https://msdn.microsoft.com/library/dn589800.aspx)。 最終的整合性モデルを実装する操作を元に戻すには、補正トランザクション パターンがよく使用されます。 この入門では、最終的整合性の利点とトレードオフについて説明します。
 
-- [Scheduler-Agent-Supervisor Pattern](scheduler-agent-supervisor.md) (スケジューラー - エージェント - スーパーバイザー パターン)。 分散型サービスとリソースを使用するビジネス操作を実行する、回復力のあるシステムを実装する方法について説明します。 場合によっては、操作によって実行された作業を補正トランザクションを使用して元に戻す必要があります。
+- [Scheduler-Agent-Supervisor パターン](./scheduler-agent-supervisor.md)。 分散型サービスとリソースを使用するビジネス操作を実行する、回復力のあるシステムを実装する方法について説明します。 場合によっては、操作によって実行された作業を補正トランザクションを使用して元に戻す必要があります。
 
 - [再試行パターン](./retry.md)。 補正トランザクションの実行は負荷が高くなる可能性があり、場合によっては、失敗した操作を再試行パターンに従って再試行する有効なポリシーを実装することによって、その使用を最小限に抑えることができます。

@@ -3,14 +3,14 @@ title: eコマース フロントエンド
 titleSuffix: Azure Example Scenarios
 description: Azure で eコマース サイトをホストします。
 author: masonch
-ms.date: 7/13/18
+ms.date: 07/13/2018
 ms.custom: fasttrack
-ms.openlocfilehash: d6587218813fa450b284f3a300c7254a3c9fe41f
-ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
+ms.openlocfilehash: f07c21b8eb9d812b9831abe8f2e4f6d131893df2
+ms.sourcegitcommit: 7d9efe716e8c9e99f3fafa9d0213d48c23d9713d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53643953"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54160810"
 ---
 # <a name="an-e-commerce-front-end-on-azure"></a>Azure の eコマース フロントエンド
 
@@ -67,7 +67,7 @@ Web 層と機能に関するその他のオプションは次のとおりです�
 - [Service Fabric][docs-service-fabric] - 細かな制御でクラスター全体にデプロイして実行することでメリットを得られる分散コンポーネントの構築に重点を置いたプラットフォーム。 Service Fabric を使ってコンテナーをホストすることもできます。
 - [Azure Kubernetes Service][docs-kubernetes-service] - マイクロサービス アーキテクチャの実装として使用できる、コンテナー ベースのソリューションを構築およびデプロイするためのプラットフォーム。 これにより、アプリケーションのさまざまなコンポーネントの俊敏性が実現し、オンデマンドで個別にスケーリングできます。
 - [Azure Container Instances][docs-container-instances] - コンテナーを短いライフサイクルですばやくデプロイし、実行する手段。 このコンテナーは、メッセージの処理や計算の実行など、簡単な処理ジョブを実行するためにデプロイされ、完了するとすぐにプロビジョニングが解除されます。
-- [Service Bus][service-bus] は、Storage キューの代わりに使用できます。
+- [Service Bus][service-bus] は、ストレージ キューの代わりに使用できます。
 
 データ層の他のオプションを次に示します。
 
@@ -156,5 +156,6 @@ Web 層と機能に関するその他のオプションは次のとおりです�
 [resiliency]: /azure/architecture/checklist/resiliency
 [scalability]: /azure/architecture/checklist/scalability
 [secure-development]: https://www.microsoft.com/SDL/process/design.aspx
+[service-bus]: /azure/service-bus-messaging/
 [sql-geo-replication]: /azure/sql-database/sql-database-geo-replication-overview
 [storage-geo-redudancy]: /azure/storage/common/storage-redundancy-grs

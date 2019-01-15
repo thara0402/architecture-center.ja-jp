@@ -1,16 +1,16 @@
 ---
 title: Key Vault を使用したアプリケーション シークレットの保護
-description: Key Vault サービスを使用してアプリケーション シークレットを格納する方法
+description: Key Vault サービスを使用してアプリケーション シークレットを格納する方法。
 author: MikeWasson
 ms.date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications
 pnp.series.prev: client-assertion
-ms.openlocfilehash: 4cefea7e09cf11cbbc66cdb238c5dea8f700cdad
-ms.sourcegitcommit: e7e0e0282fa93f0063da3b57128ade395a9c1ef9
+ms.openlocfilehash: dc471ca5fa090270465624548ffe7335363d6cb7
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52902529"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54112755"
 ---
 # <a name="use-azure-key-vault-to-protect-application-secrets"></a>Azure Key Vault を使用したアプリケーション シークレットの保護
 
@@ -47,6 +47,7 @@ Surveys アプリケーションは、次の場所から構成設定を読み込
 起動時に、アプリケーションはすべての登録済み設定プロバイダーからの設定を読み取り、これらの設定を使用して、厳密に型指定されたオプションのオブジェクトを設定します。 詳細については、[オプションと構成オブジェクトの使用][options]に関する記事をご覧ください。
 
 ## <a name="setting-up-key-vault-in-the-surveys-app"></a>Surveys アプリケーションでの Key Vault の設定
+
 前提条件:
 
 * [Azure Resource Manager コマンドレット][azure-rm-cmdlets]をインストールします。
@@ -62,10 +63,9 @@ Surveys アプリケーションは、次の場所から構成設定を読み込
 6. アプリケーションのユーザー シークレットを更新します。
 
 ### <a name="set-up-an-admin-user"></a>管理者ユーザーを設定する
+
 > [!NOTE]
 > Key Vault を作成するには、Azure サブスクリプションを管理できるアカウントを使用する必要があります。 また、Key Vault からの読み取りを承認する任意のアプリケーションを、そのアカウントと同じテナントに登録する必要があります。
-> 
-> 
 
 この手順では、Surveys アプリケーションが登録されているテナントのユーザーとしてサインインした状態で、Key Vault を作成できることを確認します。
 
@@ -84,19 +84,20 @@ Surveys アプリケーションが登録されている Azure AD テナント�
 
 1. ハブ メニューで、**[サブスクリプション]** を選択します。
 
-    ![](./images/running-the-app/subscriptions.png)
+    ![Azure ポータルのハブのスクリーンショット](./images/running-the-app/subscriptions.png)
 
 2. この管理者がアクセスするサブスクリプションを選択します。
 3. サブスクリプション ブレードで、**[アクセス制御 (IAM)]** を選択します。
 4. **[追加]** をクリックします。
-4. **[ロール]** で、**[所有者]** を選択します。
-5. 所有者として追加するユーザーの電子メール アドレスを入力します。
-6. ユーザーを選択して **[保存]** をクリックします。
+5. **[ロール]** で、**[所有者]** を選択します。
+6. 所有者として追加するユーザーの電子メール アドレスを入力します。
+7. ユーザーを選択して **[保存]** をクリックします。
 
 ### <a name="set-up-a-client-certificate"></a>クライアント証明書を設定する
+
 1. 次のとおり、PowerShell スクリプト [/Scripts/Setup-KeyVault.ps1][Setup-KeyVault] を実行します。
-   
-    ```
+
+    ```powershell
     .\Setup-KeyVault.ps1 -Subject <<subject>>
     ```
     `Subject` パラメーターに任意の名前を入力します ("surveysapp" など)。 このスクリプトによって、自己署名証明書が生成され、"Current User/Personal" 証明書ストアに保存されます。 スクリプトの出力は、JSON フラグメントです。 この値をコピーします。
@@ -105,10 +106,10 @@ Surveys アプリケーションが登録されている Azure AD テナント�
 
 3. **[Azure Active Directory]** > **[アプリの登録]** > Surveys の順に選択します。
 
-4.  **[マニフェスト]** をクリックし、**[編集]** をクリックします。
+4. **[マニフェスト]** をクリックし、**[編集]** をクリックします。
 
-5.  スクリプトの出力を `keyCredentials` プロパティに貼り付けます。 次のようになります。
-        
+5. スクリプトの出力を `keyCredentials` プロパティに貼り付けます。 次のようになります。
+
     ```json
     "keyCredentials": [
         {
@@ -119,87 +120,90 @@ Surveys アプリケーションが登録されている Azure AD テナント�
         "value": "MIIDAjCCAeqgAwIBAgIQFxeRiU59eL.....
         }
     ],
-    ```          
+    ```
 
-6. **[Save]** をクリックします。  
+6. **[Save]** をクリックします。
 
 7. 手順 3 - 6 を繰り返し、同じ JSON フラグメントを Web API (Surveys.WebAPI) のアプリケーション マニフェストに追加します。
 
 8. PowerShell ウィンドウから次のコマンドを実行して、証明書の拇印を取得します。
-   
-    ```
+
+    ```powershell
     certutil -store -user my [subject]
     ```
-    
+
     `[subject]` には、PowerShell スクリプトの Subject に指定した値を使用します。 拇印は "Cert Hash(sha1)" の下に表示されます。 この値をコピーします。 拇印は後で使用します。
 
 ### <a name="create-a-key-vault"></a>Key Vault を作成します
+
 1. 次のとおり、PowerShell スクリプト [/Scripts/Setup-KeyVault.ps1][Setup-KeyVault] を実行します。
-   
-    ```
+
+    ```powershell
     .\Setup-KeyVault.ps1 -KeyVaultName <<key vault name>> -ResourceGroupName <<resource group name>> -Location <<location>>
     ```
-   
-    資格情報の入力を求められたら、先ほど作成した Azure AD ユーザーとしてサインインします。 このスクリプトにより、新しいリソース グループと、そのリソース グループ内に新しい Key Vault が作成されます。 
-   
-2. 次のように SetupKeyVault.ps を再び実行します。
-   
-    ```
+
+    資格情報の入力を求められたら、先ほど作成した Azure AD ユーザーとしてサインインします。 このスクリプトにより、新しいリソース グループと、そのリソース グループ内に新しい Key Vault が作成されます。
+
+2. 次のように Setup-KeyVault.ps1 をもう一度実行します。
+
+    ```powershell
     .\Setup-KeyVault.ps1 -KeyVaultName <<key vault name>> -ApplicationIds @("<<Surveys app id>>", "<<Surveys.WebAPI app ID>>")
     ```
-   
+
     次のパラメーター値を設定します。
-   
+
        * key vault name = 前の手順で Key Vault に指定した名前。
        * Surveys app ID = Surveys Web アプリケーションのアプリケーション ID。
        * Surveys.WebApi app ID = Surveys.WebAPI アプリケーションのアプリケーション ID。
-         
+
     例:
-     
-    ```
+
+    ```powershell
      .\Setup-KeyVault.ps1 -KeyVaultName tailspinkv -ApplicationIds @("f84df9d1-91cc-4603-b662-302db51f1031", "8871a4c2-2a23-4650-8b46-0625ff3928a6")
     ```
-    
+
     このスクリプトでは、Web アプリと Web API が Key Vault からシークレットを取得することを承認します。 詳細については、「[Azure Key Vault の概要](/azure/key-vault/key-vault-get-started/)」をご覧ください。
 
 ### <a name="add-configuration-settings-to-your-key-vault"></a>作成した Key Vault に構成設定を追加する
-1. 次のように SetupKeyVault.ps を実行します。
-   
-    ```
-    .\Setup-KeyVault.ps1 -KeyVaultName <<key vault name> -KeyName Redis--Configuration -KeyValue "<<Redis DNS name>>.redis.cache.windows.net,password=<<Redis access key>>,ssl=true" 
+
+1. 次のように Setup-KeyVault.ps1 を実行します。
+
+    ```powershell
+    .\Setup-KeyVault.ps1 -KeyVaultName <<key vault name> -KeyName Redis--Configuration -KeyValue "<<Redis DNS name>>.redis.cache.windows.net,password=<<Redis access key>>,ssl=true"
     ```
     各値の説明:
-   
+
    * key vault name = 前の手順で Key Vault に指定した名前。
    * Redis DNS name = Redis Cache インスタンスの DNS 名。
    * Redis access key = Redis Cache インスタンスのアクセス キー。
-     
+
 2. この時点で、Key Vault にシークレットが正常に保存されたかどうかをテストすることをお勧めします。 次の PowerShell コマンドを実行します。
-   
-    ```
+
+    ```powershell
     Get-AzureKeyVaultSecret <<key vault name>> Redis--Configuration | Select-Object *
     ```
 
-3. もう一度 SetupKeyVault.ps を実行して、データベース接続文字列を追加します。
-   
-    ```
+3. もう一度 Setup-KeyVault.ps1 を実行して、データベース接続文字列を追加します。
+
+    ```powershell
     .\Setup-KeyVault.ps1 -KeyVaultName <<key vault name> -KeyName Data--SurveysConnectionString -KeyValue <<DB connection string>> -ConfigName "Data:SurveysConnectionString"
     ```
-   
+
     ここでは、 `<<DB connection string>>` がデータベース接続文字列の値です。
-   
+
     ローカル データベースでテストする場合は、Tailspin.Surveys.Web/appsettings.json ファイルから接続文字列をコピーします。 これを行う場合、必ず二重の円記号 ('\\\\') を 1 つの円記号に変更してください。 2 つのバックスラッシュは、JSON ファイルにおけるエスケープ文字です。
-   
+
     例:
-   
-    ```
-    .\Setup-KeyVault.ps1 -KeyVaultName mykeyvault -KeyName Data--SurveysConnectionString -KeyValue "Server=(localdb)\MSSQLLocalDB;Database=Tailspin.SurveysDB;Trusted_Connection=True;MultipleActiveResultSets=true" 
+
+    ```powershell
+    .\Setup-KeyVault.ps1 -KeyVaultName mykeyvault -KeyName Data--SurveysConnectionString -KeyValue "Server=(localdb)\MSSQLLocalDB;Database=Tailspin.SurveysDB;Trusted_Connection=True;MultipleActiveResultSets=true"
     ```
 
 ### <a name="uncomment-the-code-that-enables-key-vault"></a>Key Vault を有効にするコードをコメント解除する
+
 1. Tailspin.Surveys ソリューションを開きます。
 2. Tailspin.Surveys.Web/Startup.cs で、次のコード ブロックを見つけてコメントを解除します。
-   
+
     ```csharp
     //var config = builder.Build();
     //builder.AddAzureKeyVault(
@@ -208,17 +212,18 @@ Surveys アプリケーションが登録されている Azure AD テナント�
     //    config["AzureAd:ClientSecret"]);
     ```
 3. Tailspin.Surveys.Web/Startup.cs で、`ICredentialService` を登録するコードを探します。 `CertificateCredentialService` を使用する行のコメントを解除し、`ClientCredentialService` を使用する行をコメントにします。
-   
+
     ```csharp
     // Uncomment this:
     services.AddSingleton<ICredentialService, CertificateCredentialService>();
     // Comment out this:
     //services.AddSingleton<ICredentialService, ClientCredentialService>();
     ```
-   
+
     この変更により、[クライアント アサーション][client-assertion]を使用する Web アプリが OAuth アクセス トークンを取得できるようになります。 クライアント アサーションを使用すると、OAuth クライアント シークレットは不要になります。 代わりに、Key Vault にクライアント シークレットを格納することができます。 ただし、Key Vault とクライアント アサーションの両方がクライアント証明書を使用するため、Key Vault を有効にする場合は、クライアント アサーションも有効にすることをお勧めします。
 
 ### <a name="update-the-user-secrets"></a>ユーザー シークレットを更新する
+
 ソリューション エクスプローラーで Tailspin.Surveys.Web プロジェクトを右クリックし、 **[ユーザー シークレットの管理]** を選択します。 secrets.json ファイルで、既存の JSON を削除し、次のコードを貼り付けます。
 
 ```json
@@ -243,16 +248,14 @@ Surveys アプリケーションが登録されている Azure AD テナント�
 
 角かっこ ([ ]) 内のエントリを適切な値に置き換えます。
 
-* `AzureAd:ClientId`: Surveys アプリケーションのクライアント ID。
-* `AzureAd:ClientSecret`: Azure AD で Surveys アプリケーションを登録したときに生成したキー。
-* `AzureAd:WebApiResourceId`: Azure AD で Surveys.WebAPI アプリケーションの作成時に指定したアプリ ID URI。
-* `Asymmetric:CertificateThumbprint`: クライアント証明書の作成時に以前入手した証明書の拇印。
-* `KeyVault:Name`: Key Vault の名前。
+* `AzureAd:ClientId`:Surveys アプリのクライアント ID。
+* `AzureAd:ClientSecret`:Azure AD で Surveys アプリケーションを登録したときに生成したキー。
+* `AzureAd:WebApiResourceId`:Azure AD で Surveys.WebAPI アプリケーションの作成時に指定したアプリ ID URI。
+* `Asymmetric:CertificateThumbprint`:クライアント証明書の作成時に、以前入手した証明書の拇印。
+* `KeyVault:Name`:キー コンテナーの名前。
 
 > [!NOTE]
 > `Asymmetric:ValidationRequired` が false になっているのは、前に作成した証明書がルート証明機関 (CA) によって署名されていないためです。 運用時には、ルート CA によって署名された証明書を使用して、`ValidationRequired` を true に設定してください。
-> 
-> 
 
 更新した secrets.json ファイルを保存します。
 
@@ -280,12 +283,11 @@ Surveys アプリケーションが登録されている Azure AD テナント�
 
 > [!NOTE]
 > Web API の場合は、Surveys アプリケーションではなく、Surveys.WebAPI アプリケーションのクライアント ID を使用してください。
-> 
-> 
 
 [**次へ**][adfs]
 
-<!-- Links -->
+<!-- links -->
+
 [adfs]: ./adfs.md
 [authorize-app]: /azure/key-vault/key-vault-get-started//#authorize
 [azure-portal]: https://portal.azure.com

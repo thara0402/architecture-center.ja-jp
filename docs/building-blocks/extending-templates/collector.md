@@ -1,14 +1,14 @@
 ---
 title: Azure Resource Manager テンプレートでプロパティのトランスフォーマーとコレクターを実装する
-description: Azure Resource Manager テンプレートでプロパティのトランスフォーマーとコレクターを実装する方法について説明します
+description: Azure Resource Manager テンプレートでプロパティのトランスフォーマーとコレクターを実装する方法について説明します。
 author: petertay
 ms.date: 10/30/2018
-ms.openlocfilehash: ad5b3a71f516ec12fee311e25c43f434f9f306ed
-ms.sourcegitcommit: e9eb2b895037da0633ef3ccebdea2fcce047620f
+ms.openlocfilehash: 1a6a01ee513609132d8522a79ccb81b7938651b5
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50251789"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54113809"
 ---
 # <a name="implement-a-property-transformer-and-collector-in-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートでプロパティのトランスフォーマーとコレクターを実装する
 
@@ -24,12 +24,14 @@ ms.locfileid: "50251789"
 ![プロパティのコレクターとトランスフォーマーのアーキテクチャ](../_images/collector-transformer.png)
 
 この**呼び出し元テンプレート**には 2 つのリソースが含まれています。
-* **コレクター テンプレート**を呼び出す、テンプレートのリンク。
-* デプロイする NSG リソース。
+
+- **コレクター テンプレート**を呼び出す、テンプレートのリンク。
+- デプロイする NSG リソース。
 
 この**コレクター テンプレート**には 2 つのリソースが含まれています。
-* **アンカー** リソース。
-* コピー ループ内で変換テンプレートを呼び出す、テンプレートのリンク。
+
+- **アンカー** リソース。
+- コピー ループ内で変換テンプレートを呼び出す、テンプレートのリンク。
 
 この**変換テンプレート**には 1 つのリソースが含まれています: **メイン テンプレート**で `source` JSON を NSG リソースで想定されている JSON スキーマに変換する変数を持つ、空のテンプレート。
 
@@ -41,7 +43,7 @@ ms.locfileid: "50251789"
 {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
-    "parameters":{ 
+    "parameters": {
       "networkSecurityGroupsSettings": {
       "value": {
           "securityRules": [
@@ -80,9 +82,10 @@ ms.locfileid: "50251789"
 
 ## <a name="transform-template"></a>変換テンプレート
 
-この**変換テンプレート**には、**コレクター テンプレート**から渡される 2 つのパラメーターが含まれています。 
-* `source` は、プロパティ配列からプロパティ値オブジェクトの 1 つを受け取るオブジェクトです。 この例では、`"securityRules"` 配列からの各オブジェクトが一度に 1 つ渡されます。
-* `state` は、以前の変換のすべてを連結した結果を受け取る配列です。 これは、変換された JSON のコレクションです。
+この**変換テンプレート**には、**コレクター テンプレート**から渡される 2 つのパラメーターが含まれています。
+
+- `source` は、プロパティ配列からプロパティ値オブジェクトの 1 つを受け取るオブジェクトです。 この例では、`"securityRules"` 配列からの各オブジェクトが一度に 1 つ渡されます。
+- `state` は、以前の変換のすべてを連結した結果を受け取る配列です。 これは、変換された JSON のコレクションです。
 
 パラメーターは次のようになります。
 
@@ -115,7 +118,7 @@ ms.locfileid: "50251789"
             "destinationAddressPrefix": "[parameters('source').destinationAddressPrefix]",
             "access": "[parameters('source').access]",
             "priority": "[parameters('source').priority]",
-            "direction": "[parameters('source').direction]"            
+            "direction": "[parameters('source').direction]"
         }
       }
     ]
@@ -139,9 +142,10 @@ ms.locfileid: "50251789"
 ## <a name="collector-template"></a>コレクター テンプレート
 
 この**コレクター テンプレート**には 3 つのパラメーターが含まれています。
-* `source` は完全なパラメーター オブジェクトの配列です。 **呼び出し元テンプレート**によって渡されます。 これは**変換テンプレート**にある `source` パラメーターと同じ名前ですが、すでにお気づきのように 1 つの大きな違いがあります。これは完全な配列ですが、**変換テンプレート**には一度にこの配列の 1 要素のみを渡しています。
-* `transformTemplateUri` は、この**変換テンプレート**の URI です。 テンプレートが再利用できるように、ここではパラメーターとして定義しています。
-* `state` は、**変換テンプレート**に渡す、最初は空である配列です。 コピー ループが完了すると、変換されたパラメーター オブジェクトのコレクションを格納します。
+
+- `source` は完全なパラメーター オブジェクトの配列です。 **呼び出し元テンプレート**によって渡されます。 これは**変換テンプレート**にある `source` パラメーターと同じ名前ですが、すでにお気づきのように 1 つの大きな違いがあります。これは完全な配列ですが、**変換テンプレート**には一度にこの配列の 1 要素のみを渡しています。
+- `transformTemplateUri` は、この**変換テンプレート**の URI です。 テンプレートが再利用できるように、ここではパラメーターとして定義しています。
+- `state` は、**変換テンプレート**に渡す、最初は空である配列です。 コピー ループが完了すると、変換されたパラメーター オブジェクトのコレクションを格納します。
 
 パラメーターは次のようになります。
 
@@ -153,7 +157,7 @@ ms.locfileid: "50251789"
       "type": "array",
       "defaultValue": [ ]
     }
-``` 
+```
 
 次に、`count` という名前の変数を定義します。 その値は、`source` パラメーター オブジェクトの配列の長さです。
 
@@ -166,8 +170,9 @@ ms.locfileid: "50251789"
 お察しのようにコピー ループでのイテレーションの数に使用しています。
 
 ここで、リソースを見てみましょう。 2 つのリソースを定義します。
-* `loop-0` はコピー ループの 0 から始まるリソースです。
-* `loop-` は `copyIndex(1)` 関数の結果と連結され、リソースに、`1` で始まるイテレーションに基づく一意の名前を生成します。
+
+- `loop-0` はコピー ループの 0 から始まるリソースです。
+- `loop-` は `copyIndex(1)` 関数の結果と連結され、リソースに、`1` で始まるイテレーションに基づく一意の名前を生成します。
 
 リソースは次のようになります。
 
@@ -231,6 +236,7 @@ ms.locfileid: "50251789"
     }
   }
 ```
+
 **変換テンプレート**の最後のイテレーションの `output` を**呼び出し元テンプレート**に返すのは、それを `source` パラメーターに格納していたように見えるので、直感に反するかもしれません。 しかし、これは変換されたプロパティ オブジェクトの完全な配列を持つ**変換テンプレート**の最後のイテレーションであることを思い出してください。それこそが返すものです。
 
 最後に、**呼び出し元テンプレート**から**コレクター テンプレート**を呼び出す方法を見てみましょう。
@@ -277,8 +283,9 @@ ms.locfileid: "50251789"
 ```
 
 **コレクター テンプレート**に 2 つのパラメーターを渡します。
-* `source` はプロパティ オブジェクトの配列です。 この例では、`networkSecurityGroupsSettings` パラメーターです。
-* `transformTemplateUri` は**コレクター テンプレート**の URI で定義した変数です。
+
+- `source` はプロパティ オブジェクトの配列です。 この例では、`networkSecurityGroupsSettings` パラメーターです。
+- `transformTemplateUri` は**コレクター テンプレート**の URI で定義した変数です。
 
 最後に、`Microsoft.Network/networkSecurityGroups` リソースで、`collector` がリンクされたテンプレート リソースの `output` をその `securityRules` プロパティに直接割り当てます。
 

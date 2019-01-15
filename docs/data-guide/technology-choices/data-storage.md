@@ -3,27 +3,31 @@ title: データ ストレージ テクノロジの選択
 description: ''
 author: zoinerTejada
 ms.date: 02/12/2018
-ms.openlocfilehash: c97249228ca45a7a17822b6dd55acad6360c6f6b
-ms.sourcegitcommit: e7e0e0282fa93f0063da3b57128ade395a9c1ef9
+ms.openlocfilehash: 9fe28249b51083bb588808770aba9ac7d48d560e
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52902648"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54113163"
 ---
 # <a name="choosing-a-big-data-storage-technology-in-azure"></a>Azure でのビッグ データ ストレージ テクノロジの選択
 
 このトピックでは、[分析データ ストア](./analytical-data-stores.md)や[リアルタイムのストリーミング取り込み](./real-time-ingestion.md)とは対照的に、ビッグ データ ソリューション向けのデータ ストレージ オプション (具体的には、一括データ インジェストとバッチ処理用のデータ ストレージ) を比較します。
 
+<!-- markdownlint-disable MD026 -->
+
 ## <a name="what-are-your-options-when-choosing-data-storage-in-azure"></a>Azure でデータ ストレージを選択するときのオプション
 
-必要に応じて、Azure にデータの取り込むためのさまざまなオプションがあります。
+<!-- markdownlint-enable MD026 -->
+
+必要に応じて、Azure にデータを取り込むためのいくつかのオプションがあります。
 
 **File Storage**
 
 - [Azure Storage BLOB](/azure/storage/blobs/storage-blobs-introduction)
 - [Azure Data Lake Store](/azure/data-lake-store/)
 
-**NoSQL データベース**
+**NoSQL データベース:**
 
 - [Azure Cosmos DB](/azure/cosmos-db/)
 - [HDInsight での HBase](https://hbase.apache.org/)
@@ -34,7 +38,7 @@ Azure Storage は、高い可用性セキュリティ、耐久性、スケーラ
 
 データの格納に使用できるさまざまな Azure Storage サービスがあります。 多数のデータ ソースから BLOB を格納するための最も柔軟なオプションは、[BLOB ストレージ](/azure/storage/blobs/storage-blobs-introduction)です。 BLOB は、基本的にはファイルです。 それらは、画像、ドキュメント、HTML ファイル、仮想ハード ディスク (VHD) から、ログなどのビッグ データ、データベースのバックアップまで、ほぼすべてを格納できます。 BLOB は、フォルダーに似たコンテナーに格納されます。 コンテナーは、BLOB のセットをグループ化します。 ストレージ アカウントに含めることができるコンテナーの数には制限がなく、1 つのコンテナーに格納できる BLOB の数にも制限はありません。
 
-Azure Storage は、柔軟性、高可用性、および低コストという理由で、ビッグ データと分析ソリューションに適した選択肢です。 さまざまなユース ケース用のホット、クール、およびアーカイブ ストレージ層を提供します。 詳細については、「[Azure Blob Storage: ホット、クール、アーカイブ ストレージ層](/azure/storage/blobs/storage-blob-storage-tiers)」を参照してください。
+Azure Storage は、柔軟性、高可用性、および低コストという理由で、ビッグ データと分析ソリューションに適した選択肢です。 さまざまなユース ケース用のホット、クール、およびアーカイブ ストレージ層を提供します。 詳細については、[Azure Blob Storage のホット ストレージ層、クール ストレージ層、アーカイブ ストレージ層](/azure/storage/blobs/storage-blob-storage-tiers)に関するページを参照してください。
 
 Azure Blob Storage は、Hadoop からアクセスできます (HDInsight から利用できます)。 HDInsight は、クラスターの既定のファイル システムとして Azure Storage 内の BLOB コンテナーを使用できます。 HDInsight のすべてのコンポーネントは、WASB ドライバーが提供する Hadoop 分散ファイル システム (HDFS) のインターフェイスを利用して、BLOB として格納された構造化データまたは非構造化データを直接操作できます。 Azure Blob Storage は、PolyBase 機能を使用して Azure SQL Data Warehouse 経由でアクセスできます。
 
@@ -59,7 +63,7 @@ Azure Data Lake Analytics と結合された Data Lake Store は、格納され�
 
 [Azure Cosmos DB](/azure/cosmos-db/) は、Microsoft のグローバル分散型マルチモデル データベースです。 Cosmos DB では、世界中のあらゆる場所で 99 パーセントのユーザーの待機時間が確実に 1 桁ミリ秒となります。また、明確でわかりやすい複数の整合性モデルでパフォーマンスを細かく調整することができ、マルチホーム機能により高可用性も保証されます。
 
-Azure Cosmos DB はスキーマに依存しません。 それは、全データのインデックスを自動的に作成します。スキーマとインデックスの管理に対処する必要はありません。 またマルチモデルでもあり、ドキュメント、キー値、グラフ、列ファミリのデータ モデルにネイティブに対応しています。 
+Azure Cosmos DB はスキーマに依存しません。 それは、全データのインデックスを自動的に作成します。スキーマとインデックスの管理に対処する必要はありません。 またマルチモデルでもあり、ドキュメント、キー値、グラフ、列ファミリのデータ モデルにネイティブに対応しています。
 
 Azure Cosmos DB の機能:
 
@@ -119,4 +123,3 @@ Azure Cosmos DB の機能:
 | Azure Functions のネイティブ統合 |                        [はい](/azure/cosmos-db/serverless-computing-database)                        |                                                                     いいえ                                                                      |
 |   自動的なグローバル分散    |                          [はい](/azure/cosmos-db/distribute-data-globally)                           | いいえ。最終的な整合性を指定して、リージョン間で[HBase クラスターのレプリケーションを構成可能](/azure/hdinsight/hbase/apache-hbase-replication) |
 |           価格モデル            | 必要に応じて秒単位で課金され、弾力的にスケーラブルな要求ユニット (RU)。弾力的にスケーラブルなストレージ |                              HDInsight クラスターの分単位の料金 (ノードの水平スケーリング)、ストレージ                               |
-

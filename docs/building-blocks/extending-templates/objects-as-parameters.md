@@ -1,14 +1,14 @@
 ---
 title: Azure Resource Manager テンプレートのパラメーターとしてオブジェクトを使用する
-description: Azure Resource Manager テンプレートの機能を拡張して、オブジェクトをパラメーターとして使用する方法について説明します
+description: Azure Resource Manager テンプレートの機能を拡張して、オブジェクトをパラメーターとして使用する方法について説明します。
 author: petertay
 ms.date: 10/30/2018
-ms.openlocfilehash: c1955823b3474efa0abea1d9634add5f13d02eda
-ms.sourcegitcommit: e9eb2b895037da0633ef3ccebdea2fcce047620f
+ms.openlocfilehash: f0826d8ed1ce446d295ebdacc66d8b0bef0b0dec
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50251891"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54111208"
 ---
 # <a name="use-an-object-as-a-parameter-in-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートのパラメーターとしてオブジェクトを使用する
 
@@ -24,10 +24,11 @@ ms.locfileid: "50251891"
     "VNetSettings":{"type":"object"}
 },
 ```
+
 次に、`VNetSettings` オブジェクトに値を指定してみましょう。
 
 > [!NOTE]
-> デプロイ時にパラメーター値を指定する方法については、「[Azure Resource Manager テンプレートの構造と構文の詳細][azure-resource-manager-authoring-templates]」の**パラメーター**のセクションを参照してください。 
+> デプロイ時にパラメーター値を指定する方法については、「[Azure Resource Manager テンプレートの構造と構文の詳細][azure-resource-manager-authoring-templates]」の**パラメーター**のセクションを参照してください。
 
 ```json
 "parameters":{
@@ -91,9 +92,10 @@ ms.locfileid: "50251891"
     }
   ]
 ```
-`VNetSettings` オブジェクトの値は、`parameters()` 関数を `[]` 配列インデクサーおよびドット演算子とともに使用して、仮想ネットワーク リソースに必要なプロパティに適用されています。 この方法は、リソースにパラメーター オブジェクトの値を静的に適用する場合に有効です。 ただし、デプロイ時にプロパティ値の配列を動的に割り当てる場合は、[コピー ループ][azure-resource-manager-create-multiple-instances]を使用します。 コピー ループを使用するには、リソースのプロパティ値の JSON 配列を指定します。すると、コピー ループが値をリソースのプロパティに動的に適用します。 
 
-動的なアプローチをする場合は、注意すべき問題が 1 つあります。 その問題を示すために、プロパティ値の典型的な配列を見てみましょう。 この例では、プロパティの値は変数に格納されています。 ここでは 2 つの配列があります&mdash; 1 つは `firstProperty` という名前、もう 1 つは `secondProperty` という名前です。 
+`VNetSettings` オブジェクトの値は、`parameters()` 関数を `[]` 配列インデクサーおよびドット演算子とともに使用して、仮想ネットワーク リソースに必要なプロパティに適用されています。 この方法は、リソースにパラメーター オブジェクトの値を静的に適用する場合に有効です。 ただし、デプロイ時にプロパティ値の配列を動的に割り当てる場合は、[コピー ループ][azure-resource-manager-create-multiple-instances]を使用します。 コピー ループを使用するには、リソースのプロパティ値の JSON 配列を指定します。すると、コピー ループが値をリソースのプロパティに動的に適用します。
+
+動的なアプローチをする場合は、注意すべき問題が 1 つあります。 その問題を示すために、プロパティ値の典型的な配列を見てみましょう。 この例では、プロパティの値は変数に格納されています。 ここでは 2 つの配列があります&mdash; 1 つは `firstProperty` という名前、もう 1 つは `secondProperty` という名前です。
 
 ```json
 "variables": {
@@ -166,9 +168,9 @@ ms.locfileid: "50251891"
 
 ## <a name="using-a-property-object-in-a-copy-loop"></a>コピー ループ内でプロパティ オブジェクトを使用する
 
-この方法は、[serial copy loop][azure-resource-manager-create-multiple] と組み合わせる場合、特に、子リソースをデプロイするのにさらに便利です。 
+この方法は、[serial copy loop][azure-resource-manager-create-multiple] と組み合わせる場合、特に、子リソースをデプロイするのにさらに便利です。
 
-これを示すために、2 つのセキュリティ規則で[ネットワーク セキュリティ グループ (NSG)][nsg] をデプロイするテンプレートを見てみましょう。 
+これを示すために、2 つのセキュリティ規則で[ネットワーク セキュリティ グループ (NSG)][nsg] をデプロイするテンプレートを見てみましょう。
 
 最初に、パラメーターを見てみましょう。 テンプレートを見ると、`securityRules` という名前の配列を含む `networkSecurityGroupsSettings` という名前の 1 つのパラメーターを定義したことがわかります。 この配列には、セキュリティ規則の設定の数を指定する 2 つの JSON オブジェクトが含まれています。
 
@@ -176,7 +178,7 @@ ms.locfileid: "50251891"
 {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
-    "parameters":{ 
+    "parameters":{
       "networkSecurityGroupsSettings": {
       "value": {
           "securityRules": [
@@ -249,7 +251,7 @@ ms.locfileid: "50251891"
                 "resources": [],
                 "outputs": {}
             }
-        }       
+        }
     },
     {
         "apiVersion": "2015-01-01",
@@ -292,12 +294,12 @@ ms.locfileid: "50251891"
           }
         }
     }
-  ],          
+  ],
   "outputs": {}
 }
 ```
 
-`securityRules` 子リソースでのプロパティ値の指定方法を詳しく見てみましょう。 すべてのプロパティは `parameter()` 関数を使用して参照されているので、ドット演算子を使用して、イテレーションの現在値によってインデックス付けされた `securityRules` 配列を参照します。 最後に、別のドット演算子を使用して、オブジェクトの名前を参照します。 
+`securityRules` 子リソースでのプロパティ値の指定方法を詳しく見てみましょう。 すべてのプロパティは `parameter()` 関数を使用して参照されているので、ドット演算子を使用して、イテレーションの現在値によってインデックス付けされた `securityRules` 配列を参照します。 最後に、別のドット演算子を使用して、オブジェクトの名前を参照します。
 
 ## <a name="try-the-template"></a>テンプレートを試行する
 
@@ -316,8 +318,8 @@ az group deployment create -g <resource-group-name> \
 
 - オブジェクト配列を反復処理するテンプレートを作成し、これを JSON スキーマに変換する方法を確認します。 「[Azure Resource Manager テンプレートでプロパティのトランスフォーマーとコレクターを実装する](./collector.md)」を参照してください
 
-
 <!-- links -->
+
 [azure-resource-manager-authoring-templates]: /azure/azure-resource-manager/resource-group-authoring-templates
 [azure-resource-manager-create-template]: /azure/azure-resource-manager/resource-manager-create-first-template
 [azure-resource-manager-create-multiple-instances]: /azure/azure-resource-manager/resource-group-create-multiple

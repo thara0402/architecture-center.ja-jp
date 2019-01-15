@@ -1,22 +1,24 @@
 ---
 title: Azure コンピューティング オプションの概要
-description: Azure コンピューティング オプションの概要
+titleSuffix: Azure Application Architecture Guide
+description: Azure コンピューティング オプションの概要。
 author: MikeWasson
 ms.date: 06/13/2018
-ms.openlocfilehash: cb59c4472b183d9a14031497f0b6db673938c9a9
-ms.sourcegitcommit: b2a4eb132857afa70201e28d662f18458865a48e
+ms.custom: seojan19
+ms.openlocfilehash: 80e57263207ef3a96791d61097ff9f0e3259bf53
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48818821"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54111497"
 ---
 # <a name="overview-of-azure-compute-options"></a>Azure コンピューティング オプションの概要
 
-"*コンピューティング*" という用語は、アプリケーションがそこで実行されるコンピューティング リソースのホスティング モデルを指します。 
+"*コンピューティング*" という用語は、アプリケーションがそこで実行されるコンピューティング リソースのホスティング モデルを指します。
 
 ## <a name="overview"></a>概要
 
-その 1 つが**サービスとしてのインフラストラクチャ** (IaaS) です。 IaaS を使用して、関連付けられているネットワークおよびストレージ コンポーネントと共に、必要な VM をプロビジョニングします。 その後、必要なソフトウェアとアプリケーションを、こうした VM にデプロイします。 このモデルは従来のオンプレミス環境に最も近いものですが、Microsoft がインフラストラクチャを管理する点が異なります。 個々の VM は、ご自身で引き続き管理します。  
+その 1 つが**サービスとしてのインフラストラクチャ** (IaaS) です。 IaaS を使用して、関連付けられているネットワークおよびストレージ コンポーネントと共に、必要な VM をプロビジョニングします。 その後、必要なソフトウェアとアプリケーションを、こうした VM にデプロイします。 このモデルは従来のオンプレミス環境に最も近いものですが、Microsoft がインフラストラクチャを管理する点が異なります。 個々の VM は、ご自身で引き続き管理します。
 
 **サービスとしてのプラットフォーム (PaaS)** では、マネージド ホスティング環境が提供されます。この環境では、VM やネットワーク リソースを管理せずにアプリケーションをデプロイできます。 たとえば、個々の VM を作成するのではなく、インスタンス数を指定すると、サービスによって、必要なリソースがプロビジョニング、構成、および管理されます。 Azure App Service は PaaS サービスの例です。
 
@@ -32,22 +34,22 @@ Azure で現在使用できる主なコンピューティング オプション�
 
 - [Virtual Machines](/azure/virtual-machines/)。IaaS サービスです。仮想ネットワーク (VNet) 内で VM をデプロイおよび管理できます。
 - [App Service](/azure/app-service/app-service-value-prop-what-is)。Web アプリ、モバイル アプリ バックエンド、RESTful API、または自動化されたビジネス プロセスをホストするためのマネージド PaaS サービスです。
-- [Service Fabric](/azure/service-fabric/service-fabric-overview)。Azure、オンプレミスなど、多数の環境で実行できる分散システム プラットフォームです。 Service Fabric は、マシン クラスター全体のマイクロサービスのオーケストレーターです。 
+- [Service Fabric](/azure/service-fabric/service-fabric-overview)。Azure、オンプレミスなど、多数の環境で実行できる分散システム プラットフォームです。 Service Fabric は、マシン クラスター全体のマイクロサービスのオーケストレーターです。
 - [Azure Container Service](/azure/container-service/container-service-intro)。コンテナー化されたアプリケーションを実行するように事前構成されている VM のクラスターを、作成、構成、および管理できます。
 - [Azure Container Instances](/azure/container-instances/container-instances-overview) には、仮想マシンをプロビジョニングしたり、より高度なサービスを採用したりせずに、Azure で最も高速かつ簡単にコンテナーを実行する方法が用意されています。
 - [Azure Functions](/azure/azure-functions/functions-overview)。管理された FaaS サービスです。
 - [Azure Batch](/azure/batch/batch-technical-overview)。大規模な並列コンピューティングやハイ パフォーマンス コンピューティング (HPC) のアプリケーションを実行するための管理されたサービスです。
-- [Cloud Services](/azure/cloud-services/cloud-services-choose-me)。クラウド アプリケーションを実行するための管理されたサービスです。 PaaS ホスティング モデルが使用されます。 
+- [Cloud Services](/azure/cloud-services/cloud-services-choose-me)。クラウド アプリケーションを実行するための管理されたサービスです。 PaaS ホスティング モデルが使用されます。
 
 コンピューティング オプションを選択するときの考慮事項をいくつか次に示します。
 
-- ホスティング モデル。 サービスはどのようにホストされますか。 このホスティング環境では、どのような要件と制限が適用されますか。 
+- ホスティング モデル。 サービスはどのようにホストされますか。 このホスティング環境では、どのような要件と制限が適用されますか。
 - DevOps。 アプリケーション アップグレードのための組み込みサポートはありますか。 デプロイメント モデルは何ですか。
-- スケーラビリティ。 インスタンスの追加または削除はサービスによってどのように処理されますか。 負荷およびその他のメトリックに基づいて自動スケールできますか。 
-- 可用性。 サービス SLA は何ですか。 
+- スケーラビリティ。 インスタンスの追加または削除はサービスによってどのように処理されますか。 負荷およびその他のメトリックに基づいて自動スケールできますか。
+- 可用性。 サービス SLA は何ですか。
 - コスト。 サービス自体のコストのほか、そのサービスに構築されているソリューションを管理するための運用コストを考慮してください。 たとえば、IaaS ソリューションの運用コストは高くつく可能性があります。
-- 各サービスの全体的な制限事項。 
-- このサービスに適したアプリケーション アーキテクチャの種類。 
+- 各サービスの全体的な制限事項。
+- このサービスに適したアプリケーション アーキテクチャの種類。
 
 ## <a name="next-steps"></a>次の手順
 

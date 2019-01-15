@@ -1,16 +1,16 @@
 ---
 title: 既存のオンプレミス SSIS と Azure Data Factory を使用したハイブリッド ETL
 titleSuffix: Azure Example Scenarios
-description: 既存のオンプレミス SQL Server Integration Services (SSIS) 展開と Azure Data Factory を使用したハイブリッド ETL
+description: 既存のオンプレミス SQL Server Integration Services (SSIS) デプロイと Azure Data Factory を使用したハイブリッド ETL。
 author: alhieng
-ms.date: 9/20/2018
+ms.date: 09/20/2018
 ms.custom: tsp-team
-ms.openlocfilehash: 387b0aa1927a8d316aad76100f577da13833eae6
-ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
+ms.openlocfilehash: a2ca3817ed172e6d2332a92f68970ea2a5ad8f6c
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53643514"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54110392"
 ---
 # <a name="hybrid-etl-with-existing-on-premises-ssis-and-azure-data-factory"></a>既存のオンプレミス SSIS と Azure Data Factory を使用したハイブリッド ETL
 

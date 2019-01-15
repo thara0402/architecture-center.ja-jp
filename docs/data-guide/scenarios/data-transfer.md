@@ -3,12 +3,12 @@ title: データ転送テクノロジの選択
 description: ''
 author: zoinerTejada
 ms.date: 02/12/2018
-ms.openlocfilehash: d5fbdc3a49ab16be2626b772ffd1af782963a2f0
-ms.sourcegitcommit: e7e0e0282fa93f0063da3b57128ade395a9c1ef9
+ms.openlocfilehash: 1cb763ade2aa263d07a59cc6bfc29d59bec7af19
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52902682"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54113044"
 ---
 # <a name="transferring-data-to-and-from-azure"></a>Azure との間のデータ転送
 
@@ -20,24 +20,25 @@ Azure との間でデータを転送するオプションはいくつかあり�
 
 - ネットワークが低速、または信頼性が低い。
 - ネットワーク帯域幅を追加するためにコストがかかる。
-- 機密データを扱う場合、セキュリティまたは組織のポリシーで発信接続は許可されていない。 
+- 機密データを扱う場合、セキュリティまたは組織のポリシーで発信接続は許可されていない。
 
 主な懸案事項がデータの転送にかかる時間の場合、ネットワーク転送が実際に物理的転送よりも遅いかどうかを確認するテストを実行することができます。
 
 物理的にデータを Azure に転送するには、主に 2 つのオプションがあります。
+
 - **Azure Import/Export**。 [Azure Import/Export サービス](/azure/storage/common/storage-import-export-service)を使用すると、内部 SATA HDD または SDD を Azure データセンターに送付することで、大量のデータを Azure Blob Storage または Azure Files に安全に転送できます。 また、このサービスを使用して、Azure Storage のデータをハード ディスク ドライブに転送し、それらのドライブをオンプレミスの読み込みのために返送することもできます。
 
-- **Azure Data Box**。 [Azure Data Box](https://azure.microsoft.com/services/storage/databox/) は、Microsoft が提供するアプライアンスです。Azure Import/Export サービスと同様に機能します。 Microsoft は、独自のセキュリティで保護された改ざん防止機能を持つ転送アプライアンスを提供しています。また、出荷の物流全体を管理しているので、ポータルで確認できます。 Azure Data Box サービスの利点の 1 つは使いやすさです。 複数のハード ドライブを購入して準備し、それぞれにファイルを転送する必要はありません。 Azure Data Box は、業界をリードする多数の Azure パートナーの支援を受けているので、パートナー製品からクラウドへのオフライン転送をシームレスに利用できます。 
+- **Azure Data Box**。 [Azure Data Box](https://azure.microsoft.com/services/storage/databox/) は、Microsoft が提供するアプライアンスです。Azure Import/Export サービスと同様に機能します。 Microsoft は、独自のセキュリティで保護された改ざん防止機能を持つ転送アプライアンスを提供しています。また、出荷の物流全体を管理しているので、ポータルで確認できます。 Azure Data Box サービスの利点の 1 つは使いやすさです。 複数のハード ドライブを購入して準備し、それぞれにファイルを転送する必要はありません。 Azure Data Box は、業界をリードする多数の Azure パートナーの支援を受けているので、パートナー製品からクラウドへのオフライン転送をシームレスに利用できます。
 
 ## <a name="command-line-tools-and-apis"></a>コマンド ライン ツールと API
 
 スクリプト化とプログラムによるデータ転送を行う場合は、これらのオプションを検討してください。
 
-- **Azure CLI**。 [Azure CLI](/azure/hdinsight/hdinsight-upload-data#commandline) は、Azure サービスを管理し、Azure Storage にデータをアップロードすることができるクロスプラットフォーム ツールです。 
+- **Azure CLI**。 [Azure CLI](/azure/hdinsight/hdinsight-upload-data#commandline) は、Azure サービスを管理し、Azure Storage にデータをアップロードすることができるクロスプラットフォーム ツールです。
 
-- **AzCopy**。 [Windows](/azure/storage/common/storage-use-azcopy?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) または [Linux](/azure/storage/common/storage-use-azcopy-linux?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) のコマンドラインから AzCopy を使用すると、最適なパフォーマンスで Azure BLOB、File、および Table ストレージとの間で簡単にデータをコピーできます。 AzCopy はコンカレンシーと並列処理をサポートし、中断された場合にコピー操作を再開することができます。 他のほとんどのオプションよりも高速です。 プログラムによるアクセスの場合、[Microsoft Azure Storage Data Movement Library](/azure/storage/common/storage-use-data-movement-library) は、AzCopy を強化するコア フレームワークです。 .NET Core ライブラリとして提供されています。 
+- **AzCopy**。 [Windows](/azure/storage/common/storage-use-azcopy?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) または [Linux](/azure/storage/common/storage-use-azcopy-linux?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) のコマンドラインから AzCopy を使用すると、最適なパフォーマンスで Azure BLOB、File、および Table ストレージとの間で簡単にデータをコピーできます。 AzCopy はコンカレンシーと並列処理をサポートし、中断された場合にコピー操作を再開することができます。 他のほとんどのオプションよりも高速です。 プログラムによるアクセスの場合、[Microsoft Azure Storage Data Movement Library](/azure/storage/common/storage-use-data-movement-library) は、AzCopy を強化するコア フレームワークです。 .NET Core ライブラリとして提供されています。
 
-- **PowerShell**。 [`Start-AzureStorageBlobCopy` PowerShell コマンドレット](/powershell/module/azure.storage/start-azurestorageblobcopy?view=azurermps-5.0.0)は、PowerShell に慣れている Windows 管理者向けのオプションです。  
+- **PowerShell**。 [`Start-AzureStorageBlobCopy` PowerShell コマンドレット](/powershell/module/azure.storage/start-azurestorageblobcopy?view=azurermps-5.0.0)は、PowerShell に慣れている Windows 管理者向けのオプションです。
 
 - **AdlCopy**。 [AdlCopy](/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob) を使用すると、Azure Storage Blob のデータを Data Lake Store にコピーできます。 2 つの Azure Data Lake Store アカウント間でデータをコピーすることもできます。 ただし、Data Lake Store から Storage Blob にデータをコピーするために使用することはできません。
 
@@ -79,7 +80,11 @@ Azure との間でデータを転送するオプションはいくつかあり�
 
 次の表は、機能の主な相違点をまとめたものです。
 
+<!-- markdownlint-disable MD024 -->
+
 ### <a name="physical-transfer"></a>物理的転送
+
+<!-- markdownlint-enable MD033 -->
 
 | | Azure Import/Export サービス | Azure Data Box |
 | --- | --- | --- |
@@ -90,7 +95,7 @@ Azure との間でデータを転送するオプションはいくつかあり�
 
 ### <a name="command-line-tools"></a>コマンド ライン ツール
 
-**Hadoop/HDInsight**
+**Hadoop/HDInsight:**
 
 | | Distcp | Sqoop | Hadoop CLI |
 | --- | --- | --- | --- |
@@ -98,33 +103,36 @@ Azure との間でデータを転送するオプションはいくつかあり�
 | リレーショナル データベースへのコピー |  いいえ  | はい | いいえ  |
 | リレーショナル データベースからのコピー |  いいえ  | はい | いいえ  |
 | BLOB ストレージへのコピー |  [はい] | はい | [はい] |
-| BLOB ストレージからのコピー | [はい] |  [はい] | いいえ  |
+| BLOB ストレージからのコピー | [はい] |  はい | いいえ  |
 | Data Lake Store へのコピー | [はい] | はい | [はい] |
-| Data Lake Store からのコピー | [はい] | [はい] | いいえ  |
+| Data Lake Store からのコピー | [はい] | はい | いいえ  |
 
-**その他**
+**その他:**
+
+<!-- markdownlint-disable MD033 -->
 
 | | Azure CLI | AzCopy | PowerShell | AdlCopy | PolyBase |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 互換性のあるプラットフォーム | Linux、OS X、Windows | Linux、Windows | Windows | Linux、OS X、Windows | SQL Server、Azure SQL Data Warehouse | 
+| 互換性のあるプラットフォーム | Linux、OS X、Windows | Linux、Windows | Windows | Linux、OS X、Windows | SQL Server、Azure SQL Data Warehouse |
 | ビッグ データに合わせて最適化 | いいえ  | いいえ  | いいえ  | はい <sup>1</sup> | はい <sup>2</sup> |
-| リレーショナル データベースへのコピー | いいえ  | いいえ  | いいえ  | いいえ  | [はい] | 
-| リレーショナル データベースからのコピー | いいえ  | いいえ  | いいえ  | いいえ  | [はい] | 
-| BLOB ストレージへのコピー | [はい] | はい | [はい] | いいえ  | [はい] | 
+| リレーショナル データベースへのコピー | いいえ  | いいえ  | いいえ  | いいえ  | [はい] |
+| リレーショナル データベースからのコピー | いいえ  | いいえ  | いいえ  | いいえ  | [はい] |
+| BLOB ストレージへのコピー | [はい] | はい | はい | いいえ  | [はい] |
 | BLOB ストレージからのコピー | [はい] | はい | はい | はい | [はい] |
-| Data Lake Store へのコピー | いいえ  | いいえ  | 可能  | はい |  [はい] | 
-| Data Lake Store からのコピー | いいえ  | いいえ  | 可能  | はい | [はい] | 
+| Data Lake Store へのコピー | いいえ  | いいえ  | 可能  | はい |  [はい] |
+| Data Lake Store からのコピー | いいえ  | いいえ  | 可能  | はい | [はい] |
 
+<!-- markdownlint-enable MD033 -->
 
 [1] AdlCopy は、Data Lake Analytics アカウントで使用するときのビッグ データの転送に合わせて最適化されています。
 
-[2] [PolyBase のパフォーマンスを向上する](/sql/relational-databases/polybase/polybase-guide#performance)には、計算を Hadoop にプッシュし、[PolyBase スケールアウト グループ](/sql/relational-databases/polybase/polybase-scale-out-groups)を使用して、SQL Server インスタンスと Hadoop ノード間の並列データ転送を可能にします。
+[2] PolyBase の[パフォーマンスを向上させる](/sql/relational-databases/polybase/polybase-guide#performance)には、計算を Hadoop にプッシュし、[PolyBase スケールアウト グループ](/sql/relational-databases/polybase/polybase-scale-out-groups)を使用して、SQL Server インスタンスと Hadoop ノード間の並列データ転送を有効にします。
 
 ### <a name="graphical-interface-and-azure-data-factory"></a>グラフィカル インターフェイスと Azure Data Factory
 
 | | Azure ストレージ エクスプローラー | Azure Portal * | Azure Data Factory |
 | --- | --- | --- | --- |
-| ビッグ データに合わせて最適化 | いいえ  | いいえ  | [はい] | 
+| ビッグ データに合わせて最適化 | いいえ  | いいえ  | [はい] |
 | リレーショナル データベースへのコピー | いいえ  | いいえ  | [はい] |
 | リレーショナル データベースへのコピー | いいえ  | いいえ  | [はい] |
 | BLOB ストレージへのコピー | [はい] | いいえ  | [はい] |
@@ -138,4 +146,3 @@ Azure との間でデータを転送するオプションはいくつかあり�
 | 価格モデル | 無料 | 無料 | 使用した分を支払う |
 
 \* この場合の Azure Portal は、BLOB ストレージと Data Lake Store に Web ベースの探索ツールを使用することを意味します。
-

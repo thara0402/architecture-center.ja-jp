@@ -1,17 +1,14 @@
 ---
 title: Tailspin Surveys アプリケーションについて
-description: Tailspin Surveys アプリケーションの概要
+description: Tailspin Surveys アプリケーションの概要。
 author: MikeWasson
 ms.date: 07/21/2017
-pnp.series.title: Manage Identity in Multitenant Applications
-pnp.series.prev: index
-pnp.series.next: authenticate
-ms.openlocfilehash: a1c357bd1b5306d1255c66aaea96d86be55e7b77
-ms.sourcegitcommit: e7e0e0282fa93f0063da3b57128ade395a9c1ef9
+ms.openlocfilehash: 95e170c584b8ec5694be69e595b7791c1bcdfdc0
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52902070"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54111463"
 ---
 # <a name="the-tailspin-scenario"></a>Tailspin シナリオ
 
@@ -25,10 +22,9 @@ Tailspin は、Surveys という名前の SaaS アプリケーションを開発
 
 > [!NOTE]
 > アプリケーションを開始するには、「[Surveys アプリケーションの実行]」を参照してください。
-> 
-> 
 
 ## <a name="users-can-create-edit-and-view-surveys"></a>ユーザーがアンケートを作成、編集、および表示できる
+
 認証されたユーザーは、自身が作成した、または自身が共同作成者の権限を持つすべてのアンケートを表示し、新しいアンケートを作成することができます。 ユーザーが組織 ID `bob@contoso.com` でサインインしていることに注意してください。
 
 ![アンケート アプリ](./images/surveys-screenshot.png)
@@ -42,7 +38,8 @@ Tailspin は、Surveys という名前の SaaS アプリケーションを開発
 ![テナントのアンケート](./images/tenant-surveys.png)
 
 ## <a name="survey-owners-can-invite-contributors"></a>アンケートの所有者が共同作成者を招待できる
-ユーザーがアンケートを作成する場合は、アンケートの共同作成者に他のユーザーを招待できます。 共同作成者はアンケートを編集することはできますが、削除または公開することはできません。  
+
+ユーザーがアンケートを作成する場合は、アンケートの共同作成者に他のユーザーを招待できます。 共同作成者はアンケートを編集することはできますが、削除または公開することはできません。
 
 ![共同作成者の追加](./images/add-contributor.png)
 
@@ -55,6 +52,7 @@ Alice がログインすると、[共同作成できるアンケート] の下�
 Alice が Contoso テナントのゲストとしてではなく、自分のテナントにサインインすることに注意してください。 Alice に付与されているのは、そのアンケートの共同作成者のアクセス許可だけです &mdash; Contoso テナントから他のアンケートを表示することはできません。
 
 ## <a name="architecture"></a>アーキテクチャ
+
 Surveys アプリケーションは、Web フロント エンドおよび Web API バックエンドで構成されます。 両方とも [ASP.NET Core] を使用して実装されます。
 
 Web アプリケーションでは、Azure Active Directory (Azure AD) を使用して、ユーザーを認証します。 また、Web アプリケーションでは Azure AD を呼び出して、Web API の OAuth 2 アクセス トークンを取得します。 アクセス トークンは、Azure Redis Cache でキャッシュされます。 キャッシュを使用すると、複数のインスタンスで同じトークンのキャッシュ (たとえば、サーバー ファーム) を共有できます。
@@ -63,7 +61,7 @@ Web アプリケーションでは、Azure Active Directory (Azure AD) を使用
 
 [**次へ**][authentication]
 
-<!-- Links -->
+<!-- links -->
 
 [authentication]: authenticate.md
 

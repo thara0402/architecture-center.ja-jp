@@ -5,12 +5,12 @@ description: Azure の複数リージョンで実行する可用性の高い Web
 author: MikeWasson
 ms.date: 10/25/2018
 ms.custom: seodec18
-ms.openlocfilehash: 61ee7220dbc37140ff1598de78f89aaef8a3e922
-ms.sourcegitcommit: 88a68c7e9b6b772172b7faa4b9fd9c061a9f7e9d
+ms.openlocfilehash: 04ba786ea16aa3245a8f0b7fcafeacc60ac447c2
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53119848"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54113333"
 ---
 # <a name="run-a-web-application-in-multiple-azure-regions-for-high-availability"></a>高可用性を得るために複数の Azure リージョンで Web アプリケーションを実行する
 
@@ -65,7 +65,7 @@ ms.locfileid: "53119848"
 
 ベスト プラクティスとして、アプリケーションの全体的な正常性を報告する正常性プローブ エンドポイントを作成し、そのエンドポイントを正常性プローブ用に使用します。 エンドポイントでは、App Service アプリ、ストレージ キュー、SQL Database などの重要な依存関係をチェックする必要があります。 これを行わなかった場合、プローブは、アプリケーションの重要な部分で実際には障害が発生しているにもかかわらず、エンドポイントが正常であると報告する可能性があります。
 
-その一方で、優先度の低いサービスをチェックするために正常性プローブを使用しないでください。 たとえば電子メール サービスがダウンした場合、アプリケーションは、2 つ目のプロバイダーに切り替えるか、後でメールを送信できます。 これは、アプリケーションのフェールオーバーを発生させるほど優先度の高いものではありません。 詳細については、[正常性エンドポイント監視パターン][health-endpoint-monitoring-pattern]に関するページを参照してください。
+その一方で、優先度の低いサービスをチェックするために正常性プローブを使用しないでください。 たとえば電子メール サービスがダウンした場合、アプリケーションは、2 つ目のプロバイダーに切り替えるか、後でメールを送信できます。 これは、アプリケーションのフェールオーバーを発生させるほど優先度の高いものではありません。 詳細については、「[Health Endpoint Monitoring pattern][health-endpoint-monitoring-pattern]」 (正常性エンドポイントの監視パターン) を参照してください。
 
 ### <a name="sql-database"></a>SQL Database
 
@@ -147,7 +147,7 @@ az network traffic-manager endpoint update --resource-group <resource-group> --p
 
 <!-- links -->
 
-[azure-sql-db]: https://azure.microsoft.com/documentation/services/sql-database/
+[azure-sql-db]: /azure/sql-database/
 [azure-dns]: /azure/dns/dns-overview
 [cosmosdb-geo]: /azure/cosmos-db/distribute-data-globally
 [guidance-web-apps-scalability]: ./scalable-web-app.md

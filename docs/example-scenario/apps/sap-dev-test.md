@@ -3,14 +3,14 @@ title: SAP ワークロード向けの開発/テスト環境
 titleSuffix: Azure Example Scenarios
 description: SAP ワークロード向けの開発/テスト環境を構築します。
 author: AndrewDibbins
-ms.date: 7/11/18
+ms.date: 07/11/2018
 ms.custom: fasttrack
-ms.openlocfilehash: 3f6c828e8757a3f82ad6972a8f21cd2fed629162
-ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
+ms.openlocfilehash: 9f9e8ec971373e4309703800c200ba2c62fe9a66
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53643970"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54111021"
 ---
 # <a name="devtest-environments-for-sap-workloads-on-azure"></a>Azure での SAP ワークロード向けの開発/テスト環境
 
@@ -31,12 +31,12 @@ ms.locfileid: "53643970"
 
 ## <a name="architecture"></a>アーキテクチャ
 
-![SAP ワークロードの開発/テスト環境のアーキテクチャ図](media/architecture-sap-dev-test.png)
+![SAP ワークロードの開発/テスト環境のアーキテクチャ図](./media/architecture-sap-dev-test.png)
 
 このシナリオは、単一の仮想マシンに単一の SAP システム データベースと SAP アプリケーション サーバーをプロビジョニングする方法を示しています。 このシナリオのデータ フローは次のとおりです。
 
 1. お客様は、SAP ユーザー インターフェイスまたは他のクライアント ツール (Excel、Web ブラウザー、またはその他の Web アプリケーション) を使用して、Azure ベースの SAP システムにアクセスします。
-2. 確立された ExpressRoute を使用して接続が提供されます。 ExpressRoute 接続は、Azure の ExpressRoute ゲートウェイが終端です。 ネットワーク トラフィックは、ExpressRoute ゲートウェイを介してゲートウェイ サブネットに、ゲートウェイ サブネットからアプリケーション層のスポーク サブネットにルーティングされ ([ハブスポーク][hub-spoke] パターンを参照)、さらにネットワーク セキュリティ ゲートウェイ経由で SAP アプリケーションの仮想マシンにルーティングされます。
+2. 確立された ExpressRoute を使用して接続が提供されます。 ExpressRoute 接続は、Azure の ExpressRoute ゲートウェイが終端です。 ネットワーク トラフィックは、ExpressRoute ゲートウェイを介してゲートウェイ サブネットに、またゲートウェイ サブネットからアプリケーション層のスポーク サブネットにルーティングされ ([ハブスポーク ネットワーク トポロジ][hub-spoke]を参照)、さらにネットワーク セキュリティ ゲートウェイ経由で SAP アプリケーションの仮想マシンにルーティングされます。
 3. ID 管理サーバーは、認証サービスを提供します。
 4. ジャンプ ボックスは、ローカル管理機能を提供します。
 
@@ -52,7 +52,7 @@ ms.locfileid: "53643970"
 
 ### <a name="availability"></a>可用性
 
- Microsoft は 1 つの VM インスタンスに対してサービス レベル アグリーメント (SLA) を提供します。 Virtual Machines の Microsoft Azure サービス レベル アグリーメントの詳細については、「[Virtual Machines の SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines)」を参照してください
+Microsoft は 1 つの VM インスタンスに対してサービス レベル アグリーメント (SLA) を提供します。 Virtual Machines の Microsoft Azure サービス レベル アグリーメントの詳細については、「[Virtual Machines の SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines)」を参照してください
 
 ### <a name="scalability"></a>スケーラビリティ
 

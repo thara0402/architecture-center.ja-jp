@@ -1,14 +1,14 @@
 ---
 title: Surveys アプリケーションの実行
-description: Surveys サンプル アプリケーションをローカルで実行する方法
+description: Surveys サンプル アプリケーションをローカルで実行する方法。
 author: MikeWasson
 ms.date: 07/21/2017
-ms.openlocfilehash: cc43f713886692167550336dbdcecdfbfc835bc3
-ms.sourcegitcommit: e7e0e0282fa93f0063da3b57128ade395a9c1ef9
+ms.openlocfilehash: b73eeb04755b3dc8443b215bb034c82e3095681d
+ms.sourcegitcommit: 7d9efe716e8c9e99f3fafa9d0213d48c23d9713d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52902670"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54160759"
 ---
 # <a name="run-the-surveys-application"></a>Surveys アプリケーションの実行
 
@@ -24,8 +24,9 @@ ms.locfileid: "52902670"
 6. ユーザーにアプリケーション ロールを追加する。
 
 ## <a name="prerequisites"></a>前提条件
--   [Visual Studio 2017][VS2017]
--   [Microsoft Azure](https://azure.microsoft.com) アカウント
+
+- [ASP.NET および Web 開発ワークロード](https://visualstudio.microsoft.com/vs/support/selecting-workloads-visual-studio-2017)がインストールされている [Visual Studio 2017][VS2017]
+- [Microsoft Azure](https://azure.microsoft.com) アカウント
 
 ## <a name="create-the-tailspin-tenant"></a>Tailspin テナントの作成
 
@@ -37,19 +38,19 @@ Tailspin は、Surveys アプリケーションをホストする架空の会社
 
 2. **[+ リソースの作成]** > **[Identity]** > **[Azure Active Directory]** の順にクリックします。
 
-3. 組織名に `Tailspin` を入力し、ドメイン名を入力します。 ドメイン名は `xxxx.onmicrosoft.com` の形式で指定し、グローバルで一意にする必要があります。 
+3. 組織名に `Tailspin` を入力し、ドメイン名を入力します。 ドメイン名は `xxxx.onmicrosoft.com` の形式で指定し、グローバルで一意にする必要があります。
 
-    ![](./images/running-the-app/new-tenant.png)
+    ![[ディレクトリの作成] ダイアログ ボックス](./images/running-the-app/new-tenant.png)
 
 4. **Create** をクリックしてください。 新しいディレクトリの作成には数分かかることがあります。
 
 エンド ツー エンドのシナリオを完成させるには、アプリケーションにサインアップする顧客の名前の付いた 2 つ目の Azure AD ディレクトリが必要となります。 このためには、既定の Azure AD ディレクトリ (Tailspin 以外) を使用するか、新しいディレクトリを作成します。 この例では、架空の顧客として Contoso を使用します。
 
-## <a name="register-the-surveys-web-api"></a>Surveys Web API の登録 
+## <a name="register-the-surveys-web-api"></a>Surveys Web API の登録
 
 1. [Azure Portal][portal] で、ポータルの右上隅でご自分のアカウントを選択し、新しい Tailspin ディレクトリに移動します。
 
-2. 左側のナビゲーション ウィンドウで、**[Azure Active Directory]** を選択します。 
+2. 左側のナビゲーション ウィンドウで、**[Azure Active Directory]** を選択します。
 
 3. **[アプリの登録]** > **[新しいアプリケーションの登録]** の順にクリックします。
 
@@ -60,13 +61,13 @@ Tailspin は、Surveys アプリケーションをホストする架空の会社
    - **アプリケーションの種類**: `Web app / API`
 
    - **サインオン URL**: `https://localhost:44301/`
-   
-   ![](./images/running-the-app/register-web-api.png) 
+
+   ![Web API の登録のスクリーンショット](./images/running-the-app/register-web-api.png)
 
 5. **Create** をクリックしてください。
 
 6. **[アプリの登録]** ブレードで、新しい **Surveys Web API** アプリケーションを選択します。
- 
+
 7. **[設定]** > **[プロパティ]** の順にクリックします。
 
 8. **[アプリケーション ID/URI]** 編集ボックスに `https://<domain>/surveys.webapi` を入力します。`<domain>` はディレクトリのドメイン名です。 次に例を示します。`https://tailspin.onmicrosoft.com/surveys.webapi`
@@ -77,29 +78,29 @@ Tailspin は、Surveys アプリケーションをホストする架空の会社
 
 10. **[Save]** をクリックします。
 
-## <a name="register-the-surveys-web-app"></a>Surveys Web アプリの登録 
+## <a name="register-the-surveys-web-app"></a>Surveys Web アプリの登録
 
 1. **[アプリの登録]** ブレードに戻り、**[新しいアプリケーションの登録]** をクリックします。
 
 2. **[作成]** ブレードで、次の情報を入力します。
 
-   - **名前**: `Surveys`
-   - **アプリケーションの種類**: `Web app / API`
-   - **サインオン URL**: `https://localhost:44300/`
-   
-   サインオン URL のポート番号は、前の手順の `Surveys.WebAPI`アプリとは異なることに注意してください。
+    - **名前**: `Surveys`
+    - **アプリケーションの種類**: `Web app / API`
+    - **サインオン URL**: `https://localhost:44300/`
+
+    サインオン URL のポート番号は、前の手順の `Surveys.WebAPI`アプリとは異なることに注意してください。
 
 3. **Create** をクリックしてください。
- 
+
 4. **[アプリの登録]** ブレードで、新しい **Surveys** アプリケーションを選択します。
- 
+
 5. アプリケーション ID をコピーします。 この情報は後で必要になります。
 
-    ![](./images/running-the-app/application-id.png)
+    ![アプリケーション ID のコピーのスクリーンショット](./images/running-the-app/application-id.png)
 
 6. **[プロパティ]** をクリックします。
 
-7. **[アプリケーション ID/URI]** 編集ボックスに `https://<domain>/surveys` を入力します。`<domain>` はディレクトリのドメイン名です。 
+7. **[アプリケーション ID/URI]** 編集ボックスに `https://<domain>/surveys` を入力します。`<domain>` はディレクトリのドメイン名です。
 
     ![[設定]](./images/running-the-app/settings.png)
 
@@ -108,7 +109,7 @@ Tailspin は、Surveys アプリケーションをホストする架空の会社
 9. **[Save]** をクリックします。
 
 10. **[設定]** ブレードで **[応答 URL]** をクリックします。
- 
+
 11. 応答 URL `https://localhost:44300/signin-oidc` を追加します。
 
 12. **[Save]** をクリックします。
@@ -117,14 +118,14 @@ Tailspin は、Surveys アプリケーションをホストする架空の会社
 
 14. `client secret` などの説明を入力します。
 
-15. **[時間の選択]** ドロップダウンで、**[1 年間]** を選択します。 
+15. **[時間の選択]** ドロップダウンで、**[1 年間]** を選択します。
 
 16. **[Save]** をクリックします。 保存すると、キーが生成されます。
 
 17. このブレードから移動する前にキーの値をコピーします。
 
-    > [!NOTE] 
-    > このブレードから移動すると、キーは再度表示されません。 
+    > [!NOTE]
+    > このブレードから移動すると、キーは再度表示されません。
 
 18. **[API アクセス]** の下の、**[必要なアクセス許可]** をクリックします。
 
@@ -142,15 +143,14 @@ Tailspin は、Surveys アプリケーションをホストする架空の会社
 
 23. **[選択]** > **[完了]** の順にクリックします。
 
-
 ## <a name="update-the-application-manifests"></a>アプリケーション マニフェストの更新
 
 1. `Surveys.WebAPI`アプリの **[設定]** ブレードに戻ります。
 
 2. **[マニフェスト]** > **[編集]** の順にクリックします。
 
-    ![](./images/running-the-app/manifest.png)
- 
+    ![アプリケーション マニフェストの編集のスクリーンショット](./images/running-the-app/manifest.png)
+
 3. 次の JSON を `appRoles` 要素に追加します。 `id` プロパティの新しい GUID を生成します。
 
    ```json
@@ -188,9 +188,9 @@ Tailspin は、Surveys アプリケーションをホストする架空の会社
 
 Surveys アプリケーションは Redis を使用して、OAuth 2 アクセス トークンをキャッシュします。 キャッシュを作成するには、以下のようにします。
 
-1.  [Azure Portal](https://portal.azure.com) に移動して **[+ リソースの作成]** > **[データベース]** > **[Redis Cache]** の順にクリックします。
+1. [Azure Portal](https://portal.azure.com) に移動して **[+ リソースの作成]** > **[データベース]** > **[Redis Cache]** の順にクリックします。
 
-2.  DNS 名、リソース グループ、場所、価格レベルなどの必要な情報を入力します。 新しいリソース グループを作成するか、既存のリソース グループを使用できます。
+2. DNS 名、リソース グループ、場所、価格レベルなどの必要な情報を入力します。 新しいリソース グループを作成するか、既存のリソース グループを使用できます。
 
 3. **Create** をクリックしてください。
 
@@ -202,12 +202,12 @@ Redis Cache の作成の詳細については、「[Azure Redis Cache の使用�
 
 ## <a name="set-application-secrets"></a>アプリケーション シークレットの設定
 
-1.  Visual Studio で Tailspin Surveys ソリューションを開きます。
+1. Visual Studio で Tailspin Surveys ソリューションを開きます。
 
-2.  ソリューション エクスプローラーで Tailspin.Surveys.Web プロジェクトを右クリックし、 **[ユーザー シークレットの管理]** を選択します。
+2. ソリューション エクスプローラーで Tailspin.Surveys.Web プロジェクトを右クリックし、 **[ユーザー シークレットの管理]** を選択します。
 
-3.  secrets.json ファイルに、次を貼り付けます。
-    
+3. secrets.json ファイルに、次を貼り付けます。
+
     ```json
     {
       "AzureAd": {
@@ -221,17 +221,17 @@ Redis Cache の作成の詳細については、「[Azure Redis Cache の使用�
       }
     }
     ```
-   
+
     山かっこ内に表示される項目を次のように置き換えます。
 
-    - `AzureAd:ClientId`: Surveys アプリのアプリケーション ID。
-    - `AzureAd:ClientSecret`: Azure AD で Surveys アプリケーションを登録したときに生成したキー。
-    - `AzureAd:WebApiResourceId`: Azure AD で Surveys.WebAPI アプリケーションの作成時に指定したアプリ ID URI。 この URI の形式は `https://<directory>.onmicrosoft.com/surveys.webapi` です。
-    - `Redis:Configuration`: Redis Cache の DNS 名とプライマリ アクセス キーからこの文字列を作成します。 たとえば、"tailspin.redis.cache.windows.net,password=2h5tBxxx,ssl=true" とします。
+    - `AzureAd:ClientId`:Surveys アプリのアプリケーション ID。
+    - `AzureAd:ClientSecret`:Azure AD で Surveys アプリケーションを登録したときに生成したキー。
+    - `AzureAd:WebApiResourceId`:Azure AD で Surveys.WebAPI アプリケーションの作成時に指定したアプリ ID URI。 この URI の形式は `https://<directory>.onmicrosoft.com/surveys.webapi` です。
+    - `Redis:Configuration`:Redis Cache の DNS 名とプライマリ アクセス キーからこの文字列を作成します。 たとえば、"tailspin.redis.cache.windows.net,password=2h5tBxxx,ssl=true" とします。
 
-4.  更新した secrets.json ファイルを保存します。
+4. 更新した secrets.json ファイルを保存します。
 
-5.  Tailspin.Surveys.WebAPI プロジェクト向けにこの手順を繰り返しますが、secrets.json に以下を貼り付けます。 山かっこ内の項目を前と同じように置き換えます。
+5. Tailspin.Surveys.WebAPI プロジェクト向けにこの手順を繰り返しますが、secrets.json に以下を貼り付けます。 山かっこ内の項目を前と同じように置き換えます。
 
     ```json
     {
@@ -248,25 +248,25 @@ Redis Cache の作成の詳細については、「[Azure Redis Cache の使用�
 
 この手順では、Entity Framework 7 を使用して、LocalDB を使ってローカルの SQL データベースを作成します。
 
-1.  コマンド ウィンドウを開く
+1. コマンド ウィンドウを開く
 
-2.  Tailspin.Surveys.Data プロジェクトに移動します。
+2. Tailspin.Surveys.Data プロジェクトに移動します。
 
-3.  次のコマンドを実行します。
+3. 次のコマンドを実行します。
 
-    ```
+    ```bat
     dotnet ef database update --startup-project ..\Tailspin.Surveys.Web
     ```
-    
+
 ## <a name="run-the-application"></a>アプリケーションの実行
 
 アプリケーションを実行するには、Tailspin.Surveys.Web と Tailspin.Surveys.WebAPI の両方のプロジェクトを起動します。
 
 次のように F5 キーを押すと、Visual Studio で両方のプロジェクトが自動的に実行されるように設定できます。
 
-1.  ソリューション エクスプローラーで、ソリューションを右クリックして **[スタートアップ プロジェクトの設定]** をクリックします。
-2.  **[マルチ スタートアップ プロジェクト]** を選択します。
-3.  Tailspin.Surveys.Web と Tailspin.Surveys.WebAPI の両プロジェクトで、**[アクション]** = **[開始]** に設定します。
+1. ソリューション エクスプローラーで、ソリューションを右クリックして **[スタートアップ プロジェクトの設定]** をクリックします。
+2. **[マルチ スタートアップ プロジェクト]** を選択します。
+3. Tailspin.Surveys.Web と Tailspin.Surveys.WebAPI の両プロジェクトで、**[アクション]** = **[開始]** に設定します。
 
 ## <a name="sign-up-a-new-tenant"></a>新しいテナントのサインアップ
 
@@ -288,39 +288,38 @@ Surveys アプリケーションがテナントを登録し、お客様はサイ
 
 テナントがサインアップしたら、テナントの AD 管理者がユーザーにアプリケーション ロールを割り当てる必要があります。
 
+1. [Azure Portal][portal] で、Surveys アプリケーションのサインアップに使用した Azure AD ディレクトリに移動します。
 
-1. [Azure Portal][portal] で、Surveys アプリケーションのサインアップに使用した Azure AD ディレクトリに移動します。 
-
-2. 左側のナビゲーション ウィンドウで、**[Azure Active Directory]** を選択します。 
+2. 左側のナビゲーション ウィンドウで、**[Azure Active Directory]** を選択します。
 
 3. **[エンタープライズ アプリケーション]** > **[すべてのアプリケーション]** の順にクリックします。 ポータルに `Survey` と `Survey.WebAPI` が一覧表示されます。 表示されない場合は、サインアップ プロセスが完了していることを確認してください。
 
-4.  Surveys アプリケーションをクリックします。
+4. Surveys アプリケーションをクリックします。
 
-5.  **[ユーザーとグループ]** をクリックします。
+5. **[ユーザーとグループ]** をクリックします。
 
-4.  **[ユーザーの追加]** をクリックします。
+6. **[ユーザーの追加]** をクリックします。
 
-5.  Azure AD Premium を使用する場合は、**[ユーザーとグループ]** をクリックします。 それ以外の場合は、**[ユーザー]**.をクリックします。 (グループにロールを割り当てるには Azure AD Premium が必要です。)
+7. Azure AD Premium を使用する場合は、**[ユーザーとグループ]** をクリックします。 それ以外の場合は、**[ユーザー]**.をクリックします。 (グループにロールを割り当てるには Azure AD Premium が必要です。)
 
-6. 1 人以上のユーザーを選択して、**[選択]** をクリックします。
+8. 1 人以上のユーザーを選択して、**[選択]** をクリックします。
 
     ![ユーザーまたはグループの選択](./images/running-the-app/select-user-or-group.png)
 
-6.  ロールを選択して **[選択]** をクリックします。
+9. ロールを選択して **[選択]** をクリックします。
 
     ![ユーザーまたはグループの選択](./images/running-the-app/select-role.png)
 
-7.  **[割り当て]** をクリックします。
+10. **[割り当て]** をクリックします。
 
 同じ手順を繰り返して、Survey Web API アプリケーションのロールを割り当てます。
 
-> 重要: ユーザーは Survey と Survey.WebAPI の両方で常に同じロールである必要があります。 同じロールでないと、ユーザーのアクセス許可の一貫性が失われ、Web API の 403 (アクセス不可) エラーが発生する場合があります。
+> [!IMPORTANT]
+> ユーザーのロールは常に、Survey と Survey.WebAPI の両方で同じである必要があります。 同じロールでないと、ユーザーのアクセス許可の一貫性が失われ、Web API の 403 (アクセス不可) エラーが発生する場合があります。
 
 ここでアプリに戻って、もう一度サインインします。 **[My Surveys]\(マイ アンケート\)** をクリックします。 ユーザーに SurveyAdmin または SurveyCreator のロールが割り当てられていれば、ユーザーが新しいアンケートを作成するためのアクセス許可を持っていることを示す **[アンケートの作成]** ボタンが表示されます。
 
 ![マイ アンケート](./images/running-the-app/screenshot3.png)
-
 
 <!-- links -->
 

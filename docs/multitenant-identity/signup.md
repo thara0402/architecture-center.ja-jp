@@ -1,17 +1,17 @@
 ---
 title: マルチテナント アプリケーションのサインアップとテナントのオンボード
-description: マルチ テナント アプリケーションでテナントをオンボードする方法
+description: マルチテナント アプリケーションでテナントをオンボードする方法。
 author: MikeWasson
 ms.date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications
 pnp.series.prev: claims
 pnp.series.next: app-roles
-ms.openlocfilehash: 541a4dd9abb2168eef4a60a0ec99e1e7c06049b5
-ms.sourcegitcommit: e7e0e0282fa93f0063da3b57128ade395a9c1ef9
+ms.openlocfilehash: d112cb65e3cd8bae7b273a974bf8e5d2b04aff8a
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52902478"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54112721"
 ---
 # <a name="tenant-sign-up-and-onboarding"></a>テナントのサインアップとオンボード
 
@@ -25,6 +25,7 @@ ms.locfileid: "52902478"
 * アプリケーションに必要な 1 回限りのテナント別セットアップを実行するため。
 
 ## <a name="admin-consent-and-azure-ad-permissions"></a>管理者の同意と Azure AD のアクセス許可
+
 Azure AD に対して認証するには、アプリケーションがユーザーのディレクトリにアクセスできる必要があります。 少なくとも、アプリケーションがユーザーのプロファイルを読み取ることができるアクセス許可が必要です。 初めてユーザーがサインインすると、Azure AD は、要求されたアクセス許可の一覧が表示された同意ページを表示します。 ユーザーが **[同意する]** をクリックすると、アプリケーションに対するアクセス許可が付与されます。
 
 既定では、同意はユーザーごとに求められます。 サインインするユーザーすべてに、同意ページが表示されます。 ただし、Azure AD では*管理者の同意*もサポートしており、組織全体を代表して AD 管理者が同意することも可能です。
@@ -39,9 +40,10 @@ Azure AD に対して認証するには、アプリケーションがユーザ�
 
 ![同意エラー](./images/consent-error.png)
 
-後で、アプリケーションに追加のアクセス許可が必要になった場合、顧客はもう一度サインアップし、更新されたアクセス許可に同意する必要があります。  
+後で、アプリケーションに追加のアクセス許可が必要になった場合、顧客はもう一度サインアップし、更新されたアクセス許可に同意する必要があります。
 
 ## <a name="implementing-tenant-sign-up"></a>テナントのサインアップを実装する
+
 [Tailspin Surveys][Tailspin] アプリケーションのサインアップ プロセスでは、いくつかの要件が定義されています。
 
 * ユーザーがサインインするには、テナントのサインアップを完了する必要があります。
@@ -58,7 +60,7 @@ Azure AD に対して認証するには、アプリケーションがユーザ�
 
 これらのボタンをクリックすると、 `AccountController` クラスのアクションが呼び出されます。
 
-`SignIn` アクションは、**ChallegeResult** を返します。これにより、OpenID Connect ミドルウェアが認証エンドポイントにリダイレクトされます。 ASP.NET Core では、これが認証をトリガーする既定の方法となっています。  
+`SignIn` アクションは、**ChallegeResult** を返します。これにより、OpenID Connect ミドルウェアが認証エンドポイントにリダイレクトされます。 ASP.NET Core では、これが認証をトリガーする既定の方法となっています。
 
 ```csharp
 [AllowAnonymous]
@@ -92,7 +94,7 @@ public IActionResult SignUp()
 
 `SignIn` と同様に、`SignUp` アクションも `ChallengeResult` を返します。 ただし、今回は 1 つの状態情報を `AuthenticationProperties` in the `ChallengeResult`に追加します。
 
-* サインアップ: ユーザーによるサインアップ プロセスを開始したことを示す、ブール型フラグ。
+* サインアップ:ユーザーがサインアップ プロセスを開始したことを示す、ブール型フラグ。
 
 `AuthenticationProperties` の状態情報が OpenID Connect [状態] パラメーターに追加され、認証フローの際にラウンド トリップします。
 
@@ -101,11 +103,16 @@ public IActionResult SignUp()
 ユーザーが Azure AD で認証され、元のアプリケーションにリダイレクトされると、認証チケットに状態が含まれています。 ここでは、このファクトを使用して、"signup" 値が認証フロー全体で継続されていることを確認します。
 
 ## <a name="adding-the-admin-consent-prompt"></a>管理者の同意プロンプトを追加する
+
 Azure AD の管理者の同意フローは、認証要求のクエリ文字列に "prompt" パラメーターを追加することでトリガーされます。
+
+<!-- markdownlint-disable MD040 -->
 
 ```
 /authorize?prompt=admin_consent&...
 ```
+
+<!-- markdownlint-enable MD040 -->
 
 Surveys アプリケーションでは、 `RedirectToAuthenticationEndpoint` イベント中に prompt が追加されます。 このイベントは、ミドルウェアが認証エンドポイントにリダイレクトする直前に呼び出されます。
 
@@ -122,7 +129,7 @@ public override Task RedirectToAuthenticationEndpoint(RedirectContext context)
 }
 ```
 
-` ProtocolMessage.Prompt` を設定すると、ミドルウェアによって "prompt" パラメーターが認証要求に追加されます。
+`ProtocolMessage.Prompt` を設定することで、ミドルウェアに "prompt" パラメーターを認証要求に追加するように指示します。
 
 prompt はサインアップ中にのみ必要です。 通常のサインインには含めないでください。 サインアップとサインインを区別するには、認証状態の `signup` 値を確認します。 次の拡張メソッドで、この条件を確認します。
 
@@ -143,7 +150,8 @@ internal static bool IsSigningUp(this BaseControlContext context)
     bool isSigningUp;
     if (!bool.TryParse(signupValue, out isSigningUp))
     {
-        // The value for signup is not a valid boolean, throw                
+        // The value for signup is not a valid boolean, throw
+
         throw new InvalidOperationException($"'{signupValue}' is an invalid boolean value");
     }
 
@@ -151,7 +159,8 @@ internal static bool IsSigningUp(this BaseControlContext context)
 }
 ```
 
-## <a name="registering-a-tenant"></a>テナントを登録する
+## <a name="registering-a-tenant"></a>テナントの登録
+
 Surveys アプリケーションは、各テナントとユーザーに関する一部の情報をアプリケーション データベースに保存します。
 
 ![Tenant テーブル](./images/tenant-table.png)
@@ -255,7 +264,8 @@ Surveys アプリケーションの全体的なサインアップ フローの�
 
 [**次へ**][app roles]
 
-<!-- Links -->
+<!-- links -->
+
 [app roles]: app-roles.md
 [Tailspin]: tailspin.md
 

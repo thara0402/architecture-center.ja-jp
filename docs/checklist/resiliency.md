@@ -5,12 +5,12 @@ description: 設計時の回復性に関する問題のガイダンスを提供�
 author: petertaylor9999
 ms.date: 11/26/2018
 ms.custom: resiliency, checklist
-ms.openlocfilehash: 1201e2045c6a5f7be9c8286cd192559a8d66d169
-ms.sourcegitcommit: 4ba3304eebaa8c493c3e5307bdd9d723cd90b655
+ms.openlocfilehash: 1a3c7b899be1c61cc53eb9caee30f5153edeb5ae
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53307454"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54113605"
 ---
 # <a name="resiliency-checklist"></a>回復性のチェックリスト
 
@@ -67,7 +67,7 @@ ms.locfileid: "53307454"
 
 **可能な限り、非同期操作を実装します。** 同期操作は、呼び出し元がプロセスの完了を待機している間はリソースを独占でき、その他の操作をブロックすることができます。 アプリケーションの各部分を、可能な限り非同期操作を許可するよう設計してください。 C# での非同期プログラミングの実装方法の詳細については、「[Async および Await を使用した非同期プログラミング][asynchronous-c-sharp]」をご覧ください。
 
-## <a name="data-management"></a>[データ管理]
+## <a name="data-management"></a>データ管理
 
 **アプリケーションのデータ ソースのレプリケーション方法を理解します。** アプリケーション データは、さまざまなデータ ソースに格納され、さまざまな可用性の要件を持ちます。 アプリケーションのデータ要件が確実に満たされるようにする [Azure Storage のレプリケーション](/azure/storage/storage-redundancy/)や [SQL Database のアクティブ geo レプリケーション](/azure/sql-database/sql-database-geo-replication-overview/)など、Azure のデータ ストレージの種類ごとにレプリケーションの方法を評価してください。 [Site Recovery][site-recovery] を使用して Azure VM をレプリケートすると、すべての VM ディスクが、ターゲット リージョンに継続的かつ非同期的にレプリケートされます。 復旧ポイントは数分ごとに作成されます。
 
@@ -80,7 +80,7 @@ ms.locfileid: "53307454"
 **geo 冗長ストレージ アカウントであるストレージ アカウントの種類を使用することを検討してください。** Azure Storage アカウントに格納されているデータは、常にローカルでレプリケートされます。 ただし、ストレージ アカウントをプロビジョニングするときに選択するレプリケーション戦略は複数あります。 まれに発生するリージョン全体が使用できなくなったときに備えてアプリケーション データを保護するには、[Azure の読み取りアクセス geo 冗長ストレージ (RA-GRS)](/azure/storage/storage-redundancy/#read-access-geo-redundant-storage) を選択してください。
 
 > [!NOTE]
-> VM の場合は、RA-GRS レプリケーションを利用して VM ディスク (VHD ファイル) を復元しないでください。 代わりに、[Azure Backup][azure-backup] を使用してください。
+> VM の場合は、RA-GRS レプリケーションを利用して VM ディスク (VHD ファイル) を復元しないでください。 代わりに、[Azure Backup](/azure/backup) を使用してください。
 
 ## <a name="security"></a>セキュリティ
 
@@ -108,7 +108,7 @@ ms.locfileid: "53307454"
 
 **デプロイのロールバック計画を立てます。** アプリケーションのデプロイが失敗し、アプリケーションが使用できなくなる可能性があります。 直前の正常なバージョンに戻して、ダウンタイムを最小限に抑えるために、ロールバック プロセスを設計してください。
 
-## <a name="operations"></a>[操作]
+## <a name="operations"></a>操作
 
 **アプリケーションの監視とアラートのためのベスト プラクティスを実装します。** 適切な監視、診断、およびアラートがなければ、アプリケーションで障害を検出してそれらを修正するようオペレーターに警告する方法がありません。 詳細については、「[監視と診断のガイダンス][monitoring-and-diagnostics-guidance]」をご覧ください。
 
@@ -169,7 +169,6 @@ ms.locfileid: "53307454"
 [app-service-autoscale]: /azure/monitoring-and-diagnostics/insights-how-to-scale/
 [asynchronous-c-sharp]: /dotnet/articles/csharp/async
 [availability-sets]:/azure/virtual-machines/virtual-machines-windows-manage-availability/
-[azure-backup]: https://azure.microsoft.com/documentation/services/backup/
 [circuit-breaker]: ../patterns/circuit-breaker.md
 [cloud-service-autoscale]: /azure/cloud-services/cloud-services-how-to-scale/
 [fma]: ../resiliency/failure-mode-analysis.md

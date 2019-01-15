@@ -1,18 +1,21 @@
 ---
 title: ストラングラー パターン
+titleSuffix: Cloud Design Patterns
 description: 機能の特定の部分を新しいアプリケーションやサービスに徐々に置き換えることで、レガシ システムを段階的に移行します。
+keywords: 設計パターン
 author: dragon119
 ms.date: 06/23/2017
-ms.openlocfilehash: 0bf0b76a69f947419da83edd894a04dbea02371b
-ms.sourcegitcommit: 2ae794de13c45cf24ad60d4f4dbb193c25944eff
+ms.custom: seodec18
+ms.openlocfilehash: 7d7c58c97537537ae9f2f96b7ecf1b437fc258b4
+ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50001883"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54010218"
 ---
 # <a name="strangler-pattern"></a>ストラングラー パターン
 
-機能の特定の部分を新しいアプリケーションやサービスに徐々に置き換えることで、レガシ システムを段階的に移行します。 レガシ システムからの機能が置き換えられていくと、新しいシステムは最終的に古いシステムの機能すべてを置き換え、古いシステムを抑圧して使用停止できるようにします。 
+機能の特定の部分を新しいアプリケーションやサービスに徐々に置き換えることで、レガシ システムを段階的に移行します。 レガシ システムからの機能が置き換えられていくと、新しいシステムは最終的に古いシステムの機能すべてを置き換え、古いシステムを抑圧して使用停止できるようにします。
 
 ## <a name="context-and-problem"></a>コンテキストと問題
 
@@ -24,7 +27,7 @@ ms.locfileid: "50001883"
 
 段階的に、機能の特定の部分を新しいアプリケーションやサービスに置き換えます。 バックエンド レガシ システムに送信される要求をインターセプトするファサードを作成します。 ファサードは、これらの要求をレガシ アプリケーションまたは新しいサービスにルーティングします。 既存の機能は段階的に新しいシステムに移行でき、コンシューマーは、移行が行われていることに気付くことなく、同じインターフェイスを引き続き使用できます。
 
-![](./_images/strangler.png)  
+![ストラングラー パターンの図](./_images/strangler.png)
 
 このパターンは、移行によるリスクを最小化し、長期にわたって開発を分散させるのに役立ちます。 ファサードを使用すると、ユーザーを正しいアプリケーションに安全にルーティングし、レガシ アプリケーションが引き続き機能するようにしながら、任意のペースで新しいシステムに機能を追加できます。 時間の経過とともに、機能が新しいシステムに移行されると、レガシ システムは最終的に "抑圧" されて、必要なくなります。 このプロセスが完了すると、レガシ システムを安全に廃止できます。
 
@@ -48,9 +51,3 @@ ms.locfileid: "50001883"
 ## <a name="related-guidance"></a>関連するガイダンス
 
 - [StranglerApplication](https://www.martinfowler.com/bliki/StranglerApplication.html) に関する Martin Fowler のブログ記事
-- [破損対策レイヤー パターン](./anti-corruption-layer.md)
-- [ゲートウェイ ルーティング パターン](./gateway-routing.md)
-
-
- 
-

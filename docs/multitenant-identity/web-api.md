@@ -1,17 +1,17 @@
 ---
 title: マルチテナント アプリケーションにおけるバックエンド Web API のセキュリティ保護
-description: バックエンド web API をセキュリティで保護する方法
+description: バックエンド Web API をセキュリティで保護する方法。
 author: MikeWasson
 ms.date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications
 pnp.series.prev: authorize
 pnp.series.next: token-cache
-ms.openlocfilehash: e738eb94b5978efa4e7a4bebcc72daa7968ac904
-ms.sourcegitcommit: e7e0e0282fa93f0063da3b57128ade395a9c1ef9
+ms.openlocfilehash: 517bdbb6e1a1063db9337b63905e2ff5f4bdd4d4
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52901594"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54114030"
 ---
 # <a name="secure-a-backend-web-api"></a>バックエンド Web API をセキュリティで保護する
 
@@ -19,13 +19,13 @@ ms.locfileid: "52901594"
 
 [Tailspin Surveys] アプリケーションは、バックエンド Web API を使用してアンケートに対する CRUD 操作を管理しています。 たとえば、ユーザーが [My Surveys] をクリックすると、Web アプリケーションから HTTP 要求が Web API に送信されます。
 
-```
+```http
 GET /users/{userId}/surveys
 ```
 
 Web API からは JSON オブジェクトが返されます。
 
-```
+```http
 {
   "Published":[],
   "Own":[
@@ -40,8 +40,6 @@ Web API は匿名要求を許可しないため、Web アプリは OAuth 2 ベ�
 
 > [!NOTE]
 > これはサーバー対サーバーのシナリオです。 アプリケーションは、ブラウザーから API に対して AJAX の呼び出しを実行しません。
-> 
-> 
 
 使用できる主なアプローチは 2 つです。
 
@@ -50,7 +48,7 @@ Web API は匿名要求を許可しないため、Web アプリは OAuth 2 ベ�
 
 Tailspin アプリケーションは、デリゲートされたユーザー ID を実装しています。 主な違いは次のとおりです。
 
-**デリゲートされたユーザー ID**
+**委任されたユーザー ID:**
 
 * Web API に送信されるベアラー トークンには、ユーザー ID が含まれています。
 * Web API は、ユーザー ID に基づいて承認を決定します。
@@ -58,7 +56,7 @@ Tailspin アプリケーションは、デリゲートされたユーザー ID �
 * 通常、Web アプリケーションは、UI に影響がある何らかの承認の決定を行います (UI 要素の表示、非表示など)。
 * Web API は、信用されていないクライアント (JavaScript アプリケーションや、ネイティブ クライアント アプリケーションなど) によって使用されている可能性があります。
 
-**アプリケーション ID**
+**アプリケーション ID:**
 
 * Web API は、ユーザーに関する情報を取得しません。
 * Web API は、ユーザー ID に基づく承認を実行できません。 すべての承認は、Web アプリケーションが決定します。  
@@ -75,23 +73,25 @@ Tailspin アプリケーションは、デリゲートされたユーザー ID �
 ![アクセス トークンを取得する](./images/access-token.png)
 
 ## <a name="register-the-web-api-in-azure-ad"></a>Azure AD に Web API を登録する
+
 Azure AD から Web API のベアラー トークンを発行するには、Azure AD で構成が必要です。
 
 1. Azure AD に Web API を登録します。
 
 2. Web アプリのクライアント ID を、Web API アプリケーション マニフェストの `knownClientApplications` プロパティに追加します。 [アプリケーション マニフェストの更新]に関するページを参照してください。
 
-3. Web API を呼び出すアクセス許可を Web アプリケーションに付与します。 Azure の管理ポータルでは、アプリケーション ID 向け (クライアントの資格情報フロー) の "アプリケーションのアクセス許可"、またはデリゲートされたユーザー ID 向けの "デリゲートされたアクセス許可" の 2 種類のアクセス許可を設定できます。
-   
+3. Web API を呼び出すアクセス許可を Web アプリケーションに付与します。 Azure の管理ポータルでは、アプリケーション ID 向け (クライアントの資格情報フロー) の "アプリケーションのアクセス許可"、または委任されたユーザー ID 向けの "委任されたアクセス許可" という 2 種類のアクセス許可を設定できます。
+
    ![デリゲートされたアクセス許可](./images/delegated-permissions.png)
 
 ## <a name="getting-an-access-token"></a>アクセス トークンの取得
+
 Web API を呼び出す前に、Web アプリケーションは Azure AD からアクセス トークンを取得します。 .NET アプリケーションで、[Azure AD Authentication Library (ADAL) for .NET][ADAL] を使用します。
 
 OAuth 2 承認コード フローの場合、アプリケーションはアクセス トークンの承認コードを交換します。 次のコードでは、ADAL を使用してアクセス トークンを取得します。 このコードは、 `AuthorizationCodeReceived` イベント中に呼び出されます。
 
 ```csharp
-// The OpenID Connect middleware sends this event when it gets the authorization code.   
+// The OpenID Connect middleware sends this event when it gets the authorization code.
 public override async Task AuthorizationCodeReceived(AuthorizationCodeReceivedContext context)
 {
     string authorizationCode = context.ProtocolMessage.Code;
@@ -127,9 +127,10 @@ var result = await authContext.AcquireTokenSilentAsync(resourceID, credential, n
 `userId` は、`http://schemas.microsoft.com/identity/claims/objectidentifier` 要求にあるユーザーのオブジェクト ID です。
 
 ## <a name="using-the-access-token-to-call-the-web-api"></a>アクセス トークンを使用して Web API を呼び出す
+
 トークンを取得したら、HTTP 要求の Authorization ヘッダーで Web API に送信します。
 
-```
+```http
 Authorization: Bearer xxxxxxxxxx
 ```
 
@@ -155,6 +156,7 @@ public static async Task<HttpResponseMessage> SendRequestWithBearerTokenAsync(th
 ```
 
 ## <a name="authenticating-in-the-web-api"></a>Web API で認証する
+
 Web API は、ベアラー トークンを認証する必要があります。 ASP.NET Core では、[Microsoft.AspNet.Authentication.JwtBearer][JwtBearer] パッケージを使用できます。 このパッケージには、OpenID Connect ベアラー トークンをアプリケーションに渡すことができるミドルウェアが含まれています。
 
 Web API の `Startup` クラスにミドルウェアを登録します。
@@ -172,7 +174,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, Applicat
         },
         Events= new SurveysJwtBearerEvents(loggerFactory.CreateLogger<SurveysJwtBearerEvents>())
     });
-    
+
     // ...
 }
 ```
@@ -183,6 +185,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, Applicat
 * **イベント**は、**JwtBearerEvents** から派生するクラスです。
 
 ### <a name="issuer-validation"></a>発行者の検証
+
 **JwtBearerEvents.TokenValidated** イベントでトークン発行者を検証します。 発行者は "iss" 要求で送信されます。
 
 Surveys アプリケーションでは、Web API は [テナントのサインアップ]を処理しません。 そのため、発行者がアプリケーション データベース内に存在するかどうかのみを確認します。 存在しない場合は例外がスローされ、認証が失敗します。
@@ -221,7 +224,8 @@ public override async Task TokenValidated(TokenValidatedContext context)
 この例に示すように、**TokenValidated** イベントを使用して要求を変更することもできます。 要求は Azure AD から直接送信されることに注意してください。 Web アプリケーションが取得した要求を変更する場合、それらの変更は Web API が受信するベアラー トークンでは表示されません。 詳細については、「[Claims transformations (要求の変換)][claims-transformation]」をご覧ください。
 
 ## <a name="authorization"></a>Authorization
-承認の一般的な説明については、「[Role-based and resource-based authorization (ロールベースおよびリソースベースの承認)][Authorization]」をご覧ください。 
+
+承認の一般的な説明については、「[Role-based and resource-based authorization (ロールベースおよびリソースベースの承認)][Authorization]」をご覧ください。
 
 JwtBearer ミドルウェアは、承認応答を処理します。 たとえば、認証されたユーザーに対するコントローラーのアクションを制御するには、**[承認]** 属性を使用して、認証スキームに **JwtBearerDefaults.AuthenticationScheme** を指定します。
 
@@ -248,18 +252,18 @@ public void ConfigureServices(IServiceCollection services)
             policy =>
             {
                 policy.AddRequirements(new SurveyCreatorRequirement());
-                policy.RequireAuthenticatedUser(); // Adds DenyAnonymousAuthorizationRequirement 
+                policy.RequireAuthenticatedUser(); // Adds DenyAnonymousAuthorizationRequirement
                 policy.AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme);
             });
         options.AddPolicy(PolicyNames.RequireSurveyAdmin,
             policy =>
             {
                 policy.AddRequirements(new SurveyAdminRequirement());
-                policy.RequireAuthenticatedUser(); // Adds DenyAnonymousAuthorizationRequirement 
+                policy.RequireAuthenticatedUser(); // Adds DenyAnonymousAuthorizationRequirement
                 policy.AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme);
             });
     });
-    
+
     // ...
 }
 ```

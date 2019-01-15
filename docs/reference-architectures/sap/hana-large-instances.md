@@ -5,12 +5,12 @@ description: Azure Large Instances の高可用性環境で SAP HANA を実行�
 author: lbrader
 ms.date: 05/16/2018
 ms.custom: seodec18
-ms.openlocfilehash: ef3c57f292024af0abbeb4ead62ab4b3aeb57a90
-ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
+ms.openlocfilehash: 47953037827923ea0e4f492dfc29ce815072a20e
+ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53644089"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54011363"
 ---
 # <a name="run-sap-hana-on-azure-large-instances"></a>SAP HANA on Azure Large Instances を実行する
 

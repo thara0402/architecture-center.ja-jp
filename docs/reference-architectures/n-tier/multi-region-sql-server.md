@@ -5,12 +5,12 @@ description: 高可用性と回復性を得るために複数のリージョン�
 author: MikeWasson
 ms.date: 07/19/2018
 ms.custom: seodec18
-ms.openlocfilehash: 84da8aaef7e552beff1f06befbaa2e50a3ac3d8b
-ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
+ms.openlocfilehash: 5eef936dded1829ee561ce1b13df4fb147694dc7
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53643711"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54111990"
 ---
 # <a name="run-an-n-tier-application-in-multiple-azure-regions-for-high-availability"></a>高可用性を得るために複数の Azure リージョンで N 層アプリケーションを実行する
 
@@ -67,7 +67,7 @@ ms.locfileid: "53643711"
 Traffic Manager を構成するときは、次の点を検討してください。
 
 - **ルーティング**。 Traffic Manager は、さまざまな[ルーティング アルゴリズム][tm-routing]をサポートしています。 この記事で説明するシナリオでは、"*優先度による*" ルーティング (旧称 "*フェールオーバー*" ルーティング) を使用します。 この設定では、プライマリ リージョンが到達不能にならない限り、Traffic Manager はプライマリ リージョンにすべての要求を送信します。 到達不能になった時点で、セカンダリ リージョンに自動的にフェールオーバーします。 [フェールオーバーのルーティング方法の構成][tm-configure-failover]に関する記事を参照してください。
-- **正常性プローブ**。 Traffic Manager は、HTTP (または HTTPS) [プローブ][tm-monitoring]を使用して、各リージョンの可用性を監視します。 プローブは、特定の URL パスの HTTP 200 応答をチェックします。 ベスト プラクティスとして、アプリケーションの全体的な正常性を報告するエンドポイントを作成し、そのエンドポイントを正常性プローブ用に使用します。 これを行わなかった場合、プローブは、アプリケーションの重要な部分で実際には障害が発生しているにもかかわらず、エンドポイントが正常であると報告する可能性があります。 詳細については、[正常性エンドポイント監視パターン][health-endpoint-monitoring-pattern]に関するページを参照してください。
+- **正常性プローブ**。 Traffic Manager は、HTTP (または HTTPS) [プローブ][tm-monitoring]を使用して、各リージョンの可用性を監視します。 プローブは、特定の URL パスの HTTP 200 応答をチェックします。 ベスト プラクティスとして、アプリケーションの全体的な正常性を報告するエンドポイントを作成し、そのエンドポイントを正常性プローブ用に使用します。 これを行わなかった場合、プローブは、アプリケーションの重要な部分で実際には障害が発生しているにもかかわらず、エンドポイントが正常であると報告する可能性があります。 詳細については、「[正常性エンドポイントの監視パターン][health-endpoint-monitoring-pattern]」を参照してください。
 
 Traffic Manager がフェールオーバーを実行すると、クライアントがアプリケーションに到達できない時間が発生します。 この持続時間は、次の要因に影響されます。
 
@@ -172,7 +172,7 @@ SQL Server クラスターでは、2 つのフェールオーバー シナリオ
 [hybrid-vpn]: ../hybrid-networking/vpn.md
 [azure-dns]: /azure/dns/dns-overview
 [azure-sla]: https://azure.microsoft.com/support/legal/sla/
-[azure-sql-db]: https://azure.microsoft.com/documentation/services/sql-database/
+[azure-sql-db]: /azure/sql-database/
 [health-endpoint-monitoring-pattern]: https://msdn.microsoft.com/library/dn589789.aspx
 [azure-cli]: /cli/azure/
 [regional-pairs]: /azure/best-practices-availability-paired-regions

@@ -1,20 +1,24 @@
 ---
 title: Azure コンピューティング サービスを選択するための条件
-description: 複数の軸間で Azure コンピューティング サービスを比較します
+titleSuffix: Azure Application Architecture Guide
+description: 複数の軸間で Azure コンピューティング サービスを比較します。
 author: MikeWasson
 ms.date: 08/08/2018
-ms.openlocfilehash: dbd5314c4c77e83f5b45ef0b49e83860479c8f92
-ms.sourcegitcommit: dbbf914757b03cdee7a274204f9579fa63d7eed2
+ms.custom: seojan19
+ms.openlocfilehash: 4874e68d6ac1b9bac2bc1e4d2ac3c8c2f1a428d6
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50916384"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54112245"
 ---
 # <a name="criteria-for-choosing-an-azure-compute-service"></a>Azure コンピューティング サービスを選択するための条件
 
 "*コンピューティング*" という用語は、アプリケーションが実行するコンピューティング リソースのホスティング モデルを指します。 以下の表では、複数の軸間で Azure コンピューティング サービスを比較しています。 アプリケーションのコンピューティング オプションを選択するときに、これらの表をご覧ください。
 
 ## <a name="hosting-model"></a>ホスティング モデル
+
+<!-- markdownlint-disable MD033 -->
 
 | 条件 | Virtual Machines | App Service | Service Fabric | Azure Functions | Azure Kubernetes Service | Container Instances | Azure Batch |
 |----------|-----------------|-------------|----------------|-----------------|-------------------------|----------------|-------------|
@@ -47,8 +51,7 @@ ms.locfileid: "50916384"
 メモ
 
 1. <span id="note1b">オプションには、ASP.NET または node.js (iisnode) の IIS Express、PHP Web サーバー、Azure Toolkit for IntelliJ、Azure Toolkit for Eclipse などがあります。App Service では、デプロイ済みの Web アプリのリモート デバッグもサポートしています。</span>
-2. <span id="note2b">[Resource Manager のプロバイダー、リージョン、API のバージョン、およびスキーマ][resource-manager-supported-services]に関する記事をご覧ください。</span> 
-
+2. <span id="note2b">[Resource Manager のプロバイダー、リージョン、API のバージョン、およびスキーマ][resource-manager-supported-services]に関する記事をご覧ください。</span>
 
 ## <a name="scalability"></a>スケーラビリティ
 
@@ -56,7 +59,7 @@ ms.locfileid: "50916384"
 |----------|-----------------|-------------|----------------|-----------------|-------------------------|----------------|-------------|
 | 自動スケール | VM スケール セット | 組み込みのサービス | VM スケール セット | 組み込みのサービス | サポートされていません | サポートされていません | 該当なし |
 | Load Balancer | Azure Load Balancer | 統合 | Azure Load Balancer | 統合 | 統合 |  組み込みのサポートなし | Azure Load Balancer |
-| スケールの制限<a href="#note1c"><sup>1</sup></a> | プラットフォーム イメージ: VMSS あたり 1000 個のノード、カスタム イメージ: VMSS あたり 100 個のノード | 20 個のインスタンス、App Service Environment で 100 | VMSS あたり 100 個のノード | Function App あたり 200 個のインスタンス | クラスターあたり 100 ノード (既定の制限) |サブスクリプションあたり 20 コンテナー グループ (既定の制限)。 | 20 個のコアの制限 (既定の制限)。 |
+| スケールの制限<a href="#note1c"><sup>1</sup></a> | プラットフォーム イメージ:VMSS あたり 1000 個のノード、カスタム イメージ:VMSS あたり 100 個のノード | 20 個のインスタンス、App Service Environment で 100 | VMSS あたり 100 個のノード | Function App あたり 200 個のインスタンス | クラスターあたり 100 ノード (既定の制限) |サブスクリプションあたり 20 コンテナー グループ (既定の制限)。 | 20 個のコアの制限 (既定の制限)。 |
 
 メモ
 
@@ -67,7 +70,7 @@ ms.locfileid: "50916384"
 | 条件 | Virtual Machines | App Service | Service Fabric | Azure Functions | Azure Kubernetes Service | Container Instances | Azure Batch |
 |----------|-----------------|-------------|----------------|-----------------|-------------------------|----------------|-------------|
 | SLA | [VIrtual Machines の SLA][sla-vm] | [App Service の SLA][sla-app-service] | [Service Fabric の SLA][sla-sf] | [Functions の SLA][sla-functions] | [AKS の SLA][sla-acs] | [Container Instances の SLA](https://azure.microsoft.com/support/legal/sla/container-instances/) | [Azure Batch の SLA][sla-batch] |
-| 複数リージョンのフェールオーバー | Traffic Manager | Traffic Manager | Traffic manager、複数リージョンのクラスター | サポートされていません  | Traffic Manager | サポートされていません | サポートされていません |
+| 複数リージョンのフェールオーバー | Traffic Manager | Traffic Manager | Traffic manager、複数リージョンのクラスター | サポートされていません | Traffic Manager | サポートされていません | サポートされていません |
 
 ## <a name="other"></a>その他
 
@@ -76,6 +79,8 @@ ms.locfileid: "50916384"
 | SSL | VM で構成済み | サポートされています | サポートされています  | サポートされています | [イングレス コントローラー](/azure/aks/ingress) | [サイドカー](../../patterns/sidecar.md) コンテナーを使用 | サポートされています |
 | コスト | [Windows][cost-windows-vm]、[Linux][cost-linux-vm] | [App Service の価格][cost-app-service] | [Service Fabric の価格][cost-service-fabric] | [Azure Functions の価格][cost-functions] | [AKS の価格][cost-acs] | [Container Instances の価格](https://azure.microsoft.com/pricing/details/container-instances/) | [Azure Batch の価格][cost-batch]
 | 適切なアーキテクチャ スタイル | [n 層][n-tier]、[ビッグ コンピューティング][big-compute] (HPC) | [Web キューワーカー][w-q-w]、[N 層][n-tier] | [マイクロサービス][microservices]、[イベント駆動型アーキテクチャ][event-driven] | [マイクロサービス][microservices]、[イベント駆動型アーキテクチャ][event-driven] | [マイクロサービス][microservices]、[イベント駆動型アーキテクチャ][event-driven] | [マイクロサービス][microservices]、タスクの自動化、バッチ ジョブ  | [ビッグ コンピューティング][big-compute] (HPC) |
+
+<!-- markdownlint-enable MD033 -->
 
 [cost-linux-vm]: https://azure.microsoft.com/pricing/details/virtual-machines/linux/
 [cost-windows-vm]: https://azure.microsoft.com/pricing/details/virtual-machines/windows/

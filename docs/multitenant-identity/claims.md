@@ -1,23 +1,24 @@
 ---
 title: マルチテナント アプリケーションで要求ベースの ID を操作する
-description: 発行者の検証と承認に要求を使用する方法
+description: 発行者の検証と承認に要求を使用する方法。
 author: MikeWasson
 ms.date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications
 pnp.series.prev: authenticate
 pnp.series.next: signup
-ms.openlocfilehash: 3ed6c7c9a48f3617f82112e76878c770099fde3e
-ms.sourcegitcommit: e7e0e0282fa93f0063da3b57128ade395a9c1ef9
+ms.openlocfilehash: ffaa6085dd9ca9ddec203e6661575e984b2e25e0
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52902427"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54113588"
 ---
 # <a name="work-with-claims-based-identities"></a>要求ベースの ID を操作する
 
 [![GitHub](../_images/github.png) サンプル コード][sample application]
 
 ## <a name="claims-in-azure-ad"></a>Azure AD の要求
+
 ユーザーがサインインすると、Azure AD は、ユーザーに関する要求セットを含む ID トークンを送信します。 要求は、キーと値のペアで表される 1 つの情報です。 たとえば、`email`=`bob@contoso.com` です。  要求には、ユーザーを認証し、要求を作成するエンティティである発行者があります (ここでは Azure AD)。 発行者は、ユーザーを認証し、要求を作成するエンティティです。 発行者を信頼していれば、要求も信頼することになります(逆に、信頼できない発行者の場合は、要求も信頼しないでください)。
 
 概要:
@@ -51,15 +52,15 @@ OpenID Connect では、取得する要求のセットは、認証要求の[ス�
 * upn > `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn`
 
 ## <a name="claims-transformations"></a>要求の変換
+
 認証フロー中に、IDP から取得する要求を変更できます。 ASP.NET Core では、OpenID Connect ミドルウェアからの **AuthenticationValidated** イベントの内部で要求変換を実行できます  (「[認証イベント]」を参照してください)。
 
 **AuthenticationValidated** 中に追加された要求は、セッション認証 Cookie に保存されます。 Azure AD にプッシュバックされることはありません。
 
 次に、要求変換の例をいくつか示します。
 
-* **要求の正規化**またはユーザー間で一貫性のある要求にする。 これが特に関係するのは、複数の IDP から要求を取得している場合であり、類似する情報に対して異なる要求の種類が使用されている可能性があります。
-  たとえば、Azure AD は、ユーザーの電子メール アドレスを含む "upn" 要求を送信します。 その他の IDP は、"email" 要求を送信することがあります。 次のコードは、"upn" 要求を "email" 要求に変換します。
-  
+* **要求の正規化**またはユーザー間で一貫性のある要求にする。 これが特に関係するのは、複数の IDP から要求を取得している場合であり、類似する情報に対して異なる要求の種類が使用されている可能性があります。 たとえば、Azure AD は、ユーザーの電子メール アドレスを含む "upn" 要求を送信します。 その他の IDP は、"email" 要求を送信することがあります。 次のコードは、"upn" 要求を "email" 要求に変換します。
+
   ```csharp
   var email = principal.FindFirst(ClaimTypes.Upn)?.Value;
   if (!string.IsNullOrWhiteSpace(email))
@@ -67,12 +68,14 @@ OpenID Connect では、取得する要求のセットは、認証要求の[ス�
       identity.AddClaim(new Claim(ClaimTypes.Email, email));
   }
   ```
+
 * 存在しない要求のための**既定の要求値**を追加します。たとえば、ユーザーに既定のロールを割り当てます。 これにより、承認ロジックを簡略化できる場合があります。
-* ユーザーのアプリケーション固有の情報を使用して **カスタム要求の種類** を追加します。 たとえば、データベース内のユーザーに関する一部の情報を保存することができます。 この情報を含むカスタム要求を認証チケットに追加できます。 要求は Cookie に保存されるので、ログイン セッションごとに 1 度のみ、データベースから取得する必要があります。 一方で、過度に大きな Cookie を作成することを回避するには、Cookie のサイズとデータベース検索の妥協点を考慮する必要があります。   
+* ユーザーのアプリケーション固有の情報を使用して **カスタム要求の種類** を追加します。 たとえば、データベース内のユーザーに関する一部の情報を保存することができます。 この情報を含むカスタム要求を認証チケットに追加できます。 要求は Cookie に保存されるので、ログイン セッションごとに 1 度のみ、データベースから取得する必要があります。 一方で、過度に大きな Cookie を作成することを回避するには、Cookie のサイズとデータベース検索の妥協点を考慮する必要があります。
 
 認証フローが完了したら、`HttpContext.User` で要求を使用できます。 その時点で、要求は、読み取り専用コレクションとして処理する必要があります。たとえば、承認に関する決定を行うために使用します。
 
 ## <a name="issuer-validation"></a>発行者の検証
+
 OpenID Connect の発行者要求 ("iss") によって、ID トークンを発行した IDP が識別されます。 OIDC 認証フローの一部では、発行者要求が実際の発行者と一致することが検証されます。 この処理は、OIDC ミドルウェアが自動実行します。
 
 Azure AD で発行者値は AD テナントごとに一意です (`https://sts.windows.net/<tenantID>`)。 そのため、発行者がアプリにサインインできるテナントであることを確認するには、アプリケーションで追加チェックを実行する必要があります。
@@ -87,25 +90,28 @@ Azure AD で発行者値は AD テナントごとに一意です (`https://sts.w
 詳細については、[マルチテナント アプリケーションでのサインアップとテナントのオンボード][signup]に関するページを参照してください。
 
 ## <a name="using-claims-for-authorization"></a>承認の要求を使用する
+
 要求では、ユーザーの ID は、一枚岩のエンティティではなくなりました。 たとえば、ユーザーは、電子メール アドレス、電話番号、誕生日、性別などを持つ場合があります。ユーザーの IDP には、これらの情報がすべて格納されている可能性があります。 ただし、ユーザーを認証するときは、通常はこれらの情報のサブセットを要求として取得します。 このモデルでは、ユーザーの ID は、単なる要求の束です。 ユーザーに関する承認の決定を行うときは、要求の特定のセットを探します。 つまり、「ユーザー X はアクション Y を実行できるか」という質問は、最終的には「ユーザー X は要求 Z を所有しているか」ということになります。
 
 要求を要求する基本的なパターンを次に示します。
 
 * 特定の値が設定された特定の要求を持つユーザーを確認する例を次に示します。
-  
+
    ```csharp
    if (User.HasClaim(ClaimTypes.Role, "Admin")) { ... }
    ```
+
    このコードでは、ユーザーが "Admin" 値の Role 要求を持っているかどうかを確認します。 ユーザーが Role 要求を持っていない場合、または複数の Role 要求を持っている場合も正しく処理されます。
   
    **ClaimTypes** クラスでは、一般的に使用される要求の種類に対して定数を定義します。 ただし、要求の種類には任意の文字列値を使用できます。
 * 最大で 1 つの値があると想定される要求の種類の場合、1 つの値を取得する例を次に示します。
-  
+
   ```csharp
   string email = User.FindFirst(ClaimTypes.Email)?.Value;
   ```
+
 * 要求の種類のすべての値を取得する例を次に示します。
-  
+
   ```csharp
   IEnumerable<Claim> groups = User.FindAll("groups");
   ```
@@ -114,8 +120,7 @@ Azure AD で発行者値は AD テナントごとに一意です (`https://sts.w
 
 [**次へ**][signup]
 
-
-<!-- Links -->
+<!-- links -->
 
 [スコープ パラメーター]: https://nat.sakimura.org/2012/01/26/scopes-and-claims-in-openid-connect/
 [サポートされているトークンとクレームの種類]: /azure/active-directory/active-directory-token-and-claims/

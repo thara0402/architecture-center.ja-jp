@@ -5,12 +5,12 @@ description: Azure にハブスポーク ネットワーク トポロジを実�
 author: telmosampaio
 ms.date: 10/08/2018
 ms.custom: seodec18
-ms.openlocfilehash: fe56630b621f02fe71b864642b75688ba1965862
-ms.sourcegitcommit: 8d951fd7e9534054b160be48a1881ae0857561ef
+ms.openlocfilehash: c7cf2923856b3c659876afcc89bb312e492c6409
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53329434"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54112449"
 ---
 # <a name="implement-a-hub-spoke-network-topology-in-azure"></a>Azure にハブスポーク ネットワーク トポロジを実装する
 
@@ -176,11 +176,9 @@ Azure の [VNet ごとの VNet ピアリング数の制限][vnet-peering-limit]�
 
 5. デプロイが完了するのを待機します。 このデプロイでは、仮想ネットワーク、仮想マシン、VPN ゲートウェイ、およびゲートウェイへの接続が作成されます。  VPN ゲートウェイの作成には約 40 分かかります。
 
-### <a name="test-connectivity-with-the-hub"></a>ハブとの接続をテストする
+### <a name="test-connectivity-to-the-hub-vnet-mdash-windows-deployment"></a>ハブ VNet への接続をテストする &mdash; Windows デプロイ
 
-シミュレートされたオンプレミスの環境からハブ VNet への接続をテストします。
-
-**Windows デプロイ**
+Windows VM を使用して、シミュレートされたオンプレミスの環境からハブ VNet への接続をテストするには、次の手順に従います。
 
 1. Azure Portal を使用して、`onprem-jb-rg` リソース グループで `jb-vm1` という名前の VM を見つけます。
 
@@ -206,11 +204,13 @@ TcpTestSucceeded : True
 > [!NOTE]
 > 既定で、Windows Server VM では Azure の ICMP 応答が許可されていません。 接続のテストに `ping` を使用する場合は、VM ごとに Windows の高度なファイアウォールで ICMP トラフィックを有効にする必要があります。
 
-**Linux デプロイ**
+### <a name="test-connectivity-to-the-hub-vnet-mdash-linux-deployment"></a>ハブ VNet への接続をテストする &mdash; Linux デプロイ
+
+Linux VM を使用して、シミュレートされたオンプレミスの環境からハブ VNet への接続をテストするには、次の手順に従います。
 
 1. Azure Portal を使用して、`onprem-jb-rg` リソース グループで `jb-vm1` という名前の VM を見つけます。
 
-2. `Connect` をクリックし、ポータルに表示されている `ssh` コマンドをコピーします。 
+2. `Connect` をクリックし、ポータルに表示されている `ssh` コマンドをコピーします。
 
 3. Linux プロンプトから `ssh` を実行して、シミュレートされたオンプレミスの環境に接続します。 `onprem.json` パラメーター ファイルで指定したパスワードを使用します。
 
@@ -253,11 +253,9 @@ TcpTestSucceeded : True
    azbb -s <subscription_id> -g hub-vnet-rg -l <location> -p hub-vnet-peering.json --deploy
    ```
 
-### <a name="test-connectivity"></a>接続をテストする
+### <a name="test-connectivity-to-the-spoke-vnets-mdash-windows-deployment"></a>スポーク VNet への接続をテストする &mdash; Windows デプロイ
 
-シミュレートされたオンプレミスの環境からスポーク VNet への接続をテストします。
-
-**Windows デプロイ**
+Windows VM を使用して、シミュレートされたオンプレミスの環境からスポーク VNet への接続をテストするには、次の手順を行います。
 
 1. Azure Portal を使用して、`onprem-jb-rg` リソース グループで `jb-vm1` という名前の VM を見つけます。
 
@@ -270,7 +268,7 @@ TcpTestSucceeded : True
    Test-NetConnection 10.2.0.68 -CommonTCPPort RDP
    ```
 
-**Linux デプロイ**
+### <a name="test-connectivity-to-the-spoke-vnets-mdash-linux-deployment"></a>スポーク VNet への接続をテストする &mdash; Linux デプロイ
 
 Linux VM を使用して、シミュレートされたオンプレミスの環境からスポーク VNet への接続をテストするには、次の手順を実行します。
 
@@ -329,4 +327,3 @@ Linux VM を使用して、シミュレートされたオンプレミスの環�
 [1]: ./images/hub-spoke-gateway-routing.svg "Azure のハブスポーク トポロジと推移的なルーティング"
 [2]: ./images/hub-spoke-no-gateway-routing.svg "Azure のハブスポーク トポロジと NVA を使用した推移的なルーティング"
 [3]: ./images/hub-spokehub-spoke.svg "Azure のハブスポークハブスポーク トポロジ"
-[ARM-Templates]: https://azure.microsoft.com/documentation/articles/resource-group-authoring-templates/

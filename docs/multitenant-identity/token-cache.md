@@ -1,17 +1,17 @@
 ---
 title: マルチテナント アプリケーションでアクセス トークンをキャッシュする
-description: バックエンド Web API を呼び出すために使用されるアクセス トークンのキャッシュ
+description: バックエンド Web API を呼び出すために使用されるアクセス トークンのキャッシュ。
 author: MikeWasson
 ms.date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications
 pnp.series.prev: web-api
 pnp.series.next: adfs
-ms.openlocfilehash: 950b638e629ad97e24b05e781da844bc110bad91
-ms.sourcegitcommit: e7e0e0282fa93f0063da3b57128ade395a9c1ef9
+ms.openlocfilehash: 0cf4b3c3b9187759522b4530c94268ce8d7baa86
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52901713"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54110954"
 ---
 # <a name="cache-access-tokens"></a>アクセス トークンのキャッシュ
 
@@ -41,14 +41,14 @@ Tailspin Surveys アプリケーションでは、 `DistributedTokenCache` ク�
 バッキング ストアは、ユーザーごとにパーティション分割されています。 各 HTTP 要求に対して、そのユーザーのトークンはバッキング ストアから読み取られ、`TokenCache` ディクショナリに読み込まれます。 Redis をバッキング ストアとして使用する場合は、サーバー ファーム内のすべてのサーバー インスタンスが同じキャッシュに読み取りと書き込みを行い、このアプローチは多数のユーザーに適用されます。
 
 ## <a name="encrypting-cached-tokens"></a>キャッシュされたトークンを暗号化する
+
 トークンによりユーザーのリソースへのアクセス権が付与されるため、トークンは機密性の高いデータです。 (さらに、ユーザー パスワードと異なり、トークンのハッシュだけを格納することはできません。)そのため、侵害される前にトークンを保護することが非常に重要です。 Redis でサポートされるキャッシュはパスワードで保護されますが、他のユーザーがパスワードを取得した場合、そのユーザーはすべてのキャッシュされたアクセス トークンを取得できます。 このような理由から、`DistributedTokenCache` は、バッキング ストアへのすべての書き込みを暗号化します。 暗号化は、ASP.NET Core の[データ保護][data-protection] API を使用して行われます。
 
 > [!NOTE]
 > Azure Web サイトにデプロイする場合、暗号化キーはネットワーク ストレージにバックアップされ、すべてのマシン間で同期されます (詳細は、「[キーの管理と有効期間][key-management]」をご覧ください)。 既定では、キーは Azure Web サイト内で実行されるときには暗号化されませんが、[X.509 証明書を使用して暗号化を有効にする][x509-cert-encryption]ことができます。
-> 
-> 
 
 ## <a name="distributedtokencache-implementation"></a>DistributedTokenCache の実装
+
 `DistributedTokenCache` クラスは、ADAL [TokenCache][tokencache-class] クラスから派生しています。
 
 コンストラクターの `DistributedTokenCache` クラスによって、現在のユーザーのキーが作成され、バッキング ストアからキャッシュが読み込まれます。

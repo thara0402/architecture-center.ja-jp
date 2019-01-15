@@ -1,16 +1,16 @@
 ---
-title: 'エンタープライズ クラウドの導入: Azure でのリソース アクセス管理'
-description: 'Azure のリソース アクセス管理コンストラクトの説明: Azure Resource Manager、サブスクリプション、リソース グループ、およびリソース'
+title: エンタープライズ クラウドの導入:Azure でのリソース アクセス管理
+description: Azure でのリソース アクセス管理の説明:Azure リソース マネージャー、サブスクリプション、リソース グループ、およびリソース
 author: petertaylor9999
 ms.date: 09/10/2018
-ms.openlocfilehash: c26b01d207bc4eb100653a826a053b394d03d1e6
-ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
+ms.openlocfilehash: 8cb28d0dd5dbdfcef846786083d5197f435bf3ea
+ms.sourcegitcommit: 7d9efe716e8c9e99f3fafa9d0213d48c23d9713d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47428705"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54160793"
 ---
-# <a name="enterprise-cloud-adoption-resource-access-management-in-azure"></a>エンタープライズ クラウドの導入: Azure でのリソース アクセス管理
+# <a name="enterprise-cloud-adoption-resource-access-management-in-azure"></a>エンタープライズ クラウドの導入:Azure でのリソース アクセス管理
 
 [クラウド リソース ガバナンス](what-is-governance.md)に関するページでは、ガバナンスとは、組織の目標と要件を満たすために、Azure リソースの使用を継続的に管理、監視、および監査するプロセスを意味することを説明しました。 ガバナンス モデルを設計する方法について確認する前に、Azure のリソース アクセス管理の制御について理解することが重要です。 これらのリソース アクセス管理の制御の構成により、ご自身のガバナンス モデルの基礎が形成されます。
 
@@ -46,7 +46,7 @@ Azure サブスクリプションは、リソース グループとそのリソ�
 ![](../_images/governance-1-12.png)   
 *図 4: Azure Resource Manager。*
 
-次の図は、[Powershell](/powershell/azure/overview)、[Azure portal](https://portal.azure.com)、および [Azure コマンド ライン インターフェイス (CLI)](/cli/azure) の 3 つのクライアントを示しています。
+次の図は、[Powershell](/powershell/azure/overview)、[Azure ポータル](https://portal.azure.com)、および [Azure コマンド ライン インターフェイス (CLI)](/cli/azure) という 3 つのクライアントを示しています。
 
 ![](../_images/governance-1-13.png)   
 *図 5: Azure クライアントが Azure Resource Manager RESTful API に接続する。*
