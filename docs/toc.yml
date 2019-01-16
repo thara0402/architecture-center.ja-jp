@@ -347,11 +347,13 @@ items:
     href: reference-architectures/index.md
   - name: AI
     items:
-    - name: ディープ ラーニング モデル用のバッチ スコアリング
+    - name: ディープ ラーニング モデルの分散トレーニング
+      href: reference-architectures/ai/training-deep-learning.md
+    - name: ディープ ラーニング モデルのバッチ スコアリング
       href: reference-architectures/ai/batch-scoring-deep-learning.md
     - name: Python モデルのバッチ スコアリング
       href: reference-architectures/ai/batch-scoring-python.md
-    - name: Python モデルのリアルタイム スコアリング
+    - name: Python モデルおよびディープ ラーニング モデルのリアルタイム スコアリング
       href: reference-architectures/ai/realtime-scoring-python.md
     - name: R 機械学習モデルを使用したリアルタイム スコアリング
       href: reference-architectures/ai/realtime-scoring-r.md
@@ -585,9 +587,9 @@ items:
       href: cloud-adoption/appendix/azure-scaffold.md
     - name: Azure エンタープライズ スキャフォールディングの実装
       href: cloud-adoption/appendix/azure-scaffold-examples.md
-ms.openlocfilehash: eba799444e767ab6d0a3196f714edd8bc2df09e1
-ms.sourcegitcommit: 7d9efe716e8c9e99f3fafa9d0213d48c23d9713d
+ms.openlocfilehash: ffb510612e852bf0736102dbe1dc3e159719f37f
+ms.sourcegitcommit: d5ea427c25f9f7799cc859b99f328739ca2d8c1c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54160844"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54307724"

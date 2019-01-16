@@ -4,12 +4,12 @@ description: PaaS (サービスとしてのプラットフォーム) コンポ�
 titleSuffix: Azure Reference Architectures
 author: MikeWasson
 ms.date: 01/09/2019
-ms.openlocfilehash: bde507527262a722219edba534275fb7ab499069
-ms.sourcegitcommit: 7d9efe716e8c9e99f3fafa9d0213d48c23d9713d
+ms.openlocfilehash: c0aa1771abc99b1f17f1e553c9626e50a386f34c
+ms.sourcegitcommit: d5ea427c25f9f7799cc859b99f328739ca2d8c1c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54166022"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54307690"
 ---
 # <a name="azure-iot-reference-architecture"></a>Azure IoT 参照アーキテクチャ
 
@@ -35,7 +35,7 @@ IoT アプリケーションは、**分析情報**を生成するデータを送
 
 **IoT デバイス**。 デバイスはクラウドに安全に登録でき、クラウドに接続してデータを送受信できます。 一部のデバイスは、デバイス自体でまたはフィールド ゲートウェイで一部のデータ処理を実行する**エッジ デバイス**の場合があります。 エッジ処理には、[Azure IoT Edge](/azure/iot-edge/) をお勧めします。
 
-**クラウド ゲートウェイ**。 クラウド ゲートウェイは、デバイスがクラウドに安全に接続してデータを送信するためのクラウド ハブを提供します。 デバイスの管理や、コマンドやデバイスの制御などの機能も提供します。 クラウド ゲートウェイには、[IoT Hub](/azure/iot-hub/) をお勧めします。 IoT Hub は、デバイスからイベントを取り込むホスト型クラウド サービスで、デバイスとバックエンド サービス間で分割されるメッセージとして機能します。 IoT Hub は、セキュリティで保護された接続、イベント インジェスト、双方向通信、およびデバイス管理を提供します。
+**クラウド ゲートウェイ**。 クラウド ゲートウェイは、デバイスがクラウドに安全に接続してデータを送信するためのクラウド ハブを提供します。 デバイスの管理や、コマンドやデバイスの制御などの機能も提供します。 クラウド ゲートウェイには、[IoT Hub](/azure/iot-hub/) をお勧めします。 IoT Hub は、デバイスからイベントを取り込むホスト型クラウド サービスで、デバイスとバックエンド サービス間のメッセージ ブローカーとして機能します。 IoT Hub は、セキュリティで保護された接続、イベント インジェスト、双方向通信、およびデバイス管理を提供します。
 
 **デバイス プロビジョニング**。 多数のデバイスの登録と接続には、[IoT Hub Device Provisioning Service](/azure/iot-dps/) (DPS) の使用をお勧めします。 DPS を使用すると、デバイスを特定の Azure IoT Hub エンドポイントに大規模に割り当てて登録することができます。
 
