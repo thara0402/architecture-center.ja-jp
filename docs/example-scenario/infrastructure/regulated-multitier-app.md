@@ -5,12 +5,12 @@ description: スケール セット、Application Gateway、ロード バラン�
 author: iainfoulds
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 2c5f77f265c10388f42138e7d3f6da9e3ead1cd8
-ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
+ms.openlocfilehash: c5c1d4468df72edd989f2ab8f303781b26d50017
+ms.sourcegitcommit: 71ee0859e19fe58416b4c0056d67f2f34dd9ca0a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53643535"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54211990"
 ---
 # <a name="building-secure-web-applications-with-windows-virtual-machines-on-azure"></a>Azure 上の Windows Server を使用した、セキュリティで保護された Web アプリケーションの構築
 
@@ -97,7 +97,7 @@ Azure Resource Manager テンプレートを使用して、このシナリオの
 
 <!-- markdownlint-disable MD033 -->
 
-1. **[Deploy to Azure]\(Azure にデプロイ\)** を選択します。<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmspnp%2Fsolution-architectures%2Fmaster%2Finfrastructure%2Fregulated-multitier-app%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
+1. **[Deploy to Azure]\(Azure にデプロイ\)** を選択します。<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmspnp%2Fsolution-architectures%2Fmaster%2Finfrastructure%2Fregulated-multitier-app.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 2. Azure portal でテンプレートのデプロイが開くまで待ってから、次の手順を実行します。
    - リソース グループの **[新規作成]** を選択し、テキスト ボックスに名前 (例: *myWindowsscenario*) を入力します。
    - **[場所]** ドロップダウン ボックスでリージョンを選択します。
