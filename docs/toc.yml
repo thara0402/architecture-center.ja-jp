@@ -403,7 +403,7 @@ items:
       href: reference-architectures/identity/adds-forest.md
     - name: AD FS を Azure に拡張する
       href: reference-architectures/identity/adfs.md
-  - name: モノのインターネット (IoT)
+  - name: モノのインターネット(IoT)
     href: reference-architectures/iot/index.md
   - name: ネットワーク DMZ
     items:
@@ -587,9 +587,9 @@ items:
       href: cloud-adoption/appendix/azure-scaffold.md
     - name: Azure エンタープライズ スキャフォールディングの実装
       href: cloud-adoption/appendix/azure-scaffold-examples.md
-ms.openlocfilehash: ffb510612e852bf0736102dbe1dc3e159719f37f
-ms.sourcegitcommit: d5ea427c25f9f7799cc859b99f328739ca2d8c1c
+ms.openlocfilehash: 16a447a58d3c8665f13b0799d833360c0702626f
+ms.sourcegitcommit: 95131d1011def26fb629731d42a4e8d4d49b3540
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54307724"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54372878"
