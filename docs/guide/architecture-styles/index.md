@@ -3,13 +3,16 @@ title: アーキテクチャ スタイル
 titleSuffix: Azure Application Architecture Guide
 description: クラウド アプリケーションの一般的なアーキテクチャ スタイル。
 layout: LandingPage
+ms.topic: landing-page
+ms.service: architecture-center
+ms.subservice: reference-architecture
 ms.date: 08/30/2018
-ms.openlocfilehash: 0949f49cda9532b5ac3f2f6315b085c80675b2b5
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.openlocfilehash: 6895ffc9c73dac29c27e7d8df68550c94f68b10a
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54111871"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54480659"
 ---
 # <a name="architecture-styles"></a>アーキテクチャ スタイル
 
@@ -90,7 +93,7 @@ CQRS は、大規模アーキテクチャのサブシステムへの適用が適
 
 ### <a name="big-data-big-compute"></a>ビッグ データ、ビッグ コンピューティング
 
-**[ビッグ データ](./big-data.md)** および **[ビッグ コンピューティング](./big-compute.md)** は、特定のプロファイルと一致するワークロードに特化したアーキテクチャ スタイルです。 ビッグ データでは、きわめて大きなデータセットをチャンクに分割して、分析やレポート作成のためにセット全体に並列処理を実行します。 ビッグ コンピューティングはハイ パフォーマンス コンピューティング (HPC) とも呼ばれ、多数 (数千単位) のコアに対して並列コンピューティングを行います。 ドメインには、シミュレーション、モデリング、および 3-D レンダリングが含まれます。
+**[ビッグ データ](./big-data.md)** および**[ビッグ コンピューティング](./big-compute.md)** は、特定のプロファイルと一致するワークロードに特化したアーキテクチャ スタイルです。 ビッグ データでは、きわめて大きなデータセットをチャンクに分割して、分析やレポート作成のためにセット全体に並列処理を実行します。 ビッグ コンピューティングはハイ パフォーマンス コンピューティング (HPC) とも呼ばれ、多数 (数千単位) のコアに対して並列コンピューティングを行います。 ドメインには、シミュレーション、モデリング、および 3-D レンダリングが含まれます。
 
 ## <a name="architecture-styles-as-constraints"></a>制約としてのアーキテクチャ スタイル
 

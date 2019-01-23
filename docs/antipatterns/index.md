@@ -4,13 +4,16 @@ titleSuffix: Azure Architecture Center
 description: スケーラビリティの問題を引き起こす可能性がある一般的なプラクティス。
 author: dragon119
 ms.date: 06/05/2017
+ms.topic: article
+ms.service: architecture-center
+ms.subservice: cloud-fundamentals
 ms.custom: seodec18
-ms.openlocfilehash: 9ce1177bac2c93139faf6bc757f2866d6b7eac2d
-ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
+ms.openlocfilehash: 212930368942728fc0be0c9b2af1a90293906b39
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54009731"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54483056"
 ---
 # <a name="performance-antipatterns-for-cloud-applications"></a>クラウド アプリケーションのパフォーマンスのアンチパターン
 

@@ -4,13 +4,16 @@ titleSuffix: Performance antipatterns for cloud apps
 description: 作成後に共有する予定のオブジェクトの新しいインスタンスを頻繁に作成することは避けてください。
 author: dragon119
 ms.date: 06/05/2017
+ms.topic: article
+ms.service: architecture-center
+ms.subservice: cloud-fundamentals
 ms.custom: seodec18
-ms.openlocfilehash: b92ae5f5e79a0ababf44d7aa2d771d4d72900cae
-ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
+ms.openlocfilehash: a98a3f41d766354771af917aa126dc53bd0683a4
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54009920"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54482767"
 ---
 # <a name="improper-instantiation-antipattern"></a>不適切なインスタンス化のアンチパターン
 

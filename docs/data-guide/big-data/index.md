@@ -3,12 +3,15 @@ title: ビッグ データ アーキテクチャ
 description: ''
 author: zoinerTejada
 ms.date: 02/12/2018
-ms.openlocfilehash: 234fa7f35064ca11b5f5bb5b04a7c2ff865ea818
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.topic: guide
+ms.service: architecture-center
+ms.subservice: cloud-fundamentals
+ms.openlocfilehash: 269a4c2b8fd0c186e1b44b6c0cfdcbfa4d37b57c
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54113452"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54486939"
 ---
 # <a name="big-data-architectures"></a>ビッグ データ アーキテクチャ
 

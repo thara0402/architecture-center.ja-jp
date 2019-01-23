@@ -4,13 +4,16 @@ titleSuffix: Performance antipatterns for cloud apps
 description: 同じデータを繰り返しフェッチすると、パフォーマンスとスケーラビリティが低下する可能性があります。
 author: dragon119
 ms.date: 06/05/2017
+ms.topic: article
+ms.service: architecture-center
+ms.subservice: cloud-fundamentals
 ms.custom: seodec18
-ms.openlocfilehash: c2a5cdbb8863f87b8928558c8237e8659032ac32
-ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
+ms.openlocfilehash: 5c3062c0a17de708ada83ba81dcb111e6b1f8440
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54011601"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54488054"
 ---
 # <a name="no-caching-antipattern"></a>キャッシュ不使用のアンチパターン
 

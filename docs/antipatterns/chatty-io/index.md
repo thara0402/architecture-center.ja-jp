@@ -4,13 +4,16 @@ titleSuffix: Performance antipatterns for cloud apps
 description: 大量の I/O 要求によってパフォーマンスと応答性が損なわれる場合があります。
 author: dragon119
 ms.date: 06/05/2017
+ms.topic: article
+ms.service: architecture-center
+ms.subservice: cloud-fundamentals
 ms.custom: seodec18
-ms.openlocfilehash: c018e365d0a6244f77d119ad59f601e9c7ea965c
-ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
+ms.openlocfilehash: b21ef5f772eb4e2572833ab15085651ac3766a5e
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54011227"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54480608"
 ---
 # <a name="chatty-io-antipattern"></a>頻度の高い I/O のアンチパターン
 

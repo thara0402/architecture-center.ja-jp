@@ -3,12 +3,15 @@ title: リレーショナル データ
 description: ''
 author: zoinerTejada
 ms.date: 02/12/2018
-ms.openlocfilehash: 499e7c632bd6bfee31c0625f4d647825107ea2bb
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.topic: guide
+ms.service: architecture-center
+ms.subservice: cloud-fundamentals
+ms.openlocfilehash: d68bddcb75e5c8f786a7739e85de2645a2c3d641
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54111820"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54484935"
 ---
 # <a name="traditional-relational-database-solutions"></a>従来のリレーショナル データベース ソリューション
 
