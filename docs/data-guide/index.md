@@ -5,12 +5,14 @@ author: zoinerTejada
 ms.date: 02/12/2018
 layout: LandingPage
 ms.topic: landing-page
-ms.openlocfilehash: 9c36762ae44e450fd2f827f59eceba2ce729e251
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.service: architecture-center
+ms.subservice: cloud-fundamentals
+ms.openlocfilehash: 5fb74c6323f8dc571d827eb9a4c65a6c87d0ae36
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54112908"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54488003"
 ---
 # <a name="azure-data-architecture-guide"></a>Azure データ アーキテクチャ ガイド
 

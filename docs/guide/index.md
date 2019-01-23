@@ -1,13 +1,15 @@
 ---
 layout: LandingPage
 ms.topic: landing-page
+ms.service: architecture-center
+ms.subservice: reference-architecture
 ms.date: 08/30/2018
-ms.openlocfilehash: ce1642f237cfae579cc987777c61c8d6eabff571
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.openlocfilehash: 651f59344e7785a8a23e7b56dd67b4c4a3044741
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54113877"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54484382"
 ---
 # <a name="azure-application-architecture-guide"></a>Azure アプリケーション アーキテクチャ ガイド
 
