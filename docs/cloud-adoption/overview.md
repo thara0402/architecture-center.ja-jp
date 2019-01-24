@@ -1,13 +1,15 @@
 ---
 layout: LandingPage
-ms.topic: landing-page
 ms.date: 09/10/2018
-ms.openlocfilehash: 870b47bee5e037950f52e20ceb3b36fbd1173801
-ms.sourcegitcommit: c49aeef818d7dfe271bc4128b230cfc676f05230
+ms.topic: landing-page
+ms.service: architecture-center
+ms.subservice: enterprise-cloud-adoption
+ms.openlocfilehash: 1de427dd12b6c1042dee86a8fedf3f100e01a6ff
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44389028"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54482614"
 ---
 # <a name="enterprise-cloud-adoption"></a>エンタープライズ クラウドの導入
 
