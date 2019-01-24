@@ -4,13 +4,16 @@ titleSuffix: Azure Example Scenarios
 description: SAP ワークロード向けの開発/テスト環境を構築します。
 author: AndrewDibbins
 ms.date: 07/11/2018
-ms.custom: fasttrack
-ms.openlocfilehash: 9f9e8ec971373e4309703800c200ba2c62fe9a66
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.topic: example-scenario
+ms.service: architecture-center
+ms.subservice: example-scenario
+ms.custom: fasttrack, SAP
+ms.openlocfilehash: c06e81f72e264b545aef4bca2c795bb662a16a13
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54111021"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54488207"
 ---
 # <a name="devtest-environments-for-sap-workloads-on-azure"></a>Azure での SAP ワークロード向けの開発/テスト環境
 

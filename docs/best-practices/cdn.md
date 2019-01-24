@@ -4,13 +4,16 @@ titleSuffix: Best practices for cloud applications
 description: コンテンツ配信ネットワーク (CDN) を使用して Azure でホストされている広帯域幅コンテンツを配信するためのガイダンス。
 author: dragon119
 ms.date: 02/02/2018
+ms.topic: best-practice
+ms.service: architecture-center
+ms.subservice: cloud-fundamentals
 ms.custom: seodec18
-ms.openlocfilehash: 5fb3ac17833a2399bb73e9cc7064651090ac7ee1
-ms.sourcegitcommit: 4ba3304eebaa8c493c3e5307bdd9d723cd90b655
+ms.openlocfilehash: f4ffe9c5cdd7a53ab8359ef303076c5e53e9e45c
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53307206"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54485215"
 ---
 # <a name="content-delivery-networks-cdns"></a>コンテンツ配信ネットワーク (CDN)
 

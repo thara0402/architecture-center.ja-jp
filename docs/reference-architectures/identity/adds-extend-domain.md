@@ -4,13 +4,16 @@ titleSuffix: Azure Reference Architectures
 description: オンプレミスの Active Directory ドメインを Azure に拡張します。
 author: telmosampaio
 ms.date: 05/02/2018
-ms.custom: seodec18
-ms.openlocfilehash: 78297e1e9c1cb097356f99933190647a50a6e651
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.topic: reference-architecture
+ms.service: architecture-center
+ms.subservice: reference-architecture
+ms.custom: seodec18, identity
+ms.openlocfilehash: 4e22469af58a08f42abedf34235be5e20f1dceae
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54111956"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54482359"
 ---
 # <a name="extend-active-directory-domain-services-ad-ds-to-azure"></a>Active Directory Domain Services (AD DS) を Azure に拡張する
 

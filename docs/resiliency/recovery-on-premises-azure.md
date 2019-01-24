@@ -4,13 +4,16 @@ titleSuffix: Azure Resiliency Technical Guidance
 description: オンプレミス インフラストラクチャから Azure への復旧システムとその設計について説明します。
 author: adamglick
 ms.date: 08/18/2016
-ms.custom: seojan19
-ms.openlocfilehash: 5e4c4ea4eede5f11e787b9957b8de47736645672
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.topic: article
+ms.service: architecture-center
+ms.subservice: cloud-design-principles
+ms.custom: seojan19, resiliency
+ms.openlocfilehash: 768e53e1024533b384c610378385c96d88d8571f
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54111361"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54487374"
 ---
 [!INCLUDE [header](../_includes/header.md)]
 

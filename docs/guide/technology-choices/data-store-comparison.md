@@ -4,13 +4,16 @@ titleSuffix: Azure Application Architecture Guide
 description: Azure コンピューティング オプションの概要。
 author: MikeWasson
 ms.date: 06/01/2018
+ms.topic: guide
+ms.service: architecture-center
+ms.subservice: reference-architecture
 ms.custom: seojan19
-ms.openlocfilehash: 156df11d74d033d40d943c60e8e41d4920a24175
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.openlocfilehash: f7c19501b9f28db3892285b5f35a33f02edd87ab
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54114319"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54488139"
 ---
 # <a name="criteria-for-choosing-a-data-store"></a>データ ストアの選択条件
 

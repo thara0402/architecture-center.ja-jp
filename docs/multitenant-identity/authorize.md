@@ -3,15 +3,18 @@ title: マルチテナント アプリケーションでの承認
 description: マルチテナント アプリケーションで承認を行う方法。
 author: MikeWasson
 ms.date: 07/21/2017
+ms.topic: guide
+ms.service: architecture-center
+ms.subservice: reference-architecture
 pnp.series.title: Manage Identity in Multitenant Applications
 pnp.series.prev: app-roles
 pnp.series.next: web-api
-ms.openlocfilehash: 6e406a7e80b77dea161db194a82ccae043bdc777
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.openlocfilehash: 1238f1cd3bc8e6f5f3d174ea5fa0c98b4da795f3
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54110341"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54488615"
 ---
 # <a name="role-based-and-resource-based-authorization"></a>ロールベースおよびリソースベースの承認
 

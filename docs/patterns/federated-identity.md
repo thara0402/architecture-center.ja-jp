@@ -5,13 +5,16 @@ description: 外部の ID プロバイダーに認証を委任します。
 keywords: 設計パターン
 author: dragon119
 ms.date: 06/23/2017
+ms.topic: design-pattern
+ms.service: architecture-center
+ms.subservice: cloud-fundamentals
 ms.custom: seodec18
-ms.openlocfilehash: b268000a81edbb2f224a9244d5949def75854f04
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.openlocfilehash: f4e8d2dff1c653cf2b8ef0109f1cc3027e5428b9
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54110359"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54483022"
 ---
 # <a name="federated-identity-pattern"></a>フェデレーション ID パターン
 

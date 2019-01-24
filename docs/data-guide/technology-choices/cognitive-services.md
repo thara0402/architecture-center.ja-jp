@@ -3,12 +3,16 @@ title: Cognitive Services テクノロジの選択
 description: ''
 author: zoinerTejada
 ms.date: 02/12/2018
-ms.openlocfilehash: 13d510056e4b1ce6eeec603427658215691e48ab
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.topic: guide
+ms.service: architecture-center
+ms.subservice: cloud-fundamentals
+ms.custom: AI
+ms.openlocfilehash: e8bbdf4874d5fc669e1c08add8cf212217d176a4
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54110988"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54482648"
 ---
 # <a name="choosing-a-microsoft-cognitive-services-technology"></a>Microsoft Cognitive Services テクノロジの選択
 
@@ -47,7 +51,7 @@ Azure には数十種類の Cognitive Services があります。 最新の一�
 - [Speech](https://azure.microsoft.com/services/cognitive-services/directory/speech/)
 - [Knowledge](https://azure.microsoft.com/services/cognitive-services/directory/know/)
 - [Search](https://azure.microsoft.com/services/cognitive-services/directory/search/)
-- [言語](https://azure.microsoft.com/services/cognitive-services/directory/lang/)
+- [Language](https://azure.microsoft.com/services/cognitive-services/directory/lang/)
 
 ## <a name="key-selection-criteria"></a>主要な選択条件
 

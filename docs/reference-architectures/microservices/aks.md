@@ -3,12 +3,16 @@ title: Azure Kubernetes Service (AKS) 上のマイクロサービス アーキ�
 description: Azure Kubernetes Service (AKS) 上にマイクロサービス アーキテクチャをデプロイする
 author: MikeWasson
 ms.date: 12/10/2018
-ms.openlocfilehash: 9e4b607cd7f5b33bbf08ce3af67dd5d4071ae8ef
-ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
+ms.topic: reference-architecture
+ms.service: architecture-center
+ms.subservice: reference-architecture
+ms.custom: microservices
+ms.openlocfilehash: f3b637d61c929e5523ea5409426f3d7a72096dfa
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53644242"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54484127"
 ---
 # <a name="microservices-architecture-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 上のマイクロサービス アーキテクチャ
 
@@ -330,12 +334,12 @@ trigger:
 
 ワークフローのこの時点で、CI ビルドでは、いくつかの最小限のコードの検証が実行されます。
 
-1. コードをビルドする
+1. コードのビルド
 1. 単体テストを実行する
 
 ここでの考え方は、ビルド時間を短くして、開発者がすばやくフィードバックを取得できるようにすることです。 開発者は、機能をマスターにマージする準備ができたら、PR を開きます。 これにより、いくつかの追加のチェックを実行する別の CI ビルドがトリガーされます。
 
-1. コードをビルドする
+1. コードのビルド
 1. 単体テストを実行する
 1. ランタイム コンテナー イメージをビルドする
 1. イメージの脆弱性スキャンを実行する
@@ -345,7 +349,7 @@ trigger:
 > [!NOTE]
 > Azure Repos では、ブランチを保護するための[ポリシー](/azure/devops/repos/git/branch-policies)を定義できます。 たとえば、マスターにマージするには、CI ビルドの成功に加え、承認者のサインオフが必要であることをポリシーで要求できます。
 
-ある時点で、チームは、この Delivery サービスの新しいバージョンをデプロイする準備が整います。 これを行うには、リリース マネージャーが `release/<microservice name>/<semver>` という名前付けパターンを使用して、マスターからブランチを作成します。 たとえば、`release/delivery/v1.0.2` です。
+ある時点で、チームは、この Delivery サービスの新しいバージョンをデプロイする準備が整います。 これを行うには、リリース マネージャーが `release/<microservice name>/<semver>` という名前付けパターンを使用して、マスターからブランチを作成します。 たとえば、「 `release/delivery/v1.0.2` 」のように入力します。
 これにより、これまでのすべての手順に加え、以下を実行する完全な CI ビルドがトリガーされます。
 
 1. Docker イメージを Azure Container Registry にプッシュします。 イメージには、ブランチ名から取得されたバージョン番号がタグ付けされます。

@@ -1,3 +1,18 @@
+---
+title: データ レイク
+description: ''
+author: zoinerTejada
+ms.date: 02/12/2018
+ms.topic: guide
+ms.service: architecture-center
+ms.subservice: cloud-fundamentals
+ms.openlocfilehash: d433867886ce0afc219fcc9f35eb7f8b3ce6bee1
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54484705"
+---
 # <a name="data-lakes"></a>データ レイク
 
 データ レイクは、大量のデータを未加工のネイティブ形式で保持するストレージ リポジトリです。 データ レイク ストアは、テラバイト級およびペタバイト級のデータにスケーリングできるように最適化されています。 通常、データは、構造化データ、半構造化データ、または非構造化データを含む複数の異種ソースから取得されます。 データ レイクの着想は、それらすべてを元の未変換状態で格納するという点にあります。 このアプローチは、データを取り込んだ時点で変換と処理を行う、従来の[データ ウェアハウス](../relational-data/data-warehousing.md)とは異なります。

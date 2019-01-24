@@ -1,16 +1,19 @@
 ---
-title: 'エンタープライズ クラウドの導入: Azure のしくみ'
+title: エンタープライズ クラウドの導入:Azure のしくみ
 description: Azure の内部機能の説明
 author: petertaylor9999
 ms.date: 09/10/2018
-ms.openlocfilehash: 1d9ff8003e97bcfe88121e8231473236f8cfb527
-ms.sourcegitcommit: c49aeef818d7dfe271bc4128b230cfc676f05230
+ms.topic: guide
+ms.service: architecture-center
+ms.subservice: enterprise-cloud-adoption
+ms.openlocfilehash: 510fc1040812d61b8d736b25c434511ea981b9e5
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44389062"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54481832"
 ---
-# <a name="enterprise-cloud-adoption-how-does-azure-work"></a>エンタープライズ クラウドの導入: Azure のしくみ
+# <a name="enterprise-cloud-adoption-how-does-azure-work"></a>エンタープライズ クラウドの導入:Azure のしくみ
 
 Azure は、Microsoft のパブリック クラウド プラットフォームです。 Azure では、サービスとしてのプラットフォーム (PaaS)、サービスとしてのインフラストラクチャ (IaaS)、サービスとしてのデータベース (DBaaS) をはじめ、他の多くのサービスを含む、大規模なサービス コレクションを提供しています。 しかし、そもそも Azure とはどんなもので、どのように動作するのでしょう。
 

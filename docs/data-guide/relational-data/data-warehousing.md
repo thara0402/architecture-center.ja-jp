@@ -3,12 +3,15 @@ title: データ ウェアハウスとデータ マート
 description: ''
 author: zoinerTejada
 ms.date: 02/12/2018
-ms.openlocfilehash: 9a3ca2daf8a94d0df50d269a7ee30902858ba970
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.topic: guide
+ms.service: architecture-center
+ms.subservice: cloud-fundamentals
+ms.openlocfilehash: 6679ff620ca9e64036c02fce38608de38c57df93
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54113491"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54482175"
 ---
 # <a name="data-warehousing-and-data-marts"></a>データ ウェアハウスとデータ マート
 

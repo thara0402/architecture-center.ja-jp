@@ -4,13 +4,16 @@ titleSuffix: Azure Application Architecture Guide
 description: Azure コンピューティング オプションの概要。
 author: MikeWasson
 ms.date: 06/13/2018
+ms.topic: guide
+ms.service: architecture-center
+ms.subservice: reference-architecture
 ms.custom: seojan19
-ms.openlocfilehash: 80e57263207ef3a96791d61097ff9f0e3259bf53
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.openlocfilehash: a887be4fc643822b97f898fa405f68e797a41484
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54111497"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54485674"
 ---
 # <a name="overview-of-azure-compute-options"></a>Azure コンピューティング オプションの概要
 

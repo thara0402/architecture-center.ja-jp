@@ -4,13 +4,16 @@ titleSuffix: Azure Reference Architectures
 description: Azure を使用して、オンプレミスに保存されたリレーショナル データからビジネスの分析情報を獲得します。
 author: MikeWasson
 ms.date: 11/06/2018
+ms.topic: reference-architecture
+ms.service: architecture-center
+ms.subservice: reference-architecture
 ms.custom: seodec18
-ms.openlocfilehash: 2f15b8d4376638e6e8e522e5150a3b3c247cba8f
-ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
+ms.openlocfilehash: 14adb9de7f46c3196e893451859385d87212b375
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54010292"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54482403"
 ---
 # <a name="enterprise-bi-in-azure-with-sql-data-warehouse"></a>SQL Data Warehouse を使用した Azure のエンタープライズ向け BI
 

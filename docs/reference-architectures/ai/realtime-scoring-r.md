@@ -3,13 +3,16 @@ title: R 機械学習モデルを使用したリアルタイム スコアリン�
 description: Azure Kubernetes Service (AKS) で実行される Machine Learning Server を使用して、R のリアルタイム予測サービスを実装します。
 author: njray
 ms.date: 12/12/2018
+ms.topic: reference-architecture
+ms.service: architecture-center
+ms.subservice: reference-architecture
 ms.custom: azcat-ai
-ms.openlocfilehash: 6f3447d1dcab801ccdaf4cf88611725cc00eb68d
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.openlocfilehash: 00bea3cae0c3d2f0fea2babd7b0157382cf9890a
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54112279"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54487170"
 ---
 # <a name="real-time-scoring-of-r-machine-learning-models"></a>R 機械学習モデルを使用したリアルタイム スコアリング
 

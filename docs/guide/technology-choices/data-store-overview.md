@@ -4,13 +4,16 @@ titleSuffix: Azure Application Architecture Guide
 description: Azure でのデータ ストアの選択の概要。
 author: MikeWasson
 ms.date: 06/01/2018
+ms.topic: guide
+ms.service: architecture-center
+ms.subservice: reference-architecture
 ms.custom: seojan19
-ms.openlocfilehash: 472b01a3316edd92f069e9395e8058fef3ef1fa6
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.openlocfilehash: 91a551025ae697d5828fc1e398b204d2901d17f6
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54114268"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54486184"
 ---
 # <a name="choose-the-right-data-store"></a>適切なデータ ストアの選択
 

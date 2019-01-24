@@ -4,12 +4,15 @@ description: 一般的なシナリオでの Azure サブスクリプション �
 author: rdendtler
 ms.date: 01/03/2017
 ms.author: rodend
-ms.openlocfilehash: 51be0e1cdbcb3258102c9e4a4790764cada98d1e
-ms.sourcegitcommit: 9eecff565392273d11b8702f1fcecb4d75e27a15
+ms.topic: guide
+ms.service: architecture-center
+ms.subservice: enterprise-cloud-adoption
+ms.openlocfilehash: cbf3aae20639d26a73aac07e1b66374af09fbb38
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48243667"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54486210"
 ---
 # <a name="examples-of-implementing-azure-enterprise-scaffold"></a>Azure エンタープライズ スキャフォールディングの実装例
 この記事では、企業が [Azure エンタープライズ スキャフォールディング](azure-scaffold.md)の推奨事項を実装する方法の例を紹介します。 Contoso という架空の会社を使って一般的なシナリオのベスト プラクティスを示します。

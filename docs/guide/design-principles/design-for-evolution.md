@@ -4,13 +4,16 @@ titleSuffix: Azure Application Architecture Guide
 description: 改良を見込んだ設計は、継続的なイノベーションのための鍵です。
 author: MikeWasson
 ms.date: 08/30/2018
+ms.topic: guide
+ms.service: architecture-center
+ms.subservice: reference-architecture
 ms.custom: seojan19
-ms.openlocfilehash: a62b495c8a42b8af6f3fa4ed79356591dee968dd
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.openlocfilehash: 4a1ed92f70660f16c07b4b472c3ef358af4319c9
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54112211"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54481747"
 ---
 # <a name="design-for-evolution"></a>改良を見込んだ設計
 

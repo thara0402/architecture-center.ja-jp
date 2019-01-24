@@ -4,13 +4,16 @@ titleSuffix: Azure Design Review Framework
 description: DevOps に関連するガイダンスを提供するチェックリストです。
 author: dragon119
 ms.date: 01/10/2018
+ms.topic: checklist
+ms.service: architecture-center
+ms.subservice: cloud-design-principles
 ms.custom: checklist
-ms.openlocfilehash: 218456c7cfbf1bdff4bf5f7404cfbd67aad5c193
-ms.sourcegitcommit: 4ba3304eebaa8c493c3e5307bdd9d723cd90b655
+ms.openlocfilehash: 1a000c811cce57cc9b1fcda84d0eb7e2a1312aca
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53307216"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54486269"
 ---
 # <a name="devops-checklist"></a>DevOps チェックリスト
 

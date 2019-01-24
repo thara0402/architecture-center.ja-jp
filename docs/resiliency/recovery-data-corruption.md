@@ -3,12 +3,16 @@ title: データの破損または偶発的な削除から復旧する
 description: データの破損または偶発的なデータの削除から復旧する方法、回復力のある高可用性のフォールト トレラント アプリケーションの設計、およびディザスター リカバリーの計画について説明します。
 author: MikeWasson
 ms.date: 11/11/2018
-ms.openlocfilehash: 40379f32c6af47002e897c28392816fa1578502a
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.topic: article
+ms.service: architecture-center
+ms.subservice: cloud-design-principles
+ms.custom: resiliency
+ms.openlocfilehash: e28f26683c6d7dba196d4351ef3942830c9e7fc2
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54111259"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54486320"
 ---
 # <a name="recover-from-data-corruption-or-accidental-deletion"></a>データの破損または偶発的な削除から復旧する
 

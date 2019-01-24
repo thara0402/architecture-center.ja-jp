@@ -4,13 +4,16 @@ titleSuffix: Azure Design Review Framework
 description: Azure 自動スケールの設計に関するスケーラビリティのチェックリスト ガイダンス。
 author: dragon119
 ms.date: 01/10/2018
+ms.topic: checklist
+ms.service: architecture-center
+ms.subservice: cloud-design-principles
 ms.custom: checklist
-ms.openlocfilehash: 8bb31e8176238fb32bdf4424aa733b812b5eeb68
-ms.sourcegitcommit: 4ba3304eebaa8c493c3e5307bdd9d723cd90b655
+ms.openlocfilehash: 7157ba4982b42a7f4f56422185d3b857bd909a78
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53307148"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54483670"
 ---
 # <a name="scalability-checklist"></a>スケーラビリティのチェックリスト
 
@@ -34,7 +37,7 @@ ms.locfileid: "53307148"
 
 **"*シェアード ナッシング*" アーキテクチャの使用を検討します**。 シェアード ナッシング アーキテクチャでは、ノードは独立し自律的で、単一競合箇所 (共有サービスや共有ストレージなど) がありません。 理論上、そのようなシステムはほぼ無制限にスケールできます。 一般に、完全なシェアード ナッシング アプローチはほとんどのアプリケーションで実用的ではありませんが、スケーラビリティの向上を考慮に入れた設計には適している場合があります。 たとえば、サーバー側のセッション状態、クライアント アフィニティ、データのパーティション分割の使用を避けるという方法は、シェアード ナッシング アーキテクチャを使用する良い例です。
 
-## <a name="data-management"></a>[データ管理]
+## <a name="data-management"></a>データ管理
 
 **データのパーティション分割を使用します**。 データを複数のデータベースおよびデータベース サーバーに分割するか、このパーティション分割を透過的に実行できるデータ ストレージ サービスを使用するようにアプリケーションを設計します (サービスの例として、Azure SQL Database Elastic Database や Azure Table Storage などがあります)。 このアプローチを使用すると、パフォーマンスを最大化すると同時に、スケーリングを容易にすることが可能です。 パーティション分割には、水平的、垂直的、機能的など、さまざまな分割法があります。 これらを組み合わせて使用すると、クエリのパフォーマンスの向上、シンプル化されたスケーラビリティ、より柔軟性のある管理、可用性の向上から得られるメリットを最大限に活用できるだけでなく、保持されるデータとデータ ストアの種類を一致させることができます。 さらに、データ タイプに応じて異なる種類のデータ ストアを使用したり、特定のデータ タイプに合わせて最適化した場合の状態に基づいてタイプを選択したりすることを検討してください。 これには、リレーショナル データベースの代わりに、またはリレーショナル データベースと同時に、Table Storage、ドキュメント データベース、列ファミリ データ ストアを使用することが含まれます。 詳細については、「 [Data partitioning guidance (データのパーティション分割のガイダンス)](../best-practices/data-partitioning.md)」を参照してください。
 

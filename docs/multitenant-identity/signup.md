@@ -3,15 +3,18 @@ title: マルチテナント アプリケーションのサインアップとテ
 description: マルチテナント アプリケーションでテナントをオンボードする方法。
 author: MikeWasson
 ms.date: 07/21/2017
+ms.topic: guide
+ms.service: architecture-center
+ms.subservice: reference-architecture
 pnp.series.title: Manage Identity in Multitenant Applications
 pnp.series.prev: claims
 pnp.series.next: app-roles
-ms.openlocfilehash: d112cb65e3cd8bae7b273a974bf8e5d2b04aff8a
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.openlocfilehash: a1ec441b731ba7f2166f9115452b052ec944444f
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54112721"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54488411"
 ---
 # <a name="tenant-sign-up-and-onboarding"></a>テナントのサインアップとオンボード
 

@@ -4,13 +4,16 @@ titleSuffix: Azure Application Architecture Guide
 description: パーティション分割を使用して、データベース、ネットワーク、コンピューティングの制限に対処します。
 author: MikeWasson
 ms.date: 08/30/2018
+ms.topic: guide
+ms.service: architecture-center
+ms.subservice: reference-architecture
 ms.custom: seojan19
-ms.openlocfilehash: f6c0daa1b1ea469413156fdf3cd6969f98528fb3
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.openlocfilehash: 76590d2a0c16df9d599e7d4a856a84b5e3bdcec8
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54110494"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54486014"
 ---
 # <a name="partition-around-limits"></a>パーティション分割による制限の回避
 

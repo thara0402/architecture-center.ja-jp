@@ -7,13 +7,16 @@ description: >-
   ガイダンス,vpn gateway,expressroute,ロード バランサー,仮想ネットワーク,active directory
 author: telmosampaio
 ms.date: 05/02/2018
-ms.custom: seodec18
-ms.openlocfilehash: e4415a2f9c2d37e61190f2fd60bbfe5990693697
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.topic: reference-architecture
+ms.service: architecture-center
+ms.subservice: reference-architecture
+ms.custom: seodec18, identity
+ms.openlocfilehash: 5be463856b858ab75a2e402d6690f8240ebf9af6
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54113316"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54480770"
 ---
 # <a name="create-an-active-directory-domain-services-ad-ds-resource-forest-in-azure"></a>Azure での Active Directory Domain Services (AD DS) リソース フォレストの作成
 

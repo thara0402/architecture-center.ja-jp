@@ -3,12 +3,16 @@ title: データ分析とレポート テクノロジの選択
 description: ''
 author: zoinerTejada
 ms.date: 02/12/2018
-ms.openlocfilehash: 5b4947f53edf595c206ef4f55572dadc1a9daa09
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.topic: guide
+ms.service: architecture-center
+ms.subservice: cloud-fundamentals
+ms.custom: data-analytics
+ms.openlocfilehash: 72b889e2fe0d862ab1ff280cea76c2880b0fadc4
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54111412"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54481918"
 ---
 # <a name="choosing-a-data-analytics-technology-in-azure"></a>Azure でのデータ分析とテクノロジの選択
 

@@ -3,12 +3,15 @@ title: オンライン分析処理 (OLAP)
 description: ''
 author: zoinerTejada
 ms.date: 02/12/2018
-ms.openlocfilehash: 2f938796a741b8a26694742f1098e29728e6818d
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.topic: guide
+ms.service: architecture-center
+ms.subservice: cloud-fundamentals
+ms.openlocfilehash: 70c18e1a5294b09bb156d2af06af7a32d33858da
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54113571"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54485483"
 ---
 # <a name="online-analytical-processing-olap"></a>オンライン分析処理 (OLAP)
 

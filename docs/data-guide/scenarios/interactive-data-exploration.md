@@ -3,12 +3,15 @@ title: 対話型データ探索
 description: ''
 author: zoinerTejada
 ms.date: 02/12/2018
-ms.openlocfilehash: 1b77f3ced551f5d71578a9b09fd50cd8b0d5587c
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.topic: guide
+ms.service: architecture-center
+ms.subservice: cloud-fundamentals
+ms.openlocfilehash: d1912799c79271a585a941c91a2fa21c50787dcf
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54113197"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54482937"
 ---
 # <a name="interactive-data-exploration"></a>対話型データ探索
 

@@ -4,13 +4,16 @@ titleSuffix: Azure Reference Architectures
 description: Azure Functions を使用したサーバーレスなイベントの取り込みと処理の参照アーキテクチャ。
 author: MikeWasson
 ms.date: 10/16/2018
-ms.custom: seodec18
-ms.openlocfilehash: 23edc69e52981cfd15717b491875b34ed025958a
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.topic: reference-architecture
+ms.service: architecture-center
+ms.subservice: reference-architecture
+ms.custom: seodec18, serverless
+ms.openlocfilehash: 9d2535c3e350000783265dc58c83d00a38d45448
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54111395"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54486218"
 ---
 # <a name="serverless-event-processing-using-azure-functions"></a>Azure Functions を使用したサーバーレスなイベント処理
 

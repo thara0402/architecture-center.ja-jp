@@ -4,12 +4,15 @@ titleSuffix: Enterprise Cloud Adoption
 description: クラウドでデジタル資産をホストする最適な方法を見つけるためにデジタル資産を評価するプロセス。
 author: BrianBlanchard
 ms.date: 12/10/2018
-ms.openlocfilehash: 05509bdd047b93b4a3b41907836022c837f9c7b4
-ms.sourcegitcommit: e7f8676bbffe500fc4d6deb603b7c0b7ba1884a6
+ms.topic: guide
+ms.service: architecture-center
+ms.subservice: enterprise-cloud-adoption
+ms.openlocfilehash: 2002b5273aed4aef2d283f23f83aa08d1d6f5c95
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53179747"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54485725"
 ---
 # <a name="enterprise-cloud-adoption-rationalize-the-digital-estate"></a>エンタープライズ クラウドの導入:デジタル資産の合理化
 

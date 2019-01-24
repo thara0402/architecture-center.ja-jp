@@ -3,12 +3,15 @@ title: Tailspin Surveys アプリケーションについて
 description: Tailspin Surveys アプリケーションの概要。
 author: MikeWasson
 ms.date: 07/21/2017
-ms.openlocfilehash: 95e170c584b8ec5694be69e595b7791c1bcdfdc0
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.topic: guide
+ms.service: architecture-center
+ms.subservice: reference-architecture
+ms.openlocfilehash: de2830b5c492e027c189a79e45ccc6634cab436b
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54111463"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54483226"
 ---
 # <a name="the-tailspin-scenario"></a>Tailspin シナリオ
 

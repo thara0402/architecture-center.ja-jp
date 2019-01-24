@@ -4,13 +4,16 @@ titleSuffix: Azure Reference Architectures
 description: 高可用性のネットワーク仮想アプライアンスをデプロイします。
 author: telmosampaio
 ms.date: 12/08/2018
-ms.custom: seodec18
-ms.openlocfilehash: 646721f80d19f493b7674884f8108762d743201b
-ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
+ms.topic: reference-architecture
+ms.service: architecture-center
+ms.subservice: reference-architecture
+ms.custom: seodec18, networking
+ms.openlocfilehash: a0973fad14bd9b4e81ec9940c83b8ebb31e9599b
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54011091"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54486796"
 ---
 # <a name="deploy-highly-available-network-virtual-appliances"></a>高可用性のネットワーク仮想アプライアンスをデプロイする
 

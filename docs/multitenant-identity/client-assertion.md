@@ -3,15 +3,18 @@ title: クライアント アサーションを使用した Azure AD からの�
 description: クライアント アサーションを使用して Azure AD からのアクセス トークンを取得する方法について説明します。
 author: MikeWasson
 ms.date: 07/21/2017
+ms.topic: guide
+ms.service: architecture-center
+ms.subservice: reference-architecture
 pnp.series.title: Manage Identity in Multitenant Applications
 pnp.series.prev: adfs
 pnp.series.next: key-vault
-ms.openlocfilehash: b5951153fff109b648e7e4f74daac0f414240fe4
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.openlocfilehash: a1ea65ca8f6b98932f0c42a1b029efeca4d50710
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54113146"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54482427"
 ---
 # <a name="use-client-assertion-to-get-access-tokens-from-azure-ad"></a>クライアント アサーションを使用した Azure AD からのアクセス トークンの取得
 

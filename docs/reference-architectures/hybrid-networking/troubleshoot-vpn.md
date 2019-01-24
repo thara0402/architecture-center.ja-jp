@@ -4,12 +4,16 @@ titleSuffix: Azure Reference Architectures
 description: オンプレミス ネットワークと Azure 間の VPN ゲートウェイ接続のトラブルシューティングを行います。
 author: telmosampaio
 ms.date: 10/08/2018
-ms.openlocfilehash: 501429a614fb39177312a374c19ac40213234e42
-ms.sourcegitcommit: 8d951fd7e9534054b160be48a1881ae0857561ef
+ms.topic: article
+ms.service: architecture-center
+ms.subservice: reference-architecture
+ms.custom: networking
+ms.openlocfilehash: 49dfcf444665ef526e76cac0f4ad13104a142840
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53329467"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54485930"
 ---
 # <a name="troubleshoot-a-hybrid-vpn-connection"></a>ハイブリッド VPN 接続のトラブルシューティング
 

@@ -5,15 +5,17 @@ description: Azure Logic Apps と Azure API Management を使用した単純な�
 services: logic-apps
 author: mattfarm
 ms.reviewer: jonfan, estfan, LADocs
-ms.topic: article
+ms.topic: reference-architecture
 ms.date: 12/03/2018
+ms.service: architecture-center
+ms.subservice: reference-architecture
 ms.custom: integration-services
-ms.openlocfilehash: 36419706714b8516a309cf634649a4b44a9bc136
-ms.sourcegitcommit: 88a68c7e9b6b772172b7faa4b9fd9c061a9f7e9d
+ms.openlocfilehash: 76e422ead7e53c582a9d64ab1da643c3990749d6
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53120205"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54488394"
 ---
 # <a name="basic-enterprise-integration-on-azure"></a>Azure での基本的なエンタープライズ統合
 

@@ -4,13 +4,16 @@ titleSuffix: Azure Example Scenarios
 description: 大規模なモノリシック アプリケーションをマイクロサービスに分解します。
 author: timomta
 ms.date: 09/20/2018
+ms.topic: example-scenario
+ms.service: architecture-center
+ms.subservice: example-scenario
 ms.custom: fasttrack
-ms.openlocfilehash: 90159b0cbfd3e7af542a79d050d153b4a3435a0d
-ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
+ms.openlocfilehash: 4563bf943d19def55ea18734b2d67df5087a99bd
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53643817"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54487106"
 ---
 # <a name="using-service-fabric-to-decompose-monolithic-applications"></a>Service Fabric を使用したモノリシック アプリケーションの分解
 

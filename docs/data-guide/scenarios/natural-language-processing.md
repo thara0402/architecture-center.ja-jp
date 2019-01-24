@@ -3,12 +3,15 @@ title: 自然言語処理
 description: ''
 author: zoinerTejada
 ms.date: 02/12/2018
-ms.openlocfilehash: 373afbabec78dd1ec30b6d07bca9d5da62b5d6e3
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.topic: guide
+ms.service: architecture-center
+ms.subservice: cloud-fundamentals
+ms.openlocfilehash: 281a2e9995d1d04aa9688e811e0d4ff8088fe30b
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54110477"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54483005"
 ---
 # <a name="natural-language-processing"></a>自然言語処理
 

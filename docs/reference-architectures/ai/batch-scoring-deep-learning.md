@@ -4,13 +4,16 @@ titleSuffix: Azure Reference Architectures
 description: この参照アーキテクチャでは、Azure Batch AI を使用してニューラル スタイルの転送を動画に適用する方法を示します。
 author: jiata
 ms.date: 10/02/2018
+ms.topic: reference-architecture
+ms.service: architecture-center
+ms.subservice: reference-architecture
 ms.custom: azcat-ai
-ms.openlocfilehash: 0396903a39d00a4131df65872a63f4b3fde8dce7
-ms.sourcegitcommit: 88a68c7e9b6b772172b7faa4b9fd9c061a9f7e9d
+ms.openlocfilehash: 26a83b3f75b2e7e9ec4a8a99ab8b4d8f1b1ef4d7
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53119882"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54488564"
 ---
 # <a name="batch-scoring-on-azure-for-deep-learning-models"></a>ディープ ラーニング モデル用の Azure でのバッチ スコアリング
 

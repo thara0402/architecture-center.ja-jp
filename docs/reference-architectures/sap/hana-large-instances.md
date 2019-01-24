@@ -4,13 +4,16 @@ titleSuffix: Azure Reference Architectures
 description: Azure Large Instances の高可用性環境で SAP HANA を実行するための実証済みプラクティス。
 author: lbrader
 ms.date: 05/16/2018
-ms.custom: seodec18
-ms.openlocfilehash: 47953037827923ea0e4f492dfc29ce815072a20e
-ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
+ms.topic: reference-architecture
+ms.service: architecture-center
+ms.subservice: reference-architecture
+ms.custom: seodec18, SAP
+ms.openlocfilehash: 711e233de534597f9cd06ccaa95481a51acc4468
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54011363"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54485351"
 ---
 # <a name="run-sap-hana-on-azure-large-instances"></a>SAP HANA on Azure Large Instances を実行する
 

@@ -4,13 +4,16 @@ titleSuffix: Azure Example Scenarios
 description: Oracle データベースを使用して Azure で SAP 運用環境デプロイを実行します。
 author: DharmeshBhagat
 ms.date: 09/12/2018
-ms.custom: fasttrack
-ms.openlocfilehash: 02a6eb43d3e11604857b8bd1f461c22a48f655c7
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.topic: example-scenario
+ms.service: architecture-center
+ms.subservice: example-scenario
+ms.custom: fasttrack, SAP, Windows, Linux
+ms.openlocfilehash: 0f96f173d5db682ccc719869aaa22225345cb3f0
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54110929"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54487477"
 ---
 # <a name="running-sap-production-workloads-using-an-oracle-database-on-azure"></a>Azure での Oracle データベースを使用した SAP 運用環境ワークロードの実行
 

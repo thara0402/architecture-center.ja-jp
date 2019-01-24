@@ -4,13 +4,16 @@ titleSuffix: Azure Example Scenarios
 description: Azure で計算流体力学 (CFD) シミュレーションを実行します。
 author: mikewarr
 ms.date: 09/20/2018
+ms.topic: example-scenario
+ms.service: architecture-center
+ms.subservice: example-scenario
 ms.custom: fasttrack
-ms.openlocfilehash: af43a60e952d75f84b4c7903a1567b0c76b9f4c4
-ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
+ms.openlocfilehash: 0bd0590ccc2975481e23ac2154c4f0998e1f0877
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53643936"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54488479"
 ---
 # <a name="running-computational-fluid-dynamics-cfd-simulations-on-azure"></a>Azure での計算流体力学 (CFD) シミュレーションの実行
 

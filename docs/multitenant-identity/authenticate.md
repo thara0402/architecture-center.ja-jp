@@ -3,15 +3,18 @@ title: マルチテナント アプリケーションでの認証
 description: マルチテナント アプリケーションで Azure Active Directory のユーザーを認証する方法。
 author: MikeWasson
 ms.date: 07/21/2017
+ms.topic: guide
+ms.service: architecture-center
+ms.subservice: reference-architecture
 pnp.series.title: Manage Identity in Multitenant Applications
 pnp.series.prev: tailspin
 pnp.series.next: claims
-ms.openlocfilehash: c66fd80a539b507ee7a78c87a2ffa0d735b9def1
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.openlocfilehash: b4a833a18b44e40f544449a222fb082d71e4268d
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54112432"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54481645"
 ---
 # <a name="authenticate-using-azure-ad-and-openid-connect"></a>Azure AD および OpenID Connect を使用して認証する
 

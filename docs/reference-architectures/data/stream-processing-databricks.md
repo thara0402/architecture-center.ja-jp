@@ -4,13 +4,16 @@ titleSuffix: Azure Reference Architectures
 description: Azure Databricks を使用して、Azure でエンド ツー エンドのストリーム処理パイプラインを作成します。
 author: petertaylor9999
 ms.date: 11/30/2018
+ms.topic: reference-architecture
+ms.service: architecture-center
+ms.subservice: reference-architecture
 ms.custom: seodec18
-ms.openlocfilehash: f7364334f889388ad432efadd46362a9fa82fe8b
-ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
+ms.openlocfilehash: 748b191aeee931d580dd27b1ad54c4f4bd63e369
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53644123"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54483702"
 ---
 # <a name="create-a-stream-processing-pipeline-with-azure-databricks"></a>Azure Databricks を使用してストリーム処理パイプラインを作成します
 

@@ -5,13 +5,16 @@ description: 共有または専用のサービス機能の負荷をゲートウ�
 keywords: 設計パターン
 author: dragon119
 ms.date: 06/23/2017
+ms.topic: design-pattern
+ms.service: architecture-center
+ms.subservice: cloud-fundamentals
 ms.custom: seodec18
-ms.openlocfilehash: 50af3d8593279986ed6efee55667187424c18e56
-ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
+ms.openlocfilehash: 28dbd1798060d1bdd01b1e6bee03337a2239a9ef
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54010215"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54487663"
 ---
 # <a name="gateway-offloading-pattern"></a>ゲートウェイ オフロード パターン
 

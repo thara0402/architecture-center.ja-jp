@@ -4,13 +4,16 @@ titleSuffix: Azure Application Architecture Guide
 description: アプリケーション サービス間の調整を最小限に抑えてスケーラビリティを実現します。
 author: MikeWasson
 ms.date: 08/30/2018
+ms.topic: guide
+ms.service: architecture-center
+ms.subservice: reference-architecture
 ms.custom: seojan19
-ms.openlocfilehash: ec1a7a3de2be4954b07a87b774f8ae7c2bd1f736
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.openlocfilehash: e124e6720b909bafc74a4c074454ec0a3ec30c59
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54113095"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54488581"
 ---
 # <a name="minimize-coordination"></a>調整を最小限に抑える
 

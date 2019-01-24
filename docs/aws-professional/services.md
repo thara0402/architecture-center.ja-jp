@@ -5,12 +5,15 @@ description: マルチクラウド ソリューションまたは Azure への�
 keywords: クラウド サービスの比較、クラウド サービス、マルチクラウドの比較、Azure AWS の比較、Azure と AWS の比較、AWS と Azure の比較、IT 機能
 author: lbrader
 ms.date: 11/09/2018
-ms.openlocfilehash: 3176d0b38406eee307186ea1b193a37f6c68e53f
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.topic: article
+ms.service: architecture-center
+ms.subservice: cloud-fundamentals
+ms.openlocfilehash: fb0749855ff524cf89968e5af47b17f1bbdd53cf
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54112874"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54484348"
 ---
 # <a name="aws-to-azure-services-comparison"></a>AWS サービスと Azure サービスの比較
 
@@ -194,7 +197,7 @@ AWS ユーザーのための Azure の概要については、[AWS プロフェ�
 |       &nbsp;        |                         &nbsp;                         |                                                                                                      [Power Apps](https://powerapps.microsoft.com/)                                                                                                       |                                                                        ビジュアル デザイナーを使用してビジネス ソリューションをすばやくビルドし、Excel、SharePoint、Dynamics 365 などの既存のサービスやデータ ソースに接続するためのテクノロジ。                                                                        |
 |             アプリのテスト              |                          なし                          |                                                                                      [Azure DevTest Labs (バックエンド)](https://azure.microsoft.com/solutions/dev-test/)                                                                                      | クロスプラットフォーム機能をテストするための異種ソリューションを開発/テスト環境にビルドするテスト テクノロジ。 完全な DevOps 継続的な統合/開発を Visual Studio Online サービスや Jenkins、Chef、Puppet、CloudTest Lite、Octopus Deploy などのサード パーティーと統合します。 |
 |     アプリ顧客支払いサービス     |   Amazon Flexible Payment Service および Amazon Dev Pay   |                                                                                                                           なし                                                                                                                            |                                                                                                               開発者にクラウド ベースのアプリケーションのための支払いサービスを提供するクラウド サービス。                                                                                                                |
-|                DevOps                |                     AWS CodeBuild                      |                                                                             [Visual Studio Team Services](https://azure.microsoft.com/services/visual-studio-team-services/)                                                                              |                                                                                                                     継続的な統合およびデプロイをサポートするフル マネージドのビルドサービス。                                                                                                                      |
+|                DevOps                |                     AWS CodeBuild                      |                                                                             [Azure DevOps](https://azure.microsoft.com/services/devops/)                                                                              |                                                                                                                     継続的な統合およびデプロイをサポートするフル マネージドのビルドサービス。                                                                                                                      |
 |        バックエンド プロセス ロジック         |                   AWS Step Functions                   |                                                                                              [Logic Apps](https://azure.microsoft.com/services/logic-apps/)                                                                                               |                                                                     すぐに使用できるコネクタを使用して分散アプリケーションをビルドすることによって統合の課題を軽減するクラウド テクノロジ。 オンプレミスまたはクラウド内にあるアプリ、データ、およびデバイスを接続します。                                                                      |
 |         プログラムによるアクセス          |                 コマンド ライン インターフェイス                 |                [Azure コマンド ライン インターフェイス (CLI)](/cli/azure/install-azure-cli) <br/><br/>[Azure PowerShell](/powershell/azure/overview)                 |                                                                                  すべてのクラウド サービスにわたってネイティブな REST API の上にビルドされたプログラミング言語固有のさまざまなラッパーが、ソリューションを作成するためのより容易な方法を提供します。                                                                                   |
 |         定義済みのテンプレート         |                    AWS クイック スタート                     |                                                                                    [Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/)                                                                                     |                                                                                                                    仮想マシン ベースのソリューションを作成およびデプロイするためのコミュニティ主導のテンプレート。                                                                                                                    |

@@ -3,12 +3,15 @@ title: 機械学習テクノロジの選択
 description: ''
 author: zoinerTejada
 ms.date: 02/12/2018
-ms.openlocfilehash: e4b8ecb64afbacc8a4e24e9c6274455db0451d62
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.topic: guide
+ms.service: architecture-center
+ms.subservice: cloud-fundamentals
+ms.openlocfilehash: a435286781281a43864561f98362675219bb1477
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54112127"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54486575"
 ---
 # <a name="choosing-a-machine-learning-technology-in-azure"></a>Azure での機械学習テクノロジの選択
 

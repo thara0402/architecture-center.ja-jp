@@ -3,12 +3,16 @@ title: マイクロサービスでのサービス間通信
 description: マイクロサービスでのサービス間通信
 author: MikeWasson
 ms.date: 10/23/2018
-ms.openlocfilehash: 4760cd54c494fb8fded4b396ac772d2c9c82cafa
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.topic: guide
+ms.service: architecture-center
+ms.subservice: reference-architecture
+ms.custom: microservices
+ms.openlocfilehash: 7b1a5d7d6d386f707ff0842c08ff342dc5a1bbbd
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54113501"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54480642"
 ---
 # <a name="designing-microservices-interservice-communication"></a>マイクロサービスの設計:サービス間の通信
 

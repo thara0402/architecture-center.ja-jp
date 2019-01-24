@@ -3,12 +3,16 @@ title: 高度な分析
 description: ''
 author: zoinerTejada
 ms.date: 02/12/2018
-ms.openlocfilehash: e1af8637494bf38ec6089ea14bc8633536e17c83
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.topic: guide
+ms.service: architecture-center
+ms.subservice: cloud-fundamentals
+ms.custom: data-analytics, AI
+ms.openlocfilehash: 36c300b5489f137cf781c3688aa349b60ecbaf2d
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54113350"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54485385"
 ---
 # <a name="advanced-analytics"></a>高度な分析
 

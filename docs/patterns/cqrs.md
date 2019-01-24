@@ -5,13 +5,16 @@ description: 個別のインターフェイスを使用して、データを更�
 keywords: 設計パターン
 author: dragon119
 ms.date: 06/23/2017
+ms.topic: design-pattern
+ms.service: architecture-center
+ms.subservice: cloud-fundamentals
 ms.custom: seodec18
-ms.openlocfilehash: 320f6cd51a44b3a6732d8395f0a5e1db8f9f5774
-ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
+ms.openlocfilehash: f1ccb867530dada3844aa19ef2639c2af209509f
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54010377"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54483634"
 ---
 # <a name="command-and-query-responsibility-segregation-cqrs-pattern"></a>コマンド クエリ責務分離 (CQRS) パターン
 
@@ -243,6 +246,6 @@ public interface IProductsDomain
 
 - [Materialized View Pattern (具体化されたビュー パターン)](./materialized-view.md) CQRS 実装の読み取りモデルには、書き込みモデル データの具体化されたビューを含めることができます。また、読み取りモデルは具体化されたビューの生成に使用できます。
 
-- パターンとプラクティスのガイド「[CQRS Journey (CQRS の旅)](https://aka.ms/cqrs)」。 具体的には、[コマンド クエリ責務分離パターンの概要](https://msdn.microsoft.com/library/jj591573.aspx)に関するページで、パターンとそのパターンが役立つ状況について説明します。[エピローグの得られた教訓](https://msdn.microsoft.com/library/jj591568.aspx)に関するページは、このパターンを使用したときに発生する問題の一部を理解するのに役立ちます。
+- パターンとプラクティスのガイド「[CQRS Journey (CQRS の旅)](https://aka.ms/cqrs)」。 具体的には、[コマンド クエリ責務分離パターンの概要](https://msdn.microsoft.com/library/jj591573.aspx)に関するページで、パターンとそのパターンが役立つ状況について説明します。[エピローグのLessons Learned (エピローグ: 得られた教訓)](https://msdn.microsoft.com/library/jj591568.aspx)」は、このパターンを使用したときに発生する問題の一部を理解するのに役立ちます。
 
 - Martin Fowler の投稿「[CQRS](https://martinfowler.com/bliki/CQRS.html)」では、パターンの基本と他の有用なリソースへのリンクを紹介しています。

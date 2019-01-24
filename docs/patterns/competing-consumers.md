@@ -5,13 +5,16 @@ description: 複数の同時実行コンシューマーが、同じメッセー�
 keywords: 設計パターン
 author: dragon119
 ms.date: 06/23/2017
+ms.topic: design-pattern
+ms.service: architecture-center
+ms.subservice: cloud-fundamentals
 ms.custom: seodec18
-ms.openlocfilehash: 77459ff42422969acdc83e66535197547d555de1
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.openlocfilehash: ea3f48971a78f59ad6575b055278aab449fa26a1
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54112109"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54485232"
 ---
 # <a name="competing-consumers-pattern"></a>競合コンシューマー パターン
 

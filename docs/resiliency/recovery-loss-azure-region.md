@@ -3,12 +3,16 @@ title: Azure リージョンの損失からの復旧
 description: 回復力のある高可用性のフォールト トレラント アプリケーションとその設計、およびディザスター リカバリーの計画について説明します。
 author: adamglick
 ms.date: 08/18/2016
-ms.openlocfilehash: bd0d8a7e544188a79cbba4b58a9e31358e4ccf0d
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.topic: article
+ms.service: architecture-center
+ms.subservice: cloud-design-principles
+ms.custom: resiliency
+ms.openlocfilehash: 7f207bbc0bb0128126f9b828dc100d43553cb100
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54111973"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54487986"
 ---
 [!INCLUDE [header](../_includes/header.md)]
 

@@ -3,12 +3,16 @@ title: API ゲートウェイ
 description: マイクロサービスの API ゲートウェイ。
 author: MikeWasson
 ms.date: 10/23/2018
-ms.openlocfilehash: cd13f9a36120bb0093675e1dec683d480e168db5
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.topic: guide
+ms.service: architecture-center
+ms.subservice: reference-architecture
+ms.custom: microservices
+ms.openlocfilehash: 84add394ee9ae6fa3c0df19b5a263dab66a6b140
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54113265"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54485884"
 ---
 # <a name="designing-microservices-api-gateways"></a>マイクロサービスの設計:API ゲートウェイ
 

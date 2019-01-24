@@ -4,13 +4,16 @@ titleSuffix: Azure Example Scenarios
 description: スケール セット、Application Gateway、ロード バランサーを使用して、セキュリティで保護された多層 Web アプリケーションを、Azure 上の Windows Server を使用して構築します。
 author: iainfoulds
 ms.date: 12/06/2018
-ms.custom: seodec18
-ms.openlocfilehash: c5c1d4468df72edd989f2ab8f303781b26d50017
-ms.sourcegitcommit: 71ee0859e19fe58416b4c0056d67f2f34dd9ca0a
+ms.topic: example-scenario
+ms.service: architecture-center
+ms.subservice: example-scenario
+ms.custom: seodec18, Windows
+ms.openlocfilehash: 12c7b4749507d4b96e5ce43f98739885c8133e7e
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54211990"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54485538"
 ---
 # <a name="building-secure-web-applications-with-windows-virtual-machines-on-azure"></a>Azure 上の Windows Server を使用した、セキュリティで保護された Web アプリケーションの構築
 

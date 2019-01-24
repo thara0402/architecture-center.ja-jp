@@ -4,12 +4,15 @@ titleSuffix: Enterprise Cloud Adoption
 description: デジタル資産のインベントリを作成する方法
 author: BrianBlanchard
 ms.date: 12/10/2018
-ms.openlocfilehash: c8c2671a76ab09ab3f817872fb9d78cf84d7daa5
-ms.sourcegitcommit: e7f8676bbffe500fc4d6deb603b7c0b7ba1884a6
+ms.topic: guide
+ms.service: architecture-center
+ms.subservice: enterprise-cloud-adoption
+ms.openlocfilehash: 5c2f270cf8de81c8a94d1f924f51611e657ed0ed
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53179656"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54481798"
 ---
 # <a name="enterprise-cloud-adoption-gather-inventory-data-for-a-digital-estate"></a>エンタープライズ クラウドの導入:デジタル資産のインベントリ データを収集する
 

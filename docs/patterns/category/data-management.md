@@ -5,13 +5,16 @@ description: データ管理はクラウド アプリケーションの重要な
 keywords: 設計パターン
 author: dragon119
 ms.date: 06/23/2017
+ms.topic: design-pattern
+ms.service: architecture-center
+ms.subservice: cloud-fundamentals
 ms.custom: seodec18
-ms.openlocfilehash: ff6d5703af64ddd8b012b588ddfe810da0b6630c
-ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
+ms.openlocfilehash: 25571a431836656856ed3f299455dfdb94ae3477
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54009187"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54486983"
 ---
 # <a name="data-management-patterns"></a>データ管理のパターン
 

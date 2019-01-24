@@ -3,13 +3,16 @@ title: Azure 上でリアルタイム レコメンデーション API を構築�
 description: Azure 上でモデルをトレーニングするには、機械学習を使用し、Azure Databricks と Data Science Virtual Machine (DSVM) を使用してレコメンデーションを自動化します。
 author: njray
 ms.date: 12/12/2018
+ms.topic: reference-architecture
+ms.service: architecture-center
+ms.subservice: reference-architecture
 ms.custom: azcat-ai
-ms.openlocfilehash: ca9d854f0e29ae769f5a86648b94cce7a2fd146e
-ms.sourcegitcommit: fb22348f917a76e30a6c090fcd4a18decba0b398
+ms.openlocfilehash: 8fa15c82275f18af78d1f42ec1750ab9b28119fb
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2018
-ms.locfileid: "53450832"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54487119"
 ---
 # <a name="build-a-real-time-recommendation-api-on-azure"></a>Azure 上でリアルタイム レコメンデーション API を構築する
 
@@ -19,7 +22,7 @@ ms.locfileid: "53450832"
 
 ![映画のレコメンデーションをトレーニングするための機械学習モデルのアーキテクチャ](./_images/recommenders-architecture.png)
 
-**シナリオ**:あるメディア組織は、ユーザーに映画またはビデオのレコメンデーションを提供したいと考えています。 組織は、パーソナライズされたレコメンデーションを提供することで、クリックスルー率の向上、サイトのエンゲージメントの向上、ユーザー満足度の向上など、いくつかのビジネス目標を達成します。
+**シナリオ**: あるメディア組織は、ユーザーに映画またはビデオのレコメンデーションを提供したいと考えています。 組織は、パーソナライズされたレコメンデーションを提供することで、クリックスルー率の向上、サイトのエンゲージメントの向上、ユーザー満足度の向上など、いくつかのビジネス目標を達成します。
 
 この参照アーキテクチャは、特定のユーザーに上位 10 個の映画のレコメンデーションを提供できるリアルタイム レコメンダー サービス API をトレーニングおよびデプロイするためのものです。
 

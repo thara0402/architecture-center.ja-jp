@@ -1,16 +1,19 @@
 ---
-title: 'エンタープライズ クラウドの導入: 概要'
+title: エンタープライズ クラウドの導入:使用の開始
 description: Azure クラウド テクノロジーの導入における企業のデジタル変革の第 1 段階の概要を説明します。
 author: petertaylor9999
 ms.date: 09/10/2018
-ms.openlocfilehash: b51e834a56f4d9818ca9475f959c3f888bae20bc
-ms.sourcegitcommit: c49aeef818d7dfe271bc4128b230cfc676f05230
+ms.topic: guide
+ms.service: architecture-center
+ms.subservice: enterprise-cloud-adoption
+ms.openlocfilehash: 027757c76008da092e0d7ab65b072259a04b3cad
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44389306"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54488088"
 ---
-# <a name="enterprise-cloud-adoption-getting-started"></a>エンタープライズ クラウドの導入: 概要 
+# <a name="enterprise-cloud-adoption-getting-started"></a>エンタープライズ クラウドの導入:使用の開始 
 
 クラウド コンピューティングへの**デジタル変革**は、オンプレミスでの運用からクラウドでの運用への移行を意味します。 この移行にはビジネスの新しい方法が含まれます。たとえば、デジタル変革により、ソフトウェアやデータ センター ハードウェアのための設備投資から、クラウド リソースを使用するための運用コストに移行します。 
 
@@ -58,7 +61,7 @@ ms.locfileid: "44389306"
 
 ビジネス戦略のギャップは、次のカテゴリに分類できます。
 
-|カテゴリ|説明|
+|Category|説明|
 |-----|-----|
 |コスト管理|企業がテクノロジの代金を支払う方法のギャップを表します。|
 |ガバナンス|コスト超過、セキュリティの問題、またはコンプライアンスの問題の原因となる可能性のある不適切な使用から資産を保護するために企業が使用するプロセスのギャップを表します。 | 

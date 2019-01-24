@@ -4,12 +4,16 @@ titleSuffix: Azure Example Scenarios
 description: Azure で、コンピューター支援エンジニアリング (CAE) に、サービスとしてのソフトウェア (SaaS) プラットフォームを提供します。
 author: alexbuckgit
 ms.date: 08/22/2018
-ms.openlocfilehash: 0e8ce29639e4e189acef633585191b178c6c8721
-ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
+ms.topic: example-scenario
+ms.service: architecture-center
+ms.subservice: example-scenario
+ms.custom: HPC
+ms.openlocfilehash: 7c543df71176ca0da621d6ec67fc6fe2ca36f9fa
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53643868"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54481509"
 ---
 # <a name="a-computer-aided-engineering-service-on-azure"></a>Azure でのコンピューター支援エンジニアリング サービス
 

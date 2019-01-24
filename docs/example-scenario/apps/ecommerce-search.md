@@ -4,13 +4,16 @@ titleSuffix: Azure Example Scenarios
 description: eコマース アプリケーションに世界水準の検索エクスペリエンスを提供します。
 author: jelledruyts
 ms.date: 09/14/2018
+ms.topic: example-scenario
+ms.service: architecture-center
+ms.subservice: example-scenario
 ms.custom: fasttrack
-ms.openlocfilehash: 9e24f7ab2104f877fcc3aec310dd21677160608c
-ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
+ms.openlocfilehash: fe67c891a9e42d5216fe6fd81de6ea1333d5bd37
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53643468"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54488241"
 ---
 # <a name="intelligent-product-search-engine-for-e-commerce"></a>eコマースのインテリジェントな製品検索エンジン
 

@@ -3,12 +3,15 @@ title: データ転送テクノロジの選択
 description: ''
 author: zoinerTejada
 ms.date: 02/12/2018
-ms.openlocfilehash: 1cb763ade2aa263d07a59cc6bfc29d59bec7af19
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.topic: guide
+ms.service: architecture-center
+ms.subservice: cloud-fundamentals
+ms.openlocfilehash: c58d06813e3a500c6bb1b6c7889e65f401be6c33
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54113044"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54484535"
 ---
 # <a name="transferring-data-to-and-from-azure"></a>Azure との間のデータ転送
 
@@ -134,7 +137,7 @@ Azure との間でデータを転送するオプションはいくつかあり�
 | --- | --- | --- | --- |
 | ビッグ データに合わせて最適化 | いいえ  | いいえ  | [はい] |
 | リレーショナル データベースへのコピー | いいえ  | いいえ  | [はい] |
-| リレーショナル データベースへのコピー | いいえ  | いいえ  | [はい] |
+| リレーショナル データベースからのコピー | いいえ  | いいえ  | [はい] |
 | BLOB ストレージへのコピー | [はい] | いいえ  | [はい] |
 | BLOB ストレージからのコピー | [はい] | いいえ  | [はい] |
 | Data Lake Store へのコピー | いいえ  | いいえ  | [はい] |

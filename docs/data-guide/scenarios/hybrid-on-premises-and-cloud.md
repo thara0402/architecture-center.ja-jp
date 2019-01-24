@@ -3,12 +3,15 @@ title: オンプレミス データ ソリューションのクラウドへの�
 description: ''
 author: zoinerTejada
 ms.date: 02/12/2018
-ms.openlocfilehash: 38838d5409b29fe987d4d83c9ccb87cd489b93c7
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.topic: guide
+ms.service: architecture-center
+ms.subservice: cloud-fundamentals
+ms.openlocfilehash: b54f56fbc6aab526f37d537c201f4e4955a112fd
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54114234"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54486958"
 ---
 # <a name="extending-on-premises-data-solutions-to-the-cloud"></a>オンプレミス データ ソリューションのクラウドへの拡張
 

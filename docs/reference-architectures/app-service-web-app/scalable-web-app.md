@@ -4,13 +4,16 @@ titleSuffix: Azure Reference Architectures
 description: Microsoft Azure で実行される Web アプリケーションのスケーラビリティを向上させます。
 author: MikeWasson
 ms.date: 10/25/2018
+ms.topic: reference-architecture
+ms.service: architecture-center
+ms.subservice: reference-architecture
 ms.custom: seodec18
-ms.openlocfilehash: aa4579b45c5ecf090a896e252f2d2e460f282c0e
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.openlocfilehash: b015a130a74f3160c0e737b436d41e1b1ea7b5bf
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54110971"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54483039"
 ---
 # <a name="improve-scalability-in-an-azure-web-application"></a>Azure Web アプリケーションのスケーラビリティの向上
 

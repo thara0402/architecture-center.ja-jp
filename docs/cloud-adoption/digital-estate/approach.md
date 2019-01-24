@@ -4,12 +4,15 @@ titleSuffix: Enterprise Cloud Adoption
 description: いくつかのデジタル資産計画の手法について説明します
 author: BrianBlanchard
 ms.date: 12/10/2018
-ms.openlocfilehash: 5803447ff87e733aa5a9c24ac626bba665b8394a
-ms.sourcegitcommit: e7f8676bbffe500fc4d6deb603b7c0b7ba1884a6
+ms.topic: guide
+ms.service: architecture-center
+ms.subservice: enterprise-cloud-adoption
+ms.openlocfilehash: 59c9e208254eaa0e8beb365718ef59d0694094f3
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53179663"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54482223"
 ---
 # <a name="enterprise-cloud-adoption-approaches-to-digital-estate-planning"></a>エンタープライズ クラウドの導入:デジタル資産計画の手法
 
