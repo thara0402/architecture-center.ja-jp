@@ -50,7 +50,7 @@ Cosmos DB、HDInsight などのマネージド Azure サービスを使用して
 
 ## <a name="considerations"></a>考慮事項
 
-リアルタイム メッセージ インジェスト、データ ストレージ、ストリーム処理、分析データのストレージ、および分析とレポート作成では、使用できるテクノロジ オプションが多数あります。 これらのオプションやその機能、主要な選択条件の概要については、「[ビッグ データ アーキテクチャ: リアルタイム処理](/azure/architecture/data-guide/technology-choices/real-time-ingestion)」([Azure データ アーキテクチャ ガイド](/azure/architecture/data-guide)内) をご覧ください。
+リアルタイム メッセージ インジェスト、データ ストレージ、ストリーム処理、分析データのストレージ、および分析とレポート作成では、使用できるテクノロジ オプションが多数あります。 これらのオプションやその機能、主要な選択条件の概要については、「[ビッグ データ アーキテクチャ:リアルタイム処理](/azure/architecture/data-guide/technology-choices/real-time-ingestion)」([Azure データ アーキテクチャ ガイド](/azure/architecture/data-guide)内) をご覧ください。
 
 現在、マイクロサービスは、回復性優れ、単独でのデプロイが可能で、迅速に展開できるスケーラブルなクラウド アプリケーションを構築するための一般的なアーキテクチャ スタイルになっています。 マイクロサービスには、アプリケーションを設計およびビルドするのためのさまざまなアプローチが必要です。 Docker、Kubernetes、Azure Service Fabric、Nomad などのツールを使用すると、マイクロサービス ベースのアーキテクチャを開発できます。 マイクロサービス ベースのアーキテクチャの構築とガイダンスについては、Azure アーキテクチャ センターの [Azure でのマイクロサービスの設計](/azure/architecture/microservices)に関するページをご覧ください。
 

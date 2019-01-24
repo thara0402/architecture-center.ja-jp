@@ -4,13 +4,16 @@ titleSuffix: Azure Design Review Framework
 description: 設計時の可用性に関する問題のガイダンスを提供するチェックリスト。
 author: dragon119
 ms.date: 11/26/2018
+ms.topic: checklist
+ms.service: architecture-center
+ms.subservice: cloud-design-principles
 ms.custom: checklist
-ms.openlocfilehash: 37e61b35d73007b9bac1ebaecfbf42792ae3903b
-ms.sourcegitcommit: 4ba3304eebaa8c493c3e5307bdd9d723cd90b655
+ms.openlocfilehash: 2e0c337cb0a5f343ae3dd94ae209d01f063cab35
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53307233"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54483592"
 ---
 # <a name="availability-checklist"></a>可用性のチェックリスト
 
@@ -46,7 +49,7 @@ ms.locfileid: "53307233"
 
 **Azure Site Recovery を使用して VM をレプリケートします。** 可用性を最大化するには、[Site Recovery][site-recovery] を使用して、お使いの仮想マシンすべてを、別の Azure リージョンをレプリケートします。 お使いのアプリケーションのすべての階層の、すべての VM が確実にレプリケートされることを確認します。 ソース リージョンで中断が発生した場合は、数分以内に VM をもう一方のリージョンにフェールオーバーできます。
 
-## <a name="data-management"></a>[データ管理]
+## <a name="data-management"></a>データ管理
 
 **Azure Storage のデータの geo レプリケーション**。 Azure Storage 内のデータは、データセンター内で自動的にレプリケートされます。 さらに高い可用性を実現するには、読み取りアクセス geo 冗長ストレージを使用して (RAGRS)、セカンダリ リージョンにデータをレプリケートし、セカンダリ ロケーションのデータに読み取り専用のアクセスを付与します。 地域全体が停電になった場合や災害が発生した場合でも、データは保持されます。 詳細については、「[Azure Storage のレプリケーション](/azure/storage/storage-redundancy)」をご覧ください。
 
