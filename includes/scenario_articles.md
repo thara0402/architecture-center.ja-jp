@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: dfc4af0a5be29b32d90cc4a05715fd3e2f71427b
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54488666"
+---
 
 ## <a name="ai-scenarios"></a>AI シナリオ
 
@@ -13,7 +21,7 @@
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure でのホテル予約用の会話型チャットボット</h3>
+                        <h3>ホテル予約用の会話型チャットボット</h3>
                         <p>Azure Bot Service を使用して商取引アプリケーション用の会話型チャットボットを構築します。</p>
                     </div>
                 </div>
@@ -32,8 +40,27 @@
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure での保険金請求イメージの分類</h3>
+                        <h3>保険金請求イメージの分類</h3>
                         <p>ご使用の Azure アプリケーションに画像処理を組み込みます。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</li>
+<li style="display: flex; flex-direction: column;">
+    <a href="./ai/movie-recommendations.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="./ai/media/architecture-movie-recommender.png" height="140px" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Azure での映画のレコメンデーション</h3>
+                        <p>機械学習を利用して、映画、製品、およびその他のレコメンデーションを自動化します。Azure 上でモデルをトレーニングするために機械学習と Azure Data Science Virtual Machine (DSVM) を使用します。</p>
                     </div>
                 </div>
             </div>
@@ -57,7 +84,7 @@
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure 上の API ベースのアーキテクチャへの、従来の Web アプリケーションの移行</h3>
+                        <h3>Web アプリの API ベースのアーキテクチャへの移行</h3>
                         <p>Azure API Management を使用して、従来の Web アプリケーションを最新式にしています。</p>
                     </div>
                 </div>
@@ -76,7 +103,7 @@
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure における銀行間での分散型信頼</h3>
+                        <h3>銀行間での分散型信頼</h3>
                         <p>一元化されたデータベースを使用せずに、信頼できる環境を確立して、通信と情報共有を実現します。</p>
                     </div>
                 </div>
@@ -133,7 +160,7 @@
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure の eコマース フロントエンド</h3>
+                        <h3>eコマース フロントエンド</h3>
                         <p>Azure で eコマース サイトをホストします。</p>
                     </div>
                 </div>
@@ -171,7 +198,7 @@
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure でのコンピューター支援エンジニアリング サービス</h3>
+                        <h3>コンピューター支援エンジニアリング サービス</h3>
                         <p>Azure で、コンピューター支援エンジニアリング (CAE) に、サービスとしてのソフトウェア (SaaS) プラットフォームを提供します。</p>
                     </div>
                 </div>
@@ -190,7 +217,7 @@
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure での SAP ワークロード向けの開発/テスト環境</h3>
+                        <h3>SAP ワークロード向けの開発/テスト環境</h3>
                         <p>SAP ワークロード向けの開発/テスト環境を構築します。</p>
                     </div>
                 </div>
@@ -209,7 +236,7 @@
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure での Oracle データベースを使用した SAP 運用環境ワークロードの実行</h3>
+                        <h3>Oracle データベースを使用した SAP 運用環境ワークロードの実行</h3>
                         <p>Oracle データベースを使用して Azure で SAP 運用環境デプロイを実行します。</p>
                     </div>
                 </div>
@@ -272,7 +299,7 @@
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure でのスケーラブルな注文処理</h3>
+                        <h3>スケーラブルな注文処理</h3>
                         <p>Azure Cosmos DB を使用して高度にスケーラブルな注文処理パイプラインを構築します。</p>
                     </div>
                 </div>
@@ -291,7 +318,7 @@
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure におけるリアルタイムでの不正検出</h3>
+                        <h3>リアルタイムでの不正検出</h3>
                         <p>Azure Event Hubs と Stream Analytics を使用して、リアルタイムで不正行為を検出します。</p>
                     </div>
                 </div>
@@ -311,7 +338,7 @@
                     </div>
                     <div class="cardText">
                         <h3>既存のオンプレミス SSIS と Azure Data Factory を使用したハイブリッド ETL</h3>
-                        <p>既存のオンプレミス SQL Server Integration Services (SSIS) 展開と Azure Data Factory を使用したハイブリッド ETL</p>
+                        <p>既存のオンプレミス SQL Server Integration Services (SSIS) デプロイと Azure Data Factory を使用したハイブリッド ETL。</p>
                     </div>
                 </div>
             </div>
@@ -354,7 +381,7 @@
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure での計算流体力学 (CFD) シミュレーションの実行</h3>
+                        <h3>CFD シミュレーションの実行</h3>
                         <p>Azure で計算流体力学 (CFD) シミュレーションを実行します。</p>
                     </div>
                 </div>
@@ -392,8 +419,8 @@
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure における高可用性とディザスター リカバリー用にビルドされた多層 Web アプリケーション</h3>
-                        <p>Azure 上で Azure 仮想マシン、可用性セット、可用性ゾーン、Azure Site Recovery、Azure Traffic Manager を使用して高可用性とディザスター リカバリー用にビルドされた多層 Web アプリケーションを作成します</p>
+                        <h3>HA/DR 用に構築された多階層 Web アプリケーション</h3>
+                        <p>Azure 上で Azure 仮想マシン、可用性セット、可用性ゾーン、Azure Site Recovery、Azure Traffic Manager を使用して高可用性とディザスター リカバリー用にビルドされた多層 Web アプリケーションを作成します。</p>
                     </div>
                 </div>
             </div>
@@ -411,7 +438,7 @@
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure 上の Windows Server を使用した、セキュリティで保護された Web アプリの構築</h3>
+                        <h3>Windows VM を使用した、セキュリティで保護された Web アプリのビルド</h3>
                         <p>スケール セット、Application Gateway、ロード バランサーを使用して、セキュリティで保護された多層 Web アプリケーションを、Azure 上の Windows Server を使用して構築します。</p>
                     </div>
                 </div>
@@ -430,7 +457,7 @@
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Service Fabric を使用したモノリシック アプリケーションの分解</h3>
+                        <h3>Service Fabric を使用したアプリケーションの分解</h3>
                         <p>大規模なモノリシック アプリケーションをマイクロサービスに分解します。</p>
                     </div>
                 </div>
@@ -449,7 +476,7 @@
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure での 3D ビデオのレンダリング</h3>
+                        <h3>3D ビデオのレンダリング</h3>
                         <p>Azure Batch サービスを使用して、Azure でネイティブ HPC ワークロードを実行します。</p>
                     </div>
                 </div>
@@ -468,7 +495,7 @@
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure での高度にスケーラブルで安全な WordPress Web サイト</h3>
+                        <h3>高度にスケーラブルで安全な WordPress Web サイト</h3>
                         <p>メディア イベント用の高度にスケーラブルで安全な WordPress Web サイトを構築します。</p>
                     </div>
                 </div>

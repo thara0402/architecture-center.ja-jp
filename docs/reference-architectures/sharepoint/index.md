@@ -4,14 +4,12 @@ titleSuffix: Azure Reference Architectures
 description: Azure に高可用性 SharePoint Server 2016 ファームをデプロイする際の推奨アーキテクチャ。
 author: njray
 ms.date: 07/26/2018
+ms.topic: reference-architecture
+ms.service: architecture-center
+ms.subservice: reference-architecture
 ms.custom: seodec18
-ms.openlocfilehash: 6cc8255f95cb4944ff3ef138ad5edf2e5bbea4b4
-ms.sourcegitcommit: 88a68c7e9b6b772172b7faa4b9fd9c061a9f7e9d
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53120103"
 ---
+
 # <a name="run-a-highly-available-sharepoint-server-2016-farm-in-azure"></a>Azure での高可用性 SharePoint Server 2016 ファームの実行
 
 この参照アーキテクチャでは、MinRole トポロジおよび SQL Server Always On 可用性グループを使用して、高可用性 SharePoint Server 2016 ファームを Azure にデプロイするための実証済みプラクティスを示します。 SharePoint ファームは、インターネットに接続するエンドポイントまたはプレゼンスがない、セキュアな仮想ネットワークにデプロイされます。 [**このソリューションをデプロイします**](#deploy-the-solution)。
@@ -147,7 +145,7 @@ SharePoint Server 2016 では自動スケーリングのための仮想マシン
 
 この参照用アーキテクチャでは、Azure リージョン内の高可用性がサポートされます。ロールごとに少なくとも 2 つの VM が可用性セット内にデプロイされているためです。
 
-リージョン障害に対して保護するには、異なる Azure リージョンに別のディザスター リカバリー ファームを作成します。 目標復旧時間 (RTO) と目標復旧時点 (RPO) によって設定の要件が決まります。 詳しくは、[SharePoint Server 2016 用のディザスター リカバリー戦略の選択][sharepoint-dr]に関する記事をご覧ください。 セカンダリ リージョンは、プライマリ リージョンと "*ペアになっているリージョン*" であることが必要です。 広範囲にわたって障害が発生した場合は、すべてのペアで一方のリージョンの復旧が優先されます。 詳しくは、「[ビジネス継続性とディザスター リカバリー (BCDR): Azure のペアになっているリージョン][paired-regions]」をご覧ください。
+リージョン障害に対して保護するには、異なる Azure リージョンに別のディザスター リカバリー ファームを作成します。 目標復旧時間 (RTO) と目標復旧時点 (RPO) によって設定の要件が決まります。 詳しくは、[SharePoint Server 2016 用のディザスター リカバリー戦略の選択][sharepoint-dr]に関する記事をご覧ください。 セカンダリ リージョンは、プライマリ リージョンと "*ペアになっているリージョン*" であることが必要です。 広範囲にわたって障害が発生した場合は、すべてのペアで一方のリージョンの復旧が優先されます。 詳しくは、「[ビジネス継続性とディザスター リカバリー (BCDR):Azure のペアになっているリージョン][paired-regions]」を参照してください。
 
 ## <a name="manageability-considerations"></a>管理容易性に関する考慮事項
 
