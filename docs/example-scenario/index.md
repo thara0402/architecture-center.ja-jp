@@ -5,20 +5,17 @@ author: david-stanford
 ms.date: 11/01/2018
 layout: LandingPage
 ms.topic: landing-page
-ms.openlocfilehash: 6872cc17e8d7262e36c97e765ecc9de1043269c0
-ms.sourcegitcommit: e7e0e0282fa93f0063da3b57128ade395a9c1ef9
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52901419"
+ms.service: architecture-center
+ms.subservice: example-scenario
 ---
+
 # <a name="azure-example-scenarios"></a>Azure シナリオ例
 
 シナリオの例では、Azure を使用して具体的なビジネス上または技術上の課題を解決する方法を示します。 各シナリオは実例に基づいており、お客様独自の実装を促進できるようにすばやく簡単に読むことができるガイダンスが提供されています。
 
 各シナリオ内には、アーキテクチャの図、データ フロー、および技術コンポーネントの詳細が記載されています。 また、運用環境でソリューションを実行する際の考慮事項、ソリューションのコスト要素、類似の問題を解決する際に使用できる他の選択肢についても知ることができます。 多くのシナリオには、ご自身の Azure サブスクリプションでソリューションを簡単にデプロイする方法も示されています。
 
-ジャンプ先: [AI シナリオ](#ai-scenarios) | [アプリケーション シナリオ](#application-scenarios) | [データ シナリオ](#data-scenarios) | [インフラストラクチャシナリオ](#infrastructure-scenarios)
+ジャンプ先:[AI シナリオ](#ai-scenarios) | [アプリケーション シナリオ](#application-scenarios) | [データ シナリオ](#data-scenarios) | [インフラストラクチャ シナリオ](#infrastructure-scenarios)
 
 <ul class="panelContent cardsL">
     <li>
