@@ -291,6 +291,8 @@ items:
       href: example-scenario/ai/commerce-chatbot.md
     - name: 画像の分類
       href: example-scenario/ai/intelligent-apps-image-processing.md
+    - name: 映画のレコメンデーション
+      href: example-scenario/ai/movie-recommendations.md
   - name: アプリケーション
     items:
     - name: コンピューター支援エンジニアリング
@@ -587,9 +589,9 @@ items:
       href: cloud-adoption/appendix/azure-scaffold.md
     - name: Azure エンタープライズ スキャフォールディングの実装
       href: cloud-adoption/appendix/azure-scaffold-examples.md
-ms.openlocfilehash: 16a447a58d3c8665f13b0799d833360c0702626f
-ms.sourcegitcommit: 95131d1011def26fb629731d42a4e8d4d49b3540
+ms.openlocfilehash: 6f30cd38397f9c91577953e6ea763bbaa4d26e09
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54372878"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54487833"
