@@ -4,13 +4,16 @@ titleSuffix: Azure Application Architecture Guide
 description: Azure での n 層アーキテクチャのメリット、課題、ベスト プラクティスについて説明します。
 author: MikeWasson
 ms.date: 08/30/2018
+ms.topic: guide
+ms.service: architecture-center
+ms.subservice: reference-architecture
 ms.custom: seojan19
-ms.openlocfilehash: 4e8aae0032d20df05e1b16a47fda4afa720ed0d9
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.openlocfilehash: d7b94d56831a6b9172a9091f0e4f7fa63a8881f1
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54110307"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54481492"
 ---
 # <a name="n-tier-architecture-style"></a>n 層アーキテクチャのスタイル
 
@@ -81,10 +84,11 @@ Web 層とビジネス層はステートレスです。 どの VM も、その�
 
 ネットワーク セキュリティ グループ (NSG) により、各層へのアクセスを制限します。 たとえば、データベース層ではビジネス層からのアクセスのみが許可されます。
 
-詳細について、また配置可能な Resource Manager テンプレートについては、次の参照アーキテクチャをご覧ください。
+Azure での N 層アプリケーションの実行の詳細については、以下を参照してください。
 
 - [Run Windows VMs for an N-tier application (n 層アプリケーションの Windows VM を実行する)][n-tier-windows]
-- [Run Linux VMs for an N-tier application (n 層アプリケーションの Linux VM を実行する)][n-tier-linux]
+- [SQL Server を使用した Azure の Windows N 層アプリケーション][n-tier-linux]
+- [Microsoft Learn モジュール:N 層アーキテクチャ スタイルのツアー](/learn/modules/n-tier-architecture/)
 
 ### <a name="additional-considerations"></a>追加の考慮事項
 

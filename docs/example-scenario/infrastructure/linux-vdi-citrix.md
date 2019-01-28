@@ -4,13 +4,16 @@ titleSuffix: Azure Example Scenarios
 description: Azure で Citrix を使用して Linux デスクトップ向けの VDI 環境を構築します。
 author: miguelangelopereira
 ms.date: 09/12/2018
-ms.custom: fasttrack
-ms.openlocfilehash: af1cf01cb8b118e829c3870b636018aa5181b180
-ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
+ms.topic: example-scenario
+ms.service: architecture-center
+ms.subservice: example-scenario
+ms.custom: fasttrack, Linux
+ms.openlocfilehash: a6fe0b7e53c83c7b932c39f910257a1e7d24834f
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53643919"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54481233"
 ---
 # <a name="linux-virtual-desktops-with-citrix"></a>Citrix を使用した Linux 仮想デスクトップ
 
@@ -90,7 +93,7 @@ ms.locfileid: "53643919"
 - このサンプルは、ライセンス サーバーを除くすべての役割が高可用性を持つように設計されています。 ライセンス サーバーがオフラインになっても、30 日間の猶予期間にわたって環境は機能し続けるため、ライセンス サーバーに追加の冗長性は不要です。
 - 同様の役割を提供するすべてのサーバーを[可用性セット](/azure/virtual-machines/windows/manage-availability#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy)にデプロイする必要があります。
 - このサンプル シナリオには、ディザスター リカバリー機能は含まれていません。 これを設計に組み込む場合は、[Azure Site Recovery](/azure/site-recovery/site-recovery-overview) をお勧めします。
-- このシナリオの VM インスタンスを[可用性ゾーン](/azure/availability-zones/az-overview)にまたがってデプロイすることを検討します。 それぞれの可用性ゾーンは、独立した電源、冷却手段、ネットワークを備えた 1 つまたは複数のデータセンターで構成されています。 有効な各リージョンには、少なくとも 3 つの可用性ゾーンが存在します。 このようにゾーン間で VM インスタンスを分散させることにより、アプリケーション層に高可用性が実現します。 詳細については、[Azure の可用性ゾーンの概要][azureaz-docs]に関するページをご覧ください。 [Azure Availability Zones に VPN ゲートウェイと ExpressRoute ゲートウェイをデプロイする](/azure/vpn-gateway/about-zone-redundant-vnet-gateways)こともできます。
+- このシナリオの VM インスタンスを[可用性ゾーン](/azure/availability-zones/az-overview)にまたがってデプロイすることを検討します。 それぞれの可用性ゾーンは、独立した電源、冷却手段、ネットワークを備えた 1 つまたは複数のデータセンターで構成されています。 有効な各リージョンには、少なくとも 3 つの可用性ゾーンが存在します。 このようにゾーン間で VM インスタンスを分散させることにより、アプリケーション層に高可用性が実現します。 詳細については、[Azure のAvailability Zones の概要](/azure/availability-zones/az-overview)に関するページをご覧ください。 [Azure Availability Zones に VPN ゲートウェイと ExpressRoute ゲートウェイをデプロイする](/azure/vpn-gateway/about-zone-redundant-vnet-gateways)こともできます。
 - 運用環境では、[バックアップ](/azure/backup/backup-introduction-to-azure-backup)、[監視](/azure/monitoring-and-diagnostics/monitoring-overview)、[更新管理](/azure/automation/automation-update-management)などのデプロイ管理ソリューションを実装する必要があります。
 - この例では、約 250 人 (VDA サーバーあたり約 50 から 60 人) のユーザーがさまざまな用途で同時に作業できます。 しかし、これは使用するアプリケーションの種類によって大いに異なります。 運用環境で使用する場合は、厳しいロード テストを実施する必要があります。
 

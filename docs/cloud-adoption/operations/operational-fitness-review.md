@@ -1,14 +1,17 @@
 ---
-title: 'エンタープライズ クラウドの導入: 運用の基礎'
+title: エンタープライズ クラウドの導入:運用の基礎
 description: 運用の基礎に関するガイダンス
 author: petertaylor9999
 ms.date: 09/20/2018
-ms.openlocfilehash: d5f4c6529e92be387465a6ab9dca55267c584c11
-ms.sourcegitcommit: b7e521ba317f4fcd3253c80ac0c0a355eaaa56c5
+ms.topic: guide
+ms.service: architecture-center
+ms.subservice: enterprise-cloud-adoption
+ms.openlocfilehash: 26867e3ecce738f18c5a03ff41754281229851f4
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/21/2018
-ms.locfileid: "46534362"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54481127"
 ---
 # <a name="establishing-an-operational-fitness-review"></a>運用適合性レビューの確立
 
@@ -104,7 +107,7 @@ Microsoft が実施したこれらのプロセスが、このドキュメント�
 ## <a name="recommended-resources"></a>推奨リソース
 
 - 「[ソフトウェア品質の重要な要素](../../guide/pillars.md)」。
-Azure アプリケーション アーキテクチャ ガイドのこのセクションでは、ソフトウェア品質の 5 つの重要な要素、すなわち拡張性、可用性、回復性、管理性、セキュリティが説明されています。
+Azure アプリケーション アーキテクチャ ガイドのこのセクションでは、ソフトウェア品質の 5 つの重要な要素、すなわち、拡張性、可用性、回復性、管理性、セキュリティに重点が置かれています。
 - 「[Azure アプリケーションの 10 の設計原則](../../guide/design-principles/index.md)」。
 Azure アプリケーション アーキテクチャ ガイドのこのセクションでは、アプリケーションをよりスケーラブルで回復性があり、管理しやすいものにする一連の設計原則が説明されています。
 - 「[回復性に優れた Azure 用アプリケーションの設計](../../resiliency/index.md)」。

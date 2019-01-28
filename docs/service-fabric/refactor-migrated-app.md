@@ -3,12 +3,15 @@ title: Azure Cloud Services から移行した Azure Service Fabric アプリケ
 description: Azure Cloud Services から移行した既存の Azure Service Fabric アプリケーションをリファクタリングする方法
 author: petertay
 ms.date: 02/02/2018
-ms.openlocfilehash: 14ecaf81a07c72296e8db300df371e9a0c990434
-ms.sourcegitcommit: dbbf914757b03cdee7a274204f9579fa63d7eed2
+ms.topic: guide
+ms.service: architecture-center
+ms.subservice: reference-architecture
+ms.openlocfilehash: 1fd6bb5df18b46c8df3719fd107dd53a18dfd4ff
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50916467"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54487289"
 ---
 # <a name="refactor-an-azure-service-fabric-application-migrated-from-azure-cloud-services"></a>Azure Cloud Services から移行した Azure Service Fabric アプリケーションをリファクタリングする
 
@@ -91,7 +94,7 @@ ReliableConcurrentQueue からデキューされる項目を保持する操作�
 
 Surveys アプリケーションの各サービスが、RESTful Web API を使用して通信します。 RESTful API には次の利点があります。
 * 使いやすい: 各サービスが ASP.NET Core MVC を使用して構築されています。これは Web API の作成をネイティブでサポートしています。
-* セキュリティ: 各サービスに SSL は必要ありませんが、Tailspin は各サービスで SSL 接続を使用することを必須にすることもできます。 
+* セキュリティ:各サービスに SSL は必要ありませんが、Tailspin は各サービスで SSL 接続を使用することを必須にすることもできます。 
 * バージョン管理: 特定バージョンの Web API に対して、クライアントの書き込みおよびテストを行うことができます。
 
 Surveys アプリケーションのサービスでは、Service Fabric によって実装される[リバース プロキシ][reverse-proxy]が使用されます。 リバース プロキシは、Service Fabric クラスターの各ノードで実行されるサービスで、エンドポイント解決、自動再試行を提供するほか、その他の種類の接続エラーを処理します。 リバース プロキシを使用するために、特定のサービスへの各 RESTful API 呼び出しが、定義済みのリバース プロキシ ポートを使用して行われます。  たとえば、リバース プロキシ ポートが **19081** に設定されている場合、*Tailspin.SurveyAnswerService* への呼び出しは次のように行われます。

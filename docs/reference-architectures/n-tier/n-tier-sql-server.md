@@ -4,16 +4,19 @@ titleSuffix: Azure Reference Architectures
 description: 可用性、セキュリティ、スケーラビリティ、および管理容易性のために Azure で多層アーキテクチャを実装します。
 author: MikeWasson
 ms.date: 11/12/2018
-ms.openlocfilehash: e7dbd8dd2b8e5aff8f18ff9b87fce0b76a850bce
-ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
+ms.topic: reference-architecture
+ms.service: architecture-center
+ms.subservice: reference-architecture
+ms.openlocfilehash: cf12d27ccaebb9845ada4d4a437e9889ea3325f2
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54011380"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54485402"
 ---
 # <a name="windows-n-tier-application-on-azure-with-sql-server"></a>SQL Server を使用した Azure の Windows N 層アプリケーション
 
-この参照アーキテクチャでは、Windows 上の SQL Server をデータ層に使用して、N 層アプリケーション用に構成された VM と仮想ネットワークをデプロイする方法を示します。 [**このソリューションをデプロイします**](#deploy-the-solution)。
+この参照アーキテクチャでは、Windows 上の SQL Server をデータ層に使用して、[N 層](../../guide/architecture-styles/n-tier.md)アプリケーション用に構成された VM と仮想ネットワークをデプロイする方法を示します。 [**このソリューションをデプロイします**](#deploy-the-solution)。
 
 ![Microsoft Azure を使用した N 層アーキテクチャ](./images/n-tier-sql-server.png)
 
@@ -233,6 +236,10 @@ Web 層とビジネス層については、個別の VM を可用性セットに
     ```
 
 Azure の構成要素を使用してこのサンプルの参照アーキテクチャをデプロイする方法の詳細については、「[GitHub リポジトリ][git]」を参照してください。
+
+## <a name="next-steps"></a>次の手順
+
+- [Microsoft Learn モジュール:N 層アーキテクチャ スタイルのツアー](/learn/modules/n-tier-architecture/)
 
 <!-- links -->
 [dmz]: ../dmz/secure-vnet-dmz.md

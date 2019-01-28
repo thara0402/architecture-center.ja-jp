@@ -1,16 +1,19 @@
 ---
-title: 'エンタープライズ クラウドの導入: Azure での複数チーム向けガバナンス設計'
+title: エンタープライズ クラウドの導入:Azure での複数チーム向けのガバナンス設計
 description: 複数のチーム、複数のワークロード、および複数の環境を対象とした Azure ガバナンス管理を構成するためのガイダンス
 author: petertaylor9999
 ms.date: 09/10/2018
-ms.openlocfilehash: ac2a63ad6ced1039290dc0bf5132b0d87a2c79cf
-ms.sourcegitcommit: c49aeef818d7dfe271bc4128b230cfc676f05230
+ms.topic: guide
+ms.service: architecture-center
+ms.subservice: enterprise-cloud-adoption
+ms.openlocfilehash: de2bfeee7d098984a35f56f9e794e6a37933a3bd
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44389419"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54488428"
 ---
-# <a name="enterprise-cloud-adoption-governance-design-for-multiple-teams"></a>エンタープライズ クラウドの導入: 複数チーム向けガバナンス設計
+# <a name="enterprise-cloud-adoption-governance-design-for-multiple-teams"></a>エンタープライズ クラウドの導入:複数チーム向けのガバナンス設計
 
 このガイドの目的は、複数チーム、複数ワークロード、および複数環境をサポートする、Azure におけるリソース ガバナンス モデルの設計プロセスについて説明することです。  一連のガバナンス要件を例として挙げて、これらの要件に対応する実装サンプルをいくつか紹介します。
 
@@ -148,7 +151,7 @@ Azure AD **グローバル管理者**には、ユーザー アカウントを作
 それぞれのモデルの例を見る前に、Azure 内のサブスクリプションの管理構造を確認しましょう。 
 
 サブスクリプションを担当する個人が組織にいる、という要件を思い出してください。このユーザーは、Azure AD テナント内で**サブスクリプション所有者**アカウントを所有しています。 ただし、このアカウントには、サブスクリプションを作成するためのアクセス許可がありません。 これを行うアクセス許可を持っているのは **Azure アカウント所有者**だけです。![](../_images/governance-3-0b.png)
-*図 6. Azure アカウント所有者がサブスクリプションを作成する。*
+*図 6.Azure アカウント所有者がサブスクリプションを作成する。*
 
 サブスクリプションが作成されたら、**Azure アカウント所有者**は、**サブスクリプション所有者**アカウントを、**所有者**ロールと共にサブスクリプションに追加できます。
 

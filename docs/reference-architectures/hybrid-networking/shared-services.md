@@ -4,17 +4,23 @@ titleSuffix: Azure Reference Architectures
 description: Azure に共有サービスを含むハブスポーク ネットワーク トポロジを実装します。
 author: telmosampaio
 ms.date: 10/09/2018
-ms.custom: seodec18
-ms.openlocfilehash: 9de1cd22b32614c332f64cf282ddc1be8090bf7a
-ms.sourcegitcommit: 71ee0859e19fe58416b4c0056d67f2f34dd9ca0a
+ms.topic: reference-architecture
+ms.service: architecture-center
+ms.subservice: reference-architecture
+ms.custom: seodec18, networking
+ms.openlocfilehash: dd7632c3a84f6a0cee5d8b35e6a943ab8c52caf8
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54211973"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54488309"
 ---
 # <a name="implement-a-hub-spoke-network-topology-with-shared-services-in-azure"></a>Azure に共有サービスを含むハブスポーク ネットワーク トポロジを実装する
 
 この参照アーキテクチャは、[ハブスポーク][guidance-hub-spoke]参照アーキテクチャに基づいて作成されており、すべてのスポークで利用できる共有サービスがハブに含まれます。 クラウドへのデータセンターの移行と[仮想データセンター]の構築に向けた最初の手順として、共有する必要がある最初のサービスが ID とセキュリティです。 この参照アーキテクチャは、Active Directory サービスをオンプレミスのデータセンターから Azure に拡張する方法と、ハブスポーク トポロジに、ファイアウォールとして動作可能なネットワーク仮想アプライアンス (NVA) を追加する方法を示しています。  [**このソリューションをデプロイします**](#deploy-the-solution)。
+
+> [!NOTE]
+> このシナリオは、クラウドベースのネットワーク セキュリティ サービスである [Azure Firewall](/azure/firewall/) を使用して実行することもできます。
 
 ![Azure での共有サービス トポロジ](./images/shared-services.png)
 

@@ -3,12 +3,16 @@ title: API 設計
 description: マイクロサービス用の API の設計
 author: MikeWasson
 ms.date: 10/23/2018
-ms.openlocfilehash: 80e8e081384a7806880878ae95fbdbc2bb6cc440
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.topic: guide
+ms.service: architecture-center
+ms.subservice: reference-architecture
+ms.custom: microservices
+ms.openlocfilehash: 01f774773b2d2a653e52c9ee961f12c5b9fc833a
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54111043"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54485980"
 ---
 # <a name="designing-microservices-api-design"></a>マイクロサービスの設計:API 設計
 
@@ -95,7 +99,7 @@ export class Location {
 
 もう 1 つの例は、アプリケーションの他の部分がデータ ストアの読み込みや書き込みを直接行わないようにするリポジトリ パターンです。
 
-!ドローン リポジトリの図[](./images/repository.png)
+![ドローン リポジトリの図](./images/repository.png)
 
 一方、マイクロサービス アーキテクチャでは、サービスは同じコード ベースを共有せず、データ ストアを共有しません。 代わりに、API を介して通信します。 スケジューラ サービスがドローン サービスにドローンに関する情報を要求する場合を考えてみましょう。 ドローン サービスには、コードで表現されたドローンの内部モデルがあります。 ただし、スケジューラにはそれが見えません。 代わりに、ドローン エンティティ &mdash; の*表現* (JSON オブジェクトなど) を HTTP 応答で返します。
 

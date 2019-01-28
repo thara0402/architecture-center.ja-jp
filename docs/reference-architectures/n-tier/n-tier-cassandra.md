@@ -4,17 +4,20 @@ titleSuffix: Azure Reference Architectures
 description: Microsoft Azure で Apache Cassandra を使用して N 層アーキテクチャの Linux 仮想マシンを実行します。
 author: MikeWasson
 ms.date: 11/12/2018
+ms.topic: reference-architecture
+ms.service: architecture-center
+ms.subservice: reference-architecture
 ms.custom: seodec18
-ms.openlocfilehash: bbd1029fe17b5d88d54246127c5d8983a573b012
-ms.sourcegitcommit: 88a68c7e9b6b772172b7faa4b9fd9c061a9f7e9d
+ms.openlocfilehash: 6c9a2b4fe513c959e537f705beb1c024b54c7b50
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53120171"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54485450"
 ---
 # <a name="linux-n-tier-application-in-azure-with-apache-cassandra"></a>Apache Cassandra を使用する Azure の Linux N 層アプリケーション
 
-この参照アーキテクチャでは、Linux 上の Apache Cassandra をデータ層に使用して、N 層アプリケーション用に構成された仮想マシン (VM) と仮想ネットワークをデプロイする方法を示します。 [**このソリューションをデプロイします**](#deploy-the-solution)。
+この参照アーキテクチャでは、Linux 上の Apache Cassandra をデータ層に使用して、[N 層](../../guide/architecture-styles/n-tier.md)アプリケーション用に構成された仮想マシン (VM) と仮想ネットワークをデプロイする方法を示します。 [**このソリューションをデプロイします**](#deploy-the-solution)。
 
 ![Microsoft Azure を使用した N 層アーキテクチャ](./images/n-tier-cassandra.png)
 
@@ -139,7 +142,7 @@ Cassandra クラスターの場合、フェールオーバー シナリオは、
 
 **暗号化**。 機密の保存データを暗号化し、[Azure Key Vault][azure-key-vault] を使用してデータベース暗号化キーを管理します。 Key Vault では、ハードウェア セキュリティ モジュール (HSM) に暗号化キーを格納することができます。 データベース接続文字列などのアプリケーション シークレットも Key Vault に格納することをお勧めします。
 
-**DDoS 保護**。 Azure プラットフォームには、基本的な DDoS 保護が既定で用意されています。 この基本的な保護は、Azure インフラストラクチャ全体を保護することを目的としています。 基本的な DDoS 保護は自動的に有効になっていますが、Microsoft では [DDoS Protection Standard][ddos] を使用することをお勧めします。 Standard Protection では、アプリケーションのネットワーク トラフィック パターンに基づいて、アダプティブ チューニングが使用され、脅威が検出されます。 これにより、インフラストラクチャ全体の DDoS ポリシーで見落とされてしまう可能性のある DDoS 攻撃に対して、軽減策を適用することができます。 Standard Protection では、Azure Monitor を介して、アラート、テレメトリ、および分析機能も提供されます。 詳細については、「[Azure DDoS Protection:ベスト プラクティスと参照アーキテクチャ][ddos-best-practices]」を参照してください。
+**DDoS 保護**。 Azure プラットフォームには、基本的な DDoS 保護が既定で用意されています。 この基本的な保護は、Azure インフラストラクチャ全体を保護することを目的としています。 基本的な DDoS 保護は自動的に有効になっていますが、Microsoft では [DDoS Protection Standard][ddos] を使用することをお勧めします。 Standard Protection では、アプリケーションのネットワーク トラフィック パターンに基づいて、アダプティブ チューニングが使用され、脅威が検出されます。 これにより、インフラストラクチャ全体の DDoS ポリシーで見落とされてしまう可能性のある DDoS 攻撃に対して、軽減策を適用することができます。 Standard Protection では、Azure Monitor を介して、アラート、テレメトリ、および分析機能も提供されます。 詳細については、「[Azure DDoS Protection:ベスト プラクティスと参照アーキテクチャ][ddos-best-practices]に関するページを参照してください。
 
 ## <a name="deploy-the-solution"></a>ソリューションのデプロイ方法
 
@@ -164,6 +167,10 @@ N 層アプリケーションの参照アーキテクチャで Linux VM をデ�
    ```
 
 Azure の構成要素を使用してこのサンプルの参照アーキテクチャをデプロイする方法の詳細については、「[GitHub リポジトリ][git]」を参照してください。
+
+## <a name="next-steps"></a>次の手順
+
+- [Microsoft Learn モジュール:N 層アーキテクチャ スタイルのツアー](/learn/modules/n-tier-architecture/)
 
 <!-- links -->
 

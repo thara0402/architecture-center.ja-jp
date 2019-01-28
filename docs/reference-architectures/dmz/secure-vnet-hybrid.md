@@ -4,17 +4,23 @@ titleSuffix: Azure Reference Architectures
 description: セキュリティ保護されたハイブリッド ネットワーク アーキテクチャを実装します。
 author: telmosampaio
 ms.date: 10/22/2018
-ms.custom: seodec18
-ms.openlocfilehash: 9a74401d3496807ce2dfc113476e001d19e657e5
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.topic: reference-architecture
+ms.service: architecture-center
+ms.subservice: reference-architecture
+ms.custom: seodec18, networking
+ms.openlocfilehash: 82327cca08e614bfe5226c9ca1a414388878a7c2
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54112296"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54482512"
 ---
 # <a name="implement-a-dmz-between-azure-and-your-on-premises-datacenter"></a>Azure とオンプレミス データセンター間に DMZ を実装する
 
 次のリファレンス アーキテクチャは、オンプレミスのネットワークを Azure に拡張する、セキュリティ保護されたハイブリッド ネットワークを示しています。 このアーキテクチャには、*境界ネットワーク*とも呼ばれる DMZ が、オンプレミス ネットワークと Azure の仮想ネットワーク (VNet) の間に実装されています。 DMZ には、ファイアウォールやパケット検査などのセキュリティ機能を実装する、ネットワーク仮想アプライアンス (NVA) が含まれています。 VNet からの発信トラフィックはすべてオンプレミス ネットワーク経由でインターネットに強制的にトンネリングされるため、トラフィックの監査が可能です。 [**このソリューションをデプロイします**](#deploy-the-solution)。
+
+> [!NOTE]
+> このシナリオは、クラウドベースのネットワーク セキュリティ サービスである [Azure Firewall](/azure/firewall/) を使用して実行することもできます。
 
 ![セキュリティ保護されたハイブリッド ネットワーク アーキテクチャ](./images/dmz-private.png)
 

@@ -4,15 +4,18 @@ description: Azure で仮想データセンターを構築する方法につい�
 author: tracsman
 manager: rossort
 tags: azure-resource-manager
-ms.service: virtual-network
+ms.topic: guide
+ms.service: architecture-center
+ms.subservice: enterprise-cloud-adoption
+ms.custom: virtual-network
 ms.date: 11/28/2018
 ms.author: jonor
-ms.openlocfilehash: f02cc7df1e90ba3de97a1c25777ab6d27bfdf697
-ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
+ms.openlocfilehash: 1f61996d231f3bf0cc2c550f4d3e119116bb7bc0
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54011195"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54488649"
 ---
 # <a name="azure-virtual-datacenter-a-network-perspective"></a>Azure 仮想データセンター:ネットワーク パースペクティブ
 
@@ -103,7 +106,7 @@ VDC 実装には、顧客、パートナー、社内ユーザーにサービス�
 
 多くの VPN 接続において、[**Azure Virtual WAN**][vWAN] は、Azure を介してブランチ間接続を最適化し、自動化するネットワーク サービスです。 Virtual WAN を使用すると、ブランチ デバイスを接続および構成して Azure と通信できます。 接続と構成は、手動で行うことも、Virtual WAN パートナーを通じて推奨プロバイダー デバイスを使用して行うこともできます。 推奨プロバイダー デバイスを使用すると、使いやすさ、接続の簡素化、および構成管理を実現できます。 Azure WAN の組み込みダッシュボードにはすぐに使用できるトラブルシューティング用分析情報が用意されているため、時間を節約でき、大規模なサイト間接続を簡単に表示することができます。
 
-Azure の接続サービスである [**ExpressRoute**][ExR] を使用すると、VDC 実装とすべてのオンプレミス ネットワーク間のプライベート接続が可能になります。 ExpressRoute 接続はパブリック インターネットを使わず、高いセキュリティ、信頼性、速度 (最大 10 Gbps)、および一貫した待機時間を提供します。 ExpressRoute のお客様はプライベート接続に関連付けられたコンプライアンス ルールの利点が得られるので、ExpressRoute は VDC 実装に適しています。 より広い帯域幅が必要な顧客の場合、[ExpressRoute Direct][ExRD] を使用すると、100 Gbps の Microsoft ルーターに直接接続することができます。
+Azure の接続サービスである [**ExpressRoute**][ExR] を使用すると、VDC 実装とすべてのオンプレミス ネットワーク間のプライベート接続が可能になります。 ExpressRoute 接続はパブリック インターネットを使わず、高いセキュリティ、信頼性、速度 (最大 10 Gbps)、および一貫した待機時間を提供します。 ExpressRoute のお客様はプライベート接続に関連付けられたコンプライアンス ルールの利点が得られるので、ExpressRoute は VDC 実装に適しています。 より広い帯域幅が必要なお客様の場合、[ExpressRoute Direct][ExRD] を使用すると、100 Gbps で Microsoft ルーターに直接接続することができます。
 
 通常、ExpressRoute 接続のデプロイでは、ExpressRoute サービス プロバイダーと連携する必要があります。 短時間で使い始める必要がある顧客の場合は、通常、最初にサイト間 VPN を使って VDC 実装とオンプレミスのリソース間の接続を確立した後、サービス プロバイダーとの物理相互接続の完了時に ExpressRoute 接続に移行します。
 
@@ -292,7 +295,7 @@ NSG ログの特に次の情報を追跡することが重要です。
 
 監査、スタティック分析、またはバックアップのために、すべてのログを Azure ストレージ アカウントに保存できます。 Azure ストレージ アカウントにログを保存すると、さまざまな種類のフレームワークを使用してこのデータを取得、準備、分析、視覚化し、クラウド リソースの状態と正常性を報告できます。 
 
-大企業では、オンプレミス システムの監視用に標準的なフレームワークを既に利用していると考えられます。 そのフレームワークを拡張して、クラウド デプロイによって生成されたログを統合できます。 組織では、[Azure Log Analytics][https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-queries] を使用して、すべてのログをクラウドに保持できます。 Log Analytics は、クラウドベースのサービスとして実装されます。 そのため、インフラストラクチャ サービスへの投資を最小限に抑えて、このサービスをすぐに稼働させることができます。 Log Analytics は、System Center Operations Manager などの System Center のコンポーネントと統合して、管理のための既存の投資をクラウドに拡張することもできます。 
+大企業では、オンプレミス システムの監視用に標準的なフレームワークを既に利用していると考えられます。 そのフレームワークを拡張して、クラウド デプロイによって生成されたログを統合できます。 組織では、[Azure Log Analytics](/azure/log-analytics/log-analytics-queries) を使用して、すべてのログをクラウドに保持できます。 Log Analytics は、クラウドベースのサービスとして実装されます。 そのため、インフラストラクチャ サービスへの投資を最小限に抑えて、このサービスをすぐに稼働させることができます。 Log Analytics は、System Center Operations Manager などの System Center のコンポーネントと統合して、管理のための既存の投資をクラウドに拡張することもできます。 
 
 Log Analytics は、オペレーティング システム、アプリケーション、インフラストラクチャ クラウド コンポーネントによって生成されたログおよびパフォーマンス データを収集、関連付け、検索、操作するための、Azure のサービスです。 統合された検索およびカスタム ダッシュボードを使って、VDC 実装のすべてのワークロードのすべてのレコードを分析するためのリアルタイムの運用分析情報を提供します。
 
@@ -328,7 +331,7 @@ Operations Management Suite 内の [Network Performance Monitor][NPM] ソリュ�
 
 **ビッグ データ/分析**:データを膨大な量に拡張する必要があるときに、データベースが適切にスケールアップされない場合があります。 Hadoop テクノロジは、多数のノードで分散クエリを並列に実行するシステムを提供します。 ユーザーは、データ ワークロードを IaaS VM または PaaS ([HDInsight][HDI]) で実行することを選択できます。 HDInsight は、場所ベースの VNet へのデプロイをサポートし、VDC のスポーク内のクラスターにデプロイできます。
 
-**イベントとメッセージング**:Azure Event Hubs[EventHubs] は、数百万のイベントを収集、変換、保存する、ハイパースケールのテレメトリ インジェスト サービスです。 分散型のストリーミング プラットフォームとして、遅延時間が短く、保持時間を設定可能なため、膨大な量のテレメトリを Azure に送信し、複数のアプリケーションからデータを読み込むことができます。 Event Hubs では、1 つのストリームでリアルタイム パイプラインとバッチ ベースのパイプラインの両方をサポートできます。
+**イベントとメッセージング**:[Azure Event Hubs][EventHubs] は、数百万のイベントを収集、変換、保存する、ハイパースケールのテレメトリ インジェスト サービスです。 分散型のストリーミング プラットフォームとして、遅延時間が短く、保持時間を設定可能なため、膨大な量のテレメトリを Azure に送信し、複数のアプリケーションからデータを読み込むことができます。 Event Hubs では、1 つのストリームでリアルタイム パイプラインとバッチ ベースのパイプラインの両方をサポートできます。
 
 [Azure Service Bus][ServiceBus] により、アプリケーションとサービス間に信頼性の高いクラウド メッセージング サービスを実装できます。 Azure Service Bus は、クライアントとサーバー間の非同期のブローカー メッセージング、構造化された先入れ先出し (FIFO) メッセージング、および発行機能とサブスクライブ機能を提供します。
 
@@ -421,7 +424,7 @@ DNS が使用されるため、Traffic Manager は Azure パブリック エン�
 [AAD]: /azure/active-directory/active-directory-whatis
 [VPN]: /azure/vpn-gateway/vpn-gateway-about-vpngateways 
 [ExR]: /azure/expressroute/expressroute-introduction
-[ExRD]: https://docs.microsoft.com/en-us/azure/expressroute/expressroute-erdirect-about
+[ExRD]: /azure/expressroute/expressroute-erdirect-about
 [vWAN]: /azure/virtual-wan/virtual-wan-about
 [NVA]: /azure/architecture/reference-architectures/dmz/nva-ha
 [AzFW]: /azure/firewall/overview
@@ -431,7 +434,7 @@ DNS が使用されるため、Traffic Manager は Azure パブリック エン�
 [ALB]: /azure/load-balancer/load-balancer-overview
 [DDOS]: /azure/virtual-network/ddos-protection-overview
 [PIP]: /azure/virtual-network/resource-groups-networking#public-ip-address
-[AFD]: https://docs.microsoft.com/en-us/azure/frontdoor/front-door-overview
+[AFD]: /azure/frontdoor/front-door-overview
 [AppGW]: /azure/application-gateway/application-gateway-introduction
 [WAF]: /azure/application-gateway/application-gateway-web-application-firewall-overview
 [Monitor]: /azure/monitoring-and-diagnostics/
