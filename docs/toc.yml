@@ -359,6 +359,8 @@ items:
       href: reference-architectures/ai/realtime-scoring-python.md
     - name: R 機械学習モデルを使用したリアルタイム スコアリング
       href: reference-architectures/ai/realtime-scoring-r.md
+    - name: 会話型ボット
+      href: reference-architectures/ai/conversational-bot.md
     - name: Real-time Recommendation API
       href: reference-architectures/ai/real-time-recommendation.md
   - name: ビッグ データ
@@ -589,9 +591,9 @@ items:
       href: cloud-adoption/appendix/azure-scaffold.md
     - name: Azure エンタープライズ スキャフォールディングの実装
       href: cloud-adoption/appendix/azure-scaffold-examples.md
-ms.openlocfilehash: 6f30cd38397f9c91577953e6ea763bbaa4d26e09
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.openlocfilehash: 4da207b397063e0d07de1b1f3217a8f62b5617f1
+ms.sourcegitcommit: 3b15d65e7c35a19506e562c444343f8467b6a073
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54487833"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54908556"
