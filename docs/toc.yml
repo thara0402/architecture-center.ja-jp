@@ -409,6 +409,10 @@ items:
       href: reference-architectures/identity/adfs.md
   - name: モノのインターネット(IoT)
     href: reference-architectures/iot/index.md
+  - name: マイクロサービス
+    items:
+    - name: Azure Kubernetes Service (AKS)
+      href: reference-architectures/microservices/aks.md
   - name: ネットワーク DMZ
     items:
     - name: Azure とオンプレミスの間の DMZ
@@ -591,9 +595,9 @@ items:
       href: cloud-adoption/appendix/azure-scaffold.md
     - name: Azure エンタープライズ スキャフォールディングの実装
       href: cloud-adoption/appendix/azure-scaffold-examples.md
-ms.openlocfilehash: 4da207b397063e0d07de1b1f3217a8f62b5617f1
-ms.sourcegitcommit: 3b15d65e7c35a19506e562c444343f8467b6a073
+ms.openlocfilehash: 4e89b1ffad613f6d48dcd7e5a049f0ba8dbd3b52
+ms.sourcegitcommit: ed736a0a1b080f6acf4877c8b906cd9b56e12bdf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54908556"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55085771"
