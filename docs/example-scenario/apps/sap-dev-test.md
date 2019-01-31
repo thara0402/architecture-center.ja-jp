@@ -8,12 +8,13 @@ ms.topic: example-scenario
 ms.service: architecture-center
 ms.subservice: example-scenario
 ms.custom: fasttrack, SAP
-ms.openlocfilehash: c06e81f72e264b545aef4bca2c795bb662a16a13
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+social_image_url: /azure/architecture/example-scenario/apps/media/architecture-sap-dev-test.png
+ms.openlocfilehash: cd01639ab46fbe3c25c5a770ead13759da9a8c47
+ms.sourcegitcommit: 3b15d65e7c35a19506e562c444343f8467b6a073
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54488207"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54908209"
 ---
 # <a name="devtest-environments-for-sap-workloads-on-azure"></a>Azure での SAP ワークロード向けの開発/テスト環境
 

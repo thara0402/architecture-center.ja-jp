@@ -8,12 +8,13 @@ ms.topic: example-scenario
 ms.service: architecture-center
 ms.subservice: example-scenario
 ms.custom: seodec18, Windows
-ms.openlocfilehash: 12c7b4749507d4b96e5ce43f98739885c8133e7e
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+social_image_url: /azure/architecture/example-scenario/infrastructure/media/architecture-regulated-multitier-app.png
+ms.openlocfilehash: 440d208b423703fe791dcbe2cad0609fef0e6508
+ms.sourcegitcommit: 3b15d65e7c35a19506e562c444343f8467b6a073
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54485538"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54908275"
 ---
 # <a name="building-secure-web-applications-with-windows-virtual-machines-on-azure"></a>Azure 上の Windows Server を使用した、セキュリティで保護された Web アプリケーションの構築
 

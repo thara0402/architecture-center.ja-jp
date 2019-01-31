@@ -8,12 +8,13 @@ ms.topic: example-scenario
 ms.service: architecture-center
 ms.subservice: example-scenario
 ms.custom: fasttrack, seodec18
-ms.openlocfilehash: 8934200aca8e4055596dd6dc27ede2f0a4d03f23
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+social_image_url: /azure/architecture/example-scenario/apps/media/architecture-devops-dotnet-webapp.svg
+ms.openlocfilehash: 0d6ac13fb357657a2ec5e6284abadb46d6926907
+ms.sourcegitcommit: 3b15d65e7c35a19506e562c444343f8467b6a073
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54483362"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54908496"
 ---
 # <a name="design-a-cicd-pipeline-using-azure-devops"></a>Azure DevOps を使用した CI/CD パイプラインの設計
 

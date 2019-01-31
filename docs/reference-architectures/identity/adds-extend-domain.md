@@ -8,12 +8,12 @@ ms.topic: reference-architecture
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: seodec18, identity
-ms.openlocfilehash: 4e22469af58a08f42abedf34235be5e20f1dceae
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.openlocfilehash: dc68c0ab4a08e5f47f30050197bb2e68aa559979
+ms.sourcegitcommit: 40f3561cc94f721eca50d33f2d75dc974cb6f92b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54482359"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55147265"
 ---
 # <a name="extend-active-directory-domain-services-ad-ds-to-azure"></a>Active Directory Domain Services (AD DS) を Azure に拡張する
 
@@ -147,7 +147,7 @@ BitLocker または Azure Disk Encryption を使用して、AD DS データベ�
 3. 次のコマンドを実行し、デプロイが完了するまで待ちます。
 
     ```bash
-    azbb -s <subscription_id> -g <resource group> -l <location> -p onoprem.json --deploy
+    azbb -s <subscription_id> -g <resource group> -l <location> -p azure.json --deploy
     ```
 
    オンプレミスの VNet と同じリソース グループにデプロイします。

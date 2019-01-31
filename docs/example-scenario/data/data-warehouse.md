@@ -8,12 +8,13 @@ ms.topic: example-scenario
 ms.service: architecture-center
 ms.subservice: example-scenario
 ms.custom: data-analytics
-ms.openlocfilehash: ddf9935d534b6902c407c22ba765e8c84558547b
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+social_image_url: /azure/architecture/example-scenario/data/media/architecture-data-warehouse.png
+ms.openlocfilehash: 9eaa9cc472e2222b5cde04a3b84ba38623f65543
+ms.sourcegitcommit: 3b15d65e7c35a19506e562c444343f8467b6a073
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54488445"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54908211"
 ---
 # <a name="data-warehousing-and-analytics-for-sales-and-marketing"></a>販売およびマーケティング向けのデータ ウェアハウスと分析
 

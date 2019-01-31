@@ -8,12 +8,13 @@ ms.topic: example-scenario
 ms.service: architecture-center
 ms.subservice: example-scenario
 ms.custom: fasttrack
-ms.openlocfilehash: 6ba4d98055258ca10b1ac06df217196a8a0151f5
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+social_image_url: /azure/architecture/example-scenario/apps/media/architecture-ecommerce-scenario.png
+ms.openlocfilehash: 989dec6afccbb836b61eb32e39904f43ffff65ac
+ms.sourcegitcommit: 3b15d65e7c35a19506e562c444343f8467b6a073
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54483923"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54908364"
 ---
 # <a name="an-e-commerce-front-end-on-azure"></a>Azure の eコマース フロントエンド
 

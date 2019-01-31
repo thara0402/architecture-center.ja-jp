@@ -8,12 +8,13 @@ ms.topic: example-scenario
 ms.service: architecture-center
 ms.subservice: example-scenario
 ms.custom: HPC
-ms.openlocfilehash: 7c543df71176ca0da621d6ec67fc6fe2ca36f9fa
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+social_image_url: /azure/architecture/example-scenario/apps/media/architecture-hpc-saas.png
+ms.openlocfilehash: bd38bd0042fceeab6efe04d7b6d1477d17ada7f5
+ms.sourcegitcommit: 3b15d65e7c35a19506e562c444343f8467b6a073
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54481509"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54908479"
 ---
 # <a name="a-computer-aided-engineering-service-on-azure"></a>Azure でのコンピューター支援エンジニアリング サービス
 

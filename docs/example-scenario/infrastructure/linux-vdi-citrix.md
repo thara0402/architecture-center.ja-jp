@@ -8,12 +8,13 @@ ms.topic: example-scenario
 ms.service: architecture-center
 ms.subservice: example-scenario
 ms.custom: fasttrack, Linux
-ms.openlocfilehash: a6fe0b7e53c83c7b932c39f910257a1e7d24834f
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+social_image_url: /azure/architecture/example-scenario/infrastructure/media/azure-citrix-sample-diagram.png
+ms.openlocfilehash: d236ff9fb61660553c7ea512f0298663dbcc303c
+ms.sourcegitcommit: 3b15d65e7c35a19506e562c444343f8467b6a073
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54481233"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54908309"
 ---
 # <a name="linux-virtual-desktops-with-citrix"></a>Citrix を使用した Linux 仮想デスクトップ
 

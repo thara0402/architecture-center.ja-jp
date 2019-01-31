@@ -8,12 +8,13 @@ ms.topic: example-scenario
 ms.service: architecture-center
 ms.subservice: example-scenario
 ms.custom: fasttrack
-ms.openlocfilehash: 0bd0590ccc2975481e23ac2154c4f0998e1f0877
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+social_image_url: /azure/architecture/example-scenario/infrastructure/media/architecture-hpc-cfd.png
+ms.openlocfilehash: 6972b701a608351104c23459bc2c38029a5c8d3d
+ms.sourcegitcommit: 3b15d65e7c35a19506e562c444343f8467b6a073
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54488479"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54908428"
 ---
 # <a name="running-computational-fluid-dynamics-cfd-simulations-on-azure"></a>Azure での計算流体力学 (CFD) シミュレーションの実行
 

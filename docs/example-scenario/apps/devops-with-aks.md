@@ -7,12 +7,13 @@ ms.date: 07/05/2018
 ms.topic: example-scenario
 ms.service: architecture-center
 ms.subservice: example-scenario
-ms.openlocfilehash: 7cf05b79b8984ff4bcad62df44058b0989bc124a
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+social_image_url: /azure/architecture/example-scenario/apps/media/architecture-devops-with-aks.png
+ms.openlocfilehash: 89e50e67b2c933637442f0f01bf83ecc95743691
+ms.sourcegitcommit: 3b15d65e7c35a19506e562c444343f8467b6a073
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54481968"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54908208"
 ---
 # <a name="cicd-pipeline-for-container-based-workloads"></a>コンテナー ベースのワークロード用の CI/CD パイプライン
 

@@ -7,12 +7,12 @@ ms.topic: reference-architecture
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: azcat-ai, AI
-ms.openlocfilehash: a291821860a8e503ba4c6173ac6d8fd449d6ebf3
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.openlocfilehash: 1ca6cf385ddd3be56e247a3439e737c114a88dcb
+ms.sourcegitcommit: 40f3561cc94f721eca50d33f2d75dc974cb6f92b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54485368"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55147282"
 ---
 # <a name="batch-scoring-of-python-models-on-azure"></a>Azure での Python モデルのバッチ スコアリング
 
@@ -33,6 +33,9 @@ ms.locfileid: "54485368"
 [Azure Stream Analytics][stream-analytics]。 イベント処理エンジンです。 Stream Analytics ジョブがイベント ハブからデータ ストリームを読み取り、ストリーム処理を実行します。
 
 [Azure Batch AI][batch-ai]。 この分散コンピューティング エンジンを使用して、Azure 上で機械学習モデルと AI モデルの大規模なトレーニングとテストを行います。 Batch AI は自動スケーリング オプションを使用してオンデマンドで仮想マシンを作成し、Batch AI クラスター内の各ノードで、特定のセンサーに対するスコアリング ジョブが実行されます。 スコアリング Python [スクリプト][python-script]は、クラスターの各ノードに作成される Docker コンテナーで実行され、関連するセンサーのデータを読み取り、予測を生成して Blob Storage に格納します。
+
+> [!NOTE]
+> Azure Batch AI サービスは 2019 年 3 月に終了する予定であり、このサービスの大規模トレーニングとスコアリングの機能は現在、[Azure Machine Learning Service][amls] において利用可能になっています。 この参照アーキテクチャは近日中に Machine Learning を使用するように改定されます。Machine Learning では、[Azure Machine Learning コンピューティング][aml-compute]という、機械学習モデルのトレーニング、デプロイ、およびスコアリングのためのマネージド コンピューティング先を提供します。
 
 [Azure Blob Storage][storage]。 BLOB コンテナーを使用して、事前トレーニング済みモデル、データ、および出力予測が格納されます。 モデルは、Blob Storage の [create\_resources.ipynb][create-resources] ノートブックにアップロードされます。 これらの [1 クラス SVM][one-class-svm] モデルが、異なるデバイスの異なるセンサーの値を表すデータでトレーニングされます。 このソリューションでは、固定された期間にわたってデータ値が集計されることを前提としています。
 
@@ -94,6 +97,8 @@ Batch AI クラスターのサイズは、キュー内のジョブに応じて�
 
 [acr]: /azure/container-registry/container-registry-intro
 [ai]: /azure/application-insights/app-insights-overview
+[aml-compute]: /azure/machine-learning/service/how-to-set-up-training-targets#amlcompute
+[amls]: /azure/machine-learning/service/overview-what-is-azure-ml
 [automatic-scaling]: /azure/batch/batch-automatic-scaling
 [azure-files]: /azure/storage/files/storage-files-introduction
 [batch-ai]: /azure/batch-ai/

@@ -8,12 +8,13 @@ ms.topic: example-scenario
 ms.service: architecture-center
 ms.subservice: example-scenario
 ms.custom: fasttrack, IoT
-ms.openlocfilehash: 73f01d683b17facde59f9c917f00043773ec474b
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+social_image_url: /azure/architecture/example-scenario/data/media/architecture-realtime-analytics-vehicle-data1.png
+ms.openlocfilehash: 95a59ed84870c9ce9d3c6637d9ba56fcd6935b53
+ms.sourcegitcommit: 3b15d65e7c35a19506e562c444343f8467b6a073
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54486898"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54908407"
 ---
 # <a name="ingestion-and-processing-of-real-time-automotive-iot-data"></a>自動車のリアルタイム IoT データのインジェストと処理
 

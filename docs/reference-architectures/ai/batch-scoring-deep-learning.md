@@ -8,12 +8,12 @@ ms.topic: reference-architecture
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: azcat-ai
-ms.openlocfilehash: 26a83b3f75b2e7e9ec4a8a99ab8b4d8f1b1ef4d7
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.openlocfilehash: 27975b42179e87f4520186778610159943a93090
+ms.sourcegitcommit: 40f3561cc94f721eca50d33f2d75dc974cb6f92b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54488564"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55147248"
 ---
 # <a name="batch-scoring-on-azure-for-deep-learning-models"></a>ディープ ラーニング モデル用の Azure でのバッチ スコアリング
 
@@ -45,6 +45,9 @@ ms.locfileid: "54488564"
 ### <a name="compute"></a>Compute
 
 **[Azure Batch AI][batch-ai]** は、ニューラル スタイル転送アルゴリズムを実行するために使用されます。 Batch AI は、GPU 対応の VM でディープ ラーニング フレームワーク用にあらかじめ構成されているコンテナー化された環境を提供することにより、ディープ ラーニング ワークロードをサポートします。 Batch AI は、BLOB ストレージにコンピューティング クラスターを接続することもできます。
+
+> [!NOTE]
+> Azure Batch AI サービスは 2019 年 3 月に終了する予定であり、このサービスの大規模トレーニングとスコアリングの機能は現在、[Azure Machine Learning Service][amls] において利用可能になっています。 この参照アーキテクチャは近日中に Machine Learning を使用するように改定されます。Machine Learning では、[Azure Machine Learning コンピューティング][aml-compute]という、機械学習モデルのトレーニング、デプロイ、およびスコアリングのためのマネージド コンピューティング先を提供します。
 
 ### <a name="storage"></a>Storage
 
@@ -149,6 +152,8 @@ Batch AI クラスターのサイズは、キュー内のジョブに応じて�
 
 <!-- links -->
 
+[aml-compute]: /azure/machine-learning/service/how-to-set-up-training-targets#amlcompute
+[amls]: /azure/machine-learning/service/overview-what-is-azure-ml
 [azcopy]: /azure/storage/common/storage-use-azcopy-linux
 [batch-ai]: /azure/batch-ai/
 [blobfuse]: https://github.com/Azure/azure-storage-fuse

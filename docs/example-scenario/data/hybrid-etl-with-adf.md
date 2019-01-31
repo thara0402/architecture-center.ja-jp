@@ -8,12 +8,13 @@ ms.topic: example-scenario
 ms.service: architecture-center
 ms.subservice: example-scenario
 ms.custom: tsp-team
-ms.openlocfilehash: 2fc5a94391b2e7e24209e884a790fe72070c4fc2
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+social_image_url: /azure/architecture/example-scenario/data/media/architecture-diagram-hybrid-etl-with-adf.png
+ms.openlocfilehash: e8d80bb55d51bfbc982936d2b5dc98a232e061b5
+ms.sourcegitcommit: 3b15d65e7c35a19506e562c444343f8467b6a073
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54485113"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54908530"
 ---
 # <a name="hybrid-etl-with-existing-on-premises-ssis-and-azure-data-factory"></a>既存のオンプレミス SSIS と Azure Data Factory を使用したハイブリッド ETL
 

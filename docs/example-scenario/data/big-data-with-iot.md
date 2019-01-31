@@ -8,12 +8,13 @@ ms.topic: example-scenario
 ms.service: architecture-center
 ms.subservice: example-scenario
 ms.custom: IoT, data-analytics
-ms.openlocfilehash: dba67dfa7eb480a892229a9bc57d5c5f7ee21017
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+social_image_url: /azure/architecture/example-scenario/data/media/architecture-big-data-with-iot.png
+ms.openlocfilehash: bf963c0467acd4ecbb4bdca6272385d7532167f2
+ms.sourcegitcommit: 3b15d65e7c35a19506e562c444343f8467b6a073
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54488156"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54908459"
 ---
 # <a name="iot-and-data-analytics-in-the-construction-industry"></a>建設業界での IoT とデータ分析
 
@@ -73,7 +74,7 @@ IoT Hub や HDInsight などのマネージド Azure サービスを使用する
 - [Azure Databricks](/azure/azure-databricks/what-is-azure-databricks) は、Azure に最適化された Apache Spark ベースの分析プラットフォームです。 Azure と統合されており、ワン クリックのセットアップ、合理化されたワークフロー、対話型のコラボレーション ワークスペースを提供します。
 - [Data Lake Storage](/azure/storage/data-lake-storage) は BLOB ストレージの代替機能です。 このシナリオの対象リージョンでは、Data Lake Storage を使用できませんでした。
 - [Web Apps](/azure/app-service) は、建設結果データを取り込むための Web サービスのホストにも使用できました。
-- リアルタイム メッセージ インジェスト、データ ストレージ、ストリーム処理、分析データのストレージ、および分析とレポート作成では、使用できるテクノロジ オプションが多数あります。 これらのオプションやその機能、主要な選択条件の概要については、「[ビッグ データ アーキテクチャ: リアルタイム処理](/azure/architecture/data-guide/technology-choices/real-time-ingestion)」([Azure データ アーキテクチャ ガイド](/azure/architecture/data-guide)内) をご覧ください。
+- リアルタイム メッセージ インジェスト、データ ストレージ、ストリーム処理、分析データのストレージ、および分析とレポート作成では、使用できるテクノロジ オプションが多数あります。 これらのオプションやその機能、主要な選択条件の概要については、「[ビッグ データ アーキテクチャ:リアルタイム処理](/azure/architecture/data-guide/technology-choices/real-time-ingestion)」([Azure データ アーキテクチャ ガイド](/azure/architecture/data-guide)内) をご覧ください。
 
 ## <a name="considerations"></a>考慮事項
 

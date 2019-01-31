@@ -8,12 +8,13 @@ ms.topic: example-scenario
 ms.service: architecture-center
 ms.subservice: example-scenario
 ms.custom: fasttrack
-ms.openlocfilehash: 4563bf943d19def55ea18734b2d67df5087a99bd
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+social_image_url: /azure/architecture/example-scenario/infrastructure/media/architecture-service-fabric-complete.png
+ms.openlocfilehash: 67610f016321623cbffb0759cc9e75d2352b60bd
+ms.sourcegitcommit: 3b15d65e7c35a19506e562c444343f8467b6a073
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54487106"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54907901"
 ---
 # <a name="using-service-fabric-to-decompose-monolithic-applications"></a>Service Fabric を使用したモノリシック アプリケーションの分解
 

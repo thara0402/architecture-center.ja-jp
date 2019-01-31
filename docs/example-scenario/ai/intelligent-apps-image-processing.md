@@ -7,12 +7,13 @@ ms.date: 07/05/2018
 ms.topic: example-scenario
 ms.service: architecture-center
 ms.subservice: example-scenario
-ms.openlocfilehash: 2630a2a353b2fb5fd6e77e49c7f2027b00503ea6
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+social_image_url: /azure/architecture/example-scenario/ai/media/architecture-intelligent-apps-image-processing.png
+ms.openlocfilehash: 03ef9d15ec9bf64dc743657e9d1e7a7e275c5a8e
+ms.sourcegitcommit: 3b15d65e7c35a19506e562c444343f8467b6a073
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54484890"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54908326"
 ---
 # <a name="image-classification-for-insurance-claims-on-azure"></a>Azure での保険金請求イメージの分類
 

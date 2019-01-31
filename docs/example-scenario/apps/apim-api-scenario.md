@@ -8,12 +8,13 @@ ms.topic: example-scenario
 ms.service: architecture-center
 ms.subservice: example-scenario
 ms.custom: fasttrack
-ms.openlocfilehash: c7ddc8e8b5e41768745cf08aede27dc21e2b1a2c
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+social_image_url: /azure/architecture/example-scenario/apps/media/architecture-apim-api-scenario.png
+ms.openlocfilehash: cf3d4b7ed7fce04e6688f68e382caeec78abd100
+ms.sourcegitcommit: 3b15d65e7c35a19506e562c444343f8467b6a073
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54485861"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54907964"
 ---
 # <a name="migrating-a-legacy-web-application-to-an-api-based-architecture-on-azure"></a>Azure 上の API ベースのアーキテクチャへの、従来の Web アプリケーションの移行
 
