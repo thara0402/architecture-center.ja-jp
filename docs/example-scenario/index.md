@@ -7,8 +7,13 @@ layout: LandingPage
 ms.topic: landing-page
 ms.service: architecture-center
 ms.subservice: example-scenario
+ms.openlocfilehash: fc9b23866f1e52dcbc428026091605a42ead20a6
+ms.sourcegitcommit: 14226018a058e199523106199be9c07f6a3f8592
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55482894"
 ---
-
 # <a name="azure-example-scenarios"></a>Azure シナリオ例
 
 シナリオの例では、Azure を使用して具体的なビジネス上または技術上の課題を解決する方法を示します。 各シナリオは実例に基づいており、お客様独自の実装を促進できるようにすばやく簡単に読むことができるガイダンスが提供されています。
@@ -24,9 +29,9 @@ ms.subservice: example-scenario
                 <div class="card">
                     <div class="cardText">
                         <h3>新しいシナリオ</h3>
+                        <a class="barLink" href="/azure/architecture/example-scenario/infrastructure/image-modeling" data-linktype="absolute-path">デジタル イメージベースのモデリングの推進</a>
+                        <a class="barLink" href="/azure/architecture/example-scenario/ai/movie-recommendations" data-linktype="absolute-path">Azure での映画のレコメンデーション</a>
                         <a class="barLink" href="/azure/architecture/example-scenario/infrastructure/multi-tier-app-disaster-recovery" data-linktype="absolute-path">HA と DR 用にビルドされた多層 Web アプリケーション</a>
-                        <a class="barLink" href="/azure/architecture/example-scenario/data/hybrid-etl-with-adf" data-linktype="absolute-path">オンプレミスの SSIS と Data Factory を使用したハイブリッド ETL</a>
-                        <a class="barLink" href="/azure/architecture/example-scenario/apps/decentralized-trust" data-linktype="absolute-path">Azure における銀行間での分散型信頼</a>
                     </div>
                 </div>
             </div>
@@ -38,9 +43,9 @@ ms.subservice: example-scenario
                 <div class="card">
                     <div class="cardText">
                         <h3>上位のシナリオ</h3>
-                        <a class="barLink" href="/azure/architecture/example-scenario/infrastructure/regulated-multitier-app" data-linktype="absolute-path">規制対象業界向けのセキュリティで保護された Windows Web アプリケーション</a>
-                        <a class="barLink" href="/azure/architecture/example-scenario/apps/devops-dotnet-webapp" data-linktype="absolute-path">Azure DevOps を使用した CI/CD パイプライン</a>
-                        <a class="barLink" href="/azure/architecture/example-scenario/data/fraud-detection" data-linktype="absolute-path">Azure におけるリアルタイムでの不正検出</a>
+                        <a class="barLink" href="/azure/architecture/example-scenario/infrastructure/regulated-multitier-app" data-linktype="absolute-path">Windows VM を使用した、セキュリティで保護された Web アプリのビルド</a>
+                        <a class="barLink" href="/azure/architecture/example-scenario/data/data-warehouse" data-linktype="absolute-path">販売およびマーケティング向けのデータ ウェアハウスと分析</a>
+                        <a class="barLink" href="/azure/architecture/example-scenario/infrastructure/wordpress" data-linktype="absolute-path">高度にスケーラブルで安全な WordPress Web サイト</a>
                     </div>
                 </div>
             </div>
@@ -51,7 +56,7 @@ ms.subservice: example-scenario
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRy0ZnoKOXdVBqaBz653YPElUNjlNMEpPMDNSSU1aWEIxMFNFNlY2T0E3NC4u" data-linktype="external">
+                        <a href="https://azure-architecture.uservoice.com/forums/918625-architecture-guidance" data-linktype="external">
                             <div class="cardSize cardsF">
                                 <div class="cardPadding">
                                     <div class="card">
