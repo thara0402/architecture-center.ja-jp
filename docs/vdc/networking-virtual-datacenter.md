@@ -10,12 +10,12 @@ ms.subservice: enterprise-cloud-adoption
 ms.custom: virtual-network
 ms.date: 11/28/2018
 ms.author: jonor
-ms.openlocfilehash: a997a0f03da63bc1432f61f3299e7c6794278e5e
-ms.sourcegitcommit: 3b15d65e7c35a19506e562c444343f8467b6a073
+ms.openlocfilehash: 484f41f64b676b08ae8adb4ba082f9bff75a6a54
+ms.sourcegitcommit: 14226018a058e199523106199be9c07f6a3f8592
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54908558"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55483115"
 ---
 # <a name="azure-virtual-datacenter-a-network-perspective"></a>Azure 仮想データセンター:ネットワーク パースペクティブ
 
@@ -391,7 +391,9 @@ DNS が使用されるため、Traffic Manager は Azure パブリック エン�
 
  - VDC のハブとスポークの設計の基礎となるテクノロジである [VNet ピアリング][VNetPeering]の詳細を確認します
  - [Azure AD][AAD] を実装して [RBAC][RBAC] の調査を始めます
- - 組織の構造、要件、ポリシーに対応する、サブスクリプションおよびリソース管理モデルと RBAC モデルを開発します。 最も重要なアクティビティは計画です。 再編成、合併、新製品ラインなどの場合は、可能な限り計画してください。<!--Image References-->
+ - 組織の構造、要件、ポリシーに対応する、サブスクリプションおよびリソース管理モデルと RBAC モデルを開発します。 最も重要なアクティビティは計画です。 再編成、合併、新製品ラインなどの場合は、可能な限り計画してください。
+
+<!--Image References-->
 [0]: ./images/networking-redundant-equipment.png "コンポーネントのオーバーラップの例" 
 [1]: ./images/networking-vdc-high-level.png "ハブとスポークの VDC の高度な例"
 [2]: ./images/networking-hub-spokes-cluster.png "ハブとスポークのクラスター"
