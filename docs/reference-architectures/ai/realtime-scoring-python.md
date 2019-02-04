@@ -3,21 +3,21 @@ title: Python モデルのリアルタイム スコアリング
 titleSuffix: Azure Reference Architectures
 description: この参照アーキテクチャでは、Azure で Python モデルを Web サービスとしてデプロイして、リアルタイムの予測を行う方法を示します。
 author: msalvaris
-ms.date: 11/09/2018
+ms.date: 01/28/2019
 ms.topic: reference-architecture
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: azcat-ai
-ms.openlocfilehash: 135e86b447684efd9f54340eda4b6bf6e4c35bbb
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.openlocfilehash: ba2d9a295e5a231f0ffca9e3cf2d53ace4deddfe
+ms.sourcegitcommit: 1ee873aaf40010eb2a38314ac56974bc9e227736
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54487680"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55141028"
 ---
 # <a name="real-time-scoring-of-python-scikit-learn-and-deep-learning-models-on-azure"></a>Azure での Python scikit-learn モデルおよびディープ ラーニング モデルのリアルタイム スコアリング
 
-この参照アーキテクチャでは、Python モデルを Web サービスとしてデプロイして、リアルタイムの予測を行う方法を示します。 ここでは 2 つのシナリオについて説明します。1 つは通常の Python モデルのデプロイで、もう 1 つはディープ ラーニング モデルのデプロイという特定の要件です。 ここで示すアーキテクチャは、両方のシナリオで使用されています。
+この参照アーキテクチャでは、Python モデルを Web サービスとしてデプロイし、Azure Machine Learning service を使用してリアルタイムの予測を行う方法を示します。 ここでは 2 つのシナリオについて説明します。1 つは通常の Python モデルのデプロイで、もう 1 つはディープ ラーニング モデルのデプロイという特定の要件です。 ここで示すアーキテクチャは、両方のシナリオで使用されています。
 
 このアーキテクチャの 2 つの参照実装は GitHub から入手でき、1 つは[通常の Python モデル][github-python]、もう 1 つ[はディープ ラーニング モデル][github-dl]を対象としています。
 
@@ -33,13 +33,13 @@ ms.locfileid: "54487680"
 
 このアーキテクチャのアプリケーション フローは次のとおりです。
 
-1. クライアントは、HTTP POST 要求を、エンコード済み質問データと一緒に送信します。
-
-2. Flask アプリは、その要求から質問を抽出します。
-
-3. 質問は scikit-learn パイプライン モデルに送信され、特徴付けとスコアリングが行われます。
-
-4. 一致する FAQ の質問とそのスコアは JSON オブジェクトにパイプされ、クライアントに返されます。
+1. トレーニング済みモデルは、Machine Learning モデル レジストリに登録されます。
+2. Machine Learning service では、モデルとスコアリング スクリプトを含む Docker イメージが作成されます。
+3. Machine Learning では、スコアリング イメージが Web サービスとして Azure Kubernetes Service (AKS) にデプロイされます。
+4. クライアントは、HTTP POST 要求を、エンコード済み質問データと一緒に送信します。
+5. Machine Learning で作成された Web サービスによって、要求から質問が抽出されます。
+6. 質問は Scikit-learn パイプライン モデルに送信され、特徴付けとスコアリングが行われます。 
+7. 一致する FAQ の質問とそのスコアが、クライアントに返されます。
 
 結果を使用するサンプル アプリのスクリーンショットを次に示します。
 
@@ -53,25 +53,24 @@ ms.locfileid: "54487680"
 
 ディープ ラーニング モデルのアプリケーション フローは次のとおりです。
 
-1. クライアントは、HTTP POST 要求を、エンコード済み画像データと一緒に送信します。
-
-2. Flask アプリは、その要求から画像を抽出します。
-
-3. 画像は前処理されてモデルに送信され、スコアリングが行われます。
-
-4. スコアリングの結果は JSON オブジェクトにパイプされ、クライアントに返されます。
+1. ディープ ラーニング モデルは、Machine Learning モデル レジストリに登録されます。
+2. Machine Learning service では、モデルとスコアリング スクリプトを含む Docker イメージが作成されます。
+3. Machine Learning では、スコアリング イメージが Web サービスとして Azure Kubernetes Service (AKS) にデプロイされます。
+4. クライアントは、HTTP POST 要求を、エンコード済み画像データと一緒に送信します。
+5. Machine Learning で作成された Web サービスによって、画像データが前処理され、スコアリングのためにモデルに送信されます。 
+6. 予測されるカテゴリとそのスコアが、クライアントに返されます。
 
 ## <a name="architecture"></a>アーキテクチャ
 
 このアーキテクチャは、次のコンポーネントで構成されます。
 
+**[Azure Machine Learning service][aml]** とは、機械学習モデルのトレーニング、デプロイ、自動化、管理を行うためのクラウド サービスであり、これらの操作のすべてがクラウドによって広範に提供されます。 このアーキテクチャでは、モデルのデプロイ、Web サービスのルーティング、認証、および負荷分散の管理に使用されます。
+
 **[仮想マシン][vm]** (VM)。 VM は、HTTP 要求を送信できる &mdash;ローカルまたはクラウドの&mdash;デバイスの例として示されています。
 
 **[Azure Kubernetes Service][aks]** (AKS) は、アプリケーションを Kubernetes クラスターにデプロイするときに使用されます。 AKS により、Kubernetes のデプロイと操作が簡略化されます。 クラスターを構成する場合、通常の Python モデルについては CPU のみの VM を使用し、ディープ ラーニング モデルについては GPU 対応 VM を使用します。
 
-**[ロード バランサー][lb]**。 サービスを外部に公開するときに、AKS によってプロビジョニングされたロード バランサーが使用されます。 ロード バランサーからのトラフィックは、バックエンド ポッドに送信されます。
-
-**[Docker Hub][docker]** は、Kubernetes クラスターにデプロイされている Docker イメージを格納するときに使用されます。 Docker Hub は、使いやすく、Docker ユーザーに対する既定のイメージ リポジトリであるため、このアーキテクチャに選択されました。 [Azure Container Registry][acr] を、このアーキテクチャに使用することもできます。
+**[Azure Container Registry][acr]** により、DC/OS、Docker Swarm、Kubernetes など、すべての種類の Docker コンテナー デプロイのイメージを保管できるようになります。 スコアリング イメージはコンテナーとして Azure Kubernetes Service にデプロイされ、スコアリング スクリプトを実行するために使用されます。 ここで使用されるイメージは、Machine Learning によってトレーニング済みモデルとスコアリング スクリプトから作成され、Azure Container Registry にプッシュされます。
 
 ## <a name="performance-considerations"></a>パフォーマンスに関する考慮事項
 
@@ -83,7 +82,7 @@ ms.locfileid: "54487680"
 
 ## <a name="scalability-considerations"></a>スケーラビリティに関する考慮事項
 
-CPU のみの VM で AKS クラスターがプロビジョニングされている通常の Python モデルの場合、[ポッドの数をスケールアウト][manually-scale-pods]するときに注意が必要です。 目標は、クラスターを完全に利用することです。 スケーリングは、CPU 要求と、ポッドに対して定義されている制限によって左右されます。 また、Kubernetes ではポッドの[自動スケーリング][autoscale-pods]もサポートされ、CPU 使用率などの選ばれたメトリックに応じて、デプロイのポッド数が調整されます。 [クラスター オートスケーラー][autoscaler] (プレビュー) は、保留中のポッドに基づいてエージェント ノードをスケーリングできます。
+CPU のみの VM で AKS クラスターがプロビジョニングされている通常の Python モデルの場合、[ポッドの数をスケールアウト][manually-scale-pods]するときに注意が必要です。 目標は、クラスターを完全に利用することです。 スケーリングは、CPU 要求と、ポッドに対して定義されている制限によって左右されます。 Kubernetes を介した Machine Learning では、CPU 使用率やその他のメトリックに基づいて、[ポッドの自動スケーリング][autoscale-pods]もサポートされています。 [クラスター オートスケーラー][autoscaler] (プレビュー) は、保留中のポッドに基づいてエージェント ノードをスケーリングできます。
 
 GPU 対応 VM を使用しているディープ ラーニング シナリオでは、ポッドのリソース制限は、1 つのポッドに 1 つの GPU を割り当てる、といったものです。 使用する VM の種類に応じて[クラスターのノードをスケーリング][scale-cluster]して、サービスの需要に対応する必要があります。 これを簡単に行うには、Azure CLI と kubectl を使用します。
 
@@ -117,7 +116,7 @@ AKS では、すべての stdout と stderr が、クラスター内のポッド
 
 **[認証]**:  このソリューションでは、エンドポイントへのアクセスは制限されません。 エンタープライズ設定でアーキテクチャをデプロイするには、API キーによってエンドポイントをセキュリティで保護し、何らかの形式のユーザー認証をクライアント アプリケーションに追加します。
 
-**コンテナー レジストリ**。 このソリューションでは、Docker イメージの格納にパブリック レジストリが使用されます。 アプリケーションが依存するコード、およびモデルは、このイメージ内に含まれています。 エンタープライズ アプリケーションでは、悪意のあるコードが実行されるのを防ぎ、コンテナー内の情報が侵害されないようにするために、プライベート レジストリを使用する必要があります。
+**コンテナー レジストリ**。 このソリューションでは、Docker イメージの格納に Azure Container Registry が使用されます。 アプリケーションが依存するコード、およびモデルは、このイメージ内に含まれています。 エンタープライズ アプリケーションでは、悪意のあるコードが実行されるのを防ぎ、コンテナー内の情報が侵害されないようにするために、プライベート レジストリを使用する必要があります。
 
 **DDoS 保護**。 [DDoS Protection Standard][ddos] を有効にすることを検討します。 Azure プラットフォームの一部として基本な DDoS 保護が有効になりますが、DDoS Protection Standard により、特に Azure 仮想ネットワークのリソース向けにチューニングされた軽減機能が提供されます。
 
@@ -140,15 +139,14 @@ AKS では、すべての stdout と stderr が、クラスター内のポッド
 [autoscale-pods]: /azure/aks/tutorial-kubernetes-scale#autoscale-pods
 [azcopy]: /azure/storage/common/storage-use-azcopy-linux
 [ddos]: /azure/virtual-network/ddos-protection-overview
-[docker]: https://hub.docker.com/
 [get-started]: /azure/security-center/security-center-get-started
-[github-python]: https://github.com/Azure/MLAKSDeployment
-[github-dl]: https://github.com/Microsoft/AKSDeploymentTutorial
+[github-python]: https://github.com/Microsoft/MLAKSDeployAML
+[github-dl]: https://github.com/Microsoft/AKSDeploymentTutorial_AML
 [gpus-vs-cpus]: https://azure.microsoft.com/en-us/blog/gpus-vs-cpus-for-deployment-of-deep-learning-models/
 [https-ingress]: /azure/aks/ingress-tls
 [ingress-controller]: https://kubernetes.io/docs/concepts/services-networking/ingress/
 [kubectl]: https://kubernetes.io/docs/tasks/tools/install-kubectl/
-[lb]: /azure/load-balancer/load-balancer-overview
+[aml]: /azure/machine-learning/service/overview-what-is-azure-ml
 [manually-scale-pods]: /azure/aks/tutorial-kubernetes-scale#manually-scale-pods
 [monitor-containers]: /azure/monitoring/monitoring-container-insights-overview
 [アクセス許可]: /azure/aks/concepts-identity
