@@ -7,18 +7,20 @@ ms.topic: reference-architecture
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: azcat-ai
-ms.openlocfilehash: f622041824d65978346bf39abb3de30732bad193
-ms.sourcegitcommit: 3b15d65e7c35a19506e562c444343f8467b6a073
+ms.openlocfilehash: 0f5de0eca6fbd35cca1a0e8443f363df09ffc6aa
+ms.sourcegitcommit: 287344b6c220bdbd8076aed7a281eb02253e15be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54908632"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55712152"
 ---
 # <a name="enterprise-grade-conversational-bot"></a>エンタープライズ グレードの会話型ボット
 
 この参照アーキテクチャでは、[Azure Bot Framework][bot-framework] を使用してエンタープライズ グレードの会話型ボット (チャットボット) を作成する方法について説明します。 ボットは 1 つずつ異なりますが、注意が必要な共通のパターンやワークフロー、テクノロジがいくつかあります。 特に、エンタープライズ ワークロードを処理するボットの場合、コア機能以外にもさまざまな設計上の考慮事項があります。 この記事では、最も重要な設計上の側面について説明するとともに、積極的に学習を行う、堅牢で安全なボットの作成に必要なツールも紹介します。
 
 [![アーキテクチャの図][0]][0]
+
+このアーキテクチャで使用されるベスト プラクティスのユーティリティ サンプルは、完全にオープン ソースで提供されており、[GitHub][git-repo-base] で入手できます。 
 
 ## <a name="architecture"></a>アーキテクチャ
 
@@ -139,23 +141,20 @@ ms.locfileid: "54908632"
 
 ## <a name="quality-assurance-and-enhancement"></a>品質保証と拡張機能
 
-**ログの記録**。 基になるパフォーマンス メトリックやすべてのエラーを含め、ユーザーとボットの会話が記録されます。 これらのログは、問題のデバッグ、ユーザー操作の理解、システムの改善を行う際に、非常に重要な役割を果たします。 ログの種類ごとに、適切なデータ ストアが異なる可能性があります。 たとえば、Web ログには Application Insights、会話には Cosmos DB、大きなペイロードには Azure Storage の使用を検討します。 「[ストレージに直接書き込む][transcript-storage]」を参照してください。
+**ログの記録**。 基になるパフォーマンス メトリックやすべてのエラーを含め、ユーザーとボットの会話が記録されます。 これらのログは、問題のデバッグ、ユーザー操作の理解、システムの改善を行う際に、非常に重要な役割を果たします。 ログの種類ごとに、適切なデータ ストアが異なる可能性があります。 たとえば、Web ログには Application Insights、会話には Cosmos DB、大きなペイロードには Azure Storage の使用を検討します。 [Azure Storage への直接的な書き込み][transcript-storage]に関するページをご覧ください。
 
 **フィードバック**。 ユーザーがボットとのやり取りにどの程度満足しているかを理解しておくことも重要です。 ユーザー フィードバックの記録がある場合は、このデータを使用して、特定のやり取りの改善や、AI モデルの再トレーニングに重点を置いてパフォーマンスを向上させることができます。 フィードバックを使用して、システム内のモデル (LUIS など) を再トレーニングできます。
 
 **テスト**。 ボットのテストには、単体テスト、統合テスト、回帰テスト、および機能テストが含まれます。 テストを行う場合、Azure Search や QnA Maker などの外部サービスからの実際の HTTP 応答を記録することをお勧めします。これにより、単体テストの際に、外部サービスへのネットワーク呼び出しを実際に行うことなく応答を再生することができます。
 
-これらの領域での開発を首尾よく開始するには、「[Botbuilder Utils for JavaScript (JavaScript 用 Botbuilder ユーティリティ)](https://github.com/Microsoft/botbuilder-utils-js)」を参照してください。 このリポジトリには、[Microsoft Bot Framework v4][bot-framework] でビルドされ、Node.js を実行するボット用のサンプル ユーティリティ コードが含まれています。 次のパッケージが含まれます。
-
-- [HTTP テスト レコーダー](https://github.com/Microsoft/botbuilder-utils-js/tree/master/packages/botbuilder-http-test-recorder)。 外部サービスからの HTTP トラフィックを記録します。 LUIS、Azure Search、および QnA Maker のサポートが事前に組み込まれていますが、拡張機能を使用して任意のサービスをサポートすることもできます。
-
-- [Cosmos DB Transcript Store](https://github.com/Microsoft/botbuilder-utils-js/tree/master/packages/botbuilder-transcript-cosmosdb)。 Cosmos DB でボット トランスクリプトを保管したり、クエリを実行したりする方法を示します。
-
-- [Application Insights Transcript Store](https://github.com/Microsoft/botbuilder-utils-js/tree/master/packages/botbuilder-transcript-app-insights)。 Application Insights でボット トランスクリプトを保管したり、クエリを実行したりする方法を示します。
-
-- [フィードバック コレクション ミドルウェア](https://github.com/Microsoft/botbuilder-utils-js/tree/master/packages/botbuilder-feedback)。 フィードバック要求メカニズムを構築するために使用できるサンプル ミドルウェアです。
-
-> [!NOTE]
+>[!NOTE]
+> これらの領域での開発を首尾よく開始するには、「[Botbuilder Utils for JavaScript (JavaScript 用 Botbuilder ユーティリティ)][git-repo-base]」を参照してください。 このリポジトリには、[Microsoft Bot Framework v4][bot-framework] でビルドされ、Node.js を実行するボット用のサンプル ユーティリティ コードが含まれています。 次のパッケージが含まれます。
+>
+> - [Cosmos DB のログ ストア][cosmosdb-logger]。 Cosmos DB でボット ログを保管したり、クエリを実行したりする方法を示します。
+> - [Application Insights のログ ストア][appinsights-logger]。 Application Insights でボット ログを保管したり、クエリを実行したりする方法を示します。
+> - [フィードバック コレクション ミドルウェア][feedback-util]。 ボット ユーザーにフィードバック要求メカニズムを提供するサンプル ミドルウェアです。
+> - [HTTP テスト レコーダー][testing util]。 ボットの外部サービスからの HTTP トラフィックを記録します。 LUIS、Azure Search、および QnA Maker のサポートが事前に組み込まれていますが、拡張機能を使用して任意のサービスをサポートすることもできます。 これは、ボットのテストを自動化する際に役立ちます。
+>
 > これらのパッケージはユーティリティ サンプル コードとして提供されており、サポートや更新プログラムの保証は付属しません。
 
 ## <a name="availability-considerations"></a>可用性に関する考慮事項
@@ -200,6 +199,12 @@ ms.locfileid: "54908632"
 [devops]: https://azure.microsoft.com/solutions/devops/
 [functions]: /azure/azure-functions/
 [functions-triggers]: /azure/azure-functions/functions-triggers-bindings
+[git-repo-appinsights-logger]: https://github.com/Microsoft/botbuilder-utils-js/tree/master/packages/botbuilder-transcript-app-insights
+[git-repo-base]: https://github.com/Microsoft/botbuilder-utils-js
+[git-repo-cosmosdb-logger]: https://github.com/Microsoft/botbuilder-utils-js/tree/master/packages/botbuilder-transcript-cosmosdb
+[git-repo-feedback-util]: https://github.com/Microsoft/botbuilder-utils-js/tree/master/packages/botbuilder-feedback
+[git-repo-testing-util]: https://github.com/Microsoft/botbuilder-utils-js/tree/master/packages/botbuilder-http-test-recorder
+[testing-util]: https://github.com/Microsoft/botbuilder-utils-js/tree/master/packages/botbuilder-http-test-recorder
 [key-vault]: /azure/key-vault/
 [lda]: https://wikipedia.org/wiki/Latent_Dirichlet_allocation/
 [logic-apps]: /azure/logic-apps/logic-apps-overview
@@ -214,3 +219,9 @@ ms.locfileid: "54908632"
 [vscode]: https://azure.microsoft.com/products/visual-studio-code/
 [webapp]: /azure/app-service/overview
 [webchat]: /azure/bot-service/bot-service-channel-connect-webchat?view=azure-bot-service-4.0/
+
+[cosmosdb-logger]: https://github.com/Microsoft/botbuilder-utils-js/tree/master/packages/botbuilder-transcript-cosmosdb
+[appinsights-logger]: https://github.com/Microsoft/botbuilder-utils-js/tree/master/packages/botbuilder-transcript-app-insights
+[feedback-util]: https://github.com/Microsoft/botbuilder-utils-js/tree/master/packages/botbuilder-feedback
+[testing util]: https://github.com/Microsoft/botbuilder-utils-js/tree/master/packages/botbuilder-http-test-recorder
+
