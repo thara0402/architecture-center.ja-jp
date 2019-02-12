@@ -357,6 +357,8 @@ items:
       href: reference-architectures/ai/batch-scoring-deep-learning.md
     - name: Python モデルのバッチ スコアリング
       href: reference-architectures/ai/batch-scoring-python.md
+    - name: Azure Databricks での Spark モデルのバッチ スコアリング
+      href: reference-architectures/ai/batch-scoring-databricks.md
     - name: Python モデルおよびディープ ラーニング モデルのリアルタイム スコアリング
       href: reference-architectures/ai/realtime-scoring-python.md
     - name: R 機械学習モデルを使用したリアルタイム スコアリング
@@ -815,9 +817,9 @@ items:
           href: cloud-adoption/decision-guides/software-defined-network/hub-spoke.md
       - name: ログとレポート
         href: cloud-adoption/decision-guides/log-and-report/overview.md
-ms.openlocfilehash: 608761d954c2a26968a970c99f506ee03b40867d
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.openlocfilehash: 2ba7e4b0b9eb049c0492557a0543778d2fbb2518
+ms.sourcegitcommit: a68f248402c598f9d25bc1dc62f27a6a934ff001
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/08/2019
-ms.locfileid: "55898461"
+ms.locfileid: "55903250"
