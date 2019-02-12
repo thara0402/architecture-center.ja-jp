@@ -6,12 +6,12 @@ ms.date: 09/10/2018
 ms.topic: guide
 ms.service: architecture-center
 ms.subservice: enterprise-cloud-adoption
-ms.openlocfilehash: a59414ff21c2e0b9b498f86ba6f49ddd44209c5a
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.openlocfilehash: a30c834bb92bcdd47ea812d9e368fb0e93fe8623
+ms.sourcegitcommit: eee3a35dd5a5a2f0dc117fa1c30f16d6db213ba2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54486371"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55781998"
 ---
 # <a name="enterprise-cloud-adoption-governance-overview"></a>エンタープライズ クラウドの導入:ガバナンスの概要
 

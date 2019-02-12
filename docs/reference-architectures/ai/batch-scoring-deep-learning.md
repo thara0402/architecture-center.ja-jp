@@ -1,42 +1,40 @@
 ---
 title: ディープ ラーニング モデル用のバッチ スコアリング
 titleSuffix: Azure Reference Architectures
-description: この参照アーキテクチャでは、Azure Batch AI を使用してニューラル スタイルの転送を動画に適用する方法を示します。
+description: この参照アーキテクチャでは、Azure Machine Learning を使用してニューラル スタイルの転送を動画に適用する方法を示します。
 author: jiata
 ms.date: 10/02/2018
 ms.topic: reference-architecture
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: azcat-ai
-ms.openlocfilehash: 27975b42179e87f4520186778610159943a93090
-ms.sourcegitcommit: 40f3561cc94f721eca50d33f2d75dc974cb6f92b
+ms.openlocfilehash: 3fc0b85380b6b46f7a52382e0184490104ead5a3
+ms.sourcegitcommit: eee3a35dd5a5a2f0dc117fa1c30f16d6db213ba2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55147248"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55782049"
 ---
 # <a name="batch-scoring-on-azure-for-deep-learning-models"></a>ディープ ラーニング モデル用の Azure でのバッチ スコアリング
 
-この参照アーキテクチャでは、Azure Batch AI を使用してニューラル スタイルの転送を動画に適用する方法を示します。 "*スタイルの転送*" とは、別の画像のスタイルに既存の画像を組み込むディープ ラーニングの手法です。 このアーキテクチャは、ディープ ラーニングでバッチ スコアリングを使用する任意のシナリオに一般化することができます。 [**このソリューションをデプロイします**](#deploy-the-solution)。
+この参照アーキテクチャでは、Azure Machine Learning を使用してニューラル スタイルの転送を動画に適用する方法を示します。 "*スタイルの転送*" とは、別の画像のスタイルに既存の画像を組み込むディープ ラーニングの手法です。 このアーキテクチャは、ディープ ラーニングでバッチ スコアリングを使用する任意のシナリオに一般化することができます。 [**このソリューションをデプロイします**](#deploy-the-solution)。
 
-![Azure Batch AI を使用したディープ ラーニング モデルのアーキテクチャ ダイアグラム](./_images/batch-ai-deep-learning.png)
+![Azure Machine Learning を使用したディープ ラーニング モデルのアーキテクチャ ダイアグラム](./_images/aml-scoring-deep-learning.png)
 
-**シナリオ**:あるメディア組織は、動画のスタイルを特定の絵画のように変更したいと考えています。 組織は、適切なタイミングで自動的に動画のすべてのフレームにこのスタイルを適用できることを望んでいます。 ニューラル スタイル転送アルゴリズムの背景について詳しくは、「[Image Style Transfer Using Convolutional Neural Networks][image-style-transfer]」(畳み込みニューラル ネットワークを使用した画像スタイルの転送) (PDF) をご覧ください。
+**シナリオ**: あるメディア組織は、動画のスタイルを特定の絵画のように変更したいと考えています。 組織は、適切なタイミングで自動的に動画のすべてのフレームにこのスタイルを適用できることを望んでいます。 ニューラル スタイル転送アルゴリズムの背景について詳しくは、「[Image Style Transfer Using Convolutional Neural Networks][image-style-transfer]」(畳み込みニューラル ネットワークを使用した画像スタイルの転送) (PDF) をご覧ください。
 
 | スタイル画像: | 入力/コンテンツ動画: | 出力動画: |
 |--------|--------|---------|
 | <img src="https://happypathspublic.blob.core.windows.net/assets/batch_scoring_for_dl/style_image.jpg" width="300"> | [<img src="https://happypathspublic.blob.core.windows.net/assets/batch_scoring_for_dl/input_video_image_0.jpg" width="300" height="300">](https://happypathspublic.blob.core.windows.net/assets/batch_scoring_for_dl/input_video.mp4 "入力動画") *クリックすると動画が表示されます* | [<img src="https://happypathspublic.blob.core.windows.net/assets/batch_scoring_for_dl/output_video_image_0.jpg" width="300" height="300">](https://happypathspublic.blob.core.windows.net/assets/batch_scoring_for_dl/output_video.mp4 "出力動画") *クリックすると動画が表示されます* |
 
-この参照アーキテクチャは、Azure Storage に新しいメディアが存在することによってトリガーされるワークロード用に設計されています。 処理には次の手順が含まれます。
+この参照アーキテクチャは、Azure Storage に新しいメディアが存在することによってトリガーされるワークロード用に設計されています。
 
-1. 選択したスタイル画像 (ゴッホの絵など) とスタイル転送スクリプトを、Blob Storage にアップロードします。
-1. 処理を開始する準備ができている自動スケール Batch AI クラスターを作成します。
-1. 動画ファイルを個々のフレームに分割し、それらのフレームを Blob Storage にアップロードします。
-1. すべてのフレームがアップロードされたら、トリガー ファイルを Blob Storage にアップロードします。
-1. このファイルは、Azure Container Instances 内で実行されるコンテナーを作成するロジック アプリをトリガーします。
-1. コンテナーで、Batch AI ジョブを作成するスクリプトが実行されます。 各ジョブで、Batch AI クラスターのノード間に並列にニューラル スタイル転送が適用されます。
-1. イメージが生成されると、Blob Storage に保存されます。
-1. 生成されたフレームをダウンロードして、画像を動画に合成します。
+処理には次の手順が含まれます。
+
+1. 動画ファイルをアップロードします。
+1. 動画ファイルによってロジック アプリがトリガーされ、Azure Machine Learning パイプラインで公開されているエンドポイントに要求が送信されます。
+1. パイプラインによって動画が処理され、MPI を使用してスタイル転送が適用され、動画が後処理されます。
+1. パイプラインが完了すると、出力が Blob Storage に保存されます。
 
 ## <a name="architecture"></a>アーキテクチャ
 
@@ -44,33 +42,25 @@ ms.locfileid: "55147248"
 
 ### <a name="compute"></a>Compute
 
-**[Azure Batch AI][batch-ai]** は、ニューラル スタイル転送アルゴリズムを実行するために使用されます。 Batch AI は、GPU 対応の VM でディープ ラーニング フレームワーク用にあらかじめ構成されているコンテナー化された環境を提供することにより、ディープ ラーニング ワークロードをサポートします。 Batch AI は、BLOB ストレージにコンピューティング クラスターを接続することもできます。
-
-> [!NOTE]
-> Azure Batch AI サービスは 2019 年 3 月に終了する予定であり、このサービスの大規模トレーニングとスコアリングの機能は現在、[Azure Machine Learning Service][amls] において利用可能になっています。 この参照アーキテクチャは近日中に Machine Learning を使用するように改定されます。Machine Learning では、[Azure Machine Learning コンピューティング][aml-compute]という、機械学習モデルのトレーニング、デプロイ、およびスコアリングのためのマネージド コンピューティング先を提供します。
+**[Azure Machine Learning service][amls]** は、Azure Machine Learning Pipelines を使用して、再現可能で管理が容易な計算シーケンスを作成します。 また、[Azure Machine Learning コンピューティング][aml-compute]という、機械学習モデルのトレーニング、デプロイ、およびスコアリングのためのマネージド コンピューティング先 (これに対してパイプラインの計算が実行されます) も提供します。 
 
 ### <a name="storage"></a>Storage
 
-**[BLOB ストレージ][blob-storage]** は、すべての画像 (入力画像、スタイル画像、出力画像) および Batch AI から生成されるすべてのログを格納するために使用されます。 BLOB ストレージは、BLOB ストレージでサポートされるオープン ソースの仮想ファイル システムである [blobfuse][blobfuse] を使用して、Batch AI と統合されます。 BLOB ストレージは、このワークロードに必要なパフォーマンスに対してコスト効率も非常に優れています。
+**[Blob Storage][blob-storage]** は、すべての画像 (入力画像、スタイル画像、出力画像) を格納するために使用されます。 Azure Machine Learning service は、ユーザーがコンピューティング プラットフォームと Blob Storage の間でデータを手動で移動する必要がないように、Blob Storage と統合されています。 BLOB ストレージは、このワークロードに必要なパフォーマンスに対してコスト効率も非常に優れています。
 
 ### <a name="trigger--scheduling"></a>トリガー/スケジュール
 
-**[Azure Logic Apps][logic-apps]** は、ワークフローをトリガーするために使用されます。 Logic Apps は、コンテナーに BLOB が追加されたことを検出すると、Batch AI プロセスをトリガーします。 Logic Apps は、BLOB ストレージに対する変更を検出する簡単な方法であり、トリガーを変更するための簡単なプロセスを備えているため、この参照アーキテクチャに非常に適しています。
+**[Azure Logic Apps][logic-apps]** は、ワークフローをトリガーするために使用されます。 Logic Apps は、コンテナーに BLOB が追加されたことを検出すると、Azure Machine Learning Pipelines をトリガーします。 Logic Apps は、BLOB ストレージに対する変更を検出する簡単な方法であり、トリガーを変更するための簡単なプロセスを備えているため、この参照アーキテクチャに非常に適しています。
 
-**[Azure Container Instances][container-instances]** は、Batch AI ジョブを作成する Python スクリプトを実行するために使用されます。 Docker コンテナー内でこれらのスクリプトを実行することは、オンデマンドでスクリプトを実行する便利な方法です。 このアーキテクチャでは、Container Instances 用の構築済みのロジック アプリ コネクタがあるため、Container Instances を使用します。これにより、ロジック アプリは Batch AI ジョブをトリガーできます。 Container Instances は、ステートレス プロセスを迅速に開始できます。
+### <a name="preprocessing-and-postprocessing-our-data"></a>データの前処理と後処理
 
-**[DockerHub][dockerhub]** は、Container Instances がジョブ作成プロセスの実行に使用する Docker イメージを格納するために使用されます。 DockerHub は、使いやすく、Docker ユーザーに対する既定のイメージ リポジトリであるため、このアーキテクチャに選択されました。 [Azure Container Registry][container-registry] を使用することもできます。
+この参照アーキテクチャでは、木の中にいるオランウータンの動画映像を使用します。 映像は [こちら][source-video]からダウンロードできます。
 
-### <a name="data-preparation"></a>データの準備
-
-この参照アーキテクチャでは、木の中にいるオランウータンの動画映像を使用します。 [こちら][source-video]から映像をダウンロードし、次の手順に従ってワークフロー用に処理できます。
-
-1. [AzCopy][azcopy] を使用して、パブリック BLOB から動画をダウンロードします。
-2. [FFmpeg][ffmpeg] を使用してオーディオ ファイルを抽出し、後で出力動画にオーディオ ファイルを合成できるようにします。
-3. FFmpeg を使用して、動画を個々のフレームに分割します。 フレームは、並列で個別に処理されます。
-4. AzCopy を使用して、個々のフレームを BLOB コンテナーにコピーします。
-
-この段階で、動画映像はニューラル スタイル転送に使用できる形式になっています。
+1. [FFmpeg][ffmpeg] を使用して動画映像からオーディオ ファイルを抽出し、後で出力動画にオーディオ ファイルを合成できるようにします。
+1. FFmpeg を使用して、動画を個々のフレームに分割します。 フレームは、並列で個別に処理されます。
+1. この時点で、ニューラル スタイルの転送を個々のフレームに並列で適用できます。
+1. 各フレームの処理が完了したら、FFmpeg を使用して、フレームを元のように再合成する必要があります。
+1. 最後に、合成された映像にオーディオ ファイルを再合成します。
 
 ## <a name="performance-considerations"></a>パフォーマンスに関する考慮事項
 
@@ -86,13 +76,9 @@ ms.locfileid: "55147248"
 
 このワークロードでは、これら 2 つのオプションのパフォーマンスは同等です。 VM あたりの GPU が多い少数の VM を使用すると、データ移動を削減するのに役立ちます。 ただし、このワークロードではジョブごとのデータ量がそれほど多くないので、BLOB ストレージによって大きく制限されることはありません。
 
-### <a name="images-batch-size-per-batch-ai-job"></a>Batch AI ジョブごとの画像バッチ サイズ
+### <a name="mpi-step"></a>MPI のステップ 
 
-構成する必要があるもう 1 つのパラメーターは、Batch AI ジョブごとに処理する画像の数です。 一方では、処理をノード間に広く分散させ、ジョブが失敗した場合に再処理する必要のある画像が多くなりすぎないようにする必要があります。 そのためには、多数の Batch AI ジョブを使用して、ジョブごとに処理する画像の数を減らします。 しかし他方では、ジョブごとに処理される画像が少なすぎると、セットアップ/起動時間が不釣り合いに大きくなります。 ジョブの数を、クラスター内のノードの最大数と等しくなるように設定することができます。 このようにすると、セットアップ/起動コストの量が最小限になるため、ジョブが失敗しなければ、パフォーマンスは最大になります。 ただし、ジョブが失敗した場合は、多数の画像の再処理が必要になる可能性があります。
-
-### <a name="file-servers"></a>ファイル サーバー
-
-Batch AI を使用する場合は、シナリオに必要なスループットに応じて、複数のストレージ オプションを選択できます。 必要なスループットが低いワークロードでは、(blobfuse を介して) BLOB を使用するので十分なはずです。 または、Batch AI では管理された単一ノード NFS である Batch AI ファイル サーバーもサポートされており、クラスター ノードに自動的にマウントされて、ジョブに対して一元的にアクセス可能なストレージの場所を提供できます。 ほとんどの場合、ワークスペースで必要なファイル サーバーは 1 つだけであり、トレーニング ジョブのデータを異なるディレクトリに分離することができます。 単一ノードの NFS がワークロードに適していない場合、Batch AI では、Azure Files または Gluster や Lustre ファイル システムといったカスタム ソリューションなど、他のストレージ オプションがサポートされています。
+Azure Machine Learning でパイプラインを作成する場合、並列計算を実行するために使用されるステップの 1 つが MPI のステップです。 MPI のステップは、使用可能なノード間でデータを均等に分割するのに役立ちます。 MPI のステップは、要求されたすべてのノードの準備が整うまでは実行されません。 1 つのノードが失敗したり、割り込まれたりした場合 (それが優先順位の低い仮想マシンであっても)、MPI のステップを再実行する必要があります。 
 
 ## <a name="security-considerations"></a>セキュリティに関する考慮事項
 
@@ -106,9 +92,9 @@ Batch AI を使用する場合は、シナリオに必要なスループット�
 
 この参照アーキテクチャでは、バッチ スコアリング プロセスの例として、スタイルの転送を使用しています。 データの機密性がさらに高いシナリオでは、ストレージに保存されているときのデータを暗号化する必要があります。 データがある場所から次の場所に移動されるたびに、SSL を使用してデータ転送をセキュリティ保護します。 詳しくは、「[Azure Storage セキュリティ ガイド][storage-security]」をご覧ください。
 
-### <a name="securing-data-in-a-virtual-network"></a>仮想ネットワーク内のデータのセキュリティ保護
+### <a name="securing-your-computation-in-a-virtual-network"></a>仮想ネットワーク内での計算のセキュリティ保護
 
-Batch AI クラスターを展開するときは、仮想ネットワークのサブネット内にプロビジョニングされるようにクラスターを構成できます。 これにより、クラスター内のコンピューティング ノードは、他の仮想マシンや、オンプレミスのネットワークとさえ、安全に通信できます。 また、BLOB ストレージで[サービス エンドポイント][service-endpoints]を使用して仮想ネットワークからのアクセスを許可したり、Batch AI の VNET 内で単一ノード NFS を使用して、データが常に保護されるようにすることもできます。
+Machine Learning コンピューティング クラスターをデプロイするときは、[仮想ネットワーク][virtual-network]のサブネット内にプロビジョニングされるようにクラスターを構成できます。 これにより、クラスター内のコンピューティング ノードは、他の仮想マシンと安全に通信できます。 
 
 ### <a name="protecting-against-malicious-activity"></a>悪意のあるアクティビティからの保護
 
@@ -120,52 +106,52 @@ Batch AI クラスターを展開するときは、仮想ネットワークの�
 
 ## <a name="monitoring-and-logging"></a>監視およびログ記録
 
-### <a name="monitoring-batch-ai-jobs"></a>Batch AI ジョブの監視
+### <a name="monitoring-batch-jobs"></a>Batch ジョブの監視
 
 ジョブの実行中は、進行状況を監視し、想定どおりに動作していることを確認することが重要です。 ただし、アクティブなノードのクラスター全体を監視するのは困難な場合があります。
 
-クラスターの全体的な状態を把握するには、Azure Portal の Batch AI ブレードに移動して、クラスター内のノードの状態を検査します。 ノードが非アクティブになった場合、またはジョブが失敗した場合は、エラー ログが BLOB ストレージに保存されており、Azure Portal の [ジョブ] ブレードでもアクセスできます。
+クラスターの全体的な状態を把握するには、Azure portal の [Machine Learning] ブレードに移動して、クラスター内のノードの状態を調べます。 ノードが非アクティブになった場合、またはジョブが失敗した場合は、エラー ログが Blob Storage に保存され、Azure portal からアクセスすることもできます。
 
-ログを Application Insights に接続することで、または別のプロセスを実行して Batch AI クラスターとそのジョブの状態をポーリングすることで、監視をさらに強化できます。
+ログを Application Insights に接続することで、または別のプロセスを実行してクラスターとそのジョブの状態をポーリングすることで、監視をさらに強化できます。
 
-### <a name="logging-in-batch-ai"></a>Batch AI でのログ
+### <a name="logging-with-azure-machine-learning"></a>Azure Machine Learning によるログ記録
 
-Batch AI は、関連付けられている BLOB ストレージ アカウントに、すべての stdout/stderr を自動的に記録します。 Storage Explorer などのストレージ ナビゲーション ツールを使用すると、ログ ファイルをナビゲートするエクスペリエンスがはるかに簡単になります。
-
-この参照アーキテクチャの展開の手順では、さらに簡単なログ記録システムをセットアップする方法も示されています。このシステムでは、次に示すように、さまざまなジョブ全体のすべてのログが、BLOB コンテナー内の同じディレクトリに保存されます。 これらのログを使用して、各ジョブおよび各画像の処理にかかった時間を監視します。 このようにすると、プロセスをさらに最適化するのにいっそうよい方法を思い付くことができます。
-
-![Azure Batch AI のログ記録のスクリーンショット](./_images/batch-ai-logging.png)
+Azure Machine Learning は、関連付けられている Blob ストレージ アカウントに、すべての stdout/stderr を自動的に記録します。 特に指定しない場合、Azure Machine Learning ワークスペースによって、自動的にストレージ アカウントがプロビジョニングされ、そこにログがダンプされます。 Storage Explorer などのストレージ ナビゲーション ツールを使用することもできます。これにより、ログ ファイル間を移動するエクスペリエンスがはるかに簡単になります。
 
 ## <a name="cost-considerations"></a>コストに関する考慮事項
 
 コストの点では、この参照アーキテクチャで使用されているコンピューティング リソースは、ストレージおよびスケジュール コンポーネントより、はるかに大きい部分を占めます。 主要な課題の 1 つは、GPU 対応マシンのクラスター全体に作業を効果的に並列化することです。
 
-Batch AI クラスターのサイズは、キュー内のジョブに応じて、自動的にスケールアップおよびスケールダウンできます。 2 つの方法のいずれかで、Batch AI の自動スケールを有効にできます。 プログラムで行う場合は、[展開手順][deployment]の一部である `.env` ファイルで構成できます。または、クラスターを作成した後、ポータルで直接スケール式を変更することもできます。
+Machine Learning コンピューティング クラスターのサイズは、キュー内のジョブに応じて、自動的にスケールアップおよびスケールダウンできます。 プログラムで最小ノード数と最大ノード数を設定することで、自動スケーリングを有効にできます。
 
-即時処理を必要としない作業の場合は、既定の状態 (最小) が 0 個のノードのクラスターであるように、自動スケールの式を構成します。 この構成では、クラスターは 0 個のノードで開始し、キュー内でジョブが検出されたときのみスケールアップします。 バッチ スコアリング プロセスが 1 日に数回以下しか発生しない場合は、この設定により大幅なコスト削減を実現できます。
+即時処理を必要としない作業の場合は、既定の状態 (最小) が、ノード数 0 個のクラスターになるように、自動スケーリングを構成します。 この構成では、クラスターは 0 個のノードで開始し、キュー内でジョブが検出されたときのみスケールアップします。 バッチ スコアリング プロセスが 1 日に数回以下しか発生しない場合は、この設定により大幅なコスト削減を実現できます。
 
 非常に短い間隔で発生するバッチ ジョブでは、自動スケールが適切ではない場合があります。 クラスターの起動と停止に要する時間にもコストがかかるので、前のジョブの終了後ほんの数分でバッチ ワークロードが開始する場合は、ジョブ間もクラスターを実行したままにする方がコスト効率がよくなる可能性があります。
+
+Machine Learning コンピューティングでは、低優先度の仮想マシンもサポートしています。 これにより、割引料金の仮想マシンで計算処理を実行できます。ただし、これらの仮想マシンでは割り込みが発生する可能性が常にあることに注意が必要です。 低優先度の仮想マシンは、重要度の低いバッチ スコアリング ワークロードに最適です。
 
 ## <a name="deploy-the-solution"></a>ソリューションのデプロイ方法
 
 この参照アーキテクチャを展開するには、[GitHub リポジトリ][deployment]で説明されている手順に従ってください。
+
+> [!NOTE]
+> また、Azure Kubernetes Service を使用して、ディープ ラーニング モデル用にバッチ スコアリング アーキテクチャをデプロイすることもできます。 この [Github リポジトリ][deployment2]で説明されている手順に従ってください。
+
 
 <!-- links -->
 
 [aml-compute]: /azure/machine-learning/service/how-to-set-up-training-targets#amlcompute
 [amls]: /azure/machine-learning/service/overview-what-is-azure-ml
 [azcopy]: /azure/storage/common/storage-use-azcopy-linux
-[batch-ai]: /azure/batch-ai/
-[blobfuse]: https://github.com/Azure/azure-storage-fuse
 [blob-storage]: /azure/storage/blobs/storage-blobs-introduction
 [container-instances]: /azure/container-instances/
 [container-registry]: /azure/container-registry/
-[deployment]: https://github.com/Azure/batch-scoring-for-dl-models
-[dockerhub]: https://hub.docker.com/
+[deployment]: https://github.com/Azure/Batch-Scoring-Deep-Learning-Models-With-AML
+[deployment2]: https://github.com/Azure/Batch-Scoring-Deep-Learning-Models-With-AKS
 [ffmpeg]: https://www.ffmpeg.org/
 [image-style-transfer]: https://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/Gatys_Image_Style_Transfer_CVPR_2016_paper.pdf
 [logic-apps]: /azure/logic-apps/
-[service-endpoints]: /azure/storage/common/storage-network-security?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network
 [source-video]: https://happypathspublic.blob.core.windows.net/videos/orangutan.mp4
 [storage-security]: /azure/storage/common/storage-security-guide
 [vm-sizes-gpu]: /azure/virtual-machines/windows/sizes-gpu
+[virtual-network]: /azure/machine-learning/service/how-to-enable-virtual-network
