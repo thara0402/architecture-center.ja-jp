@@ -6,22 +6,22 @@ ms.date: 09/10/2018
 ms.topic: guide
 ms.service: architecture-center
 ms.subservice: enterprise-cloud-adoption
-ms.openlocfilehash: a59414ff21c2e0b9b498f86ba6f49ddd44209c5a
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.openlocfilehash: a30c834bb92bcdd47ea812d9e368fb0e93fe8623
+ms.sourcegitcommit: eee3a35dd5a5a2f0dc117fa1c30f16d6db213ba2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54486371"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55781998"
 ---
-# <a name="enterprise-cloud-adoption-governance-overview"></a><span data-ttu-id="702c7-103">エンタープライズ クラウドの導入:ガバナンスの概要</span><span class="sxs-lookup"><span data-stu-id="702c7-103">Enterprise Cloud Adoption: Governance overview</span></span>
+# <a name="enterprise-cloud-adoption-governance-overview"></a><span data-ttu-id="5c16e-103">エンタープライズ クラウドの導入:ガバナンスの概要</span><span class="sxs-lookup"><span data-stu-id="5c16e-103">Enterprise Cloud Adoption: Governance overview</span></span>
 
-<span data-ttu-id="702c7-104">Azure エンタープライズ クラウド導入のこのセクションでは、"*ガバナンス*" の概要について説明します。</span><span class="sxs-lookup"><span data-stu-id="702c7-104">This section of Azure enterprise cloud adoption covers the topic of *governance*.</span></span> <span data-ttu-id="702c7-105">Azure でのガバナンスに関するトピックが初めての場合は、「[Getting Started (概要)](../getting-started/overview.md)」セクションの「[クラウド リソース ガバナンスとは](../getting-started/what-is-governance.md)」および[Azure でのリソース アクセス管理](../getting-started/azure-resource-access.md)に関するページをご覧ください。</span><span class="sxs-lookup"><span data-stu-id="702c7-105">If you are new to the topic of goverance in Azure, you can begin with [what is cloud resource governance?](../getting-started/what-is-governance.md) and [resource access management in Azure](../getting-started/azure-resource-access.md) in the [getting started](../getting-started/overview.md) section.</span></span>
+<span data-ttu-id="5c16e-104">Azure エンタープライズ クラウド導入のこのセクションでは、"*ガバナンス*" の概要について説明します。</span><span class="sxs-lookup"><span data-stu-id="5c16e-104">This section of Azure enterprise cloud adoption covers the topic of *governance*.</span></span> <span data-ttu-id="5c16e-105">Azure でのガバナンスに関するトピックが初めての場合は、「[Getting Started (概要)](../getting-started/overview.md)」セクションの「[クラウド リソース ガバナンスとは](../getting-started/what-is-governance.md)」および[Azure でのリソース アクセス管理](../getting-started/azure-resource-access.md)に関するページをご覧ください。</span><span class="sxs-lookup"><span data-stu-id="5c16e-105">If you are new to the topic of governance in Azure, you can begin with [what is cloud resource governance?](../getting-started/what-is-governance.md) and [resource access management in Azure](../getting-started/azure-resource-access.md) in the [getting started](../getting-started/overview.md) section.</span></span>
 
-<span data-ttu-id="702c7-106">ガバナンスの概念についてよく理解している場合は、[シンプルなワークロード向けガバナンス設計](governance-single-team.md)および[複数チームおよび複数ワークロード向けガバナンス設計](governance-multiple-teams.md)に関するページをご覧ください。</span><span class="sxs-lookup"><span data-stu-id="702c7-106">If you are familiar with the concept of governance, this section covers [governance design for a simple workload](governance-single-team.md) and [governance design for multiple teams and multiple workloads](governance-multiple-teams.md).</span></span> <span data-ttu-id="702c7-107">両方のドキュメントに実装ガイドが含まれています。</span><span class="sxs-lookup"><span data-stu-id="702c7-107">Both of these documents include an implementation guide.</span></span>
+<span data-ttu-id="5c16e-106">ガバナンスの概念についてよく理解している場合は、[シンプルなワークロード向けガバナンス設計](governance-single-team.md)および[複数チームおよび複数ワークロード向けガバナンス設計](governance-multiple-teams.md)に関するページをご覧ください。</span><span class="sxs-lookup"><span data-stu-id="5c16e-106">If you are familiar with the concept of governance, this section covers [governance design for a simple workload](governance-single-team.md) and [governance design for multiple teams and multiple workloads](governance-multiple-teams.md).</span></span> <span data-ttu-id="5c16e-107">両方のドキュメントに実装ガイドが含まれています。</span><span class="sxs-lookup"><span data-stu-id="5c16e-107">Both of these documents include an implementation guide.</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="702c7-108">次の手順</span><span class="sxs-lookup"><span data-stu-id="702c7-108">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="5c16e-108">次の手順</span><span class="sxs-lookup"><span data-stu-id="5c16e-108">Next steps</span></span>
 
-<span data-ttu-id="702c7-109">ここでは Azure でガバナンス モデルを設計および実装する方法を学習しました。次は、[インフラストラクチャ](../infrastructure/basic-workload.md)を Azure にデプロイする方法を確認します。</span><span class="sxs-lookup"><span data-stu-id="702c7-109">Once you have learned how to design and implment a governance model in Azure, you can move on to learn how to deploy an [infrastructure](../infrastructure/basic-workload.md) to Azure.</span></span>
+<span data-ttu-id="5c16e-109">ここでは Azure でガバナンス モデルを設計および実装する方法を学習しました。次は、[インフラストラクチャ](../infrastructure/basic-workload.md)を Azure にデプロイする方法を確認します。</span><span class="sxs-lookup"><span data-stu-id="5c16e-109">Once you have learned how to design and implement a governance model in Azure, you can move on to learn how to deploy an [infrastructure](../infrastructure/basic-workload.md) to Azure.</span></span>
 
 > [!div class="nextstepaction"]
-> [<span data-ttu-id="702c7-110">単一チーム向けリソース アクセスについて確認する</span><span class="sxs-lookup"><span data-stu-id="702c7-110">Learn about resource access for a single team</span></span>](governance-single-team.md)
+> [<span data-ttu-id="5c16e-110">単一チーム向けリソース アクセスについて確認する</span><span class="sxs-lookup"><span data-stu-id="5c16e-110">Learn about resource access for a single team</span></span>](governance-single-team.md)
