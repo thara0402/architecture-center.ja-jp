@@ -4,12 +4,12 @@ description: PaaS (サービスとしてのプラットフォーム) コンポ�
 titleSuffix: Azure Reference Architectures
 author: MikeWasson
 ms.date: 01/09/2019
-ms.openlocfilehash: c0aa1771abc99b1f17f1e553c9626e50a386f34c
-ms.sourcegitcommit: d5ea427c25f9f7799cc859b99f328739ca2d8c1c
+ms.openlocfilehash: 5a4b104044f3e64ffdce98e3952201d397d41f33
+ms.sourcegitcommit: 700a4f6ce61b1ebe68e227fc57443e49282e35aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54307690"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55887354"
 ---
 # <a name="azure-iot-reference-architecture"></a>Azure IoT 参照アーキテクチャ
 
@@ -145,3 +145,5 @@ IoT アプリケーションは、個別にスケールできる個別のサー�
 - 推奨されるアーキテクチャと実装の選択の詳細については、「[Microsoft Azure IoT Reference Architecture](http://aka.ms/iotrefarchitecture)」 (Microsoft Azure IoT 参照アーキテクチャ) (PDF) を参照してください。
 
 - 各種 Azure IoT サービスの詳細なドキュメントについては、「[Azure IoT の基礎](/azure/iot-fundamentals/)」を参照してください。
+
+- サンプル IoT 実装は [GitHub](https://github.com/mspnp/iot-guidance) で入手できます。

@@ -537,11 +537,11 @@ items:
     href: checklist/resiliency-per-service.md
   - name: スケーラビリティのチェックリスト
     href: checklist/scalability.md
-- name: エンタープライズ クラウドの導入
+- name: クラウド導入フレームワーク
   items:
   - name: はじめに
     href: cloud-adoption/overview.md
-  - name: Getting Started (概要)
+  - name: 使用の開始
     items:
     - name: 概要
       href: cloud-adoption/getting-started/overview.md
@@ -549,17 +549,19 @@ items:
       href: cloud-adoption/getting-started/what-is-azure.md
     - name: クラウド リソース ガバナンスとは
       href: cloud-adoption/getting-started/what-is-governance.md
-    - name: Azure でのリソース アクセス ガバナンス
+    - name: Azure でのリソース アクセス管理
       href: cloud-adoption/getting-started/azure-resource-access.md
   - name: 業務の妥当性
     items:
-    - name: クラウド移行のビジネス ケースの作成
+    - name: クラウド移行のビジネス ケースを作成する
       href: cloud-adoption/business-strategy/cloud-migration-business-case.md
-    - name: 財務モデルについて
+    - name: クラウド変革のための財務モデルを作成する
       href: cloud-adoption/business-strategy/financial-models.md
+    - name: 財務上の結果の例
+      href: cloud-adoption/business-strategy/business-outcomes/fiscal-outcomes.md
   - name: デジタル資産
     items:
-    - name: 合理化の 5R
+    - name: 合理化の 5 R
       href: cloud-adoption/digital-estate/5-rs-of-rationalization.md
     - name: デジタル資産とは
       href: cloud-adoption/digital-estate/overview.md
@@ -569,27 +571,211 @@ items:
       href: cloud-adoption/digital-estate/inventory.md
     - name: デジタル資産の合理化
       href: cloud-adoption/digital-estate/rationalize.md
-    - name: クラウド コストの予測
+    - name: コストを予測するコスト モデルの配置
       href: cloud-adoption/digital-estate/calculate.md
   - name: ガバナンス
     items:
     - name: 概要
       href: cloud-adoption/governance/overview.md
-    - name: 単一チーム向けのガバナンス設計
-      href: cloud-adoption/governance/governance-single-team.md
-    - name: 複数チーム向けのガバナンス設計
-      href: cloud-adoption/governance/governance-multiple-teams.md
+    - name: アクションにつながるガバナンス体験
+      items:
+      - name: 体験の概要
+        href: cloud-adoption/governance/journeys/overview.md
+      - name: 中小企業の体験
+        items:
+        - name: ベスト プラクティス
+          href: cloud-adoption/governance/journeys/small-to-medium-enterprise/overview.md
+        - name: ナレーション
+          href: cloud-adoption/governance/journeys/small-to-medium-enterprise/narrative.md
+        - name: 初期の企業ポリシー
+          href: cloud-adoption/governance/journeys/small-to-medium-enterprise/initial-corporate-policy.md
+        - name: ベスト プラクティスの説明
+          href: cloud-adoption/governance/journeys/small-to-medium-enterprise/best-practice-explained.md
+        - name: セキュリティ ベースラインの進化
+          href: cloud-adoption/governance/journeys/small-to-medium-enterprise/security-baseline-evolution.md
+        - name: リソース整合性の進化
+          href: cloud-adoption/governance/journeys/small-to-medium-enterprise/resource-consistency-evolution.md
+        - name: コスト管理の進化
+          href: cloud-adoption/governance/journeys/small-to-medium-enterprise/cost-management-evolution.md
+        - name: マルチクラウドの進化
+          href: cloud-adoption/governance/journeys/small-to-medium-enterprise/multi-cloud-evolution.md
+      - name: 大企業の体験
+        items:
+        - name: ベスト プラクティス
+          href: cloud-adoption/governance/journeys/large-enterprise/overview.md
+        - name: ナレーション
+          href: cloud-adoption/governance/journeys/large-enterprise/narrative.md
+        - name: 初期の企業ポリシー
+          href: cloud-adoption/governance/journeys/large-enterprise/initial-corporate-policy.md
+        - name: ベスト プラクティスの説明
+          href: cloud-adoption/governance/journeys/large-enterprise/best-practice-explained.md
+        - name: ID ベースラインの進化
+          href: cloud-adoption/governance/journeys/large-enterprise/identity-baseline-evolution.md
+        - name: セキュリティ ベースラインの進化
+          href: cloud-adoption/governance/journeys/large-enterprise/security-baseline-evolution.md
+        - name: リソース整合性の進化
+          href: cloud-adoption/governance/journeys/large-enterprise/resource-consistency-evolution.md
+        - name: コスト管理の進化
+          href: cloud-adoption/governance/journeys/large-enterprise/cost-management-evolution.md
+        - name: マルチクラウドの進化
+          href: cloud-adoption/governance/journeys/large-enterprise/multi-cloud-evolution.md
+        - name: 複数レイヤーのガバナンス
+          href: cloud-adoption/governance/journeys/large-enterprise/multiple-layers-of-governance.md
+    - name: ガバナンス理論
+      items:
+      - name: クラウド ガバナンス戦略の実装
+        href: cloud-adoption/governance/corporate-policy.md
+      - name: クラウド ガバナンスの 5 つの規範
+        href: cloud-adoption/governance/governance-disciplines.md
+      - name: 会社のポリシーとコンプライアンスの進化
+        items:
+        - name: 会社の IT ポリシーがクラウドに対応するしくみ
+          href: cloud-adoption/governance/policy-compliance/overview.md
+        - name: ビジネス上のリスクについての理解
+          href: cloud-adoption/governance/policy-compliance/understanding-business-risk.md
+        - name: リスク許容度の評価
+          href: cloud-adoption/governance/policy-compliance/risk-tolerance.md
+        - name: 会社のポリシー ステートメントの定義
+          href: cloud-adoption/governance/policy-compliance/define-policy.md
+        - name: アーキテクチャの配置設計ガイド
+          href: cloud-adoption/governance/policy-compliance/align-governance-journeys.md
+        - name: ポリシー準拠プロセスの開発
+          href: cloud-adoption/governance/policy-compliance/processes.md
+        - name: 法令遵守とは
+          href: cloud-adoption/governance/policy-compliance/what-is-regulatory-compliance.md
+        - name: クラウド ポリシーの確認とは
+          href: cloud-adoption/governance/policy-compliance/what-is-a-cloud-policy-review.md
+        - name: CISO がクラウドの準備をする方法
+          href: cloud-adoption/governance/policy-compliance/how-can-a-ciso-prepare-for-the-cloud.md
+        - name: データ分類とは
+          href: cloud-adoption/governance/policy-compliance/what-is-data-classification.md
+      - name: クラウド ガバナンスの 5 つの規範の実装
+        items:
+        - name: Cost Management
+          items:
+          - name: Cost Management の規範の概要
+            href: cloud-adoption/governance/cost-management/overview.md
+          - name: テンプレートをダウンロードする
+            href: cloud-adoption/governance/cost-management/template.md
+          - name: ビジネス上のリスクについての理解
+            href: cloud-adoption/governance/cost-management/business-risks.md
+          - name: リスク許容値のメトリックとインジケーター
+            href: cloud-adoption/governance/cost-management/metrics-tolerance.md
+          - name: サンプル ポリシー ステートメント
+            href: cloud-adoption/governance/cost-management/policy-statements.md
+          - name: ポリシーのコンプライアンスのプロセス
+            href: cloud-adoption/governance/cost-management/compliance-processes.md
+          - name: 規範の改良
+            href: cloud-adoption/governance/cost-management/discipline-improvement.md
+          - name: Azure 固有のツール チェーン
+            href: cloud-adoption/governance/cost-management/toolchain.md
+        - name: セキュリティ ベースライン
+          items:
+          - name: セキュリティ ベースライン規範の概要
+            href: cloud-adoption/governance/security-baseline/overview.md
+          - name: テンプレートをダウンロードする
+            href: cloud-adoption/governance/security-baseline/template.md
+          - name: ビジネス上のリスクについての理解
+            href: cloud-adoption/governance/security-baseline/business-risks.md
+          - name: リスク許容値のメトリックとインジケーター
+            href: cloud-adoption/governance/security-baseline/metrics-tolerance.md
+          - name: サンプル ポリシー ステートメント
+            href: cloud-adoption/governance/security-baseline/policy-statements.md
+          - name: ポリシーのコンプライアンスのプロセス
+            href: cloud-adoption/governance/security-baseline/compliance-processes.md
+          - name: 規範の改良
+            href: cloud-adoption/governance/security-baseline/discipline-improvement.md
+          - name: クラウド ネイティブのセキュリティ ベースライン
+            href: cloud-adoption/governance/security-baseline/cloud-native-policy.md
+          - name: Azure セキュリティに関する追加のガイダンス
+            href: cloud-adoption/governance/security-baseline/azure-security-guidance.md
+          - name: Azure 固有のツール チェーン
+            href: cloud-adoption/governance/security-baseline/toolchain.md
+        - name: ID ベースライン
+          items:
+          - name: ID ベースライン規範の概要
+            href: cloud-adoption/governance/identity-baseline/overview.md
+          - name: テンプレートをダウンロードする
+            href: cloud-adoption/governance/identity-baseline/template.md
+          - name: ビジネス上のリスクについての理解
+            href: cloud-adoption/governance/identity-baseline/business-risks.md
+          - name: リスク許容値のメトリックとインジケーター
+            href: cloud-adoption/governance/identity-baseline/metrics-tolerance.md
+          - name: サンプル ポリシー ステートメント
+            href: cloud-adoption/governance/identity-baseline/policy-statements.md
+          - name: ポリシーのコンプライアンスのプロセス
+            href: cloud-adoption/governance/identity-baseline/compliance-processes.md
+          - name: 規範の改良
+            href: cloud-adoption/governance/identity-baseline/discipline-improvement.md
+          - name: Azure 固有のツール チェーン
+            href: cloud-adoption/governance/identity-baseline/toolchain.md
+        - name: リソースの整合性
+          items:
+          - name: リソースの整合性の規範の概要
+            href: cloud-adoption/governance/resource-consistency/overview.md
+          - name: テンプレートをダウンロードする
+            href: cloud-adoption/governance/resource-consistency/template.md
+          - name: ビジネス上のリスクについての理解
+            href: cloud-adoption/governance/resource-consistency/business-risks.md
+          - name: リスク許容値のメトリックとインジケーター
+            href: cloud-adoption/governance/resource-consistency/metrics-tolerance.md
+          - name: サンプル ポリシー ステートメント
+            href: cloud-adoption/governance/resource-consistency/policy-statements.md
+          - name: ポリシーのコンプライアンスのプロセス
+            href: cloud-adoption/governance/resource-consistency/compliance-processes.md
+          - name: 規範の改良
+            href: cloud-adoption/governance/resource-consistency/discipline-improvement.md
+          - name: リソース アクセス管理
+            href: cloud-adoption/governance/resource-consistency/azure-resource-access.md
+          - name: シンプルなワークロード向けガバナンス設計
+            href: cloud-adoption/governance/resource-consistency/governance-simple-workload.md
+          - name: 複数チーム向けのガバナンス設計
+            href: cloud-adoption/governance/resource-consistency/governance-multiple-teams.md
+          - name: Azure 固有のツール チェーン
+            href: cloud-adoption/governance/resource-consistency/toolchain.md
+        - name: デプロイ高速化
+          items:
+          - name: デプロイ高速化の規範の概要
+            href: cloud-adoption/governance/deployment-acceleration/overview.md
+          - name: テンプレートをダウンロードする
+            href: cloud-adoption/governance/deployment-acceleration/template.md
+          - name: ビジネス上のリスクについての理解
+            href: cloud-adoption/governance/deployment-acceleration/business-risks.md
+          - name: リスク許容値のメトリックとインジケーター
+            href: cloud-adoption/governance/deployment-acceleration/metrics-tolerance.md
+          - name: サンプル ポリシー ステートメント
+            href: cloud-adoption/governance/deployment-acceleration/policy-statements.md
+          - name: ポリシーのコンプライアンスのプロセス
+            href: cloud-adoption/governance/deployment-acceleration/compliance-processes.md
+          - name: 規範の改良
+            href: cloud-adoption/governance/deployment-acceleration/discipline-improvement.md
+          - name: Azure 固有のツール チェーン
+            href: cloud-adoption/governance/deployment-acceleration/toolchain.md
   - name: インフラストラクチャ
     items:
-    - name: 基本的なワークロードのデプロイ
-      href: cloud-adoption/infrastructure/basic-workload.md
+    - name: Virtual Machines
+      items:
+      - name: 基本的なワークロードのデプロイ
+        href: cloud-adoption/infrastructure/virtual-machines/basic-workload.md
+    - name: メインフレーム移行
+      items:
+      - name: 概要
+        href: cloud-adoption/infrastructure/mainframe-migration/overview.md
+      - name: 通説と事実
+        href: cloud-adoption/infrastructure/mainframe-migration/myths-and-facts.md
+      - name: 移行方法
+        href: cloud-adoption/infrastructure/mainframe-migration/migration-strategies.md
+      - name: アプリケーションの戦略
+        href: cloud-adoption/infrastructure/mainframe-migration/application-strategies.md
+    - name: 一貫性のあるハイブリッド クラウドの作成
+      href: cloud-adoption/infrastructure/misc/hybrid-consistency.md
   - name: 操作
     items:
     - name: 概要
       href: cloud-adoption/operations/overview.md
     - name: 運用適合性レビューの確立
       href: cloud-adoption/operations/operational-fitness-review.md
-  - name: 付録
+  - name: 参照
     items:
     - name: 仮想データ センター (VDC)
       href: vdc/index.md
@@ -597,9 +783,41 @@ items:
       href: cloud-adoption/appendix/azure-scaffold.md
     - name: Azure エンタープライズ スキャフォールディングの実装
       href: cloud-adoption/appendix/azure-scaffold-examples.md
-ms.openlocfilehash: 82543ba5afed9d4bb32f0779b332d1425d089cfe
-ms.sourcegitcommit: 14226018a058e199523106199be9c07f6a3f8592
+    - name: 意思決定ガイド
+      items:
+      - name: 概要
+        href: cloud-adoption/decision-guides/overview.md
+      - name: サブスクリプション
+        href: cloud-adoption/decision-guides/subscriptions/overview.md
+      - name: ID
+        href: cloud-adoption/decision-guides/identity/overview.md
+      - name: ポリシーの適用
+        href: cloud-adoption/decision-guides/policy-enforcement/overview.md
+      - name: リソースの整合性
+        href: cloud-adoption/decision-guides/resource-consistency/overview.md
+      - name: リソースのタグ付け
+        href: cloud-adoption/decision-guides/resource-tagging/overview.md
+      - name: 暗号化
+        href: cloud-adoption/decision-guides/encryption/overview.md
+      - name: ソフトウェア定義ネットワーク
+        items:
+        - name: 概要
+          href: cloud-adoption/decision-guides/software-defined-network/overview.md
+        - name: PaaS のみ
+          href: cloud-adoption/decision-guides/software-defined-network/paas-only.md
+        - name: クラウド ネイティブ
+          href: cloud-adoption/decision-guides/software-defined-network/cloud-native.md
+        - name: クラウド DMZ
+          href: cloud-adoption/decision-guides/software-defined-network/cloud-dmz.md
+        - name: ハイブリッド
+          href: cloud-adoption/decision-guides/software-defined-network/hybrid.md
+        - name: ハブ アンド スポーク モデル
+          href: cloud-adoption/decision-guides/software-defined-network/hub-spoke.md
+      - name: ログとレポート
+        href: cloud-adoption/decision-guides/log-and-report/overview.md
+ms.openlocfilehash: 608761d954c2a26968a970c99f506ee03b40867d
+ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55483047"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55898461"

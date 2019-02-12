@@ -5,12 +5,12 @@ layout: LandingPage
 ms.topic: landing-page
 ms.date: 09/28/2018
 google-site-verification: b-xRLveOzJ9oSOh37wgRTRB2lMOoFY8HiHf9_0DIawE
-ms.openlocfilehash: f690d95c78becbf16f02f913983533513d2f7c01
-ms.sourcegitcommit: 14226018a058e199523106199be9c07f6a3f8592
+ms.openlocfilehash: 3c48ba77b7f97c6047f5d1441a22f2bd79ee0a3e
+ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55483081"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55898291"
 ---
 # <a name="azure-architecture-center"></a>Azure アーキテクチャ センター
 
@@ -58,8 +58,8 @@ ms.locfileid: "55483081"
                     <div class="card">
                         <img src="_images/cloud-adoption.svg" alt="" />
                         <div class="cardText">
-                            <h3>エンタープライズ クラウドの導入</h3>
-                            <p>このガイドでは、組織全体にわたるクラウド導入戦略を策定するプロセスについて説明します。 ここでは、組織の準備状態、ガバナンス、およびインフラストラクチャに焦点を当てています。</p>
+                            <h3>Azure 向けの Microsoft Cloud 導入フレームワーク</h3>
+                            <p>ポリシー、ガバナンス、およびインフラストラクチャに重点を置き、組織全体のクラウド導入戦略を作成するためのプロセス。</p>
                         </div>
                     </div>
                 </div>

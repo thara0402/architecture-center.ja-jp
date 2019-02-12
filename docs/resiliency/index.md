@@ -7,12 +7,12 @@ ms.topic: article
 ms.service: architecture-center
 ms.subservice: cloud-design-principles
 ms.custom: resiliency
-ms.openlocfilehash: ba3637ce90b793425b1238ee0d99d36a936da6ca
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.openlocfilehash: 1cca2bd39339ba671ee8a298f2ded73d3e252c32
+ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54488598"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55897782"
 ---
 # <a name="designing-resilient-applications-for-azure"></a>回復性に優れた Azure 用アプリケーションの設計
 
@@ -187,7 +187,7 @@ FMA プロセスの詳細と、Azure 固有の推奨事項については、[Azu
 
 ### <a name="redundancy-and-designing-for-failure"></a>障害のための冗長性と設計
 
-障害が及ぼす影響の範囲はさまざまです。 たとえば、ディスク障害などの一部のハードウェア障害が、1 台のホスト コンピューターに影響を及ぼすことがあります。 障害が発生したネットワーク スイッチが、サーバー ラック全体に影響する場合もあります。 データ センターの停電など、データ センター全体を中断させる障害はまれです。 ほとんど発生しませんが、リージョン全体が利用できなくなることもあります。
+障害が及ぼす影響の範囲はさまざまです。 たとえば、ディスク障害などの一部のハードウェア障害が、1 台のホスト コンピューターに影響を及ぼすことがあります。 障害が発生したネットワーク スイッチが、サーバー ラック全体に影響する場合もあります。 データセンターの停電など、データセンター全体を中断させる障害はまれです。 ほとんど発生しませんが、リージョン全体が利用できなくなることもあります。
 
 アプリケーションの回復性を実現するための 1 つの手段として、冗長性があります。 ただし、この冗長性は、アプリケーションの設計時に計画しなければなりません。 また、必要な冗長性のレベルはビジネス要件によって異なります。リージョン障害に備えるために、すべてのアプリケーションにリージョン間での冗長性が必要だとは限りません。 一般的に、冗長性と信頼性を高めると、コストと複雑さが増すというトレードオフがあります。  
 
