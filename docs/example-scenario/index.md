@@ -7,12 +7,12 @@ layout: LandingPage
 ms.topic: landing-page
 ms.service: architecture-center
 ms.subservice: example-scenario
-ms.openlocfilehash: fc9b23866f1e52dcbc428026091605a42ead20a6
-ms.sourcegitcommit: 14226018a058e199523106199be9c07f6a3f8592
+ms.openlocfilehash: bb71f82bac2d37bf4aec9f8b12a2a83d302d9e88
+ms.sourcegitcommit: a05494afd63a5e74dee1ef85611341e4ec964126
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55482894"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56157027"
 ---
 # <a name="azure-example-scenarios"></a>Azure シナリオ例
 
