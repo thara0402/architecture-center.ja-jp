@@ -8,12 +8,12 @@ ms.topic: reference-architecture
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: seodec18, SAP, Windows
-ms.openlocfilehash: 1167a65786c3df946ebaed3e52e4ed4033f50fd5
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.openlocfilehash: e866727a40551b60e74fc26878a15a5a48e69cf6
+ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54486405"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55897628"
 ---
 # <a name="deploy-sap-netweaver-windows-for-anydb-on-azure-virtual-machines"></a>AnyDB 向けの SAP NetWeaver (Windows) を Azure 仮想マシンにデプロイする
 
@@ -91,7 +91,7 @@ Windows Server フェールオーバー クラスターを使ってファイル�
 
 このアーキテクチャでは、仮想ネットワーク アドレス空間がサブネットに分割されます。 この参照アーキテクチャは、主に、主にアプリケーション層のサブネットに焦点を当てています。 各サブネットを、サブネットのアクセス ポリシーを定義する NSG に関連付けることができます。 アプリケーション サーバーは、切り離されたサブネットに配置してください。これにより管理対象が個別のサーバーではなく、サブネット セキュリティ ポリシーになるため、サーバーのセキュリティが確保しやすくなります。
 
-NSG がサブネットに関連付けられている場合、その NSG はサブネット内のすべてのサーバーに適用されます。 NSG を使用してサブネット内のサーバーをきめ細かく制御する方法の詳細については、[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルター処理](https://azure.microsoft.com/en-us/blog/multiple-vm-nics-and-network-virtual-appliances-in-azure/)に関するページをご覧ください。
+NSG がサブネットに関連付けられている場合、その NSG はサブネット内のすべてのサーバーに適用されます。 NSG を使用してサブネット内のサーバーをきめ細かく制御する方法の詳細については、[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルター処理](https://azure.microsoft.com/blog/multiple-vm-nics-and-network-virtual-appliances-in-azure)に関するページをご覧ください。
 
 ### <a name="load-balancers"></a>ロード バランサー
 

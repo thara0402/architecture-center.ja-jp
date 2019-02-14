@@ -7,12 +7,12 @@ ms.topic: reference-architecture
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: microservices
-ms.openlocfilehash: f3b637d61c929e5523ea5409426f3d7a72096dfa
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.openlocfilehash: ac7ab8b8dd154999a05dc531e41b0994f66ddf10
+ms.sourcegitcommit: 700a4f6ce61b1ebe68e227fc57443e49282e35aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54484127"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55887405"
 ---
 # <a name="microservices-architecture-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 上のマイクロサービス アーキテクチャ
 
@@ -360,7 +360,7 @@ trigger:
 
 1. `helm upgrade` を実行して、Helm チャートを QA 環境にデプロイします。
 1. パッケージが運用環境に移動される前に、承認者がサインオフする。 「[Release deployment control using approvals (承認を使用したリリース デプロイ制御)](/azure/devops/pipelines/release/approvals/approvals)」をご覧ください。
-1. Docker イメージを Azure Container Registry 内の運用名前空間用に再度タグ付けします。 たとえば、現在のタグが `myrepo.azurecr.io/delivery:v1.0.2` の場合、運用タグは `reponame.azurecr.io/prod/delivery:v1.0.2` になります。
+1. Docker イメージを Azure Container Registry 内の運用名前空間用に再度タグ付けします。 たとえば、現在のタグが `myrepo.azurecr.io/delivery:v1.0.2` の場合、運用タグは `myrepo.azurecr.io/prod/delivery:v1.0.2` になります。
 1. `helm upgrade` を実行して、Helm チャートを運用環境にデプロイします。
 
 ![CI/CD ワークフロー](./_images/aks-cicd-3.png)

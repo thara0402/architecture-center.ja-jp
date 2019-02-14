@@ -9,12 +9,12 @@ ms.topic: design-pattern
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.custom: seodec18
-ms.openlocfilehash: bb2aa5a7ae6d7a33eac33dce4588380ec82a0df7
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.openlocfilehash: c4b423b2031699210d5917f12a4c14df0f4a694c
+ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54488173"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55898274"
 ---
 # <a name="cache-aside-pattern"></a>キャッシュ アサイド パターン
 
@@ -125,7 +125,7 @@ public async Task<MyEntity> GetMyEntityAsync(int id)
 }
 ```
 
-> 各例では、Redis Cache を使用してストアにアクセスし、キャッシュから情報を取得します。 詳細については、[Microsoft Azure Redis Cache の使用方法](https://docs.microsoft.com/azure/redis-cache/cache-dotnet-how-to-use-azure-redis-cache)に関する記事、および「[Redis Cache で Web アプリを作成する方法](https://docs.microsoft.com/azure/redis-cache/cache-web-app-howto)」をご覧ください。
+> 各例では、Redis Cache を使用してストアにアクセスし、キャッシュから情報を取得します。 詳細については、[Microsoft Azure Redis Cache の使用方法](/azure/redis-cache/cache-dotnet-how-to-use-azure-redis-cache)に関する記事、および「[Redis Cache で Web アプリを作成する方法](/azure/redis-cache/cache-web-app-howto)」をご覧ください。
 
 次に示す `UpdateEntityAsync` メソッドは、アプリケーションによって値が変更されたときにキャッシュ内のオブジェクトを無効にする方法を示しています。 このコードでは、元のデータ ストアを更新した後、キャッシュ項目をキャッシュから削除します。
 
@@ -150,6 +150,6 @@ public async Task UpdateEntityAsync(MyEntity entity)
 
 このパターンを実装するときは、次の情報を参考にしてください。
 
-- [キャッシュ ガイダンス](https://docs.microsoft.com/azure/architecture/best-practices/caching)。 クラウド ソリューションでデータをキャッシュする方法と、キャッシュを実装する際に考慮すべき問題に関する追加情報を提供します。
+- [キャッシュ ガイダンス](/azure/architecture/best-practices/caching)。 クラウド ソリューションでデータをキャッシュする方法と、キャッシュを実装する際に考慮すべき問題に関する追加情報を提供します。
 
 - [Data consistency primer (データ整合性入門)](https://msdn.microsoft.com/library/dn589800.aspx)。 通常、クラウド アプリケーションは、複数のデータ ストアに分散したデータを使用します。 この環境でのデータ整合性の管理と維持は、システム (特に、発生する可能性のあるコンカレンシーと可用性の問題) の重要な側面です。 この入門書では、分散データの整合性に関する問題について説明し、アプリケーションがデータの可用性を維持するために最終的な整合性を実装する方法の概要を説明します。

@@ -8,12 +8,12 @@ ms.topic: reference-architecture
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: seodec18
-ms.openlocfilehash: 384634acb8690c64f75eabbfebc5f1de414f6da2
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.openlocfilehash: 9fce082a0e762e25981929f6fa8685033017f3eb
+ms.sourcegitcommit: f4ed242dff8b204cfd8ebebb7778f356a19f5923
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54484620"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56224183"
 ---
 # <a name="run-an-n-tier-application-in-multiple-azure-regions-for-high-availability"></a>高可用性を得るために複数の Azure リージョンで N 層アプリケーションを実行する
 
@@ -119,7 +119,7 @@ Windows Server 2016 より前に、SQL Server Always On 可用性グループで
     ```
 
 - 両方のリージョンの SQL Server インスタンスを含む [Windows Server フェールオーバー クラスタリング][wsfc] (WSFC) クラスターを作成します。
-- プライマリ リージョンとセカンダリ リージョンの SQL Server インスタンスを含む SQL Server Always On 可用性グループを作成します。 手順については、[Always On 可用性グループのリモート Azure データセンターへの拡張 (PowerShell)](https://blogs.msdn.microsoft.com/sqlcat/2014/09/22/extending-alwayson-availability-group-to-remote-azure-datacenter-powershell/)に関する記事を参照してください。
+- プライマリ リージョンとセカンダリ リージョンの SQL Server インスタンスを含む SQL Server Always On 可用性グループを作成します。 手順については、[Always On 可用性グループのリモート Azure データセンターへの拡張 (PowerShell)](https://techcommunity.microsoft.com/t5/DataCAT/Extending-AlwaysOn-Availability-Group-to-Remote-Azure-Datacenter/ba-p/305217)に関する記事を参照してください。
 
   - プライマリ レプリカをプライマリ リージョンに配置します。
   - 1 つ以上のセカンダリ レプリカをプライマリ リージョンに配置します。 それらを自動フェールオーバーを伴う同期コミット モードを使用するように構成します。
