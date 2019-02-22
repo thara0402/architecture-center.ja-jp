@@ -8,12 +8,12 @@ ms.topic: best-practice
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.custom: seodec18
-ms.openlocfilehash: a87972a3901ed9499b5b25831131a79ff5db8f87
-ms.sourcegitcommit: eee3a35dd5a5a2f0dc117fa1c30f16d6db213ba2
+ms.openlocfilehash: 4f973a6173e882d6ae839833bd3c5bf86f8d7fb6
+ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55782100"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55898138"
 ---
 # <a name="data-partitioning-strategies"></a>データのパーティション分割戦略
 
@@ -229,7 +229,7 @@ Azure Search がサービスの各インスタンス用にデータをパーテ�
 
 ## <a name="partitioning-azure-redis-cache"></a>Azure Redis Cache のパーティション分割
 
-Azure Redis Cache は、Redis キー/値データ ストアに基づく、クラウド内の共有キャッシュ サービスを提供します。 名前が示すように、Azure Redis Cache はキャッシュ ソリューションを意図しています。 恒久的なデータ ストアとしてではなく、一時的なデータを保持するためにのみ使用する必要があります。 Azure Redis Cache を利用するアプリケーションは、キャッシュが利用できない場合でも、継続して動作できる必要があります。 Azure Redis Cache はプライマリ/セカンダリ レプリケーションをサポートし、高可用性を提供しますが、現在、最大キャッシュ サイズは 53 GB に制限されています。 このサイズを超える領域を必要とする場合は、追加のキャッシュを作成する必要があります。 詳細については、[Azure Redis Cache] に関するページを参照してください。
+Azure Redis Cache は、Redis キー/値データ ストアに基づく、クラウド内の共有キャッシュ サービスを提供します。 名前が示すように、Azure Redis Cache はキャッシュ ソリューションを意図しています。 恒久的なデータ ストアとしてではなく、一時的なデータを保持するためにのみ使用する必要があります。 Azure Redis Cache を使用するアプリケーションは、キャッシュが利用できない場合でも、継続して動作できる必要があります。 Azure Redis Cache はプライマリ/セカンダリ レプリケーションをサポートし、高可用性を提供しますが、現在、最大キャッシュ サイズは 53 GB に制限されています。 このサイズを超える領域を必要とする場合は、追加のキャッシュを作成する必要があります。 詳細については、[Azure Redis Cache] に関するページを参照してください。
 
 Redis データ ストアをパーティション分割する場合、Redis サービスのインスタンス全体でデータを分割します。 各インスタンスは、単一パーティションを構成します。 Azure Redis Cache はファサードの背後に Redis サービスを抽象化し、それらが直接アクセスされないようにします。 パーティション分割を実装する最も簡単な方法は、複数の Azure Redis Cache インスタンスを作成し、データをそれら全体に分散することです。
 
