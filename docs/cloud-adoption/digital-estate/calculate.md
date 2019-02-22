@@ -1,20 +1,21 @@
 ---
-title: コスト モデルをデジタル資産に対応付ける
-titleSuffix: Enterprise Cloud Adoption
-description: コスト モデルをデジタル資産に対応付けて、クラウドのコストを予測します
+title: 'CAF: コスト モデルをデジタル資産に対応付ける'
+titleSuffix: Microsoft Cloud Adoption Framework for Azure
+ms.service: architecture-center
+ms.subservice: enterprise-cloud-adoption
+ms.custom: governance
+description: コスト モデルをデジタル資産に対応付けて、クラウドのコストを予測します。
 author: BrianBlanchard
 ms.date: 12/10/2018
 ms.topic: guide
-ms.service: architecture-center
-ms.subservice: enterprise-cloud-adoption
-ms.openlocfilehash: 7423b159df7ff4c9d88fe00d7979f9f15e648847
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.openlocfilehash: b37d833106ad487faadab7c4b7ae397fa237d3d3
+ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54485640"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55897793"
 ---
-# <a name="enterprise-cloud-adoption-align-cost-models-with-the-digital-estate-to-forecast-cloud-costs"></a>エンタープライズ クラウドの導入:コスト モデルをデジタル資産に対応付けて、クラウドのコストを予測します
+# <a name="align-cost-models-with-the-digital-estate-to-forecast-cloud-costs"></a>コスト モデルをデジタル資産に対応付けて、クラウドのコストを予測します
 
 デジタル資産が合理化されたら、選択したクラウド プロバイダーを使用して、デジタル資産を同等のコスト モデルに対応付けることができます。 コスト モデルについて説明することは、特定のクラウド プロバイダーに限定しないと困難です。 この記事の具体的な例を提供するには、Azure は、想定したクラウド プロバイダーです。
 
@@ -26,4 +27,4 @@ Azure の料金計算ツールは、透明かつ正確にクラウド支出を�
 
 - [料金計算ツール](https://azure.microsoft.com/en-in/pricing/)。 料金計算ツールを使用して、予想される毎月の請求額を見積もります。 課金ポータルを使用して、いつでも実際のアカウントの使用状況と課金を追跡できます。 設定した金額を超えた際の通知を希望する場合は、自動電子メール課金アラートを設定します。
 
-- [コスト管理](https://azure.microsoft.com/en-in/services/cost-management/)。 Microsoft の子会社である Cloudyn からライセンス供与された Azure Cost Management は、Azure や他のクラウド リソースを活用し、管理する際に役立つマルチクラウド コスト管理ソリューションです。 アプリケーション プログラム インターフェイス (API) を使用して、Azure、Amazon Web Services (AWS)、および Google Cloud Platform からクラウドの利用状況と課金データを収集します。 このデータを用いて、クラウド プラットフォーム全体でのリソースの使用量やコストを、一元化されたビューで完全に把握できます。 クラウドの使用量とクラウドの傾向を継続的に監視します。 予算を基準にして実際のクラウド支出を追跡し、予算オーバーを回避します。 通常とは異なる支出や、非効率的な使用を検知します。 履歴データを利用すれば、クラウドの使用状況や支出に対する予測の正確性が高まります。
+- [Azure Cost Management](https://azure.microsoft.com/services/cost-management/)。 Microsoft の子会社である Cloudyn からライセンス供与された Azure Cost Management は、Azure や他のクラウド リソースを活用し、管理する際に役立つマルチクラウド コスト管理ソリューションです。 アプリケーション プログラム インターフェイス (API) を使用して、Azure、アマゾン ウェブ サービス、および Google Cloud Platform からクラウドの利用状況と課金データを収集します。 このデータを用いて、クラウド プラットフォーム全体でのリソースの使用量やコストを、一元化されたビューで完全に把握できます。 クラウドの使用量とクラウドの傾向を継続的に監視します。 予算を基準にして実際のクラウド支出を追跡し、予算オーバーを回避します。 通常とは異なる支出や、非効率的な使用を検知します。 履歴データを利用すれば、クラウドの使用状況や支出に対する予測の正確性が高まります。

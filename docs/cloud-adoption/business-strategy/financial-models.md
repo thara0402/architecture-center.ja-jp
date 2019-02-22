@@ -1,20 +1,21 @@
 ---
-title: クラウド変革のための財務モデルを作成する
-titleSuffix: Enterprise Cloud Adoption
-description: クラウド変革のための財務モデルを作成する方法
+title: 'CAF: クラウド変革のための財務モデルを作成する'
+titleSuffix: Microsoft Cloud Adoption Framework for Azure
+ms.service: architecture-center
+ms.subservice: enterprise-cloud-adoption
+ms.custom: governance
+description: クラウド変革のための財務モデルを作成する方法。
 author: BrianBlanchard
 ms.date: 12/10/2018
 ms.topic: guide
-ms.service: architecture-center
-ms.subservice: enterprise-cloud-adoption
-ms.openlocfilehash: d1a5cd0cefef4786a0f55592cad58451c3cae9c4
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.openlocfilehash: 4fe9b178962bf2cd6a79233278c73085237772f0
+ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54482189"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55898206"
 ---
-# <a name="enterprise-cloud-adoption-how-to-create-a-financial-model-for-cloud-transformation"></a>エンタープライズ クラウドの導入: クラウド変革のための財務モデルを作成する方法
+# <a name="create-a-financial-model-for-cloud-transformation"></a>クラウド変革のための財務モデルを作成する
 
 すべてのクラウド変革の完全なビジネス価値を正確に表す財務モデルの作成は複雑になることがあります。 財務モデルや業務の妥当性は、組織によって異なる傾向があります。 この記事ではいくつかの数式を確立し、財務モデルを作成するときに見逃されがちないくつかの点を指摘します。
 
@@ -97,3 +98,10 @@ ms.locfileid: "54482189"
 資本コスト (CapEx) は、営業経費とは少し異なります。 一般に、このカテゴリは更新サイクルまたはデータセンターの拡張によって促進されます。 データセンターの拡張の例には、ビッグ データ ソリューションまたはデータ ウェアハウスをホストする新しい高パフォーマンスのクラスターがあり、一般に CapEx カテゴリに適合します。 より一般的なのは、基本的な更新サイクルです。 一部の企業には、厳格なハードウェア更新サイクルがあります。つまり、資産は定期的なサイクルで (通常は 3、5、または 8 年ごとに) 廃棄および交換されます。 これらのサイクルは多くの場合、資産のリース サイクルまたは予測される装置の有効期間と一致します。 更新サイクルに達した場合、IT は新しい装置を取得するために CapEx を取得します。
 
 更新サイクルが承認され、予算化されている場合は、クラウド変革がそのコストの解消に役立ちます。 更新サイクルが計画されているが、まだ承認されていない場合は、クラウド変革によって CapEx コストの回避が作成されます。 どちらのシナリオもコスト差分に追加されます。
+
+## <a name="next-steps"></a>次の手順
+
+クラウド変革のコンテキストにおける財務上の結果の例を確認します。
+
+> [!div class="nextstepaction"]
+> [財務上の結果の例](./business-outcomes/fiscal-outcomes.md)

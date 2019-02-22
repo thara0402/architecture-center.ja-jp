@@ -8,12 +8,12 @@ ms.topic: best-practice
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.custom: seodec18
-ms.openlocfilehash: 2c4a76ea3a9acdeb1141a1274f6926667c67c81b
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.openlocfilehash: b15b97de2042a0e213192dd586ffdcc4c51b1f11
+ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54484110"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55897985"
 ---
 # <a name="api-design"></a>API 設計
 
@@ -21,7 +21,7 @@ ms.locfileid: "54484110"
 
 - **プラットフォームの独立**。 API の内部的な実装方法に関係なく、すべてのクライアントが API を呼び出すことができる必要があります。 そのためには、標準プロトコルを使用し、クライアントと Web サービスが交換するデータの形式に同意できるメカニズムを備えている必要があります。
 
-- **サービスの進化**。 Web API はクライアント アプリケーションから独立して進化し、機能を追加できる必要があります。 API の進化に伴い、既存のクライアント アプリケーションが変更なしに引き続き機能する必要があります。 クライアント アプリケーションが機能を十分に利用できるように、すべての機能が検出可能である必要があります。
+- **サービスの進化**。 Web API はクライアント アプリケーションから独立して進化し、機能を追加できる必要があります。 API の進化に伴い、既存のクライアント アプリケーションが変更なしに引き続き機能する必要があります。 クライアント アプリケーションが機能を十分に使用できるように、すべての機能が検出可能である必要があります。
 
 このガイダンスでは、Web API の設計時に考慮すべき問題について説明します。
 

@@ -9,12 +9,12 @@ ms.service: architecture-center
 ms.subservice: example-scenario
 ms.custom: fasttrack, SAP, Windows, Linux
 social_image_url: /azure/architecture/example-scenario/apps/media/architecture-sap-production.png
-ms.openlocfilehash: 03714dbf08c23220fa95a3789adb40d7a5cfac92
-ms.sourcegitcommit: 3b15d65e7c35a19506e562c444343f8467b6a073
+ms.openlocfilehash: a80d414f53cca474af587fce7c67d734eb223841
+ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54908241"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55897169"
 ---
 # <a name="running-sap-production-workloads-using-an-oracle-database-on-azure"></a>Azure での Oracle データベースを使用した SAP 運用環境ワークロードの実行
 
@@ -76,7 +76,7 @@ SAP では、Azure の環境でのさまざまなオペレーティング シス
 
 受信するトラフィックの量に基づいて、次の 4 つのサンプル コスト プロファイルが用意されています。
 
-|サイズ|SAP|DB VM の種類|DB ストレージ|(A)SCS VM|(A)SCS ストレージ|アプリの VM の種類|アプリ ストレージ|Azure 料金計算ツール|
+|Size|SAP|DB VM の種類|DB ストレージ|(A)SCS VM|(A)SCS ストレージ|アプリの VM の種類|アプリ ストレージ|Azure 料金計算ツール|
 |----|----|-------|-------|-----|---|---|--------|---------------|
 |Small|30000|DS13_v2|4xP20、1xP20|DS11_v2|1x P10|DS13_v2|1x P10|[Small](https://azure.com/e/45880ba0bfdf47d497851a7cf2650c7c)|
 |Medium|70000|DS14_v2|6xP20、1xP20|DS11_v2|1x P10|4x DS13_v2|1x P10|[Medium](https://azure.com/e/9a523f79591347ca9a48c3aaa1406f8a)|

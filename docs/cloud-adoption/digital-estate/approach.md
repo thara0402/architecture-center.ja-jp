@@ -1,20 +1,21 @@
 ---
-title: デジタル資産計画の手法
-titleSuffix: Enterprise Cloud Adoption
+title: 'CAF: デジタル資産計画の手法'
+titleSuffix: Microsoft Cloud Adoption Framework for Azure
+ms.service: architecture-center
+ms.subservice: enterprise-cloud-adoption
+ms.custom: governance
 description: いくつかのデジタル資産計画の手法について説明します
 author: BrianBlanchard
 ms.date: 12/10/2018
 ms.topic: guide
-ms.service: architecture-center
-ms.subservice: enterprise-cloud-adoption
-ms.openlocfilehash: 59c9e208254eaa0e8beb365718ef59d0694094f3
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.openlocfilehash: 8b6c680cf477ea188cbd263ecc04389d6daaed89
+ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54482223"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55898019"
 ---
-# <a name="enterprise-cloud-adoption-approaches-to-digital-estate-planning"></a>エンタープライズ クラウドの導入:デジタル資産計画の手法
+# <a name="approaches-to-digital-estate-planning"></a>デジタル資産計画の手法
 
 デジタル資産計画は、希望する結果や既存の資産のサイズに応じて、多くの形になる可能性があります。 採用する手法に関して、いくつかの選択肢もあります。 計画サイクルの早期に、手法に関する期待値を定めることが重要です。 期待値が不明確だと、多くの場合、インベントリの収集を追加で実施することが伴って、遅れにつながります。 この記事では、分析に対する 3 つの手法の概要を説明します。
 
@@ -36,7 +37,7 @@ ms.locfileid: "54482223"
 
 ## <a name="incremental-approach"></a>増分型の手法
 
-エンタープライズ クラウド導入フレームワークの多くと同様に、増分手法を採用することが強く推奨されます。 デジタル資産計画の場合、それは次のように、複数フェーズのプロセスに相当します。
+多くの CAF のように、増分型の手法を強くお勧めします。 デジタル資産計画の場合、それは次のように、複数フェーズのプロセスに相当します。
 
 - 初期のコスト分析:財務面の検証が必要な場合は、前に説明した、資産に基づく手法で作業を開始し、合理化を行わずに、デジタル資産全体の初期コストの計算を行います。 これで、最悪の場合のシナリオについてのベンチマークが確立されます。
 

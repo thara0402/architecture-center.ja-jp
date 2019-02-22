@@ -7,12 +7,12 @@ ms.date: 11/12/2018
 ms.topic: reference-architecture
 ms.service: architecture-center
 ms.subservice: reference-architecture
-ms.openlocfilehash: cf12d27ccaebb9845ada4d4a437e9889ea3325f2
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.openlocfilehash: 22bad71910509a112ecee3b3639b4444b6a3d6ed
+ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54485402"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55898002"
 ---
 # <a name="windows-n-tier-application-on-azure-with-sql-server"></a>SQL Server を使用した Azure の Windows N 層アプリケーション
 

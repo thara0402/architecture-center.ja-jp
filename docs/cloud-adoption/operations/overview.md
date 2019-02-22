@@ -1,21 +1,21 @@
 ---
-title: エンタープライズ クラウドの導入:運用の概要
-description: Azure エンタープライズ クラウド導入に関する運用コンテンツの概要
+title: 'CAF: 運用の概要'
+description: Azure での Microsoft クラウド導入フレームワークにおける運用コンテンツの概要
 author: petertaylor9999
 ms.date: 09/20/2018
 ms.topic: guide
 ms.service: architecture-center
 ms.subservice: enterprise-cloud-adoption
-ms.openlocfilehash: e1b401c59ec91797029440824e88d4c4bfd83315
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.openlocfilehash: 2667eb54dcea7621f32f6f328c1817be55119a1f
+ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54484459"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55897135"
 ---
-# <a name="enterprise-cloud-adoption-operations-overview"></a>エンタープライズ クラウドの導入:運用の概要
+# <a name="caf-operations-overview"></a>CAF: 運用の概要
 
-Azure エンタープライズ クラウド導入のこのセクションでは、**運用**の概要について説明します。 
+CAF のこのセクションは、**運用**に関するトピックです。
 
 企業が**デジタル変革**に着手した後、設計と実装のチームで行われる作業の大部分は、オンプレミスから Azure への既存ワークロードの移行、Azure での新しいクラウド ネイティブ アプリケーションの開発とテスト、既存のオンプレミス ワークロードへの新しい革新的 Azure サービスの組み込みに関するものになります。 ただし、これらはデジタル変革の最初のステップに過ぎません。 これらのワークロードが Azure で稼働するようになったら、次のステップはそれらをクラウドで**運用**することです。
 
