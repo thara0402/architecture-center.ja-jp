@@ -1,20 +1,21 @@
 ---
-title: デジタル資産の合理化
-titleSuffix: Enterprise Cloud Adoption
-description: クラウドでデジタル資産をホストする最適な方法を見つけるためにデジタル資産を評価するプロセス。
+title: CAF:デジタル資産の合理化
+titleSuffix: Microsoft Cloud Adoption Framework for Azure
+ms.service: architecture-center
+ms.subservice: enterprise-cloud-adoption
+ms.custom: governance
+description: クラウドでデジタル資産をホストする最適な方法を決定するために、デジタル資産を評価します。
 author: BrianBlanchard
 ms.date: 12/10/2018
 ms.topic: guide
-ms.service: architecture-center
-ms.subservice: enterprise-cloud-adoption
-ms.openlocfilehash: 2002b5273aed4aef2d283f23f83aa08d1d6f5c95
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.openlocfilehash: 02189c9edcbfea0a55fe69a53bf610e85470a4d0
+ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54485725"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55897203"
 ---
-# <a name="enterprise-cloud-adoption-rationalize-the-digital-estate"></a>エンタープライズ クラウドの導入:デジタル資産の合理化
+# <a name="rationalize-the-digital-estate"></a>デジタル資産の合理化
 
 クラウドの合理化は、クラウドで資産をホストする際の最適なアプローチを決定するために資産を評価するプロセスです。 [手法](approach.md)が決定され、[インベントリ](inventory.md)が集計されたら、クラウドの合理化を開始できます。 「[合理化の 5 R](5-rs-of-rationalization.md)」では、最も一般的な合理化オプションについて説明しています。
 
@@ -122,7 +123,7 @@ ms.locfileid: "54485725"
 - 長期的なビジョンに合わせるために必要なコア サービス (と Azure の標準) を定義します。
 - 変革の後期に運用がどのように進化する必要があるか、より深く理解します。
 - 固有のビジネス リスクと、それらのリスクに対する企業の許容範囲について理解します。
-- 企業のリスク許容範囲に基づいて、ガバナンスのためのベースライン、または実用最小限の製品 (MVP) を確立します
+- 企業のリスク許容範囲に基づいて、ガバナンスのためのベースライン、または実用最小限の製品 (MVP) を確立します。
 
 ## <a name="release-planning"></a>リリース計画
 

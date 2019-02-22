@@ -1,20 +1,22 @@
 ---
-title: デジタル資産とは
-titleSuffix: Enterprise Cloud Adoption
-description: デジタル資産の概念の説明
+title: CAF:デジタル資産とは
+titleSuffix: Microsoft Cloud Adoption Framework for Azure
+description: デジタル資産とは
 author: BrianBlanchard
 ms.date: 12/10/2018
 ms.topic: guide
 ms.service: architecture-center
 ms.subservice: enterprise-cloud-adoption
-ms.openlocfilehash: ce21a2d72fcb630f5f197dbd6b87b16ef8f41435
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.openlocfilehash: d23bdbdd98226e8b9cdb9bbb5fefa5a918a498d8
+ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54481543"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55898427"
 ---
-# <a name="enterprise-cloud-adoption-what-is-a-digital-estate"></a>エンタープライズ クラウドの導入: デジタル資産とは
+<!-- markdownlint-disable MD026 -->
+
+# <a name="caf-what-is-a-digital-estate"></a>CAF:デジタル資産とは
 
 現代のどの企業にも、何らかの形式のデジタル資産があります。 デジタル資産は、物理的な資産と同様に、形のある、所有されているいくつかの資産への抽象的な参照です。 デジタル資産では、これらの資産は、仮想マシン (VM)、サーバー、アプリケーション、データなどで構成されます。 基本的に、デジタル資産は、ビジネス プロセスやサポートしている操作の機能を向上させる IT 資産のコレクションです。
 
@@ -53,4 +55,4 @@ ms.locfileid: "54481543"
 デジタル資産計画を開始するには、使用するアプローチを決定する必要があります。
 
 > [!div class="nextstepaction"]
-> [分析アプローチを決定する](approach.md)
+> [デジタル資産計画の手法](approach.md)

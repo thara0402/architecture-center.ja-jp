@@ -8,12 +8,12 @@ ms.date: 11/09/2018
 ms.topic: article
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
-ms.openlocfilehash: fb0749855ff524cf89968e5af47b17f1bbdd53cf
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.openlocfilehash: 2937b50655dc13e8fe0cd79cf69edfa8e05d4018
+ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54484348"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55898087"
 ---
 # <a name="aws-to-azure-services-comparison"></a>AWS サービスと Azure サービスの比較
 

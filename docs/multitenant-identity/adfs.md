@@ -9,12 +9,12 @@ ms.subservice: reference-architecture
 pnp.series.title: Manage Identity in Multitenant Applications
 pnp.series.prev: token-cache
 pnp.series.next: client-assertion
-ms.openlocfilehash: 82b39d77f1ee9af4063c4715a4688ef4b69bc477
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.openlocfilehash: d095283531c1183726ebf132707aaede1f03f09b
+ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54487859"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55897271"
 ---
 # <a name="federate-with-a-customers-ad-fs"></a>顧客の AD FS とのフェデレーション
 

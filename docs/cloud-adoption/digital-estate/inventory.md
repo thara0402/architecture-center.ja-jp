@@ -1,32 +1,32 @@
 ---
-title: デジタル資産のインベントリ データを収集する
-titleSuffix: Enterprise Cloud Adoption
-description: デジタル資産のインベントリを作成する方法
+title: CAF:デジタル資産のインベントリ データを収集する
+titleSuffix: Microsoft Cloud Adoption Framework for Azure
+description: デジタル資産のインベントリを収集する方法。
 author: BrianBlanchard
 ms.date: 12/10/2018
 ms.topic: guide
 ms.service: architecture-center
 ms.subservice: enterprise-cloud-adoption
-ms.openlocfilehash: 5c2f270cf8de81c8a94d1f924f51611e657ed0ed
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.openlocfilehash: 0c68ff1e5ff51395698d37fb9b59c7a76c9479b7
+ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54481798"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55897254"
 ---
-# <a name="enterprise-cloud-adoption-gather-inventory-data-for-a-digital-estate"></a>エンタープライズ クラウドの導入:デジタル資産のインベントリ データを収集する
+# <a name="gather-inventory-data-for-a-digital-estate"></a>デジタル資産のインベントリ データを収集する
 
 インベントリを作成することは、[デジタル資産計画](overview.md)の最初の手順です。 このプロセスでは、後で分析や合理化が可能なように、特定のビジネス機能をサポートする IT 資産の一覧が収集されます。 この記事では、計画の必要上、分析にはボトムアップの手法を採用することが最適だと想定しています。 詳細については、[デジタル資産計画の手法](./approach.md)についての記事を参照してください。
 
-## <a name="how-can-a-digital-estate-be-inventoried"></a>デジタル資産はどのようにインベントリ化できるか
+## <a name="take-inventory-of-a-digital-estate"></a>デジタル資産のインベントリの収集
 
 デジタル資産をサポートするインベントリは、目的としているデジタル変革と、それに対応する変革の過程に応じて変わります。
 
-- 事業の変革:事業の変革の際には、多くの場合、すべての VM とサーバーの一元的な一覧を作成できるスキャン ツールからインベントリを収集することが推奨されます。 一部のツールでは、ネットワーク マッピングや依存関係も作成できます。これは、ワークロードの配置を定義するのに役立ちます。
+- **事業の変革:**  事業の変革の際には、多くの場合、すべての VM とサーバーの一元的な一覧を作成できるスキャン ツールからインベントリを収集することが推奨されます。 一部のツールでは、ネットワーク マッピングや依存関係も作成できます。これは、ワークロードの配置を定義するのに役立ちます。
 
-- 増分型の変革:増分型の変革でのインベントリは、顧客と共に始まります。 開始から終了まで顧客のエクスペリエンスをマッピングすることが、良い開始点となります。 そのマップをアプリケーション、API、データ、およびその他の資産に対応付けることで、分析用の詳細なインベントリが作成されます。
+- **増分型の変革:**  増分型の変革でのインベントリは、顧客と共に始まります。 開始から終了まで顧客のエクスペリエンスをマッピングすることが、良い開始点となります。 そのマップをアプリケーション、API、データ、およびその他の資産に対応付けることで、分析用の詳細なインベントリが作成されます。
 
-- 中断を伴う変革:中断を伴う変革では、製品やサービスに重点が置かれます。 そうした観点から、インベントリには、市場や必要とされる機能に中断をもたらす機会のマッピングが含められます。
+- **中断を伴う変革**:  中断を伴う変革では、製品やサービスに重点が置かれます。 そうした観点から、インベントリには、市場や必要とされる機能に中断をもたらす機会のマッピングが含められます。
 
 ## <a name="accuracy-and-completeness-of-an-inventory"></a>インベントリの精度と完全性
 

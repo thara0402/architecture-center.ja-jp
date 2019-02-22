@@ -9,12 +9,12 @@ ms.service: architecture-center
 ms.subservice: example-scenario
 ms.custom: product-team
 social_image_url: /azure/architecture/example-scenario/infrastructure/media/arhitecture-disaster-recovery-multi-tier-app.png
-ms.openlocfilehash: c60a2a07db578c447eb0682270c105b79e80e12b
-ms.sourcegitcommit: 3b15d65e7c35a19506e562c444343f8467b6a073
+ms.openlocfilehash: 1f82f0bf5421bb251bda2eb60349cc74014fd454
+ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54908513"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55898104"
 ---
 # <a name="multitier-web-application-built-for-high-availability-and-disaster-recovery-on-azure"></a>Azure における高可用性とディザスター リカバリー用にビルドされた多層 Web アプリケーション
 
@@ -24,7 +24,7 @@ ms.locfileid: "54908513"
 - ビジネス層:ユーザーの操作が処理され、次のステップに関して論理的な意思決定が行われます。 このレイヤーは、Web 層とデータ層に接続されます。
 - データ層:アプリケーション データが格納されます。 通常は、データベース、オブジェクト ストレージ、またはファイル ストレージが使用されます。
 
-一般的なアプリケーション シナリオには、Windows または Linux で実行されているあらゆるミッション クリティカルなアプリケーションが含まれます。 SAP や SharePoint など、市販のアプリケーションのほか、カスタム基幹業務アプリケーションも該当します。
+一般的なシナリオとして、Windows または Linux で実行されているミッションクリティカルなアプリケーションが挙げられます。 SAP や SharePoint など、市販のアプリケーションのほか、カスタム基幹業務アプリケーションも該当します。
 
 ## <a name="relevant-use-cases"></a>関連するユース ケース
 
