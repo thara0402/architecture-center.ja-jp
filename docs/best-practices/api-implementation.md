@@ -8,12 +8,12 @@ ms.topic: best-practice
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.custom: seodec18
-ms.openlocfilehash: aa69746b59ddfff02381dd811caa9a7aa62d8b7b
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.openlocfilehash: 9b6bef0fd803db5b488e93d246642d4e3681a94c
+ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54484807"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55897764"
 ---
 # <a name="api-implementation"></a>API 実装
 
@@ -614,7 +614,7 @@ public class OrdersController : ApiController
 
 ## <a name="maintaining-responsiveness-scalability-and-availability"></a>応答性、スケーラビリティ、可用性の維持
 
-世界のあらゆる場所で実行される多数のクライアント アプリケーションが同じ Web API を利用する場合があります。 負荷が大きい状況で応答性を維持し、大きく変化するワークロードをサポートするスケーラビリティを備え、業務に不可欠な操作を実行するクライアントの可用性を保証するように Web API が実装されていることが重要です。 これらの要件を満たす方法を決めるときには、以下の点を考慮してください。
+世界のあらゆる場所で実行される多数のクライアント アプリケーションが、同じ Web API を使用する場合があります。 負荷が大きい状況で応答性を維持し、大きく変化するワークロードをサポートするスケーラビリティを備え、業務に不可欠な操作を実行するクライアントの可用性を保証するように Web API が実装されていることが重要です。 これらの要件を満たす方法を決めるときには、以下の点を考慮してください。
 
 ### <a name="provide-asynchronous-support-for-long-running-requests"></a>実行時間の長い要求の非同期サポートを提供する
 
