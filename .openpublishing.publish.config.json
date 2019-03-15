@@ -24,7 +24,7 @@
     "live",
     "master-sxs"
   ],
-  "git_repository_url_open_to_public_contributors": "https://github.com/mspnp/architecture-center.ja-jp",
+  "git_repository_url_open_to_public_contributors": "https://github.com/microsoftdocs/architecture-center.ja-jp",
   "git_repository_branch_open_to_public_contributors": "live",
   "contribution_branch_mappings": {
 		       "live-sxs": "live"
@@ -48,7 +48,7 @@
     },
     {
       "path_to_root": "_repo.en-us",
-      "url": "https://github.com/mspnp/architecture-center",
+      "url": "https://github.com/microsoftdocs/architecture-center",
       "branch": "live",
       "branch_mapping": {
         "live": "live",
