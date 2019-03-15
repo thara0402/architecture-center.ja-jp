@@ -49,13 +49,12 @@
     "globalMetadata": {
       "bilingual_type": "hover over",
       "feedback_system": "GitHub",
-      "feedback_github_repo": "mspnp/architecture-center.ja-JP",
+      "feedback_github_repo": "MicrosoftDocs/architecture-center.ja-jp",
       "breadcrumb_path": "/azure/architecture/bread/toc.json",
       "brand": "azure",
       "ms.author": "pnp",
       "ms.service": "guidance",
       "ms.topic": "article",
-      "ms.date": "11/28/2017",
       "searchScope": [
         "Azure"
       ]
@@ -63,6 +62,14 @@
     "fileMetadata": {
       "tocRel": {
         "reference-architectures/**.md": "../toc.json"
+      },
+      "feedback_product_url": {
+        "example-scenario/**/*.md": "https://azure-architecture.uservoice.com/forums/918625-architecture-guidance",
+        "guide/**/*.md": "https://azure-architecture.uservoice.com/forums/918628-cloud-fundamentals",
+        "data-guide/**/*.md": "https://azure-architecture.uservoice.com/forums/918628-cloud-fundamentals",
+        "patterns/**/*.md": "https://azure-architecture.uservoice.com/forums/918628-cloud-fundamentals",
+        "best-practices/**/*.md": "https://azure-architecture.uservoice.com/forums/918628-cloud-fundamentals",
+        "antipatterns/**/*.md": "https://azure-architecture.uservoice.com/forums/918628-cloud-fundamentals"
       }
     },
     "template": [
