@@ -6,13 +6,8 @@ ms.date: 06/09/2017
 ms.topic: article
 ms.service: architecture-center
 ms.subservice: reference-architecture
-ms.openlocfilehash: 108d82066d9867682c246c4de802849e2e561cbc
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54486439"
 ---
+
 # <a name="extend-azure-resource-manager-template-functionality"></a>Azure Resource Manager テンプレート機能の拡張
 
 2016 年に Microsoft patterns & practices チームは、リソースのデプロイを簡略化する目標で、一連の Azure Resource Manager [テンプレートの構成要素](https://github.com/mspnp/template-building-blocks/wiki)を作成しました。 各構成要素には事前構築済みのテンプレートのセットが含まれ、個別のパラメーター ファイルによって指定されるリソースのセットをデプロイします。

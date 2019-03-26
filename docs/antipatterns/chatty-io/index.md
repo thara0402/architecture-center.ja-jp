@@ -8,13 +8,8 @@ ms.topic: article
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.custom: seodec18
-ms.openlocfilehash: b21ef5f772eb4e2572833ab15085651ac3766a5e
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54480608"
 ---
+
 # <a name="chatty-io-antipattern"></a>頻度の高い I/O のアンチパターン
 
 大量の I/O 要求の影響が累積して、パフォーマンスと応答性に著しい影響を与える場合があります。

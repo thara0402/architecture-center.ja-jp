@@ -4,13 +4,8 @@ description: PaaS (サービスとしてのプラットフォーム) コンポ�
 titleSuffix: Azure Reference Architectures
 author: MikeWasson
 ms.date: 01/09/2019
-ms.openlocfilehash: 5a4b104044f3e64ffdce98e3952201d397d41f33
-ms.sourcegitcommit: 700a4f6ce61b1ebe68e227fc57443e49282e35aa
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55887354"
 ---
+
 # <a name="azure-iot-reference-architecture"></a>Azure IoT 参照アーキテクチャ
 
 この参照アーキテクチャは、PaaS (サービスとしてのプラットフォーム) コンポーネントを使用する Azure の IoT アプリケーションの推奨アーキテクチャを示しています。

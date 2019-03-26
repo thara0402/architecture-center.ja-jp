@@ -61,15 +61,15 @@ items:
     - name: データ アーキテクチャ ガイド
       tocHref: /azure/architecture/data-guide/
       topicHref: /azure/architecture/data-guide
-    - name: マイクロサービスの設計
+    - name: マイクロサービス
       tocHref: /azure/architecture/microservices/
       topicHref: /azure/architecture/microservices
     - name: パフォーマンスのアンチパターン
       tocHref: /azure/architecture/antipatterns/
       topicHref: /azure/architecture/antipatterns
-ms.openlocfilehash: ba3e322b0fa6a82af6f71d8f2fbcf917e07257c2
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.openlocfilehash: c8f41a3073b6a0ce6a3e746a440cebde27217538
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55897186"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58343647"
