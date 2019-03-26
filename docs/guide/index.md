@@ -4,13 +4,8 @@ ms.topic: landing-page
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.date: 08/30/2018
-ms.openlocfilehash: 651f59344e7785a8a23e7b56dd67b4c4a3044741
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54484382"
 ---
+
 # <a name="azure-application-architecture-guide"></a>Azure アプリケーション アーキテクチャ ガイド
 
 このガイドは、Azure においてスケーラブルで回復力がある高可用性のアプリケーションを設計するための体系化された方法を示します。 顧客エンゲージメントから学んだ実証済みのプラクティスに基づいています。
