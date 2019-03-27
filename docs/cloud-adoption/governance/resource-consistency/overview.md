@@ -10,11 +10,11 @@ author: BrianBlanchard
 layout: LandingPage
 ms.topic: landing-page
 ms.openlocfilehash: ce29efab1502d59513528ab4b640173346aee516
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55901604"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58241983"
 ---
 # <a name="caf-resource-consistency-discipline-overview"></a>CAF:リソースの整合性の規範の概要
 
