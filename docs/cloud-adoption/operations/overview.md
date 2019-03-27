@@ -7,11 +7,11 @@ ms.topic: guide
 ms.service: architecture-center
 ms.subservice: enterprise-cloud-adoption
 ms.openlocfilehash: 2667eb54dcea7621f32f6f328c1817be55119a1f
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55897135"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58242413"
 ---
 # <a name="caf-operations-overview"></a>CAF: 運用の概要
 

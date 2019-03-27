@@ -8,11 +8,11 @@ ms.date: 02/11/2019
 description: クラウド ネイティブのセキュリティ ベースライン ポリシー
 author: BrianBlanchard
 ms.openlocfilehash: fc161009f6ce7aa2b775fe6b3b53ff1e1d62a848
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55901302"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58242433"
 ---
 # <a name="cloud-native-security-baseline-policy"></a>クラウド ネイティブのセキュリティ ベースライン ポリシー
 
