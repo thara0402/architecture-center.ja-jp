@@ -8,11 +8,11 @@ ms.date: 02/11/2019
 description: Cost Management の目的とビジネス上のリスク
 author: BrianBlanchard
 ms.openlocfilehash: b9bf31a796ea1a7530c6a668a231d74b9b765509
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55901689"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58247473"
 ---
 # <a name="cost-management-motivations-and-business-risks"></a>Cost Management の目的とビジネス上のリスク
 
@@ -41,9 +41,9 @@ Cost Management の規範は、クラウド ベースのワークロードをホ
 
 ## <a name="next-steps"></a>次の手順
 
-[クラウド管理テンプレート](./template.md)を使用して、現在のクラウド導入計画によって生じる可能性の高いビジネス上のリスクを文書化します。
+[クラウド管理テンプレート](./template.md)を使用して、現在のクラウド導入計画によって生じる可能性の高いビジネス リスクを文書化します。
 
-現実的なビジネス上のリスクについて確実に理解したら、次に、リスクに対するビジネスの許容値とその許容値を監視するインジケーターおよびキー メトリックについて文書化します。
+現実的なビジネス リスクについての理解が確実に得られたら、リスクに対する企業の許容範囲と、その許容範囲を監視するための指標と主なメトリックについて文書化することが、次の手順となります。
 
 > [!div class="nextstepaction"]
-> [インジケーター、メトリック、およびリスク許容値の理解](./metrics-tolerance.md)
+> [指標、メトリック、リスクの許容範囲について理解する](./metrics-tolerance.md)

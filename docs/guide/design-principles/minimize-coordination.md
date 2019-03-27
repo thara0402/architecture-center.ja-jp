@@ -9,11 +9,11 @@ ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: seojan19
 ms.openlocfilehash: e124e6720b909bafc74a4c074454ec0a3ec30c59
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54488581"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58245613"
 ---
 # <a name="minimize-coordination"></a>調整を最小限に抑える
 

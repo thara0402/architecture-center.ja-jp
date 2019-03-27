@@ -8,11 +8,11 @@ ms.date: 02/11/2019
 description: このネットワーク アーキテクチャにより、オンプレミス ネットワークとクラウド ベース ネットワークの間のアクセスを制限することができます。
 author: rotycenh
 ms.openlocfilehash: a192541dcfb0f3d713f4139a2ab0541d0c7202db
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55901670"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58242813"
 ---
 # <a name="software-defined-networks-cloud-dmz"></a>ソフトウェア定義ネットワーク:クラウド DMZ
 

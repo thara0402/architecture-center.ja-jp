@@ -9,11 +9,11 @@ ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: seojan19
 ms.openlocfilehash: c8722250b5b5357c9ffcf65eced95b4f2b487c72
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54481368"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58241723"
 ---
 # <a name="make-all-things-redundant"></a>すべてを冗長化
 

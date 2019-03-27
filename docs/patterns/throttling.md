@@ -10,11 +10,11 @@ ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.custom: seodec18
 ms.openlocfilehash: 0bbe8177abe708cf41c1b5a8d117c05fd280c948
-ms.sourcegitcommit: 3b15d65e7c35a19506e562c444343f8467b6a073
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54908598"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58241473"
 ---
 # <a name="throttling-pattern"></a>調整パターン
 

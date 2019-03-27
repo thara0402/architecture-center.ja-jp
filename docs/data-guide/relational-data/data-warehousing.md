@@ -7,11 +7,11 @@ ms.topic: guide
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.openlocfilehash: 6679ff620ca9e64036c02fce38608de38c57df93
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54482175"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58246363"
 ---
 # <a name="data-warehousing-and-data-marts"></a>データ ウェアハウスとデータ マート
 
@@ -130,13 +130,13 @@ Azure SQL Data Warehouse は、ワークロードがコンピューティング�
 
 | | Azure SQL Database | SQL Server (VM) | SQL Data Warehouse | HDInsight 上の Apache Hive | HDInsight 上の Hive LLAP |
 | --- | --- | --- | --- | --- | --- | -- |
-| マネージド サービスか | [はい] | いいえ  | [はい] | はい <sup>1</sup> | はい <sup>1</sup> |
-| データのオーケストレーションが必要 (データのコピー/履歴データを保持) | いいえ  | いいえ  | 可能  | はい | [はい] |
-| 複数のデータ ソースを簡単に統合 | いいえ  | いいえ  | 可能  | はい | [はい] |
-| 計算の一時停止をサポート | いいえ  | いいえ  | [はい] | いいえ <sup>2</sup> | いいえ <sup>2</sup> |
-| リレーショナル データ ストア | [はい] | はい |  はい | いいえ  | いいえ  |
-| リアルタイムのレポート | [はい] | はい | いいえ  | いいえ  | [はい] |
-| 柔軟なバックアップの復元ポイント | [はい] | [はい] | いいえ <sup>3</sup> | はい <sup>4</sup> | はい <sup>4</sup> |
+| マネージド サービスか | はい | いいえ  | はい | はい <sup>1</sup> | はい <sup>1</sup> |
+| データのオーケストレーションが必要 (データのコピー/履歴データを保持) | いいえ  | いいえ  | 可能  | はい | はい |
+| 複数のデータ ソースを簡単に統合 | いいえ  | いいえ  | 可能  | はい | はい |
+| 計算の一時停止をサポート | いいえ  | いいえ  | はい | いいえ <sup>2</sup> | いいえ <sup>2</sup> |
+| リレーショナル データ ストア | はい | はい |  はい | いいえ  | いいえ  |
+| リアルタイムのレポート | はい | はい | いいえ  | いいえ  | はい |
+| 柔軟なバックアップの復元ポイント | はい | はい | いいえ <sup>3</sup> | はい <sup>4</sup> | はい <sup>4</sup> |
 | SMP/MPP | SMP | SMP | MPP | MPP | MPP |
 
 <!-- markdownlint-enable MD033 -->
@@ -155,10 +155,10 @@ Azure SQL Data Warehouse は、ワークロードがコンピューティング�
 
 | | Azure SQL Database | SQL Server (VM) |  SQL Data Warehouse | HDInsight 上の Apache Hive | HDInsight 上の Hive LLAP |
 | --- | --- | --- | --- | --- | --- | -- |
-| 高可用性のための冗長リージョン サーバー  | [はい] | はい | はい | いいえ  | いいえ  |
-| クエリのスケールアウト (分散クエリ) をサポート  | いいえ  | いいえ  | 可能  | はい | [はい] |
-| 動的スケーラビリティ | [はい] | いいえ  | はい <sup>1</sup> | いいえ  | いいえ  |
-| データのメモリ内キャッシュをサポート | [はい] |  はい | いいえ  | 可能  | [はい] |
+| 高可用性のための冗長リージョン サーバー  | はい | はい | はい | いいえ  | いいえ  |
+| クエリのスケールアウト (分散クエリ) をサポート  | いいえ  | いいえ  | 可能  | はい | はい |
+| 動的スケーラビリティ | はい | いいえ  | はい <sup>1</sup> | いいえ  | いいえ  |
+| データのメモリ内キャッシュをサポート | はい |  はい | いいえ  | 可能  | はい |
 
 [1] SQL Data Warehouse を使用すると、Data Warehouse ユニット (DWU) の数を調整してスケールアップまたはスケールダウンできます。 「[Azure SQL Data Warehouse のコンピューティング能力の管理](/azure/sql-data-warehouse/sql-data-warehouse-manage-compute-overview)」を参照してください。
 
@@ -171,12 +171,12 @@ Azure SQL Data Warehouse は、ワークロードがコンピューティング�
 |                         |           Azure SQL Database            |  仮想マシンの SQL Server  | SQL Data Warehouse |   HDInsight 上の Apache Hive    |    HDInsight 上の Hive LLAP     |
 |-------------------------|-----------------------------------------|-----------------------------------|--------------------|-------------------------------|-------------------------------|
 |     認証      | SQL / Azure Active Directory (Azure AD) | SQL / Azure AD / Active Directory |   SQL / Azure AD   | ローカル / Azure AD <sup>1</sup> | ローカル / Azure AD <sup>1</sup> |
-|      承認      |                   [はい]                   |                はい                |        はい         |              [はい]              |       はい <sup>1</sup>        |
-|        監査         |                   [はい]                   |                はい                |        はい         |              [はい]              |       はい <sup>1</sup>        |
+|      承認      |                   はい                   |                はい                |        はい         |              はい              |       はい <sup>1</sup>        |
+|        監査         |                   はい                   |                はい                |        はい         |              はい              |       はい <sup>1</sup>        |
 | 保存データの暗号化 |            はい <sup>2</sup>             |         はい <sup>2</sup>          |  はい <sup>2</sup>  |       はい <sup>2</sup>        |       はい <sup>1</sup>        |
-|   行レベルのセキュリティ    |                   [はい]                   |                はい                |        はい         |              いいえ                |       はい <sup>1</sup>        |
-|   ファイアウォールをサポート    |                   [はい]                   |                はい                |        はい         |              [はい]              |       はい <sup>3</sup>        |
-|  動的データ マスク   |                   [はい]                   |                はい                |        はい         |              いいえ                |       はい <sup>1</sup>        |
+|   行レベルのセキュリティ    |                   はい                   |                はい                |        はい         |              いいえ                |       はい <sup>1</sup>        |
+|   ファイアウォールをサポート    |                   はい                   |                はい                |        はい         |              はい              |       はい <sup>3</sup>        |
+|  動的データ マスク   |                   はい                   |                はい                |        はい         |              いいえ                |       はい <sup>1</sup>        |
 
 <!-- markdownlint-enable MD033 -->
 

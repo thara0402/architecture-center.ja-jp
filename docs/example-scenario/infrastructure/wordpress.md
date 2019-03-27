@@ -9,11 +9,11 @@ ms.service: architecture-center
 ms.subservice: example-scenario
 social_image_url: /azure/architecture/example-scenario/infrastructure/media/secure-scalable-wordpress.png
 ms.openlocfilehash: 6032247dce0d090885bc560d963f1e714d91f69c
-ms.sourcegitcommit: 3b15d65e7c35a19506e562c444343f8467b6a073
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54908377"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58244633"
 ---
 # <a name="highly-scalable-and-secure-wordpress-website"></a>高度にスケーラブルで安全な WordPress Web サイト
 

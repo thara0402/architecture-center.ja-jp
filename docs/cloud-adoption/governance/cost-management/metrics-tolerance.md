@@ -8,11 +8,11 @@ ms.date: 02/11/2019
 description: クラウド ガバナンスと関連した Cost Management の説明
 author: BrianBlanchard
 ms.openlocfilehash: 76e6b1b32dd862322f6cafd9aa63c6c4f79f4f5d
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55902025"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58241733"
 ---
 # <a name="cost-management-metrics-indicators-and-risk-tolerance"></a>Cost Management のメトリック、インジケーター、およびリスク許容度
 

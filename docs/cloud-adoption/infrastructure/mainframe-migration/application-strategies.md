@@ -3,12 +3,12 @@ title: メインフレームの移行:メインフレーム アプリケーシ�
 description: メインフレームで現在実行されているシステムに関してメインフレーム環境から Azure にアプリケーションを移行します。Azure は可用性が高く、拡張可能なインフラストラクチャであることが証明されています
 author: njray
 ms.date: 12/26/2018
-ms.openlocfilehash: dcae5077e26ab8ba9b08e0da71a5e69d0d9f62e3
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.openlocfilehash: 2a22eb038da693671ce309c76afcfc41946034f3
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55901429"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58246393"
 ---
 # <a name="mainframe-application-migration"></a>メインフレーム アプリケーションの移行
 
@@ -168,7 +168,7 @@ Azure では、この目的に別の VM を使用することの方が一般的�
 
 一般的なシナリオでは、アプリケーションを Azure に移動し、アプリケーションによって使用されるデータはメインフレームで維持します。 Azure 上のアプリケーションがメインフレーム上のデータにアクセスできるようにするには、特定のソフトウェアが使用されます。 さいわい、広範なソリューションでは、Azure と既存のメインフレーム環境間の統合、ハイブリッド シナリオのサポート、および時間をかけた移行が提供されています。 Microsoft パートナー、独立系ソフトウェア ベンダー、およびシステム インテグレーターがユーザーの作業を支援できます。
 
-1 つのオプションは [Microsoft Host Integration Server](https://docs.microsoft.com/host-integration-server/) (HIS) です。このソリューションでは、メインフレームに残っている DB2 のデータにアクセスするために Azure のアプリケーションで必要な分散リレーショナル データベース アーキテクチャ (DRDA) が提供されます。 メインフレームと Azure の統合に対する他のオプションとしては、IBM、Attunity、Codit、他のベンダーからのソリューション、およびオープン ソースのオプションがあります。
+1 つのオプションは [Microsoft Host Integration Server](/host-integration-server) (HIS) です。このソリューションでは、メインフレームに残っている DB2 のデータにアクセスするために Azure のアプリケーションで必要な分散リレーショナル データベース アーキテクチャ (DRDA) が提供されます。 メインフレームと Azure の統合に対する他のオプションとしては、IBM、Attunity、Codit、他のベンダーからのソリューション、およびオープン ソースのオプションがあります。
 
 ## <a name="partner-solutions"></a>パートナー ソリューション
 
@@ -188,4 +188,4 @@ Azure では、メインフレームで現在実行されているシステム�
 
 - [Azure 上に IBM DB2 pureScale をデプロイする](https://azure.microsoft.com/resources/deploy-ibm-db2-purescale-on-azure)
 
-- [Host Integration Server (HIS) のドキュメント](https://docs.microsoft.com/host-integration-server/)
+- [Host Integration Server (HIS) のドキュメント](/host-integration-server)

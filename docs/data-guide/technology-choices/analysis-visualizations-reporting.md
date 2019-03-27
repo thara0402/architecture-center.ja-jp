@@ -8,11 +8,11 @@ ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.custom: data-analytics
 ms.openlocfilehash: 72b889e2fe0d862ab1ff280cea76c2880b0fadc4
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54481918"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58245953"
 ---
 # <a name="choosing-a-data-analytics-technology-in-azure"></a>Azure でのデータ分析とテクノロジの選択
 
@@ -89,16 +89,16 @@ Jupyter Notebook では、Power BI などの BI/レポート ツールでより�
 
 | | Power BI | Jupyter Notebooks | Zeppelin Notebook | Microsoft Azure Notebooks |
 | --- | --- | --- | --- | --- |
-| 高度な処理のためのビッグ データ クラスターへの接続 | [はい] | はい | はい | いいえ  |
-| 管理されたサービス | [はい] | はい <sup>1</sup> | はい <sup>1</sup> | [はい] |
-| 数百のデータ ソースへの接続 | [はい] | いいえ  | いいえ  | いいえ  |
+| 高度な処理のためのビッグ データ クラスターへの接続 | はい | はい | はい | いいえ  |
+| 管理されたサービス | はい | はい <sup>1</sup> | はい <sup>1</sup> | はい |
+| 数百のデータ ソースへの接続 | はい | いいえ  | いいえ  | いいえ  |
 | オフライン機能 | はい <sup>2</sup> | いいえ  | いいえ  | いいえ  |
-| 埋め込み機能 | [はい] | いいえ  | いいえ  | いいえ  |
-| データの自動更新 | [はい] | いいえ  | いいえ  | いいえ  |
+| 埋め込み機能 | はい | いいえ  | いいえ  | いいえ  |
+| データの自動更新 | はい | いいえ  | いいえ  | いいえ  |
 | 多数のオープン ソース パッケージへのアクセス | いいえ  | はい <sup>3</sup> | はい <sup>3</sup> | はい <sup>4</sup> |
 | データ変換/クレンジング オプション | [Power Query](https://powerbi.microsoft.com/blog/getting-started-with-power-query-part-i/)、R | Python、R、Julia、Scala などの 40 言語 | Python、JDBC、R などの 20 を超えるインタープリター | Python、F#、R |
 | 価格 | 無料の Power BI Desktop (作成) については、ホスティング オプションの[料金](https://powerbi.microsoft.com/pricing/)をご覧ください | 無料 | 無料 | 無料 |
-| マルチユーザー コラボレーション | [はい](/power-bi/service-how-to-collaborate-distribute-dashboards-reports) | はい (共有または [JupyterHub](https://github.com/jupyterhub/jupyterhub) などのマルチユーザー サーバーを使用) | [はい] | はい (共有を使用) |
+| マルチユーザー コラボレーション | [はい](/power-bi/service-how-to-collaborate-distribute-dashboards-reports) | はい (共有または [JupyterHub](https://github.com/jupyterhub/jupyterhub) などのマルチユーザー サーバーを使用) | はい | はい (共有を使用) |
 
 <!-- markdownlint-enable MD033 -->
 

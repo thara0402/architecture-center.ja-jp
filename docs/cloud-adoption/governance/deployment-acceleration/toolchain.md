@@ -7,12 +7,12 @@ ms.subservice: enterprise-cloud-adoption
 ms.custom: governance
 ms.date: 02/11/2019
 author: BrianBlanchard
-ms.openlocfilehash: 8d2cae87b8a3a11bfde87aafc04d4d2ef55cbbe9
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.openlocfilehash: cd00f2fa132f5f177ccc12f61be8b5342b71197d
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55901950"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58247423"
 ---
 # <a name="deployment-acceleration-tools-in-azure"></a>Azure のデプロイ高速化ツール
 
@@ -22,7 +22,7 @@ ms.locfileid: "55901950"
 
 このガバナンス規範をサポートするポリシーとプロセスを成熟させるのに役立つ Azure ツールの一覧を次に示します。
 
-|  |Azure Policy  |Azure 管理グループ  |Azure Resource Manager のテンプレート  |Azure Blueprint  | Azure Resource Graph | Azure Cost Management |
+|  | Azure Policy | Azure 管理グループ | Azure Resource Manager のテンプレート | Azure Blueprint | Azure Resource Graph | Azure Cost Management |
 |---------|---------|---------|---------|---------|---------|---------|
 |企業ポリシーを実装する     |はい |いいえ   |いいえ   |いいえ  | いいえ  |いいえ  |
 |サブスクリプション間でポリシーを適用する     |必須 |はい  |いいえ   |いいえ  | いいえ  |いいえ  |

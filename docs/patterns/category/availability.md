@@ -10,11 +10,11 @@ ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.custom: seodec18
 ms.openlocfilehash: 897bc3c87beb23770220ef0fc3c5c4394d192f2a
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54486814"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58243043"
 ---
 # <a name="availability-patterns"></a>可用性のパターン
 

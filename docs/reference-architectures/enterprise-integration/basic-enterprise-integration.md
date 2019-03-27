@@ -11,11 +11,11 @@ ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: integration-services
 ms.openlocfilehash: 76e422ead7e53c582a9d64ab1da643c3990749d6
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54488394"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58242963"
 ---
 # <a name="basic-enterprise-integration-on-azure"></a>Azure での基本的なエンタープライズ統合
 

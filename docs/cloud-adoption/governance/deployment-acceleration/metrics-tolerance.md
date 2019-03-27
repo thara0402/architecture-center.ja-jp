@@ -8,11 +8,11 @@ ms.date: 02/11/2019
 description: デプロイ高速化のメトリック、インジケーター、およびリスク許容度
 author: alexbuckgit
 ms.openlocfilehash: 87d6f9f67b98d5761aced560392c9d38fa682ee7
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55901549"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58241213"
 ---
 # <a name="deployment-acceleration-metrics-indicators-and-risk-tolerance"></a>デプロイ高速化のメトリック、インジケーター、およびリスク許容度
 

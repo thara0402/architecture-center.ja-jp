@@ -8,11 +8,11 @@ ms.date: 02/11/2019
 description: クラウド ガバナンスに関連するセキュリティ ベースラインの概念の説明
 author: BrianBlanchard
 ms.openlocfilehash: 93622fee899824fffe604d7b3f588f5ed179b371
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55901599"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58241693"
 ---
 # <a name="security-baseline-template"></a>セキュリティ ベースライン テンプレート
 
@@ -31,7 +31,7 @@ ms.locfileid: "55901599"
 
 ## <a name="next-steps"></a>次の手順
 
-ガバナンス プラクティスを堅実なものにするは、ビジネス リスクの理解から始めます。 ビジネス上のリスクに関する記事を確認し、現在のクラウド導入計画に合致するビジネス上のリスクの文書化を開始します。
+堅実なガバナンス プラクティスは、ビジネス リスクの理解から始まります。 ビジネス リスクに関する記事をレビューし、現在のクラウド導入計画に整合するビジネス リスクの文書化を開始してください。
 
 > [!div class="nextstepaction"]
-> [ビジネス上のリスクについての理解](./business-risks.md)
+> [ビジネス リスクを理解する](./business-risks.md)

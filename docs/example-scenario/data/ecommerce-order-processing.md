@@ -7,13 +7,14 @@ ms.date: 07/10/2018
 ms.topic: example-scenario
 ms.service: architecture-center
 ms.subservice: example-scenario
+ms.custom: fasttrack
 social_image_url: /azure/architecture/example-scenario/data/media/architecture-ecommerce-order-processing.png
-ms.openlocfilehash: 3bb6e0998f2832bfdb20ba8b7bbf099cf6ac0423
-ms.sourcegitcommit: 3b15d65e7c35a19506e562c444343f8467b6a073
+ms.openlocfilehash: d7e723e67e021510076c0e97083687e807798a1b
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54908406"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58246233"
 ---
 # <a name="scalable-order-processing-on-azure"></a>Azure でのスケーラブルな注文処理
 

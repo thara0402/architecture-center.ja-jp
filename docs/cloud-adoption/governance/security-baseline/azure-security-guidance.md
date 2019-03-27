@@ -8,11 +8,11 @@ ms.date: 02/11/2019
 description: Microsoft はどのようなセキュリティ ガイダンスを提供していますか?
 author: BrianBlanchard
 ms.openlocfilehash: 845b02422e2df63425e29acdfd9b43b744934c9f
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55901313"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58241933"
 ---
 <!-- markdownlint-disable MD026 -->
 

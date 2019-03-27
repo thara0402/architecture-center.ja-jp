@@ -9,11 +9,11 @@ ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: seodec18
 ms.openlocfilehash: b015a130a74f3160c0e737b436d41e1b1ea7b5bf
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54483039"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58241373"
 ---
 # <a name="improve-scalability-in-an-azure-web-application"></a>Azure Web アプリケーションのスケーラビリティの向上
 

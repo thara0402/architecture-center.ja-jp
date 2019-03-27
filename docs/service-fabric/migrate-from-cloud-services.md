@@ -6,12 +6,12 @@ ms.date: 04/11/2018
 ms.topic: guide
 ms.service: architecture-center
 ms.subservice: reference-architecture
-ms.openlocfilehash: e2b89fa51abdb7be6124ded6e64889b5b54854a4
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.openlocfilehash: 66f1431f45a0c9accf3a8227fa8cbb5966568372
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54487901"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58248013"
 ---
 # <a name="migrate-an-azure-cloud-services-application-to-azure-service-fabric"></a>Azure Cloud Services アプリケーションを Azure Service Fabric に移行する 
 
@@ -79,7 +79,7 @@ Service Fabric は、Azure SQL Database、Cosmos DB、Azure Event Hubs などを
 | 密度 |VM ごとに 1 つのロール インスタンス | 1 つのノードで複数のサービス |
 | 最小ノード数 | ロールあたり 2 | 運用デプロイメントの場合はクラスターあたり 5 |
 | 状態管理 | ステートレス | ステートレスまたはステートフル* |
-| ホスティング | Azure | クラウドまたはオンプレミスの |
+| Hosting | Azure | クラウドまたはオンプレミスの |
 | Web ホスティング | IIS** | 自己ホスト |
 | デプロイメント モデル | [クラシック デプロイ モデル][azure-deployment-models] | [Resource Manager][azure-deployment-models]  |
 | 梱包 | クラウド サービス パッケージ ファイル (.cspkg) | アプリケーションおよびサービス パッケージ |
@@ -202,7 +202,7 @@ Application package
 
 Service Fabric アプリケーションには以下の構成ファイルが含まれています。
 
-| ファイル | 場所 | 説明 |
+| ファイル | Location | 説明 |
 |------|----------|-------------|
 | ApplicationManifest.xml | アプリケーション パッケージ | アプリケーションを構成するサービスを定義します。 |
 | ServiceManifest.xml | サービス パッケージ| 1 つまたは複数のサービスについて記述します。 |
@@ -309,7 +309,7 @@ Survey アプリケーションは適切に移植されました。Tailspin が�
 [cloud-service-autoscale]: /azure/cloud-services/cloud-services-how-to-scale-portal
 [cloud-service-config]: /azure/cloud-services/cloud-services-model-and-package
 [cloud-service-endpoints]: /azure/cloud-services/cloud-services-enable-communication-role-instances#worker-roles-vs-web-roles
-[kestrel]: https://docs.microsoft.com/aspnet/core/fundamentals/servers/kestrel
+[kestrel]: /aspnet/core/fundamentals/servers/kestrel
 [lb-probes]: /azure/load-balancer/load-balancer-custom-probe-overview
 [owin]: https://www.asp.net/aspnet/overview/owin-and-katana
 [refactor-surveys]: refactor-migrated-app.md

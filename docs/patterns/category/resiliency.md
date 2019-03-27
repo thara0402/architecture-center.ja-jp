@@ -10,11 +10,11 @@ ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.custom: seodec18
 ms.openlocfilehash: 5863cf9491434e2ddd683178591aff09c40e7315
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54481215"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58248897"
 ---
 # <a name="resiliency-patterns"></a>回復性のパターン
 

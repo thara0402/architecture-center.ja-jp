@@ -9,12 +9,12 @@ ms.topic: design-pattern
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.custom: seodec18
-ms.openlocfilehash: 8d37bc2aed17bfef4d54f29f269b23ce4a5c52c0
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.openlocfilehash: edd73fd68ca4708faed92c6b1bcf5cfa3e6b2f07
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55897662"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58242343"
 ---
 # <a name="retry-pattern"></a>再試行パターン
 
@@ -52,7 +52,7 @@ ms.locfileid: "55897662"
 
 アプリケーションは、障害と失敗した操作の詳細をログに記録する必要があります。 この情報はオペレーターにとって有益です。 サービスが頻繁に使用できなくなるかビジー状態になる場合、その原因の多くは、サービスのリソースが使い果たされていることです。 サービスをスケール アウトすることで、このような障害の頻度を軽減できます。 たとえば、データベース サービスが継続的に過負荷になる場合は、データベースをパーティション分割し、複数のサーバーに負荷を分散すると効果的である可能性があります。
 
-> [Microsoft Entity Framework](https://docs.microsoft.com/ef/) は、データベースの操作を再試行するための機能を提供します。 ほとんどの Azure サービスとクライアント SDK にも、再試行メカニズムが組み込まれています。 詳細については、「[特定のサービスの再試行ガイダンス](/azure/architecture/best-practices/retry-service-specific)」を参照してください。
+> [Microsoft Entity Framework](/ef) は、データベースの操作を再試行するための機能を提供します。 ほとんどの Azure サービスとクライアント SDK にも、再試行メカニズムが組み込まれています。 詳細については、「[特定のサービスの再試行ガイダンス](/azure/architecture/best-practices/retry-service-specific)」を参照してください。
 
 ## <a name="issues-and-considerations"></a>問題と注意事項
 
@@ -177,4 +177,4 @@ private bool IsTransient(Exception ex)
 
 - [サーキット ブレーカー パターン](./circuit-breaker.md)。 再試行パターンは、一時的な障害を処理するために役立ちます。 障害が長く続くことが予想される場合は、サーキット ブレーカー パターンを実装するほうが適切である可能があります。 再試行パターンとサーキット ブレーカー パターンを組み合わせて、障害を処理するための包括的なアプローチを提供することもできます。
 - [特定のサービスの再試行ガイダンス](/azure/architecture/best-practices/retry-service-specific)
-- [接続の回復性](https://docs.microsoft.com/ef/core/miscellaneous/connection-resiliency)
+- [接続の回復性](/ef/core/miscellaneous/connection-resiliency)

@@ -9,11 +9,11 @@ ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: seodec18, serverless
 ms.openlocfilehash: 9d2535c3e350000783265dc58c83d00a38d45448
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54486218"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58244313"
 ---
 # <a name="serverless-event-processing-using-azure-functions"></a>Azure Functions を使用したサーバーレスなイベント処理
 

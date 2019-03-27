@@ -10,11 +10,11 @@ ms.subservice: example-scenario
 ms.custom: IoT, data-analytics
 social_image_url: /azure/architecture/example-scenario/data/media/architecture-big-data-with-iot.png
 ms.openlocfilehash: bf963c0467acd4ecbb4bdca6272385d7532167f2
-ms.sourcegitcommit: 3b15d65e7c35a19506e562c444343f8467b6a073
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54908459"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58244773"
 ---
 # <a name="iot-and-data-analytics-in-the-construction-industry"></a>建設業界での IoT とデータ分析
 

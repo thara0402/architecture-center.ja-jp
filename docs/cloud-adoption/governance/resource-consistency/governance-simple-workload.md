@@ -6,13 +6,13 @@ ms.subservice: enterprise-cloud-adoption
 ms.custom: governance
 description: Azure ガバナンス管理を構成してユーザーがシンプルなワークロードをデプロイできるようにするためのガイダンス
 author: petertaylor9999
-ms.date: 2/11/2019
-ms.openlocfilehash: ce090562bf256a34078cfe1a9e9f678dbdf10ffe
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.date: 02/11/2019
+ms.openlocfilehash: 0b6f16ee30ce3af8a533b6e153fbe318252c23e7
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55901377"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58246433"
 ---
 # <a name="governance-design-for-a-simple-workload"></a>シンプルなワークロード向けガバナンス設計
 

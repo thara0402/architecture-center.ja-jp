@@ -10,11 +10,11 @@ ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.custom: seodec18
 ms.openlocfilehash: 5cefef36b7c763324de2e962d47509b1d1b2c968
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54481207"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58242993"
 ---
 # <a name="compensating-transaction-pattern"></a>補正トランザクション パターン
 

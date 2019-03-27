@@ -8,11 +8,11 @@ ms.date: 02/11/2019
 description: ID ベースライン テンプレート
 author: BrianBlanchard
 ms.openlocfilehash: d62dcb6e30efd81f026a6dc8a92eff3215d42c46
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55902030"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58242703"
 ---
 # <a name="caf-identity-baseline-template"></a>CAF:ID ベースライン テンプレート
 

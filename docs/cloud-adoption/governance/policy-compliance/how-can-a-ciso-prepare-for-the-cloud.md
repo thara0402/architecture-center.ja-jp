@@ -3,12 +3,12 @@ title: 'CAF: CISO の準備状況'
 description: CISO がクラウドに向けた準備ができる方法
 author: BrianBlanchard
 ms.date: 10/03/2018
-ms.openlocfilehash: cedb86488304e2fc84897e1da373730768adce66
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.openlocfilehash: a4535163990797decdacdacdcb6a33f0118366e9
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55902169"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58238357"
 ---
 # <a name="ciso-cloud-readiness-guide"></a>CISO のクラウド準備状況に関するガイド
 
@@ -38,7 +38,7 @@ Azure クラウド導入フレームワーク (CAF) などの Microsoftによる
 * [必須のセキュリティ トレーニング、バックグラウンド チェック](https://downloads.cloudsecurityalliance.org/star/self-assessment/StandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx)
 * [侵入テスト、不正侵入検出、DDoS、監査、ログ記録](https://www.microsoft.com/trustcenter/Security/AuditingAndLogging)
 * [最新のデータ センター](https://www.microsoft.com/cloud-platform/global-datacenters)、物理的なセキュリティ、[セキュリティで保護されたネットワーク](/azure/security/security-network-overview)
-* [クラウドにおける Microsoft Azure のセキュリティ対応に関する資料 (PDF)](http://aka.ms/SecurityResponsePaper)
+* [クラウドにおける Microsoft Azure のセキュリティ対応に関する資料 (PDF)](https://aka.ms/SecurityResponsePaper)
 
 プライバシーと管理: 
 
@@ -58,7 +58,7 @@ Azure クラウド導入フレームワーク (CAF) などの Microsoftによる
 透明性: 
 
 * [Microsoft が Azure サービスで顧客データの安全性を確保する方法](https://www.microsoft.com/trustcenter/Transparency/default.aspx)
-* [Microsoft が Azure サービスでデータの保管場所を管理する方法](http://azuredatacentermap.azurewebsites.net/)
+* [Microsoft が Azure サービスでデータの保管場所を管理する方法](https://azuredatacentermap.azurewebsites.net/)
 * [データにアクセスできるユーザーとその条件](https://www.microsoft.com/trustcenter/Privacy/Who-can-access-your-data-and-on-what-terms)
 * [Microsoft が Azure サービスで顧客データの安全性を確保する方法](https://www.microsoft.com/trustcenter/Transparency/default.aspx)
 * [Azure サービスの証明書確認、Transparency Hub](https://www.microsoft.com/trustcenter/Compliance/default.aspx)

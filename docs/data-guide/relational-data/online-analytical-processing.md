@@ -7,11 +7,11 @@ ms.topic: guide
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.openlocfilehash: 70c18e1a5294b09bb156d2af06af7a32d33858da
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54485483"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58246183"
 ---
 # <a name="online-analytical-processing-olap"></a>オンライン分析処理 (OLAP)
 
@@ -133,13 +133,13 @@ SQL Server Analysis Services (SSAS) は、ビジネス インテリジェンス 
 
 | | Azure Analysis Services | SQL Server Analysis Services | 列ストア インデックスを使用する SQL Server | 列ストア インデックスを使用する Azure SQL Database |
 | --- | --- | --- | --- | --- |
-| マネージド サービスか | [はい] | いいえ  | いいえ  | [はい] |
+| マネージド サービスか | はい | いいえ  | いいえ  | はい |
 | 多次元キューブをサポート | いいえ  | はい | いいえ  | いいえ  |
-| 表形式のセマンティック モデルをサポート | [はい] | はい | いいえ  | いいえ  |
-| 複数のデータ ソースを簡単に統合 | [はい] | [はい] | なし <sup>1</sup> | なし <sup>1</sup> |
-| リアルタイムの分析をサポート | いいえ  | いいえ  | 可能  | [はい] |
-| ソースからデータをコピーするプロセスが必要 | [はい] | はい | いいえ  | いいえ  |
-| Azure AD の統合 | [はい] | いいえ  | いいえ <sup>2</sup> | [はい] |
+| 表形式のセマンティック モデルをサポート | はい | はい | いいえ  | いいえ  |
+| 複数のデータ ソースを簡単に統合 | はい | はい | なし <sup>1</sup> | なし <sup>1</sup> |
+| リアルタイムの分析をサポート | いいえ  | いいえ  | 可能  | はい |
+| ソースからデータをコピーするプロセスが必要 | はい | はい | いいえ  | いいえ  |
+| Azure AD の統合 | はい | いいえ  | いいえ <sup>2</sup> | はい |
 
 <!-- markdownlint-enable MD033 -->
 
@@ -151,6 +151,6 @@ SQL Server Analysis Services (SSAS) は、ビジネス インテリジェンス 
 
 |                                                  | Azure Analysis Services | SQL Server Analysis Services | 列ストア インデックスを使用する SQL Server | 列ストア インデックスを使用する Azure SQL Database |
 |--------------------------------------------------|-------------------------|------------------------------|-------------------------------------|---------------------------------------------|
-| 高可用性のための冗長リージョン サーバー |           [はい]           |              いいえ               |                 可能                  |                     [はい]                     |
-|             クエリのスケールアウトをサポート             |           [はい]           |              いいえ               |                 はい                 |                     いいえ                       |
-|          動的スケーラビリティ (スケールアップ)          |           [はい]           |              いいえ               |                 はい                 |                     いいえ                       |
+| 高可用性のための冗長リージョン サーバー |           はい           |              いいえ               |                 可能                  |                     はい                     |
+|             クエリのスケールアウトをサポート             |           はい           |              いいえ               |                 はい                 |                     いいえ                       |
+|          動的スケーラビリティ (スケールアップ)          |           はい           |              いいえ               |                 はい                 |                     いいえ                       |

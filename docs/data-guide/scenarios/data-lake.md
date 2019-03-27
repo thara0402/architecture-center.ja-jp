@@ -7,11 +7,11 @@ ms.topic: guide
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.openlocfilehash: d433867886ce0afc219fcc9f35eb7f8b3ce6bee1
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54484705"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58244093"
 ---
 # <a name="data-lakes"></a>データ レイク
 

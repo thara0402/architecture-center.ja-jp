@@ -1,5 +1,5 @@
 ---
-title: CAF:ソフトウェア定義ネットワーク - クラウド ネイティブ
+title: 'CAF: ソフトウェア定義ネットワーク - クラウド ネイティブ'
 titleSuffix: Microsoft Cloud Adoption Framework for Azure
 ms.service: architecture-center
 ms.subservice: enterprise-cloud-adoption
@@ -8,11 +8,11 @@ ms.date: 02/11/2019
 description: クラウド ネイティブの仮想ネットワーク サービスの説明
 author: rotycenh
 ms.openlocfilehash: e0ad6803f2ddc982ea0c42c59fdf2486e1710433
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55901554"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58241137"
 ---
 # <a name="software-defined-networks-hub-and-spoke"></a>ソフトウェア定義ネットワーク:ハブ アンド スポーク
 

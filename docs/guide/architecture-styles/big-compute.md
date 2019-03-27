@@ -9,11 +9,11 @@ ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: seojan19, HPC
 ms.openlocfilehash: 56bd2ce010b56880e769ada4c6397391a73bbd1e
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54485759"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58244623"
 ---
 # <a name="big-compute-architecture-style"></a>ビッグ コンピューティング アーキテクチャ スタイル
 

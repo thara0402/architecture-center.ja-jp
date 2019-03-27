@@ -7,11 +7,11 @@ ms.topic: guide
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.openlocfilehash: 30af134c0dc33b12d86057dd6ac5034c5f108f05
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54488462"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58245993"
 ---
 # <a name="machine-learning-at-scale"></a>大規模な Machine Learning
 

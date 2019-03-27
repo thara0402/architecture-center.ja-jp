@@ -7,11 +7,11 @@ ms.topic: guide
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.openlocfilehash: 342e44d960682c72901a7482caaf328514eb73d8
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54486130"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58246303"
 ---
 # <a name="choosing-a-stream-processing-technology-in-azure"></a>Azure でのストリーム処理テクノロジの選択
 
@@ -69,10 +69,10 @@ Azure では、以下のすべてのデータ ストアがリアルタイム処�
 
 | | Azure Stream Analytics | Spark Streaming を使用する HDInsight | Azure Databricks における Apache Spark | Storm を使用する HDInsight | Azure Functions | Azure App Service WebJobs |
 | --- | --- | --- | --- | --- | --- | --- |
-| 組み込みのテンポラル/ウィンドウの サポート | [はい] | はい | はい | はい | いいえ  | いいえ  |
+| 組み込みのテンポラル/ウィンドウの サポート | はい | はい | はい | はい | いいえ  | いいえ  |
 | 入力データ形式 | Avro、JSON または CSV、UTF-8 エンコード | カスタム コードを使用する任意の形式 | カスタム コードを使用する任意の形式 | カスタム コードを使用する任意の形式 | カスタム コードを使用する任意の形式 | カスタム コードを使用する任意の形式 |
 | スケーラビリティ | [クエリ パーティション](/azure/stream-analytics/stream-analytics-parallelization) | クラスターのサイズによる制限 | Databricks クラスターのスケール構成による制限 | クラスターのサイズによる制限 | 並列処理される最大 200 の関数アプリ インスタンス | アプリ サービス プランの容量による制限 |
-| 遅延着信と順不同のイベントの処理 | [はい] | はい | はい | はい | いいえ  | いいえ  |
+| 遅延着信と順不同のイベントの処理 | はい | はい | はい | はい | いいえ  | いいえ  |
 
 関連項目:
 

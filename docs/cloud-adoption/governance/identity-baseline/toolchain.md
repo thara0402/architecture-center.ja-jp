@@ -8,11 +8,11 @@ ms.date: 02/11/2019
 description: Azure での ID ベースライン ツール
 author: BrianBlanchard
 ms.openlocfilehash: 81b0fa9cfee597da98d8b983fb155eac82d97bf8
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55901921"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58243673"
 ---
 # <a name="identity-baseline-tools-in-azure"></a>Azure での ID ベースライン ツール
 

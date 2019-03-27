@@ -7,11 +7,11 @@ ms.topic: guide
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.openlocfilehash: 53f8b233b0e0c1ff83a72a04b2707caa528d6f6b
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54486456"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58248517"
 ---
 # <a name="choosing-a-batch-processing-technology-in-azure"></a>Azure で使用するバッチ処理テクノロジの選択
 
@@ -86,8 +86,8 @@ AZTK は Azure サービスではありません。 CLI および Python SDK イ
 
 | | Azure Data Lake Analytics | Azure SQL Data Warehouse | HDInsight | Azure Databricks |
 | --- | --- | --- | --- | --- | --- |
-| マネージド サービスか | [はい] | [はい] | はい <sup>1</sup> | [はい] |
-| リレーショナル データ ストア | [はい] | はい | いいえ  | いいえ  |
+| マネージド サービスか | はい | はい | はい <sup>1</sup> | はい |
+| リレーショナル データ ストア | はい | はい | いいえ  | いいえ  |
 | 価格モデル | バッチ ジョブごと | クラスター時間単位 | クラスター時間単位 | Databricks の単位<sup>2</sup> + クラスター時間 |
 
 [1] 手動構成とスケーリングを使用。
@@ -98,14 +98,14 @@ AZTK は Azure サービスではありません。 CLI および Python SDK イ
 
 | | Azure Data Lake Analytics | SQL Data Warehouse | Spark を使用する HDInsight | Hive を使用する HDInsight | Hive LLAP を使用する HDInsight | Azure Databricks |
 | --- | --- | --- | --- | --- | --- | --- |
-| 自動スケール | いいえ  | いいえ  | いいえ  | いいえ  | いいえ  | [はい] |
+| 自動スケール | いいえ  | いいえ  | いいえ  | いいえ  | いいえ  | はい |
 | スケールアウトの細分性  | ジョブごと | クラスターごと | クラスターごと | クラスターごと | クラスターごと | クラスターごと |
-| データのメモリ内キャッシュ | いいえ  | 可能  | はい | いいえ  | 可能  | [はい] |
-| 外部リレーショナル ストアからのクエリ | [はい] | いいえ  | はい | いいえ  | いいえ  | [はい] |
+| データのメモリ内キャッシュ | いいえ  | 可能  | はい | いいえ  | 可能  | はい |
+| 外部リレーショナル ストアからのクエリ | はい | いいえ  | はい | いいえ  | いいえ  | はい |
 | Authentication  | Azure AD | SQL / Azure AD | いいえ  | Azure AD<sup>1</sup> | Azure AD<sup>1</sup> | Azure AD |
-| 監査  | [はい] | はい | いいえ  | はい <sup>1</sup> | はい <sup>1</sup> | [はい] |
+| 監査  | はい | はい | いいえ  | はい <sup>1</sup> | はい <sup>1</sup> | はい |
 | 行レベルのセキュリティ | いいえ  | いいえ  | いいえ  | はい <sup>1</sup> | はい <sup>1</sup> | いいえ  |
-| ファイアウォールをサポート | [はい] | はい | [はい] | はい <sup>2</sup> | はい <sup>2</sup> | いいえ  |
+| ファイアウォールをサポート | はい | はい | はい | はい <sup>2</sup> | はい <sup>2</sup> | いいえ  |
 | 動的データ マスク | いいえ  | いいえ  | いいえ  | はい <sup>1</sup> | はい <sup>1</sup> | いいえ  |
 
 <!-- markdownlint-enable MD033 -->

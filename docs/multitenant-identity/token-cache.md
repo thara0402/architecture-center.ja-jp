@@ -10,11 +10,11 @@ pnp.series.title: Manage Identity in Multitenant Applications
 pnp.series.prev: web-api
 pnp.series.next: adfs
 ms.openlocfilehash: 608a244eb0842da33af32457418d837b7f0a75c2
-ms.sourcegitcommit: 14226018a058e199523106199be9c07f6a3f8592
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55482945"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58241513"
 ---
 # <a name="cache-access-tokens"></a>アクセス トークンのキャッシュ
 

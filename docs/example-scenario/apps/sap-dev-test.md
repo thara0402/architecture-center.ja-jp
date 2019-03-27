@@ -10,11 +10,11 @@ ms.subservice: example-scenario
 ms.custom: fasttrack, SAP
 social_image_url: /azure/architecture/example-scenario/apps/media/architecture-sap-dev-test.png
 ms.openlocfilehash: cd01639ab46fbe3c25c5a770ead13759da9a8c47
-ms.sourcegitcommit: 3b15d65e7c35a19506e562c444343f8467b6a073
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54908209"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58249607"
 ---
 # <a name="devtest-environments-for-sap-workloads-on-azure"></a>Azure での SAP ワークロード向けの開発/テスト環境
 
@@ -76,7 +76,7 @@ Microsoft は 1 つの VM インスタンスに対してサービス レベル �
 
 受信するトラフィックの量に基づいて、次の 4 つのサンプル コスト プロファイルが用意されています。
 
-|サイズ|SAP|VM の種類|Storage|Azure 料金計算ツール|
+|Size|SAP|VM の種類|Storage|Azure 料金計算ツール|
 |----|----|-------|-------|---------------|
 |Small|8000|D8s_v3|P20 x 2、P10 x 1|[Small](https://azure.com/e/9d26b9612da9466bb7a800eab56e71d1)|
 |Medium|16000|D16s_v3|P20 x 3、P10 x 1|[Medium](https://azure.com/e/465bd07047d148baab032b2f461550cd)|

@@ -9,11 +9,11 @@ ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: seojan19
 ms.openlocfilehash: 76590d2a0c16df9d599e7d4a856a84b5e3bdcec8
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54486014"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58241783"
 ---
 # <a name="partition-around-limits"></a>パーティション分割による制限の回避
 

@@ -10,11 +10,11 @@ ms.subservice: example-scenario
 ms.custom: csa-team
 social_image_url: /azure/architecture/example-scenario/apps/media/architecture-decentralized-trust.png
 ms.openlocfilehash: a3c497f91b3861bf02f05981ee92e578a22a14ca
-ms.sourcegitcommit: 3b15d65e7c35a19506e562c444343f8467b6a073
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54907981"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58246283"
 ---
 # <a name="decentralized-trust-between-banks-on-azure"></a>Azure における銀行間での分散型信頼
 

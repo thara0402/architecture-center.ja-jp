@@ -8,11 +8,11 @@ ms.topic: reference-architecture
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.openlocfilehash: a25488357eb11b80e8f79ddae7f7d69735a6bec3
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54485267"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58242933"
 ---
 # <a name="run-a-windows-virtual-machine-on-azure"></a>Azure で Windows 仮想マシンを実行する
 

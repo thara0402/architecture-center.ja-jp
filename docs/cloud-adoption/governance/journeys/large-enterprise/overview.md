@@ -8,11 +8,11 @@ ms.date: 02/11/2019
 description: 大企業のガバナンス体験
 author: BrianBlanchard
 ms.openlocfilehash: 689b600524c3be6c505ade8c5aaa447d772c6e35
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55901334"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58245243"
 ---
 # <a name="caf-large-enterprise-governance-journey"></a>CAF:大企業のガバナンス体験
 

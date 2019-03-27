@@ -4,17 +4,17 @@ titleSuffix: Microsoft Cloud Adoption Framework for Azure
 ms.service: architecture-center
 ms.subservice: enterprise-cloud-adoption
 ms.custom: governance
-ms.date: 2/11/2019
+ms.date: 02/11/2019
 description: クラウド ガバナンスに関連するデプロイ高速化の説明です。
 author: BrianBlanchard
 layout: LandingPage
 ms.topic: landing-page
-ms.openlocfilehash: ba48bb32292f0bb27ed83550483ceecd725071ff
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.openlocfilehash: 8a9cd359f631708d07ab601c4488b969dc8294a0
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55901849"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58246593"
 ---
 # <a name="caf-deployment-acceleration-discipline-overview"></a>CAF:デプロイ高速化の規範の概要
 

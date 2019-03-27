@@ -7,11 +7,11 @@ ms.topic: guide
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.openlocfilehash: 236f5eaffffa8eb1206f13f3eb7fb57828f0a12d
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54483770"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58246173"
 ---
 # <a name="choosing-an-analytical-data-store-in-azure"></a>Azure で使用する分析データ ストアの選択
 
@@ -58,10 +58,10 @@ Azure にはデータ サービス ストレージのオプションがいくつ
 
 | | SQL Database | SQL Data Warehouse | HDInsight 上の HBase/Phoenix | HDInsight 上の Hive LLAP | Azure Analysis Services | Cosmos DB |
 | --- | --- | --- | --- | --- | --- | --- |
-| マネージド サービスか | [はい] | [はい] | はい <sup>1</sup> | はい <sup>1</sup> | [はい] | [はい] |
+| マネージド サービスか | はい | はい | はい <sup>1</sup> | はい <sup>1</sup> | はい | はい |
 | プライマリ データベース モデル | リレーショナル (列ストア インデックスを使用する場合の列の形式) | 単票形式ストレージのリレーショナル テーブル | ワイド カラム ストア | Hive/In-Memory | 表形式/MOLAP セマンティック モデル | ドキュメント ストア、グラフ、キー値ストア、ワイド カラム ストア |
-| SQL 言語のサポート | [はい] | [はい] | はい ([Phoenix](https://phoenix.apache.org/) JDBC ドライバーを使用) | [はい] | いいえ  | [はい] |
-| スピード サービス レイヤーに合わせて最適化 | はい <sup>2</sup> | いいえ  | 可能  | はい | いいえ  | [はい] |
+| SQL 言語のサポート | はい | はい | はい ([Phoenix](https://phoenix.apache.org/) JDBC ドライバーを使用) | はい | いいえ  | はい |
+| スピード サービス レイヤーに合わせて最適化 | はい <sup>2</sup> | いいえ  | 可能  | はい | いいえ  | はい |
 
 [1] 手動構成とスケーリングを使用。
 
@@ -71,20 +71,20 @@ Azure にはデータ サービス ストレージのオプションがいくつ
 
 |                                                  | SQL Database | SQL Data Warehouse | HDInsight 上の HBase/Phoenix | HDInsight 上の Hive LLAP | Azure Analysis Services | Cosmos DB |
 |--------------------------------------------------|--------------|--------------------|----------------------------|------------------------|-------------------------|-----------|
-| 高可用性のための冗長リージョン サーバー |     [はい]      |        はい         |            はい             |           いいえ            |           いいえ             |    [はい]    |
-|             クエリのスケールアウトをサポート             |      いいえ       |        可能          |            はい             |          はい           |           はい           |    [はい]    |
-|          動的スケーラビリティ (スケールアップ)          |     [はい]      |        はい         |             いいえ              |           いいえ            |           可能            |    [はい]    |
-|        データのメモリ内キャッシュをサポート        |     [はい]      |        はい         |             いいえ              |          可能            |           はい           |    いいえ      |
+| 高可用性のための冗長リージョン サーバー |     はい      |        はい         |            はい             |           いいえ            |           いいえ             |    はい    |
+|             クエリのスケールアウトをサポート             |      いいえ       |        可能          |            はい             |          はい           |           はい           |    はい    |
+|          動的スケーラビリティ (スケールアップ)          |     はい      |        はい         |             いいえ              |           いいえ            |           可能            |    はい    |
+|        データのメモリ内キャッシュをサポート        |     はい      |        はい         |             いいえ              |          可能            |           はい           |    いいえ      |
 
 ### <a name="security-capabilities"></a>セキュリティ機能
 
 | | SQL Database | SQL Data Warehouse | HDInsight 上の HBase/Phoenix | HDInsight 上の Hive LLAP | Azure Analysis Services | Cosmos DB |
 | --- | --- | --- | --- | --- | --- | --- |
 | Authentication  | SQL / Azure Active Directory (Azure AD) | SQL / Azure AD | ローカル / Azure AD <sup>1</sup> | ローカル / Azure AD <sup>1</sup> | Azure AD | アクセスの制御 (IAM) によるデータベース ユーザー/Azure AD |
-| 保存データの暗号化 | はい <sup>2</sup> | はい <sup>2</sup> | はい <sup>1</sup> | はい <sup>1</sup> | [はい] | [はい] |
-| 行レベルのセキュリティ | [はい] | いいえ  | はい <sup>1</sup> | はい <sup>1</sup> | はい (モデル内のオブジェクトレベルのセキュリティを使用) | いいえ  |
-| ファイアウォールをサポート | [はい] | [はい] | はい <sup>3</sup> | はい <sup>3</sup> | [はい] | [はい] |
-| 動的データ マスク | [はい] | いいえ  | はい <sup>1</sup> | はい * | いいえ  | いいえ  |
+| 保存データの暗号化 | はい <sup>2</sup> | はい <sup>2</sup> | はい <sup>1</sup> | はい <sup>1</sup> | はい | はい |
+| 行レベルのセキュリティ | はい | いいえ  | はい <sup>1</sup> | はい <sup>1</sup> | はい (モデル内のオブジェクトレベルのセキュリティを使用) | いいえ  |
+| ファイアウォールをサポート | はい | はい | はい <sup>3</sup> | はい <sup>3</sup> | はい | はい |
+| 動的データ マスク | はい | いいえ  | はい <sup>1</sup> | はい * | いいえ  | いいえ  |
 
 [1] [ドメイン参加済み HDInsight クラスター](/azure/hdinsight/domain-joined/apache-domain-joined-introduction)を使用する必要があります。
 

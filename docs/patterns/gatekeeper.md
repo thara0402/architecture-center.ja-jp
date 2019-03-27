@@ -10,11 +10,11 @@ ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.custom: seodec18
 ms.openlocfilehash: 99d3f1f3e4ea1f189fbdfc4cb9d9b3d18e8551a2
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54487952"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58242293"
 ---
 # <a name="gatekeeper-pattern"></a>ゲートキーパー パターン
 

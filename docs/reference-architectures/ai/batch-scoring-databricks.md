@@ -8,11 +8,11 @@ ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: azcat-ai
 ms.openlocfilehash: 1b6f10edf098ed8d9fa14c16de113fc765372835
-ms.sourcegitcommit: a68f248402c598f9d25bc1dc62f27a6a934ff001
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55903274"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58231414"
 ---
 # <a name="batch-scoring-of-spark-models-on-azure-databricks"></a>Azure Databricks での Spark モデルのバッチ スコアリング
 
@@ -61,7 +61,7 @@ ms.locfileid: "55903274"
 - `2b_model_testing`
 - `3b_model_scoring_evaluation`
 
-## <a name="recommendations"></a>推奨事項
+## <a name="recommendations"></a>Recommendations
 
 Databricks は、お客様がご自身でトレーニングしたモデルを読み込んでデプロイし、新しいデータを使用して予測を行えるようにセットアップされています。 このシナリオで Databricks を使用したのは、次のような利点が追加されるためです。
 

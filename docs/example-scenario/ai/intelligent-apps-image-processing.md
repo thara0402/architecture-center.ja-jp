@@ -9,11 +9,11 @@ ms.service: architecture-center
 ms.subservice: example-scenario
 social_image_url: /azure/architecture/example-scenario/ai/media/architecture-intelligent-apps-image-processing.png
 ms.openlocfilehash: 03ef9d15ec9bf64dc743657e9d1e7a7e275c5a8e
-ms.sourcegitcommit: 3b15d65e7c35a19506e562c444343f8467b6a073
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54908326"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58244803"
 ---
 # <a name="image-classification-for-insurance-claims-on-azure"></a>Azure での保険金請求イメージの分類
 
