@@ -7,11 +7,11 @@ ms.topic: guide
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.openlocfilehash: 76a101b76497ae2b2aacff973175bb0fe4703d9e
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54482444"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58245873"
 ---
 # <a name="choosing-a-data-pipeline-orchestration-technology-in-azure"></a>Azure でのデータ パイプライン オーケストレーション テクノロジの選択
 
@@ -47,8 +47,8 @@ Azure では、次のサービスとツールがパイプライン オーケス�
 
 | | Azure Data Factory | SQL Server Integration Services (SSIS) | HDInsight での Oozie
 | --- | --- | --- | --- |
-| 管理者常駐型 | [はい] | いいえ  | [はい] |
-| クラウド ベース | [はい] | いいえ (ローカル) | [はい] |
+| 管理者常駐型 | はい | いいえ  | はい |
+| クラウド ベース | はい | いいえ (ローカル) | はい |
 | 前提条件 | Azure サブスクリプション | SQL Server  | Azure サブスクリプション、HDInsight クラスター |
 | 管理ツール | Azure Portal、PowerShell、CLI、.NET SDK | SSMS、PowerShell | Bash シェル、Oozie REST API、Oozie web UI |
 | 価格 | 使用した分を支払う | ライセンス/機能の料金を支払う | HDInsight クラスターでの実行に対する追加料金なし |
@@ -57,22 +57,22 @@ Azure では、次のサービスとツールがパイプライン オーケス�
 
 | | Azure Data Factory | SQL Server Integration Services (SSIS) | HDInsight での Oozie
 | --- | --- | --- | --- |
-| データをコピーする | [はい] | はい | [はい] |
-| カスタム変換 | [はい] | [はい] | はい (MapReduce、Pig、および Hive ジョブ) |
-| Azure Machine Learning のスコア付け | [はい] | はい (スクリプト使用) | いいえ  |
-| HDInsight On-Demand | [はい] | いいえ  | いいえ  |
-| Azure Batch | [はい] | いいえ  | いいえ  |
-| Pig、Hive、MapReduce | [はい] | いいえ  | [はい] |
-| Spark | [はい] | いいえ  | いいえ  |
-| SSIS パッケージの実行 | [はい] | はい | いいえ  |
-| 制御フロー | [はい] | はい | [はい] |
-| オンプレミスのデータへのアクセス | [はい] | はい | いいえ  |
+| データをコピーする | はい | はい | はい |
+| カスタム変換 | はい | はい | はい (MapReduce、Pig、および Hive ジョブ) |
+| Azure Machine Learning のスコア付け | はい | はい (スクリプト使用) | いいえ  |
+| HDInsight On-Demand | はい | いいえ  | いいえ  |
+| Azure Batch | はい | いいえ  | いいえ  |
+| Pig、Hive、MapReduce | はい | いいえ  | はい |
+| Spark | はい | いいえ  | いいえ  |
+| SSIS パッケージの実行 | はい | はい | いいえ  |
+| 制御フロー | はい | はい | はい |
+| オンプレミスのデータへのアクセス | はい | はい | いいえ  |
 
 ### <a name="scalability-capabilities"></a>スケーラビリティ機能
 
 | | Azure Data Factory | SQL Server Integration Services (SSIS) | HDInsight での Oozie
 | --- | --- | --- | --- |
-| スケールアップ | [はい] | いいえ  | いいえ  |
-| スケールアウト | [はい] | いいえ  | はい (クラスターへの worker ノードの追加) |
-| ビッグ データに合わせて最適化 | [はい] | いいえ  | [はい] |
+| スケールアップ | はい | いいえ  | いいえ  |
+| スケールアウト | はい | いいえ  | はい (クラスターへの worker ノードの追加) |
+| ビッグ データに合わせて最適化 | はい | いいえ  | はい |
 

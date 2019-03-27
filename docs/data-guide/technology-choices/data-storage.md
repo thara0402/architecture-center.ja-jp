@@ -7,11 +7,11 @@ ms.topic: guide
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.openlocfilehash: 0aac064f30c384520a27d2e42b21c9243d5914b2
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54483464"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58244043"
 ---
 # <a name="choosing-a-big-data-storage-technology-in-azure"></a>Azure でのビッグ データ ストレージ テクノロジの選択
 
@@ -120,8 +120,8 @@ Azure Cosmos DB の機能:
 |                                    |                                           Azure Cosmos DB                                           |                                                             HDInsight での HBase                                                             |
 |------------------------------------|-----------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
 |       プライマリ データベース モデル       |                      ドキュメント ストア、グラフ、キー値ストア、ワイド カラム ストア                      |                                                             ワイド カラム ストア                                                              |
-|         セカンダリ インデックス          |                                                 [はい]                                                 |                                                                     いいえ                                                                      |
-|        SQL 言語のサポート        |                                                 [はい]                                                 |                                     はい ([Phoenix](https://phoenix.apache.org/) JDBC ドライバーを使用)                                      |
+|         セカンダリ インデックス          |                                                 はい                                                 |                                                                     いいえ                                                                      |
+|        SQL 言語のサポート        |                                                 はい                                                 |                                     はい ([Phoenix](https://phoenix.apache.org/) JDBC ドライバーを使用)                                      |
 |            整合性             |                   強固、有界整合性制約、セッション、一貫性のあるプレフィックス、最終的                   |                                                                   Strong                                                                   |
 | Azure Functions のネイティブ統合 |                        [はい](/azure/cosmos-db/serverless-computing-database)                        |                                                                     いいえ                                                                      |
 |   自動的なグローバル分散    |                          [はい](/azure/cosmos-db/distribute-data-globally)                           | いいえ。最終的な整合性を指定して、リージョン間で[HBase クラスターのレプリケーションを構成可能](/azure/hdinsight/hbase/apache-hbase-replication) |

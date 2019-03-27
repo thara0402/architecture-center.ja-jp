@@ -10,11 +10,11 @@ ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.custom: seodec18
 ms.openlocfilehash: 1b74228fcceecb350d8df9b7ca2327b5de329a07
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54486125"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58242973"
 ---
 # <a name="leader-election-pattern"></a>リーダー選定パターン
 

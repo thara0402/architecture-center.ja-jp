@@ -7,11 +7,11 @@ ms.topic: guide
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.openlocfilehash: 9f787a0de5db97f5c0a5651b510e49762fbc44b9
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54483004"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58244883"
 ---
 # <a name="choosing-a-real-time-message-ingestion-technology-in-azure"></a>Azure でのリアルタイム メッセージ取り込みテクノロジの選択
 
@@ -72,8 +72,8 @@ Kafka の一般的なユース ケースは次のとおりです。
 
 | | IoT Hub | Event Hubs | HDInsight 上の Kafka |
 | --- | --- | --- | --- |
-| クラウドからデバイスへの通信 | [はい] | いいえ  | いいえ  |
-| デバイスによって開始されたファイル アップロード | [はい] | いいえ  | いいえ  |
+| クラウドからデバイスへの通信 | はい | いいえ  | いいえ  |
+| デバイスによって開始されたファイル アップロード | はい | いいえ  | いいえ  |
 | デバイスの状態情報 | [デバイス ツイン](/azure/iot-hub/iot-hub-devguide-device-twins) | いいえ  | いいえ  |
 | プロトコルのサポート | MQTT、AMQP、HTTPS <sup>1</sup> | AMQP、HTTPS | [Kafka プロトコル](https://cwiki.apache.org/confluence/display/KAFKA/A+Guide+To+The+Kafka+Protocol) |
 | セキュリティ | デバイス ID ごと。取り消し可能なアクセス制御。 | 共有アクセス ポリシー。パブリッシャー ポリシーを介した限られた取り消し。 | SASL を使用した認証。プラグ可能な承認。サポートされている外部認証サービスとの統合。 |

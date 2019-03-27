@@ -10,11 +10,11 @@ ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.custom: seodec18
 ms.openlocfilehash: 2b0e46a06f7fe47f281f726f73128db1d7dd1067
-ms.sourcegitcommit: 14226018a058e199523106199be9c07f6a3f8592
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55482928"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58243563"
 ---
 # <a name="sidecar-pattern"></a>サイドカー パターン
 
