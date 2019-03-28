@@ -4,18 +4,13 @@ titleSuffix: Azure Architecture Center
 description: 信頼性の高い、スケーラブルで安全なアプリケーションをクラウドに構築するための設計パターン。
 keywords: Azure
 author: dragon119
-ms.date: 12/10/2018
+ms.date: 03/01/2018
 ms.topic: design-pattern
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.custom: seodec18
-ms.openlocfilehash: 1f3a76a104f0157526db3cff338c2b8b08dd573c
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54488258"
 ---
+
 # <a name="cloud-design-patterns"></a>クラウド設計パターン
 
 これらの設計パターンは、信頼性の高い、スケーラブルで安全なアプリケーションをクラウドに構築するために役立ちます。
@@ -95,11 +90,12 @@ ms.locfileid: "54488258"
 |                       [バルクヘッド](./bulkhead.md)                       |                                                        アプリケーションの要素をプールに分離し、1 つの要素が失敗しても、他の要素が引き続き機能できるようにします。                                                        |
 |                    [キャッシュアサイド](./cache-aside.md)                    |                                                                                   オンデマンドでデータをデータ ストアからキャッシュに読み込みます。                                                                                    |
 |                [サーキット ブレーカー](./circuit-breaker.md)                |                                                     リモート サービスまたはリソースとの接続時の修正に要する時間が一定しないエラーを処理します。                                                     |
-|                           [CQRS](./cqrs.md)                           |                                                           個別のインターフェイスを使用して、データを更新する操作とデータを読み取る操作を分離します。                                                            |
-|       [トランザクション補正](./compensating-transaction.md)       |                                                         一連のステップ (最終的に一貫性のある操作を形成する) で実行された作業を元に戻します。                                                         |
+| [要求チェック](./claim-check.md) | 大きいメッセージを要求チェックとペイロードに分割して、メッセージ バスに過度な負荷がかかることを防ぎます。 |
+|       [補正トランザクション](./compensating-transaction.md)       |                                                         一連のステップ (最終的に一貫性のある操作を形成する) で実行された作業を元に戻します。                                                         |
 |            [競合コンシューマー](./competing-consumers.md)            |                                                            複数の同時実行コンシューマーが、同じメッセージング チャネルで受信したメッセージを処理できるようにします。                                                             |
 | [コンピューティング リソース統合](./compute-resource-consolidation.md) |                                                                        複数のタスクまたは操作を 1 つのコンピューティング単位に統合します。                                                                        |
-|                 [イベント ソーシング](./event-sourcing.md)                 |                                                      追加専用ストアを使用して、ドメイン内のデータに実行されるアクションを記述する一連のイベントすべてを記録します。                                                      |
+|                           [CQRS](./cqrs.md)                           |                                                           個別のインターフェイスを使用して、データを更新する操作から、データを読み取る操作を分離します。                                                            |
+|                 [イベント ソース](./event-sourcing.md)                 |                                                      追加専用ストアを使用して、ドメイン内のデータに実行されるアクションを記述する一連のイベントすべてを記録します。                                                      |
 |   [外部構成ストア](./external-configuration-store.md)   |                                                           アプリケーション展開パッケージから、一元管理される場所に構成情報を移動します。                                                           |
 |             [フェデレーション ID](./federated-identity.md)             |                                                                                外部の ID プロバイダーに認証を委任します。                                                                                |
 |                     [ゲートキーパー](./gatekeeper.md)                     | 専用のホスト インスタンスを使用して、アプリケーションとサービスを保護します。このホストインスタンスは、クライアントとアプリケーションまたはサービスの間でブローカーとして機能し、要求を検証して不適切な部分を除去し、クライアントとアプリケーションまたはサービスの間で要求とデータを渡します。 |

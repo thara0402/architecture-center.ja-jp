@@ -1,0 +1,86 @@
+items:
+- name: Azure
+  tocHref: /azure/
+  topicHref: /azure
+  items:
+  - name: Azure でのハイ パフォーマンス コンピューティング (HPC)
+    tocHref: /azure/
+    topicHref: /azure/architecture/topics/high-performance-computing
+- name: Azure
+  tocHref: /azure/
+  topicHref: /azure
+  items:
+  - name: Azure でのハイ パフォーマンス コンピューティング (HPC)
+    tocHref: /azure/architecture/
+- name: Azure
+  tocHref: /azure/
+  topicHref: /azure
+  items:
+  - name: Azure でのハイ パフォーマンス コンピューティング (HPC)
+    tocHref: /azure/virtual-machines
+- name: Azure
+  tocHref: /azure/
+  topicHref: /azure
+  items:
+  - name: Azure でのハイ パフォーマンス コンピューティング (HPC)
+    tocHref: /azure/storage
+- name: Azure
+  tocHref: /azure/
+  topicHref: /azure
+  items:
+  - name: Azure でのハイ パフォーマンス コンピューティング (HPC)
+    tocHref: /azure/virtual-network
+- name: Azure
+  tocHref: /azure/
+  topicHref: /azure
+  items:
+  - name: Azure でのハイ パフォーマンス コンピューティング (HPC)
+    tocHref: /azure/virtual-machine-scale-sets
+- name: Azure
+  tocHref: /azure/
+  topicHref: /azure
+  items:
+  - name: Azure でのハイ パフォーマンス コンピューティング (HPC)
+    tocHref: /azure/machine-learning/
+- name: Azure
+  tocHref: /azure/
+  topicHref: /azure
+  items:
+  - name: Azure でのハイ パフォーマンス コンピューティング (HPC)
+    tocHref: /azure/cyclecloud/
+- name: Azure
+  tocHref: /azure/
+  topicHref: /azure
+  items:
+  - name: Azure でのハイ パフォーマンス コンピューティング (HPC)
+    tocHref: /azure/aks/
+- name: Azure
+  tocHref: /azure/
+  topicHref: /azure
+  items:
+  - name: Azure でのハイ パフォーマンス コンピューティング (HPC)
+    tocHref: /azure/container-registry/
+- name: Azure
+  tocHref: /azure/
+  topicHref: /azure
+  items:
+  - name: Azure でのハイ パフォーマンス コンピューティング (HPC)
+    tocHref: /azure/security/
+- name: Azure
+  tocHref: /azure/
+  topicHref: /azure
+  items:
+  - name: Azure でのハイ パフォーマンス コンピューティング (HPC)
+    tocHref: /cognitive-toolkit/
+- name: Azure
+  tocHref: /azure/
+  topicHref: /azure
+  items:
+  - name: Azure でのハイ パフォーマンス コンピューティング (HPC)
+    tocHref: /message-passing-interface/
+ms.openlocfilehash: 0ff57fcdec1dcc803c73a8ec2e5490b030977fea
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58346418"

@@ -6,13 +6,8 @@ ms.date: 07/21/2017
 ms.topic: guide
 ms.service: architecture-center
 ms.subservice: reference-architecture
-ms.openlocfilehash: f8875612ad6b1a71fdb6f7a768078ae599eb70b5
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54480557"
 ---
+
 # <a name="manage-identity-in-multitenant-applications"></a>マルチテナント アプリケーションでの ID 管理
 
 この一連の記事では、Azure AD を認証と ID 管理のために使用する際のマルチテナントのベスト プラクティスについて説明します。
@@ -90,9 +85,7 @@ Azure Active Directory (Azure AD) には、これらのシナリオのすべて�
 このガイドでは、ID 管理のために Azure AD を使用することに注目します。
 
 - ここでは、顧客が Azure AD (Office 365 テナントや Dynamics CRM テナントなど) にユーザー プロファイルを保存しているとします。
-- オンプレミスの Active Directory (AD) がある顧客は、[Azure AD Connect](/azure/active-directory/hybrid/whatis-hybrid-identity) を使用してオンプレミスの AD を Azure AD と同期できます。
-
-オンプレミスの AD がある顧客が (会社の IT ポリシーなどの理由で) Azure AD Connect を使用できない場合、SaaS プロバイダーは、Active Directory Federation Services (AD FS) を介して顧客の AD と連携できます。 このオプションについては、「 [顧客の AD FS とのフェデレーション](adfs.md)」を参照してください。
+- オンプレミスの Active Directory がある顧客は、[Azure AD Connect](/azure/active-directory/hybrid/whatis-hybrid-identity) を使用してオンプレミスの Active Directory を Azure AD と同期できます。 オンプレミスの Active Directory がある顧客が (会社の IT ポリシーなどの理由で) Azure AD Connect を使用できない場合、SaaS プロバイダーは、Active Directory Federation Services (AD FS) を介して顧客のディレクトリと連携できます。 このオプションについては、「 [顧客の AD FS とのフェデレーション](adfs.md)」を参照してください。
 
 このガイドでは、データのパーティション分割、テナントごとの構成など、マルチテナントの他の側面について考慮していません。
 

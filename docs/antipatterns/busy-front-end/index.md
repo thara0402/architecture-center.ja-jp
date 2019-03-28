@@ -8,13 +8,8 @@ ms.topic: article
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.custom: seodec18
-ms.openlocfilehash: 61470b630f735c1d49ad9b4bfbec853b308630cf
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54481526"
 ---
+
 # <a name="busy-front-end-antipattern"></a>ビジー状態のフロントエンドのアンチパターン
 
 多数のバックグラウンド スレッドで非同期処理が実行されることによって、フォアグラウンドで実行される他の同時実行タスクのリソースが逼迫し、容認できないレベルにまで応答時間が悪化する場合があります。

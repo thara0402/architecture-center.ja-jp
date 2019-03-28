@@ -1,102 +1,187 @@
 ---
-title: Azure での Kubernetes によるマイクロサービスの設計、構築、および操作
-description: Azure でのマイクロサービスの設計、構築、および操作。
-author: MikeWasson
-ms.date: 10/23/2018
-ms.topic: guide
-ms.service: architecture-center
-ms.subservice: reference-architecture
-ms.custom: microservices
-ms.openlocfilehash: 90a6550264e5afd1fc2eda79eeff6557dc7c4163
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55897730"
+title: Azure でのマイクロサービスの構築
+description: Azure でのマイクロサービス アーキテクチャの設計、構築、および操作
+ms.date: 03/07/2019
+layout: LandingPage
+ms.topic: landing-page
 ---
-# <a name="designing-building-and-operating-microservices-on-azure"></a>Azure でのマイクロサービスの設計、構築、および操作
 
-![ドローン配送サービスの図](./images/drone.svg)
+# <a name="building-microservices-on-azure"></a>Azure でのマイクロサービスの構築
 
-現在、マイクロサービスは、回復性優れ、単独でのデプロイが可能で、迅速に展開できるスケーラブルなクラウド アプリケーションを構築するための一般的なアーキテクチャ スタイルになっています。 しかし、このマイクロサービスを、単なる業界用語に留めないためには、アプリケーションを設計および構築するのためのさまざまなアプローチが必要です。
+<!-- markdownlint-disable MD033 -->
 
-この一連の記事では、Azure でマイクロサービス アーキテクチャを構築して実行する方法について説明します。 取り上げるトピックは次のとおりです。
+<img src="../_images/microservices.svg" style="float:left; margin-top:8px; margin-right:8px; max-width: 80px; max-height: 80px;"/>
 
-- ドメインベースの設計 (DDD) を使用してマイクロサービス アーキテクチャを設計する。
-- コンピューティング、ストレージ、メッセージング、およびその他の設計要素に適した Azure テクノロジを選択する。
-- マイクロサービスの設計パターンについて理解する。
-- 回復性、スケーラビリティ、およびパフォーマンスを設計する。
-- CI/CD パイプラインを構築する。
+マイクロサービスは、回復性があり、単独でのデプロイが可能で、迅速に展開できる非常にスケーラブルなアプリケーションを構築するための一般的なアーキテクチャ スタイルです。 しかし、マイクロサービス アーキテクチャが成功するには、アプリケーションを設計および構築するのためのさまざまなアプローチが必要です。
 
-全体として、ドローン配送サービスのエンド ツー エンド シナリオに焦点を当てて説明します。このサービスでは、顧客はパッケージがドローンで集荷および配送されるスケジュールを設定することができます。 リファレンス実装のコードは GitHub にあります
+<ul  class="panelContent cardsZ">
+<li style="display: flex; flex-direction: column;">
+    <a href="./introduction.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>マイクロサービスとは</h3>
+                        <p>マイクロサービスと他のアーキテクチャの違いと、それらを使用すべき場面</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</li>
+<li style="display: flex; flex-direction: column;">
+    <a href="../guide/architecture-styles/microservices.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>マイクロサービス アーキテクチャ スタイル</h3>
+                        <p>マイクロサービス アーキテクチャ スタイルの概要</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</li>
+</ul>
 
-[![GitHub](../_images/github.png) リファレンス実装][drone-ri]
+## <a name="examples-of-microservices-architectures"></a>マイクロサービス アーキテクチャの例
 
-まずは、基礎から始めましょう。 マイクロサービスと何でしょうか。また、マイクロサービス アーキテクチャを採用することで、どのような利点を得られるのでしょうか。
+<ul  class="panelContent cardsZ">
+<li style="display: flex; flex-direction: column;">
+    <a href="../example-scenario/infrastructure/service-fabric-microservices.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>Service Fabric を使用したモノリシック アプリケーションの分解</h3>
+                        <p>ASP.NET Web サイトをマイクロサービスに分解する反復的なアプローチ。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</li>
+<li style="display: flex; flex-direction: column;">
+    <a href="../example-scenario/data/ecommerce-order-processing.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>Azure でのスケーラブルな注文処理</h3>
+                        <p>マイクロサービスを介して実装される関数型プログラミング モデルを使用した注文処理。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</li>
+</ul>
 
-<!-- markdownlint-disable MD026 -->
+## <a name="build-a-microservices-application"></a>マイクロサービス アプリケーションの構築
 
-## <a name="why-build-microservices"></a>マイクロサービスを構築する理由
+<ul  class="panelContent cardsZ">
+<li style="display: flex; flex-direction: column;">
+    <a href="./model/domain-analysis.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>ドメイン分析を使用したマイクロサービスのモデル化</h3>
+                        <p>マイクロサービスの設計時によくあるいくつかの問題を回避するために、ドメイン分析を使用してマイクロサービス境界を定義します。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</li>
+<li style="display: flex; flex-direction: column;">
+    <a href="../reference-architectures/microservices/aks.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>Azure Kubernetes Services (AKS) の参照アーキテクチャ</h3>
+                        <p>この参照アーキテクチャには、ほとんどのデプロイの出発点にすることができる基本的な AKS 構成が示されています。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</li>
+<li style="display: flex; flex-direction: column;">
+    <a href="../reference-architectures/microservices/service-fabric.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>Azure Service Fabric の参照アーキテクチャ</h3>
+                        <p>この参照アーキテクチャには、ほとんどのデプロイの出発点にすることができる推奨構成が示されています。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</li>
+<li style="display: flex; flex-direction: column;">
+    <a href="./design/index.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>マイクロサービス アーキテクチャの設計</h3>
+                        <p>これらの記事では、Azure Kubernetes Service (AKS) が使用されるリファレンス実装に基づいて、マイクロサービス アプリケーションを構築する方法について詳しく説明します。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</li>
+<li style="display: flex; flex-direction: column;">
+    <a href="./design/patterns.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>設計パターン</h3>
+                        <p>マイクロサービスに役立つ一連の設計パターン。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</li>
+</ul>
 
-<!-- markdownlint-enable MD026 -->
+## <a name="operate-microservices-in-production"></a>運用環境でのマイクロサービスの操作
 
-マイクロサービス アーキテクチャでは、アプリケーションが小規模の独立したサービスで構成されます。 以下に、マイクロサービスの特徴を定義します。
-
-- 各マイクロサービスが 1 つのビジネス機能を実装します。
-- マイクロサービスは小さいため、小規模な 1 つの開発者チームで作成および管理できます。
-- マイクロサービスは個別のプロセスで実行され、適切に定義された API またはメッセージング パターンを介して通信します。
-- マイクロサービスでは、データ ストアまたはデータ スキーマが共有されません。 各マイクロサービスがそれぞれ自身のデータを管理する必要があります。
-- マイクロサービスは個別のコード ベースを持ち、ソース コードを共有しません。 ただし、共通のユーティリティ ライブラリを使用することはあります。
-- 他のサービスとは関係なく各マイクロサービスをデプロイして更新できます。
-
-適切に構築することで、マイクロサービスにより、以下のような有益なメリットが多数もたらされます。
-
-- **機敏性。** マイクロサービスは個別にデプロイされるため、バグ修正や機能リリースが管理しやすくなります。 アプリケーション全体を再デプロイしなくてもサービスを更新できるほか、問題が発生したときに更新プログラムをロールバックできます。 従来のアプリケーションでは、多くの場合、アプリケーションの一部にバグが見つかると、リリース プロセス全体がブロックされ、その結果、新機能はバグ修正が統合、テスト、および公開されるまで使用できなくなる可能性があります。
-
-- **短いコード、小規模チーム。** マイクロサービスの規模は小さく、1 つの機能チームによって構築、テスト、およびデプロイできます。 コード ベースは小さいほど、わかりやすくなります。 大規模なモノリシック アプリケーションでは、時間の経過に伴ってコードの依存関係が複雑になる傾向にあり、新しい機能を追加しようとすると、多くの場所でコード変更が必要です。 マイクロサービス アーキテクチャでは、コードまたはデータ ストアが共有されないため、依存関係を最小限に抑え、新しい機能を簡単に追加できます。 小規模なチーム編成も機敏性を向上させます。 "2 枚のピザ ルール" も、チームは 2 枚のピザが行き渡る人数に抑える必要がある、となっています。 もちろん、これは正確な基準ではなく、チームの食欲によっても変わります。 しかし、重要なのは、大規模なグループでは、コミュニケーションに時間がかかり、管理オーバーヘッドが増大し、機敏性も低下するため、生産性が低くなる傾向があるという点です。
-
-- **テクノロジの組み合わせ**。 必要に応じて、チームがテクノロジ スタックを組み合わせて、サービスに最適なテクノロジを選択できます。
-
-- **回復性**。 個々のマイクロサービスが使用できなくなっても、上流マイクロサービスが障害を正しく処理するように設計されている限り (サーキット ブレークの実装など)、アプリケーション全体が中断されることはありません。
-
-- **スケーラビリティ**:  マイクロサービス アーキテクチャでは、各マイクロサービスを個別に拡張できます。 つまり、サブシステムにさらに多くのリソースが必要な場合、アプリケーション全体をスケールアウトせずに、サブシステムをスケールアウトすることができます。 コンテナー内にサービスをデプロイすると、マイクロサービスを高密度で 1 つのホストに圧縮できるため、リソースをより効率的に使用できます。
-
-- **データの分離**。 影響を受けるのは 1 つのマイクロサービスだけであるため、スキーマ更新がはるかに実行しやすくなります。 モノリシック アプリケーションでは、アプリケーションのさまざまな部分すべてが同じデータに影響する可能性があり、スキーマの変更にはリスクが伴うため、スキーマ更新は非常に困難になる可能性があります。
-
-## <a name="no-free-lunch"></a>課題
-
-こうしたメリットを実現するには、それなりに手間がかかります。 この一連の記事は、回復性、拡張性、管理性に優れたマイクロサービスを構築するためのいくつかの課題に対処できるようにすることを目的としています。
-
-- **サービス境界**。 マイクロサービスを構築するときは、サービス間の境界をどこにするかを慎重に検討する必要があります。 一度サービスを構築して運用環境にデプロイすると、その境界を越えてリファクターするには困難を伴うことがあります。 適切なサービス境界を選択することは、マイクロサービス アーキテクチャを設計するときの最大の課題の 1 つです。 各サービスの規模はどの程度にするべきでしょうか。 どのような場合に複数のサービスに機能を分解し、また、どのような場合に同じサービス内に機能をまとめるべきでしょうか。 このガイドでは、ドメイン ベース設計を使用して、サービス境界を見つけ出すアプローチについて説明します。 この場合、まずは[ドメイン分析](./domain-analysis.md)で境界コンテキストを検出し、機能要件と機能以外の要件に基づいて、一連の[戦術的 DDD パターン](./microservice-boundaries.md)を適用します。
-
-- **データの一貫性と整合性**。 マイクロサービスの基本原則は、各サービスがそれぞれ自身のデータを管理することです。 これによりサービスが分離されますが、データ整合性または冗長性の課題が生じる可能性があります。 その問題のいくつかについては、[データ統合](./data-considerations.md)に関するページで説明しています。
-
-- **ネットワークの輻輳と待機時間**。 小さく細分化された多くのサービスを使用すると、サービス間の通信が増え、エンド ツー エンドの待機時間が長くなります。 [サービス間の通信](./interservice-communication.md)に関する章では、サービス間でのメッセージングに関する考慮事項について説明します。 マイクロサービス アーキテクチャでは、同期通信と非同期通信の両方が使用されます。 サービスの疎結合を維持し、サービスを個別にデプロイおよび更新できるように、適切な [API 設計](./api-design.md)を行うことが重要です。
-
-- **複雑さ**。 マイクロサービス アプリケーションには可動部分がかなりあります。 各サービスはシンプルですが、サービスは全体として連携する必要があります。 1 つのユーザー操作に、複数のサービスが関連する場合があります。 [インジェストとワークフロー](./ingestion-workflow.md)に関する章では、高スループットでの要求の取り込み、ワークフローの調整、およびエラー処理に関するいくつかの問題について説明します。
-
-- **クライアントとアプリケーションの間の通信。**  アプリケーションを多数の小規模サービスに分解した場合、クライアントは、こうしたサービスとどのように通信するのでしょうか。 各サービスを個別に直接呼び出すべきか、あるいは、[API ゲートウェイ](./gateway.md)を介して要求をルーティングするべきでしょうか。
-
-- **監視**。 分散アプリケーションを監視するには複数のサービスのテレメトリを関連付ける必要があるため、モノリシック アプリケーションを監視するよりも手間がかかります。 [ログ記録と監視](./logging-monitoring.md)に関する章では、こうした懸念事項を取り上げます。
-
-- **継続的インテグレーションと配信 (CI/CD)**。 マイクロサービスの主な目標の 1 つが機敏性です。 これを実現するには、各サービスを迅速かつ確実にテスト環境および運用環境にデプロイできるように、自動化された堅牢な [CI/CD](./ci-cd.md) が必要です。
-
-## <a name="the-drone-delivery-application"></a>ドローン配送アプリケーション
-
-このような問題を調査し、マイクロサービス アーキテクチャのベスト プラクティスのいくつかを紹介するために、ドローン配送アプリケーションというリファレンス実装を作成しました。 リファレンス実装は [GitHub][drone-ri] にあります。
-
-Fabrikam, Inc. は、ドローン配送サービスを開始しようとしています。 同社は、ドローン機団を管理しています。 企業がサービスに登録すると、ユーザーは、ドローンで商品を集荷して配送するように依頼できます。 顧客が集荷のスケジュールを設定すると、バックエンド システムによってドローンが割り当てられ、推定配送時刻がユーザーに通知されます。 配送中、ETA は常時更新され、顧客はドローンの場所を追跡できます。
-
-このシナリオには、かなり複雑なドメインが含まれます。 ビジネスに関する懸念事項には、ドローンのスケジュール設定、荷物の追跡、ユーザー アカウントの管理、履歴データの保存と分析などもあります。 さらに、Fabrikam が求めているのは、迅速に市場に出し、迅速に反復して、新機能を追加することです。 アプリケーションは、高いサービス レベル目標 (SLO) に基づいてクラウド スケールで動作する必要があります。 また、Fabrikam は、システムの部分ごとに、データ ストレージとクエリの要件がまったく異なることを予期しています。 Fabrikam はこれらをすべて考慮した結果、ドローン配送アプリケーションにマイクロサービス アーキテクチャを選択します。
-
-> [!NOTE]
-> マイクロサービス アーキテクチャと他のアーキテクチャ スタイルのどちらを選択するかについては、「[Azure アプリケーション アーキテクチャ ガイド](../guide/index.md)」を参照してください。
-
-このリファレンス実装では、[Azure Kubernetes Service (AKS)](/azure/aks/) で Kubernetes を使用しています。 ただし、高いレベルでのアーキテクチャの決定と課題の多くは、[Azure Service Fabric](/azure/service-fabric/) を含む、すべてのコンテナー オーケストレーターに当てはまります。
-
-> [!div class="nextstepaction"]
-> [ドメイン分析](./domain-analysis.md)
-
-<!-- links -->
-
-[drone-ri]: https://github.com/mspnp/microservices-reference-implementation
+<ul  class="panelContent cardsZ">
+<li style="display: flex; flex-direction: column;">
+    <a href="./logging-monitoring.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>ログ記録と監視</h3>
+                        <p>マイクロサービス アーキテクチャの分散特性によって、ログ記録と監視が特に重要になります。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</li>
+<li style="display: flex; flex-direction: column;">
+    <a href="./ci-cd.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>継続的インテグレーションとデプロイ</h3>
+                        <p>継続的インテグレーションと継続的デリバリー (CI/CD) は、マイクロサービスで成功を収めるための鍵です。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</li>
+</ul>

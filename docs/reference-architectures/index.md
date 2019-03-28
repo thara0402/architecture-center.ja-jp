@@ -3,13 +3,7 @@ title: Azure の参照アーキテクチャ
 description: Azure での一般的なワークロードに対応する、参照アーキテクチャおよび実装ガイダンス。
 layout: LandingPage
 ms.topic: landing-page
-ms.date: 02/07/2019
-ms.openlocfilehash: 44111f5f10997c7aba38414b518245c5791d1cd0
-ms.sourcegitcommit: a68f248402c598f9d25bc1dc62f27a6a934ff001
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55903233"
+ms.date: 03/07/2019
 ---
 <!-- This file is generated! -->
 <!-- See the templates in ./build/reference-architectures  -->
@@ -40,6 +34,26 @@ ms.locfileid: "55903233"
                     <div class="cardText">
                         <h3>ディープ ラーニング モデルの分散トレーニング</h3>
                         <p>GPU 対応 VM のクラスター間でディープ ラーニング モデルの分散トレーニングを実行します。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</li>
+<!-- Training of Python scikit-learn models -->
+<li style="display: flex; flex-direction: column;">
+    <a href="./ai/training-python-models.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="../_images/icons/python-powered-h.svg" height="140px" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Python scikit-learn モデルのトレーニング</h3>
+                        <p>scikit-learn Python モデルのハイパーパラメーターの調整について推奨される手法。</p>
                     </div>
                 </div>
             </div>
@@ -79,7 +93,7 @@ ms.locfileid: "55903233"
                     </div>
                     <div class="cardText">
                         <h3>Python モデルのバッチ スコアリング</h3>
-                        <p>Azure Batch AI を使用して、スケジュールに従って多数の Python モデルのバッチ スコアリングを並列で実行します。</p>
+                        <p>Azure Machine Learning を使用して、スケジュールに従って多数の Python モデルのバッチ スコアリングを並列で実行します。</p>
                     </div>
                 </div>
             </div>
@@ -314,7 +328,27 @@ ms.locfileid: "55903233"
                     </div>
                     <div class="cardText">
                         <h3>Azure Kubernetes Service (AKS) 上のマイクロサービス</h3>
-                        <p>AKS にマイクロサービス アーキテクチャをデプロイするための推奨アーキテクチャ。</p>
+                        <p>マイクロサービスを AKS にデプロイするための推奨アーキテクチャ。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</li>
+<!-- Microservices architecture on Azure Service Fabric -->
+<li style="display: flex; flex-direction: column;">
+    <a href="./microservices/service-fabric.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="../_images/icons/sf.svg" height="140px" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Azure Service Fabric 上のマイクロサービス アーキテクチャ</h3>
+                        <p>Service Fabric 上のマイクロサービスで推奨されるアーキテクチャ。</p>
                     </div>
                 </div>
             </div>
