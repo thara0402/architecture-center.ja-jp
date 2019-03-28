@@ -65,82 +65,6 @@ items:
         href: guide/design-principles/build-for-business.md
     - name: ソフトウェア品質の重要な要素
       href: guide/pillars.md
-  - name: データ アーキテクチャ ガイド
-    items:
-    - name: はじめに
-      href: data-guide/index.md
-    - name: 従来の RDBMS ワークロード
-      items:
-      - name: 概要
-        href: data-guide/relational-data/index.md
-      - name: オンライン トランザクション処理 (OLTP)
-        href: data-guide/relational-data/online-transaction-processing.md
-      - name: データ ウェアハウス
-        href: data-guide/relational-data/data-warehousing.md
-      - name: オンライン分析処理 (OLAP)
-        href: data-guide/relational-data/online-analytical-processing.md
-      - name: 抽出、変換、読み込み (ETL)
-        href: data-guide/relational-data/etl.md
-    - name: ビッグ データ アーキテクチャ
-      items:
-      - name: 概要
-        href: data-guide/big-data/index.md
-      - name: バッチ処理
-        href: data-guide/big-data/batch-processing.md
-      - name: リアルタイム処理
-        href: data-guide/big-data/real-time-processing.md
-      - name: 大規模な機械学習
-        href: data-guide/big-data/machine-learning-at-scale.md
-      - name: 非リレーショナル データ ストア
-        href: data-guide/big-data/non-relational-data.md
-      - name: シナリオ
-        items:
-        - name: 高度な分析
-          href: data-guide/scenarios/advanced-analytics.md
-        - name: データ レイク
-          href: data-guide/scenarios/data-lake.md
-        - name: 自由形式のテキスト検索
-          href: data-guide/scenarios/search.md
-        - name: 対話型データ探索
-          href: data-guide/scenarios/interactive-data-exploration.md
-        - name: 自然言語処理
-          href: data-guide/scenarios/natural-language-processing.md
-        - name: 時系列ソリューション
-          href: data-guide/scenarios/time-series.md
-        - name: CSV ファイルと JSON ファイルの操作
-          href: data-guide/scenarios/csv-and-json.md
-      - name: テクノロジの選択
-        items:
-        - name: 分析データ ストア
-          href: data-guide/technology-choices/analytical-data-stores.md
-        - name: 分析とレポート
-          href: data-guide/technology-choices/analysis-visualizations-reporting.md
-        - name: バッチ処理
-          href: data-guide/technology-choices/batch-processing.md
-        - name: Cognitive Services
-          href: data-guide/technology-choices/cognitive-services.md
-        - name: データ ストレージ
-          href: data-guide/technology-choices/data-storage.md
-        - name: 機械学習
-          href: data-guide/technology-choices/data-science-and-machine-learning.md
-        - name: 自然言語処理
-          href: data-guide/technology-choices/natural-language-processing.md
-        - name: パイプライン オーケストレーション
-          href: data-guide/technology-choices/pipeline-orchestration-data-movement.md
-        - name: リアルタイム メッセージ取り込み
-          href: data-guide/technology-choices/real-time-ingestion.md
-        - name: データ ストアの検索
-          href: data-guide/technology-choices/search-options.md
-        - name: ストリーム処理
-          href: data-guide/technology-choices/stream-processing.md
-    - name: 横断的関心事
-      items:
-      - name: データ転送
-        href: data-guide/scenarios/data-transfer.md
-      - name: オンプレミス データ ソリューションのクラウドへの拡張
-        href: data-guide/scenarios/hybrid-on-premises-and-cloud.md
-      - name: データ保護ソリューション
-        href: data-guide/scenarios/securing-data-solutions.md
   - name: クラウド設計パターン
     items:
     - name: 概要
@@ -175,6 +99,8 @@ items:
       href: patterns/cache-aside.md
     - name: サーキット ブレーカー
       href: patterns/circuit-breaker.md
+    - name: 要求チェック
+      href: patterns/claim-check.md
     - name: コマンド クエリ責務分離 (CQRS)
       href: patterns/cqrs.md
     - name: 補正トランザクション
@@ -345,7 +271,7 @@ items:
       href: example-scenario/infrastructure/video-rendering.md
     - name: イメージ モデリング
       href: example-scenario/infrastructure/image-modeling.md
-- name: 参照アーキテクチャ
+- name: 参照用アーキテクチャ
   items:
   - name: 概要
     href: reference-architectures/index.md
@@ -353,6 +279,8 @@ items:
     items:
     - name: ディープ ラーニング モデルの分散トレーニング
       href: reference-architectures/ai/training-deep-learning.md
+    - name: Python scikit-learn モデルのトレーニング
+      href: reference-architectures/ai/training-python-models.md
     - name: ディープ ラーニング モデルのバッチ スコアリング
       href: reference-architectures/ai/batch-scoring-deep-learning.md
     - name: Python モデルのバッチ スコアリング
@@ -417,6 +345,8 @@ items:
     items:
     - name: Azure Kubernetes Service (AKS)
       href: reference-architectures/microservices/aks.md
+    - name: Azure Service Fabric
+      href: reference-architectures/microservices/service-fabric.md
   - name: ネットワーク DMZ
     items:
     - name: Azure とオンプレミスの間の DMZ
@@ -465,30 +395,132 @@ items:
       href: reference-architectures/app-service-web-app/multi-region.md
     - name: Web アプリケーションの監視
       href: reference-architectures/app-service-web-app/app-monitoring.md
-- name: 設計ガイド
+- name: Azure でのマイクロサービスの構築
   items:
-  - name: Azure でのマイクロサービスの構築
+  - name: 概要
+    href: microservices/index.md
+  - name: マイクロサービスの概要
+    href: microservices/introduction.md
+  - name: マイクロサービスのモデル化
+    items:
+    - name: ドメイン分析
+      href: microservices/model/domain-analysis.md
+    - name: 戦術的 DDD
+      href: microservices/model/tactical-ddd.md
+    - name: マイクロサービス境界の特定
+      href: microservices/model/microservice-boundaries.md
+  - name: マイクロサービス アーキテクチャの設計
     items:
     - name: はじめに
-      href: microservices/index.md
-    - name: ドメイン分析
-      href: microservices/domain-analysis.md
-    - name: マイクロサービス境界の識別
-      href: microservices/microservice-boundaries.md
-    - name: データに関する考慮事項
-      href: microservices/data-considerations.md
+      href: microservices/design/index.md
+    - name: コンピューティング オプションの選択
+      href: microservices/design/compute-options.md
     - name: サービス間の通信
-      href: microservices/interservice-communication.md
+      href: microservices/design/interservice-communication.md
     - name: API 設計
-      href: microservices/api-design.md
-    - name: インジェストとワークフロー
-      href: microservices/ingestion-workflow.md
+      href: microservices/design/api-design.md
     - name: API ゲートウェイ
-      href: microservices/gateway.md
+      href: microservices/design/gateway.md
+    - name: データに関する考慮事項
+      href: microservices/design/data-considerations.md
+    - name: マイクロサービスの設計パターン
+      href: microservices/design/patterns.md
+  - name: 運用環境でのマイクロサービスの操作
+    items:
     - name: ログ記録と監視
       href: microservices/logging-monitoring.md
     - name: CI/CD
       href: microservices/ci-cd.md
+- name: 設計ガイド
+  items:
+  - name: データ アーキテクチャ ガイド
+    items:
+    - name: はじめに
+      href: data-guide/index.md
+    - name: 従来の RDBMS ワークロード
+      items:
+      - name: 概要
+        href: data-guide/relational-data/index.md
+      - name: オンライン トランザクション処理 (OLTP)
+        href: data-guide/relational-data/online-transaction-processing.md
+      - name: データ ウェアハウス
+        href: data-guide/relational-data/data-warehousing.md
+      - name: オンライン分析処理 (OLAP)
+        href: data-guide/relational-data/online-analytical-processing.md
+      - name: 抽出、変換、読み込み (ETL)
+        href: data-guide/relational-data/etl.md
+    - name: ビッグ データ アーキテクチャ
+      items:
+      - name: 概要
+        href: data-guide/big-data/index.md
+      - name: バッチ処理
+        href: data-guide/big-data/batch-processing.md
+      - name: リアルタイム処理
+        href: data-guide/big-data/real-time-processing.md
+      - name: 大規模な機械学習
+        href: data-guide/big-data/machine-learning-at-scale.md
+      - name: 非リレーショナル データ ストア
+        href: data-guide/big-data/non-relational-data.md
+      - name: シナリオ
+        items:
+        - name: 高度な分析
+          href: data-guide/scenarios/advanced-analytics.md
+        - name: データ レイク
+          href: data-guide/scenarios/data-lake.md
+        - name: 自由形式のテキスト検索
+          href: data-guide/scenarios/search.md
+        - name: 対話型データ探索
+          href: data-guide/scenarios/interactive-data-exploration.md
+        - name: 自然言語処理
+          href: data-guide/scenarios/natural-language-processing.md
+        - name: 時系列ソリューション
+          href: data-guide/scenarios/time-series.md
+        - name: CSV ファイルと JSON ファイルの操作
+          href: data-guide/scenarios/csv-and-json.md
+      - name: テクノロジの選択
+        items:
+        - name: 分析データ ストア
+          href: data-guide/technology-choices/analytical-data-stores.md
+        - name: 分析とレポート
+          href: data-guide/technology-choices/analysis-visualizations-reporting.md
+        - name: バッチ処理
+          href: data-guide/technology-choices/batch-processing.md
+        - name: Cognitive Services
+          href: data-guide/technology-choices/cognitive-services.md
+        - name: データ ストレージ
+          href: data-guide/technology-choices/data-storage.md
+        - name: 機械学習
+          href: data-guide/technology-choices/data-science-and-machine-learning.md
+        - name: 自然言語処理
+          href: data-guide/technology-choices/natural-language-processing.md
+        - name: パイプライン オーケストレーション
+          href: data-guide/technology-choices/pipeline-orchestration-data-movement.md
+        - name: リアルタイム メッセージ取り込み
+          href: data-guide/technology-choices/real-time-ingestion.md
+        - name: データ ストアの検索
+          href: data-guide/technology-choices/search-options.md
+        - name: ストリーム処理
+          href: data-guide/technology-choices/stream-processing.md
+    - name: 横断的関心事
+      items:
+      - name: データ転送
+        href: data-guide/scenarios/data-transfer.md
+      - name: オンプレミス データ ソリューションのクラウドへの拡張
+        href: data-guide/scenarios/hybrid-on-premises-and-cloud.md
+      - name: データ保護ソリューション
+        href: data-guide/scenarios/securing-data-solutions.md
+  - name: Azure Resource Manager テンプレートの拡張
+    items:
+    - name: はじめに
+      href: building-blocks/extending-templates/index.md
+    - name: リソースの更新
+      href: building-blocks/extending-templates/update-resource.md
+    - name: リソースを条件付きでデプロイする
+      href: building-blocks/extending-templates/conditional-deploy.md
+    - name: パラメーターとしてのオブジェクトの使用
+      href: building-blocks/extending-templates/objects-as-parameters.md
+    - name: プロパティ トランスフォーマーおよびコレクター
+      href: building-blocks/extending-templates/collector.md
   - name: マルチテナント ID の管理
     items:
     - name: はじめに
@@ -817,9 +849,9 @@ items:
           href: cloud-adoption/decision-guides/software-defined-network/hub-spoke.md
       - name: ログとレポート
         href: cloud-adoption/decision-guides/log-and-report/overview.md
-ms.openlocfilehash: 2ba7e4b0b9eb049c0492557a0543778d2fbb2518
-ms.sourcegitcommit: a68f248402c598f9d25bc1dc62f27a6a934ff001
+ms.openlocfilehash: 179f4bc613b29f4090e5713c9abebdf1af8d54a7
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55903250"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58346180"

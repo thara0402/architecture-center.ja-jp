@@ -1,102 +1,187 @@
 ---
-title: Azure での Kubernetes によるマイクロサービスの設計、構築、および操作
-description: Azure でのマイクロサービスの設計、構築、および操作。
-author: MikeWasson
-ms.date: 10/23/2018
-ms.topic: guide
-ms.service: architecture-center
-ms.subservice: reference-architecture
-ms.custom: microservices
-ms.openlocfilehash: 90a6550264e5afd1fc2eda79eeff6557dc7c4163
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55897730"
+title: Azure でのマイクロサービスの構築
+description: Azure でのマイクロサービス アーキテクチャの設計、構築、および操作
+ms.date: 03/07/2019
+layout: LandingPage
+ms.topic: landing-page
 ---
-# <a name="designing-building-and-operating-microservices-on-azure"></a><span data-ttu-id="15353-103">Azure でのマイクロサービスの設計、構築、および操作</span><span class="sxs-lookup"><span data-stu-id="15353-103">Designing, building, and operating microservices on Azure</span></span>
 
-![ドローン配送サービスの図](./images/drone.svg)
+# <a name="building-microservices-on-azure"></a>Azure でのマイクロサービスの構築
 
-<span data-ttu-id="15353-105">現在、マイクロサービスは、回復性優れ、単独でのデプロイが可能で、迅速に展開できるスケーラブルなクラウド アプリケーションを構築するための一般的なアーキテクチャ スタイルになっています。</span><span class="sxs-lookup"><span data-stu-id="15353-105">Microservices have become a popular architectural style for building cloud applications that are resilient, highly scalable, independently deployable, and able to evolve quickly.</span></span> <span data-ttu-id="15353-106">しかし、このマイクロサービスを、単なる業界用語に留めないためには、アプリケーションを設計および構築するのためのさまざまなアプローチが必要です。</span><span class="sxs-lookup"><span data-stu-id="15353-106">To be more than just a buzzword, however, microservices require a different approach to designing and building applications.</span></span>
+<!-- markdownlint-disable MD033 -->
 
-<span data-ttu-id="15353-107">この一連の記事では、Azure でマイクロサービス アーキテクチャを構築して実行する方法について説明します。</span><span class="sxs-lookup"><span data-stu-id="15353-107">In this set of articles, we explore how to build and run a microservices architecture on Azure.</span></span> <span data-ttu-id="15353-108">取り上げるトピックは次のとおりです。</span><span class="sxs-lookup"><span data-stu-id="15353-108">Topics include:</span></span>
+<img src="../_images/microservices.svg" style="float:left; margin-top:8px; margin-right:8px; max-width: 80px; max-height: 80px;"/>
 
-- <span data-ttu-id="15353-109">ドメインベースの設計 (DDD) を使用してマイクロサービス アーキテクチャを設計する。</span><span class="sxs-lookup"><span data-stu-id="15353-109">Using Domain Driven Design (DDD) to design a microservices architecture.</span></span>
-- <span data-ttu-id="15353-110">コンピューティング、ストレージ、メッセージング、およびその他の設計要素に適した Azure テクノロジを選択する。</span><span class="sxs-lookup"><span data-stu-id="15353-110">Choosing the right Azure technologies for compute, storage, messaging, and other elements of the design.</span></span>
-- <span data-ttu-id="15353-111">マイクロサービスの設計パターンについて理解する。</span><span class="sxs-lookup"><span data-stu-id="15353-111">Understanding microservices design patterns.</span></span>
-- <span data-ttu-id="15353-112">回復性、スケーラビリティ、およびパフォーマンスを設計する。</span><span class="sxs-lookup"><span data-stu-id="15353-112">Designing for resiliency, scalability, and performance.</span></span>
-- <span data-ttu-id="15353-113">CI/CD パイプラインを構築する。</span><span class="sxs-lookup"><span data-stu-id="15353-113">Building a CI/CD pipeline.</span></span>
+マイクロサービスは、回復性があり、単独でのデプロイが可能で、迅速に展開できる非常にスケーラブルなアプリケーションを構築するための一般的なアーキテクチャ スタイルです。 しかし、マイクロサービス アーキテクチャが成功するには、アプリケーションを設計および構築するのためのさまざまなアプローチが必要です。
 
-<span data-ttu-id="15353-114">全体として、ドローン配送サービスのエンド ツー エンド シナリオに焦点を当てて説明します。このサービスでは、顧客はパッケージがドローンで集荷および配送されるスケジュールを設定することができます。</span><span class="sxs-lookup"><span data-stu-id="15353-114">Throughout, we focus on an end-to-end scenario: A drone delivery service that lets customers schedule packages to be picked up and delivered via drone.</span></span> <span data-ttu-id="15353-115">リファレンス実装のコードは GitHub にあります</span><span class="sxs-lookup"><span data-stu-id="15353-115">You can find the code for our reference implementation on GitHub</span></span>
+<ul  class="panelContent cardsZ">
+<li style="display: flex; flex-direction: column;">
+    <a href="./introduction.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>マイクロサービスとは</h3>
+                        <p>マイクロサービスと他のアーキテクチャの違いと、それらを使用すべき場面</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</li>
+<li style="display: flex; flex-direction: column;">
+    <a href="../guide/architecture-styles/microservices.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>マイクロサービス アーキテクチャ スタイル</h3>
+                        <p>マイクロサービス アーキテクチャ スタイルの概要</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</li>
+</ul>
 
-<span data-ttu-id="15353-116">[![GitHub](../_images/github.png) リファレンス実装][drone-ri]</span><span class="sxs-lookup"><span data-stu-id="15353-116">[![GitHub](../_images/github.png) Reference implementation][drone-ri]</span></span>
+## <a name="examples-of-microservices-architectures"></a>マイクロサービス アーキテクチャの例
 
-<span data-ttu-id="15353-117">まずは、基礎から始めましょう。</span><span class="sxs-lookup"><span data-stu-id="15353-117">But first, let's start with fundamentals.</span></span> <span data-ttu-id="15353-118">マイクロサービスと何でしょうか。また、マイクロサービス アーキテクチャを採用することで、どのような利点を得られるのでしょうか。</span><span class="sxs-lookup"><span data-stu-id="15353-118">What are microservices, and what are the advantages of adopting a microservices architecture?</span></span>
+<ul  class="panelContent cardsZ">
+<li style="display: flex; flex-direction: column;">
+    <a href="../example-scenario/infrastructure/service-fabric-microservices.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>Service Fabric を使用したモノリシック アプリケーションの分解</h3>
+                        <p>ASP.NET Web サイトをマイクロサービスに分解する反復的なアプローチ。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</li>
+<li style="display: flex; flex-direction: column;">
+    <a href="../example-scenario/data/ecommerce-order-processing.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>Azure でのスケーラブルな注文処理</h3>
+                        <p>マイクロサービスを介して実装される関数型プログラミング モデルを使用した注文処理。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</li>
+</ul>
 
-<!-- markdownlint-disable MD026 -->
+## <a name="build-a-microservices-application"></a>マイクロサービス アプリケーションの構築
 
-## <a name="why-build-microservices"></a><span data-ttu-id="15353-119">マイクロサービスを構築する理由</span><span class="sxs-lookup"><span data-stu-id="15353-119">Why build microservices?</span></span>
+<ul  class="panelContent cardsZ">
+<li style="display: flex; flex-direction: column;">
+    <a href="./model/domain-analysis.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>ドメイン分析を使用したマイクロサービスのモデル化</h3>
+                        <p>マイクロサービスの設計時によくあるいくつかの問題を回避するために、ドメイン分析を使用してマイクロサービス境界を定義します。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</li>
+<li style="display: flex; flex-direction: column;">
+    <a href="../reference-architectures/microservices/aks.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>Azure Kubernetes Services (AKS) の参照アーキテクチャ</h3>
+                        <p>この参照アーキテクチャには、ほとんどのデプロイの出発点にすることができる基本的な AKS 構成が示されています。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</li>
+<li style="display: flex; flex-direction: column;">
+    <a href="../reference-architectures/microservices/service-fabric.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>Azure Service Fabric の参照アーキテクチャ</h3>
+                        <p>この参照アーキテクチャには、ほとんどのデプロイの出発点にすることができる推奨構成が示されています。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</li>
+<li style="display: flex; flex-direction: column;">
+    <a href="./design/index.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>マイクロサービス アーキテクチャの設計</h3>
+                        <p>これらの記事では、Azure Kubernetes Service (AKS) が使用されるリファレンス実装に基づいて、マイクロサービス アプリケーションを構築する方法について詳しく説明します。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</li>
+<li style="display: flex; flex-direction: column;">
+    <a href="./design/patterns.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>設計パターン</h3>
+                        <p>マイクロサービスに役立つ一連の設計パターン。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</li>
+</ul>
 
-<!-- markdownlint-enable MD026 -->
+## <a name="operate-microservices-in-production"></a>運用環境でのマイクロサービスの操作
 
-<span data-ttu-id="15353-120">マイクロサービス アーキテクチャでは、アプリケーションが小規模の独立したサービスで構成されます。</span><span class="sxs-lookup"><span data-stu-id="15353-120">In a microservices architecture, the application is composed of small, independent services.</span></span> <span data-ttu-id="15353-121">以下に、マイクロサービスの特徴を定義します。</span><span class="sxs-lookup"><span data-stu-id="15353-121">Here are some of the defining characteristics of microservices:</span></span>
-
-- <span data-ttu-id="15353-122">各マイクロサービスが 1 つのビジネス機能を実装します。</span><span class="sxs-lookup"><span data-stu-id="15353-122">Each microservice implements a single business capability.</span></span>
-- <span data-ttu-id="15353-123">マイクロサービスは小さいため、小規模な 1 つの開発者チームで作成および管理できます。</span><span class="sxs-lookup"><span data-stu-id="15353-123">A microservice is small enough that a single small team of developers can write and maintain it.</span></span>
-- <span data-ttu-id="15353-124">マイクロサービスは個別のプロセスで実行され、適切に定義された API またはメッセージング パターンを介して通信します。</span><span class="sxs-lookup"><span data-stu-id="15353-124">Microservices run in separate processes, communicating through well-defined APIs or messaging patterns.</span></span>
-- <span data-ttu-id="15353-125">マイクロサービスでは、データ ストアまたはデータ スキーマが共有されません。</span><span class="sxs-lookup"><span data-stu-id="15353-125">Microservices do not share data stores or data schemas.</span></span> <span data-ttu-id="15353-126">各マイクロサービスがそれぞれ自身のデータを管理する必要があります。</span><span class="sxs-lookup"><span data-stu-id="15353-126">Each microservice is responsible for managing its own data.</span></span>
-- <span data-ttu-id="15353-127">マイクロサービスは個別のコード ベースを持ち、ソース コードを共有しません。</span><span class="sxs-lookup"><span data-stu-id="15353-127">Microservices have separate code bases, and do not share source code.</span></span> <span data-ttu-id="15353-128">ただし、共通のユーティリティ ライブラリを使用することはあります。</span><span class="sxs-lookup"><span data-stu-id="15353-128">They may use common utility libraries, however.</span></span>
-- <span data-ttu-id="15353-129">他のサービスとは関係なく各マイクロサービスをデプロイして更新できます。</span><span class="sxs-lookup"><span data-stu-id="15353-129">Each microservice can be deployed and updated independently of other services.</span></span>
-
-<span data-ttu-id="15353-130">適切に構築することで、マイクロサービスにより、以下のような有益なメリットが多数もたらされます。</span><span class="sxs-lookup"><span data-stu-id="15353-130">Done correctly, microservices can provide a number of useful benefits:</span></span>
-
-- <span data-ttu-id="15353-131">**機敏性。**</span><span class="sxs-lookup"><span data-stu-id="15353-131">**Agility.**</span></span> <span data-ttu-id="15353-132">マイクロサービスは個別にデプロイされるため、バグ修正や機能リリースが管理しやすくなります。</span><span class="sxs-lookup"><span data-stu-id="15353-132">Because microservices are deployed independently, it's easier to manage bug fixes and feature releases.</span></span> <span data-ttu-id="15353-133">アプリケーション全体を再デプロイしなくてもサービスを更新できるほか、問題が発生したときに更新プログラムをロールバックできます。</span><span class="sxs-lookup"><span data-stu-id="15353-133">You can update a service without redeploying the entire application, and roll back an update if something goes wrong.</span></span> <span data-ttu-id="15353-134">従来のアプリケーションでは、多くの場合、アプリケーションの一部にバグが見つかると、リリース プロセス全体がブロックされ、その結果、新機能はバグ修正が統合、テスト、および公開されるまで使用できなくなる可能性があります。</span><span class="sxs-lookup"><span data-stu-id="15353-134">In many traditional applications, if a bug is found in one part of the application, it can block the entire release process; as a result, new features may be held up waiting for a bug fix to be integrated, tested, and published.</span></span>
-
-- <span data-ttu-id="15353-135">**短いコード、小規模チーム。**</span><span class="sxs-lookup"><span data-stu-id="15353-135">**Small code, small teams.**</span></span> <span data-ttu-id="15353-136">マイクロサービスの規模は小さく、1 つの機能チームによって構築、テスト、およびデプロイできます。</span><span class="sxs-lookup"><span data-stu-id="15353-136">A microservice should be small enough that a single feature team can build, test, and deploy it.</span></span> <span data-ttu-id="15353-137">コード ベースは小さいほど、わかりやすくなります。</span><span class="sxs-lookup"><span data-stu-id="15353-137">Small code bases are easier to understand.</span></span> <span data-ttu-id="15353-138">大規模なモノリシック アプリケーションでは、時間の経過に伴ってコードの依存関係が複雑になる傾向にあり、新しい機能を追加しようとすると、多くの場所でコード変更が必要です。</span><span class="sxs-lookup"><span data-stu-id="15353-138">In a large monolithic application, there is a tendency over time for code dependencies to become tangled, so that adding a new feature requires touching code in a lot of places.</span></span> <span data-ttu-id="15353-139">マイクロサービス アーキテクチャでは、コードまたはデータ ストアが共有されないため、依存関係を最小限に抑え、新しい機能を簡単に追加できます。</span><span class="sxs-lookup"><span data-stu-id="15353-139">By not sharing code or data stores, a microservices architecture minimizes dependencies, and that makes it easier to add new features.</span></span> <span data-ttu-id="15353-140">小規模なチーム編成も機敏性を向上させます。</span><span class="sxs-lookup"><span data-stu-id="15353-140">Small team sizes also promote greater agility.</span></span> <span data-ttu-id="15353-141">"2 枚のピザ ルール" も、チームは 2 枚のピザが行き渡る人数に抑える必要がある、となっています。</span><span class="sxs-lookup"><span data-stu-id="15353-141">The "two-pizza rule" says that a team should be small enough that two pizzas can feed the team.</span></span> <span data-ttu-id="15353-142">もちろん、これは正確な基準ではなく、チームの食欲によっても変わります。</span><span class="sxs-lookup"><span data-stu-id="15353-142">Obviously that's not an exact metric and depends on team appetites!</span></span> <span data-ttu-id="15353-143">しかし、重要なのは、大規模なグループでは、コミュニケーションに時間がかかり、管理オーバーヘッドが増大し、機敏性も低下するため、生産性が低くなる傾向があるという点です。</span><span class="sxs-lookup"><span data-stu-id="15353-143">But the point is that large groups tend be less productive, because communication is slower, management overhead goes up, and agility diminishes.</span></span>
-
-- <span data-ttu-id="15353-144">**テクノロジの組み合わせ**。</span><span class="sxs-lookup"><span data-stu-id="15353-144">**Mix of technologies**.</span></span> <span data-ttu-id="15353-145">必要に応じて、チームがテクノロジ スタックを組み合わせて、サービスに最適なテクノロジを選択できます。</span><span class="sxs-lookup"><span data-stu-id="15353-145">Teams can pick the technology that best fits their service, using a mix of technology stacks as appropriate.</span></span>
-
-- <span data-ttu-id="15353-146">**回復性**。</span><span class="sxs-lookup"><span data-stu-id="15353-146">**Resiliency**.</span></span> <span data-ttu-id="15353-147">個々のマイクロサービスが使用できなくなっても、上流マイクロサービスが障害を正しく処理するように設計されている限り (サーキット ブレークの実装など)、アプリケーション全体が中断されることはありません。</span><span class="sxs-lookup"><span data-stu-id="15353-147">If an individual microservice becomes unavailable, it won't disrupt the entire application, as long as any upstream microservices are designed to handle faults correctly (for example, by implementing circuit breaking).</span></span>
-
-- <span data-ttu-id="15353-148">**スケーラビリティ**: </span><span class="sxs-lookup"><span data-stu-id="15353-148">**Scalability**.</span></span> <span data-ttu-id="15353-149">マイクロサービス アーキテクチャでは、各マイクロサービスを個別に拡張できます。</span><span class="sxs-lookup"><span data-stu-id="15353-149">A microservices architecture allows each microservice to be scaled independently of the others.</span></span> <span data-ttu-id="15353-150">つまり、サブシステムにさらに多くのリソースが必要な場合、アプリケーション全体をスケールアウトせずに、サブシステムをスケールアウトすることができます。</span><span class="sxs-lookup"><span data-stu-id="15353-150">That lets you scale out subsystems that require more resources, without scaling out the entire application.</span></span> <span data-ttu-id="15353-151">コンテナー内にサービスをデプロイすると、マイクロサービスを高密度で 1 つのホストに圧縮できるため、リソースをより効率的に使用できます。</span><span class="sxs-lookup"><span data-stu-id="15353-151">If you deploy services inside containers, you can also pack a higher density of microservices onto a single host, which allows for more efficient utilization of resources.</span></span>
-
-- <span data-ttu-id="15353-152">**データの分離**。</span><span class="sxs-lookup"><span data-stu-id="15353-152">**Data isolation**.</span></span> <span data-ttu-id="15353-153">影響を受けるのは 1 つのマイクロサービスだけであるため、スキーマ更新がはるかに実行しやすくなります。</span><span class="sxs-lookup"><span data-stu-id="15353-153">It is much easier to perform schema updates, because only a single microservice is affected.</span></span> <span data-ttu-id="15353-154">モノリシック アプリケーションでは、アプリケーションのさまざまな部分すべてが同じデータに影響する可能性があり、スキーマの変更にはリスクが伴うため、スキーマ更新は非常に困難になる可能性があります。</span><span class="sxs-lookup"><span data-stu-id="15353-154">In a monolithic application, schema updates can become very challenging, because different parts of the application may all touch the same data, making any alterations to the schema risky.</span></span>
-
-## <a name="no-free-lunch"></a><span data-ttu-id="15353-155">課題</span><span class="sxs-lookup"><span data-stu-id="15353-155">No free lunch</span></span>
-
-<span data-ttu-id="15353-156">こうしたメリットを実現するには、それなりに手間がかかります。</span><span class="sxs-lookup"><span data-stu-id="15353-156">These benefits don't come for free.</span></span> <span data-ttu-id="15353-157">この一連の記事は、回復性、拡張性、管理性に優れたマイクロサービスを構築するためのいくつかの課題に対処できるようにすることを目的としています。</span><span class="sxs-lookup"><span data-stu-id="15353-157">This series of articles is designed to address some of the challenges of building microservices that are resilient, scalable, and manageable.</span></span>
-
-- <span data-ttu-id="15353-158">**サービス境界**。</span><span class="sxs-lookup"><span data-stu-id="15353-158">**Service boundaries**.</span></span> <span data-ttu-id="15353-159">マイクロサービスを構築するときは、サービス間の境界をどこにするかを慎重に検討する必要があります。</span><span class="sxs-lookup"><span data-stu-id="15353-159">When you build microservices, you need to think carefully about where to draw the boundaries between services.</span></span> <span data-ttu-id="15353-160">一度サービスを構築して運用環境にデプロイすると、その境界を越えてリファクターするには困難を伴うことがあります。</span><span class="sxs-lookup"><span data-stu-id="15353-160">Once services are built and deployed in production, it can be hard to refactor across those boundaries.</span></span> <span data-ttu-id="15353-161">適切なサービス境界を選択することは、マイクロサービス アーキテクチャを設計するときの最大の課題の 1 つです。</span><span class="sxs-lookup"><span data-stu-id="15353-161">Choosing the right service boundaries is one of the biggest challenges when designing a microservices architecture.</span></span> <span data-ttu-id="15353-162">各サービスの規模はどの程度にするべきでしょうか。</span><span class="sxs-lookup"><span data-stu-id="15353-162">How big should each service be?</span></span> <span data-ttu-id="15353-163">どのような場合に複数のサービスに機能を分解し、また、どのような場合に同じサービス内に機能をまとめるべきでしょうか。</span><span class="sxs-lookup"><span data-stu-id="15353-163">When should functionality be factored across several services, and when should it be kept inside the same service?</span></span> <span data-ttu-id="15353-164">このガイドでは、ドメイン ベース設計を使用して、サービス境界を見つけ出すアプローチについて説明します。</span><span class="sxs-lookup"><span data-stu-id="15353-164">In this guide, we describe an approach that uses domain-driven design to find service boundaries.</span></span> <span data-ttu-id="15353-165">この場合、まずは[ドメイン分析](./domain-analysis.md)で境界コンテキストを検出し、機能要件と機能以外の要件に基づいて、一連の[戦術的 DDD パターン](./microservice-boundaries.md)を適用します。</span><span class="sxs-lookup"><span data-stu-id="15353-165">It starts with [Domain analysis](./domain-analysis.md) to find the bounded contexts, then applies a set of [tactical DDD patterns](./microservice-boundaries.md) based on functional and non-functional requirements.</span></span>
-
-- <span data-ttu-id="15353-166">**データの一貫性と整合性**。</span><span class="sxs-lookup"><span data-stu-id="15353-166">**Data consistency and integrity**.</span></span> <span data-ttu-id="15353-167">マイクロサービスの基本原則は、各サービスがそれぞれ自身のデータを管理することです。</span><span class="sxs-lookup"><span data-stu-id="15353-167">A basic principle of microservices is that each service manages its own data.</span></span> <span data-ttu-id="15353-168">これによりサービスが分離されますが、データ整合性または冗長性の課題が生じる可能性があります。</span><span class="sxs-lookup"><span data-stu-id="15353-168">This keeps services decoupled, but can lead to challenges with data integrity or redundancy.</span></span> <span data-ttu-id="15353-169">その問題のいくつかについては、[データ統合](./data-considerations.md)に関するページで説明しています。</span><span class="sxs-lookup"><span data-stu-id="15353-169">We explore some of these issues in the [Data considerations](./data-considerations.md).</span></span>
-
-- <span data-ttu-id="15353-170">**ネットワークの輻輳と待機時間**。</span><span class="sxs-lookup"><span data-stu-id="15353-170">**Network congestion and latency**.</span></span> <span data-ttu-id="15353-171">小さく細分化された多くのサービスを使用すると、サービス間の通信が増え、エンド ツー エンドの待機時間が長くなります。</span><span class="sxs-lookup"><span data-stu-id="15353-171">The use of many small, granular services can result in more interservice communication and longer end-to-end latency.</span></span> <span data-ttu-id="15353-172">[サービス間の通信](./interservice-communication.md)に関する章では、サービス間でのメッセージングに関する考慮事項について説明します。</span><span class="sxs-lookup"><span data-stu-id="15353-172">The chapter [Interservice communication](./interservice-communication.md) describes considerations for messaging between services.</span></span> <span data-ttu-id="15353-173">マイクロサービス アーキテクチャでは、同期通信と非同期通信の両方が使用されます。</span><span class="sxs-lookup"><span data-stu-id="15353-173">Both synchronous and asynchronous communication have a place in microservices architectures.</span></span> <span data-ttu-id="15353-174">サービスの疎結合を維持し、サービスを個別にデプロイおよび更新できるように、適切な [API 設計](./api-design.md)を行うことが重要です。</span><span class="sxs-lookup"><span data-stu-id="15353-174">Good [API design](./api-design.md) is important so that services remain loosely coupled, and can be independently deployed and updated.</span></span>
-
-- <span data-ttu-id="15353-175">**複雑さ**。</span><span class="sxs-lookup"><span data-stu-id="15353-175">**Complexity**.</span></span> <span data-ttu-id="15353-176">マイクロサービス アプリケーションには可動部分がかなりあります。</span><span class="sxs-lookup"><span data-stu-id="15353-176">A microservices application has more moving parts.</span></span> <span data-ttu-id="15353-177">各サービスはシンプルですが、サービスは全体として連携する必要があります。</span><span class="sxs-lookup"><span data-stu-id="15353-177">Each service may be simple, but the services have to work together as a whole.</span></span> <span data-ttu-id="15353-178">1 つのユーザー操作に、複数のサービスが関連する場合があります。</span><span class="sxs-lookup"><span data-stu-id="15353-178">A single user operation may involve multiple services.</span></span> <span data-ttu-id="15353-179">[インジェストとワークフロー](./ingestion-workflow.md)に関する章では、高スループットでの要求の取り込み、ワークフローの調整、およびエラー処理に関するいくつかの問題について説明します。</span><span class="sxs-lookup"><span data-stu-id="15353-179">In the chapter [Ingestion and workflow](./ingestion-workflow.md), we examine some of the issues around ingesting requests at high throughput, coordinating a workflow, and handling failures.</span></span>
-
-- <span data-ttu-id="15353-180">**クライアントとアプリケーションの間の通信。**</span><span class="sxs-lookup"><span data-stu-id="15353-180">**Communication between clients and the application.**</span></span>  <span data-ttu-id="15353-181">アプリケーションを多数の小規模サービスに分解した場合、クライアントは、こうしたサービスとどのように通信するのでしょうか。</span><span class="sxs-lookup"><span data-stu-id="15353-181">When you decompose an application into many small services, how should clients communicate with those services?</span></span> <span data-ttu-id="15353-182">各サービスを個別に直接呼び出すべきか、あるいは、[API ゲートウェイ](./gateway.md)を介して要求をルーティングするべきでしょうか。</span><span class="sxs-lookup"><span data-stu-id="15353-182">Should a client call each individual service directly, or route requests through an [API Gateway](./gateway.md)?</span></span>
-
-- <span data-ttu-id="15353-183">**監視**。</span><span class="sxs-lookup"><span data-stu-id="15353-183">**Monitoring**.</span></span> <span data-ttu-id="15353-184">分散アプリケーションを監視するには複数のサービスのテレメトリを関連付ける必要があるため、モノリシック アプリケーションを監視するよりも手間がかかります。</span><span class="sxs-lookup"><span data-stu-id="15353-184">Monitoring a distributed application can be a lot harder than a monolithic application, because you must correlate telemetry from multiple services.</span></span> <span data-ttu-id="15353-185">[ログ記録と監視](./logging-monitoring.md)に関する章では、こうした懸念事項を取り上げます。</span><span class="sxs-lookup"><span data-stu-id="15353-185">The chapter [Logging and monitoring](./logging-monitoring.md) addresses these concerns.</span></span>
-
-- <span data-ttu-id="15353-186">**継続的インテグレーションと配信 (CI/CD)**。</span><span class="sxs-lookup"><span data-stu-id="15353-186">**Continuous integration and delivery (CI/CD)**.</span></span> <span data-ttu-id="15353-187">マイクロサービスの主な目標の 1 つが機敏性です。</span><span class="sxs-lookup"><span data-stu-id="15353-187">One of the main goals of microservices is agility.</span></span> <span data-ttu-id="15353-188">これを実現するには、各サービスを迅速かつ確実にテスト環境および運用環境にデプロイできるように、自動化された堅牢な [CI/CD](./ci-cd.md) が必要です。</span><span class="sxs-lookup"><span data-stu-id="15353-188">To achieve this, you must have automated and robust [CI/CD](./ci-cd.md), so that you can quickly and reliably deploy individual services into test and production environments.</span></span>
-
-## <a name="the-drone-delivery-application"></a><span data-ttu-id="15353-189">ドローン配送アプリケーション</span><span class="sxs-lookup"><span data-stu-id="15353-189">The Drone Delivery application</span></span>
-
-<span data-ttu-id="15353-190">このような問題を調査し、マイクロサービス アーキテクチャのベスト プラクティスのいくつかを紹介するために、ドローン配送アプリケーションというリファレンス実装を作成しました。</span><span class="sxs-lookup"><span data-stu-id="15353-190">To explore these issues, and to illustrate some of the best practices for a microservices architecture, we created a reference implementation that we call the Drone Delivery application.</span></span> <span data-ttu-id="15353-191">リファレンス実装は [GitHub][drone-ri] にあります。</span><span class="sxs-lookup"><span data-stu-id="15353-191">You can find the reference implementation on [GitHub][drone-ri].</span></span>
-
-<span data-ttu-id="15353-192">Fabrikam, Inc. は、ドローン配送サービスを開始しようとしています。</span><span class="sxs-lookup"><span data-stu-id="15353-192">Fabrikam, Inc. is starting a drone delivery service.</span></span> <span data-ttu-id="15353-193">同社は、ドローン機団を管理しています。</span><span class="sxs-lookup"><span data-stu-id="15353-193">The company manages a fleet of drone aircraft.</span></span> <span data-ttu-id="15353-194">企業がサービスに登録すると、ユーザーは、ドローンで商品を集荷して配送するように依頼できます。</span><span class="sxs-lookup"><span data-stu-id="15353-194">Businesses register with the service, and users can request a drone to pick up goods for delivery.</span></span> <span data-ttu-id="15353-195">顧客が集荷のスケジュールを設定すると、バックエンド システムによってドローンが割り当てられ、推定配送時刻がユーザーに通知されます。</span><span class="sxs-lookup"><span data-stu-id="15353-195">When a customer schedules a pickup, a backend system assigns a drone and notifies the user with an estimated delivery time.</span></span> <span data-ttu-id="15353-196">配送中、ETA は常時更新され、顧客はドローンの場所を追跡できます。</span><span class="sxs-lookup"><span data-stu-id="15353-196">While the delivery is in progress, the customer can track the location of the drone, with a continuously updated ETA.</span></span>
-
-<span data-ttu-id="15353-197">このシナリオには、かなり複雑なドメインが含まれます。</span><span class="sxs-lookup"><span data-stu-id="15353-197">This scenario involves a fairly complicated domain.</span></span> <span data-ttu-id="15353-198">ビジネスに関する懸念事項には、ドローンのスケジュール設定、荷物の追跡、ユーザー アカウントの管理、履歴データの保存と分析などもあります。</span><span class="sxs-lookup"><span data-stu-id="15353-198">Some of the business concerns include scheduling drones, tracking packages, managing user accounts, and storing and analyzing historical data.</span></span> <span data-ttu-id="15353-199">さらに、Fabrikam が求めているのは、迅速に市場に出し、迅速に反復して、新機能を追加することです。</span><span class="sxs-lookup"><span data-stu-id="15353-199">Moreover, Fabrikam wants to get to market quickly and then iterate quickly, adding new functionality and capabilities.</span></span> <span data-ttu-id="15353-200">アプリケーションは、高いサービス レベル目標 (SLO) に基づいてクラウド スケールで動作する必要があります。</span><span class="sxs-lookup"><span data-stu-id="15353-200">The application needs to operate at cloud scale, with a high service level objective (SLO).</span></span> <span data-ttu-id="15353-201">また、Fabrikam は、システムの部分ごとに、データ ストレージとクエリの要件がまったく異なることを予期しています。</span><span class="sxs-lookup"><span data-stu-id="15353-201">Fabrikam also expects that different parts of the system will have very different requirements for data storage and querying.</span></span> <span data-ttu-id="15353-202">Fabrikam はこれらをすべて考慮した結果、ドローン配送アプリケーションにマイクロサービス アーキテクチャを選択します。</span><span class="sxs-lookup"><span data-stu-id="15353-202">All of these considerations lead Fabrikam to choose a microservices architecture for the Drone Delivery application.</span></span>
-
-> [!NOTE]
-> <span data-ttu-id="15353-203">マイクロサービス アーキテクチャと他のアーキテクチャ スタイルのどちらを選択するかについては、「[Azure アプリケーション アーキテクチャ ガイド](../guide/index.md)」を参照してください。</span><span class="sxs-lookup"><span data-stu-id="15353-203">For help in choosing between a microservices architecture and other architectural styles, see the [Azure Application Architecture Guide](../guide/index.md).</span></span>
-
-<span data-ttu-id="15353-204">このリファレンス実装では、[Azure Kubernetes Service (AKS)](/azure/aks/) で Kubernetes を使用しています。</span><span class="sxs-lookup"><span data-stu-id="15353-204">Our reference implementation uses Kubernetes with [Azure Kubernetes Service](/azure/aks/) (AKS).</span></span> <span data-ttu-id="15353-205">ただし、高いレベルでのアーキテクチャの決定と課題の多くは、[Azure Service Fabric](/azure/service-fabric/) を含む、すべてのコンテナー オーケストレーターに当てはまります。</span><span class="sxs-lookup"><span data-stu-id="15353-205">However, many of the high-level architectural decisions and challenges will apply to any container orchestrator, including [Azure Service Fabric](/azure/service-fabric/).</span></span>
-
-> [!div class="nextstepaction"]
-> [<span data-ttu-id="15353-206">ドメイン分析</span><span class="sxs-lookup"><span data-stu-id="15353-206">Domain analysis</span></span>](./domain-analysis.md)
-
-<!-- links -->
-
-[drone-ri]: https://github.com/mspnp/microservices-reference-implementation
+<ul  class="panelContent cardsZ">
+<li style="display: flex; flex-direction: column;">
+    <a href="./logging-monitoring.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>ログ記録と監視</h3>
+                        <p>マイクロサービス アーキテクチャの分散特性によって、ログ記録と監視が特に重要になります。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</li>
+<li style="display: flex; flex-direction: column;">
+    <a href="./ci-cd.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>継続的インテグレーションとデプロイ</h3>
+                        <p>継続的インテグレーションと継続的デリバリー (CI/CD) は、マイクロサービスで成功を収めるための鍵です。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</li>
+</ul>

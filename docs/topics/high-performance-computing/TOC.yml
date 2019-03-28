@@ -1,0 +1,139 @@
+items:
+- name: Azure でのハイ パフォーマンス コンピューティング (HPC)
+  href: /azure/architecture/topics/high-performance-computing
+- name: クラウドでの HPC の違い
+  items:
+  - name: ビッグ コンピューティング アーキテクチャ スタイル
+    href: /azure/architecture/guide/architecture-styles/big-compute?context=/azure/architecture/topics/high-performance-computing/context/hpc-context
+  - name: 自動スケーリングのベスト プラクティス
+    href: /azure/architecture/best-practices/auto-scaling?context=/azure/architecture/topics/high-performance-computing/context/hpc-context
+- name: インフラストラクチャ
+  items:
+  - name: HPC アーキテクチャの例
+    items:
+    - name: Azure でのコンピューター支援エンジニアリング サービス
+      href: /azure/architecture/example-scenario/apps/hpc-saas?context=/azure/architecture/topics/high-performance-computing/context/hpc-context
+    - name: Azure での計算流体力学 (CFD) シミュレーション
+      href: /azure/architecture/example-scenario/infrastructure/hpc-cfd?context=/azure/architecture/topics/high-performance-computing/context/hpc-context
+    - name: Azure での 3D ビデオのレンダリング
+      href: /azure/architecture/example-scenario/infrastructure/video-rendering?context=/azure/architecture/topics/high-performance-computing/context/hpc-context
+  - name: Compute
+    items:
+    - name: CPU ベースの仮想マシン
+      items:
+      - name: Linux VM
+        href: /azure/virtual-machines/linux/sizes-hpc?context=/azure/architecture/topics/high-performance-computing/context/hpc-context
+      - name: Windows VM
+        href: /azure/virtual-machines/windows/sizes-hpc?context=/azure/architecture/topics/high-performance-computing/context/hpc-context
+      - name: 仮想マシンの vCPU クォータ
+        href: /azure/virtual-machines/linux/quotas?context=/azure/architecture/topics/high-performance-computing/context/hpc-context
+    - name: GPU 対応仮想マシン
+      items:
+      - name: Linux VM
+        href: /azure/virtual-machines/linux/sizes-gpu?context=/azure/architecture/topics/high-performance-computing/context/hpc-context
+      - name: Windows VM
+        href: /azure/virtual-machines/windows/sizes-gpu?context=/azure/architecture/topics/high-performance-computing/context/hpc-context
+  - name: Storage
+    items:
+    - name: ストレージ最適化仮想マシン
+      href: /azure/virtual-machines/windows/sizes-storage?context=/azure/architecture/topics/high-performance-computing/context/hpc-context
+    - name: BLOB、テーブル、キュー ストレージ
+      href: /azure/storage/storage-introduction?context=/azure/architecture/topics/high-performance-computing/context/hpc-context
+    - name: Azure SMB ファイル ストレージ
+      href: /azure/storage/files/storage-files-introduction?context=/azure/architecture/topics/high-performance-computing/context/hpc-context
+  - name: ネットワーク
+    items:
+    - name: RDMA 対応のインスタンス
+      href: /azure/virtual-machines/windows/sizes-hpc?context=/azure/architecture/topics/high-performance-computing/context/hpc-context#rdma-capable-instances
+    - name: Virtual Network
+      href: /azure/virtual-network/virtual-networks-overview?context=/azure/architecture/topics/high-performance-computing/context/hpc-context
+    - name: ExpressRoute
+      href: /azure/expressroute/expressroute-introduction?context=/azure/architecture/topics/high-performance-computing/context/hpc-context
+- name: 管理
+  items:
+  - name: 自作
+    items:
+    - name: 仮想マシン スケール セット
+      href: /azure/virtual-machine-scale-sets/overview?context=/azure/architecture/topics/high-performance-computing/context/hpc-context
+  - name: ハイブリッドとクラウド バースティング
+    items:
+    - name: オンプレミス ネットワークを Azure に接続するためのオプション
+      href: /azure/architecture/reference-architectures/hybrid-networking/?context=/azure/architecture/topics/high-performance-computing/context/hpc-context
+    - name: VPN ゲートウェイを使用した Azure へのオンプレミス ネットワークの接続
+      href: /azure/architecture/reference-architectures/hybrid-networking/vpn?context=/azure/architecture/topics/high-performance-computing/context/hpc-context
+    - name: ExpressRoute を使用した Azure へのオンプレミス ネットワークの接続
+      href: /azure/architecture/reference-architectures/hybrid-networking/expressroute?context=/azure/architecture/topics/high-performance-computing/context/hpc-context
+    - name: VPN フェールオーバー付きの ExpressRoute を使用してオンプレミス ネットワークを Azure に接続する
+      href: /azure/architecture/reference-architectures/hybrid-networking/expressroute-vpn-failover?context=/azure/architecture/topics/high-performance-computing/context/hpc-context
+  - name: Marketplace のソリューション
+    items:
+    - name: Windows および Linux 用 Azure Data Science VM
+      href: /azure/machine-learning/data-science-virtual-machine/overview?context=/azure/architecture/topics/high-performance-computing/context/hpc-context
+  - name: Azure Batch
+    items:
+    - name: Azure Batch
+      href: /azure/batch/batch-technical-overview?context=/azure/architecture/topics/high-performance-computing/context/hpc-context
+    - name: Batch を使った初めての開発
+      href: /azure/batch/quick-run-dotnet?context=/azure/architecture/topics/high-performance-computing/context/hpc-context
+    - name: Batch で優先順位の低い VM を使用する
+      href: /azure/batch/batch-low-pri-vms?context=/azure/architecture/topics/high-performance-computing/context/hpc-context
+  - name: Azure CycleCloud
+    items:
+    - name: Azure CycleCloud
+      href: /azure/cyclecloud/?context=/azure/architecture/topics/high-performance-computing/context/hpc-context
+  - name: ワークロード マネージャー
+    items:
+    - name: Windows 用の HPC Pack
+      href: /azure/virtual-machines/windows/hpcpack-cluster-options?context=/azure/architecture/topics/high-performance-computing/context/hpc-context
+    - name: Linux 用の HPC Pack
+      href: /azure/virtual-machines/linux/hpcpack-cluster-options?context=/azure/architecture/topics/high-performance-computing/context/hpc-context
+    - name: Containers
+      items:
+      - name: Azure Kubernetes Service (AKS)
+        href: /azure/aks/intro-kubernetes?context=/azure/architecture/topics/high-performance-computing/context/hpc-context
+      - name: Container Registry
+        href: /azure/container-registry/container-registry-intro?context=/azure/architecture/topics/high-performance-computing/context/hpc-context
+- name: コスト管理
+  items:
+  - name: 優先順位の低い VM
+    href: /azure/virtual-machine-scale-sets/virtual-machine-scale-sets-use-low-priority?context=/azure/architecture/topics/high-performance-computing/context/hpc-context
+- name: セキュリティ
+  items:
+  - name: Azure のセキュリティのドキュメント
+    href: /azure/security/azure-security?context=/azure/architecture/topics/high-performance-computing/context/hpc-context
+  - name: Azure にハブスポーク ネットワーク トポロジを実装する
+    href: /azure/architecture/reference-architectures/hybrid-networking/hub-spoke?context=/azure/architecture/topics/high-performance-computing/context/hpc-context
+  - name: Azure に共有サービスを含むハブスポーク ネットワーク トポロジを実装する
+    href: /azure/architecture/reference-architectures/hybrid-networking/shared-services?context=/azure/architecture/topics/high-performance-computing/context/hpc-context
+- name: HPC アプリケーション
+  items:
+  - name: エンジニアリング アプリケーション
+    items:
+    - name: MATLAB Distributed Computing Server
+      href: /azure/virtual-machines/windows/matlab-mdcs-cluster?context=/azure/architecture/topics/high-performance-computing/context/hpc-context
+  - name: グラフィックとレンダリング
+    items:
+    - name: Autodesk Maya、3ds Max、Arnold
+      href: /azure/batch/batch-rendering-service?context=/azure/architecture/topics/high-performance-computing/context/hpc-context
+  - name: AI とディープ ラーニング
+    items:
+    - name: Microsoft Cognitive Toolkit
+      href: /cognitive-toolkit/cntk-on-azure
+  - name: MPI プロバイダー
+    items:
+    - name: Microsoft MPI
+      href: /message-passing-interface/microsoft-mpi
+- name: リモート視覚化
+  items:
+  - name: Citrix を使用した Linux 仮想デスクトップ
+    href: /azure/architecture/example-scenario/infrastructure/linux-vdi-citrix?context=/azure/architecture/topics/high-performance-computing/context/hpc-context
+- name: パフォーマンス ベンチマーク
+  items:
+  - name: コンピューティング ベンチマーク
+    href: /azure/virtual-machines/windows/compute-benchmark-scores?context=/azure/architecture/topics/high-performance-computing/context/hpc-context
+ms.openlocfilehash: 6934509e2019f342134327621606a0957dd38bb1
+ms.sourcegitcommit: 548374a0133f3caed3934fda6a380c76e6eaecea
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58419990"
