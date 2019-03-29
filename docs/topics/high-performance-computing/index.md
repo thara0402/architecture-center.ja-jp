@@ -165,8 +165,8 @@ Azure で一から HPC システムを構築すると、高度な柔軟性が得
 
 1. Azure 仮想マシンまたは[仮想マシンのスケール セット](/azure/virtual-machine-scale-sets/overview?context=/azure/architecture/topics/high-performance-computing/context/hpc-context)に独自のクラスター環境を設定します。
 2. Azure Resource Manager テンプレートを使って、業界をリードする[ワークロード マネージャー](#workload-managers)、インフラストラクチャ、および[アプリケーション](#hpc-applications)をデプロイします。
-3. [HPC および GPU の VM サイズ](#hpc-and-gpu-sizes)を選択します。これには、MPI ワークロードまたは GPU ワークロードのための特別なハードウェアとネットワーク接続が含まれます。
-4. I/O が集中するワークロードのための[高性能ストレージ](#hpc-storage)を追加します。
+3. HPC および GPU の [VM サイズ](#compute)を選択します。これには、MPI ワークロードまたは GPU ワークロードのための特別なハードウェアとネットワーク接続が含まれます。
+4. I/O が集中するワークロードのための[高性能ストレージ](#storage)を追加します。
 
 ### <a name="hybrid-and-cloud-bursting"></a>ハイブリッドとクラウド バースティング
 
@@ -231,7 +231,7 @@ Azure に接続したい既存のオンプレミス HPC システムがある場
     </li>
 </ul>
 
-ネットワーク接続が安全に確立されたら、既存の[ワークロード マネージャー](#workload-manager)のバースティング機能と共に、オンデマンドでクラウド コンピューティング リソースの使用を開始できます。
+ネットワーク接続が安全に確立されたら、既存の[ワークロード マネージャー](#workload-managers)のバースティング機能と共に、オンデマンドでクラウド コンピューティング リソースの使用を開始できます。
 
 ### <a name="marketplace-solutions"></a>Marketplace のソリューション
 

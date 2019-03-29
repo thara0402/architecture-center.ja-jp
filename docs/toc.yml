@@ -219,6 +219,8 @@ items:
       href: example-scenario/ai/intelligent-apps-image-processing.md
     - name: 映画のレコメンデーション
       href: example-scenario/ai/movie-recommendations.md
+    - name: ニュースフィードのインジェスト
+      href: example-scenario/ai/newsfeed-ingestion.md
   - name: アプリケーション
     items:
     - name: コンピューター支援エンジニアリング
@@ -849,9 +851,9 @@ items:
           href: cloud-adoption/decision-guides/software-defined-network/hub-spoke.md
       - name: ログとレポート
         href: cloud-adoption/decision-guides/log-and-report/overview.md
-ms.openlocfilehash: 179f4bc613b29f4090e5713c9abebdf1af8d54a7
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.openlocfilehash: 06737190911118bab802d8141d959b04f6589f0a
+ms.sourcegitcommit: ea97ac004c38c6b456794c1a8eef29f8d2b77d50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58346180"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58489217"
