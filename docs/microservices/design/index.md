@@ -7,8 +7,13 @@ ms.topic: guide
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: microservices
+ms.openlocfilehash: 15e9aa16c0e2cfccecbfb84d217c275cc99a66fd
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58344412"
 ---
-
 # <a name="designing-a-microservices-architecture"></a><span data-ttu-id="574c7-103">マイクロサービス アーキテクチャの設計</span><span class="sxs-lookup"><span data-stu-id="574c7-103">Designing a microservices architecture</span></span>
 
 <span data-ttu-id="574c7-104">現在、マイクロサービスは、回復性優れ、単独でのデプロイが可能で、迅速に展開できるスケーラブルなクラウド アプリケーションを構築するための一般的なアーキテクチャ スタイルになっています。</span><span class="sxs-lookup"><span data-stu-id="574c7-104">Microservices have become a popular architectural style for building cloud applications that are resilient, highly scalable, independently deployable, and able to evolve quickly.</span></span> <span data-ttu-id="574c7-105">しかし、このマイクロサービスを、単なる業界用語に留めないためには、アプリケーションを設計および構築するのためのさまざまなアプローチが必要です。</span><span class="sxs-lookup"><span data-stu-id="574c7-105">To be more than just a buzzword, however, microservices require a different approach to designing and building applications.</span></span>

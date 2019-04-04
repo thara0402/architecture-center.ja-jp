@@ -6,8 +6,13 @@ layout: LandingPage
 ms.topic: landing-page
 ms.service: architecture-center
 ms.subservice: enterprise-cloud-adoption
+ms.openlocfilehash: 57f28808d3c49c74bc010133c670a186206a4466
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58344531"
 ---
-
 # <a name="azure-virtual-datacenter-and-the-enterprise-control-plane"></a>Azure 仮想データセンターとエンタープライズ コントロール プレーン
 
 Azure 仮想データセンターは、既存のセキュリティやネットワーク ポリシーを順守しながら、Azure のクラウド プラットフォーム機能を最大限に活用できる手法です。 IT 企業や IT 事業部門がエンタープライズ ワークロードをクラウドにデプロイする際は、ガバナンスと開発者の俊敏性のバランスを取る必要があります。 Azure 仮想データセンターでは、ガバナンスに重点を置きつつ、このバランスを実現するモデルを提供します。

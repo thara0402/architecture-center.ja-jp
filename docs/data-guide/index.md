@@ -1,14 +1,19 @@
 ---
 title: Azure データ アーキテクチャ ガイド
-description: null
+description: ''
 author: zoinerTejada
 ms.date: 02/12/2018
 layout: LandingPage
 ms.topic: landing-page
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
+ms.openlocfilehash: 5fb74c6323f8dc571d827eb9a4c65a6c87d0ae36
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58344429"
 ---
-
 # <a name="azure-data-architecture-guide"></a>Azure データ アーキテクチャ ガイド
 
 このガイドでは、Microsoft Azure でデータ中心のソリューションを設計するための体系的なアプローチについて説明します。 このアプローチは、顧客エンゲージメントから派生した実証済みのプラクティスに基づいています。

@@ -8,8 +8,13 @@ ms.topic: article
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.custom: seodec18
+ms.openlocfilehash: 212930368942728fc0be0c9b2af1a90293906b39
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58344837"
 ---
-
 # <a name="performance-antipatterns-for-cloud-applications"></a><span data-ttu-id="41df6-103">クラウド アプリケーションのパフォーマンスのアンチパターン</span><span class="sxs-lookup"><span data-stu-id="41df6-103">Performance antipatterns for cloud applications</span></span>
 
 <span data-ttu-id="41df6-104">"*パフォーマンスのアンチパターン*" は、アプリケーションの負荷が高いときに、スケーラビリティの問題を引き起こす可能性がある一般的なプラクティスです。</span><span class="sxs-lookup"><span data-stu-id="41df6-104">A *performance antipattern* is a common practice that is likely to cause scalability problems when an application is under pressure.</span></span>

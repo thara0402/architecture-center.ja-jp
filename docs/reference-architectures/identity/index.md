@@ -6,9 +6,14 @@ ms.date: 07/02/2018
 ms.topic: reference-architecture
 ms.service: architecture-center
 ms.subservice: reference-architecture
-ms.custom: 'seodec18, identity'
+ms.custom: seodec18, identity
+ms.openlocfilehash: 706cb63a65ce521e72ebc41a997dc900afacaab9
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58343970"
 ---
-
 # <a name="choose-a-solution-for-integrating-on-premises-active-directory-with-azure"></a><span data-ttu-id="9e57c-103">オンプレミスの Active Directory を Azure と統合するためのソリューションの選択</span><span class="sxs-lookup"><span data-stu-id="9e57c-103">Choose a solution for integrating on-premises Active Directory with Azure</span></span>
 
 <span data-ttu-id="9e57c-104">この記事では、オンプレミスの Active Directory (AD) 環境を Azure ネットワークと統合するためのオプションを比較します。</span><span class="sxs-lookup"><span data-stu-id="9e57c-104">This article compares options for integrating your on-premises Active Directory (AD) environment with an Azure network.</span></span> <span data-ttu-id="9e57c-105">各オプションには、さらに詳細な参照アーキテクチャが用意されています。</span><span class="sxs-lookup"><span data-stu-id="9e57c-105">For each option, a more detailed reference architecture is available.</span></span>

@@ -8,8 +8,13 @@ ms.topic: reference-architecture
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: seodec18
+ms.openlocfilehash: 0cce207dedd0eb42e29a152b3bb84acc2dca323a
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58344990"
 ---
-
 # <a name="run-a-highly-available-sharepoint-server-2016-farm-in-azure"></a><span data-ttu-id="b2e9e-103">Azure での高可用性 SharePoint Server 2016 ファームの実行</span><span class="sxs-lookup"><span data-stu-id="b2e9e-103">Run a highly available SharePoint Server 2016 farm in Azure</span></span>
 
 <span data-ttu-id="b2e9e-104">この参照アーキテクチャでは、MinRole トポロジおよび SQL Server Always On 可用性グループを使用して、高可用性 SharePoint Server 2016 ファームを Azure にデプロイするための実証済みプラクティスを示します。</span><span class="sxs-lookup"><span data-stu-id="b2e9e-104">This reference architecture shows proven practices for deploying a highly available SharePoint Server 2016 farm on Azure, using MinRole topology and SQL Server Always On availability groups.</span></span> <span data-ttu-id="b2e9e-105">SharePoint ファームは、インターネットに接続するエンドポイントまたはプレゼンスがない、セキュアな仮想ネットワークにデプロイされます。</span><span class="sxs-lookup"><span data-stu-id="b2e9e-105">The SharePoint farm is deployed in a secured virtual network with no Internet-facing endpoint or presence.</span></span> <span data-ttu-id="b2e9e-106">[**このソリューションをデプロイします**](#deploy-the-solution)。</span><span class="sxs-lookup"><span data-stu-id="b2e9e-106">[**Deploy this solution**](#deploy-the-solution).</span></span>

@@ -8,8 +8,13 @@ ms.topic: reference-architecture
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: networking
+ms.openlocfilehash: 6172866b08197b0ca1cd3aabb3c14c01b4f06f9c
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58343443"
 ---
-
 # <a name="choose-a-solution-for-connecting-an-on-premises-network-to-azure"></a><span data-ttu-id="7a5f2-103">オンプレミス ネットワークを Azure に接続するためのソリューションを選択する</span><span class="sxs-lookup"><span data-stu-id="7a5f2-103">Choose a solution for connecting an on-premises network to Azure</span></span>
 
 <span data-ttu-id="7a5f2-104">この記事では、オンプレミス ネットワークを Azure Virtual Network (VNet) に接続するためのオプションを比較します。</span><span class="sxs-lookup"><span data-stu-id="7a5f2-104">This article compares options for connecting an on-premises network to an Azure Virtual Network (VNet).</span></span> <span data-ttu-id="7a5f2-105">各オプションには、さらに詳細な参照アーキテクチャが用意されています。</span><span class="sxs-lookup"><span data-stu-id="7a5f2-105">For each option, a more detailed reference architecture is available.</span></span>

@@ -7,8 +7,13 @@ ms.topic: landing-page
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.date: 08/30/2018
+ms.openlocfilehash: 6895ffc9c73dac29c27e7d8df68550c94f68b10a
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58346537"
 ---
-
 # <a name="architecture-styles"></a>アーキテクチャ スタイル
 
 "*アーキテクチャ スタイル*" とは、特定の性質を持つアーキテクチャのグループです。 たとえば、[n 層][n-tier]は一般的なアーキテクチャ スタイルです。 最近では、[マイクロサービス アーキテクチャ][microservices]がよく使用されるようになりました。 アーキテクチャ スタイルによって特定のテクノロジの使用が必須となることはありませんが、一部のテクノロジは特定のアーキテクチャに適しています。 たとえば、コンテナーはマイクロサービスにとって最適なソリューションです。

@@ -1,13 +1,18 @@
 ---
 title: リレーショナル データ
-description: null
+description: ''
 author: zoinerTejada
 ms.date: 02/12/2018
 ms.topic: guide
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
+ms.openlocfilehash: d68bddcb75e5c8f786a7739e85de2645a2c3d641
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58345415"
 ---
-
 # <a name="traditional-relational-database-solutions"></a><span data-ttu-id="9a912-102">従来のリレーショナル データベース ソリューション</span><span class="sxs-lookup"><span data-stu-id="9a912-102">Traditional relational database solutions</span></span>
 
 <span data-ttu-id="9a912-103">リレーショナル データは、リレーショナル モデルを使用してモデル化されたデータです。</span><span class="sxs-lookup"><span data-stu-id="9a912-103">Relational data is data modeled using the relational model.</span></span> <span data-ttu-id="9a912-104">このモデルでは、データは、タプルとして表現されます。</span><span class="sxs-lookup"><span data-stu-id="9a912-104">In this model, data is expressed as tuples.</span></span> <span data-ttu-id="9a912-105">"*タプル*" は、属性/値のペアのセットです。</span><span class="sxs-lookup"><span data-stu-id="9a912-105">A *tuple* is a set of attribute/value pairs.</span></span> <span data-ttu-id="9a912-106">たとえば、タプルは、(itemid = 5, orderid = 1, item = "Chair", amount = 200.00) のようになります。</span><span class="sxs-lookup"><span data-stu-id="9a912-106">For example, a tuple might be (itemid = 5, orderid = 1, item = "Chair", amount = 200.00).</span></span> <span data-ttu-id="9a912-107">すべてが同じ属性を共有するタプルのセットは、"*リレーション*" と呼ばれます。</span><span class="sxs-lookup"><span data-stu-id="9a912-107">A set of tuples that all share the same attributes is called a *relation*.</span></span>

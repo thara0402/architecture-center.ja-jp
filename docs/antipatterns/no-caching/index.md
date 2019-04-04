@@ -8,8 +8,13 @@ ms.topic: article
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.custom: seodec18
+ms.openlocfilehash: 5c3062c0a17de708ada83ba81dcb111e6b1f8440
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58343851"
 ---
-
 # <a name="no-caching-antipattern"></a><span data-ttu-id="8774d-103">キャッシュ不使用のアンチパターン</span><span class="sxs-lookup"><span data-stu-id="8774d-103">No Caching antipattern</span></span>
 
 <span data-ttu-id="8774d-104">多数の同時要求を処理するクラウド アプリケーションでは、同じデータを繰り返しフェッチすることでパフォーマンスとスケーラビリティが低下する場合があります。</span><span class="sxs-lookup"><span data-stu-id="8774d-104">In a cloud application that handles many concurrent requests, repeatedly fetching the same data can reduce performance and scalability.</span></span>

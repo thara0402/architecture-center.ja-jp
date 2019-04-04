@@ -8,8 +8,13 @@ ms.topic: reference-architecture
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: seodec18
+ms.openlocfilehash: 4b8d84ef6eedd93f1a3ec948e7c6d6e3d1c465fc
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58346027"
 ---
-
 # <a name="run-a-jenkins-server-on-azure"></a><span data-ttu-id="92547-103">Azure で Jenkins サーバーを実行する</span><span class="sxs-lookup"><span data-stu-id="92547-103">Run a Jenkins server on Azure</span></span>
 
 <span data-ttu-id="92547-104">このリファレンス アーキテクチャでは、シングル サインオン (SSO) で保護されたスケーラブルなエンタープライズ レベルの Jenkins サーバーを Azure にデプロイして運用する方法を示します。</span><span class="sxs-lookup"><span data-stu-id="92547-104">This reference architecture shows how to deploy and operate a scalable, enterprise-grade Jenkins server on Azure secured with single sign-on (SSO).</span></span> <span data-ttu-id="92547-105">また、このアーキテクチャでは、Azure Monitor を使用して Jenkins サーバーの状態を監視します。</span><span class="sxs-lookup"><span data-stu-id="92547-105">The architecture also uses Azure Monitor to monitor the state of the Jenkins server.</span></span> <span data-ttu-id="92547-106">[**このソリューションをデプロイします**](#deploy-the-solution)。</span><span class="sxs-lookup"><span data-stu-id="92547-106">[**Deploy this solution**](#deploy-the-solution).</span></span>

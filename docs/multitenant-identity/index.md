@@ -6,8 +6,13 @@ ms.date: 07/21/2017
 ms.topic: guide
 ms.service: architecture-center
 ms.subservice: reference-architecture
+ms.openlocfilehash: be906106fb12c381d57ad40ae22e748dcff9722f
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58346078"
 ---
-
 # <a name="manage-identity-in-multitenant-applications"></a><span data-ttu-id="28d24-103">マルチテナント アプリケーションでの ID 管理</span><span class="sxs-lookup"><span data-stu-id="28d24-103">Manage identity in multitenant applications</span></span>
 
 <span data-ttu-id="28d24-104">この一連の記事では、Azure AD を認証と ID 管理のために使用する際のマルチテナントのベスト プラクティスについて説明します。</span><span class="sxs-lookup"><span data-stu-id="28d24-104">This series of articles describes best practices for multitenancy, when using Azure AD for authentication and identity management.</span></span>
