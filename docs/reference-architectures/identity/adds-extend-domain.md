@@ -8,12 +8,12 @@ ms.topic: reference-architecture
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: seodec18, identity
-ms.openlocfilehash: 931d247f088055286a2832b886992dca8565b6a7
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.openlocfilehash: 67f23ae3676d0fb95ef484fa6dcb7a8bb92e0fa2
+ms.sourcegitcommit: 548374a0133f3caed3934fda6a380c76e6eaecea
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58244373"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58420007"
 ---
 # <a name="extend-active-directory-domain-services-ad-ds-to-azure"></a>Active Directory Domain Services (AD DS) を Azure に拡張する
 
@@ -48,7 +48,7 @@ UDR と NVA の設定について詳しくは、「[Implementing a secure hybrid
 
 認証要求に必要なボリュームに基づいて、[VM サイズ][vm-windows-sizes]の要件を決定します。 AD DS をオンプレミスでホストしているコンピューターの仕様を始点として使用し、それに合わせて Azure VM サイズを指定します。 デプロイ後は、使用率を監視し、VM における実際の負荷に基づいてスケールアップまたはスケールダウンします。 AD DS ドメイン コントローラーのサイジングついて詳しくは、「[Capacity Planning for Active Directory Domain Services][capacity-planning-for-adds]」(Active Directory Domain Services のキャパシティ プランニング) をご覧ください。
 
-Active Directory 用の データベース、ログ、および SYSVOL を格納するための個別の仮想データ ディスクを作成します。 オペレーティング システムと同じディスクにこれらの項目を格納しないでください。 既定では、VM に接続されたデータ ディスクにはライト スルー キャッシュが使用されています。 ただし、このキャッシュ形式は AD DS の要件と矛盾する可能性があります。 そのため、データ ディスクの *[ホスト キャッシュ設定]* を *[なし]* に設定します。 詳細については、「[Azure の仮想マシンでの Windows Server Active Directory のデプロイ ガイドライン][adds-data-disks]」を参照してください。
+Active Directory 用の データベース、ログ、および SYSVOL を格納するための個別の仮想データ ディスクを作成します。 オペレーティング システムと同じディスクにこれらの項目を格納しないでください。 既定では、VM に接続されたデータ ディスクにはライト スルー キャッシュが使用されています。 ただし、このキャッシュ形式は AD DS の要件と矛盾する可能性があります。 そのため、データ ディスクの *[ホスト キャッシュ設定]* を *[なし]* に設定します。
 
 ドメイン コントローラーとして、AD DS を実行する VM を少なくとも 2 つデプロイし、[可用性セット][availability-set]に追加します。
 
