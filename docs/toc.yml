@@ -557,6 +557,16 @@ items:
       href: service-fabric/migrate-from-cloud-services.md
     - name: Service Fabric アプリケーションのリファクター
       href: service-fabric/refactor-migrated-app.md
+  - name: Azure Databricks の監視
+    items:
+    - name: 概要
+      href: databricks-monitoring/index.md
+    - name: メトリックを Azure Monitor に送信するよう Databricks を構成する
+      href: databricks-monitoring/configure-cluster.md
+    - name: Databricks アプリケーション ログを Azure Monitor に送信する
+      href: databricks-monitoring/application-logs.md
+    - name: ダッシュボードを使用して Databricks のメトリックを視覚化する
+      href: databricks-monitoring/dashboards.md
 - name: デザイン レビュー フレームワーク
   items:
   - name: 回復性の設計
@@ -851,9 +861,9 @@ items:
           href: cloud-adoption/decision-guides/software-defined-network/hub-spoke.md
       - name: ログとレポート
         href: cloud-adoption/decision-guides/log-and-report/overview.md
-ms.openlocfilehash: 06737190911118bab802d8141d959b04f6589f0a
-ms.sourcegitcommit: ea97ac004c38c6b456794c1a8eef29f8d2b77d50
+ms.openlocfilehash: 861170224f9575dc5e45d993678bda482b0ed944
+ms.sourcegitcommit: 9854bd27fb5cf92041bbfb743d43045cd3552a69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58489217"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58503249"
