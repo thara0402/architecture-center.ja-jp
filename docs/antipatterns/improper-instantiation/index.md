@@ -9,11 +9,11 @@ ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.custom: seodec18
 ms.openlocfilehash: a2e42e35ae1b56b61c8f9f9ecb21ee104cd3222e
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55898053"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58346350"
 ---
 # <a name="improper-instantiation-antipattern"></a>不適切なインスタンス化のアンチパターン
 

@@ -8,8 +8,13 @@ ms.topic: guide
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: seojan19
+ms.openlocfilehash: 8aab710ef6ffde493b80810750d2c0bc299ffaa6
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58344259"
 ---
-
 # <a name="ten-design-principles-for-azure-applications"></a>Azure アプリケーションの 10 の設計原則
 
 次の設計原則に従って、アプリケーションのスケーラビリティを上げて、回復力や管理しやすさを強化します。

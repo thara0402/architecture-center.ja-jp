@@ -8,8 +8,13 @@ ms.topic: article
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.custom: seodec18
+ms.openlocfilehash: 1b53806b2939a7c44a8b48c9146d5e86c84d9e2e
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58343562"
 ---
-
 # <a name="synchronous-io-antipattern"></a>同期 I/O のアンチパターン
 
 I/O が完了するまで呼び出し元スレッドをブロックすることにより、パフォーマンスが低下して、垂直拡張性に影響を及ぼすことがあります。

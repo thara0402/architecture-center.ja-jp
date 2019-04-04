@@ -1,13 +1,18 @@
 ---
 title: ビッグ データ アーキテクチャ
-description: null
+description: ''
 author: zoinerTejada
 ms.date: 02/12/2018
 ms.topic: guide
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
+ms.openlocfilehash: 269a4c2b8fd0c186e1b44b6c0cfdcbfa4d37b57c
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58346163"
 ---
-
 # <a name="big-data-architectures"></a>ビッグ データ アーキテクチャ
 
 ビッグ データ アーキテクチャは、従来のデータベース システムには多すぎる、または複雑すぎるデータのインジェスト、処理、分析を扱うために設計されています。 組織がビッグ データ領域に入るしきい値は、ユーザーとそのツールの機能によって変わります。 数百 GB のデータを意味する場合もあれば、数百 TB のデータを意味する場合もあります。 ビッグ データ セットを使用するためのツールが進歩するにつれて、ビッグ データの意味も進歩します。 この用語は、厳密にはデータのサイズではなく、高度な分析を介してデータ セットから抽出できる値に関連していますが、このような場合、データはかなり大きくなる傾向にあります。

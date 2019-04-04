@@ -1,13 +1,18 @@
 ---
 title: リレーショナル データ
-description: null
+description: ''
 author: zoinerTejada
 ms.date: 02/12/2018
 ms.topic: guide
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
+ms.openlocfilehash: d68bddcb75e5c8f786a7739e85de2645a2c3d641
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58345415"
 ---
-
 # <a name="traditional-relational-database-solutions"></a>従来のリレーショナル データベース ソリューション
 
 リレーショナル データは、リレーショナル モデルを使用してモデル化されたデータです。 このモデルでは、データは、タプルとして表現されます。 "*タプル*" は、属性/値のペアのセットです。 たとえば、タプルは、(itemid = 5, orderid = 1, item = "Chair", amount = 200.00) のようになります。 すべてが同じ属性を共有するタプルのセットは、"*リレーション*" と呼ばれます。

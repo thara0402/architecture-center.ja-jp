@@ -8,8 +8,13 @@ ms.topic: article
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.custom: seodec18
+ms.openlocfilehash: 7d3fe47407eff7168dfd227a1dd1bd5917c7d431
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58344854"
 ---
-
 # <a name="busy-database-antipattern"></a>ビジー状態のデータベースのアンチパターン
 
 処理をデータベース サーバーにオフロードすると、データの格納および取得要求への応答よりも、コードの実行にかなりの時間が費やされる可能性があります。

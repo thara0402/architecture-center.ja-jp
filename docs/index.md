@@ -5,12 +5,12 @@ layout: LandingPage
 ms.topic: landing-page
 ms.date: 09/28/2018
 google-site-verification: b-xRLveOzJ9oSOh37wgRTRB2lMOoFY8HiHf9_0DIawE
-ms.openlocfilehash: 3c48ba77b7f97c6047f5d1441a22f2bd79ee0a3e
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.openlocfilehash: e247985aa92e1c2bf3cb4d43514f4d06250f1141
+ms.sourcegitcommit: 548374a0133f3caed3934fda6a380c76e6eaecea
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55898291"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58419973"
 ---
 # <a name="azure-architecture-center"></a>Azure アーキテクチャ センター
 
@@ -104,6 +104,26 @@ ms.locfileid: "55898291"
                         <div class="cardText">
                             <h3>Azure データ アーキテクチャ ガイド</h3>
                             <p>Microsoft Azure でデータ中心のソリューションを設計するための体系的なアプローチ。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </li>
+    <!-- HPC Topic Page -->
+    <li>
+        <a href="./topics/high-performance-computing/index.md">
+            <div class="cardSize">
+                <div class="cardPadding">
+                    <div class="card">
+                        <div class="cardImageOuter">
+                            <div class="cardImage">
+                                <img src="_images/hpc-blue-multi.svg" alt="" />
+                            </div>
+                        </div>
+                        <div class="cardText">
+                            <h3>Azure でのハイ パフォーマンス コンピューティング (HPC)</h3>
+                            <p>ハイ パフォーマンス コンピューティング (HPC) アプリケーションを Azure 上に構築するための設計ガイダンスとコンポーネント情報。</p>
                         </div>
                     </div>
                 </div>
@@ -210,26 +230,6 @@ ms.locfileid: "55898291"
             </div>
         </a>
     </li>
-    <!-- Azure Virtual Datacenter -->
-    <li>
-        <a href="./vdc/index.md">
-            <div class="cardSize">
-                <div class="cardPadding">
-                    <div class="card">
-                        <div class="cardImageOuter">
-                            <div class="cardImage">
-                                <img src="_images/virtual-datacenter.svg" alt="" />
-                            </div>
-                        </div>
-                        <div class="cardText">
-                            <h3>Azure 仮想データセンター</h3>
-                            <p>組織がエンタープライズ ワークロードをクラウドにデプロイする際は、ガバナンスと開発者の俊敏性のバランスを取る必要があります。 Azure 仮想データセンターでは、ガバナンスに重点を置きつつ、このバランスを実現するモデルを提供します。</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </a>
-    </li>
         <!-- Azure for AWS Professionals -->
     <li>
         <a href="/azure/architecture/aws-professional">
@@ -264,6 +264,26 @@ ms.locfileid: "55898291"
                         <div class="cardText">
                             <h3>パフォーマンスのアンチパターン</h3>
                             <p>クラウド アプリケーションにおけるパフォーマンスやスケーラビリティの問題の一般的な原因を検出して解決する方法。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </li>
+    <!-- Azure Virtual Datacenter -->
+    <li>
+        <a href="./vdc/index.md">
+            <div class="cardSize">
+                <div class="cardPadding">
+                    <div class="card">
+                        <div class="cardImageOuter">
+                            <div class="cardImage">
+                                <img src="_images/virtual-datacenter.svg" alt="" />
+                            </div>
+                        </div>
+                        <div class="cardText">
+                            <h3>Azure 仮想データセンター</h3>
+                            <p>組織がエンタープライズ ワークロードをクラウドにデプロイする際は、ガバナンスと開発者の俊敏性のバランスを取る必要があります。 Azure 仮想データセンターでは、ガバナンスに重点を置きつつ、このバランスを実現するモデルを提供します。</p>
                         </div>
                     </div>
                 </div>

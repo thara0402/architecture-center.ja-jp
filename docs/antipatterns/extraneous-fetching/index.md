@@ -8,8 +8,13 @@ ms.topic: article
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.custom: seodec18
+ms.openlocfilehash: c1172531b332854a6d4940c072b61cb3f6bcd7ba
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58345109"
 ---
-
 # <a name="extraneous-fetching-antipattern"></a>余分なフェッチのアンチパターン
 
 業務に使用するデータを必要以上に取得することが、不要な I/O オーバーヘッドを招き、応答性を低下させる場合があります。

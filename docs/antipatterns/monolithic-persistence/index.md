@@ -8,8 +8,13 @@ ms.topic: article
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.custom: seodec18
+ms.openlocfilehash: e3d6fbb789e422af22ce54b0defd6bb73099f15a
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58346333"
 ---
-
 # <a name="monolithic-persistence-antipattern"></a>モノリシックな永続化のアンチパターン
 
 アプリケーションのすべてのデータを単一のデータ ストアに配置すると、パフォーマンスが低下する可能性があります。その理由は、リソースが競合する可能性があること、あるいはデータ ストアが一部のデータに適していないことです。
