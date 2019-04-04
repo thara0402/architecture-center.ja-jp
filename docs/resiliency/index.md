@@ -7,8 +7,13 @@ ms.topic: article
 ms.service: architecture-center
 ms.subservice: cloud-design-principles
 ms.custom: resiliency
+ms.openlocfilehash: 7fd0e1bd42266b5e5718be4519352d99b58c0584
+ms.sourcegitcommit: 644c2692a80e89648a80ea249fd17a3b17dc0818
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55987157"
 ---
-
 # <a name="designing-resilient-applications-for-azure"></a>回復性に優れた Azure 用アプリケーションの設計
 
 分散システムでは、障害が発生します。 ハードウェアの障害が発生することがあります。 ネットワークに一時的な障害が起きることがあります。 まれに、サービス全体またはリージョン全体で中断が発生する可能性がありますが、こうしたことについても計画しておく必要があります。
@@ -150,8 +155,8 @@ Azure SQL Database に書き込む App Service Web アプリについて検討�
 
 たとえば、1 つのリージョンの SLA が 99.95% の場合は次のようになります。
 
-- 2 つのリージョンの複合 SLA = (1 &minus; (1 &minus; 0.9995) ^ 2) = 99.999975%
-- 4 つのリージョンの複合 SLA = (1 &minus; (1 &minus; 0.9995) ^ 4) = 99.999999%
+- 2 つのリージョンの複合 SLA = (1 &minus; (0.9995 ^ 2)) = 99.999975%
+- 4 つのリージョンの複合 SLA = (1 &minus; (0.9995 ^ 4)) = 99.999999%
 
 [Traffic Manager の SLA][tm-sla] を考慮する必要があります。 この記事の執筆時点で Traffic Manager の SLA は 99.99% です。
 
@@ -300,9 +305,9 @@ Azure には、個別の VM からリージョン全体まで、あらゆる障�
 
 手動のデプロイはエラーが起きやすいという点が重要です。 そのため、必要に応じて実行可能で、何かが失敗した場合に再実行できる自動的なべき等プロセスを用意することをお勧めします。
 
-- Azure リソースのプロビジョニングを自動化するために、[Terraform][terraform]、[Ansible][ansible]、[Chef][chef]、[Puppet][puppet]、[PowerShell][powershell]、[CLI][cli]、または [Azure Resource Manager テンプレート][template-deployment]を使用できます。
-- [Azure Automation Desired State Configuration][dsc] (DSC) を使用して VM を構成します。 Linux VM では、[Cloud-init][cloud-init] を使用できます。
-- [Azure DevOps Services][azure-devops-services] または [Jenkins][jenkins] を使用して、アプリケーションのデプロイを自動化できます。
+* Azure リソースのプロビジョニングを自動化するために、[Terraform][terraform]、[Ansible][ansible]、[Chef][chef]、[Puppet][puppet]、[PowerShell][powershell]、[CLI][cli]、または [Azure Resource Manager テンプレート][template-deployment]を使用できます。
+* [Azure Automation Desired State Configuration][dsc] (DSC) を使用して VM を構成します。 Linux VM では、[Cloud-init][cloud-init] を使用できます。
+* [Azure DevOps Services][azure-devops-services] または [Jenkins][jenkins] を使用して、アプリケーションのデプロイを自動化できます。
 
 *コードとしてのインフラストラクチャ*と*イミュータブル インフラストラクチャ*という回復性のデプロイに関連する 2 つの概念があります。
 
@@ -317,19 +322,18 @@ Azure には、個別の VM からリージョン全体まで、あらゆる障�
 どの方法を採用する場合でも、新しいバージョンが機能しなかった場合に最後の正常なデプロイに戻すことができるようにします。 また、データベースの変更や依存サービスに対するその他の変更をロールバックするための戦略を適切に配置します。 エラーが発生した場合は、アプリケーション ログによって必ずエラーの原因になったバージョンを特定できるようにします。
 
 ## <a name="monitor-to-detect-failures"></a>監視によって障害を検出する
+回復性のためには、監視が非常に重要です。 何かが失敗した場合、失敗したことを把握し、障害の原因を分析する必要があります。 
 
-回復性のためには、監視が非常に重要です。 何かが失敗した場合、失敗したことを把握し、障害の原因を分析する必要があります。
-
-大規模な分散システムの監視は、大きな課題です。 数十単位の VM で実行されるアプリケーションを例にして説明します。&mdash; 各 VM 1 つずつにログを記録し、ログ ファイルを確認し、問題を解決することは実用的ではありません。 さらに、VM インスタンスの数はおそらく静的ではありません。アプリケーションのスケールインとスケールアウトによって VM 数は増減し、インスタンスが失敗して再プロビジョニングが必要になることがあります。 さらに、一般的なクラウド アプリケーションは複数のデータ ストア (App Storage、SQL Database、Cosmos DB、Redis Cache) を使用することや、単一のユーザー アクションが複数のサブシステムに広がることがあります。
+大規模な分散システムの監視は、大きな課題です。 数十単位の VM で実行されるアプリケーションを例にして説明します。&mdash; 各 VM 1 つずつにログを記録し、ログ ファイルを確認し、問題を解決することは実用的ではありません。 さらに、VM インスタンスの数はおそらく静的ではありません。アプリケーションのスケールインとスケールアウトによって VM 数は増減し、インスタンスが失敗して再プロビジョニングが必要になることがあります。 さらに、一般的なクラウド アプリケーションは複数のデータ ストア (App Storage、SQL Database、Cosmos DB、Redis Cache) を使用することや、単一のユーザー アクションが複数のサブシステムに広がることがあります。 
 
 監視プロセスは、いくつかの異なる段階があるパイプラインと捉えることができます。
 
 ![複合 SLA](./images/monitoring.png)
 
-- **インストルメンテーション**。 監視対象となる生データは、[アプリケーション ログ](/azure/application-insights/app-insights-overview?toc=/azure/azure-monitor/toc.json)、[オペレーティング システムのパフォーマンス メトリック](/azure/azure-monitor/platform/agents-overview)、[Azure リソース](/azure/monitoring-and-diagnostics/monitoring-supported-metrics?toc=/azure/azure-monitor/toc.json)、[Azure サブスクリプション](/azure/service-health/service-health-overview)、および [Azure テナント](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics) を含む、さまざまなソースに由来します。 ほとんどの Azure サービスでは、問題の原因を分析して特定するために構成可能な[メトリック](/azure/azure-monitor/platform/data-collection)を公開しています。
-- **収集と保存**。 生インストルメンテーション データは多様な場所に多様な形式で保持される可能性があります (たとえば、アプリケーション トレース ログ、IIS ログ、パフォーマンス カウンターなど)。 これらのさまざまなソースは収集され、統合されて、Application Insights、Azure Monitor メトリック、Service Health、ストレージ アカウント、および Log Analytics などの信頼できるデータ ストアに配置されます。
-- **分析と診断**。 データは、これらの異なるデータ ストア内で統合された後、問題を解決するために分析され、アプリケーションの正常性に関する全体的な見解を提示できます。 一般的には、[Kusto クエリ](/azure/log-analytics/log-analytics-queries)を使用して、Application Insights および Log Analytics 内のデータを検索できます。 Azure Advisor では、[回復性](/azure/advisor/advisor-high-availability-recommendations)および[最適化](/azure/advisor/advisor-performance-recommendations)に重点を置いて推奨事項を提示します。
-- **視覚化とアラート**。 この段階では、オペレーターが問題や傾向にすばやく気づくことができる方法で利用統計情報が表示されます。 たとえば、ダッシュボードや電子メールのアラートがあります。 [Azure ダッシュボード](/azure/azure-portal/azure-portal-dashboards)を使用すると、Application Insights、Log Analytics、Azure Monitor メトリックおよびサービスの正常性を元にして、単一ウィンドウでの監視グラフのグラス ビューを構築できます。 [Azure Monitor アラート](/azure/monitoring-and-diagnostics/monitoring-overview-alerts?toc=/azure/azure-monitor/toc.json)を使用すると、サービスの正常性およびリソースの正常性に関するアラートを作成できます。
+* **インストルメンテーション**。 監視対象となる生データは、[アプリケーション ログ](/azure/application-insights/app-insights-overview?toc=/azure/azure-monitor/toc.json)、[オペレーティング システムのパフォーマンス メトリック](/azure/azure-monitor/platform/agents-overview)、[Azure リソース](/azure/monitoring-and-diagnostics/monitoring-supported-metrics?toc=/azure/azure-monitor/toc.json)、[Azure サブスクリプション](/azure/service-health/service-health-overview)、および [Azure テナント](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics) を含む、さまざまなソースに由来します。 ほとんどの Azure サービスでは、問題の原因を分析して特定するために構成可能な[メトリック](/azure/azure-monitor/platform/data-collection)を公開しています。
+* **収集と保存**。 生インストルメンテーション データは多様な場所に多様な形式で保持される可能性があります (たとえば、アプリケーション トレース ログ、IIS ログ、パフォーマンス カウンターなど)。 これらのさまざまなソースは収集され、統合されて、Application Insights、Azure Monitor メトリック、Service Health、ストレージ アカウント、および Log Analytics などの信頼できるデータ ストアに配置されます。
+* **分析と診断**。 データは、これらの異なるデータ ストア内で統合された後、問題を解決するために分析され、アプリケーションの正常性に関する全体的な見解を提示できます。 一般的には、[Kusto クエリ](/azure/log-analytics/log-analytics-queries)を使用して、Application Insights および Log Analytics 内のデータを検索できます。 Azure Advisor では、[回復性](/azure/advisor/advisor-high-availability-recommendations)および[最適化](/azure/advisor/advisor-performance-recommendations)に重点を置いて推奨事項を提示します。 
+* **視覚化とアラート**。 この段階では、オペレーターが問題や傾向にすばやく気づくことができる方法で利用統計情報が表示されます。 たとえば、ダッシュボードや電子メールのアラートがあります。 [Azure ダッシュボード](/azure/azure-portal/azure-portal-dashboards)を使用すると、Application Insights、Log Analytics、Azure Monitor メトリックおよびサービスの正常性を元にして、単一ウィンドウでの監視グラフのグラス ビューを構築できます。 [Azure Monitor アラート](/azure/monitoring-and-diagnostics/monitoring-overview-alerts?toc=/azure/azure-monitor/toc.json)を使用すると、サービスの正常性およびリソースの正常性に関するアラートを作成できます。
 
 監視は障害の検出と同じではありません。 たとえば、アプリケーションが一時的なエラーを検出して再試行し、ダウンタイムが発生しないことがあります。 それでも再試行操作はログに記録されるので、エラー率を監視して、アプリケーション正常性の全体像を把握することができます。
 
@@ -344,19 +348,17 @@ Azure には、個別の VM からリージョン全体まで、あらゆる障�
 監視と診断の詳細については、「[Monitoring and diagnostics guidance][monitoring-guidance]」(監査と診断のガイダンス) を参照してください。
 
 ## <a name="respond-to-failures"></a>障害に対応する
-
 これまでのセクションでは、高可用性に重要な自動的な復旧戦略を中心に説明してきましたが、 手動操作が必要な場合もあります。
 
-- **[Alerts]** (アラート)。 アプリケーションで、積極的な介入が必要な可能性がある警告の兆候を監視します。 たとえば、SQL Database または Cosmos DB がアプリケーションを常に調整している場合は、データベース容量の増加や、クエリの最適化が必要な可能性があります。 この例では、アプリケーションが調整エラーを透過的に処理している場合でも、利用統計情報でアラートが報告されるので、対応することができます。 サービス制限とクォータのしきい値に対して、Azure リソース メトリックと診断ログにアラートを構成することが推奨されています。 診断ログに比べてメトリックは低待機時間になるため、メトリックにアラートを設定することをお勧めします。 さらに、Azure では、[リソースの正常性](/azure/service-health/resource-health-checks-resource-types)を使用して、Azure サービスの調整を診断できるすぐに使える正常性ステータスを提供できます。
-- **フェールオーバーする**。 アプリケーションのディザスター リカバリー戦略を構成します。 適切な戦略は、お使いの SLA に応じて変わります。 ほとんどのシナリオについては、アクティブ/パッシブ実装で十分に確認できます。 詳しくは、[ディザスター リカバリーのデプロイ トポロジ](./disaster-recovery-azure-applications.md#deployment-topologies-for-disaster-recovery)に関するページをご覧ください。 ほとんどの Azure サービスでは、手動または自動フェールオーバーのどちらかに対応しています。 たとえば、IaaS アプリケーションでは、Web 層および論理層に [Azure Site Recovery](/azure/site-recovery/azure-to-azure-architecture) を、データベース層に [SQL AlwaysOn 可用性グループ](/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-dr)を使用します。 [Traffic Manager](/azure/traffic-manager/traffic-manager-overview) では、リージョン間での自動フェールオーバーを提供しています。
-- **運用準備状況のテスト**。 セカンダリ リージョンへのフェールオーバーと、プライマリ リージョンへのフェールバックの両方について、運用準備状況のテストを実行します。 多くの Azure サービスでは、ディザスター リカバリー訓練のために手動フェールオーバーまたはテスト フェールオーバーをサポートしています。 または、サービスをシャットダウンまたは削除することで、停止をシミュレートできます。
-- **データ整合性チェック**。 データ ストアで障害が発生した場合、特にデータがレプリケートされた場合には、ストアを再び使用可能な状態にするときにデータに整合性がある必要があります。 リージョン間でのレプリケーションを提供する Azure サービスの場合、障害で想定されるデータ損失を把握するために RTO と RPO を確認します。 リージョン間でのフェールオーバーが手動で開始できるか、または Microsoft によって開始されるかを把握するには、Azure サービスの SLA を確認します。 一部のサービスでは、フェールオーバーを実行するタイミングを Microsoft が判断します。 Microsoft では、プライマリ リージョンにあるデータの復旧を優先し、プライマリ リージョンにあるデータが復旧不能であると判断した場合にのみ、セカンダリ リージョンにフェールオーバーする場合があります。 たとえば、[Geo 冗長ストレージ](/azure/storage/common/storage-redundancy-grs)や [Key Vault](/azure/key-vault/key-vault-disaster-recovery-guidance) では、このモデルに従います。
-- **バックアップからの復元**。 一部のシナリオでは、バックアップからの復元は、同じリージョン内のみで可能です。 [Azure VMs Backup](/azure/backup/backup-azure-vms-first-look-arm) は、これに該当します。 他のAzure サービスでは、[Redis Cache の geo レプリカ](/azure/redis-cache/cache-how-to-geo-replication)など、geo レプリケートされたバックアップを提供しています。 バックアップの目的は、誤削除やデータの破損から保護し、アプリケーションを前の時点の動作可能なバージョンに復元することです。 そのため、バックアップは、場合によってはディザスター リカバリー ソリューションとしての機能できますが、逆は必ずしも当てはまりません。ディザスター リカバリーでは、誤削除やデータの破損から保護されません。  
+* **[Alerts]** (アラート)。 アプリケーションで、積極的な介入が必要な可能性がある警告の兆候を監視します。 たとえば、SQL Database または Cosmos DB がアプリケーションを常に調整している場合は、データベース容量の増加や、クエリの最適化が必要な可能性があります。 この例では、アプリケーションが調整エラーを透過的に処理している場合でも、利用統計情報でアラートが報告されるので、対応することができます。 サービス制限とクォータのしきい値に対して、Azure リソース メトリックと診断ログにアラートを構成することが推奨されています。 診断ログに比べてメトリックは低待機時間になるため、メトリックにアラートを設定することをお勧めします。 さらに、Azure では、[リソースの正常性](https://docs.microsoft.com/en-us/azure/service-health/resource-health-checks-resource-types)を使用して、Azure サービスの調整を診断できるすぐに使える正常性ステータスを提供できます。    
+* **フェールオーバーする**。 アプリケーションのディザスター リカバリー戦略を構成します。 適切な戦略は、お使いの SLA に応じて変わります。 詳しいシナリオについては、アクティブ/パッシブ実装で十分に確認できます。 詳しくは、[ディザスター リカバリーのデプロイ トポロジ](./disaster-recovery-azure-applications.md#deployment-topologies-for-disaster-recovery)に関するページをご覧ください。 ほとんどの Azure サービスでは、手動または自動フェールオーバーのどちらかに対応しています。 たとえば、IaaS アプリケーションでは、Web 層および論理層に [Azure Site Recovery](/azure/site-recovery/azure-to-azure-architecture) を、データベース層に [SQL AlwaysOn 可用性グループ](/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-dr)を使用します。 [Traffic Manager](https://docs.microsoft.com/en-us/azure/traffic-manager/traffic-manager-overview) では、リージョン間での自動フェールオーバーを提供しています。
+* **運用準備状況のテスト**。 セカンダリ リージョンへのフェールオーバーと、プライマリ リージョンへのフェールバックの両方について、運用準備状況のテストを実行します。 多くの Azure サービスでは、ディザスター リカバリー訓練のために手動フェールオーバーまたはテスト フェールオーバーをサポートしています。 また、サービスをシャットダウンまたは削除することで、停止をシミュレートできます。
+* **データ整合性チェック**。 データ ストアで障害が発生した場合、特にデータがレプリケートされた場合には、ストアを再び使用可能な状態にするときにデータに整合性がある必要があります。 リージョン間でのレプリケーションを提供する Azure サービスの場合、障害で想定されるデータ損失を把握するために RTO と RPO を確認します。 リージョン間でのフェールオーバーが手動で開始できるか、または Microsoft によって開始されるかを把握するには、Azure サービスの SLA を確認します。 一部のサービスでは、フェールオーバーを実行するタイミングを Microsoft が判断します。 Microsoft では、プライマリ リージョンにあるデータの復旧を優先し、プライマリ リージョンにあるデータが復旧不能であると判断した場合にのみ、セカンダリ リージョンにフェールオーバーする場合があります。 たとえば、[Geo 冗長ストレージ](/azure/storage/common/storage-redundancy-grs)や [Key Vault](/azure/key-vault/key-vault-disaster-recovery-guidance) では、このモデルに従います。
+* **バックアップからの復元**。 一部のシナリオでは、バックアップからの復元は、同じリージョン内のみで可能です。 [Azure VMs Backup](/azure/backup/backup-azure-vms-first-look-arm) は、これに該当します。 他のAzure サービスでは、[Redis Cache の geo レプリカ](/azure/redis-cache/cache-how-to-geo-replication)など、geo レプリケートされたバックアップを提供しています。 バックアップの目的は、誤削除やデータの破損から保護し、アプリケーションを前の時点の動作可能なバージョンに復元することです。 そのため、バックアップは、場合によってはディザスター リカバリー ソリューションとしての機能できますが、逆は必ずしも当てはまりません。ディザスター リカバリーでは、誤削除やデータの破損から保護されません。  
 
 ディザスター リカバリー計画を文書化し、テストします。 アプリケーションの障害によるビジネスの影響を評価します。 できるだけ多くのプロセスを自動化し、手動の手順を文書化します。たとえば、バックアップからの手動のフェールオーバーやデータの復元などです。 ディザスター リカバリー プロセスは定期的にテストし、計画の検証と改善を行います。 アプリケーションによって使用される Azure サービスのアラートを設定します。
 
 ## <a name="summary"></a>まとめ
-
 この記事では、クラウド固有の一部の課題を特に取り上げながら、包括的な観点から回復性について説明しました。 たとえば、クラウド コンピューティングの分散の特性、汎用的なハードウェアの使用、一時的なネットワーク障害の存在などです。
 
 この記事の主な点を次に示します。

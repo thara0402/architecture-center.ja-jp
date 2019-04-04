@@ -2,15 +2,20 @@
 title: AWS プロフェッショナルのための Azure
 titleSuffix: Azure Architecture Center
 description: Microsoft Azure アカウント、プラットフォーム、およびサービスの基本を理解します。 AWS プラットフォームと Azure プラットフォームの主要な類似点と相違点についても説明します。 AWS の経験を Azure でご活用ください。
-keywords: 'AWS エキスパート, Azure との比較, AWS との比較, Azure と AWS の違い, Azure と Aws'
+keywords: AWS エキスパート, Azure との比較, AWS との比較, Azure と AWS の違い, Azure と Aws
 author: lbrader
 ms.date: 09/19/2018
 ms.topic: article
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.custom: seodec18
+ms.openlocfilehash: c61758494435f61814953ab5ba48d8fed1e709ab
+ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55897594"
 ---
-
 # <a name="azure-for-aws-professionals"></a>AWS プロフェッショナルのための Azure
 
 この記事は、アマゾン ウェブ サービス (AWS) エキスパートが Microsoft Azure のアカウント、プラットフォーム、およびサービスの基本を理解するために役立ちます。 AWS プラットフォームと Azure プラットフォームの主要な類似点と相違点についても説明しています。
@@ -295,9 +300,9 @@ Azure では、[ExpressRoute](https://azure.microsoft.com/documentation/services
 
 Azure には、AWS の Relational Database Service (RDS) に相当するリレーショナル データベース サービスが何種類かあります。
 
-- [SQL Database](/azure/sql-database/sql-database-technical-overview)
-- [Azure Database for MySQL](/azure/mysql/overview)
-- [Azure Database for PostgreSQL](/azure/postgresql/overview)
+- [SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview)
+- [Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/overview)
+- [Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/overview)
 
 [SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/)、[Oracle](https://azure.microsoft.com/campaigns/oracle/)、[MySQL](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-classic-mysql-2008r2/) などの他のデータベース エンジンは、Azure VM インスタンスを使用してデプロイできます。
 
