@@ -3,13 +3,13 @@ title: Azure の参照アーキテクチャ
 description: Azure での一般的なワークロードに対応する、参照アーキテクチャおよび実装ガイダンス。
 layout: LandingPage
 ms.topic: landing-page
-ms.date: 04/02/2019
-ms.openlocfilehash: 7c307c40a710fff7ff07e24570052411b7edd8bf
-ms.sourcegitcommit: 1a3cc91530d56731029ea091db1f15d41ac056af
+ms.date: 02/07/2019
+ms.openlocfilehash: 44111f5f10997c7aba38414b518245c5791d1cd0
+ms.sourcegitcommit: a68f248402c598f9d25bc1dc62f27a6a934ff001
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58887762"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55903233"
 ---
 <!-- This file is generated! -->
 <!-- See the templates in ./build/reference-architectures  -->
@@ -66,26 +66,6 @@ ms.locfileid: "58887762"
         </div>
     </a>
 </li>
-<!-- Training of Python scikit-learn models -->
-<li style="display: flex; flex-direction: column;">
-    <a href="./ai/training-python-models.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
-        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
-            <div class="cardPadding" style="display: flex;">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="../_images/icons/python-powered-h.svg" height="140px" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>Python scikit-learn モデルのトレーニング</h3>
-                        <p>scikit-learn Python モデルのハイパーパラメーターの調整について推奨される手法。</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </a>
-</li>
 <!-- Batch scoring of Python models -->
 <li style="display: flex; flex-direction: column;">
     <a href="./ai/batch-scoring-python.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
@@ -99,7 +79,27 @@ ms.locfileid: "58887762"
                     </div>
                     <div class="cardText">
                         <h3>Python モデルのバッチ スコアリング</h3>
-                        <p>Azure Machine Learning を使用して、スケジュールに従って多数の Python モデルのバッチ スコアリングを並列で実行します。</p>
+                        <p>Azure Batch AI を使用して、スケジュールに従って多数の Python モデルのバッチ スコアリングを並列で実行します。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</li>
+<!-- Batch scoring of Spark models on Azure Databricks -->
+<li style="display: flex; flex-direction: column;">
+    <a href="./ai/batch-scoring-databricks.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="../_images/icons/databricks.png" height="140px" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Azure Databricks での Spark モデルのバッチ スコアリング</h3>
+                        <p>Azure Databricks を使用して、Apache Spark の分類モデルをバッチ スコアリングするためのスケーラブルなソリューションをビルドします。</p>
                     </div>
                 </div>
             </div>
@@ -126,26 +126,6 @@ ms.locfileid: "58887762"
         </div>
     </a>
 </li>
-<!-- Batch scoring of R machine learning models -->
-<li style="display: flex; flex-direction: column;">
-    <a href="./ai/batch-scoring-R-models.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
-        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
-            <div class="cardPadding" style="display: flex;">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="../_images/icons/logo-r.svg" height="140px" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>R 機械学習モデルのバッチ スコアリング</h3>
-                        <p>Azure Batch を使用して R モデルのバッチ スコアリングを実行します。</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </a>
-</li>
 <!-- Real-time scoring of R machine learning models -->
 <li style="display: flex; flex-direction: column;">
     <a href="./ai/realtime-scoring-r.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
@@ -160,26 +140,6 @@ ms.locfileid: "58887762"
                     <div class="cardText">
                         <h3>R 機械学習モデルを使用したリアルタイム スコアリング</h3>
                         <p>Azure Kubernetes Service (AKS) で実行される Microsoft Machine Learning Server を使用して、R のリアルタイム予測サービスを実装します。</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </a>
-</li>
-<!-- Batch scoring of Spark models on Azure Databricks -->
-<li style="display: flex; flex-direction: column;">
-    <a href="./ai/batch-scoring-databricks.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
-        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
-            <div class="cardPadding" style="display: flex;">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="../_images/icons/databricks.png" height="140px" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>Azure Databricks での Spark モデルのバッチ スコアリング</h3>
-                        <p>Azure Databricks を使用して、Apache Spark の分類モデルをバッチ スコアリングするためのスケーラブルなソリューションをビルドします。</p>
                     </div>
                 </div>
             </div>
@@ -354,27 +314,7 @@ ms.locfileid: "58887762"
                     </div>
                     <div class="cardText">
                         <h3>Azure Kubernetes Service (AKS) 上のマイクロサービス</h3>
-                        <p>マイクロサービスを AKS にデプロイするための推奨アーキテクチャ。</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </a>
-</li>
-<!-- Microservices architecture on Azure Service Fabric -->
-<li style="display: flex; flex-direction: column;">
-    <a href="./microservices/service-fabric.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
-        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
-            <div class="cardPadding" style="display: flex;">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="../_images/icons/sf.svg" height="140px" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>Azure Service Fabric 上のマイクロサービス アーキテクチャ</h3>
-                        <p>Service Fabric 上のマイクロサービスで推奨されるアーキテクチャ。</p>
+                        <p>AKS にマイクロサービス アーキテクチャをデプロイするための推奨アーキテクチャ。</p>
                     </div>
                 </div>
             </div>
