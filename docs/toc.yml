@@ -279,20 +279,26 @@ items:
     href: reference-architectures/index.md
   - name: AI
     items:
-    - name: ディープ ラーニング モデルの分散トレーニング
-      href: reference-architectures/ai/training-deep-learning.md
-    - name: Python scikit-learn モデルのトレーニング
-      href: reference-architectures/ai/training-python-models.md
-    - name: ディープ ラーニング モデルのバッチ スコアリング
-      href: reference-architectures/ai/batch-scoring-deep-learning.md
-    - name: Python モデルのバッチ スコアリング
-      href: reference-architectures/ai/batch-scoring-python.md
+    - name: ディープ ラーニング モデルと Python モデルのトレーニングとスコアリング
+      items:
+      - name: ディープ ラーニング モデルの分散トレーニング
+        href: reference-architectures/ai/training-deep-learning.md
+      - name: ディープ ラーニング モデルのバッチ スコアリング
+        href: reference-architectures/ai/batch-scoring-deep-learning.md
+      - name: Python scikit-learn モデルのトレーニング
+        href: reference-architectures/ai/training-python-models.md
+      - name: Python モデルのバッチ スコアリング
+        href: reference-architectures/ai/batch-scoring-python.md
+      - name: Python モデルおよびディープ ラーニング モデルのリアルタイム スコアリング
+        href: reference-architectures/ai/realtime-scoring-python.md
+    - name: R モデルのスコアリング
+      items:
+      - name: R モデルのバッチ スコアリング
+        href: reference-architectures/ai/batch-scoring-R-models.md
+      - name: R モデルのリアルタイム スコアリング
+        href: reference-architectures/ai/realtime-scoring-r.md
     - name: Azure Databricks での Spark モデルのバッチ スコアリング
       href: reference-architectures/ai/batch-scoring-databricks.md
-    - name: Python モデルおよびディープ ラーニング モデルのリアルタイム スコアリング
-      href: reference-architectures/ai/realtime-scoring-python.md
-    - name: R 機械学習モデルを使用したリアルタイム スコアリング
-      href: reference-architectures/ai/realtime-scoring-r.md
     - name: 会話型ボット
       href: reference-architectures/ai/conversational-bot.md
     - name: Real-time Recommendation API
@@ -497,6 +503,8 @@ items:
           href: data-guide/technology-choices/natural-language-processing.md
         - name: パイプライン オーケストレーション
           href: data-guide/technology-choices/pipeline-orchestration-data-movement.md
+        - name: Azure での R 開発者向けガイド
+          href: data-guide/technology-choices/r-developers-guide.md
         - name: リアルタイム メッセージ取り込み
           href: data-guide/technology-choices/real-time-ingestion.md
         - name: データ ストアの検索
@@ -567,6 +575,8 @@ items:
       href: databricks-monitoring/application-logs.md
     - name: ダッシュボードを使用して Databricks のメトリックを視覚化する
       href: databricks-monitoring/dashboards.md
+    - name: パフォーマンスのボトルネックのトラブルシューティング
+      href: databricks-monitoring/performance-troubleshooting.md
 - name: デザイン レビュー フレームワーク
   items:
   - name: 回復性の設計
@@ -861,9 +871,9 @@ items:
           href: cloud-adoption/decision-guides/software-defined-network/hub-spoke.md
       - name: ログとレポート
         href: cloud-adoption/decision-guides/log-and-report/overview.md
-ms.openlocfilehash: 861170224f9575dc5e45d993678bda482b0ed944
-ms.sourcegitcommit: 9854bd27fb5cf92041bbfb743d43045cd3552a69
+ms.openlocfilehash: 953c7cbdee185a88d8470199fb4ba92244adaa84
+ms.sourcegitcommit: 1a3cc91530d56731029ea091db1f15d41ac056af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58503249"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58887779"
