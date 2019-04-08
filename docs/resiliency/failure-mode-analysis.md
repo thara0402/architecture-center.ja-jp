@@ -8,11 +8,11 @@ ms.service: architecture-center
 ms.subservice: cloud-design-principles
 ms.custom: resiliency
 ms.openlocfilehash: 6d0f58161c5b9d5922c21f24b1b1a50bab836bb1
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58248069"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54484280"
 ---
 # <a name="failure-mode-analysis"></a>障害モード分析
 
@@ -426,7 +426,7 @@ Azure Service Bus メッセージング キューの使用を検討します。�
 
 **復旧**。 アプリケーション層ごとに、複数の VM インスタンスを同じ可用性セットに格納し、VM の前にロード バランサーを配置します。 正常性プローブが失敗した場合、Load Balancer は異常なインスタンスへの新しい接続の送信を停止します。
 
-**診断** - Load Balancer の [Log Analytics][lb-monitor] を使用します。
+**診断** - Load Balancer の [ログ分析][lb-monitor]を使用します。
 
 - すべての正常性監視エンドポイントを監視するように、監視システムを構成します。
 
