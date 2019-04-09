@@ -7,14 +7,14 @@ ms.topic: reference-architecture
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: azcat-ai, AI
-ms.openlocfilehash: 81dc353735eaa6573c72d9e588c949fe96a329ef
-ms.sourcegitcommit: eee3a35dd5a5a2f0dc117fa1c30f16d6db213ba2
+ms.openlocfilehash: b7607984bcf2c4bd046421aeb6e9d52dd8e7c18e
+ms.sourcegitcommit: 1a3cc91530d56731029ea091db1f15d41ac056af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55782015"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58887745"
 ---
-# <a name="batch-scoring-of-python-models-on-azure"></a>Azure での Python モデルのバッチ スコアリング
+# <a name="batch-scoring-of-python-machine-learning-models-on-azure"></a>Azure での Python 機械学習モデルのバッチ スコアリング
 
 この参照アーキテクチャでは、Azure Machine Learning service を使用して、スケジュールに従って多数のモデルのバッチ スコアリングを並列で実行するスケーラブルなソリューションをビルドする方法を示します。 このソリューションはテンプレートとして使用でき、さまざまな問題に対応するように汎用化できます。
 
@@ -51,7 +51,7 @@ ms.locfileid: "55782015"
 
 標準的な Python モデルでは、CPU で十分にワークロードを処理できることが一般に認められています。 このアーキテクチャでは、CPU を使用します。 ただし、[ディープ ラーニング ワークロード][deep]では、通常は、CPU より GPU の方が優れています。多くの場合、同等のパフォーマンスを得るためには巨大な CPU クラスターが必要です。
 
-### <a name="parallelizing-across-vms-vs-cores"></a>VM とコアの間の並列化
+### <a name="parallelizing-across-vms-versus-cores"></a>VM とコアの間の並列化
 
 多数のモデルのスコアリング プロセスをバッチ モードで実行する場合は、VM 間でジョブを並列処理する必要があります。 2 つの方法が可能であり、
 
@@ -87,7 +87,7 @@ ms.locfileid: "55782015"
 [amls]: /azure/machine-learning/service/overview-what-is-azure-ml
 [automatic-scaling]: /azure/batch/batch-automatic-scaling
 [azure-files]: /azure/storage/files/storage-files-introduction
-[cli]: https://docs.microsoft.com/en-us/cli/azure
+[cli]: /cli/azure
 [create-resources]: https://github.com/Microsoft/AMLBatchScoringPipeline/blob/master/01_create_resources.ipynb
 [deep]: /azure/architecture/reference-architectures/ai/batch-scoring-deep-learning
 [event-hubs]: /azure/event-hubs/event-hubs-geo-dr
@@ -95,10 +95,10 @@ ms.locfileid: "55782015"
 [github]: https://github.com/Microsoft/AMLBatchScoringPipeline
 [one-class-svm]: http://scikit-learn.org/stable/modules/generated/sklearn.svm.OneClassSVM.html
 [portal]: https://portal.azure.com
-[ml-workspace]: https://docs.microsoft.com/en-us/azure/machine-learning/studio/create-workspace
+[ml-workspace]: /azure/machine-learning/studio/create-workspace
 [python-script]: https://github.com/Azure/BatchAIAnomalyDetection/blob/master/batchai/predict.py
 [pyscript]: https://github.com/Microsoft/AMLBatchScoringPipeline/blob/master/scripts/predict.py
 [storage]: /azure/storage/blobs/storage-blobs-overview
 [stream-analytics]: /azure/stream-analytics/
-[sql-database]: https://docs.microsoft.com/en-us/azure/sql-database/
-[app-insights]: https://docs.microsoft.com/en-us/azure/application-insights/app-insights-overview
+[sql-database]: /azure/sql-database/
+[app-insights]: /azure/application-insights/app-insights-overview

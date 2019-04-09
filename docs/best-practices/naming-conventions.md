@@ -8,12 +8,12 @@ ms.topic: best-practice
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.custom: seodec18
-ms.openlocfilehash: 9f14b47a9659ad0b7451d106168f4d7b5a6ab0c7
-ms.sourcegitcommit: eee3a35dd5a5a2f0dc117fa1c30f16d6db213ba2
+ms.openlocfilehash: 87869d1b38d2b4a71cd5b604436e04deab993131
+ms.sourcegitcommit: 548374a0133f3caed3934fda6a380c76e6eaecea
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55782083"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58420024"
 ---
 # <a name="naming-conventions-for-azure-resources"></a>Azure リソースの名前付け規則
 
@@ -64,7 +64,7 @@ Azure のリソースに名前を付けるときは、リソースの種類と�
 | 特徴 | 例 | メモ |
 | --- | --- | --- |
 | 環境 |dev、prod、QA |リソースの環境を識別 |
-| 場所 |uw (米国西部)、ue (米国東部) |リソースの展開先のリージョンを識別 |
+| Location |uw (米国西部)、ue (米国東部) |リソースの展開先のリージョンを識別 |
 | インスタンス |1、2、... |複数の名前付きインスタンスが存在するリソースの場合 (VM や NIC など)。 |
 | 製品またはサービス |service |リソースがサポートする製品、アプリケーション、サービスを識別 |
 | Role |sql、web、messaging |関連付けられているリソースのロールを識別 |
@@ -84,6 +84,7 @@ Azure のリソースまたはサービスの種類ごとに、名前付けに�
 |リソース グループ |サブスクリプション |1-90 |大文字と小文字は区別されない |[こちら](/rest/api/resources/resourcegroups/createorupdate)に記載されている正規表現と一致している英数字、アンダースコア、かっこ、ハイフン、ピリオド (末尾を除く)、および Unicode 文字。 |`<service short name>-<environment>-rg` |`profx-prod-rg` |
 |可用性セット |リソース グループ |1 ～ 80 |大文字と小文字は区別されない |英数字、アンダースコア、ハイフン |`<service-short-name>-<context>-as` |`profx-sql-as` |
 |タグ |関連付けられたエンティティ |512 (名前)、256 (値) |大文字と小文字は区別されない |英数字と特殊文字 (ただし、`<`、`>`、`%`、`&`、`\`、`?`、`/` を除く)。 制限事項については、[こちら](/azure/azure-resource-manager/resource-group-using-tags)を参照してください。 |`"key" : "value"` |`"department" : "Central IT"` |
+|Web アプリ |グローバル |1 ～ 60 |大文字と小文字は区別されない |英数字とハイフン |`<app_name>-<source-slot-name>` |`contoso-staging` |
 
 ### <a name="compute"></a>Compute
 
@@ -113,7 +114,7 @@ Azure のリソースまたはサービスの種類ごとに、名前付けに�
 | エンティティ | Scope (スコープ) | Length | 大文字小文字の区別 | 有効な文字 | 推奨パターン | 例 |
 | --- | --- | --- | --- | --- | --- | --- |
 |Virtual Network (VNet) |リソース グループ |2 ～ 64 |大文字と小文字は区別されない |英数字、ハイフン、アンダースコア、ピリオド |`<service short name>-vnet` |`profx-vnet` |
-|サブネット |親 VNet |2 ～ 80 |大文字と小文字は区別されない |英数字、ハイフン、アンダースコア、ピリオド |`<descriptive context>` |`web` |
+|Subnet |親 VNet |2 ～ 80 |大文字と小文字は区別されない |英数字、ハイフン、アンダースコア、ピリオド |`<descriptive context>` |`web` |
 |ネットワーク インターフェイス |リソース グループ |1 ～ 80 |大文字と小文字は区別されない |英数字、ハイフン、アンダースコア、ピリオド |`<vmname>-nic<num>` |`profx-sql1-vm1-nic1` |
 |ネットワーク セキュリティ グループ |リソース グループ |1 ～ 80 |大文字と小文字は区別されない |英数字、ハイフン、アンダースコア、ピリオド |`<service short name>-<context>-nsg` |`profx-app-nsg` |
 |ネットワーク セキュリティ グループの規則 |リソース グループ |1 ～ 80 |大文字と小文字は区別されない |英数字、ハイフン、アンダースコア、ピリオド |`<descriptive context>` |`sql-allow` |
@@ -128,6 +129,12 @@ Azure のリソースまたはサービスの種類ごとに、名前付けに�
 | エンティティ | Scope (スコープ) | Length | 大文字小文字の区別 | 有効な文字 | 推奨パターン | 例 |
 | --- | --- | --- | --- | --- | --- | --- |
 |Container Registry | グローバル |5 ～ 50 |大文字と小文字は区別されない | 英数字 |`<service short name>registry` |`app1registry` |
+
+### <a name="service-bus"></a>Service Bus
+
+| エンティティ | Scope (スコープ) | Length | 大文字小文字の区別 | 有効な文字 | 推奨パターン | 例 |
+| --- | --- | --- | --- | --- | --- | --- |
+|Service Bus 名前空間 | グローバル |6-50 |大文字と小文字は区別されない | 英数字、ハイフン。文字で開始する必要があります。詳細については、[こちら](/rest/api/servicebus/create-namespace)を参照してください。 |`<service short name>-bus` |`app1-bus` |
 
 ## <a name="organize-resources-with-tags"></a>タグによるリソースの整理
 

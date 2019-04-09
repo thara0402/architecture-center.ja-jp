@@ -11,12 +11,12 @@ ms.topic: reference-architecture
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: seodec18, identity
-ms.openlocfilehash: bf62544028741d500e9c4172d4ac0206c95cb919
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.openlocfilehash: 5fe966f657782b41ec1926d0fd4bb83eb7a3c0fb
+ms.sourcegitcommit: 548374a0133f3caed3934fda6a380c76e6eaecea
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58241353"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58420041"
 ---
 # <a name="create-an-active-directory-domain-services-ad-ds-resource-forest-in-azure"></a>Azure での Active Directory Domain Services (AD DS) リソース フォレストの作成
 
@@ -44,10 +44,7 @@ Active Directory Domain Services (AD DS) は、階層構造に ID 情報を格�
 
 ## <a name="recommendations"></a>Recommendations
 
-Azure に Active Directory を実装する場合の具体的な推奨事項については、以下の記事をご覧ください。
-
-- [Active Directory Domain Services (AD DS) を Azure に拡張する][adds-extend-domain]。
-- [Azure Virtual Machines での Windows Server Active Directory の展開ガイドライン][ad-azure-guidelines]
+Azure での Active Directory の実装に関する具体的な推奨事項については、「[Active Directory Domain Services (AD DS) を Azure に拡張する][adds-extend-domain]」を参照してください。
 
 ### <a name="trust"></a>[Trust (信頼)]
 

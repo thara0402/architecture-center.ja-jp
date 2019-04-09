@@ -7,14 +7,14 @@ ms.topic: reference-architecture
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: azcat-ai
-ms.openlocfilehash: 1b6f10edf098ed8d9fa14c16de113fc765372835
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.openlocfilehash: cba8d272ddbdbf2c2da94f68b288e9fb79be7de2
+ms.sourcegitcommit: 1a3cc91530d56731029ea091db1f15d41ac056af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58231414"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58887813"
 ---
-# <a name="batch-scoring-of-spark-models-on-azure-databricks"></a>Azure Databricks での Spark モデルのバッチ スコアリング
+# <a name="batch-scoring-of-spark-machine-learning-models-on-azure-databricks"></a>Azure Databricks での Spark 機械学習モデルのバッチ スコアリング
 
 この参照アーキテクチャでは、Azure 向けに最適化された Apache Spark ベースの分析プラットフォームである Azure Databricks を使用して、スケジュールに従って Apache Spark 分類モデルをバッチ スコアリングするスケーラブルなソリューションを構築する方法を示します。 このソリューションは、他のシナリオのために一般化できるテンプレートとして使用できます。
 

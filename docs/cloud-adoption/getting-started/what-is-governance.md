@@ -6,12 +6,12 @@ ms.subservice: enterprise-cloud-adoption
 ms.date: 02/11/2019
 description: Azure でのクラウド リソース ガバナンスの説明
 author: petertaylor9999
-ms.openlocfilehash: 5d022e83a1c97a5e5af8208ec00339575bb88be1
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.openlocfilehash: 602ac81f2b2201c77746df971d282582ceee23f7
+ms.sourcegitcommit: 9854bd27fb5cf92041bbfb743d43045cd3552a69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58242123"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58503198"
 ---
 <!-- markdownlint-disable MD026 -->
 

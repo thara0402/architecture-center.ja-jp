@@ -8,14 +8,14 @@ ms.topic: reference-architecture
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: azcat-ai
-ms.openlocfilehash: 85d04f179b988fd5b00b361149f2170d13608e6d
-ms.sourcegitcommit: 700a4f6ce61b1ebe68e227fc57443e49282e35aa
+ms.openlocfilehash: a1c0701185c85f8e7bcbc183b32c4834529fc524
+ms.sourcegitcommit: 1a3cc91530d56731029ea091db1f15d41ac056af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55887388"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58887864"
 ---
-# <a name="batch-scoring-on-azure-for-deep-learning-models"></a>ディープ ラーニング モデル用の Azure でのバッチ スコアリング
+# <a name="batch-scoring-of-deep-learning-models-on-azure"></a>Azure でのディープ ラーニング モデルのバッチ スコアリング
 
 この参照アーキテクチャでは、Azure Machine Learning を使用してニューラル スタイルの転送を動画に適用する方法を示します。 "*スタイルの転送*" とは、別の画像のスタイルに既存の画像を組み込むディープ ラーニングの手法です。 このアーキテクチャは、ディープ ラーニングでバッチ スコアリングを使用する任意のシナリオに一般化することができます。 [**このソリューションをデプロイします**](#deploy-the-solution)。
 
@@ -23,9 +23,13 @@ ms.locfileid: "55887388"
 
 **シナリオ**: あるメディア組織は、動画のスタイルを特定の絵画のように変更したいと考えています。 組織は、適切なタイミングで自動的に動画のすべてのフレームにこのスタイルを適用できることを望んでいます。 ニューラル スタイル転送アルゴリズムの背景について詳しくは、「[Image Style Transfer Using Convolutional Neural Networks][image-style-transfer]」(畳み込みニューラル ネットワークを使用した画像スタイルの転送) (PDF) をご覧ください。
 
+<!-- markdownlint-disable MD033 -->
+
 | スタイル画像: | 入力/コンテンツ動画: | 出力動画: |
 |--------|--------|---------|
 | <img src="https://happypathspublic.blob.core.windows.net/assets/batch_scoring_for_dl/style_image.jpg" width="300"> | [<img src="https://happypathspublic.blob.core.windows.net/assets/batch_scoring_for_dl/input_video_image_0.jpg" width="300" height="300">](https://happypathspublic.blob.core.windows.net/assets/batch_scoring_for_dl/input_video.mp4 "入力動画") *クリックすると動画が表示されます* | [<img src="https://happypathspublic.blob.core.windows.net/assets/batch_scoring_for_dl/output_video_image_0.jpg" width="300" height="300">](https://happypathspublic.blob.core.windows.net/assets/batch_scoring_for_dl/output_video.mp4 "出力動画") *クリックすると動画が表示されます* |
+
+<!-- markdownlint-enable MD033 -->
 
 この参照アーキテクチャは、Azure Storage に新しいメディアが存在することによってトリガーされるワークロード用に設計されています。
 
@@ -42,7 +46,7 @@ ms.locfileid: "55887388"
 
 ### <a name="compute"></a>Compute
 
-**[Azure Machine Learning service][amls]** は、Azure Machine Learning Pipelines を使用して、再現可能で管理が容易な計算シーケンスを作成します。 また、[Azure Machine Learning コンピューティング][aml-compute]という、機械学習モデルのトレーニング、デプロイ、およびスコアリングのためのマネージド コンピューティング先 (これに対してパイプラインの計算が実行されます) も提供します。 
+**[Azure Machine Learning service][amls]** は、Azure Machine Learning Pipelines を使用して、再現可能で管理が容易な計算シーケンスを作成します。 また、[Azure Machine Learning コンピューティング][aml-compute]という、機械学習モデルのトレーニング、デプロイ、およびスコアリングのためのマネージド コンピューティング先 (これに対してパイプラインの計算が実行されます) も提供します。
 
 ### <a name="storage"></a>Storage
 
@@ -64,21 +68,21 @@ ms.locfileid: "55887388"
 
 ## <a name="performance-considerations"></a>パフォーマンスに関する考慮事項
 
-### <a name="gpu-vs-cpu"></a>GPU と CPU
+### <a name="gpu-versus-cpu"></a>GPU と CPU
 
 ディープ ラーニング ワークロードでは、同等のパフォーマンスを得るためには非常に大規模な CPU クラスターが必要になるため、一般に、CPU より GPU の方がかなり優れています。 このアーキテクチャでは CPU のみを使用することもできますが、GPU の方が優れたコスト/パフォーマンス プロファイルを提供します。 GPU 最適化 VM の最新の [NCv3 シリーズ]vm-sizes-gpu を使用することをお勧めします。
 
 すべてのリージョンで、GPU は既定では有効になっていません。 GPU が有効になっているリージョンを選択してください。 さらに、サブスクリプションの既定のクォータでは、GPU 最適化 VM のコア数は 0 です。 サポート要求を開くことで、このクォータを増やすことができます。 ワークロードを実行するための十分なクォータがサブスクリプションにあることを確認してください。
 
-### <a name="parallelizing-across-vms-vs-cores"></a>VM とコアの間の並列化
+### <a name="parallelizing-across-vms-versus-cores"></a>VM とコアの間の並列化
 
 スタイル転送プロセスをバッチ ジョブとして実行するとき、主に GPU 上で実行されるジョブは、VM 間で並列化する必要があります。 2 つの方法が可能であり、単一の GPU を備えた VM を使用して大規模なクラスターを作成するか、または多くの GPU を備えた VM を使用して小規模なクラスターを作成することができます。
 
 このワークロードでは、これら 2 つのオプションのパフォーマンスは同等です。 VM あたりの GPU が多い少数の VM を使用すると、データ移動を削減するのに役立ちます。 ただし、このワークロードではジョブごとのデータ量がそれほど多くないので、BLOB ストレージによって大きく制限されることはありません。
 
-### <a name="mpi-step"></a>MPI のステップ 
+### <a name="mpi-step"></a>MPI のステップ
 
-Azure Machine Learning でパイプラインを作成する場合、並列計算を実行するために使用されるステップの 1 つが MPI のステップです。 MPI のステップは、使用可能なノード間でデータを均等に分割するのに役立ちます。 MPI のステップは、要求されたすべてのノードの準備が整うまでは実行されません。 1 つのノードが失敗したり、割り込まれたりした場合 (それが優先順位の低い仮想マシンであっても)、MPI のステップを再実行する必要があります。 
+Azure Machine Learning でパイプラインを作成する場合、並列計算を実行するために使用されるステップの 1 つが MPI のステップです。 MPI のステップは、使用可能なノード間でデータを均等に分割するのに役立ちます。 MPI のステップは、要求されたすべてのノードの準備が整うまでは実行されません。 1 つのノードが失敗したり、割り込まれたりした場合 (それが優先順位の低い仮想マシンであっても)、MPI のステップを再実行する必要があります。
 
 ## <a name="security-considerations"></a>セキュリティに関する考慮事項
 
@@ -94,7 +98,7 @@ Azure Machine Learning でパイプラインを作成する場合、並列計算
 
 ### <a name="securing-your-computation-in-a-virtual-network"></a>仮想ネットワーク内での計算のセキュリティ保護
 
-Machine Learning コンピューティング クラスターをデプロイするときは、[仮想ネットワーク][virtual-network]のサブネット内にプロビジョニングされるようにクラスターを構成できます。 これにより、クラスター内のコンピューティング ノードは、他の仮想マシンと安全に通信できます。 
+Machine Learning コンピューティング クラスターをデプロイするときは、[仮想ネットワーク][virtual-network]のサブネット内にプロビジョニングされるようにクラスターを構成できます。 これにより、クラスター内のコンピューティング ノードは、他の仮想マシンと安全に通信できます。
 
 ### <a name="protecting-against-malicious-activity"></a>悪意のあるアクティビティからの保護
 
@@ -136,7 +140,6 @@ Machine Learning コンピューティングでは、低優先度の仮想マシ
 
 > [!NOTE]
 > また、Azure Kubernetes Service を使用して、ディープ ラーニング モデル用にバッチ スコアリング アーキテクチャをデプロイすることもできます。 この [Github リポジトリ][deployment2]で説明されている手順に従ってください。
-
 
 <!-- links -->
 
