@@ -1,0 +1,135 @@
+---
+title: Azure Monitor を使用した Azure Databricks のパフォーマンスのトラブルシューティング
+titleSuffix: ''
+description: Grafana ダッシュ ボードを使用して Azure Databricks でのパフォーマンスの問題をトラブルシューティングする
+author: petertaylor9999
+ms.date: 04/02/2019
+ms.topic: ''
+ms.service: ''
+ms.subservice: ''
+ms.openlocfilehash: 49ec63d0c45ab388ca83b3ab0562428327539619
+ms.sourcegitcommit: 1a3cc91530d56731029ea091db1f15d41ac056af
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58887903"
+---
+# <a name="troubleshoot-performance-bottlenecks-in-azure-databricks"></a><span data-ttu-id="3f580-103">Azure Databricks でのパフォーマンスのボトルネックのトラブルシューティング</span><span class="sxs-lookup"><span data-stu-id="3f580-103">Troubleshoot performance bottlenecks in Azure Databricks</span></span>
+
+<span data-ttu-id="3f580-104">この記事では、監視ダッシュ ボードを使用して Azure Databricks で Spark ジョブのパフォーマンスのボトルネックを見つける方法について説明します。</span><span class="sxs-lookup"><span data-stu-id="3f580-104">This article describes how to use monitoring dashboards to find performance bottlenecks in Spark jobs on Azure Databricks.</span></span>
+
+<span data-ttu-id="3f580-105">[Azure Databricks](/azure/azure-databricks/) は、ビッグ データ分析の迅速な開発とデプロイを容易にする、[Apache Spark](https://spark.apache.org/) ベースの分析サービスです。</span><span class="sxs-lookup"><span data-stu-id="3f580-105">[Azure Databricks](/azure/azure-databricks/) is an [Apache Spark](https://spark.apache.org/)–based analytics service that makes it easy to rapidly develop and deploy big data analytics.</span></span> <span data-ttu-id="3f580-106">パフォーマンスの問題を監視してトラブルシューティングすることは、Azure Databricks の本番ワークロードを運用するときに重要です。</span><span class="sxs-lookup"><span data-stu-id="3f580-106">Monitoring and troubleshooting performance issues is a critical when operating production Azure Databricks workloads.</span></span> <span data-ttu-id="3f580-107">一般的なパフォーマンスの問題を識別するには、テレメトリ データに基づく監視の視覚化を使用することが有用です。</span><span class="sxs-lookup"><span data-stu-id="3f580-107">To identify common performance issues, it's helpful to use monitoring visualizations based on telemetry data.</span></span>
+
+## <a name="prerequisites"></a><span data-ttu-id="3f580-108">前提条件</span><span class="sxs-lookup"><span data-stu-id="3f580-108">Prerequisites</span></span>
+
+<span data-ttu-id="3f580-109">この記事で示されている Grafana ダッシュ ボードを設定するには、次のようにします。</span><span class="sxs-lookup"><span data-stu-id="3f580-109">To set up the Grafana dashboards shown in this article:</span></span>
+
+- <span data-ttu-id="3f580-110">Azure Databricks 監視ライブラリを使用して、Log Analytics ワークスペースにテレメトリを送信するように Databricks クラスターを構成します。</span><span class="sxs-lookup"><span data-stu-id="3f580-110">Configure your Databricks cluster to send telemetry to a Log Analytics workspace, using the Azure Databricks Monitoring Library.</span></span> <span data-ttu-id="3f580-111">詳細については、「[Azure Monitor にメトリックを送信するよう Azure Databricks を構成する](./configure-cluster.md)」を参照してください。</span><span class="sxs-lookup"><span data-stu-id="3f580-111">For details, see [Configure Azure Databricks to send metrics to Azure Monitor](./configure-cluster.md).</span></span>
+
+- <span data-ttu-id="3f580-112">Grafana を仮想マシンに デプロイします。</span><span class="sxs-lookup"><span data-stu-id="3f580-112">Deploy Grafana in a virtual machine.</span></span> <span data-ttu-id="3f580-113">「[ダッシュボードを使用して Azure Databricks のメトリックを視覚化する](./dashboards.md)」を参照してください。</span><span class="sxs-lookup"><span data-stu-id="3f580-113">See [Use dashboards to visualize Azure Databricks metrics](./dashboards.md).</span></span>
+
+<span data-ttu-id="3f580-114">デプロイされている Grafana ダッシュ ボードには、時系列の視覚化のセットが含まれています。</span><span class="sxs-lookup"><span data-stu-id="3f580-114">The Grafana dashboard that is deployed includes a set of time-series visualizations.</span></span> <span data-ttu-id="3f580-115">各グラフは、Apache Spark ジョブ、ジョブのステージ、および各ステージを形成するタスクに関連したメトリックの時系列プロットです。</span><span class="sxs-lookup"><span data-stu-id="3f580-115">Each graph is time-series plot of metrics related to an Apache Spark job, the stages of the job, and tasks that make up each stage.</span></span>
+
+## <a name="azure-databricks-performance-overview"></a><span data-ttu-id="3f580-116">Azure Databricks のパフォーマンスの概要</span><span class="sxs-lookup"><span data-stu-id="3f580-116">Azure Databricks performance overview</span></span>
+
+<span data-ttu-id="3f580-117">Azure Databricks は、汎用分散コンピューティング システムである Apache Spark に基づいています。</span><span class="sxs-lookup"><span data-stu-id="3f580-117">Azure Databricks is based on Apache Spark, a general-purpose distributed computing system.</span></span> <span data-ttu-id="3f580-118">**ジョブ**と呼ばれるアプリケーション コードが、クラスター マネージャーに調整されて、Apache Spark クラスターで実行されます。</span><span class="sxs-lookup"><span data-stu-id="3f580-118">Application code, known as a **job**, executes on an Apache Spark cluster, coordinated by the cluster manager.</span></span> <span data-ttu-id="3f580-119">一般に、ジョブは、コンピューターで行う処理の最高位の単位です。</span><span class="sxs-lookup"><span data-stu-id="3f580-119">In general, a job is the highest-level unit of computation.</span></span> <span data-ttu-id="3f580-120">ジョブは、Spark アプリケーションによって実行される完全な操作を表します。</span><span class="sxs-lookup"><span data-stu-id="3f580-120">A job represents the complete operation performed by the Spark application.</span></span> <span data-ttu-id="3f580-121">標準的な操作には、ソースからのデータの読み取り、データ変換の適用、およびストレージまたは別の宛先への結果の書き込みが含まれます。</span><span class="sxs-lookup"><span data-stu-id="3f580-121">A typical operation includes reading data from a source, applying data transformations, and writing the results to storage or another destination.</span></span>
+
+<span data-ttu-id="3f580-122">ジョブは、複数の**ステージ**に分割されます。</span><span class="sxs-lookup"><span data-stu-id="3f580-122">Jobs are broken down into **stages**.</span></span> <span data-ttu-id="3f580-123">ジョブはそれらのステージを順次通過して進んでいきます。つまり、後のステージは、前のステージが完了するのを待機しなければなりません。</span><span class="sxs-lookup"><span data-stu-id="3f580-123">The job advances through the stages sequentially, which means that later stages must wait for earlier stages to complete.</span></span> <span data-ttu-id="3f580-124">ステージには、Spark クラスターの複数のノードで同時に実行できる同一**タスク**のグループが含まれています。</span><span class="sxs-lookup"><span data-stu-id="3f580-124">Stages contain groups of identical **tasks** that can be executed in parallel on multiple nodes of the Spark cluster.</span></span> <span data-ttu-id="3f580-125">タスクは、データのサブセットで実行される、最も粒度の細かい実行単位です。</span><span class="sxs-lookup"><span data-stu-id="3f580-125">Tasks are the most granular unit of execution taking place on a subset of the data.</span></span>
+
+<span data-ttu-id="3f580-126">次のセクションでは、パフォーマンスのトラブルシューティングに役立ついくつかのダッシュ ボードの視覚化について説明します。</span><span class="sxs-lookup"><span data-stu-id="3f580-126">The next sections describe some dashboard visualizations that are useful for performance troubleshooting.</span></span>
+
+## <a name="job-and-stage-latency"></a><span data-ttu-id="3f580-127">ジョブとステージの待機時間</span><span class="sxs-lookup"><span data-stu-id="3f580-127">Job and stage latency</span></span>
+
+<span data-ttu-id="3f580-128">ジョブの待機時間は、開始されてから完了するまでのジョブの実行時間です。</span><span class="sxs-lookup"><span data-stu-id="3f580-128">Job latency is the duration of a job execution from when it starts until it completes.</span></span> <span data-ttu-id="3f580-129">これは、外れ値の視覚化を可能にするために、クラスターおよびアプリケーション ID ごとのジョブの実行のパーセンタイルとして示されます。</span><span class="sxs-lookup"><span data-stu-id="3f580-129">It is shown as percentiles of a job execution per cluster and application ID, to allow the visualization of outliers.</span></span> <span data-ttu-id="3f580-130">次のグラフは、50 パーセンタイルが一貫して 10 秒前後だったのにもかかわらず、90 パーセンタイルが 50 秒に達したジョブの履歴を示しています。</span><span class="sxs-lookup"><span data-stu-id="3f580-130">The following graph shows a job history where the 90th percentile reached 50 seconds, even though the 50th percentile was consistently around 10 seconds.</span></span>
+
+![ジョブの待機時間を示すグラフ](./_images/grafana-job-latency.png)
+
+<span data-ttu-id="3f580-132">待機時間の急上昇を探して、クラスターおよびアプリケーション別にジョブの実行を調査します。</span><span class="sxs-lookup"><span data-stu-id="3f580-132">Investigate job execution by cluster and application, looking for spikes in latency.</span></span> <span data-ttu-id="3f580-133">待機時間が長いクラスターとアプリケーションが特定されたら、ステージの待機時間の調査へと進みます。</span><span class="sxs-lookup"><span data-stu-id="3f580-133">Once clusters and applications with high latency are identified, move on to investigate stage latency.</span></span>
+
+<span data-ttu-id="3f580-134">ステージの待機時間も、外れ値の視覚化を可能にするために、パーセンタイルとして示されます。</span><span class="sxs-lookup"><span data-stu-id="3f580-134">Stage latency is also shown as percentiles to allow the visualization of outliers.</span></span> <span data-ttu-id="3f580-135">ステージの待機時間は、クラスター、アプリケーション、およびステージ名で分けられます。</span><span class="sxs-lookup"><span data-stu-id="3f580-135">Stage latency is broken out by cluster, application, and stage name.</span></span> <span data-ttu-id="3f580-136">グラフ内のタスク待機時間の急上昇を特定して、どのタスクがステージの完了を阻止しているのかを判別します。</span><span class="sxs-lookup"><span data-stu-id="3f580-136">Identify spikes in task latency in the graph to determine which tasks are holding back completion of the stage.</span></span>
+
+![ステージの待機時間を示すグラフ](./_images/grafana-stage-latency.png)
+
+<span data-ttu-id="3f580-138">クラスターのスループットのグラフには、1 分あたりの完了したジョブ、ステージ、およびタスクの数が示されます。</span><span class="sxs-lookup"><span data-stu-id="3f580-138">The cluster throughput graph shows the number of jobs, stages, and tasks completed per minute.</span></span> <span data-ttu-id="3f580-139">これは、ジョブごとのステージとタスクの相対的な数の観点からワークロードを解釈するのに役立ちます。</span><span class="sxs-lookup"><span data-stu-id="3f580-139">This helps you to understand the workload in terms of the relative number of stages and tasks per job.</span></span> <span data-ttu-id="3f580-140">ここで、1 分あたりのジョブの数が 2 個から 6 個の範囲で、ステージの数が 1 分あたり約 12 個から 24 個であることが分かります。</span><span class="sxs-lookup"><span data-stu-id="3f580-140">Here you can see that the number of jobs per minute ranges between 2 and 6, while the number of stages is about 12 &ndash; 24 per minute.</span></span>
+
+![クラスターのスループットを示すグラフ](./_images/grafana-cluster-throughput.png)
+
+## <a name="sum-of-task-execution-latency"></a><span data-ttu-id="3f580-142">タスクの実行での待機時間の合計</span><span class="sxs-lookup"><span data-stu-id="3f580-142">Sum of task execution latency</span></span>
+
+<span data-ttu-id="3f580-143">この視覚化は、クラスターで実行されているホストごとのタスクの実行の合計待機時間を示しています。</span><span class="sxs-lookup"><span data-stu-id="3f580-143">This visualization shows the sum of task execution latency per host running on a cluster.</span></span> <span data-ttu-id="3f580-144">このグラフを使用して、クラスターで速度が低下しているホストが原因で実行速度が低下しているタスクや、Executor ごとのタスクの不適切な割り当てを検出します。</span><span class="sxs-lookup"><span data-stu-id="3f580-144">Use this graph to detect tasks that run slowly due to the host slowing down on a cluster, or a misallocation of tasks per executor.</span></span> <span data-ttu-id="3f580-145">次のグラフでは、ほとんどのホストでの合計時間は約 30 秒です。</span><span class="sxs-lookup"><span data-stu-id="3f580-145">In the following graph, most of the hosts have a sum of about 30 seconds.</span></span> <span data-ttu-id="3f580-146">しかし、これらのホストのうち 2 つのホストでは、合計時間は約 10 分間前後です。</span><span class="sxs-lookup"><span data-stu-id="3f580-146">However, two of the hosts have sums that hover around 10 minutes.</span></span> <span data-ttu-id="3f580-147">ホストが低速で実行されているか、Executor ごとのタスクの数が適切に割り当てられていません。</span><span class="sxs-lookup"><span data-stu-id="3f580-147">Either the hosts are running slow or the number of tasks per executor is misallocated.</span></span>
+
+![ホストごとのタスク実行の合計を示すグラフ](./_images/grafana-sum-task-exec.png)
+
+<span data-ttu-id="3f580-149">Executor ごとのタスクの数は、2 つの Executor に不均衡な数のタスクが割り当てられているためにボトルネックが発生していることを示しています。</span><span class="sxs-lookup"><span data-stu-id="3f580-149">The number of tasks per executor shows that two executors are assigned a disproportionate number of tasks, causing a bottleneck.</span></span>
+
+![Executor ごとのタスクを示すグラフ](./_images/grafana-tasks-per-exec.png)
+
+## <a name="task-metrics-per-stage"></a><span data-ttu-id="3f580-151">ステージごとのタスク メトリック</span><span class="sxs-lookup"><span data-stu-id="3f580-151">Task metrics per stage</span></span>
+
+<span data-ttu-id="3f580-152">タスク メトリックの視覚化は、タスクの実行のコストの内訳を示します。</span><span class="sxs-lookup"><span data-stu-id="3f580-152">The task metrics visualization gives the cost breakdown for a task execution.</span></span> <span data-ttu-id="3f580-153">これを使用して、シリアル化や逆シリアル化などのタスクに費やされた相対時間を確認することができます。</span><span class="sxs-lookup"><span data-stu-id="3f580-153">You can use it see the relative time spent on tasks such as serialization and deserialization.</span></span> <span data-ttu-id="3f580-154">このデータは、たとえば、[ブロードキャスト変数](https://spark.apache.org/docs/2.2.0/rdd-programming-guide.html#broadcast-variables)を使用してデータの出荷を回避することにより、&mdash; を最適化する機会を示す場合があります。</span><span class="sxs-lookup"><span data-stu-id="3f580-154">This data might show opportunities to optimize &mdash; for example, by using [broadcast variables](https://spark.apache.org/docs/2.2.0/rdd-programming-guide.html#broadcast-variables) to avoid shipping data.</span></span> <span data-ttu-id="3f580-155">タスク メトリックはまた、タスクのシャッフル データ サイズ、およびシャッフル読み取りとシャッフル書き込みの時間も示しています。</span><span class="sxs-lookup"><span data-stu-id="3f580-155">The task metrics also show the shuffle data size for a task, and the shuffle read and write times.</span></span> <span data-ttu-id="3f580-156">これらの値が大きい場合は、ネットワークで多くのデータが移動していることを意味します。</span><span class="sxs-lookup"><span data-stu-id="3f580-156">If these values are high, it means that a lot of data is moving across the network.</span></span>
+
+<span data-ttu-id="3f580-157">もう 1 つのタスク メトリックは、タスクをスケジュールするのにかかる時間を測定するスケジューラの遅延です。</span><span class="sxs-lookup"><span data-stu-id="3f580-157">Another task metric is the scheduler delay, which measures how long it takes to schedule a task.</span></span> <span data-ttu-id="3f580-158">理想的には、この値は、Executor のコンピューティング時間 (実際にタスクの実行に費やされる時間) と比べて低くなるべきです。</span><span class="sxs-lookup"><span data-stu-id="3f580-158">Ideally, this value should be low compared to the executor compute time, which is the time spent actually executing the task.</span></span>
+
+<span data-ttu-id="3f580-159">次のグラフは、Executor のコンピューティング時間 (1.1 秒) を超えているスケジューラの遅延時間 (3.7 秒) を示しています。</span><span class="sxs-lookup"><span data-stu-id="3f580-159">The following graph shows a scheduler delay time (3.7 s) that exceeds the executor compute time (1.1 s).</span></span> <span data-ttu-id="3f580-160">つまり、実際の作業に費やされている時間よりも、タスクがスケジュールされるのを待機している時間に費やされている時間の方が長いことになります。</span><span class="sxs-lookup"><span data-stu-id="3f580-160">That means more time is spent waiting for tasks to be scheduled than doing the actual work.</span></span>
+
+![ステージごとのタスク メトリックを示すグラフ](./_images/grafana-metrics-per-stage.png)
+
+<span data-ttu-id="3f580-162">この場合の問題の原因は、パーティションの数が多すぎるために多くのオーバーヘッドが発生したことによるものです。</span><span class="sxs-lookup"><span data-stu-id="3f580-162">In this case, the problem was caused by having too many partitions, which caused a lot of overhead.</span></span> <span data-ttu-id="3f580-163">パーティションの数を減らすことで、スケジューラの遅延時間が削減されました。</span><span class="sxs-lookup"><span data-stu-id="3f580-163">Reducing the number of partitions lowered the scheduler delay time.</span></span> <span data-ttu-id="3f580-164">次のグラフは、時間のほとんどがタスクの実行に費やされていることを示しています。</span><span class="sxs-lookup"><span data-stu-id="3f580-164">The next graph shows that most of the time is spent executing the task.</span></span>
+
+![ステージごとのタスク メトリックを示すグラフ](./_images/grafana-metrics-per-stage2.png)
+
+## <a name="streaming-throughput-and-latency"></a><span data-ttu-id="3f580-166">ストリーミングのスループットと待機時間</span><span class="sxs-lookup"><span data-stu-id="3f580-166">Streaming throughput and latency</span></span>
+
+<span data-ttu-id="3f580-167">ストリーミングのスループットは、構造化ストリーミングに直接関連しています。</span><span class="sxs-lookup"><span data-stu-id="3f580-167">Streaming throughput is directly related to structured streaming.</span></span> <span data-ttu-id="3f580-168">ストリーミングのスループットに関連付けられている 2 つの重要なメトリックがあります。1 秒あたりの入力行数と 1 秒あたりの処理行数です。</span><span class="sxs-lookup"><span data-stu-id="3f580-168">There are two important metrics associated with streaming throughput: Input rows per second and processed rows per second.</span></span> <span data-ttu-id="3f580-169">1 秒あたりの入力行数が 1 秒あたりの処理行数を上回る場合は、ストリーム処理システムが追いついていないことを意味します。</span><span class="sxs-lookup"><span data-stu-id="3f580-169">If input rows per second outpaces processed rows per second, it means the stream processing system is falling behind.</span></span> <span data-ttu-id="3f580-170">また、入力データが Event Hubs や Kafka から来ている場合は、1 秒あたりの入力行数が、フロント エンドのデータ インジェスト速度に遅れることなく対応している必要があります。</span><span class="sxs-lookup"><span data-stu-id="3f580-170">Also, if the input data comes from Event Hubs or Kafka, then input rows per second should keep up with the data ingestion rate at the front end.</span></span>
+
+<span data-ttu-id="3f580-171">2 つのジョブは、同様のクラスター スループットを持ちながら、非常に異なるストリーミング メトリックを持つことができます。</span><span class="sxs-lookup"><span data-stu-id="3f580-171">Two jobs can have similar cluster throughput but very different streaming metrics.</span></span> <span data-ttu-id="3f580-172">次のスクリーンショットは、2 つの異なるワークロードを示しています。</span><span class="sxs-lookup"><span data-stu-id="3f580-172">The following screenshot shows two different workloads.</span></span> <span data-ttu-id="3f580-173">これらは、クラスターのスループット (1 分あたりのジョブ、ステージ、およびタスク) の点では似ています。</span><span class="sxs-lookup"><span data-stu-id="3f580-173">They are similar in terms of cluster throughput (jobs, stages, and tasks per minute).</span></span> <span data-ttu-id="3f580-174">しかし、2 番目の実行では、4000 行/秒に対して 12,000 行/秒が処理されています。</span><span class="sxs-lookup"><span data-stu-id="3f580-174">But the second run processes 12,000 rows/sec versus 4,000 rows/sec.</span></span>
+
+![ストリーミングのスループットを示すグラフ](./_images/grafana-streaming-throughput.png)
+
+<span data-ttu-id="3f580-176">ストリーミングのスループットは、クラスターのスループットよりも優れたビジネス メトリックであることがよくあります。なぜならストリーミングのスループットでは、処理されているデータ レコードの数が測定されるからです。</span><span class="sxs-lookup"><span data-stu-id="3f580-176">Streaming throughput is often a better business metric than cluster throughput, because it measures the number of data records that are processed.</span></span>
+
+## <a name="resource-consumption-per-executor"></a><span data-ttu-id="3f580-177">Executor ごとのリソース使用率</span><span class="sxs-lookup"><span data-stu-id="3f580-177">Resource consumption per executor</span></span>
+
+<span data-ttu-id="3f580-178">これらのメトリックは、各 Executor で実行される作業を理解するのに役立ちます。</span><span class="sxs-lookup"><span data-stu-id="3f580-178">These metrics help to understand the work that each executor performs.</span></span>
+
+<span data-ttu-id="3f580-179">**パーセンテージ メトリック**は、Executor がさまざまな項目に費やしている時間を測定し、費やされた時間と Executor のコンピューティング時間全体との割合で表したものです。</span><span class="sxs-lookup"><span data-stu-id="3f580-179">**Percentage metrics** measure how much time an executor spends on various things, expressed as a ratio of time spent versus the overall executor compute time.</span></span> <span data-ttu-id="3f580-180">メトリックは次のとおりです。</span><span class="sxs-lookup"><span data-stu-id="3f580-180">The metrics are:</span></span>
+
+- <span data-ttu-id="3f580-181">シリアル化の時間 (%)</span><span class="sxs-lookup"><span data-stu-id="3f580-181">% Serialize time</span></span>
+- <span data-ttu-id="3f580-182">逆シリアル化の時間 (%)</span><span class="sxs-lookup"><span data-stu-id="3f580-182">% Deserialize time</span></span>
+- <span data-ttu-id="3f580-183">CPU Executor の時間 (%)</span><span class="sxs-lookup"><span data-stu-id="3f580-183">% CPU executor time</span></span>
+- <span data-ttu-id="3f580-184">JVM の時間 (%)</span><span class="sxs-lookup"><span data-stu-id="3f580-184">% JVM time</span></span>
+
+<span data-ttu-id="3f580-185">これらの視覚化は、これらのメトリックのそれぞれが Executor の処理全体に占める割合を示します。</span><span class="sxs-lookup"><span data-stu-id="3f580-185">These visualizations show how much each of these metrics contributes to overall executor processing.</span></span>
+
+![パーセンテージ メトリックを示すグラフ](./_images/grafana-percentage.png)
+
+<span data-ttu-id="3f580-187">**シャッフル メトリック**は、複数の Executor にわたるデータのシャッフルに関連するメトリックです。</span><span class="sxs-lookup"><span data-stu-id="3f580-187">**Shuffle metrics** are metrics related to data shuffling across the executors.</span></span>
+
+- <span data-ttu-id="3f580-188">シャッフル I/O</span><span class="sxs-lookup"><span data-stu-id="3f580-188">Shuffle I/O</span></span>
+- <span data-ttu-id="3f580-189">シャッフル メモリ</span><span class="sxs-lookup"><span data-stu-id="3f580-189">Shuffle memory</span></span>
+- <span data-ttu-id="3f580-190">ファイル システムの使用量</span><span class="sxs-lookup"><span data-stu-id="3f580-190">File system usage</span></span>
+- <span data-ttu-id="3f580-191">ディスク使用量</span><span class="sxs-lookup"><span data-stu-id="3f580-191">Disk usage</span></span>
+
+## <a name="common-performance-bottlenecks"></a><span data-ttu-id="3f580-192">一般的なパフォーマンスのボトルネック</span><span class="sxs-lookup"><span data-stu-id="3f580-192">Common performance bottlenecks</span></span>
+
+<span data-ttu-id="3f580-193">Spark での 2 つの一般的なパフォーマンスのボトルネックは、*タスク落伍者*と*最適化されていないシャッフル パーティション数*です。</span><span class="sxs-lookup"><span data-stu-id="3f580-193">Two common performance bottlenecks in Spark are *task stragglers* and a *non-optimal shuffle partition count*.</span></span>
+
+### <a name="task-stragglers"></a><span data-ttu-id="3f580-194">タスク落伍者</span><span class="sxs-lookup"><span data-stu-id="3f580-194">Task stragglers</span></span>
+
+<span data-ttu-id="3f580-195">ジョブに含まれるステージは、前のステージが後のステージをブロックして、順次実行されます。</span><span class="sxs-lookup"><span data-stu-id="3f580-195">The stages in a job are executed sequentially, with earlier stages blocking later stages.</span></span> <span data-ttu-id="3f580-196">あるタスクが他のタスクより低速でシャッフル パーティションを実行すると、クラスター内のすべてのタスクは、ステージを終了する前に、その低速タスクが追いつくのを待たなければなりません。</span><span class="sxs-lookup"><span data-stu-id="3f580-196">If one task executes a shuffle partition more slowly than other tasks, all tasks in the cluster must wait for the slow task to catch up before the stage can end.</span></span> <span data-ttu-id="3f580-197">これが発生する理由としては次のようなことが考えられます。</span><span class="sxs-lookup"><span data-stu-id="3f580-197">This can happen for the following reasons:</span></span>
+
+1. <span data-ttu-id="3f580-198">ホストまたはホスト グループの実行速度が遅い。</span><span class="sxs-lookup"><span data-stu-id="3f580-198">A host or group of hosts are running slow.</span></span> <span data-ttu-id="3f580-199">症状:タスク、ステージ、またはジョブの待機時間が長く、クラスターのスループットが低い。</span><span class="sxs-lookup"><span data-stu-id="3f580-199">Symptoms: High task, stage, or job latency and low cluster throughput.</span></span> <span data-ttu-id="3f580-200">ホストごとのタスクの待機時間の合計は、均等に分散されません。</span><span class="sxs-lookup"><span data-stu-id="3f580-200">The summation of tasks latencies per host won't be evenly distributed.</span></span> <span data-ttu-id="3f580-201">ただし、リソース使用量は Executor 間で均等に分散されます。</span><span class="sxs-lookup"><span data-stu-id="3f580-201">However, resource consumption will be evenly distributed across executors.</span></span>
+
+1. <span data-ttu-id="3f580-202">実行するための負荷が大きい集約がタスクにある (データ スキュー)。</span><span class="sxs-lookup"><span data-stu-id="3f580-202">Tasks have an expensive aggregation to execute (data skewing).</span></span> <span data-ttu-id="3f580-203">症状:タスク、ステージ、またはジョブの待機時間は長く、クラスターのスループットは低いが、ホストごとの待機時間の合計は均等に分散されている。</span><span class="sxs-lookup"><span data-stu-id="3f580-203">Symptoms: High task, stage, or job and low cluster throughput, but the summation of latencies per host is evenly distributed.</span></span> <span data-ttu-id="3f580-204">リソース使用量は Executor 間で均等に分散されます。</span><span class="sxs-lookup"><span data-stu-id="3f580-204">Resource consumption will be evenly distributed across executors.</span></span>
+
+1. <span data-ttu-id="3f580-205">パーティションのサイズが等しくない場合は、より大きなパーティションが原因で不均衡なタスク実行が行われている可能性があります (パーティション スキュー)。</span><span class="sxs-lookup"><span data-stu-id="3f580-205">If partitions are of unequal size, a larger partition may cause unbalanced task execution (partition skewing).</span></span> <span data-ttu-id="3f580-206">症状:Executor のリソース使用量が、クラスターで実行されている他の Executor と比較して多い。</span><span class="sxs-lookup"><span data-stu-id="3f580-206">Symptoms: Executor resource consumption is high compared to other executors running on the cluster.</span></span> <span data-ttu-id="3f580-207">その Executor で実行されているすべてのタスクの実行速度が遅くなり、パイプラインのステージの実行を阻害します。</span><span class="sxs-lookup"><span data-stu-id="3f580-207">All tasks running on that executor will run slow and hold the stage execution in the pipeline.</span></span> <span data-ttu-id="3f580-208">これらのステージは、*ステージのバリア*と呼ばれます。</span><span class="sxs-lookup"><span data-stu-id="3f580-208">Those stages are said to be *stage barriers*.</span></span>
+
+### <a name="non-optimal-shuffle-partition-count"></a><span data-ttu-id="3f580-209">最適化されていないシャッフル パーティション数</span><span class="sxs-lookup"><span data-stu-id="3f580-209">Non-optimal shuffle partition count</span></span>
+
+<span data-ttu-id="3f580-210">構造化ストリーミングのクエリの間、Executor へのタスクの割り当ては、クラスターにとって多くのリソースを消費する操作です。</span><span class="sxs-lookup"><span data-stu-id="3f580-210">During a structured streaming query, the assignment of a task to an executor is a resource-intensive operation for the cluster.</span></span> <span data-ttu-id="3f580-211">シャッフル データが最適なサイズでないと、タスクの遅延の量により、スループットと待ち時間に悪影響があります。</span><span class="sxs-lookup"><span data-stu-id="3f580-211">If the shuffle data isn't the optimal size, the amount of delay for a task will negatively impact throughput and latency.</span></span> <span data-ttu-id="3f580-212">パーティションの数が少なすぎると、クラスター内のコアが十分に活用されず、処理効率が悪くなる可能性があります。</span><span class="sxs-lookup"><span data-stu-id="3f580-212">If there are too few partitions, the cores in the cluster will be underutilized which can result in processing inefficiency.</span></span> <span data-ttu-id="3f580-213">逆に、パーティションの数が多すぎる場合は、少数のタスクに対して多くの管理オーバーヘッドが生じます。</span><span class="sxs-lookup"><span data-stu-id="3f580-213">Conversely, if there are too many partitions, there's a great deal of management overhead for a small number of tasks.</span></span>
+
+<span data-ttu-id="3f580-214">パーティション スキューとクラスター上の Executor の不適切な割り当てをトラブルシューティングするには、リソース使用量メトリックを使用します。</span><span class="sxs-lookup"><span data-stu-id="3f580-214">Use the resource consumption metrics to troubleshoot partition skewing and misallocation of executors on the cluster.</span></span> <span data-ttu-id="3f580-215">パーティションにスキューがある場合は、Executor リソースが、クラスターで実行されている他の Executor と比較して昇格されます。</span><span class="sxs-lookup"><span data-stu-id="3f580-215">If a partition is skewed, executor resources will be elevated in comparison to other executors running on the cluster.</span></span>
+
+<span data-ttu-id="3f580-216">たとえば、次のグラフは、最初の 2 つの Executor でシャッフリングに使用されているメモリーが、他の Executor よりも 90X 大きいことを示しています。</span><span class="sxs-lookup"><span data-stu-id="3f580-216">For example, the following graph shows that the memory used by shuffling on the first two executors is 90X bigger than the other executors:</span></span>
+
+![パーセンテージ メトリックを示すグラフ](./_images/grafana-shuffle-memory.png)
