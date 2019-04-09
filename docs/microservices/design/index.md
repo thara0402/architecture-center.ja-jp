@@ -7,12 +7,12 @@ ms.topic: guide
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: microservices
-ms.openlocfilehash: 15e9aa16c0e2cfccecbfb84d217c275cc99a66fd
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.openlocfilehash: 17e275e5b5f45233f7467192402cb28fce35c57b
+ms.sourcegitcommit: 0a8a60d782facc294f7f78ec0e9033e3ee16bf4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58344412"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59068907"
 ---
 # <a name="designing-a-microservices-architecture"></a>マイクロサービス アーキテクチャの設計
 
@@ -52,7 +52,7 @@ Fabrikam, Inc. は、ドローン配送サービスを開始しようとして�
 
 <!-- links -->
 
-[drone-ri]: https://github.com/mspnp/microservices-reference-implementation
+[drone-ri]: https://github.com/mspnp/microservices-reference-implementation/tree/v0.1.0-orig
 
 ## <a name="next-steps"></a>次の手順
 
