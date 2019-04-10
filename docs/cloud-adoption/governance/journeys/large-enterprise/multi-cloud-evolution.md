@@ -1,5 +1,5 @@
 ---
-title: CAF:大企業 – マルチクラウドの進化
+title: 'CAF: 大企業 – マルチクラウドの進化'
 titleSuffix: Microsoft Cloud Adoption Framework for Azure
 ms.service: architecture-center
 ms.subservice: enterprise-cloud-adoption
@@ -7,12 +7,12 @@ ms.custom: governance
 ms.date: 02/11/2019
 description: 大企業 – マルチクラウドの進化
 author: BrianBlanchard
-ms.openlocfilehash: 5ef29aa523c04ff93b2d4f983482f94654a4a039
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.openlocfilehash: c72040912a99ad232e367ae750e9bb2caa77cbf2
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55901809"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58241089"
 ---
 # <a name="large-enterprise-multi-cloud-evolution"></a>大企業:マルチクラウドの進化
 
@@ -20,7 +20,7 @@ ms.locfileid: "55901809"
 
 Microsoft では、お客様が特定の目的で複数のクラウドを採用していることを認識しています。 この体験の架空の会社も例外ではありません。 Azure の導入体験と並行して、ビジネスの成功は、小規模ながら補完的なビジネスの取得へとつながりました。 そのビジネスは、別のクラウド プロバイダーですべての IT 操作を実行しています。
 
-この記事では、新しい組織を統合するときに物事がどのように変化するかについて説明します。 このストーリーの目的のために、この会社はこの顧客体験で示されているガバナンスの各進化を完了しているものと想定します。
+この記事では、新しい組織を統合するときに物事がどのように変化するかについて説明します。 このストーリーでは、この会社はこの顧客体験で示されているガバナンスの各進化を完了しているものとします。
 
 ### <a name="evolution-of-the-current-state"></a>現在の状態の進化
 
@@ -58,7 +58,7 @@ Microsoft では、お客様が特定の目的で複数のクラウドを採用�
 
 ## <a name="evolution-of-the-best-practices"></a>ベスト プラクティスの進化
 
-記事のこのセクションでは、新しい Azure ポリシーと Azure Cost Management の実装を含むようにガバナンス MVP の設計を進化させます。 これら 2 つの設計変更を組み合わせることで、会社の新しいポリシー ステートメントを実現します。
+記事のこのセクションでは、ガバナンス MVP の設計を進化させて、新しい Azure ポリシーと Azure Cost Management の実装を含めます。 これら 2 つの設計変更を組み合わせることで、会社の新しいポリシー ステートメントを実現します。
 
 1. ネットワークを接続する。ガバナンスによってサポートされるネットワーキングと IT セキュリティによって実行されます。
     1. MPLS/専用回線の行のプロバイダーから新しいクラウドに接続を追加することにより、ネットワークが統合されます。 ルーティング テーブルとファイアウォールの構成を追加することにより、環境の間のアクセスとトラフィックを管理します。
@@ -82,7 +82,7 @@ Microsoft では、お客様が特定の目的で複数のクラウドを採用�
 
 ## <a name="next-steps"></a>次の手順
 
-多くの大企業で、クラウド ガバナンスの規範が導入の妨げになる可能性があります。 次の記事では、ガバナンスをチーム スポーツにして、クラウドでの長期的成功の確保に役立てるいくつかの最終的な考えをご紹介します。
+多くの大企業で、クラウド ガバナンスの 5 つの規範が導入の妨げになる可能性があります。 次の記事では、ガバナンスをチーム スポーツにして、クラウドでの長期的成功の確保に役立てるいくつかの追加的な考えをご紹介します。
 
 > [!div class="nextstepaction"]
 > [複数レイヤーのガバナンス](./multiple-layers-of-governance.md)

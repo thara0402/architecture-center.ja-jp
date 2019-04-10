@@ -7,18 +7,18 @@ ms.topic: reference-architecture
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: azcat-ai
-ms.openlocfilehash: c4bfd6e92fc9c770a03a63355fc922d19ef27b7b
-ms.sourcegitcommit: f4ed242dff8b204cfd8ebebb7778f356a19f5923
+ms.openlocfilehash: 7f10c422c65967701084859e41f9656c818ed818
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56224166"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58241393"
 ---
 # <a name="build-a-real-time-recommendation-api-on-azure"></a>Azure 上でリアルタイム レコメンデーション API を構築する
 
 この参照アーキテクチャは、Azure Databricks を使用してレコメンデーション モデルをトレーニングし、Azure Cosmos DB、Azure Machine Learning、および Azure Kubernetes Service (AKS) を使用して API としてデプロイする方法を示します。 このアーキテクチャは、製品、映画、およびニュースに関するレコメンデーションを含め、ほとんどのレコメンデーション エンジンのシナリオに一般化することができます。
 
-このアーキテクチャの参照実装は、[GitHub](https://github.com/Microsoft/Recommenders/blob/master/notebooks/05_operationalize/als_movie_o16n.ipynb) で入手できます
+このアーキテクチャのリファレンス実装は、[GitHub][als-example] で入手できます。
 
 ![映画のレコメンデーションをトレーニングするための機械学習モデルのアーキテクチャ](./_images/recommenders-architecture.png)
 
@@ -92,14 +92,14 @@ Azure Cosmos DB のパフォーマンスを管理するには、1 秒間に必�
 
 ## <a name="deploy-the-solution"></a>ソリューションのデプロイ方法
 
-このアーキテクチャをデプロイするには、まず Azure Databricks 環境を作成してデータを準備し、レコメンデーション モデルをトレーニングします。
+このアーキテクチャをデプロイするには、[セットアップのドキュメント][setup]にある **Azure Databricks** の手順に従ってください。 要約すると、その手順では次のことを行う必要があります。
 
 1. [Azure Databricks ワークスペース][workspace]を作成します。
 
-2. Azure Databricks で新しいクラスターを作成します。 次の構成が必要です。
+2. 次の構成を持つ新しいクラスターを Azure Databricks 上に作成します。
 
     - クラスター モード:Standard
-    - Databricks Runtime のバージョン:4.1 (Apache Spark 2.3.0、Scala 2.11 など)
+    - Databricks Runtime のバージョン:4.3 (Apache Spark 2.3.1、Scala 2.11 など)
     - Python のバージョン:3
     - ドライバーの種類:Standard\_DS3\_v2
     - worker の種類:Standard\_DS3\_v2 (必要に応じて最小および最大)
@@ -107,30 +107,27 @@ Azure Cosmos DB のパフォーマンスを管理するには、1 秒間に必�
     - Spark の構成: (必要に応じて)
     - 環境変数: (必要に応じて)
 
-3. ローカル コンピューターに [Microsoft Recommenders][github] リポジトリを複製します。
+3. [Azure Databricks ワークスペース][workspace]内に個人用アクセス トークンを作成します。 詳細については、Azure Databricks 認証の[ドキュメント][adbauthentication]を参照してください。
 
-4. Recommenders フォルダー内の内容を zip 形式で圧縮します。
+3. スクリプトを実行できる環境 (ご使用のローカル コンピューターなど) に [Microsoft Recommenders][github] リポジトリを複製します。
 
-    ```console
-    cd Recommenders
-    zip -r Recommenders.zip
-    ```
+4. **クイック インストール**のセットアップ手順に従って[関連するライブラリ][setup]を Azure Databricks にインストールします。
 
-5. Recommenders ライブラリを次のようにクラスターにアタッチします。
+5. **クイック インストール**のセットアップ手順に従って、[Azure Databricks を運用化するために準備します][setupo16n]。
 
-    1. 次のメニューで、ライブラリをインポートするオプション (["To import a library, such as a jar or egg, click here]\(jar や egg などのライブラリをインポートするにはここをクリックしてください\)) を使用し、**[click here]\(ここをクリック\)** を押します。
+6. ワークスペースに [ALS Movie Operationalization ノートブック][als-example]をインポートします。 Azure Databricks ワークスペースへのログイン後、次の手順を行います。
 
-    2. 最初のドロップダウン メニューで、**[Upload Python egg or PyPI]\(Python egg または PyPI のアップロード\)** オプションを選択します。
+    a. ワークスペースの左側にある **[ホーム]** をクリックします。
 
-    3. **[Drop library egg here to upload]\(ここにライブラリ egg をドロップしてアップロード\)** を選択し、先ほど作成した Recommenders.zip ファイルを選択します。
+    b. ホーム ディレクトリ内の空白を右クリックします。 **[インポート]** を選択します。
+    
+    c. **[URL]** を選択し、次のとおりテキスト フィールドに貼り付けます: `https://github.com/Microsoft/Recommenders/blob/master/notebooks/05_operationalize/als_movie_o16n.ipynb`
+    
+    d. **[インポート]** をクリックします。
 
-    4. **[Create library]\(ライブラリの作成\)** を選択して .zip ファイルをアップロードし、ワークスペースで使用できるようにします。
+7. Azure Databricks 内でノートブックを開き、構成したクラスターをアタッチします。
 
-    5. 次のメニューで、ライブラリをクラスターにアタッチします。
-
-6. ワークスペースに [ALS Movie Operationalization の例][als-example]をインポートします。
-
-7. ALS Movie Operationalization ノートブックを実行して、特定のユーザーに上位 10 個のおすすめ映画を提供するレコメンデーション API を作成するために必要なリソースを作成します。
+8. ノートブックを実行して、特定のユーザーに上位 10 個のおすすめ映画を提供するレコメンデーション API を作成するために必要な Azure リソースを作成します。
 
 ## <a name="related-architectures"></a>関連するアーキテクチャ
 
@@ -139,9 +136,10 @@ Spark と Azure Databricks を使用して、スケジュールされた[バッ�
 <!-- links -->
 [aci]: /azure/container-instances/container-instances-overview
 [aad]: /azure/active-directory-b2c/active-directory-b2c-overview
+[adbauthentication]: https://docs.azuredatabricks.net/api/latest/authentication.html#generate-a-token
 [aks]: /azure/aks/intro-kubernetes
 [als]: https://spark.apache.org/docs/latest/ml-collaborative-filtering.html
-[als-example]: https://github.com/Microsoft/Recommenders/blob/master/notebooks/04_operationalize/als_movie_o16n.ipynb
+[als-example]: https://github.com/Microsoft/Recommenders/blob/master/notebooks/05_operationalize/als_movie_o16n.ipynb
 [autoscaling]: https://docs.azuredatabricks.net/user-guide/clusters/sizing.html
 [autoscale]: https://docs.azuredatabricks.net/user-guide/clusters/sizing.html#autoscaling
 [availability]: /azure/architecture/checklist/availability
@@ -170,7 +168,8 @@ Spark と Azure Databricks を使用して、スケジュールされた[バッ�
 [resiliency]: /azure/architecture/resiliency/
 [ru]: /azure/cosmos-db/request-units
 [sec-docs]: /azure/security/
-[setup]: https://github.com/Microsoft/Recommenders/blob/master/SETUP.md%60
+[setup]: https://github.com/Microsoft/Recommenders/blob/master/SETUP.md#repository-installation
+[setupo16n]: https://github.com/Microsoft/Recommenders/blob/master/SETUP.md#prepare-azure-databricks-for-operationalization
 [scale]: /azure/aks/tutorial-kubernetes-scale
 [sla]: https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/
 [vm-size]: /azure/virtual-machines/virtual-machines-linux-change-vm-size

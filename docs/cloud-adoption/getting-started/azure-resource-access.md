@@ -1,14 +1,17 @@
 ---
-title: 'CAF: Azure でのリソース アクセス管理'
+title: CAF:Azure でのリソース アクセス管理
 description: 'Azure のリソース アクセス管理コンストラクトの説明: Azure Resource Manager、サブスクリプション、リソース グループ、リソース。'
+titleSuffix: Microsoft Cloud Adoption Framework for Azure
+ms.service: architecture-center
+ms.subservice: enterprise-cloud-adoption
+ms.date: 02/11/2019
 author: petertaylor9999
-ms.date: 2/11/2019
-ms.openlocfilehash: f23540a03c82fbc46872645ac0fd82d574db353a
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.openlocfilehash: a72e9fbd6f5f320440d63d55d4e0f2aa2009a2d1
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55898121"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58241673"
 ---
 # <a name="resource-access-management-in-azure"></a>Azure でのリソース アクセス管理
 
@@ -55,7 +58,7 @@ Azure サブスクリプションは、リソース グループとそのリソ�
 
 これらのクライアントは、RESTful API を使用して Resource Manager に接続しますが、Resource Manager にはリソースを直接管理する機能が含まれていません。 代わりに、Azure ではリソースの種類のほとんどに、独自の[**リソース プロバイダー**](/azure/azure-resource-manager/resource-group-overview#terminology)があります。
 
-*
+![](../_images/governance-1-14.png)
 *図 6.Azure リソース プロバイダー。*
 
 クライアントが特定のリソースを管理するように要求すると、Resource Manager は要求を完了するために、そのリソースの種類のリソース プロバイダーに接続します。 たとえば、クライアントが仮想マシン リソースを管理するように要求した場合、Resource Manager は **Microsoft.Compute** リソース プロバイダーに接続します。

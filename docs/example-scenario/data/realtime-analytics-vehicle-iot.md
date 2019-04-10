@@ -9,12 +9,12 @@ ms.service: architecture-center
 ms.subservice: example-scenario
 ms.custom: fasttrack, IoT
 social_image_url: /azure/architecture/example-scenario/data/media/architecture-realtime-analytics-vehicle-data1.png
-ms.openlocfilehash: 95a59ed84870c9ce9d3c6637d9ba56fcd6935b53
-ms.sourcegitcommit: 3b15d65e7c35a19506e562c444343f8467b6a073
+ms.openlocfilehash: 846106106d5bd9f6b51f952734bfe23cd06cdc71
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54908407"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58244743"
 ---
 # <a name="ingestion-and-processing-of-real-time-automotive-iot-data"></a>自動車のリアルタイム IoT データのインジェストと処理
 
@@ -38,7 +38,7 @@ ms.locfileid: "54908407"
 
 ## <a name="architecture"></a>アーキテクチャ
 
-![スクリーンショット](media/architecture-realtime-analytics-vehicle-data1.png)
+![Screenshot](media/architecture-realtime-analytics-vehicle-data1.png)
 
 一般的なビッグ データ処理パイプラインの実装では、データは左から右に流れます。 このリアルタイムのビッグ データ処理パイプラインでは、データは次のようにソリューションを通過します。
 
@@ -55,13 +55,13 @@ IoT デバイスで生成されたイベント (データまたはメッセー�
 - [Azure Databricks](/services/databricks) は、変換レイヤーと分析レイヤーに位置しています。 Databricks ノートブックは、Kafka トピックからデータを読み込む Kafka のコンシューマー API を実装します。
 - [Azure Cosmos DB](/services/cosmos-db)、[Azure SQL Database](/azure/sql-database/sql-database-technical-overview)、Azure SQL Data Warehouse は、サービス ストレージ レイヤーにあります。Azure Databricks はデータ コネクタを介してこのレイヤーにデータを書き込むことができます。
 - [Azure SQL Data Warehouse](/azure/sql-data-warehouse/sql-data-warehouse-overview-what-is) は、大規模なデータセットを格納および分析するための分散システムです。 超並列処理 (MPP) が使用されているので、ハイパフォーマンス分析の実行に適しています。
-- [Power BI](https://docs.microsoft.com/power-bi) は、データを分析し、洞察を共有する一連のビジネス分析ツールです。 Power BI は、Analysis Services に格納されているセマンティック モデルに対してクエリを実行することも、SQL Data Warehouse に対して直接クエリを実行することもできます。
+- [Power BI](/power-bi) は、データを分析し、洞察を共有する一連のビジネス分析ツールです。 Power BI は、Analysis Services に格納されているセマンティック モデルに対してクエリを実行することも、SQL Data Warehouse に対して直接クエリを実行することもできます。
 - [Azure Active Directory (Azure AD)](/azure/active-directory) は、[Azure Databricks](https://azure.microsoft.com/services/databricks) に接続するときにユーザーを認証します。 Azure SQL Data Warehouse のデータに基づくモデルに従って [Analysis Services](/azure/analysis-services) にキューブを構築する場合は、AAD を使用して Power BI を介して Analysis Services サーバーに接続できます。 Data Factory も Azure AD を使用して、サービス プリンシパルまたはマネージド サービス ID (MSI) 経由で SQL Data Warehouse に対する認証を行えます。
 - [Azure App Services](/azure/app-service/app-service-web-overview)、特に [API App](/services/app-service/api) を使用して、サービス レイヤーの格納データに基づいてサード パーティにデータを公開することができます。
 
 ## <a name="alternatives"></a>代替手段
 
-![スクリーンショット](media/architecture-realtime-analytics-vehicle-data2.png)
+![Screenshot](media/architecture-realtime-analytics-vehicle-data2.png)
 
 他の Azure コンポーネントを使用すると、より汎用性の高いビッグ データのパイプラインを実装できます。
 

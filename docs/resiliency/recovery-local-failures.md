@@ -7,12 +7,12 @@ ms.topic: article
 ms.service: architecture-center
 ms.subservice: cloud-design-principles
 ms.custom: resiliency
-ms.openlocfilehash: a567b138580999c7b7a6ae8dedb244f4e37970e7
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.openlocfilehash: 1a7c892168a0730b0e13169c391069a6c522f220
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54486048"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58243483"
 ---
 [!INCLUDE [header](../_includes/header.md)]
 
@@ -69,7 +69,7 @@ Azure Virtual Machines は、高可用性に関連するいくつかの点でサ
 
 PaaS のロール インスタンスとは異なり、仮想マシンのドライブに保存されているデータは仮想マシンが再配置される場合でも永続的です。 Azure 仮想マシンは、Azure Storage に BLOB として存在する VM ディスクを使用します。 Azure Storage の可用性という特性のために、仮想マシンのドライブに保存されているデータも高い可用性を備えています。
 
-ただし、(Windows VM 内の) D ドライブはこの規則の例外です。 D ドライブは VM をホストするラック サーバーの実際の物理記憶領域で、そのデータは VM がリサイクルされると失われます。 D ドライブは一時的な格納を目的としています。 Linux では "通常" (常にというわけではありません)、ローカルの一時ディスクが /dev/sdb ブロック デバイスとして公開されます。 Azure Linux エージェントで /mnt/resource または /mnt マウント ポイント (/etc/waagent.conf で構成可能) としてマウントされるのが一般的です。
+ただし、(Windows VM 内の) D ドライブはこの規則の例外です。 D ドライブは VM をホストするラック サーバーの実際の物理記憶領域で、そのデータは VM がリサイクルされると失われます。 D ドライブは一時的な格納を目的としています。 Linux では_通常_ (常にというわけではありません)、ローカルの一時ディスクが /dev/sdb ブロック デバイスとして公開されます。 Azure Linux エージェントで /mnt/resource または /mnt マウント ポイント (/etc/waagent.conf で構成可能) としてマウントされるのが一般的です。
 
 <!-- markdownlint-disable MD024 -->
 

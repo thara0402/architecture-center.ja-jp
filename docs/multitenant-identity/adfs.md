@@ -9,12 +9,12 @@ ms.subservice: reference-architecture
 pnp.series.title: Manage Identity in Multitenant Applications
 pnp.series.prev: token-cache
 pnp.series.next: client-assertion
-ms.openlocfilehash: d095283531c1183726ebf132707aaede1f03f09b
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.openlocfilehash: b129d2de8ea3f19df8aa38cc4660885f22f9d9c6
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55897271"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58249447"
 ---
 # <a name="federate-with-a-customers-ad-fs"></a>顧客の AD FS とのフェデレーション
 
@@ -24,7 +24,7 @@ ms.locfileid: "55897271"
 
 Azure Active Directory (Azure AD) を使用すると、Office365 や Dynamics CRM Online の顧客を含め、Azure AD テナントのユーザーによるサインインが簡単になります。 では、企業のイントラネットでオンプレミスの Active Directory を使用する顧客についてはどうでしょうか。
 
-このような顧客には、 [Azure AD Connect]を使用してオンプレミスの AD と Azure AD を同期するという方法があります。 ただし、企業の IT ポリシーやその他の理由により、この方法を使用できない顧客も存在します。 そのような場合には、Active Directory フェデレーション サービス (AD FS) を使用してフェデレーションを行う方法もあります。
+このような顧客には、[Azure AD Connect] を使用してオンプレミスの AD と Azure AD を同期するという方法があります。 ただし、企業の IT ポリシーやその他の理由により、この方法を使用できない顧客も存在します。 そのような場合には、Active Directory フェデレーション サービス (AD FS) を使用してフェデレーションを行う方法もあります。
 
 このシナリオを実施するには:
 

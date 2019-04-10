@@ -3,12 +3,12 @@ title: 'CAF: 一貫性のあるハイブリッド クラウドの作成'
 description: 一貫性のあるハイブリッド クラウドを作成する方法の定義
 author: BrianBlanchard
 ms.date: 12/27/2018
-ms.openlocfilehash: 726ea56f52d68f6c9b0d1478d19a91c2b7f12fdd
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.openlocfilehash: 22637a0496dc1e776d00570c3ef9844cc185a35d
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55902166"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58243093"
 ---
 # <a name="create-hybrid-cloud-consistency"></a>一貫性のあるハイブリッド クラウドの作成
 
@@ -56,7 +56,7 @@ Azure Stack には 2 つのデプロイ オプションが用意されていま�
 
 ## <a name="azure-stack-one-cloud-ecosystem"></a>Azure Stack One Cloud Ecosystem
 
-完全な Azure エコシステムを活用して、Azure Stack の取り組みをスピードアップできます。
+完全な Azure エコシステムを使用して、Azure Stack の取り組みをスピードアップできます。
 
 - Azure では、Azure の認定を受けたアプリケーションとサービスの大半が、Azure Stack で動作することを保証しています。 &mdash;Bitnami、Docker、Kemp Technologies、Pivotal Cloud Foundry、Red Hat Enterprise Linux、SUSE Linux など&mdash;の複数の ISV が、Azure Stack に向けて自社のソリューションを拡張しています。
 - Azure Stack は、フル マネージド サービスとして配信および運用することを選択できます。 &mdash;Tieto、Yourhosting、Revera、Pulsant、NTT など&mdash;のいくつかのパートナーが、間もなく Azure と Azure Stack にわたってマネージド サービスのオファリングを用意する予定です。 これらのパートナーは、Cloud Solution Provider (クラウド プロバイダー) プログラムを介して Azure 用のマネージド サービスを提供してきており、今後、そのオファリングを拡張してハイブリッド ソリューションを含めてゆきます。

@@ -4,15 +4,15 @@ titleSuffix: Microsoft Cloud Adoption Framework for Azure
 ms.service: architecture-center
 ms.subservice: enterprise-cloud-adoption
 ms.custom: governance
-ms.date: 1/4/2019
+ms.date: 01/04/2019
 description: コスト管理のサンプル ポリシー ステートメント
 author: BrianBlanchard
-ms.openlocfilehash: 1c8b94ae5285fa26cdf9760892beaced2487af8b
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.openlocfilehash: 0a81ab8472a97c57f449f2ab2903a69fd35cb45a
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55902057"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58243283"
 ---
 # <a name="cost-management-sample-policy-statements"></a>コスト管理のサンプル ポリシー ステートメント
 

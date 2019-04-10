@@ -8,12 +8,12 @@ ms.topic: checklist
 ms.service: architecture-center
 ms.subservice: cloud-design-principles
 ms.custom: resiliency, checklist
-ms.openlocfilehash: fbb7501a663c8b5e326b2b601685419c8e5a0806
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.openlocfilehash: 647a17feb347fbb23e9ffa015ab9d640e8864439
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54486915"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58241773"
 ---
 # <a name="resiliency-checklist-for-specific-azure-services"></a>特定の Azure サービスの回復性のチェックリスト
 

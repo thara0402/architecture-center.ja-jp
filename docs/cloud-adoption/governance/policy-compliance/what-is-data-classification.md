@@ -1,14 +1,18 @@
 ---
-title: CAF:データ分類とは
+title: 'CAF: データ分類とは'
+titleSuffix: Microsoft Cloud Adoption Framework for Azure
+ms.service: architecture-center
+ms.subservice: enterprise-cloud-adoption
+ms.custom: governance
+ms.date: 02/11/2019
 description: データ分類とは
 author: BrianBlanchard
-ms.date: 2/11/2019
-ms.openlocfilehash: 07268e7242d92ac2581bf28b378a3c43d166620c
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.openlocfilehash: bb40745b02e4ad6d7faa7054bf62443964f6784b
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55901629"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58245143"
 ---
 <!-- markdownlint-disable MD026 -->
 
@@ -24,7 +28,7 @@ ms.locfileid: "55901629"
 * 障害によるビジネスの中断
 * 計画されていない、または予期しない支出
 
-これらの 3 つのビジネス上のリスクには多くの種類があります。 しかし、上記が最も一般的である傾向があります。
+これらの 3 つのビジネス上のリスクには多くの種類があります。 ただし、上記が最も一般的である傾向があります。
 
 ## <a name="understand-then-mitigate"></a>理解してから軽減する
 

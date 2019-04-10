@@ -4,12 +4,12 @@ description: この参照アーキテクチャでは、Azure Batch AI を使用�
 author: njray
 ms.date: 01/14/19
 ms.custom: azcat-ai
-ms.openlocfilehash: 800defeb851f5a31dc730038c3699e1a3d54b923
-ms.sourcegitcommit: d5ea427c25f9f7799cc859b99f328739ca2d8c1c
+ms.openlocfilehash: 0e63ed24c1e19333e7c9d48d531a7ddc778f3d86
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54307783"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58242393"
 ---
 # <a name="distributed-training-of-deep-learning-models-on-azure"></a>Azure でのディープ ラーニング モデルの分散トレーニング
 

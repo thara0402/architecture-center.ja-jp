@@ -8,12 +8,12 @@ ms.topic: reference-architecture
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: seodec18, networking
-ms.openlocfilehash: fba07823d49aa43fdb67652f99a26bd7df3a57c3
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.openlocfilehash: 503320c2ed429c97c6581cd7b48ce328996df6c6
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54488292"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58241363"
 ---
 # <a name="connect-an-on-premises-network-to-azure-using-expressroute-with-vpn-failover"></a>VPN フェールオーバー付きの ExpressRoute を使用してオンプレミス ネットワークを Azure に接続する
 
@@ -62,7 +62,7 @@ $vnet = Get-AzureRmVirtualNetworkGateway -Name <yourvnetname> -ResourceGroupName
 Remove-AzureRmVirtualNetworkSubnetConfig -Name GatewaySubnet -VirtualNetwork $vnet
 ```
 
-**GatewaySubnet** という名前のサブネットが VNet に含まれていない場合は、次の Powershell コマンドを使用して新しいサブネットを作成します。
+**GatewaySubnet** という名前のサブネットが VNet に含まれていない場合は、次の PowerShell コマンドを使用して新しいサブネットを作成します。
 
 ```powershell
 $vnet = Get-AzureRmVirtualNetworkGateway -Name <yourvnetname> -ResourceGroupName <yourresourcegroup>
@@ -74,7 +74,7 @@ $vnet = Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
 
 Azure に接続するための [ExpressRoute 前提条件][expressroute-prereq]が満たされていることを確認してください。
 
-Azure VNet 内に VPN 仮想ネットワーク ゲートウェイが既にある場合は、次の Powershell コマンドを使用して、それを削除します。
+Azure VNet 内に VPN 仮想ネットワーク ゲートウェイが既にある場合は、次の PowerShell コマンドを使用して、それを削除します。
 
 ```powershell
 Remove-AzureRmVirtualNetworkGateway -Name <yourgatewayname> -ResourceGroupName <yourresourcegroup>

@@ -1,20 +1,20 @@
 ---
-title: CAF:中小企業 – ガバナンス MVP に関するその他の技術的な詳細
+title: 'CAF: 中小企業 – ベスト プラクティスの説明'
 titleSuffix: Microsoft Cloud Adoption Framework for Azure
 ms.service: architecture-center
 ms.subservice: enterprise-cloud-adoption
 ms.custom: governance
 ms.date: 02/11/2019
-description: 中小企業の説明 – ガバナンス MVP に関するその他の技術的な詳細
+description: 中小企業 – ベスト プラクティスの説明
 author: BrianBlanchard
-ms.openlocfilehash: e726213459c8bee63e3cc77ab54868fe7196b3ac
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.openlocfilehash: c3b4ab69e3cf5f664a5297d7bc3c2460d8d5d182
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55901559"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58243693"
 ---
-# <a name="small-to-medium-enterprise-best-practice-explained"></a>中小企業:ベスト プラクティスの説明
+# <a name="small-to-medium-enterprise-best-practice-explained"></a>中小企業: ベスト プラクティスの説明
 
 ガバナンスの体験は、初期[企業ポリシー](./initial-corporate-policy.md)のセットから始まります。 これらのポリシーは、[ベスト プラクティス](./overview.md)が反映されたガバナンス MVP を確立するために使用されます。
 
@@ -22,7 +22,7 @@ ms.locfileid: "55901559"
 
 ## <a name="governance-mvp-cloud-adoption-foundation"></a>ガバナンス MVP (クラウド導入基盤)
 
-いくつかのシンプルな原則とクラウド ベースの管理ツールにより、ガバナンスと企業ポリシーの迅速な導入を実現できます。 これらは、ガバナンス プロセスでのアプローチに対する 3 つのクラウド ガバナンス基本の最初のものです。 この記事ではそれぞれについて説明します。
+いくつかのシンプルな原則とクラウド ベースの管理ツールにより、ガバナンスと企業ポリシーの迅速な導入を実現できます。 これらは、あらゆるガバナンス プロセスでのアプローチに対する最初の 3 つの規範です。 この記事ではそれぞれについて説明します。
 
 開始点を確立するため、この記事では、すべての導入に対する基盤となるガバナンス MVP を作成するために必要な ID ベースライン、セキュリティ ベースライン、デプロイ高速化の背後にある高レベルの戦略について説明します。
 

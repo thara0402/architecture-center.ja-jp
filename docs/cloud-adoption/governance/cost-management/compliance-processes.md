@@ -7,12 +7,12 @@ ms.custom: governance
 ms.date: 02/11/2019
 description: コスト管理のポリシー コンプライアンス プロセス
 author: BrianBlanchard
-ms.openlocfilehash: 5fd007546589020f376107382c54c391cc5d05ad
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.openlocfilehash: 62547f4af8a873536499c35f58d323b03b828a74
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55901329"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58241171"
 ---
 # <a name="cost-management-policy-compliance-processes"></a>コスト管理のポリシー コンプライアンス プロセス
 

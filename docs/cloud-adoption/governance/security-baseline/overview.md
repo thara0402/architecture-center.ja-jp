@@ -9,12 +9,12 @@ description: セキュリティ ベースライン規範の概要
 author: BrianBlanchard
 layout: LandingPage
 ms.topic: landing-page
-ms.openlocfilehash: 81398ff943a9a582ae3cc29d9ff7519a0d1f8e54
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.openlocfilehash: 189fbd93371055f6aec63323988138f5bf90fd30
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55901594"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58247283"
 ---
 # <a name="caf-security-baseline-discipline-overview"></a>CAF:セキュリティ ベースライン規範の概要
 
@@ -163,4 +163,4 @@ ms.locfileid: "55901594"
 特定の環境でビジネス上のリスクを評価する方法の概要を学びます。
 
 > [!div class="nextstepaction"]
-> [ビジネス上のリスクの概要](./business-risks.md)
+> [ビジネス上のリスクについての理解](./business-risks.md)

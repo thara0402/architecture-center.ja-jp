@@ -8,12 +8,12 @@ description: クラウド変革のための財務モデルを作成する方法�
 author: BrianBlanchard
 ms.date: 12/10/2018
 ms.topic: guide
-ms.openlocfilehash: 4fe9b178962bf2cd6a79233278c73085237772f0
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.openlocfilehash: e74a4782db5733271a575ce47cd79829f9114508
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55898206"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58247983"
 ---
 # <a name="create-a-financial-model-for-cloud-transformation"></a>クラウド変革のための財務モデルを作成する
 
@@ -75,7 +75,7 @@ ms.locfileid: "55898206"
 
 事業を運営するために必要な経常経費は多くの場合、営業経費 (OpEx) として参照されます。 OpEx は、非常に幅広いカテゴリです。 ほとんどの会計モデルでは、これにはソフトウェア ライセンス、ホスティング経費、電気代、不動産賃貸料、冷却経費、稼働に必要な一時的なスタッフ、装置レンタル料、交換部品、メンテナンス契約、修理サービス、ビジネス継続性/ディザスター リカバリー (BC/DR) サービス、および資本コストの承認を必要としないその他のいくつかの経費が含まれます。
 
-このカテゴリは、事業変革の取り組みを考慮したときの最大の収益領域の 1 つです。 この一覧を網羅的にするために投資された時間は、めったに浪費されません。 すべての運用コストの理由を説明できることを確認するには、CIO および財務チームに問い合わせてください。
+このカテゴリは、事業変革を考慮したときの最大の収益領域の 1 つです。 この一覧を網羅的にするために投資された時間は、めったに浪費されません。 すべての運用コストの理由を説明できることを確認するには、CIO および財務チームに問い合わせてください。
 
 ### <a name="cost-avoidance"></a>コストの回避
 

@@ -8,12 +8,12 @@ ms.topic: reference-architecture
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: seodec18, networking
-ms.openlocfilehash: eff7d3e88cc9578b6d5ff83628f7d03b00717b5f
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.openlocfilehash: 5c010df534bc43bd4c954c7f008b28cbb6a5641a
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54487862"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58242283"
 ---
 # <a name="connect-an-on-premises-network-to-azure-using-expressroute"></a>ExpressRoute を使用した Azure へのオンプレミス ネットワークの接続
 
@@ -75,6 +75,7 @@ Azure に接続するための [ExpressRoute 前提条件][expressroute-prereqs]
     ```powershell
     New-AzureRmExpressRouteCircuit -Name <<circuit-name>> -ResourceGroupName <<resource-group>> -Location <<location>> -SkuTier <<sku-tier>> -SkuFamily <<sku-family>> -ServiceProviderName <<service-provider-name>> -PeeringLocation <<peering-location>> -BandwidthInMbps <<bandwidth-in-mbps>>
     ```
+
 2. 新しい回線の `ServiceKey` をサービス プロバイダーに送信します。
 
 3. プロバイダーによって回線がプロビジョニングされるのを待ちます。 回線のプロビジョニング状態を確認するには、次の PowerShell コマンドを実行します。
@@ -163,7 +164,7 @@ ExpressRoute 回線は、購入した帯域幅制限の 2 倍までの一時的�
 
 プロバイダーによっては帯域幅を変更できる場合もありますが、必ずニーズを上回る初期帯域幅を選択し、拡大に対応できるだけの余地を確保してください。 今後、帯域幅を増やす必要が出てきたとき、選択できるオプションは 2 つあります。
 
-- 帯域幅を増やします。 このオプションはできるだけ避けてください。一部のプロバイダーでは、帯域幅を動的に拡大できません。 それでも帯域幅を拡大する必要がある場合は、プロバイダーに連絡して、Powershell コマンドによる ExpressRoute 帯域幅プロパティの変更をサポートしていることを確認します。 対応している場合は、次のコマンドを実行します。
+- 帯域幅を増やします。 このオプションはできるだけ避けてください。一部のプロバイダーでは、帯域幅を動的に拡大できません。 それでも帯域幅を拡大する必要がある場合は、プロバイダーに連絡して、PowerShell コマンドによる ExpressRoute 帯域幅プロパティの変更をサポートしていることを確認します。 対応している場合は、次のコマンドを実行します。
 
     ```powershell
     $ckt = Get-AzureRmExpressRouteCircuit -Name <<circuit-name>> -ResourceGroupName <<resource-group>>

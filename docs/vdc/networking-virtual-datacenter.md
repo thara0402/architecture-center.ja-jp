@@ -10,12 +10,12 @@ ms.subservice: enterprise-cloud-adoption
 ms.custom: virtual-network
 ms.date: 11/28/2018
 ms.author: jonor
-ms.openlocfilehash: 484f41f64b676b08ae8adb4ba082f9bff75a6a54
-ms.sourcegitcommit: 14226018a058e199523106199be9c07f6a3f8592
+ms.openlocfilehash: 8941195c5342036521d5176bfd5420b538dfa4a7
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55483115"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58245353"
 ---
 # <a name="azure-virtual-datacenter-a-network-perspective"></a>Azure 仮想データセンター:ネットワーク パースペクティブ
 
@@ -76,7 +76,7 @@ VDC 実装を設計するときは、考慮すべき非常に重要な問題が�
 
 ### <a name="identity-and-directory-service"></a>ID とディレクトリ サービス
 
-ID とディレクトリ サービスは、オンプレミスとクラウドの両方のすべてのデータセンターの重要な側面です。 ID は、VDC 実装内のサービスへのアクセスと承認のすべての側面に関連しています。 承認されたユーザーおよびプロセスのみが Azure アカウントとリソースにアクセスできるようにするため、Azure は複数の種類の資格情報を認証に使います。 これには、パスワード (Azure アカウントへのアクセス)、暗号化キー、デジタル署名、および証明書が含まれます。 [Azure Multi-Factor Authentication (MFA)][MFA] は、Azure サービスへのアクセスに対する追加セキュリティ レイヤーです。 Azure MFA は、電話、テキスト メッセージ、モバイル アプリ通知などの各種の簡単な確認オプションにより認証を強化し、顧客に最も合った方法を提供します。
+ID とディレクトリ サービスは、オンプレミスとクラウドの両方のすべてのデータセンターの重要な側面です。 ID は、VDC 実装内のサービスへのアクセスと承認のすべての側面に関連しています。 承認されたユーザーおよびプロセスのみが Azure アカウントとリソースにアクセスできるようにするため、Azure は複数の種類の資格情報を認証に使います。 これには、パスワード (Azure アカウントへのアクセス)、暗号化キー、デジタル署名、および証明書が含まれます。 [Azure Multi-Factor Authentication (MFA)][MFA] は、Azure サービスへのアクセスに対する追加セキュリティ レイヤーです。 Azure MFA は、&mdash;電話、テキスト メッセージ、モバイル アプリ通知&mdash;などの各種の簡単な確認オプションにより認証を強化し、顧客に最も合った方法を提供します。
 
 大規模な企業では、VDC 実装内または VDC 実装間での個々の ID とその認証、承認、ロール、権限の管理について説明する ID 管理プロセスを定義する必要があります。 このプロセスの目的は、コスト、ダウンタイム、および手作業の反復を減らしながら、セキュリティと生産性を向上させることです。
 

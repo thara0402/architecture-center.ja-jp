@@ -8,12 +8,12 @@ description: デジタル資産を合理化するために使用できるオプ�
 author: BrianBlanchard
 ms.date: 12/10/2018
 ms.topic: guide
-ms.openlocfilehash: ee196487e6f59b1e1b3c63bab9496cbbf805affd
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.openlocfilehash: 25987e790df5c82ad2c8296f1be1dabc949f1629
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55897475"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58243303"
 ---
 # <a name="the-5-rs-of-rationalization"></a>合理化の 5 R
 

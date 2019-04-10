@@ -1,14 +1,18 @@
 ---
 title: CAF:規制コンプライアンスの概要
-description: 規制コンプライアンスとは
+titleSuffix: Microsoft Cloud Adoption Framework for Azure
+ms.service: architecture-center
+ms.subservice: enterprise-cloud-adoption
+ms.custom: governance
+ms.date: 02/11/2019
+description: 規制コンプライアンスの概要
 author: BrianBlanchard
-ms.date: 2/8/2019
-ms.openlocfilehash: 5ff7b591d7cab647a99cee223e6271928e185a2f
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.openlocfilehash: 3703367dd03b63e5ecf86408ab29dafc7a6e494d
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55902046"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58242423"
 ---
 # <a name="introduction-to-regulatory-compliance"></a>規制コンプライアンスの概要
 
@@ -36,7 +40,7 @@ Payment Card Industry Data Security Standard (PCI DSS) は、Visa、MasterCard�
 
 ## <a name="gdpr"></a>GDPR
 
-この分野で最も重要な開発の 1 つは、欧州委員会の一般データ保護規則 (GDPR) による、欧州連合内の個人データの保護を強化することを目的として設計された、最近の法律の制定です。 GDPR では、"名前、自宅の住所、写真、メール アドレス、銀行の詳細、ソーシャル ネットワーキング Web サイトへの投稿、医療情報、コンピューターの IP アドレス" などの個人に関するデータを、EU 内のサーバーの保持し、EU 外に転送してはならないことが、要求されています。 また、企業に対し、データ侵害があった場合は個人に通知することと、データ保護担当者を置くことが、要求されています。 他の国でも、同様の規制が制定済みまたは制定中です。
+この分野で最も重要な開発の 1 つは、欧州委員会の一般データ保護規則 (GDPR) による、欧州連合内の個人データの保護を強化することを目的として設計された、最近の法律の制定です。 GDPR では、個人に関するデータ ("名前、自宅の住所、写真、メール アドレス、銀行の詳細、ソーシャル ネットワーキング Web サイトへの投稿、医療情報、コンピューターの IP アドレス" など) を、EU 内のサーバーの保持し、EU 外に転送してはならないことが、要求されています。 また、企業に対し、データ侵害があった場合は個人に通知することと、データ保護担当者を置くことが、要求されています。 他の国でも、同様の規制が制定済みまたは制定中です。
 
 ## <a name="compliant-foundation-in-azure"></a>Azure での準拠の基盤
 

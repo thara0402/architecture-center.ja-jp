@@ -8,12 +8,12 @@ ms.topic: reference-architecture
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: seodec18, serverless
-ms.openlocfilehash: 60af3df5bbb75d97d6ba797874c8b37319b2fad5
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.openlocfilehash: 0307ff6045e4e4b55c9d4530d9888db9209ba631
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54487391"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58246053"
 ---
 # <a name="serverless-web-application-on-azure"></a>Azure 上のサーバーレス Web アプリケーション
 
@@ -137,7 +137,7 @@ public static Task<IActionResult> Run(
 
 ### <a name="authentication"></a>Authentication
 
-リファレンス実装の `GetStatus` API では、Azure AD を使用して要求が認証されます。 Azure AD がサポートするのは Open ID Connect プロトコルで、この認証プロトコルは、OAuth 2 プロトコルを基盤として構築されています。
+リファレンス実装の `GetStatus` API では、Azure AD を使用して要求が認証されます。 Azure AD がサポートするのは OpenID Connect プロトコルで、この認証プロトコルは、OAuth 2 プロトコルを基盤として構築されています。
 
 このアーキテクチャでは、クライアント アプリケーションは、ブラウザーで実行されるシングル ページ アプリケーション (SPA) です。 この種類のクライアント アプリケーションでは、クライアントをシークレットにできません。また、認証コードも非表示になりません。このため暗黙的な許可フローが適しています  ([使用するべき OAuth 2.0 フロー][oauth-flow]に関するページをご覧ください)。 全体的なフローを次に示します。
 
@@ -329,7 +329,7 @@ API の破壊的変更とはならない更新プログラムの場合、新し�
 [functions-zip-deploy]: /azure/azure-functions/deployment-zip-push
 [graph]: https://developer.microsoft.com/graph/docs/concepts/overview
 [key-vault-web-app]: /azure/key-vault/tutorial-web-application-keyvault
-[microservices-domain-analysis]: ../../microservices/domain-analysis.md
+[microservices-domain-analysis]: ../../microservices/model/domain-analysis.md
 [monitor]: /azure/azure-monitor/overview
 [oauth-flow]: https://auth0.com/docs/api-auth/which-oauth-flow-to-use
 [partition-key]: /azure/cosmos-db/partition-data

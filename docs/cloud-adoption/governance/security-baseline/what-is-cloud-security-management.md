@@ -7,12 +7,12 @@ ms.custom: governance
 ms.date: 10/10/2018
 description: クラウド セキュリティ ベースラインとは
 author: BrianBlanchard
-ms.openlocfilehash: cb6e3372fd76486e5c4467ef822163eac0499573
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.openlocfilehash: cd4c7f03bfce43d9edbeac1bff8ba66d8b945646
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55901694"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58243623"
 ---
 <!-- markdownlint-disable MD026 -->
 

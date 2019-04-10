@@ -1,20 +1,20 @@
 ---
-title: CAF:中小企業 - マルチクラウドの進化
+title: 'CAF: 中小企業 - マルチクラウドの進化'
 titleSuffix: Microsoft Cloud Adoption Framework for Azure
 ms.service: architecture-center
 ms.subservice: enterprise-cloud-adoption
 ms.custom: governance
 ms.date: 02/11/2019
-description: 中小企業 - マルチクラウドの進化の説明
+description: 中小企業 - マルチクラウドの進化
 author: BrianBlanchard
-ms.openlocfilehash: a5b09c92acc4e165590b5a35827b88b0ca099bed
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.openlocfilehash: 8bfe56f999ddef9d954fad9a157277301d81a98e
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55902054"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58243663"
 ---
-# <a name="small-to-medium-enterprise-multi-cloud-evolution"></a>中小企業:マルチクラウドの進化
+# <a name="small-to-medium-enterprise-multi-cloud-evolution"></a>中小企業: マルチクラウドの進化
 
 この記事では、マルチクラウドの導入のためにコントロールを追加することでストーリーを展開します。
 
@@ -60,7 +60,7 @@ Microsoft では、お客様が特定の目的で複数のクラウドを採用�
 
 ## <a name="evolution-of-the-best-practices"></a>ベスト プラクティスの進化
 
-記事のこのセクションでは、新しい Azure ポリシーと Azure Cost Management の実装を含むようにガバナンス MVP の設計を進化させます。 これら 2 つの設計変更を組み合わせることで、会社の新しいポリシー ステートメントを実現します。
+記事のこのセクションでは、ガバナンス MVP の設計を進化させて、新しい Azure ポリシーと Azure Cost Management の実装を含めます。 これら 2 つの設計変更を組み合わせることで、会社の新しいポリシー ステートメントを実現します。
 
 1. ネットワークを接続する。 この手順は、クラウド ガバナンス チームの支援を受け、ネットワークおよび IT セキュリティ チームが実行します。 MPLS/専用回線のプロバイダーから新しいクラウドに接続を追加することにより、ネットワークが統合されます。 ルーティング テーブルとファイアウォールの構成を追加することにより、環境の間のアクセスとトラフィックを管理します。
 2. ID プロバイダーを統合する。 セカンダリ クラウドでホストされているワークロードに応じて、ID プロバイダーの統合に対してさまざまな選択肢があります。 以下に例を示します。

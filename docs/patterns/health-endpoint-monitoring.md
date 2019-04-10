@@ -9,12 +9,12 @@ ms.topic: design-pattern
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.custom: seodec18
-ms.openlocfilehash: 475b9572cb5b34850944fdf03061dc56ea6d0bf9
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.openlocfilehash: 09e2b55aa009d55037e7a0feb0ba3c4f65d9de16
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54485147"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58248777"
 ---
 # <a name="health-endpoint-monitoring-pattern"></a>正常性エンドポイントの監視パターン
 

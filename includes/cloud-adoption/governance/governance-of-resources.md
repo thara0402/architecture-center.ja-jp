@@ -1,10 +1,11 @@
 <!-- TEMPLATE FILE - DO NOT ADD METADATA -->
+<!-- markdownlint-disable MD002 MD041 -->
 
 ### <a name="governance-of-resources"></a>リソースのガバナンス
 
 サブスクリプション全体にわたるガバナンスの強化には、Azure Blueprints とそのブルー プリント内の関連資産を利用します。
 
-1. "Governance MVP" という名前の Azure ブループリントを作成します。
+1. `governance-baseline` という名前のブループリントを作成します。
     1. 標準の Azure ロールの使用を適用します。
     2. ユーザーが既存の RBAC 実装に対してのみ認証できるようにします。
     3. 管理グループ内のすべてのサブスクリプションにこのブループリントを適用します。
@@ -12,7 +13,7 @@
     1. リソースのタグ付けには、ビジネス機能、データ分類、重要度、SLA、環境、およびアプリケーションの値が必要です。
     2. アプリケーション タグの値は、リソース グループの名前と一致する必要があります。
     3. 各リソース グループとリソースのロールの割り当てを確認します。
-3. "Governance MVP" Azure ブループリントを公開して各管理グループに適用します。
+3. `governance-baseline` ブループリントを公開して各管理グループに適用します。
 
 このようなパターンを利用してリソースの発見と追跡が可能になり、基本的なロール管理が適用されます。
 
@@ -24,8 +25,8 @@
     1. [クラウド DMZ 参照アーキテクチャ](/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid)で、Azure に VPN Gateway を作成するためのパターンとデプロイ モデルを確立します。
     2. オンプレミス データセンターのローカル エッジ デバイスに適切な DMZ 接続とセキュリティ要件が設定されていることを確認します。
     3. ローカル エッジ デバイスが Azure VPN Gateway の要件と互換性があることを確認します。
-    4. オンプレミス VPN への接続が確認されたら、その参照アーキテクチャによって作成された Resource Manager テンプレートをキャプチャします。
-2. "DMZ" という名前の 2 つ目のブループリントを作成します。
+    <!-- 4. Once connection to the on-premisess VPN has been verified, capture the Resource Manager template created by that reference architecture. -->
+2. `dmz` という名前の 2 つ目のブループリントを作成します。
     1. その VPN Gateway 用の Resource Manager テンプレートをブループリントに追加します。
 3. オンプレミス接続が必要なすべてのサブスクリプションに DMZ ブループリントを適用します。 このブループリントは、ガバナンス MVP ブループリントに加えて適用する必要があります。
 

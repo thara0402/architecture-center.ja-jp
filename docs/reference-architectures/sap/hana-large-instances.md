@@ -8,12 +8,12 @@ ms.topic: reference-architecture
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: seodec18, SAP
-ms.openlocfilehash: 711e233de534597f9cd06ccaa95481a51acc4468
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.openlocfilehash: 6b7c14076e7a86d570dec72bd408a7bc526e8886
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54485351"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58248109"
 ---
 # <a name="run-sap-hana-on-azure-large-instances"></a>SAP HANA on Azure Large Instances を実行する
 
@@ -161,7 +161,7 @@ CPU、メモリ、ネットワーク帯域幅、記憶域スペースなどの H
 
 - 物理的なセキュリティを確保するために、Azure データセンターへのアクセスは、承認されているユーザーのみに制限します。 お客様が物理サーバーにアクセスすることはできません。
 
-詳細については、「[SAP HANA Security - An Overview (SAP HANA のセキュリティ - 概要)][sap-security]」を参照してください (アクセスするには、SAP Service Marketplace アカウントが必要です)。
+詳細については、「[SAP HANA Security &mdash; An Overview][sap-security]」(SAP HANA のセキュリティ - 概要) を参照してください (アクセスするには、SAP Service Marketplace アカウントが必要です)。
 
 ## <a name="communities"></a>コミュニティ
 

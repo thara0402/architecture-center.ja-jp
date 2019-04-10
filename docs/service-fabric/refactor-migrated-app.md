@@ -6,12 +6,12 @@ ms.date: 02/02/2018
 ms.topic: guide
 ms.service: architecture-center
 ms.subservice: reference-architecture
-ms.openlocfilehash: 1fd6bb5df18b46c8df3719fd107dd53a18dfd4ff
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.openlocfilehash: 42c48284502d612c4d5817c5b3c955877ed4595b
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54487289"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58241302"
 ---
 # <a name="refactor-an-azure-service-fabric-application-migrated-from-azure-cloud-services"></a>Azure Cloud Services から移行した Azure Service Fabric アプリケーションをリファクタリングする
 
@@ -26,11 +26,12 @@ ms.locfileid: "54487289"
 ![](./images/tailspin01.png)
 
 **Tailspin.Web** Web ロールは ASP.NET MVC サイトをホストします。Tailspin の顧客は、このサイトを使用して次を行います。
-* Surveys アプリケーションにサインアップする。
-* 1 つのアンケートを作成または削除する。
-* 1 つのアンケートの結果を表示する。
-* そのアンケート結果を SQL にエクスポートするよう要求する
-* アンケート結果の集計と分析を表示する。
+
+- Surveys アプリケーションにサインアップする。
+- 1 つのアンケートを作成または削除する。
+- 1 つのアンケートの結果を表示する。
+- そのアンケート結果を SQL にエクスポートするよう要求する
+- アンケート結果の集計と分析を表示する。
 
 また、**Tailspin.Web.Survey.Public** Web ロールは、一般の人がアンケートに回答するためにアクセスする ASP.NET MVC サイトをホストしています。 こうした回答はキューに置かれ、保存されます。
 
@@ -46,22 +47,23 @@ ms.locfileid: "54487289"
 
 **Tailspin.AnswerAnalysisService** サービスは、元の *Tailspin.Workers.Survey* worker ロールから移植されます。
 
-> [!NOTE] 
+> [!NOTE]
 > 各 Web ロールと worker ロールに行われたコード変更は必要最小限のものでしたが、**Tailspin.Web** と **Tailspin.Web.Survey.Public** は、[Kestrel] Web サーバーをセルフホストするように変更されました。 前の Surveys アプリケーションは、インターネット インフォメーション サービス (IIS) を使用してホストされた ASP.NET アプリケーションですが、Service Fabric では IIS をサービスとして実行できません。 したがって、すべての Web サーバーが、[Kestrel] のように、セルフホストできなければなりません。 状況によっては、IIS を Service Fabric のコンテナーで実行することができます。 詳細については、[コンテナー使用のシナリオ][container-scenarios]に関するページをご覧ください。  
 
 ここで、Tailspin は、Surveys アプリケーションを、よりきめ細かなアーキテクチャにリファクタリングします。 Tailspin がリファクタリングを行う動機は、Surveys アプリケーションの開発、ビルド、およびデプロイを行いやすくすることです。 Tailspin は、既存の Web および worker ロールをきめ細かなアーキテクチャに分解することで、こうしたロール間で密接に結合された既存の通信とデータの依存関係を削除したいと考えています。
 
 Tailspin は、Surveys アプリケーションをきめ細かなアーキテクチャに移行することには他にも利点があると見ています。
-* 各サービスを、小規模なチームで管理できるくらい小さな範囲をカバーする独立したプロジェクトにパッケージ化できます。
-* サービスごとに個別にバージョン管理とデプロイを行うことができます。
-* 最適なテクノロジを使用して各サービスを実装できます。 たとえば、異なるバージョンの .Net Framework、Java、またはその他の言語 (C、C++ など) を使用して構築されたサービスを、サービス ファブリック クラスターに含めることができます。
-* 負荷の増減に合わせて各サービスを個別に拡大縮小できます。
 
-> [!NOTE] 
+- 各サービスを、小規模なチームで管理できるくらい小さな範囲をカバーする独立したプロジェクトにパッケージ化できます。
+- サービスごとに個別にバージョン管理とデプロイを行うことができます。
+- 最適なテクノロジを使用して各サービスを実装できます。 たとえば、異なるバージョンの .Net Framework、Java、またはその他の言語 (C、C++ など) を使用して構築されたサービスを、サービス ファブリック クラスターに含めることができます。
+- 負荷の増減に合わせて各サービスを個別に拡大縮小できます。
+
+> [!NOTE]
 > マルチテナントは、このアプリケーションのリファクタリングの対象外です。 Tailspin は、マルチテナント機能をサポートする複数のオプションを有しており、このような設計上の決定は、初期設計に影響を与えることなく後からでも行うことができます。 たとえば、Tailspin は、クラスター内でテナントごとにサービス インスタンスを個別に作成できます。また、テナントごとに個別のクラスターを作成することもできます。
 
 ## <a name="design-considerations"></a>設計上の考慮事項
- 
+
 次の図は、よりきめ細かなアーキテクチャにリファクタリングされた Surveys アプリケーションのアーキテクチャを示しています。
 
 ![](./images/surveys_03.png)
@@ -81,10 +83,11 @@ Tailspin は、Surveys アプリケーションをきめ細かなアーキテク
 ## <a name="stateless-versus-stateful-services"></a>ステートレス サービスとステートフル サービス
 
 Azure Service Fabric では、次のプログラミング モデルがサポートされています。
-* ゲスト実行可能ファイル モデルにより、すべて実行可能ファイルをサービスとしてパッケージ化し、Service Fabric クラスターに展開できます。 Service Fabric では、ゲスト実行可能ファイルの実行が調整および管理されます。
-* コンテナー モデルにより、コンテナー イメージのサービスのデプロイが可能です。 Service Fabric では、Linux カーネル コンテナーおよび Windows Server コンテナー上でのコンテナーの作成と管理がサポートされます。 
-* 信頼できるサービス プログラミング モデルにより、すべての Service Fabric プラットフォーム機能と統合される、ステートレス サービスまたはステートフル サービスを作成できます。 ステートフル サービスでは、レプリケート状態を Service Fabric クラスターに格納できます。 ステートレス サービスではそれができません。
-* 信頼できるアクター プログラミング モデルでは、仮想アクター パターンを実装するサービスの作成が可能です。
+
+- ゲスト実行可能ファイル モデルにより、すべて実行可能ファイルをサービスとしてパッケージ化し、Service Fabric クラスターに展開できます。 Service Fabric では、ゲスト実行可能ファイルの実行が調整および管理されます。
+- コンテナー モデルにより、コンテナー イメージのサービスのデプロイが可能です。 Service Fabric では、Linux カーネル コンテナーおよび Windows Server コンテナー上でのコンテナーの作成と管理がサポートされます。
+- 信頼できるサービス プログラミング モデルにより、すべての Service Fabric プラットフォーム機能と統合される、ステートレス サービスまたはステートフル サービスを作成できます。 ステートフル サービスでは、レプリケート状態を Service Fabric クラスターに格納できます。 ステートレス サービスではそれができません。
+- 信頼できるアクター プログラミング モデルでは、仮想アクター パターンを実装するサービスの作成が可能です。
 
 Surveys アプリケーションでは、*Tailspin.SurveyResponseService* サービスを除くすべてのサービスが、信頼できるステートレス サービスです。 このサービスは [ReliableConcurrentQueue][reliable-concurrent-queue] を実装して、アンケートの回答は届いたときに処理されます。 ReliableConcurrentQueue の応答は Azure Blob Storage に保存され、分析のために *Tailspin.SurveyAnalysisService* に渡されます。 応答には Azure Service Bus などのキューによって提供される厳密な先入れ先出し (FIFO) の順序付けは必要ないため、Tailspin は、ReliableConcurrentQueue を選択します。 さらに、ReliableConcurrentQueue は、キューおよびデキュー操作で高スループットと低待機時間を実現するように設計されています。
 
@@ -93,9 +96,10 @@ ReliableConcurrentQueue からデキューされる項目を保持する操作�
 ## <a name="communication-framework"></a>通信フレームワーク
 
 Surveys アプリケーションの各サービスが、RESTful Web API を使用して通信します。 RESTful API には次の利点があります。
-* 使いやすい: 各サービスが ASP.NET Core MVC を使用して構築されています。これは Web API の作成をネイティブでサポートしています。
-* セキュリティ:各サービスに SSL は必要ありませんが、Tailspin は各サービスで SSL 接続を使用することを必須にすることもできます。 
-* バージョン管理: 特定バージョンの Web API に対して、クライアントの書き込みおよびテストを行うことができます。
+
+- 使いやすい: 各サービスが ASP.NET Core MVC を使用して構築されています。これは Web API の作成をネイティブでサポートしています。
+- セキュリティ:各サービスに SSL は必要ありませんが、Tailspin は各サービスで SSL 接続を使用することを必須にすることもできます。
+- バージョン管理: 特定バージョンの Web API に対して、クライアントの書き込みおよびテストを行うことができます。
 
 Surveys アプリケーションのサービスでは、Service Fabric によって実装される[リバース プロキシ][reverse-proxy]が使用されます。 リバース プロキシは、Service Fabric クラスターの各ノードで実行されるサービスで、エンドポイント解決、自動再試行を提供するほか、その他の種類の接続エラーを処理します。 リバース プロキシを使用するために、特定のサービスへの各 RESTful API 呼び出しが、定義済みのリバース プロキシ ポートを使用して行われます。  たとえば、リバース プロキシ ポートが **19081** に設定されている場合、*Tailspin.SurveyAnswerService* への呼び出しは次のように行われます。
 
@@ -108,6 +112,7 @@ static SurveyAnswerService()
     };
 }
 ```
+
 リバース プロキシを有効にするには、Service Fabric クラスターの作成中にリバース プロキシ ポートを指定します。 詳細については、Azure Service Fabric の[リバース プロキシ][reverse-proxy]に関するページをご覧ください。
 
 ## <a name="performance-considerations"></a>パフォーマンスに関する考慮事項
@@ -157,8 +162,8 @@ Surveys アプリケーション コードは [GitHub][sample-code] から入手
 <!-- links -->
 [azure-sdk]: https://azure.microsoft.com/downloads/archive-net-downloads/
 [container-scenarios]: /azure/service-fabric/service-fabric-containers-overview
-[kestrel]: https://docs.microsoft.com/aspnet/core/fundamentals/servers/kestrel?tabs=aspnetcore2x
-[kestrel-intro]: https://docs.microsoft.com/aspnet/core/fundamentals/servers/kestrel?tabs=aspnetcore1x
+[kestrel]: /aspnet/core/fundamentals/servers/kestrel?tabs=aspnetcore2x
+[kestrel-intro]: /aspnet/core/fundamentals/servers/kestrel?tabs=aspnetcore1x
 [migrate-from-cloud-services]: migrate-from-cloud-services.md
 [monitoring-diagnostics]: /azure/service-fabric/service-fabric-diagnostics-overview
 [reliable-concurrent-queue]: /azure/service-fabric/service-fabric-reliable-services-reliable-concurrent-queue
@@ -166,4 +171,4 @@ Surveys アプリケーション コードは [GitHub][sample-code] から入手
 [sample-code]: https://github.com/mspnp/cloud-services-to-service-fabric/tree/master/servicefabric-phase-2
 [service-fabric]: /azure/service-fabric/service-fabric-get-started
 [service-fabric-sdk]: /azure/service-fabric/service-fabric-get-started
-[weblistener]: https://docs.microsoft.com/aspnet/core/fundamentals/servers/weblistener
+[weblistener]: /aspnet/core/fundamentals/servers/weblistener

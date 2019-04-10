@@ -7,12 +7,12 @@ ms.topic: guide
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: microservices
-ms.openlocfilehash: d8263306db4f4c93157ac1d120094338570b4b86
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.openlocfilehash: 68d0c8255744ebae0243759bc522d58fae4c81a6
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54482206"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58246143"
 ---
 # <a name="designing-microservices-logging-and-monitoring"></a>マイクロサービスの設計:ログ記録と監視
 
@@ -114,7 +114,7 @@ Application Insights がお客様の要件を満たしていない場合は、�
 
 ## <a name="example-logging-with-correlation-ids"></a>例:相関 ID を使用したログ記録
 
-この章で取り上げるいくつかの点を説明するために、パッケージ サービスがログ記録を実装する方法の拡張例を紹介します。 パッケージ サービスは TypeScript で記述され、Node.js 用の [Koa](https://koajs.com/) Web フレームワークを使用します。 いくつかの Node.js ログ記録ライブラリから選択できます。 ここでは [Winston](https://github.com/winstonjs/winston) を選びました。Winston は、私たちが行ったテストのパフォーマンス要件を満たした人気のあるログ記録ライブラリです。
+この記事で取り上げるいくつかの点を説明するために、パッケージ サービスによってログ記録を実装する方法の拡張例を紹介します。 パッケージ サービスは TypeScript で記述され、Node.js 用の [Koa](https://koajs.com/) Web フレームワークを使用します。 いくつかの Node.js ログ記録ライブラリから選択できます。 ここでは [Winston](https://github.com/winstonjs/winston) を選びました。Winston は、私たちが行ったテストのパフォーマンス要件を満たした人気のあるログ記録ライブラリです。
 
 この例では、実装の詳細をカプセル化するために、抽象 `ILogger` インターフェイスを定義しました。
 

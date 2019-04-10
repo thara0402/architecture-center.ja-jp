@@ -7,12 +7,12 @@ ms.topic: article
 ms.service: architecture-center
 ms.subservice: cloud-design-principles
 ms.custom: resiliency
-ms.openlocfilehash: bb9045e5656f86fe6b164b5ba831c1069cef6183
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.openlocfilehash: e8fbef2bcee9d9ba24937483e3437efd8339027b
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54486834"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58248647"
 ---
 # <a name="disaster-recovery-for-azure-applications"></a>Azure アプリケーションのディザスター リカバリー
 
@@ -303,7 +303,7 @@ DR 戦略が複数のクラウド プラットフォームに依存している�
 
 ## <a name="automation"></a>Automation
 
-ここで説明したパターンの一部では、オフライン デプロイの迅速なアクティブ化と、システムの特定の部分の復元が必要になります。 Automation スクリプトを使用すると、必要に応じてリソースをアクティブ化し、ソリューションをすばやくデプロイできます。 以下に示す DR 関連の自動化の例では、[Azure PowerShell](https://msdn.microsoft.com/library/azure/jj156055.aspx) を使用していますが、[Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) または [Service Management REST API](https://msdn.microsoft.com/library/azure/ee460799.aspx) を使用する方法もお勧めします。
+ここで説明したパターンの一部では、オフライン デプロイの迅速なアクティブ化と、システムの特定の部分の復元が必要になります。 Automation スクリプトを使用すると、必要に応じてリソースをアクティブ化し、ソリューションをすばやくデプロイできます。 以下に示す DR 関連の自動化の例では、[Azure PowerShell](https://msdn.microsoft.com/library/azure/jj156055.aspx) を使用していますが、[Azure CLI](/cli/azure/get-started-with-azure-cli) または [Service Management REST API](https://msdn.microsoft.com/library/azure/ee460799.aspx) を使用する方法もお勧めします。
 
 自動化スクリプトでは、Azure によって透過的に処理されない DR の側面を管理します。 これにより、一貫性のある反復可能な結果がもたらされ、人為的なミスを最小限に抑えることができます。 事前定義された DR スクリプトを使用すると、障害発生時にシステムとその構成要素を再構築するのに要する時間も短縮されます。 ダウンして 1 分ごとにお金が失われているのにサイトの復元方法を手動で見つけるようなことはしたくありません。
 

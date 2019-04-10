@@ -7,12 +7,12 @@ ms.custom: governance
 ms.date: 02/11/2019
 description: Azure 移行のコア サービスとしてのログ、レポート、および監視について学習します。
 author: rotycenh
-ms.openlocfilehash: 36552488872622ec59e2fcf4816da4184c3d4fbf
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.openlocfilehash: 8ab9a159b438a4ac95289d5eb5c0c0a2f4b399ae
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55901718"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58247953"
 ---
 # <a name="logging-and-reporting-decision-guide"></a>ログとレポートの意思決定ガイド
 
@@ -22,7 +22,7 @@ ms.locfileid: "55901718"
 
 ジャンプ先:[監視インフラストラクチャの計画](#planning-your-monitoring-infrastructure) | [クラウド ネイティブ](#cloud-native) | [オンプレミスの拡張機能](#on-premises-extension) | [ゲートウェイ集約](#gateway-aggregation) | [ハイブリッド監視 (オンプレミス)](#hybrid-monitoring-on-premises) | [ハイブリッド監視 (クラウド ベース)](#hybrid-monitoring-cloud-based) | [マルチクラウド](#multi-cloud) | [詳細情報](#learn-more)
 
-クラウド ID 戦略を決定するときの変曲点は、主に組織が運用プロセスに行ってきた既存の投資に基づき、マルチクラウド戦略をサポートするために必要な任意の要件もある程度関係します。
+クラウドのログ記録およびレポート戦略を決定するときの転換点は、主に組織が運用プロセスに対して行ってきた既存の投資に基づきます。また、マルチクラウド戦略をサポートするために必要な任意の要件もある程度関係します。
 
 クラウドでのアクティビティをログに記録してレポートを作成するには、複数の方法があります。 クラウド ネイティブと一元化されたログには、サブスクリプション設計とサブスクリプションの数に基づく 2 つの共通のサービスとしてのソフトウェア (SaaS) オプションがあります。
 

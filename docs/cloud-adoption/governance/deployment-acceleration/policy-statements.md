@@ -7,12 +7,12 @@ ms.custom: governance
 ms.date: 02/11/2019
 description: デプロイ高速化のサンプル ポリシー ステートメント
 author: alexbuckgit
-ms.openlocfilehash: 4f7d59e6653c29db03f966d1c7105524b72586fc
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.openlocfilehash: 2bd134a0bff0bd159279cd463d99b2adb41a8791
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55901825"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58242503"
 ---
 # <a name="deployment-acceleration-sample-policy-statements"></a>デプロイ高速化のサンプル ポリシー ステートメント
 
@@ -57,7 +57,7 @@ ms.locfileid: "55901825"
 
 ID 管理に関連する独自のカスタム ポリシー ステートメントを作成するには、[ID ベースライン テンプレート](template.md)をダウンロードします。
 
-この規範の導入を促進するには、ご使用の環境に最も合致する[アクションにつながるガバナンス体験](../journeys/overview.md)を選択します。 次に、設計を変更して、特定の企業ポリシーの決定を組み込みます。
+この規範の導入を促進するには、ご使用の環境に最も合う[アクションにつながるガバナンス体験](../journeys/overview.md)を選択します。 その後、設計を変更して、特定の企業ポリシーの決定を組み込みます。
 
 > [!div class="nextstepaction"]
 > [アクションにつながるガバナンス体験](../journeys/overview.md)

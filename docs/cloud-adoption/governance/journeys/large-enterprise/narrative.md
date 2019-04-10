@@ -7,12 +7,12 @@ ms.custom: governance
 ms.date: 02/11/2019
 description: この物語では、大企業のガバナンス体験のユース ケースを組み立てます。
 author: BrianBlanchard
-ms.openlocfilehash: 2f8e18a7a845d39fd5aa1632a9d025a502518a94
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.openlocfilehash: b6570b7518f129e5ac14f1639a4bf57e1b4ade69
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55902134"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58242673"
 ---
 # <a name="large-enterprise-the-narrative-behind-the-governance-strategy"></a>大企業:ガバナンス戦略の背景にある物語
 
@@ -54,7 +54,7 @@ CIO は会社に役立つ可能性のある革新的な考えを持っていま�
 - CIO は、将来の目標をサポートするために PII と財務データに関するポリシーを刷新する取り組みを指揮しています。 IT ガバナンス チームの 2 人のメンバーが、この取り組みを把握しています。
 - アプリ開発と BI の初期の実験で成功の有力な指標が見られれば、今後 24 か月以内に、それぞれが小規模運用環境ソリューションをクラウドにリリースしたいと考えています。
 - CIO と CFO は、コスト分析と実現可能性の調査を作成するために、設計者とインフラストラクチャ部門の副社長を任命しました。 これらの取り組みで、会社が今後 36 か月間に 5,000 件の資産をクラウドに移行できるかどうかが決まります。 移行が成功すれば、CIO は 2 つのデータセンターを廃止し、5 年計画で 1 億米ドルを越えるコストを削減できます。 3 つから 4 つのデータセンターで同様の結果が得られれば、予算は黒字に戻り、CIO には、より革新的なイニシアチブに対応できる予算が割り当てられます。
-    ![今後 5 年間で 1 億米ドルのコスト削減を示すオンプレミスのコストと Azure のコストの比較](../../../_images/governance/calculator-enterprise.png)
+    ![今後 5 年間で 1 億米国ドルのコスト削減を示すオンプレミスのコストと Azure のコストの比較](../../../_images/governance/calculator-enterprise.png)
 - この会社は、このコスト削減に加え、割り当てられている CapEx を IT 部門内の運用経費 (OpEx) として再配分することで、一部の IT 投資の管理を変更することを予定しています。 この変更により、コスト管理が強化され、IT 部門はこれを使用して他の計画されている作業を加速できます。
 
 ## <a name="next-steps"></a>次の手順

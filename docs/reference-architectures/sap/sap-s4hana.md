@@ -8,12 +8,12 @@ ms.topic: reference-architecture
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: seodec18, SAP, Linux
-ms.openlocfilehash: 519dac655065d53df5c918b55bda06ce8751c012
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.openlocfilehash: 4e15fcc17ac5363a84c42903339a0e76333acc83
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54485742"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58242923"
 ---
 # <a name="sap-s4hana-for-linux-virtual-machines-on-azure"></a>Azure における Linux Virtual Machines の SAP S/4HANA
 
@@ -183,7 +183,7 @@ SAP インフラストラクチャのリソースとサービス パフォーマ
 
 ## <a name="security-considerations"></a>セキュリティに関する考慮事項
 
-SAP は、SAP アプリケーション内でのロールベース アクセスと承認を制御するために、独自のユーザー管理エンジン (UME) を備えています。 詳細については、「[SAP HANA Security - An Overview (SAP HANA のセキュリティ - 概要)](https://archive.sap.com/documents/docs/DOC-62943)」を参照してください (アクセスするには、SAP Service Marketplace アカウントが必要です)。
+SAP は、SAP アプリケーション内でのロールベース アクセスと承認を制御するために、独自のユーザー管理エンジン (UME) を備えています。 詳細については、「[SAP HANA Security &mdash; An Overview](https://archive.sap.com/documents/docs/DOC-62943)」(SAP HANA のセキュリティ - 概要) を参照してください (アクセスするには、SAP Service Marketplace アカウントが必要です)。
 
 追加のネットワーク セキュリティについては、[ネットワーク DMZ](/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid) を実装することを検討します。これにより、ネットワーク仮想アプライアンスを使用して、Web Dispatcher および Fiori Front-End Server プールのサブネットの外側にファイアウォールが作成されます。
 

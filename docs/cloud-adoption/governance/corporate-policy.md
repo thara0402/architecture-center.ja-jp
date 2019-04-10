@@ -6,15 +6,15 @@ ms.subservice: enterprise-cloud-adoption
 ms.custom: governance
 description: Azure 向けの Microsoft Cloud 導入フレームワーク (CAF) を使用してクラウド ガバナンス戦略を実装する方法について説明します。
 author: BrianBlanchard
-ms.date: 1/3/2019
+ms.date: 01/03/2019
 layout: LandingPage
 ms.topic: landing-page
-ms.openlocfilehash: 88aeb92157a37baacc34884de67024ec87b20980
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.openlocfilehash: 9da73502ad3a6243572128b5bf72399aad648353
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55901814"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58241254"
 ---
 # <a name="implement-a-cloud-governance-strategy"></a>クラウド ガバナンス戦略の実装
 
@@ -26,7 +26,7 @@ ms.locfileid: "55901814"
         <div class="cardPadding" style="padding-bottom:10px;">
             <div class="card" style="padding-bottom:10px;">
                 <div class="cardText" style="padding-left:0px;">
-ビジネス プロセスやテクノロジ プラットフォームに対するすべての変更は、ビジネス上のリスクを伴います。 クラウド カストディアンと呼ばれることもあるメンバーで構成されるクラウド ガバナンス チームの任務は、導入やイノベーションの取り組みをできるだけ途切れさせずに、こうしたリスクを軽減することです。<br/><br/>ただし、クラウド ガバナンスには、技術的な実装以上のことが求められます。 企業のナラティブや企業ポリシーの些細な変更により、導入の取り組みに大幅な影響が及ぼされる場合があります。 実装前に、企業ポリシーの定義において IT の今後を見据えることが重要です。<br/><br/>
+ビジネス プロセスやテクノロジ プラットフォームに対するすべての変更は、ビジネス上のリスクを伴います。 クラウド カストディアンと呼ばれることもあるメンバーで構成されるクラウド ガバナンス チームの任務は、導入やイノベーションの取り組みをできるだけ途切れさせずに、こうしたリスクを軽減することです。<br/><br/>ただし、クラウド ガバナンスには、技術的な実装以上のことが求められます。 企業のナラティブや企業ポリシーの些細な変更により、導入の取り組みに大幅な影響が及ぼされる場合があります。 実装の前に、企業ポリシーの定義において IT の今後を見据えることが重要です。<br/><br/>
                 </div>
             </div>
         </div>

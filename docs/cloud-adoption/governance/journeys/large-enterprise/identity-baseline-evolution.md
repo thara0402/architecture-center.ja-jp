@@ -1,5 +1,5 @@
 ---
-title: CAF:大企業 – ID ベースラインの進化
+title: 'CAF: 大企業 – ID ベースラインの進化'
 titleSuffix: Microsoft Cloud Adoption Framework for Azure
 ms.service: architecture-center
 ms.subservice: enterprise-cloud-adoption
@@ -7,12 +7,12 @@ ms.custom: governance
 ms.date: 02/11/2019
 description: 大企業 – ID ベースラインの進化
 author: BrianBlanchard
-ms.openlocfilehash: efda14819bfbc70632dc9bb8b4c6c5aca96004c0
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.openlocfilehash: 7eff9d8e8fd0fd40afa1d9815941fcce8d447579
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55901574"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58242583"
 ---
 # <a name="large-enterprise-identity-baseline-evolution"></a>大企業:ID ベースラインの進化
 

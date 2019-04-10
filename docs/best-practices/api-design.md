@@ -8,12 +8,12 @@ ms.topic: best-practice
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.custom: seodec18
-ms.openlocfilehash: b15b97de2042a0e213192dd586ffdcc4c51b1f11
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.openlocfilehash: 4b5842c3aac4cea34929ed72ad86071494b1fc1e
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55897985"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58241743"
 ---
 # <a name="api-design"></a>API 設計
 
@@ -442,7 +442,7 @@ Content-Type: application/json; charset=utf-8
 この方法には同じリソースからは常に同じ URI が取得されるというセマンティックな利点がありますが、クエリ文字列を解析し、適切な HTTP 応答を返送する要求を処理するコードにより異なります。 この方法は、URI のバージョン管理メカニズムとして HATEOAS を実装する同様の複雑さによっても影響されます。
 
 > [!NOTE]
-> 一部の古い Web ブラウザーや Web プロキシは、URI にクエリ文字列を含む要求の応答をキャッシュしません。 これは、Web API を使用し、そのような Web ブラウザー内から実行する Web アプリケーションのパフォーマンスに悪影響を与える可能性があります。
+> 一部の古い Web ブラウザーや Web プロキシは、URI にクエリ文字列を含む要求の応答をキャッシュしません。 これは、Web API を使用し、そのような Web ブラウザー内から実行する Web アプリケーションのパフォーマンスを低下させる可能性があります。
 
 ### <a name="header-versioning"></a>ヘッダーのバージョン管理
 

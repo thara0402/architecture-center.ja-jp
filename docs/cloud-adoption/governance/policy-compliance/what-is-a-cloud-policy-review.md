@@ -1,14 +1,18 @@
 ---
 title: CAF:クラウド ポリシーの確認とは
+titleSuffix: Microsoft Cloud Adoption Framework for Azure
+ms.service: architecture-center
+ms.subservice: enterprise-cloud-adoption
+ms.custom: governance
+ms.date: 02/11/2019
 description: クラウド ポリシーの確認とは
 author: BrianBlanchard
-ms.date: 2/8/2019
-ms.openlocfilehash: b879f261e16ffc72180417e2e0f533e2eaa435ba
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.openlocfilehash: 2e50c6bac0118db1b6a223244cf8efc43a4ab438
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55901817"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58242083"
 ---
 <!-- markdownlint-disable MD026 -->
 
@@ -25,7 +29,7 @@ ms.locfileid: "55901817"
 クラウドの変換により、過去のレガシ ポリシーの決定を再検討するための自然な変曲点がもたらされます。 技術的な機能と既定のプロセスは、継承リスクと同様にクラウドで大きく変化します。 前の例を使用すると、テープ バックアップ ポリシーは 1 つの場所にデータを保持することによる単一障害点のリスクに端を発していたため、ビジネスはこのリスクを軽減して、リスク プロファイルを最小限に抑える必要があります。 クラウドのデプロイでは、はるかに低い目標復旧時間 (RTO) で同じリスク軽減を実現するいくつかの選択肢があります。 次に例を示します。
 
 - クラウド ネイティブのソリューションでは、SQL Azure データベースの geo レプリケーションを有効にできる場合があります。
-- ハイブリッド ソリューションでは、Azure Site Recovery (ASR) を利用して、IaaS ワークロードを複数のデータ センターにレプリケートできる場合があります。
+- ハイブリッド ソリューションでは、Azure Site Recovery を使用して、IaaS ワークロードを複数のデータセンターにレプリケートできる場合があります。
 
 クラウドの変換を実行する際には、クラウドの導入チームが利用できるツール、サービス、およびプロセスの多くをポリシーで管理することがよくあります。 それらのポリシーがレガシ テクノロジに基づいている場合、変更を推進するためのチームの取り組みを妨げる可能性があります。 最悪の場合、回避策を有効にするために、重要なポリシーが移行チームによって完全に無視されます。 どちらも許容できる結果ではありません。
 

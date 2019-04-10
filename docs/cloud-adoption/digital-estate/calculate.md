@@ -8,12 +8,12 @@ description: コスト モデルをデジタル資産に対応付けて、クラ
 author: BrianBlanchard
 ms.date: 12/10/2018
 ms.topic: guide
-ms.openlocfilehash: b37d833106ad487faadab7c4b7ae397fa237d3d3
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.openlocfilehash: cb17ffd595a55bf49d9ecfd3b54f178cc9655a48
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55897793"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58242603"
 ---
 # <a name="align-cost-models-with-the-digital-estate-to-forecast-cloud-costs"></a>コスト モデルをデジタル資産に対応付けて、クラウドのコストを予測します
 
@@ -25,6 +25,6 @@ Azure の料金計算ツールは、透明かつ正確にクラウド支出を�
 
 - [総保有コスト (TCO) 計算ツール](https://azure.com/tco)。 Azure クラウド プラットフォームを使用して、オンプレミス インフラストラクチャの総保有コストを削減します。 Azure の TCO 計算ツールを使用して、アプリケーション ワークロードを Azure に移行することで実現できるコスト節約額を推定します。 ただ実際のオンプレミス環境の簡単な説明を指定するだけで、即座にレポートが作成されます。
 
-- [料金計算ツール](https://azure.microsoft.com/en-in/pricing/)。 料金計算ツールを使用して、予想される毎月の請求額を見積もります。 課金ポータルを使用して、いつでも実際のアカウントの使用状況と課金を追跡できます。 設定した金額を超えた際の通知を希望する場合は、自動電子メール課金アラートを設定します。
+- [料金計算ツール](https://azure.microsoft.com/pricing)。 料金計算ツールを使用して、予想される毎月の請求額を見積もります。 課金ポータルを使用して、いつでも実際のアカウントの使用状況と課金を追跡できます。 設定した金額を超えた際の通知を希望する場合は、自動電子メール課金アラートを設定します。
 
-- [Azure Cost Management](https://azure.microsoft.com/services/cost-management/)。 Microsoft の子会社である Cloudyn からライセンス供与された Azure Cost Management は、Azure や他のクラウド リソースを活用し、管理する際に役立つマルチクラウド コスト管理ソリューションです。 アプリケーション プログラム インターフェイス (API) を使用して、Azure、アマゾン ウェブ サービス、および Google Cloud Platform からクラウドの利用状況と課金データを収集します。 このデータを用いて、クラウド プラットフォーム全体でのリソースの使用量やコストを、一元化されたビューで完全に把握できます。 クラウドの使用量とクラウドの傾向を継続的に監視します。 予算を基準にして実際のクラウド支出を追跡し、予算オーバーを回避します。 通常とは異なる支出や、非効率的な使用を検知します。 履歴データを利用すれば、クラウドの使用状況や支出に対する予測の正確性が高まります。
+- [Azure Cost Management](https://azure.microsoft.com/services/cost-management/)。 Microsoft の子会社である Cloudyn からライセンス供与された Azure Cost Management は、Azure や他のクラウド リソースを使用および管理する際に役立つマルチクラウド コスト管理ソリューションです。 アプリケーション プログラム インターフェイス (API) を使用して、Azure、アマゾン ウェブ サービス、および Google Cloud Platform からクラウドの利用状況と課金データを収集します。 このデータを用いて、クラウド プラットフォーム全体でのリソースの使用量やコストを、一元化されたビューで完全に把握できます。 クラウドの使用量とクラウドの傾向を継続的に監視します。 予算を基準にして実際のクラウド支出を追跡し、予算オーバーを回避します。 通常とは異なる支出や、非効率的な使用を検知します。 履歴データを利用すれば、クラウドの使用状況や支出に対する予測の正確性が高まります。

@@ -9,12 +9,12 @@ ms.subservice: reference-architecture
 pnp.series.title: Manage Identity in Multitenant Applications
 pnp.series.prev: tailspin
 pnp.series.next: claims
-ms.openlocfilehash: b4a833a18b44e40f544449a222fb082d71e4268d
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.openlocfilehash: 38e173a6bffd6772c769f56c91b1ef24315094fc
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54481645"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58245543"
 ---
 # <a name="authenticate-using-azure-ad-and-openid-connect"></a>Azure AD および OpenID Connect を使用して認証する
 

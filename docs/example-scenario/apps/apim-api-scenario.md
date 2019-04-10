@@ -9,12 +9,12 @@ ms.service: architecture-center
 ms.subservice: example-scenario
 ms.custom: fasttrack
 social_image_url: /azure/architecture/example-scenario/apps/media/architecture-apim-api-scenario.png
-ms.openlocfilehash: cf3d4b7ed7fce04e6688f68e382caeec78abd100
-ms.sourcegitcommit: 3b15d65e7c35a19506e562c444343f8467b6a073
+ms.openlocfilehash: d0ced674048c3819369555f044b1e452ff79e923
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54907964"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58243583"
 ---
 # <a name="migrating-a-legacy-web-application-to-an-api-based-architecture-on-azure"></a>Azure 上の API ベースのアーキテクチャへの、従来の Web アプリケーションの移行
 
@@ -49,7 +49,7 @@ ms.locfileid: "54907964"
     - [Azure PaaS Web API アプリ][azure-api-apps]として開発、公開されます。
     - [APIM VIP][apim-faq-vip] のみを受け入れるように、([Web アプリ設定][azure-appservice-ip-restrict]を介して) ホワイトリストに登録されます。
     - セキュア トランスポート/SSL を有効にして、Azure Web Apps でホストされます。
-    - 承認が有効にされ、Azure Active Directory と OAuth2 を使用して、[Azure App Service に提供され][azure-appservice-auth]ています。
+    - 承認が有効にされ、Azure Active Directory と OAuth 2 を使用して、[Azure App Service に提供][azure-appservice-auth]されています。
 5. 新しいブラウザーベースの Web アプリケーションは、既存の HTTP API と新しい API の**両方**のために Azure API Management インスタンスに依存します。
 
 APIM インスタンスは、レガシ HTTP サービスを新しい API コントラクトにマップするように構成されます。 これにより、新しい Web UI は、一連のレガシ サービス/API と新しい API との統合を認識していません。 今後、プロジェクト チームは段階的に機能を新しい API に移植し、元のサービスを廃止します。 このような変更は、APIM の構成内で処理され、フロントエンド UI は影響を受けないため、再開発作業を回避できます。

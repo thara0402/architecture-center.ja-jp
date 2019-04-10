@@ -7,16 +7,16 @@ ms.topic: guide
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: microservices
-ms.openlocfilehash: 026d22bb9cfdcb69b1a12294410af748e7af5c39
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.openlocfilehash: 219c50fb002a97874310b76de6f3bdbc34eaac6d
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54480795"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58242363"
 ---
 # <a name="designing-microservices-continuous-integration"></a>マイクロサービスの設計:継続的インテグレーション
 
-継続的インテグレーションと継続的デリバリー (CI/CD) は、マイクロサービスで成功を収めるための重要な要件です。 良質の CI/CD プロセスなしでは、マイクロサービスが約束する機敏性は達成できません。 マイクロサービスに対する CI/CD の課題の一部は、多様なサービスのための複数のコード ベースと異種ビルド環境が存在することに起因します。 この章では、これらの課題について説明し、問題に対処するために推奨するいくつかの方法を示します。
+継続的インテグレーションと継続的デリバリー (CI/CD) は、マイクロサービスで成功を収めるための重要な要件です。 良質の CI/CD プロセスなしでは、マイクロサービスが約束する機敏性は達成できません。 マイクロサービスに対する CI/CD の課題の一部は、多様なサービスのための複数のコード ベースと異種ビルド環境が存在することに起因します。 この記事では、これらの課題について説明し、問題に対処するために推奨するいくつかの方法を示します。
 
 ![マイクロサービスの CI/CD の図](./images/ci-cd.png)
 

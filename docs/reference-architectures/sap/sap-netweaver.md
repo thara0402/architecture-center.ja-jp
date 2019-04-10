@@ -8,12 +8,12 @@ ms.topic: reference-architecture
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: seodec18, SAP, Windows
-ms.openlocfilehash: e866727a40551b60e74fc26878a15a5a48e69cf6
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.openlocfilehash: a93ceead8d160e8c0d0915abeb5e78782190efd6
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55897628"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58248099"
 ---
 # <a name="deploy-sap-netweaver-windows-for-anydb-on-azure-virtual-machines"></a>AnyDB 向けの SAP NetWeaver (Windows) を Azure 仮想マシンにデプロイする
 
@@ -69,7 +69,7 @@ ABAP アプリケーション サーバーのログオン グループの管理�
 
 ### <a name="sap-central-services-cluster"></a>SAP セントラル サービス クラスター
 
-この参照アーキテクチャでは、アプリケーション層の VM でセントラル サービスが実行されます。 セントラル サービスは、1 つの VM にデプロイすると単一障害点 (SPOF) になる可能性があります (これは高可用性が不要な場合の一般的なデプロイです)。 高可用性ソリューションを実装するには、共有ディスク クラスターまたはファイル共有クラスターのいずれかを使用できます。
+この参照アーキテクチャでは、アプリケーション層の VM でセントラル サービスが実行されます。 セントラル サービスは、1 つの VM にデプロイすると単一障害点 (SPOF) になる可能性があります (これは高可用性が不要な場合の一般的なデプロイです)。 高可用性ソリューションを実装するには、共有ディスク クラスターまたはファイル共有クラスターのいずれかを使用します。
 
 共有ディスク クラスター用に VM を構成するには、[Windows Server フェールオーバー クラスター](https://blogs.sap.com/2018/01/25/how-to-create-sap-resources-in-windows-failover-cluster/)を使用します。 クォーラム監視として[クラウド監視](/windows-server/failover-clustering/deploy-cloud-witness)をお勧めします。 フェールオーバー クラスター環境をサポートするために、[SIOS DataKeeper クラスター エディション](https://azuremarketplace.microsoft.com/marketplace/apps/sios_datakeeper.sios-datakeeper-8)では、クラスター ノードが所有する独立したディスクをレプリケートすることによって、クラスターの共有ボリューム機能が実行されます。 Azure では共有ディスクがネイティブでサポートされていないため、SIOS 提供のソリューションが必要です。
 

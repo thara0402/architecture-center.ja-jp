@@ -7,12 +7,12 @@ ms.custom: governance
 ms.date: 02/11/2019
 description: リソースの整合性のサンプル ポリシー ステートメント
 author: BrianBlanchard
-ms.openlocfilehash: 9217ae73b0edf5b40bedac1cdc961b7a34da87d1
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.openlocfilehash: 1336d349825b2b87d072f70b99d94dca57249bda
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55901469"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58241963"
 ---
 # <a name="resource-consistency-sample-policy-statements"></a>リソースの整合性のサンプル ポリシー ステートメント
 

@@ -1,14 +1,18 @@
 ---
 title: CAF:ポリシーの準拠を監視し、強制する
 description: 確立されたポリシーを確実に準拠する方法はありますか。
+titleSuffix: Microsoft Cloud Adoption Framework for Azure
+ms.service: architecture-center
+ms.subservice: enterprise-cloud-adoption
+ms.custom: governance
+ms.date: 02/11/2019
 author: BrianBlanchard
-ms.date: 1/4/2019
-ms.openlocfilehash: 9066f33c8baa183476a9632e82d6eb960d03752c
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.openlocfilehash: 66df08b5ed66625c49907ac944f83d7af3ed1b53
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55901326"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58242473"
 ---
 <!-- markdownlint-disable MD026 -->
 

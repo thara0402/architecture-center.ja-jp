@@ -6,12 +6,12 @@ ms.date: 02/12/2018
 ms.topic: guide
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
-ms.openlocfilehash: b54f56fbc6aab526f37d537c201f4e4955a112fd
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.openlocfilehash: dcffe32883e379dd17c1f54a7eeebda3dab8d808
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54486958"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58244103"
 ---
 # <a name="extending-on-premises-data-solutions-to-the-cloud"></a>オンプレミス データ ソリューションのクラウドへの拡張
 

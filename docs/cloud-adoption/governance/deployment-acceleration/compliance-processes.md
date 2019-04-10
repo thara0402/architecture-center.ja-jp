@@ -7,12 +7,12 @@ ms.subservice: enterprise-cloud-adoption
 ms.custom: governance
 ms.date: 02/11/2019
 author: alexbuckgit
-ms.openlocfilehash: 08046a4ae199a8714393d2aba3841dd84008d836
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.openlocfilehash: d469c3ba6fb53c5412c615886d449d9b59c2378e
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55901544"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58246623"
 ---
 # <a name="deployment-acceleration-policy-compliance-processes"></a>デプロイ高速化ポリシーのコンプライアンス プロセス
 
@@ -24,7 +24,7 @@ ms.locfileid: "55901544"
 
 **初期のリスク評価と計画**:デプロイ高速化の規範の初期導入の一環として、ビジネス アプリケーションのデプロイに関連するコアなビジネス リスクと許容範囲を特定します。 この情報を利用して、IT 運用チームおよびセキュリティのチーム メンバーと具体的な技術的リスクについて意見を交わします。そして、そのようなリスクを軽減するためのデプロイと構成のポリシーのベースライン セットを作成し、初期のガバナンス戦略を確立します。
 
-**展開の計画**:資産のデプロイに先立ち、セキュリティ レビューを実行して、新しいリスクがあれば特定し、アクセスとデータ セキュリティのポリシー要件がすべて満たされていることを確認します。
+**デプロイの計画**:資産をデプロイする前に、セキュリティ レビューを実行して、新しいリスクがあれば特定し、アクセスとデータ セキュリティのポリシー要件が確実にすべて満たされるようにします。
 
 **デプロイのテスト**:クラウド ガバナンス チームは、資産のデプロイ プロセスの一環として、企業セキュリティ チームと連携してデプロイのレビューを実施し、セキュリティ ポリシーのコンプライアンスを検証する役割を担います。
 

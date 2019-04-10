@@ -3,12 +3,12 @@ title: 'CAF: 基本的なワークロードのデプロイ'
 description: 基本的なワークロードを Azure にデプロイする方法について説明します
 author: petertaylor9999
 ms.date: 12/31/2018
-ms.openlocfilehash: bd3d006100e68f2fa1d71deeb0c72180ad4c19ea
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.openlocfilehash: 15495f4306d816df5e54bb8a35819718791f6820
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55902062"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58242373"
 ---
 # <a name="deploy-a-basic-workload-in-azure"></a>基本的なワークロードを Azure にデプロイする
 

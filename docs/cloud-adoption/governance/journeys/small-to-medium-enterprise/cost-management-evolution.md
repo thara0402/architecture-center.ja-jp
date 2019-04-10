@@ -1,18 +1,18 @@
 ---
-title: 'CAF: 中小企業 – コスト管理の進化  '
+title: 'CAF: 中小企業 – コスト管理の進化'
 titleSuffix: Microsoft Cloud Adoption Framework for Azure
 ms.service: architecture-center
 ms.subservice: enterprise-cloud-adoption
 ms.custom: governance
-ms.date: 2/11/2019
-description: 中小企業の拡大 – コスト管理の進化
+ms.date: 02/11/2019
+description: 中小企業 – コスト管理の進化
 author: BrianBlanchard
-ms.openlocfilehash: ca070bfca3efbf9548faa8cf28a1adffefd4a33a
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.openlocfilehash: cded37b69d538016501d39e7c09e7095a74a96be
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55901286"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58245183"
 ---
 # <a name="small-to-medium-enterprise-cost-management-evolution"></a>中小企業: コスト管理の進化
 

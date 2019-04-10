@@ -7,12 +7,12 @@ ms.custom: governance
 ms.date: 02/11/2019
 description: セキュリティ ベースラインのサンプル ポリシー ステートメント
 author: BrianBlanchard
-ms.openlocfilehash: ac40e022f8dff0c3021c04cd9d6ae42d28afaf1f
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.openlocfilehash: 00a1ac274b3ab095ac1b915852f6c950ed19eeed
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55901382"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58247293"
 ---
 # <a name="security-baseline-sample-policy-statements"></a>セキュリティ ベースラインのサンプル ポリシー ステートメント
 

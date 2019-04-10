@@ -8,12 +8,12 @@ ms.topic: best-practice
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.custom: seodec18
-ms.openlocfilehash: 9b6bef0fd803db5b488e93d246642d4e3681a94c
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.openlocfilehash: 7a484aa9e4fde8fd5056608ca5dd98aefbc077b7
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55897764"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58244233"
 ---
 # <a name="api-implementation"></a>API 実装
 
@@ -582,7 +582,7 @@ ServicePoint sp = ServicePointManager.FindServicePoint(uri);
 sp.Expect100Continue = false;
 ```
 
-`ServicePointManager` クラスの静的 `Expect100Continue` プロパティを設定して、今後作成されるすべての [ServicePoint]](/dotnet/api/system.net.servicepoint) オブジェクトのこのプロパティの既定値を指定することもできます。
+`ServicePointManager` クラスの静的 `Expect100Continue` プロパティを設定して、今後作成されるすべての [ServicePoint](/dotnet/api/system.net.servicepoint) オブジェクトのこのプロパティの既定値を指定することもできます。
 
 ### <a name="support-pagination-for-requests-that-may-return-large-numbers-of-objects"></a>多数のオブジェクトを返す可能性のある要求の改ページ調整をサポートする
 

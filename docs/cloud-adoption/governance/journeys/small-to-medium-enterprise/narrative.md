@@ -1,5 +1,5 @@
 ---
-title: CAF:中小企業 - ガバナンス戦略の背景にある初期の物語
+title: 'CAF: 中小企業 - ガバナンス戦略の背景にある物語'
 titleSuffix: Microsoft Cloud Adoption Framework for Azure
 ms.service: architecture-center
 ms.subservice: enterprise-cloud-adoption
@@ -7,12 +7,12 @@ ms.custom: governance
 ms.date: 02/11/2019
 description: この物語では、中小企業のガバナンス体験のユース ケースを組み立てます。
 author: BrianBlanchard
-ms.openlocfilehash: 6173b01f310169017761110d6641acfa51d45df8
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.openlocfilehash: 563e909ffc2a39b0b52bd26d3a88715fa969a9c2
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55902209"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58247403"
 ---
 # <a name="small-to-medium-enterprise-the-narrative-behind-the-governance-strategy"></a>中小企業:ガバナンス戦略の背景にある物語
 
@@ -50,7 +50,7 @@ ms.locfileid: "55902209"
 - CIO は、将来的な状態の目標を見越して PII と財務データに関するポリシーを見直しています。
 - アプリケーション開発チームと BI チームは、顧客エンゲージメントと新製品のビジョンに基づいて、今後 24 か月間でクラウドベースのソリューションを運用環境にリリースしたいと考えています。
 - 今年、IT チームは、2,000 個の VM をクラウドに移行することで、DR データセンターのディザスター リカバリー ワークロードを廃止する予定です。 これにより、今後 5 年間で推定 2,500 万米ドルのコスト削減が見込まれます。
-    ![今後 5 年間で 2,500 万米ドルのコスト削減を示すオンプレミスのコストと Azure のコストの比較](../../../_images/governance/calculator-small-to-medium-enterprise.png)
+    ![今後 5 年間で 2,500 万米国ドルのコスト削減を示すオンプレミスのコストと Azure のコストの比較](../../../_images/governance/calculator-small-to-medium-enterprise.png)
 - この会社は、割り当てられている CapEx を IT 部門内の運用経費 (OpEx) として再配分することで、IT 投資の方法を変えることを計画しています。 この変更により、コスト管理が強化され、IT 部門は他の計画されている作業を加速できます。
 
 ## <a name="next-steps"></a>次の手順

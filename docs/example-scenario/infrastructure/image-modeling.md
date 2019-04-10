@@ -3,18 +3,18 @@ title: Azure でのデジタル イメージベースのモデリングの高速
 titleSuffix: Azure Example Scenarios
 description: Avere と Agisoft PhotoScan を使用して Azure でデジタル イメージベースのモデリングを高速化する
 author: adamboeglin
-ms.date: 1/11/2019
+ms.date: 01/11/2019
 ms.topic: example-scenario
 ms.service: architecture-center
 ms.subservice: example-scenario
 ms.custom: cat-team, Linux, HPC
 social_image_url: /azure/architecture/example-scenario/infrastructure/media/architecture-image-modeling.png
-ms.openlocfilehash: 87b43347fb5f4baec0081a67c8b003dccd2fdf0d
-ms.sourcegitcommit: 14226018a058e199523106199be9c07f6a3f8592
+ms.openlocfilehash: 0acfebf0ecdd81becdc939bfd5c4d55184fbae83
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55483013"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58245763"
 ---
 # <a name="accelerate-digital-image-based-modeling-on-azure"></a>Azure でのデジタル イメージベースのモデリングの高速化
 

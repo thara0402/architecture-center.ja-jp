@@ -8,12 +8,12 @@ ms.topic: guide
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: seojan19
-ms.openlocfilehash: a887be4fc643822b97f898fa405f68e797a41484
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.openlocfilehash: 63754ce84f001226b6cddf1f30a152bcfce3e7ac
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54485674"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58245583"
 ---
 # <a name="overview-of-azure-compute-options"></a>Azure コンピューティング オプションの概要
 
@@ -38,7 +38,7 @@ Azure で現在使用できる主なコンピューティング オプション�
 - [Virtual Machines](/azure/virtual-machines/)。IaaS サービスです。仮想ネットワーク (VNet) 内で VM をデプロイおよび管理できます。
 - [App Service](/azure/app-service/app-service-value-prop-what-is)。Web アプリ、モバイル アプリ バックエンド、RESTful API、または自動化されたビジネス プロセスをホストするためのマネージド PaaS サービスです。
 - [Service Fabric](/azure/service-fabric/service-fabric-overview)。Azure、オンプレミスなど、多数の環境で実行できる分散システム プラットフォームです。 Service Fabric は、マシン クラスター全体のマイクロサービスのオーケストレーターです。
-- [Azure Container Service](/azure/container-service/container-service-intro)。コンテナー化されたアプリケーションを実行するように事前構成されている VM のクラスターを、作成、構成、および管理できます。
+- [Azure Kubernetes Service](/azure/aks/) は、コンテナー化されたアプリケーションを実行するために、ホストされた Kubernetes サービスを管理します。
 - [Azure Container Instances](/azure/container-instances/container-instances-overview) には、仮想マシンをプロビジョニングしたり、より高度なサービスを採用したりせずに、Azure で最も高速かつ簡単にコンテナーを実行する方法が用意されています。
 - [Azure Functions](/azure/azure-functions/functions-overview)。管理された FaaS サービスです。
 - [Azure Batch](/azure/batch/batch-technical-overview)。大規模な並列コンピューティングやハイ パフォーマンス コンピューティング (HPC) のアプリケーションを実行するための管理されたサービスです。

@@ -8,12 +8,12 @@ ms.topic: best-practice
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.custom: seodec18
-ms.openlocfilehash: fa4ed5fde2e52e87763c1b528661aea1b7f90bcf
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.openlocfilehash: 09aeba60414b6e7a535b26af72efde65efb18ad7
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54485011"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58241793"
 ---
 # <a name="monitoring-and-diagnostics"></a>監視と診断
 

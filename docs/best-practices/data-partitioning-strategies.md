@@ -8,12 +8,12 @@ ms.topic: best-practice
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.custom: seodec18
-ms.openlocfilehash: 4f973a6173e882d6ae839833bd3c5bf86f8d7fb6
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.openlocfilehash: 43838592ef4176c28e11b90180727a63b1e1f8f6
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55898138"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58241823"
 ---
 # <a name="data-partitioning-strategies"></a>データのパーティション分割戦略
 

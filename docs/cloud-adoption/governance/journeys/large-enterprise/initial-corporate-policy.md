@@ -1,18 +1,18 @@
 ---
-title: CAF:大企業 - ガバナンス戦略の背景にある初期の企業ポリシー
+title: 'CAF: 大企業 - ガバナンス戦略の背景にある初期の企業ポリシー'
 titleSuffix: Microsoft Cloud Adoption Framework for Azure
 ms.service: architecture-center
 ms.subservice: enterprise-cloud-adoption
 ms.custom: governance
-ms.date: 2/11/2019
+ms.date: 02/11/2019
 description: 大企業 - ガバナンス戦略の背景にある初期の企業ポリシー。
 author: BrianBlanchard
-ms.openlocfilehash: d3bc31f95229a82cbc2f6ac6e684a87107783c07
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.openlocfilehash: 51b709b3ae6d704a229a08611a3cbc0da974c6c2
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55902009"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58241160"
 ---
 # <a name="large-enterprise-initial-corporate-policy-behind-the-governance-strategy"></a>大企業:ガバナンス戦略の背景にある初期の企業ポリシー
 
@@ -23,7 +23,7 @@ ms.locfileid: "55902009"
 
 ## <a name="cloud-governance-team"></a>クラウド ガバナンス チーム
 
-CIO は最近、個人情報ポリシーとミッションクリティカル ポリシーの歴史を理解し、それらのポリシーを変更した場合の影響をレビューするために、IT ガバナンス チームとの会議を開きました。 IT と企業にとってのクラウドの可能性全般についても議論しました。
+CIO は最近、PII とミッションクリティカル ポリシーの歴史を理解し、それらのポリシーを変更した場合の影響をレビューするために、IT ガバナンス チームとの会議を開きました。 IT と企業にとってのクラウドの可能性全般についても議論しました。
 
 会議後、IT ガバナンス チームの 2 人のメンバーが、クラウド計画の取り組みを調査およびサポートするための許可を求めました。 ガバナンスの必要性とシャドウ IT を制限する機会を認識していた IT ガバナンス責任者はこのアイデアを支持しました。 このような経緯で、クラウド ガバナンス チームが誕生しました。 このチームはこれから数か月間、クラウドの検証過程で経験する多くの失敗について、ガバナンスの観点からクリーンアップを継承していきます。 これにより "クラウド管理人" の呼び名を得ることになります。 今後の進化の中で、この体験におけるチームの役割は刻々と変わっていきます。
 

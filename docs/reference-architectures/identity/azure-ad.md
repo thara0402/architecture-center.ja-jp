@@ -8,12 +8,12 @@ ms.topic: reference-architecture
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: seodec18, identity
-ms.openlocfilehash: 3dc70c7eaea18f010d67befa5969d1be0423239c
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.openlocfilehash: 81053a4eda5e30ca614b2c18b92ddf411a05eac9
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54484399"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58244353"
 ---
 # <a name="integrate-on-premises-active-directory-domains-with-azure-active-directory"></a>オンプレミスの Active Directory ドメインと Azure Active Directory を統合する
 

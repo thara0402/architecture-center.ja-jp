@@ -1,16 +1,20 @@
 ---
-title: CAF:ガバナンス顧客体験の概要
-description: ガバナンス顧客体験の概要の説明
+title: 'CAF: アクションにつながるガバナンス体験'
+titleSuffix: Microsoft Cloud Adoption Framework for Azure
+ms.service: architecture-center
+ms.subservice: enterprise-cloud-adoption
+ms.custom: governance
+ms.date: 02/11/2019
+description: アクションにつながるガバナンス体験
 author: BrianBlanchard
-ms.date: 2/11/2019
 layout: LandingPage
 ms.topic: landing-page
-ms.openlocfilehash: c8afd87513d1239b09b703473078788fb6823d77
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.openlocfilehash: 0e3b1b6211ebb4faaa1aac3c13887a4a35ed3c63
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55901479"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58242513"
 ---
 # <a name="actionable-governance-journeys"></a>アクションにつながるガバナンス体験
 
@@ -116,7 +120,7 @@ CAF ガバナンス モデルでは、体験の過程での重要な主要領域
 | 地理的な場所 (国または地理的地域) | 顧客やスタッフは主に 1 つの地理的な場所に存在する                                                      | 顧客やスタッフは複数の地理的な場所に存在する                                                              |
 | 影響を受ける部署                    | 1 つの部署                                                                                    | 複数の部署                                                                                        |
 | IT 予算                                  | 1 つの IT 予算                                                                                        | 複数の部署に割り当てられた予算                                                                         |
-| IT 投資                             | 資本コスト (CapEx) 主導型の投資が毎年計画され、通常は、基本的なメンテナンスのみがカバーされる。 | CapEx 主導型の投資が毎年計画され、多くの場合、メンテナンスと 3 ～ 5 年ごとの更新サイクルが含まれる。 |
+| IT 投資                             | 資本コスト (CapEx) 主導型の投資が毎年計画され、通常は、基本的なメンテナンスのみがカバーされる。 | CapEx 主導型の投資が毎年計画され、多くの場合、メンテナンスおよび 3 年から 5 年ごとの更新サイクルが含まれる。 |
 
 ### <a name="current-state-before-adopting-cloud-governance"></a>クラウド ガバナンス採用前に現在の状態
 

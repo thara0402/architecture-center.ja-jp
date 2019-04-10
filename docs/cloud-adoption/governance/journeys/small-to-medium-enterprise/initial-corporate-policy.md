@@ -1,20 +1,20 @@
 ---
-title: CAF:中小企業 - ガバナンス戦略の背景にある初期の企業ポリシー
+title: 'CAF: 中小企業 - ガバナンス戦略の背景にある初期の企業ポリシー'
 titleSuffix: Microsoft Cloud Adoption Framework for Azure
 ms.service: architecture-center
 ms.subservice: enterprise-cloud-adoption
 ms.custom: governance
-ms.date: 2/11/2019
+ms.date: 02/11/2019
 description: 中小企業 - ガバナンス戦略の背景にある初期の企業ポリシー
 author: BrianBlanchard
-ms.openlocfilehash: 4f49d0aae2c6ab5a5c8feba669cbbb904af2773b
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.openlocfilehash: 35c9398684416b5f4df1d5ea69ac3634b2f73ff3
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55901361"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58241603"
 ---
-# <a name="small-to-medium-enterprise-initial-corporate-policy-behind-the-governance-strategy"></a>中小企業:ガバナンス戦略の背景にある初期の企業ポリシー
+# <a name="small-to-medium-enterprise-initial-corporate-policy-behind-the-governance-strategy"></a>中小企業: ガバナンス戦略の背景にある初期の企業ポリシー
 
 次の企業ポリシーでは、この体験の出発点である初期のガバナンス ポジションが定義されています。 この記事では、初期段階のリスク、初期ポリシー ステートメント、ポリシー ステートメントを適用するための初期プロセスを定義します。
 

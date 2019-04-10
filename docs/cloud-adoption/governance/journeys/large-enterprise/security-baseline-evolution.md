@@ -1,5 +1,5 @@
 ---
-title: 'CAF:大企業 – セキュリティ ベースラインの進化 '
+title: 'CAF: 大企業 – セキュリティ ベースラインの進化 '
 titleSuffix: Microsoft Cloud Adoption Framework for Azure
 ms.service: architecture-center
 ms.subservice: enterprise-cloud-adoption
@@ -7,12 +7,12 @@ ms.custom: governance
 ms.date: 02/11/2019
 description: 大企業 – セキュリティ ベースラインの進化
 author: BrianBlanchard
-ms.openlocfilehash: 59fb3655f1ff2a5f0a30abc760c27c77b8f802af
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.openlocfilehash: e9e8b7dc1eaeb3a8555326a51b2548ad668e0171
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55902086"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58241613"
 ---
 # <a name="large-enterprise-security-baseline-evolution"></a>大企業:セキュリティ ベースラインの進化
 
@@ -28,9 +28,9 @@ CIO は同僚や会社の法務スタッフとの共同作業に数か月を費�
 
 クラウド ガバナンス チームは、物語と共に進化し続けます。 チームの創設メンバーの 2 人は今や、社内で最も尊敬されているクラウド アーキテクトです。 新しいチームが革新的な新しいデプロイに取り組むうちに、構成スクリプトのコレクションは厚みを増しました。 クラウド ガバナンス チームの規模も拡大しました。 ごく最近、IT 運用チームのメンバーが、クラウド運用の準備をするためにクラウド ガバナンス チームの活動に参加しました。 このコミュニティの発展に助力したクラウド アーキテクトは、クラウドの保護者 (guardian) であり推進者 (accelerator) でもあるとみなされます。
 
-両者の違いは微妙ですが、ガバナンス重視の IT カルチャを構築する際に重要な区別です。 クラウド管理人 (custodian) は革新的なクラウド アーキテクトがもたらした混乱を解決します。2 つの役割には当然ながら摩擦があり、目標は相反します。 クラウド管理人がクラウドを安全に保ってくれるおかげで、クラウド アーキテクトはより迅速に、混乱を少なくしながら前進することができます。 クラウド推進者は両方の役割を担いますが、デプロイと導入を早めるためのテンプレートの作成にも関与し、クラウドの 5 つの規範の擁護者 (defender) であるのと同時にイノベーションの推進者でもあります。
+両者の違いは微妙ですが、ガバナンス重視の IT カルチャを構築する際に重要な区別です。 クラウド管理人 (custodian) は革新的なクラウド アーキテクトがもたらした混乱を解決します。2 つの役割には当然ながら摩擦があり、目標は相反します。 クラウド管理人がクラウドを安全に保ってくれるおかげで、クラウド アーキテクトはより迅速に、混乱を少なくしながら前進することができます。 クラウド推進者は両方の役割を担いますが、デプロイと導入を早めるためのテンプレートの作成にも関与し、クラウド ガバナンスの 5 つの規範の擁護者 (defender) であるのと同時にイノベーションの推進者でもあります。
 
-### <a name="evolution-of-the-current-state"></a>現在の状態の展開
+### <a name="evolution-of-the-current-state"></a>現在の状態の進化
 
 この物語の前のフェーズで、会社は 2 つのデータセンターを廃止するプロセスを開始しました。 この継続的な取り組みには、従来の認証要件がある一部アプリケーションの移行が含まれていることから、[以前の記事](identity-baseline-evolution.md)で説明した ID ベースラインの進化が必要とされていました。
 

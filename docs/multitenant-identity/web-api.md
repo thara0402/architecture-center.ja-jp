@@ -9,12 +9,12 @@ ms.subservice: reference-architecture
 pnp.series.title: Manage Identity in Multitenant Applications
 pnp.series.prev: authorize
 pnp.series.next: token-cache
-ms.openlocfilehash: a895276a77c111e660f29397d250373bee53f29e
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.openlocfilehash: 7d99aca8865ccb29c54c3819dc82de503de7e4fc
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54480778"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58241533"
 ---
 # <a name="secure-a-backend-web-api"></a>バックエンド Web API をセキュリティで保護する
 
@@ -47,7 +47,7 @@ Web API は匿名要求を許可しないため、Web アプリは OAuth 2 ベ�
 使用できる主なアプローチは 2 つです。
 
 * デリゲートされたユーザー ID。 Web アプリケーションは、ユーザーの ID を使用して認証します。
-* アプリケーション ID。 Web アプリケーションは、OAuth2 クライアント資格情報フローで、自身のクライアント ID を使用して認証します。
+* アプリケーション ID。 Web アプリケーションは、OAuth 2 クライアント資格情報フローで、自身のクライアント ID を使用して認証します。
 
 Tailspin アプリケーションは、デリゲートされたユーザー ID を実装しています。 主な違いは次のとおりです。
 
@@ -116,7 +116,7 @@ public override async Task AuthorizationCodeReceived(AuthorizationCodeReceivedCo
 * `authorizationCode` IDP から取得し直した認証コード。
 * `clientId` Web アプリケーションのクライアント ID。
 * `clientSecret` Web アプリケーションのクライアント シークレット。
-* `redirectUri` OpenID 接続用に設定したリダイレクト URI。 ここに、IDP がトークンでコールバックします。
+* `redirectUri` OpenID Connect 用に設定したリダイレクト URI。 ここに、IDP がトークンでコールバックします。
 * `resourceID` Azure AD で Web API を登録するときに作成した URI です。
 * `tokenCache` アクセス トークンをキャッシュするオブジェクト。 [トークンのキャッシュ]に関する記事をご覧ください。
 

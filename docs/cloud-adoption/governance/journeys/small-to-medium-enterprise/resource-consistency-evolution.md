@@ -1,18 +1,18 @@
 ---
-title: 'CAF: 中小企業 – リソース整合性の進化 '
+title: 'CAF: 中小企業 – リソース整合性の進化'
 titleSuffix: Microsoft Cloud Adoption Framework for Azure
 ms.service: architecture-center
 ms.subservice: enterprise-cloud-adoption
 ms.custom: governance
 ms.date: 02/11/2019
-description: 説明 中小企業 – リソース整合性の進化
+description: 中小企業 – リソース整合性の進化
 author: BrianBlanchard
-ms.openlocfilehash: 402bb3ff4182123cdc8825522f965f7cf8637980
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.openlocfilehash: caacd62da9da526ec01ab935896598065f64d9d1
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55901734"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58246503"
 ---
 # <a name="small-to-medium-enterprise-resource-consistency-evolution"></a>中小企業: リソース整合性の進化
 
@@ -79,7 +79,7 @@ Azure のデプロイを本番の業務プロセスで使用するには、ク�
 
 ## <a name="evolution-of-the-best-practices"></a>ベスト プラクティスの進化
 
-記事のこのセクションでは、ガバナンス MVP 設計をさらに進化させて、新しい Azure ポリシーと、Azure Cost Management の実装を追加します。 この 2 つの設計変更が一体となって、会社の新しいポリシー ステートメントの内容を実現します。
+記事のこのセクションでは、ガバナンス MVP の設計を進化させて、新しい Azure ポリシーと Azure Cost Management の実装を含めます。 この 2 つの設計変更が一体となって、会社の新しいポリシー ステートメントの内容を実現します。
 
 1. クラウド運用チームは、運用監視と自動修復に使用するツールを定義します。 クラウド ガバナンス チームは、これらの検出プロセスをサポートします。 このユース ケースでは、クラウド運用チームは Azure Monitor をミッション クリティカルなアプリケーションの監視の主要ツールとして選択します。
 2. Azure DevOps でリポジトリを作成し、関連するすべての Resource Manager テンプレートとスクリプト化された構成をここに保存してバージョン管理を行います。
