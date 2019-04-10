@@ -1,14 +1,18 @@
 ---
+title: Azure 向けの Microsoft Cloud 導入フレームワーク
+ms.service: architecture-center
+ms.subservice: enterprise-cloud-adoption
+ms.custom: governance
+ms.date: 02/11/2019
 layout: LandingPage
 ms.topic: landing-page
 author: BrianBlanchard
-ms.date: 2/11/2019
-ms.openlocfilehash: b67b58348d6a7dffdb63b0cc776a9eea02c2fb36
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.openlocfilehash: f4e97d98297f6c7f56c5f48eae39f37b84b95783
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55897458"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58247243"
 ---
 # <a name="microsoft-cloud-adoption-framework-for-azure"></a>Azure 向けの Microsoft Cloud 導入フレームワーク
 

@@ -9,12 +9,12 @@ description: CAF 内のガバナンス コンテンツの概要
 author: BrianBlanchard
 layout: LandingPage
 ms.topic: landing-page
-ms.openlocfilehash: 1721e2ff7b4e7879637a7c09a40a5571b73c9ace
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.openlocfilehash: 80bdfc6f55b76fc3ae57d8fc25ce68c385eaa009
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55901910"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58241683"
 ---
 # <a name="the-five-disciplines-of-cloud-governance"></a>クラウド ガバナンスの 5 つの規範
 
@@ -40,7 +40,7 @@ ms.locfileid: "55901910"
                     <div class="cardText" style="padding-left:0px;">
 <img src="../_images/operational-transformation-govern-highres.png" alt="Diagram of the CAF governance model: Corporate policy and governance disciplines">
 <br>
-<i>図 1: 企業ポリシーと 5 つのクラウド ガバナンス規範のイメージ</i>
+<i>図 1: 企業ポリシーとクラウド ガバナンスの 5 つの規範のダイアグラム</i>
                     </div>
                 </div>
             </div>
@@ -53,7 +53,7 @@ ms.locfileid: "55901910"
 
 ## <a name="disciplines-of-cloud-governance"></a>クラウド ガバナンスの規範
 
-個々のクラウド プロバイダーの枠を超えた共通のクラウド ガバナンス規範が存在し、これは、ポリシーを周知したりツールチェーンを調整したりするためのガイドとして機能します。 これらの規範は、クラウド プロバイダーの枠を超えて適切なレベルで企業ポリシーを自動化および実施することに関する意思決定の指針です。
+個々のクラウド プロバイダーの枠を超えた共通のガバナンス規範が存在し、これは、ポリシーを周知したりツールチェーンを調整したりするためのガイドとして機能します。 これらの規範は、クラウド プロバイダーの枠を超えて適切なレベルで企業ポリシーを自動化および実施することに関する意思決定の指針です。
 
 <!-- markdownlint-disable MD033 -->
 
