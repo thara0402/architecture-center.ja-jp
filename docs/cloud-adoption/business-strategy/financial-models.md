@@ -8,12 +8,12 @@ description: クラウド変革のための財務モデルを作成する方法�
 author: BrianBlanchard
 ms.date: 12/10/2018
 ms.topic: guide
-ms.openlocfilehash: e74a4782db5733271a575ce47cd79829f9114508
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.openlocfilehash: 1f3ed8a84b84ba577ad5e5db8b1becd318dc04a3
+ms.sourcegitcommit: 0a8a60d782facc294f7f78ec0e9033e3ee16bf4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58247983"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59068873"
 ---
 # <a name="create-a-financial-model-for-cloud-transformation"></a>クラウド変革のための財務モデルを作成する
 
@@ -26,7 +26,7 @@ ms.locfileid: "58247983"
 ![投資収益率 (ROI) = (投資利益 – 投資のコスト) / 投資のコスト](../_images/formula-roi.png)
 
 <!-- markdownlint-disable MD036 -->
-*ROI = (投資利益 &minus; 初期投資) / 初期投資*
+<!--*ROI = (Gain from Investment &minus; Initial Investment) / Initial Investment*-->
 <!-- markdownlint-enable MD036 -->
 
 次のセクションでは、初期投資と投資利益 (収益) を計算するために必要なデータについて説明します。
@@ -46,7 +46,7 @@ ms.locfileid: "58247983"
 ![投資利益 = 収益差分 + コスト差分](../_images/formula-gain-from-investment.png)
 
 <!-- markdownlint-disable MD036 -->
-*投資利益 = 収益差分 + コスト差分*
+<!--*Gain from Investment = Revenue Deltas + Cost Deltas*-->
 <!-- markdownlint-enable MD036 -->
 
 次にそれぞれについて説明します。

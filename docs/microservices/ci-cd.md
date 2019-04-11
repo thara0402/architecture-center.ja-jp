@@ -7,12 +7,12 @@ ms.topic: guide
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: microservices
-ms.openlocfilehash: 219c50fb002a97874310b76de6f3bdbc34eaac6d
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.openlocfilehash: 1a927beb23a2e45b509b2648a6bccce4c2ad242d
+ms.sourcegitcommit: 0a8a60d782facc294f7f78ec0e9033e3ee16bf4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58242363"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59068975"
 ---
 # <a name="designing-microservices-continuous-integration"></a>マイクロサービスの設計:継続的インテグレーション
 
@@ -123,4 +123,4 @@ Kubernetes では、ブルーグリーン デプロイを実行するために�
 
 マイクロサービスは、この変化する状況に対する 1 つの答えです。 モノリシック アプリケーションを緩やかに結合されたサービスのグループに分解することで、各サービスのリリース サイクルを制御でき、ダウンタイムや重大な変更なしで更新を頻繁に実行できます。 マイクロサービスは、スケーラビリティ、障害の分離、および回復性にも役立ちます。 同時に、クラウド プラットフォームは、自動化されたコンピューティング リソースのプロビジョニング、サービスとしてのコンテナー オーケストレーター、およびイベント ドリブン サーバーレス環境によって、マイクロサービスを簡単にビルドして実行できるようにしています。
 
-ただし、ここで説明したように、マイクロサービス アーキテクチャには、多くの課題もあります。 成功するには、堅実な設計から始める必要があります。 ドメインの分析、テクノロジの選択、データのモデリング、API の設計、および成熟した DevOps カルチャの構築について、慎重に考慮する必要があります。 このガイドと添付の[リファレンス実装](https://github.com/mspnp/microservices-reference-implementation)が、道標として役に立てば幸いです。
+ただし、ここで説明したように、マイクロサービス アーキテクチャには、多くの課題もあります。 成功するには、堅実な設計から始める必要があります。 ドメインの分析、テクノロジの選択、データのモデリング、API の設計、および成熟した DevOps カルチャの構築について、慎重に考慮する必要があります。 このガイドと添付の[リファレンス実装](https://github.com/mspnp/microservices-reference-implementation/tree/v0.1.0-orig)が、道標として役に立てば幸いです。
