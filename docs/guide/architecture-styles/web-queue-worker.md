@@ -3,17 +3,17 @@ title: Web キュー ワーカーのアーキテクチャ スタイル
 titleSuffix: Azure Application Architecture Guide
 description: Azure の Web キュー ワーカーのアーキテクチャのメリット、課題、ベスト プラクティスについて説明します。
 author: MikeWasson
-ms.date: 08/30/2018
+ms.date: 04/10/2019
 ms.topic: guide
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: seojan19
-ms.openlocfilehash: b471d270af09df7ffd58dfdd49e7d03d05bfe582
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.openlocfilehash: 974b8b8595d6d9333552c41dfe1f3f2af848d264
+ms.sourcegitcommit: bb75a25bd589a761c79e39f2ccdec4acc7d71d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58244593"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59480084"
 ---
 # <a name="web-queue-worker-architecture-style"></a>Web キュー ワーカーのアーキテクチャ スタイル
 
@@ -71,15 +71,15 @@ Web キュー ワーカーのアーキテクチャは、通常、マネージド
 
 ![Web キュー ワーカーのアーキテクチャ スタイルの物理図](./images/web-queue-worker-physical.png)
 
-フロント エンドは、Azure App Service Web アプリとして実装され、ワーカーは、WebJob として実装されます。 Web アプリと WebJob の両方が VM インスタンスを提供する App Service プランに関連付けられています。
+- フロント エンドは、Azure Functions アプリとして実装され、ワーカーは、WebJob として実装されます。 Web アプリと関数アプリの両方が VM インスタンスを提供する App Service プランに関連付けられています。
 
-メッセージ キューには、Azure Service Bus または Azure Storage キューのいずれかを使用できます。 (図は、Azure Storage キューを示しています)。
+- メッセージ キューには、Azure Service Bus または Azure Storage キューのいずれかを使用できます。 (図は、Azure Storage キューを示しています)。
 
-Azure Redis Cache は、セッション状態と短い待ち時間でアクセスが必要なその他のデータを格納します。
+- Azure Redis Cache は、セッション状態と短い待ち時間でアクセスが必要なその他のデータを格納します。
 
-Azure CDN を使用して、画像、CSS、HTML などの静的なコンテンツをキャッシュします。
+- Azure CDN を使用して、画像、CSS、HTML などの静的なコンテンツをキャッシュします。
 
-ストレージは、アプリケーションのニーズに最適なストレージ テクノロジを選択します。 複数のストレージ テクノロジ (多言語持続性) を使用することもできます。 この概念を示すために、この図には、Azure SQL Database と Azure Cosmos DB を示しています。
+- ストレージは、アプリケーションのニーズに最適なストレージ テクノロジを選択します。 複数のストレージ テクノロジ (多言語持続性) を使用することもできます。 この概念を示すために、この図には、Azure SQL Database と Azure Cosmos DB を示しています。
 
 詳細については、[App Service Web アプリケーションの参照アーキテクチャ][scalable-web-app]を参照してください。
 
@@ -89,7 +89,7 @@ Azure CDN を使用して、画像、CSS、HTML などの静的なコンテン�
 
 - App Service の組み込み自動スケール機能を使用して、VM インスタンスの数をスケール アウト。 アプリケーションで負荷が、予測可能なパターン通りの場合は、スケジュールに基づく自動スケールを使用します。 負荷が予測可能でない場合は、メトリックに基づいた自動スケール ルールを使用します。
 
-- Web アプリと WebJob を個別の App Service プランに配置することを検討してください。 それにより、別の VM インスタンスでホストされるため、個別に拡張できます。
+- Web アプリと関数アプリを個別の App Service プランに配置することを検討してください。 これにより、個別にスケールできます。
 
 - 運用環境とテスト環境では、異なる App Service プランを使用してください。 運用環境とテスト環境で同じプランを使用すると、テストが、運用環境の VM で実行されます。
 

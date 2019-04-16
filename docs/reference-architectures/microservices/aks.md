@@ -7,18 +7,20 @@ ms.topic: reference-architecture
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: microservices
-ms.openlocfilehash: c8ce4c77666ab7b9c55e6f144d514fadc6b6ad73
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.openlocfilehash: 535c53faa810f74299e715a204e427c8919ce360
+ms.sourcegitcommit: 0a8a60d782facc294f7f78ec0e9033e3ee16bf4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58246083"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59069026"
 ---
 # <a name="microservices-architecture-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 上のマイクロサービス アーキテクチャ
 
-この参照アーキテクチャは、Azure Kubernetes Service (AKS) にデプロイされたマイクロサービス アプリケーションを示します。 ここには、ほとんどのデプロイの出発点にすることができる基本的な AKS 構成が示されています。 より詳細なオプション (詳細なネットワーク オプションを含む) は、別の参照アーキテクチャで説明されます。
+この参照アーキテクチャは、Azure Kubernetes Service (AKS) にデプロイされたマイクロサービス アプリケーションを示します。 ここには、ほとんどのデプロイの出発点にすることができる基本的な AKS 構成が示されています。 この記事では、Kubernetes の基本的な知識を前提にしています。 この記事は主に、AKS 上でマイクロサービス アーキテクチャを実行するためのインフラストラクチャと DevOps に関する考慮事項に重点を置いています。 マイクロサービスを設計する方法については、「[Azure でのマイクロサービスの構築](../../microservices/index.md)」を参照してください。
 
-この記事では、Kubernetes の基本的な知識を前提にしています。 この記事は主に、AKS 上でマイクロサービス アーキテクチャを実行するためのインフラストラクチャと DevOps に関する考慮事項に重点を置いています。 ドメインベースの設計 (DDD) の観点からマイクロサービスを設計する方法に関するガイダンスについては、「[Azure でのマイクロサービスの設計、構築、および操作](/azure/architecture/microservices)」を参照してください。
+![GitHub ロゴ](../../_images/github.png) このアーキテクチャのリファレンス実装は、[GitHub](https://github.com/mspnp/microservices-reference-implementation) で入手できます。
+
+
 
 ![AKS の参照アーキテクチャ](./_images/aks.png)
 

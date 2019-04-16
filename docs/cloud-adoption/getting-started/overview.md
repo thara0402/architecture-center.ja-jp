@@ -4,14 +4,14 @@ titleSuffix: Microsoft Cloud Adoption Framework for Azure
 ms.service: architecture-center
 ms.subservice: enterprise-cloud-adoption
 ms.custom: governance
-description: Azure クラウド テクノロジーの導入における企業のデジタル変革の第 1 段階の概要を説明します。
+description: Azure クラウド テクノロジの導入における企業のデジタル変革の第 1 段階の概要を説明します。
 ms.date: 02/11/2019
-ms.openlocfilehash: 7af68cd04be1bb3c9a6acdccbdf1a09e3cad55be
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.openlocfilehash: 29b02964b5f1cd09857a51c17cf94d6c64e05e88
+ms.sourcegitcommit: 0a8a60d782facc294f7f78ec0e9033e3ee16bf4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58241703"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59068958"
 ---
 # <a name="getting-started-with-the-cloud-adoption-framework"></a>クラウド導入フレームワークの概要
 

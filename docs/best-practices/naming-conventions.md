@@ -8,12 +8,12 @@ ms.topic: best-practice
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.custom: seodec18
-ms.openlocfilehash: 87869d1b38d2b4a71cd5b604436e04deab993131
-ms.sourcegitcommit: 548374a0133f3caed3934fda6a380c76e6eaecea
+ms.openlocfilehash: ed1811495e81965fa514ab66dcfa49d00d2a59f2
+ms.sourcegitcommit: bb75a25bd589a761c79e39f2ccdec4acc7d71d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58420024"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59480101"
 ---
 # <a name="naming-conventions-for-azure-resources"></a>Azure リソースの名前付け規則
 
@@ -85,6 +85,7 @@ Azure のリソースまたはサービスの種類ごとに、名前付けに�
 |可用性セット |リソース グループ |1 ～ 80 |大文字と小文字は区別されない |英数字、アンダースコア、ハイフン |`<service-short-name>-<context>-as` |`profx-sql-as` |
 |タグ |関連付けられたエンティティ |512 (名前)、256 (値) |大文字と小文字は区別されない |英数字と特殊文字 (ただし、`<`、`>`、`%`、`&`、`\`、`?`、`/` を除く)。 制限事項については、[こちら](/azure/azure-resource-manager/resource-group-using-tags)を参照してください。 |`"key" : "value"` |`"department" : "Central IT"` |
 |Web アプリ |グローバル |1 ～ 60 |大文字と小文字は区別されない |英数字とハイフン |`<app_name>-<source-slot-name>` |`contoso-staging` |
+|API Management |グローバル |1-50 |大文字と小文字は区別されない |英数字とハイフン |`<apim-service-name>` |`contoso` |
 
 ### <a name="compute"></a>Compute
 

@@ -8,12 +8,12 @@ ms.topic: guide
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: seojan19
-ms.openlocfilehash: f7c19501b9f28db3892285b5f35a33f02edd87ab
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.openlocfilehash: 3fd3badd66edbe561bea88576bb80d9fc3e0bb79
+ms.sourcegitcommit: 0a8a60d782facc294f7f78ec0e9033e3ee16bf4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58242333"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59068924"
 ---
 # <a name="criteria-for-choosing-a-data-store"></a>データ ストアの選択条件
 
@@ -103,7 +103,7 @@ Azure では、多数のデータ ストレージ ソリューションをサポ
         </ul>
     </td>
 </tr>
-<tr><td><strong>データの種類</strong></td>
+<tr><td><strong>データ型</strong></td>
     <td>
         <ul>
             <li>データは高度に正規化される。</li>
@@ -146,7 +146,7 @@ Azure では、多数のデータ ストレージ ソリューションをサポ
             <li>個々のドキュメントが取得され、単一のブロックとして書き込まれる。</li>
     </td>
 </tr>
-<tr><td><strong>データの種類</strong></td>
+<tr><td><strong>データ型</strong></td>
     <td>
         <ul>
             <li>非正規化された方法で、データを管理できる。</li>
@@ -189,7 +189,7 @@ Azure では、多数のデータ ストレージ ソリューションをサポ
         </ul>
     </td>
 </tr>
-<tr><td><strong>データの種類</strong></td>
+<tr><td><strong>データ型</strong></td>
     <td>
         <ul>
             <li>データ サイズが大きくなる傾向がある。</li>
@@ -224,7 +224,7 @@ Azure では、多数のデータ ストレージ ソリューションをサポ
         </ul>
     </td>
 </tr>
-<tr><td><strong>データの種類</strong></td>
+<tr><td><strong>データ型</strong></td>
     <td>
         <ul>
             <li>データは、ノードとリレーションシップで構成される。</li>
@@ -261,7 +261,7 @@ Azure では、多数のデータ ストレージ ソリューションをサポ
         </ul>
     </td>
 </tr>
-<tr><td><strong>データの種類</strong></td>
+<tr><td><strong>データ型</strong></td>
     <td>
         <ul>
             <li>データは、キー列と 1 つまたは複数の列ファミリで構成されたテーブルに格納される。</li>
@@ -303,7 +303,7 @@ Azure では、多数のデータ ストレージ ソリューションをサポ
         </ul>
     </td>
 </tr>
-<tr><td><strong>データの種類</strong></td>
+<tr><td><strong>データ型</strong></td>
     <td>
         <ul>
             <li>半構造化または非構造化</li>
@@ -336,7 +336,7 @@ Azure では、多数のデータ ストレージ ソリューションをサポ
         </ul>
     </td>
 </tr>
-<tr><td><strong>データの種類</strong></td>
+<tr><td><strong>データ型</strong></td>
     <td>
         <ul>
             <li>複数のソースからの履歴データ。</li>
@@ -368,7 +368,7 @@ Azure では、多数のデータ ストレージ ソリューションをサポ
         </ul>
     </td>
 </tr>
-<tr><td><strong>データの種類</strong></td>
+<tr><td><strong>データ型</strong></td>
     <td>
         <ul>
             <li>主キーおよび並べ替えのメカニズムとして使用されるタイムスタンプ。</li>
@@ -400,7 +400,7 @@ Azure では、多数のデータ ストレージ ソリューションをサポ
         </ul>
     </td>
 </tr>
-<tr><td><strong>データの種類</strong></td>
+<tr><td><strong>データ型</strong></td>
     <td>
         <ul>
             <li>データ サイズが大きい。</li>
@@ -433,7 +433,7 @@ Azure では、多数のデータ ストレージ ソリューションをサポ
         </ul>
     </td>
 </tr>
-<tr><td><strong>データの種類</strong></td>
+<tr><td><strong>データ型</strong></td>
     <td>
         <ul>
             <li>フォルダーの階層セット内のファイル。</li>

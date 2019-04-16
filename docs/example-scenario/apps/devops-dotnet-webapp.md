@@ -9,12 +9,12 @@ ms.service: architecture-center
 ms.subservice: example-scenario
 ms.custom: fasttrack, seodec18
 social_image_url: /azure/architecture/example-scenario/apps/media/architecture-devops-dotnet-webapp.svg
-ms.openlocfilehash: 22a714a49c3e722fc11f2498e9a3abd1bec46d22
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.openlocfilehash: f999b2ffdf234161f668887d5b2327ecf50f0e55
+ms.sourcegitcommit: bb75a25bd589a761c79e39f2ccdec4acc7d71d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58245843"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59480135"
 ---
 # <a name="design-a-cicd-pipeline-using-azure-devops"></a>Azure DevOps を使用した CI/CD パイプラインの設計
 
@@ -93,11 +93,11 @@ Azure Web Apps でのホスティングに代わる方法として以下を検�
 
 ### <a name="walk-through"></a>チュートリアル
 
-[Azure DevOps](/azure/devops-project/azure-devops-project-github) プロジェクトでは、App Service プラン、App Service と App Insights のリソースが自動的にデプロイされ、Azure DevOps プロジェクトが自動的に構成されます。
+[Azure DevOps Projects](/azure/devops-project/azure-devops-project-github) では、App Service プラン、App Service と App Insights のリソースが自動的にデプロイされ、Azure Pipelines のパイプラインが自動的に構成されます。
 
-Azure DevOps プロジェクトの開発とビルドが完了したら、関連するコード変更、作業項目、およびテスト結果を確認します。 コードには実行するテストが含まれないため、テスト結果は表示されません。
+Azure DevOps Projects によるパイプラインの構成が完了したら、関連するコード変更、作業項目、およびテスト結果を確認します。 コードには実行するテストが含まれないため、テスト結果は表示されません。
 
-このプロジェクトでは、リリース パイプラインと継続的配置トリガーを作成して、アプリケーションを開発環境にデプロイします。 継続的配置プロセスの一環として、リリースが複数の環境にまたがっていることを確認できます。 リリースは両方のインフラストラクチャにまたがることができます (コードとしてのインフラストラクチャなどの手法を使用)。また、このリリースにより、必要なアプリケーション パッケージと、構成後のタスクもデプロイできます。
+このパイプラインでは、リリース定義と継続的配置トリガーを作成して、アプリケーションを開発環境にデプロイします。 継続的配置プロセスの一環として、リリースが複数の環境にまたがっていることを確認できます。 リリースは両方のインフラストラクチャにまたがることができます (コードとしてのインフラストラクチャなどの手法を使用)。また、このリリースにより、必要なアプリケーション パッケージと、構成後のタスクもデプロイできます。
 
 ## <a name="pricing"></a>価格
 
@@ -115,7 +115,7 @@ CI/CD および Azure DevOps の詳細については、次のリソースを参
 - [Microsoft での DevOps - Azure DevOps をどのように使用しているか][devops-microsoft]
 - [ステップバイステップのチュートリアル:Azure DevOps を使用した DevOps][devops-with-vsts]
 - [DevOps チェックリスト][devops-checklist]
-- [Azure DevOps プロジェクトを使用して .NET 用 CI/CD パイプラインを作成する][devops-project-create]
+- [Azure DevOps Projects を使用して .NET 用 CI/CD パイプラインを作成する][devops-project-create]
 
 <!-- links -->
 
