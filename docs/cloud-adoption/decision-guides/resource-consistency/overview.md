@@ -7,12 +7,12 @@ ms.custom: governance
 ms.date: 02/11/2019
 description: Azure の移行を計画する際のリソースの整合性について説明します。
 author: rotycenh
-ms.openlocfilehash: c2ff9a274692421e50775048586088134ff4c225
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.openlocfilehash: 3159e4b7aeddfdd99261c0f68591998d741f3359
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58241096"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59640050"
 ---
 # <a name="caf-resource-consistency-decision-guide"></a>CAF:リソースの整合性の意思決定ガイド
 
@@ -25,7 +25,6 @@ Azure の[サブスクリプション設計](../subscriptions/overview.md)では
 クラウド資産のリソース整合性要件のレベルに関する意思決定を左右する主な要因: 移行後のデジタル資産のサイズ、既存のサブスクリプション設計方法にうまく適合しないビジネスまたは環境の要件、リソースがデプロイされた後に時間の経過と共にガバナンスを適用する必要性。 
 
 これらの要因の重要度が増すにつれて、クラウド ベースのリソースを一貫してデプロイ、グループ化、管理することの利点がより重要になります。 増加する要件を満たすために、より高度なレベルのリソース整合性を実現するには、自動化、ツールの使用、整合性の適用により多くの作業が必要になり、その結果、変更管理と進捗管理に費やす時間が増えます。
-
 
 ## <a name="basic-grouping"></a>基本的なグループ化
 

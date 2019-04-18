@@ -8,11 +8,11 @@ ms.topic: ''
 ms.service: ''
 ms.subservice: ''
 ms.openlocfilehash: 49ec63d0c45ab388ca83b3ab0562428327539619
-ms.sourcegitcommit: 1a3cc91530d56731029ea091db1f15d41ac056af
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58887903"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59740376"
 ---
 # <a name="troubleshoot-performance-bottlenecks-in-azure-databricks"></a>Azure Databricks でのパフォーマンスのボトルネックのトラブルシューティング
 

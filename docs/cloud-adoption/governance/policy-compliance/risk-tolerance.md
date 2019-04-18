@@ -4,10 +4,10 @@ description: クラウド変換に関連するビジネス リスクの説明
 author: BrianBlanchard
 ms.date: 10/10/2018
 ms.openlocfilehash: 774a6703b353a3c670b3764505185aecb794784f
-ms.sourcegitcommit: 0a8a60d782facc294f7f78ec0e9033e3ee16bf4a
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59068941"
 ---
 # <a name="evaluating-risk-tolerance"></a>リスク許容度の評価

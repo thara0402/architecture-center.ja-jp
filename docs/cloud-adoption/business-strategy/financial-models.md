@@ -9,10 +9,10 @@ author: BrianBlanchard
 ms.date: 12/10/2018
 ms.topic: guide
 ms.openlocfilehash: 1f3ed8a84b84ba577ad5e5db8b1becd318dc04a3
-ms.sourcegitcommit: 0a8a60d782facc294f7f78ec0e9033e3ee16bf4a
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59068873"
 ---
 # <a name="create-a-financial-model-for-cloud-transformation"></a>クラウド変革のための財務モデルを作成する

@@ -8,12 +8,12 @@ ms.service: architecture-center
 ms.subservice: reference-architecture
 pnp.series.title: Manage Identity in Multitenant Applications
 pnp.series.prev: client-assertion
-ms.openlocfilehash: 6aa8d33da0b2fd41fdc037bac28bca9f7ff09907
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.openlocfilehash: 170a88863fef4b97e137d7fb047a9168d6463e01
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58249417"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59639956"
 ---
 # <a name="use-azure-key-vault-to-protect-application-secrets"></a>Azure Key Vault を使用したアプリケーション シークレットの保護
 
@@ -103,6 +103,7 @@ Surveys アプリケーションが登録されている Azure AD テナント�
     ```powershell
     .\Setup-KeyVault.ps1 -Subject <<subject>>
     ```
+
     `Subject` パラメーターに任意の名前を入力します ("surveysapp" など)。 このスクリプトによって、自己署名証明書が生成され、"Current User/Personal" 証明書ストアに保存されます。 スクリプトの出力は、JSON フラグメントです。 この値をコピーします。
 
 2. [[Azure Portal]][azure-portal] で、ポータルの右上隅にあるアカウントを選択して、Survey アプリケーションが登録されているディレクトリに移動します。
@@ -174,6 +175,7 @@ Surveys アプリケーションが登録されている Azure AD テナント�
     ```powershell
     .\Setup-KeyVault.ps1 -KeyVaultName <<key vault name> -KeyName Redis--Configuration -KeyValue "<<Redis DNS name>>.redis.cache.windows.net,password=<<Redis access key>>,ssl=true"
     ```
+
     各値の説明:
 
    * key vault name = 前の手順で Key Vault に指定した名前。
@@ -214,6 +216,7 @@ Surveys アプリケーションが登録されている Azure AD テナント�
     //    config["AzureAd:ClientId"],
     //    config["AzureAd:ClientSecret"]);
     ```
+
 3. Tailspin.Surveys.Web/Startup.cs で、`ICredentialService` を登録するコードを探します。 `CertificateCredentialService` を使用する行のコメントを解除し、`ClientCredentialService` を使用する行をコメントにします。
 
     ```csharp

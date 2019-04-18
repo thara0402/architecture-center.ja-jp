@@ -8,12 +8,12 @@ ms.topic: reference-architecture
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: seodec18, serverless
-ms.openlocfilehash: 0307ff6045e4e4b55c9d4530d9888db9209ba631
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.openlocfilehash: edf569b82a0a632e6ca048fee12c1dc61c039cd9
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58246053"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59640806"
 ---
 # <a name="serverless-web-application-on-azure"></a>Azure 上のサーバーレス Web アプリケーション
 

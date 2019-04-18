@@ -7,12 +7,12 @@ ms.topic: reference-architecture
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: azcat
-ms.openlocfilehash: 5219d08fce5cf09b075b6d7adfb73970e007ded4
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.openlocfilehash: 34c21f4b5356dc0acbd5c2c85124300a6ed13c99
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58248677"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59640500"
 ---
 # <a name="web-application-monitoring-on-azure"></a>Azure での Web アプリケーションの監視
 
@@ -78,7 +78,7 @@ Azure Monitor、Application Insights、Log Analytics のすべてから[アラ�
 
 Application Insights は、1 秒あたりに処理できる要求の数について[制限][app-insights-limits]があります。 要求の制限を超えると、メッセージの調整が発生することがあります。 調整を回避するには、[フィルター処理][message-filtering]または[サンプリング][message-sampling]を実装してデータ レートを減らします
 
-ただし、実行しているアプリの高可用性については、開発者が考慮する必要があります。 たとえば、スケールの詳細については、基本的な Web アプリケーションの参照アーキテクチャの[スケーラビリティに関する考慮事項](#scalability-considerations)のセクションを参照してください。 アプリをデプロイしたら、Application Insights を使用して[可用性を監視する][monitor its availability]テストを設定できます。
+ただし、実行しているアプリの高可用性については、開発者が考慮する必要があります。 たとえば、スケールの詳細については、基本的な Web アプリケーションの参照アーキテクチャの[スケーラビリティに関する考慮事項](./basic-web-app.md#scalability-considerations)のセクションを参照してください。 アプリをデプロイしたら、Application Insights を使用して[可用性を監視する][monitor its availability]テストを設定できます。
 
 ### <a name="security"></a>セキュリティ
 

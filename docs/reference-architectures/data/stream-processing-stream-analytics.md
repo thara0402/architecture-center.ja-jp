@@ -8,12 +8,12 @@ ms.topic: reference-architecture
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: seodec18
-ms.openlocfilehash: af56a010e90fb176b13c1110ad4000dcababe009
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.openlocfilehash: e891c0fe490f57e0723b1ec133e33e70d2e23554
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58243873"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59640415"
 ---
 # <a name="create-a-stream-processing-pipeline-with-azure-stream-analytics"></a>Azure Stream Analytics を使用してストリーム処理パイプラインを作成する
 
@@ -47,7 +47,7 @@ ms.locfileid: "58243873"
 
 データ ソースをシミュレートするために、この参照アーキテクチャでは [New York City Taxi Data](https://uofi.app.box.com/v/NYCtaxidata/folder/2332218797) データセット<sup>[[1]](#note1)</sup> を使用します。 このデータセットには、ニューヨーク市の 4 年間 (2010 から 2013 年) のタクシー乗車に関するデータが含まれています。 乗車データと料金データの 2 種類のレコードがあります。 乗車データには、走行時間、乗車距離、乗車場所と降車場所が含まれます。 料金データには、料金、税、チップの金額が含まれます。 この 2 種類のレコードの共通フィールドには、営業許可番号、タクシー免許、ベンダー ID があります。 この 3 つのフィールドを組み合わせて、タクシーと運転手が一意に識別されます。 データは CSV 形式で保存されます。
 
-<span id="note1">[1]</span> Donovan, Brian; Work, Dan (2016):New York City Taxi Trip Data (2010-2013). イリノイ大学アーバナシャンペーン校。 https://doi.org/10.13012/J8PN93H8
+<span id="note1">[1]</span> Donovan, Brian; Work, Dan (2016):New York City Taxi Trip Data (2010-2013). イリノイ大学アーバナシャンペーン校。 [https://login.microsoftonline.com/tfp/00000000-0000-0000-0000-000000000000/b2c_1a_tp_sign-up-or-sign-in/v2.0/](https://doi.org/10.13012/J8PN93H8)
 
 <!-- markdownlint-enable MD033 -->
 
@@ -234,4 +234,3 @@ Cosmos DB のスループット容量は、[要求ユニット](/azure/cosmos-db
 <!-- links -->
 
 [github]: https://github.com/mspnp/azure-stream-analytics-data-pipeline
-

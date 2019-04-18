@@ -8,12 +8,12 @@ ms.topic: reference-architecture
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: seodec18, networking
-ms.openlocfilehash: 2595352075c708e015a0f0c536be31ceb5614fcd
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.openlocfilehash: 046ca8c9c67c2d8a77efc87c2106c79670bd153f
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58245683"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59640075"
 ---
 # <a name="implement-a-dmz-between-azure-and-the-internet"></a>Azure とインターネットの間の DMZ の実装
 
@@ -95,13 +95,13 @@ ms.locfileid: "58245683"
 
 1. 参照アーキテクチャ GitHub リポジトリの `/dmz/secure-vnet-dmz` フォルダーに移動します。
 
-2. 次のコマンドを実行します。
+1. 次のコマンドを実行します。
 
     ```bash
     azbb -s <subscription_id> -g <resource_group_name> -l <region> -p onprem.json --deploy
     ```
 
-4. 次のコマンドを実行します。
+1. 次のコマンドを実行します。
 
     ```bash
     azbb -s <subscription_id> -g <resource_group_name> -l <region> -p secure-vnet-dmz.json --deploy

@@ -8,12 +8,12 @@ ms.topic: guide
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: seojan19
-ms.openlocfilehash: 2b6b9b941bf7a3c0136b71ecb65bfe4b4a59e07b
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.openlocfilehash: c4ce7a5da196e0fcf8f85376439e53683432883e
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58245603"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59640466"
 ---
 # <a name="criteria-for-choosing-an-azure-compute-service"></a>Azure コンピューティング サービスを選択するための条件
 
@@ -31,7 +31,7 @@ ms.locfileid: "58245603"
 | 状態管理 | ステートレスまたはステートフル | ステートレス | ステートレスまたはステートフル | ステートレス | ステートレスまたはステートフル | ステートレス | ステートレス |
 | Web ホスティング | 非依存 | 組み込み | 非依存 | 適用不可 | 非依存 | 非依存 | いいえ  |
 | 専用 VNet にデプロイできるかどうか | サポートされています | サポートされています <a href="#note5"><sup>5</sup></a> | サポートされています | サポートされています <a href="#note5"><sup>5</sup></a> | [サポートされています](/azure/aks/networking-overview) | サポートされていません | サポートされています |
-| ハイブリッド接続 | サポートされています | サポートされています <a href="#note6"><sup>6</sup></a>  | サポートされています | サポートされています <a href="#node7"><sup>7</sup></a> | サポートされています | サポートされていません | サポートされています |
+| ハイブリッド接続 | サポートされています | サポートされています <a href="#note6"><sup>6</sup></a>  | サポートされています | サポートされています <a href="#note7"><sup>7</sup></a> | サポートされています | サポートされていません | サポートされています |
 
 メモ
 

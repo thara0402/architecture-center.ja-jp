@@ -9,12 +9,12 @@ ms.topic: design-pattern
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.custom: seodec18
-ms.openlocfilehash: 587caf680a884cda208baec50ff914f6c7238b48
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.openlocfilehash: 2b141a39b17f97ece011e93ca2f05cf5d2baeeea
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58243003"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59641095"
 ---
 # <a name="management-and-monitoring-patterns"></a>管理と監視のパターン
 

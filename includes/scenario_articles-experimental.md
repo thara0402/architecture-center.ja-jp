@@ -61,7 +61,6 @@
 </li>
 </ul>
 
-
 ## <a name="application-scenarios"></a>アプリケーションのシナリオ
 
 <ul  class="panelContent cardsG">
@@ -238,7 +237,6 @@
 </li>
 </ul>
 
-
 ## <a name="data-scenarios"></a>データ シナリオ
 
 <ul  class="panelContent cardsG">
@@ -357,7 +355,6 @@
     </a>
 </li>
 </ul>
-
 
 ## <a name="infrastructure-scenarios"></a>インフラストラクチャ シナリオ
 
@@ -515,4 +512,3 @@
     </a>
 </li>
 </ul>
-

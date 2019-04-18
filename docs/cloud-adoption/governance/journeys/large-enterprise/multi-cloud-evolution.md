@@ -7,12 +7,12 @@ ms.custom: governance
 ms.date: 02/11/2019
 description: 大企業 – マルチクラウドの進化
 author: BrianBlanchard
-ms.openlocfilehash: c72040912a99ad232e367ae750e9bb2caa77cbf2
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.openlocfilehash: 62a2fdd6e340c96494354f4f0cf2f78ab572c251
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58241089"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59641146"
 ---
 # <a name="large-enterprise-multi-cloud-evolution"></a>大企業:マルチクラウドの進化
 

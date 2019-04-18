@@ -7,10 +7,10 @@ ms.custom: governance
 description: Azure クラウド テクノロジの導入における企業のデジタル変革の第 1 段階の概要を説明します。
 ms.date: 02/11/2019
 ms.openlocfilehash: 29b02964b5f1cd09857a51c17cf94d6c64e05e88
-ms.sourcegitcommit: 0a8a60d782facc294f7f78ec0e9033e3ee16bf4a
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59068958"
 ---
 # <a name="getting-started-with-the-cloud-adoption-framework"></a>クラウド導入フレームワークの概要

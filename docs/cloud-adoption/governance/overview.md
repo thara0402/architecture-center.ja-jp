@@ -7,10 +7,10 @@ ms.date: 02/11/2019
 description: Microsoft CAF for Azure でのガバナンス
 author: BrianBlanchard
 ms.openlocfilehash: ce407de0daa590e767382346692c80e0a113bb3c
-ms.sourcegitcommit: 0a8a60d782facc294f7f78ec0e9033e3ee16bf4a
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59068839"
 ---
 # <a name="governance-in-the-microsoft-caf-for-azure"></a>Microsoft CAF for Azure でのガバナンス

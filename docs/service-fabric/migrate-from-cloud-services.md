@@ -6,12 +6,12 @@ ms.date: 04/11/2018
 ms.topic: guide
 ms.service: architecture-center
 ms.subservice: reference-architecture
-ms.openlocfilehash: 66f1431f45a0c9accf3a8227fa8cbb5966568372
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.openlocfilehash: a1fc28737b194fe69e2ae094bd996d97363eb29c
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58248013"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59641112"
 ---
 # <a name="migrate-an-azure-cloud-services-application-to-azure-service-fabric"></a>Azure Cloud Services アプリケーションを Azure Service Fabric に移行する 
 
@@ -26,7 +26,6 @@ ms.locfileid: "58248013"
 - [Azure Service Fabric の概要][sf-overview]
 - [マイクロサービスの手法でアプリケーションを構築する理由は何ですか。][sf-why-microservices]
 
-
 ## <a name="about-the-surveys-application"></a>Surveys アプリケーションについて
 
 2012 年に、パターンとプラクティスを担当するグループが、『[Developing Multi-tenant Applications for the Cloud (クラウド向けマルチテナント アプリケーションの開発)][tailspin-book]』というタイトルの書籍のために Surveys というアプリケーションを作成しました。 この書籍は、Surveys アプリケーションの設計と実装を行う Tailspin という架空の企業のことを描写しています。
@@ -35,8 +34,8 @@ Surveys は、顧客がアンケートを作成できるマルチテナント �
 
 Tailspin は現在、Azure で実行される Service Fabric を使用して Surveys アプリケーションをマイクロサービス アーキテクチャに移行しようと考えています。 このアプリケーションは既に Cloud Services アプリケーションとしてデプロイされているため、Tailspin は複数フェーズのアプローチを採用します。
 
-1.  アプリケーションへの変更を最小限にしながらクラウド サービスを Service Fabric に移植します。
-2.  マイクロサービス アーキテクチャに移行することで、アプリケーションを Service Fabric 用に最適化します。
+1. アプリケーションへの変更を最小限にしながらクラウド サービスを Service Fabric に移植します。
+2. マイクロサービス アーキテクチャに移行することで、アプリケーションを Service Fabric 用に最適化します。
 
 この記事では最初のフェーズについて説明します。 後の記事では 2 番目のフェーズについて説明します。 実際のプロジェクトでは、おそらく両方のステージの時期が重なります。 Service Fabric への移植を行うときに、アプリケーションのマイクロサービスへの再設計も開始することになります。 その後、アーキテクチャをさらに調整する場合もあり、粒度の粗いサービスをより小さなサービスに分割する可能性があります。  
 
@@ -87,7 +86,6 @@ Service Fabric は、Azure SQL Database、Cosmos DB、Azure Event Hubs などを
 | 自動スケール | [組み込みのサービス][cloud-service-autoscale] | 自動スケール用の VM Scale Sets |
 | デバッグ | ローカル エミュレーター | ローカル クラスター |
 
-
 \* ステートフル サービスが [Reliable Collection][sf-reliable-collections] を使用してレプリカ間にわたる状態を保存し、すべての読み取りがクラスター内のノードに対してローカルであるようにしています。 書き込みは、信頼性のため、ノード間でレプリケートされます。 ステートレスなサービスは、データベースまたはその他の外部ストレージを使用して、外部の状態を持っている場合があります。
 
 ** worker ロールは、OWIN を使用して ASP.NET Web API を自己ホストすることもできます。
@@ -123,7 +121,6 @@ Cloud Services に加えて、Surveys アプリケーションが他のいくつ
 ![](./images/tailspin02.png)
 
 意図的に、このアーキテクチャは元のアプリケーションによく似たものにしています。 ただし、図にはいくつかの重要な違いが隠れています。 この記事の残りの部分では、それらの相違点について説明します。 
-
 
 ## <a name="converting-the-cloud-service-roles-to-services"></a>クラウド サービス ロールのサービスへの変換
 
@@ -216,7 +213,6 @@ Service Fabric アプリケーションには以下の構成ファイルが含�
 2. アプリケーション マニフェストで、設定のオーバーライドを定義します。
 3. アプリケーション パラメーター ファイルに環境固有の設定を記入します。
 
-
 ## <a name="deploying-the-application"></a>アプリケーションのデプロイ
 
 Azure Cloud Services は管理されたサービスであるのに対して、Service Fabric はランタイムです。 Azure とオンプレミスを含めて、多くの環境で Service Fabric クラスターを作成できます。 この記事では、Azure へのデプロイに焦点を合わせます。 
@@ -265,8 +261,8 @@ Service Fabric クラスターは [VM スケール セット][vm-scale-sets]に�
 
 このアプローチの実装方法:
 
-1.  クラスターを作成するときに、ノード タイプを 2 つ以上定義します。 
-2.  サービスごとに[配置の制約][sf-placement-constraints]を使用して、サービスをノード タイプに割り当てます。
+1. クラスターを作成するときに、ノード タイプを 2 つ以上定義します。 
+2. サービスごとに[配置の制約][sf-placement-constraints]を使用して、サービスをノード タイプに割り当てます。
 
 Azure にデプロイするときに、各ノード タイプは別個の VM スケール セットにデプロイされます。 Service Fabric クラスターは、すべてのノード タイプにまたがります。 詳細については、「[Azure Service Fabric ノードの種類と仮想マシン スケール セット][sf-node-types]」を参照してください。
 
@@ -280,8 +276,7 @@ Azure にデプロイするときに、各ノード タイプは別個の VM ス
 
 クラスターに VM を追加することで、アプリケーションをスケールアウトできます。 VM スケール セットは、パフォーマンス カウンターに基づく自動スケール ルールを使用した自動スケールをサポートしています。 詳細については、「[自動スケール ルールを使用した Service Fabric クラスターのスケールインとスケールアウト][sf-auto-scale]」を参照してください。
 
-クラスターの実行中には、1 つの場所ですべてのノードからログを収集する必要があります。 詳細については、[Azure 診断でログを収集する方法][sf-logs]に関するページを参照してください。   
-
+クラスターの実行中には、1 つの場所ですべてのノードからログを収集する必要があります。 詳細については、[Azure Diagnostics でログを収集する方法][sf-logs]に関するページを参照してください。   
 
 ## <a name="conclusion"></a>まとめ
 

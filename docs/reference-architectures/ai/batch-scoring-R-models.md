@@ -7,12 +7,12 @@ ms.topic: reference-architecture
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: azcat-ai
-ms.openlocfilehash: 4fa57168c337b01c8e7d0fc86ba54fee59a7ae47
-ms.sourcegitcommit: 1a3cc91530d56731029ea091db1f15d41ac056af
+ms.openlocfilehash: 72769cf078596f0312a1f4293205dda5a086ef41
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58887874"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59639905"
 ---
 # <a name="batch-scoring-of-r-machine-learning-models-on-azure"></a>Azure での R 機械学習モデルのバッチ スコアリング
 
@@ -101,7 +101,6 @@ Azure Batch と doAzureParallel では、優先順位の低い VM の使用が�
 ## <a name="deployment"></a>Deployment
 
 この参照アーキテクチャをデプロイするには、[GitHub][github] リポジトリで説明されている手順に従ってください。
-
 
 [0]: ./_images/batch-scoring-r-models.png
 [1]: ./_images/sales-forecasts.png

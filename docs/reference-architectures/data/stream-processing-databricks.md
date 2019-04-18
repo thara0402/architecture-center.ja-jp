@@ -9,11 +9,11 @@ ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: seodec18
 ms.openlocfilehash: 3d109cb830b7dfc8c3d4de0e654f9d8667acf101
-ms.sourcegitcommit: 1a3cc91530d56731029ea091db1f15d41ac056af
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58887796"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59740461"
 ---
 # <a name="create-a-stream-processing-pipeline-with-azure-databricks"></a>Azure Databricks を使用してストリーム処理パイプラインを作成します
 

@@ -6,18 +6,19 @@ layout: LandingPage
 ms.topic: landing-page
 ms.service: architecture-center
 ms.subservice: enterprise-cloud-adoption
-ms.openlocfilehash: 57f28808d3c49c74bc010133c670a186206a4466
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.openlocfilehash: f49640f4a994bf1cdca8029260fc95a5da323ff2
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58344531"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59640619"
 ---
 # <a name="azure-virtual-datacenter-and-the-enterprise-control-plane"></a>Azure 仮想データセンターとエンタープライズ コントロール プレーン
 
 Azure 仮想データセンターは、既存のセキュリティやネットワーク ポリシーを順守しながら、Azure のクラウド プラットフォーム機能を最大限に活用できる手法です。 IT 企業や IT 事業部門がエンタープライズ ワークロードをクラウドにデプロイする際は、ガバナンスと開発者の俊敏性のバランスを取る必要があります。 Azure 仮想データセンターでは、ガバナンスに重点を置きつつ、このバランスを実現するモデルを提供します。
- 
+
 ## <a name="resources"></a>リソース
+
 <table>
 <tr>
     <td style="width: 64px; vertical-align: middle;"><a href="https://aka.ms/VDC/Concepts"><img src="../_images/virtual-datacenter.svg" alt="Virtual Datacenter eBook" /></a></td>
@@ -58,6 +59,5 @@ Azure 仮想データセンターは、既存のセキュリティやネット�
 Azure 仮想データセンターは、ID、暗号化、ソフトウェアによるネットワーク制御、コンプライアンス (ログおよびレポートを含む) という 4 つのコンポーネントによって可能になります。
 
 Azure 仮想データセンターのこのモデルでは、分離ポリシーの適用により、クラウドを既知の物理データセンターのようにすることができるため、必要なレベルのセキュリティと信頼を達成できます。 どの大企業の IT チームもその重要性を認める 4 つのコンポーネント (ソフトウェアによるネットワーク制御、暗号化、ID 管理、および Azure プラットフォームの基になるコンプライアンス標準と認定資格) によって、これが可能になります。 この 4 つは、仮想データセンターが、既存のインフラストラクチャへの投資に対する確かな拡張となるための鍵です。
-
 
 引き続き、電子書籍「<a href="https://aka.ms/VDC/eBook">Azure 仮想データセンター: 概念</a>」をお読みください。

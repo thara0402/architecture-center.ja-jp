@@ -7,12 +7,12 @@ ms.custom: governance
 ms.date: 02/11/2019
 description: 中小企業 – ベスト プラクティスの説明
 author: BrianBlanchard
-ms.openlocfilehash: c3b4ab69e3cf5f664a5297d7bc3c2460d8d5d182
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.openlocfilehash: b9b385be345098bf1b9e0e1cdce7fd3cceeb5523
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58243693"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59639582"
 ---
 # <a name="small-to-medium-enterprise-best-practice-explained"></a>中小企業: ベスト プラクティスの説明
 

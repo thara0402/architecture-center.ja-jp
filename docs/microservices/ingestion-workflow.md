@@ -7,12 +7,12 @@ ms.topic: guide
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: microservices
-ms.openlocfilehash: 75aef5aec7f4663abff45ebdba5dbea245d3ac17
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.openlocfilehash: a36d2b4c7bfd2b26d5e1de44ddd8005fbce4bdd2
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58248457"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59640857"
 ---
 # <a name="designing-microservices-ingestion-and-workflow"></a>マイクロサービスの設計:インジェストとワークフロー
 
@@ -86,7 +86,7 @@ Event Hubs は、競合コンシューマー用に設計されていません。
 > [!NOTE]
 > プロセッサ ホストは、スレッドをブロックするという意味では実際には "*待機*" しません。 `ProcessEventsAsync` メソッドは非同期であるため、プロセッサ ホストはメソッドの実行中に他の作業を行うことができます。 ただし、メソッドが戻るまで、そのパーティションのメッセージの別のバッチは配信されません。
 
-ドローン アプリケーションでは、メッセージのバッチを並列に処理することができます。 ただし、バッチ全体の完了の待機によってボトルネックが生じることがあります。 処理の速度は、バッチ内で最も遅いメッセージの速度以下になります。 応答時間の変動により、少数の低速な応答がシステム全体の速度を低下させる "ロング テール" が作成されることがあります。 パフォーマンス テストでは、この手法を使うとターゲット スループットが達成されませんでした。 これは、イベント プロセッサ ホストの使用を避ける必要があるという意味では "*ありません*"。 ただし、高いスループットを実現するには、`ProcesssEventsAsync` メソッド内での実行時間の長いタスクの実行は避けてください。 各バッチを迅速に処理します。
+ドローン アプリケーションでは、メッセージのバッチを並列に処理することができます。 ただし、バッチ全体の完了の待機によってボトルネックが生じることがあります。 処理の速度は、バッチ内で最も遅いメッセージの速度以下になります。 応答時間の変動により、少数の低速な応答がシステム全体の速度を低下させる "ロング テール" が作成されることがあります。 パフォーマンス テストでは、この手法を使うとターゲット スループットが達成されませんでした。 これは、イベント プロセッサ ホストの使用を避ける必要があるという意味では "*ありません*"。 ただし、高いスループットを実現するには、`ProcessEventsAsync` メソッド内での実行時間の長いタスクの実行は避けてください。 各バッチを迅速に処理します。
 
 ### <a name="iothub-react"></a>IotHub React
 

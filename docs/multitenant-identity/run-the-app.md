@@ -6,12 +6,12 @@ ms.date: 07/21/2017
 ms.topic: guide
 ms.service: architecture-center
 ms.subservice: reference-architecture
-ms.openlocfilehash: bdc2f4da6dd151cf395bee700e6a44e827c1e4f9
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.openlocfilehash: b22a52b1dfcccc6253ba4ba418ed25523603283a
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58246133"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59640823"
 ---
 # <a name="run-the-surveys-application"></a>Surveys アプリケーションの実行
 

@@ -9,12 +9,12 @@ ms.topic: design-pattern
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.custom: seodec18
-ms.openlocfilehash: c736afced1b0478e8eb1a2694acc4d6a6f0c62fc
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.openlocfilehash: 267d630d97a998c76a75a70191a77f9b74e801ef
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58248727"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59641061"
 ---
 # <a name="queue-based-load-leveling-pattern"></a>キュー ベースの負荷平準化パターン
 
@@ -67,8 +67,6 @@ Web アプリでは、外部データ ストアにデータを書き込みます
 これを解決するために、キューを使用して、アプリケーション インスタンスとデータ ストア間の負荷を平準化することができます。 Azure 関数アプリではメッセージをキューから読み取り、データ ストアへの読み取り/書き込み要求を実行します。 関数アプリのアプリケーション ロジックでは、データ ストアの過負荷を防ぐために、データ ストアに要求を渡す速度を制御できます  (それ以外の場合、関数アプリではバック エンドで同じ問題が再発するだけです)。
 
 ![図 3 - キューと関数アプリを使用した負荷の平準化](./_images/queue-based-load-leveling-function.png)
-
-
 
 ## <a name="related-patterns-and-guidance"></a>関連のあるパターンとガイダンス
 

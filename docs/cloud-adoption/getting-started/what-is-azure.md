@@ -7,10 +7,10 @@ description: Azure の内部機能の説明
 author: petertaylor9999
 ms.date: 02/11/2019
 ms.openlocfilehash: 215e4e4954a2f3e722e3ac865fea19508f6edadd
-ms.sourcegitcommit: 0a8a60d782facc294f7f78ec0e9033e3ee16bf4a
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59068822"
 ---
 <!-- markdownlint-disable MD026 -->

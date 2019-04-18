@@ -3,25 +3,6 @@
 
 <ul  class="panelContent cardsC">
 <li style="display: flex; flex-direction: column;">
-    <a href="./ai/newsfeed-ingestion.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
-        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
-            <div class="cardPadding" style="display: flex;">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="./ai/media/mass-ingestion-newsfeeds-architecture.png" height="140px" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>Azure 上での大量のニュース フィードの取り込みと分析</h3>
-                        <p>Azure Cosmos DB や Azure Cognitive Services を含めた Azure サービスのみを使用して、RSS ニュース フィードからテキスト、画像、センチメントなどのデータを取り込んで分析するためのパイプラインを作成します。</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </a>
-</li>
-<li style="display: flex; flex-direction: column;">
     <a href="./ai/commerce-chatbot.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
         <div class="cardSize" style="flex: 1 0 auto; display: flex;">
             <div class="cardPadding" style="display: flex;">
@@ -78,8 +59,26 @@
         </div>
     </a>
 </li>
+<li style="display: flex; flex-direction: column;">
+    <a href="./ai/newsfeed-ingestion.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="./ai/media/mass-ingestion-newsfeeds-architecture.png" height="140px" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Azure 上での大量のニュース フィードの取り込みと分析</h3>
+                        <p>Azure Cosmos DB や Azure Cognitive Services を含めた Azure サービスのみを使用して、RSS ニュース フィードからテキスト、画像、センチメントなどのデータを取り込んで分析するためのパイプラインを作成します。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</li>
 </ul>
-
 
 ## <a name="application-scenarios"></a>アプリケーションのシナリオ
 
@@ -218,6 +217,25 @@
     </a>
 </li>
 <li style="display: flex; flex-direction: column;">
+    <a href="./apps/jenkins.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="./apps/media/architecture-jenkins.png" height="140px" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Azure で Jenkins サーバーを実行する</h3>
+                        <p>シングル サインオン (SSO) で保護されたスケーラブルなエンタープライズ レベルの Jenkins サーバーを Azure にデプロイして運用する方法を示す推奨アーキテクチャ。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</li>
+<li style="display: flex; flex-direction: column;">
     <a href="./apps/sap-dev-test.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
         <div class="cardSize" style="flex: 1 0 auto; display: flex;">
             <div class="cardPadding" style="display: flex;">
@@ -256,7 +274,6 @@
     </a>
 </li>
 </ul>
-
 
 ## <a name="data-scenarios"></a>データ シナリオ
 
@@ -376,7 +393,6 @@
     </a>
 </li>
 </ul>
-
 
 ## <a name="infrastructure-scenarios"></a>インフラストラクチャ シナリオ
 
@@ -534,4 +550,3 @@
     </a>
 </li>
 </ul>
-

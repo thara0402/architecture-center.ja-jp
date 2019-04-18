@@ -8,10 +8,10 @@ ms.date: 02/11/2019
 description: 大規模なエンタープライズ – ベスト プラクティスの説明
 author: BrianBlanchard
 ms.openlocfilehash: 2d52797f1c3541fab1c97d97d0438210d2e66f79
-ms.sourcegitcommit: 0a8a60d782facc294f7f78ec0e9033e3ee16bf4a
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59068992"
 ---
 # <a name="large-enterprise-best-practice-explained"></a>大企業:ベスト プラクティスの説明
@@ -105,9 +105,9 @@ ms.locfileid: "59068992"
 - [ログ記録とレポート パターン](../../../decision-guides/log-and-report/overview.md)
 - [ポリシー適用パターン](../../../decision-guides/policy-enforcement/overview.md)
 - [リソース整合性パターン](../../../decision-guides/resource-consistency/overview.md)
-- [リソース タグ付けのパターン](../../../decision-guides/resource-tagging/overview.md)
+- [リソース タグ付けパターン](../../../decision-guides/resource-tagging/overview.md)
 - [ソフトウェア定義ネットワーク パターン](../../../decision-guides/software-defined-network/overview.md)
-- [サブスクリプションの設計パターン](../../../decision-guides/subscriptions/overview.md)
+- [サブスクリプション設計パターン](../../../decision-guides/subscriptions/overview.md)
 
 ## <a name="next-steps"></a>次の手順
 

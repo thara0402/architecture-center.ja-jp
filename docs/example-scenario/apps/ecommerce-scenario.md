@@ -9,12 +9,12 @@ ms.service: architecture-center
 ms.subservice: example-scenario
 ms.custom: fasttrack
 social_image_url: /azure/architecture/example-scenario/apps/media/architecture-ecommerce-scenario.png
-ms.openlocfilehash: 989dec6afccbb836b61eb32e39904f43ffff65ac
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.openlocfilehash: b10ffaafb6479fef89e6691a686c018ac6ce5632
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58244013"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59640755"
 ---
 # <a name="an-e-commerce-front-end-on-azure"></a>Azure の eコマース フロントエンド
 
@@ -103,7 +103,7 @@ Web 層と機能に関するその他のオプションは次のとおりです�
 - アプリケーションの一部が使用できない場合は、[サーキット ブレーカー パターン][circuit-breaker]を利用して、グレースフル エラー処理を提供することを検討してください。
 - [回復性のための標準的な設計パターン][design-patterns-resiliency]を確認し、必要に応じて、これらを実装することを検討します。
 - Azure アーキテクチャ センターでは、多数の [App Service に関する推奨プラクティス][resiliency-app-service]を確認できます。
-- データ層にはアクティブ [geo レプリケーション][sql-geo-replication]を、イメージおよびキューには [geo 冗長][storage-geo-redudancy]ストレージを使用することを検討します。
+- データ層にはアクティブ [geo レプリケーション][sql-geo-replication]を、イメージおよびキューには [geo 冗長][storage-geo-redundancy]ストレージを使用することを検討します。
 - [回復性][resiliency]の詳細については、Azure アーキテクチャ センターの関連記事を参照してください。
 
 ## <a name="deploy-the-scenario"></a>シナリオのデプロイ
@@ -162,4 +162,4 @@ Web 層と機能に関するその他のオプションは次のとおりです�
 [secure-development]: https://www.microsoft.com/SDL/process/design.aspx
 [service-bus]: /azure/service-bus-messaging/
 [sql-geo-replication]: /azure/sql-database/sql-database-geo-replication-overview
-[storage-geo-redudancy]: /azure/storage/common/storage-redundancy-grs
+[storage-geo-redundancy]: /azure/storage/common/storage-redundancy-grs

@@ -7,12 +7,12 @@ ms.topic: reference-architecture
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: azcat-ai
-ms.openlocfilehash: 7f10c422c65967701084859e41f9656c818ed818
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.openlocfilehash: c7e7423da11667c90d53247c2c5303a8fbd1a76a
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58241393"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59640160"
 ---
 # <a name="build-a-real-time-recommendation-api-on-azure"></a>Azure 上でリアルタイム レコメンデーション API を構築する
 
@@ -96,7 +96,7 @@ Azure Cosmos DB のパフォーマンスを管理するには、1 秒間に必�
 
 1. [Azure Databricks ワークスペース][workspace]を作成します。
 
-2. 次の構成を持つ新しいクラスターを Azure Databricks 上に作成します。
+1. 次の構成を持つ新しいクラスターを Azure Databricks 上に作成します。
 
     - クラスター モード:Standard
     - Databricks Runtime のバージョン:4.3 (Apache Spark 2.3.1、Scala 2.11 など)
@@ -107,27 +107,27 @@ Azure Cosmos DB のパフォーマンスを管理するには、1 秒間に必�
     - Spark の構成: (必要に応じて)
     - 環境変数: (必要に応じて)
 
-3. [Azure Databricks ワークスペース][workspace]内に個人用アクセス トークンを作成します。 詳細については、Azure Databricks 認証の[ドキュメント][adbauthentication]を参照してください。
+1. [Azure Databricks ワークスペース][workspace]内に個人用アクセス トークンを作成します。 詳細については、Azure Databricks 認証の[ドキュメント][adbauthentication]を参照してください。
 
-3. スクリプトを実行できる環境 (ご使用のローカル コンピューターなど) に [Microsoft Recommenders][github] リポジトリを複製します。
+1. スクリプトを実行できる環境 (ご使用のローカル コンピューターなど) に [Microsoft Recommenders][github] リポジトリを複製します。
 
-4. **クイック インストール**のセットアップ手順に従って[関連するライブラリ][setup]を Azure Databricks にインストールします。
+1. **クイック インストール**のセットアップ手順に従って[関連するライブラリ][setup]を Azure Databricks にインストールします。
 
-5. **クイック インストール**のセットアップ手順に従って、[Azure Databricks を運用化するために準備します][setupo16n]。
+1. **クイック インストール**のセットアップ手順に従って、[Azure Databricks を運用化するために準備します][setupo16n]。
 
-6. ワークスペースに [ALS Movie Operationalization ノートブック][als-example]をインポートします。 Azure Databricks ワークスペースへのログイン後、次の手順を行います。
+1. ワークスペースに [ALS Movie Operationalization ノートブック][als-example]をインポートします。 Azure Databricks ワークスペースへのログイン後、次の手順を行います。
 
     a. ワークスペースの左側にある **[ホーム]** をクリックします。
 
     b. ホーム ディレクトリ内の空白を右クリックします。 **[インポート]** を選択します。
-    
+
     c. **[URL]** を選択し、次のとおりテキスト フィールドに貼り付けます: `https://github.com/Microsoft/Recommenders/blob/master/notebooks/05_operationalize/als_movie_o16n.ipynb`
-    
+
     d. **[インポート]** をクリックします。
 
-7. Azure Databricks 内でノートブックを開き、構成したクラスターをアタッチします。
+1. Azure Databricks 内でノートブックを開き、構成したクラスターをアタッチします。
 
-8. ノートブックを実行して、特定のユーザーに上位 10 個のおすすめ映画を提供するレコメンデーション API を作成するために必要な Azure リソースを作成します。
+1. ノートブックを実行して、特定のユーザーに上位 10 個のおすすめ映画を提供するレコメンデーション API を作成するために必要な Azure リソースを作成します。
 
 ## <a name="related-architectures"></a>関連するアーキテクチャ
 

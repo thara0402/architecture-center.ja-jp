@@ -6,12 +6,12 @@ ms.date: 02/12/2018
 ms.topic: guide
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
-ms.openlocfilehash: 76a101b76497ae2b2aacff973175bb0fe4703d9e
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.openlocfilehash: 31f052cc22f039540c89759c55028c368be1d238
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58245873"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59640789"
 ---
 # <a name="choosing-a-data-pipeline-orchestration-technology-in-azure"></a>Azure でのデータ パイプライン オーケストレーション テクノロジの選択
 
@@ -75,4 +75,3 @@ Azure では、次のサービスとツールがパイプライン オーケス�
 | スケールアップ | はい | いいえ  | いいえ  |
 | スケールアウト | はい | いいえ  | はい (クラスターへの worker ノードの追加) |
 | ビッグ データに合わせて最適化 | はい | いいえ  | はい |
-
